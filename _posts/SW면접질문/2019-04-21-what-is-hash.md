@@ -3,7 +3,7 @@ title: 7. 해시(Hash)란?
 date: 2019-04-21T13:00:00+09:00
 author: SWnomad
 layout: post
-categories: SW직무-면접-기출질문
+categories: SW면접질문
 tags:
   - 해시
   - Hash

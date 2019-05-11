@@ -3,7 +3,7 @@ title: 2. 가장 빠른 정렬 알고리즘
 date: 2019-04-20T12:00:00+09:00
 author: SWnomad
 layout: post
-categories: SW직무-면접-기출질문
+categories: SW면접질문
 tags:
   - quick sort
   - sort

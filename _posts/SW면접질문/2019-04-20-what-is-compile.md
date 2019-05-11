@@ -3,7 +3,7 @@ title: 4. 컴파일(Compile)이란?
 date: 2019-04-20T14:00:00+09:00
 author: SWnomad
 layout: post
-categories: SW직무-면접-기출질문
+categories: SW면접질문
 tags:
   - compile
   - compiler

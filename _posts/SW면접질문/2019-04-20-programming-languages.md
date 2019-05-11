@@ -3,7 +3,7 @@ title: 1. 프로그래밍 언어의 종류와 특징
 date: 2019-04-20T11:00:00+09:00
 author: SWnomad
 layout: post
-categories: SW직무-면접-기출질문
+categories: SW면접질문
 tags:
   - C
   - Java
