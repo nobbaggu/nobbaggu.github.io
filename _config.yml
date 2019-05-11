@@ -5,9 +5,9 @@ permalink: /:year/:month/:day/:title/
 #relative_permalinks: true
 
 # Setup
-title:               hoisharka's blog
+title:               SW NOMAD의 공부 기록소
 tagline:             'Front-end Dev Engineer'
-description:         '웹 개발자 김태헌입니다.'
+description:         예비 프로그래머 노마드입니다.
 url:                 https://swnomad.github.io
 baseurl:             ''
 paginate:            5
