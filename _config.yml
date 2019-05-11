@@ -1,0 +1,43 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink: /:year/:month/:day/:title/
+#relative_permalinks: true
+
+# Setup
+title:               hoisharka's blog
+tagline:             'Front-end Dev Engineer'
+description:         '웹 개발자 김태헌입니다.'
+url:                 https://swnomad.github.io
+baseurl:             ''
+paginate:            5
+
+# About/contact
+author:
+  name:              SW NOMAD
+  url:               https://swnomad.github.io
+  #email:             hoisharka@gmail.com
+
+# Custom vars
+version:             1.0.0
+
+plugins: [jekyll-paginate]
+
+# Tag setting
+#collections:
+#  tags:
+#    output: true
+#    permalink: /tags/:path/
+
+#defaults:
+#  - scope:
+#      path: ''
+#      type: tags
+#    values:
+#      layout: tag
+
+
+category_dir: category/
+tag_dir: tag/
+
+excerpt_separator: ""
