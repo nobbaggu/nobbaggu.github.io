@@ -41,3 +41,5 @@ category_dir: category/
 tag_dir: tag/
 
 excerpt_separator: ""
+
+google_analytics: 'UA-139886519-1'
