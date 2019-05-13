@@ -1,0 +1,10661 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      default메소드와 static메소드 &middot; SW NOMAD의 공부 기록소
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/public/css/custom.css">
+  <link rel="stylesheet" href="/public/css/font.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://localhost:4000/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-139886519-1');
+</script>
+
+<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
+
+  <script src="/js/vue.min.js"></script>
+  <script src="/js/axios.min.js"></script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  
+  <!--
+  <div class="sidebar-item">
+    <p></p>
+  </div>
+	-->
+  <nav class="sidebar-nav">
+    <!--<a class="sidebar-nav-item" href="http://localhost:4000/">Home</a>-->
+<!--
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	-->
+    <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
+  </nav>
+  <div>
+    <div class="sidebar-nav-item">Category</div>
+    <nav class="content-ul">
+      
+      <a href="/category/#머신러닝"
+         class="sidebar-nav-item pl-3rem">
+                            <span class="name">
+                                머신러닝
+                            </span>
+        <span class="badge">36</span>
+      </a>
+      
+      <a href="/category/#Python"
+         class="sidebar-nav-item pl-3rem">
+                            <span class="name">
+                                Python
+                            </span>
+        <span class="badge">21</span>
+      </a>
+      
+      <a href="/category/#C"
+         class="sidebar-nav-item pl-3rem">
+                            <span class="name">
+                                C
+                            </span>
+        <span class="badge">48</span>
+      </a>
+      
+      <a href="/category/#알고리즘"
+         class="sidebar-nav-item pl-3rem">
+                            <span class="name">
+                                알고리즘
+                            </span>
+        <span class="badge">18</span>
+      </a>
+      
+      <a href="/category/#컴퓨터구조"
+         class="sidebar-nav-item pl-3rem">
+                            <span class="name">
+                                컴퓨터구조
+                            </span>
+        <span class="badge">12</span>
+      </a>
+      
+      <a href="/category/#Java"
+         class="sidebar-nav-item pl-3rem">
+                            <span class="name">
+                                Java
+                            </span>
+        <span class="badge">58</span>
+      </a>
+      
+      <a href="/category/#SW면접질문"
+         class="sidebar-nav-item pl-3rem">
+                            <span class="name">
+                                SW면접질문
+                            </span>
+        <span class="badge">7</span>
+      </a>
+      
+      <a href="/category/#안드로이드"
+         class="sidebar-nav-item pl-3rem">
+                            <span class="name">
+                                안드로이드
+                            </span>
+        <span class="badge">39</span>
+      </a>
+      
+    </nav>
+  </div>
+  <div>
+  <!--
+    <div class="sidebar-nav-item">Tags</div>
+    <div class="tags-cloud">
+      <div>
+        
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#AI" style="font-size: 11pt; color: #777;">AI</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#clustering" style="font-size: 9pt; color: #555;">clustering</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#machine learning" style="font-size: 12.5pt; color: #999;">machine learning</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#supervised learning" style="font-size: 9pt; color: #555;">supervised learning</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#unsupervised learning" style="font-size: 9pt; color: #555;">unsupervised learning</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#머신러닝" style="font-size: 13pt; color: #999;">머신러닝</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#분류" style="font-size: 9.5pt; color: #555;">분류</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#비지도학습" style="font-size: 9pt; color: #555;">비지도학습</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#예측" style="font-size: 9pt; color: #555;">예측</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인공지능" style="font-size: 11pt; color: #777;">인공지능</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#지도학습" style="font-size: 9pt; color: #555;">지도학습</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#클러스터링" style="font-size: 9pt; color: #555;">클러스터링</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cost function" style="font-size: 11pt; color: #777;">cost function</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#gradient descent" style="font-size: 11pt; color: #777;">gradient descent</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hypothesis function" style="font-size: 11pt; color: #777;">hypothesis function</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#linear regression" style="font-size: 10pt; color: #666;">linear regression</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#가설함수" style="font-size: 11.5pt; color: #777;">가설함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#경사하강법" style="font-size: 11pt; color: #777;">경사하강법</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#비용함수" style="font-size: 11pt; color: #777;">비용함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#선형회귀" style="font-size: 10pt; color: #666;">선형회귀</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#feature normalization" style="font-size: 9pt; color: #555;">feature normalization</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#feature scailing" style="font-size: 9pt; color: #555;">feature scailing</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#learning rate" style="font-size: 9pt; color: #555;">learning rate</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#학습속도" style="font-size: 9pt; color: #555;">학습속도</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#학습율" style="font-size: 9pt; color: #555;">학습율</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#기계학습" style="font-size: 9.5pt; color: #666;">기계학습</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#normal equation" style="font-size: 9pt; color: #555;">normal equation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#pinv" style="font-size: 9pt; color: #555;">pinv</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#matlab" style="font-size: 9pt; color: #555;">matlab</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#octave" style="font-size: 9pt; color: #555;">octave</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#매트랩" style="font-size: 9pt; color: #555;">매트랩</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#옥테이브" style="font-size: 9pt; color: #555;">옥테이브</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#classification" style="font-size: 9.5pt; color: #666;">classification</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#logistic regression" style="font-size: 9pt; color: #555;">logistic regression</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#sigmoid function" style="font-size: 9pt; color: #555;">sigmoid function</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#sigmoid함수" style="font-size: 9pt; color: #555;">sigmoid함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#시그모이드 함수" style="font-size: 9pt; color: #555;">시그모이드 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#overfitting" style="font-size: 9pt; color: #555;">overfitting</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#regularization" style="font-size: 9pt; color: #555;">regularization</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#underfitting" style="font-size: 9pt; color: #555;">underfitting</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#fminunc" style="font-size: 9pt; color: #555;">fminunc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#multiclass classification" style="font-size: 9pt; color: #555;">multiclass classification</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#back propagation" style="font-size: 9pt; color: #555;">back propagation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#deep learning" style="font-size: 9pt; color: #555;">deep learning</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hidden layer" style="font-size: 9.5pt; color: #555;">hidden layer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#input layer" style="font-size: 9.5pt; color: #555;">input layer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#neural network" style="font-size: 9.5pt; color: #666;">neural network</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#output layer" style="font-size: 9.5pt; color: #555;">output layer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#perceptron" style="font-size: 9pt; color: #555;">perceptron</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#뉴럴 네트워크" style="font-size: 9pt; color: #555;">뉴럴 네트워크</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#딥러닝" style="font-size: 9pt; color: #555;">딥러닝</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#신경망" style="font-size: 9.5pt; color: #666;">신경망</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#역전파" style="font-size: 9pt; color: #555;">역전파</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#은닉층" style="font-size: 9.5pt; color: #555;">은닉층</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#입력층" style="font-size: 9pt; color: #555;">입력층</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#출력층" style="font-size: 9pt; color: #555;">출력층</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#퍼셉트론" style="font-size: 9pt; color: #555;">퍼셉트론</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#히든층" style="font-size: 9pt; color: #555;">히든층</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#activation function" style="font-size: 9pt; color: #555;">activation function</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#back" style="font-size: 9pt; color: #555;">back</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#forward" style="font-size: 9pt; color: #555;">forward</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#MLP" style="font-size: 9pt; color: #555;">MLP</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#multi layer perceptron" style="font-size: 9pt; color: #555;">multi layer perceptron</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#propagation" style="font-size: 9pt; color: #555;">propagation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#sigmoid" style="font-size: 9pt; color: #555;">sigmoid</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#순전파" style="font-size: 9pt; color: #555;">순전파</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#시그모이드" style="font-size: 9pt; color: #555;">시그모이드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#에러" style="font-size: 9pt; color: #555;">에러</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인공신경망" style="font-size: 9pt; color: #555;">인공신경망</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#활성함수" style="font-size: 9pt; color: #555;">활성함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#forward propagation" style="font-size: 9pt; color: #555;">forward propagation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#gradient check" style="font-size: 9pt; color: #555;">gradient check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인공" style="font-size: 9pt; color: #555;">인공</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#artificial neural network" style="font-size: 9pt; color: #555;">artificial neural network</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#digit recognition" style="font-size: 9pt; color: #555;">digit recognition</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#digit recognization" style="font-size: 9pt; color: #555;">digit recognization</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#digit recognize" style="font-size: 9pt; color: #555;">digit recognize</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#숫자인식" style="font-size: 9pt; color: #555;">숫자인식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#신경망 알고리즘" style="font-size: 9pt; color: #555;">신경망 알고리즘</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#패턴인식" style="font-size: 9pt; color: #555;">패턴인식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#필기 숫자 인식" style="font-size: 9pt; color: #555;">필기 숫자 인식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cross validation" style="font-size: 9pt; color: #555;">cross validation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hypothesis" style="font-size: 9pt; color: #555;">hypothesis</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#model selection" style="font-size: 9pt; color: #555;">model selection</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#high bias" style="font-size: 9pt; color: #555;">high bias</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#high variance" style="font-size: 9pt; color: #555;">high variance</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#training data" style="font-size: 9pt; color: #555;">training data</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#error analysis" style="font-size: 9pt; color: #555;">error analysis</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#spam claasifier" style="font-size: 9pt; color: #555;">spam claasifier</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#spam filter" style="font-size: 9pt; color: #555;">spam filter</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#머신러닝 시스템" style="font-size: 9pt; color: #555;">머신러닝 시스템</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스팸 필터" style="font-size: 9pt; color: #555;">스팸 필터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스팸메일 분류" style="font-size: 9pt; color: #555;">스팸메일 분류</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#F score" style="font-size: 9pt; color: #555;">F score</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#F 스코어" style="font-size: 9pt; color: #555;">F 스코어</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#F 점수" style="font-size: 9pt; color: #555;">F 점수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#precision" style="font-size: 9pt; color: #555;">precision</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#recall" style="font-size: 9pt; color: #555;">recall</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#모델 평가" style="font-size: 9pt; color: #555;">모델 평가</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#알고리즘 평가" style="font-size: 9pt; color: #555;">알고리즘 평가</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#large dataset" style="font-size: 9pt; color: #555;">large dataset</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#larger dataset" style="font-size: 9pt; color: #555;">larger dataset</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#low bias algorithm" style="font-size: 9pt; color: #555;">low bias algorithm</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#low bias model" style="font-size: 9pt; color: #555;">low bias model</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#decision boundary" style="font-size: 9pt; color: #555;">decision boundary</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#gaussian kernel" style="font-size: 9pt; color: #555;">gaussian kernel</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#kernel" style="font-size: 9pt; color: #555;">kernel</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#large margin classifier" style="font-size: 9pt; color: #555;">large margin classifier</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#linear kernel" style="font-size: 9pt; color: #555;">linear kernel</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#margin" style="font-size: 9pt; color: #555;">margin</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#similarity" style="font-size: 9pt; color: #555;">similarity</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#similarity function" style="font-size: 9pt; color: #555;">similarity function</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#support vector machine" style="font-size: 9pt; color: #555;">support vector machine</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#SVM" style="font-size: 9pt; color: #555;">SVM</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#마진" style="font-size: 9pt; color: #555;">마진</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#서포트 벡터 머신" style="font-size: 9pt; color: #555;">서포트 벡터 머신</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#최대 마진" style="font-size: 9pt; color: #555;">최대 마진</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cluster" style="font-size: 9pt; color: #555;">cluster</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#k-means" style="font-size: 9pt; color: #555;">k-means</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#k-means algorithm" style="font-size: 9pt; color: #555;">k-means algorithm</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#k-means 알고리즘" style="font-size: 9pt; color: #555;">k-means 알고리즘</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#클러스터" style="font-size: 9pt; color: #555;">클러스터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#covariant matrix" style="font-size: 9pt; color: #555;">covariant matrix</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#dimensionality reduction" style="font-size: 9pt; color: #555;">dimensionality reduction</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#highly correlated features" style="font-size: 9pt; color: #555;">highly correlated features</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#matlab svd" style="font-size: 9pt; color: #555;">matlab svd</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#octave svd" style="font-size: 9pt; color: #555;">octave svd</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#PCA" style="font-size: 9pt; color: #555;">PCA</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#principal component analysis" style="font-size: 9pt; color: #555;">principal component analysis</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#redundant features" style="font-size: 9pt; color: #555;">redundant features</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#singular value decomposition" style="font-size: 9pt; color: #555;">singular value decomposition</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#svd function" style="font-size: 9pt; color: #555;">svd function</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#svd 함수" style="font-size: 9pt; color: #555;">svd 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#anomaly" style="font-size: 9pt; color: #555;">anomaly</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#anomaly detection" style="font-size: 9pt; color: #555;">anomaly detection</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#gaussian distribution" style="font-size: 9pt; color: #555;">gaussian distribution</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#가우스 분포" style="font-size: 9pt; color: #555;">가우스 분포</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#이상 감지" style="font-size: 9pt; color: #555;">이상 감지</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#이상 감지 알고리즘" style="font-size: 9pt; color: #555;">이상 감지 알고리즘</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#정규분포" style="font-size: 9pt; color: #555;">정규분포</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#collaborative filtering" style="font-size: 9pt; color: #555;">collaborative filtering</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#low rank matrix" style="font-size: 9pt; color: #555;">low rank matrix</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#recommender system" style="font-size: 9pt; color: #555;">recommender system</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#영화 추천 알고리즘" style="font-size: 9pt; color: #555;">영화 추천 알고리즘</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#추천 시스템" style="font-size: 9pt; color: #555;">추천 시스템</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#추천 알고리즘" style="font-size: 9pt; color: #555;">추천 알고리즘</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#batch" style="font-size: 9pt; color: #555;">batch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#mini batch" style="font-size: 9pt; color: #555;">mini batch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#mini batch gradient" style="font-size: 9pt; color: #555;">mini batch gradient</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#stochastic" style="font-size: 9pt; color: #555;">stochastic</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#stochastic gradient descent" style="font-size: 9pt; color: #555;">stochastic gradient descent</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#확률적 경사하강법" style="font-size: 9pt; color: #555;">확률적 경사하강법</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#continuous flow of data" style="font-size: 9pt; color: #555;">continuous flow of data</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#online learning" style="font-size: 9pt; color: #555;">online learning</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#온라인 러닝 알고리즘" style="font-size: 9pt; color: #555;">온라인 러닝 알고리즘</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#large scale data" style="font-size: 9pt; color: #555;">large scale data</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#map reduce" style="font-size: 9pt; color: #555;">map reduce</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#multi core machine learning" style="font-size: 9pt; color: #555;">multi core machine learning</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#data type" style="font-size: 9pt; color: #555;">data type</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#number" style="font-size: 9pt; color: #555;">number</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python" style="font-size: 10.5pt; color: #777;">python</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python data type" style="font-size: 9pt; color: #555;">python data type</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#숫자형" style="font-size: 9pt; color: #555;">숫자형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#자료형" style="font-size: 10pt; color: #666;">자료형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬" style="font-size: 13pt; color: #999;">파이썬</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 자료형" style="font-size: 9pt; color: #555;">파이썬 자료형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#.format" style="font-size: 9pt; color: #555;">.format</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#escape code" style="font-size: 9pt; color: #555;">escape code</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#format code" style="font-size: 9pt; color: #555;">format code</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python string" style="font-size: 9pt; color: #555;">python string</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#string" style="font-size: 10pt; color: #666;">string</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#string formatting" style="font-size: 9pt; color: #555;">string formatting</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#string indexing" style="font-size: 9pt; color: #555;">string indexing</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#string slicing" style="font-size: 9pt; color: #555;">string slicing</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#문자열 슬라이싱" style="font-size: 9pt; color: #555;">문자열 슬라이싱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#문자열 인덱싱" style="font-size: 9pt; color: #555;">문자열 인덱싱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#문자열 포매팅" style="font-size: 9pt; color: #555;">문자열 포매팅</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#문자열 함수" style="font-size: 9pt; color: #555;">문자열 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#슬라이싱" style="font-size: 9pt; color: #555;">슬라이싱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#이스케이프 코드" style="font-size: 9pt; color: #555;">이스케이프 코드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인덱싱" style="font-size: 9pt; color: #555;">인덱싱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 string" style="font-size: 9pt; color: #555;">파이썬 string</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 문자열" style="font-size: 9pt; color: #555;">파이썬 문자열</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 포맷 함수" style="font-size: 9pt; color: #555;">파이썬 포맷 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#포맷 코드" style="font-size: 9pt; color: #555;">포맷 코드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python list" style="font-size: 9pt; color: #555;">python list</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리스트 자료형" style="font-size: 9pt; color: #555;">리스트 자료형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리스트 함수" style="font-size: 9pt; color: #555;">리스트 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 리스트" style="font-size: 9pt; color: #555;">파이썬 리스트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python tuple" style="font-size: 9pt; color: #555;">python tuple</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#tuple" style="font-size: 9pt; color: #555;">tuple</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#tuple indexing" style="font-size: 9pt; color: #555;">tuple indexing</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#tuple slicing" style="font-size: 9pt; color: #555;">tuple slicing</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#튜플 슬라이싱" style="font-size: 9pt; color: #555;">튜플 슬라이싱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#튜플 인덱싱" style="font-size: 9pt; color: #555;">튜플 인덱싱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#튜플 자료형" style="font-size: 9pt; color: #555;">튜플 자료형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 튜플" style="font-size: 9pt; color: #555;">파이썬 튜플</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python dictionary" style="font-size: 9pt; color: #555;">python dictionary</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#딕셔너리" style="font-size: 9pt; color: #555;">딕셔너리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#딕셔너리 자료형" style="font-size: 9pt; color: #555;">딕셔너리 자료형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#딕셔너리 함수" style="font-size: 9pt; color: #555;">딕셔너리 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 딕셔너리" style="font-size: 9pt; color: #555;">파이썬 딕셔너리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python set" style="font-size: 9pt; color: #555;">python set</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#set" style="font-size: 9pt; color: #555;">set</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#집합" style="font-size: 9pt; color: #555;">집합</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#집합 자료형" style="font-size: 9pt; color: #555;">집합 자료형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 set" style="font-size: 9pt; color: #555;">파이썬 set</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 집합" style="font-size: 9pt; color: #555;">파이썬 집합</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python True False" style="font-size: 9pt; color: #555;">python True False</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#자료형 참 거짓" style="font-size: 9pt; color: #555;">자료형 참 거짓</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 참 거짓" style="font-size: 9pt; color: #555;">파이썬 참 거짓</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python object" style="font-size: 9pt; color: #555;">python object</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python variable" style="font-size: 9pt; color: #555;">python variable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리스트 변수" style="font-size: 9pt; color: #555;">리스트 변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 객체" style="font-size: 9pt; color: #555;">파이썬 객체</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 변수" style="font-size: 9pt; color: #555;">파이썬 변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 오브젝트" style="font-size: 9pt; color: #555;">파이썬 오브젝트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#elif" style="font-size: 9pt; color: #555;">elif</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#if" style="font-size: 9.5pt; color: #555;">if</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#if elif" style="font-size: 9pt; color: #555;">if elif</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#if elif else" style="font-size: 9pt; color: #555;">if elif else</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#if statement" style="font-size: 9pt; color: #555;">if statement</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python if" style="font-size: 9pt; color: #555;">python if</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 if" style="font-size: 9pt; color: #555;">파이썬 if</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 if문" style="font-size: 9pt; color: #555;">파이썬 if문</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python while" style="font-size: 9pt; color: #555;">python while</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#while" style="font-size: 9.5pt; color: #666;">while</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#while loop" style="font-size: 9pt; color: #555;">while loop</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#while문" style="font-size: 9pt; color: #555;">while문</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 while" style="font-size: 9pt; color: #555;">파이썬 while</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 while문" style="font-size: 9pt; color: #555;">파이썬 while문</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#list comprehension" style="font-size: 9pt; color: #555;">list comprehension</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python for" style="font-size: 9pt; color: #555;">python for</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python for loop" style="font-size: 9pt; color: #555;">python for loop</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python range" style="font-size: 9pt; color: #555;">python range</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#range함수" style="font-size: 9pt; color: #555;">range함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리스트 내포" style="font-size: 9pt; color: #555;">리스트 내포</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 for" style="font-size: 9pt; color: #555;">파이썬 for</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 for문" style="font-size: 9pt; color: #555;">파이썬 for문</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 range" style="font-size: 9pt; color: #555;">파이썬 range</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 range함수" style="font-size: 9pt; color: #555;">파이썬 range함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python global" style="font-size: 9pt; color: #555;">python global</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python 함수" style="font-size: 9pt; color: #555;">python 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 global" style="font-size: 9pt; color: #555;">파이썬 global</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 함수" style="font-size: 9pt; color: #555;">파이썬 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#함수" style="font-size: 11pt; color: #777;">함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#input 함수" style="font-size: 9pt; color: #555;">input 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#input()" style="font-size: 10pt; color: #666;">input()</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python input" style="font-size: 9pt; color: #555;">python input</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#python output" style="font-size: 9pt; color: #555;">python output</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#사용자 입출력" style="font-size: 9pt; color: #555;">사용자 입출력</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 input" style="font-size: 9pt; color: #555;">파이썬 input</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 output" style="font-size: 9pt; color: #555;">파이썬 output</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 입력" style="font-size: 9pt; color: #555;">파이썬 입력</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 입출력" style="font-size: 9pt; color: #555;">파이썬 입출력</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파이썬 출력" style="font-size: 9pt; color: #555;">파이썬 출력</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#close" style="font-size: 9pt; color: #555;">close</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#file" style="font-size: 9.5pt; color: #555;">file</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#open" style="font-size: 9pt; color: #555;">open</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#output" style="font-size: 9.5pt; color: #666;">output</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#read" style="font-size: 9pt; color: #555;">read</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#readline" style="font-size: 9pt; color: #555;">readline</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#readlines" style="font-size: 9pt; color: #555;">readlines</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#reads" style="font-size: 9pt; color: #555;">reads</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#wrtie" style="font-size: 9pt; color: #555;">wrtie</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#쓰기" style="font-size: 9pt; color: #555;">쓰기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#열기 모드" style="font-size: 9pt; color: #555;">열기 모드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#읽기" style="font-size: 9pt; color: #555;">읽기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#입력" style="font-size: 10pt; color: #666;">입력</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#입출력" style="font-size: 10pt; color: #666;">입출력</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#출력" style="font-size: 10pt; color: #666;">출력</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#파일" style="font-size: 9.5pt; color: #555;">파일</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__init__" style="font-size: 9pt; color: #555;">__init__</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#class" style="font-size: 10.5pt; color: #777;">class</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#instance" style="font-size: 9pt; color: #555;">instance</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#method" style="font-size: 10pt; color: #666;">method</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#self" style="font-size: 9pt; color: #555;">self</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#메소드" style="font-size: 12pt; color: #888;">메소드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인스턴스" style="font-size: 9.5pt; color: #666;">인스턴스</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#클래스" style="font-size: 12pt; color: #888;">클래스</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#클래스 함수" style="font-size: 9pt; color: #555;">클래스 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__add__" style="font-size: 9pt; color: #555;">__add__</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__mul__" style="font-size: 9pt; color: #555;">__mul__</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__sub__" style="font-size: 9pt; color: #555;">__sub__</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__truediv__" style="font-size: 9pt; color: #555;">__truediv__</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#inheritance" style="font-size: 9pt; color: #555;">inheritance</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#overloading" style="font-size: 9pt; color: #555;">overloading</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#overriding" style="font-size: 9pt; color: #555;">overriding</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#오버라이딩" style="font-size: 9.5pt; color: #555;">오버라이딩</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#오버로딩" style="font-size: 9pt; color: #555;">오버로딩</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__main__" style="font-size: 9pt; color: #555;">__main__</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__name__" style="font-size: 9pt; color: #555;">__name__</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#from" style="font-size: 9pt; color: #555;">from</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#import" style="font-size: 9pt; color: #555;">import</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#module" style="font-size: 9pt; color: #555;">module</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#sys.path.append" style="font-size: 9pt; color: #555;">sys.path.append</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#모듈" style="font-size: 9pt; color: #555;">모듈</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__all__" style="font-size: 9pt; color: #555;">__all__</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#__init__.py" style="font-size: 9pt; color: #555;">__init__.py</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#directory" style="font-size: 9pt; color: #555;">directory</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#package" style="font-size: 9pt; color: #555;">package</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#디렉토리" style="font-size: 9pt; color: #555;">디렉토리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#패키지" style="font-size: 9pt; color: #555;">패키지</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#else" style="font-size: 9.5pt; color: #555;">else</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#error" style="font-size: 9pt; color: #555;">error</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#exception" style="font-size: 9.5pt; color: #555;">exception</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#FileNotFoundError" style="font-size: 9pt; color: #555;">FileNotFoundError</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#finally" style="font-size: 9pt; color: #555;">finally</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#IndexError" style="font-size: 9pt; color: #555;">IndexError</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#raise" style="font-size: 9pt; color: #555;">raise</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#try" style="font-size: 9.5pt; color: #555;">try</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ZeroDivisionError" style="font-size: 9pt; color: #555;">ZeroDivisionError</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#예외처리" style="font-size: 9pt; color: #555;">예외처리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#내장함수" style="font-size: 9pt; color: #555;">내장함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#라이브러리" style="font-size: 9pt; color: #555;">라이브러리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#C language" style="font-size: 9pt; color: #555;">C language</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#C언어" style="font-size: 15pt; color: #bbb;">C언어</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#기계어" style="font-size: 9.5pt; color: #555;">기계어</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#컴파일러" style="font-size: 9.5pt; color: #555;">컴파일러</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#컴퓨터 언어" style="font-size: 9pt; color: #555;">컴퓨터 언어</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#프로그래밍 언어" style="font-size: 9pt; color: #555;">프로그래밍 언어</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#compile" style="font-size: 9.5pt; color: #555;">compile</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#IDE" style="font-size: 9pt; color: #555;">IDE</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#visual studio 설치" style="font-size: 9pt; color: #555;">visual studio 설치</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#비주얼 스튜디오 설치" style="font-size: 9pt; color: #555;">비주얼 스튜디오 설치</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#빌드" style="font-size: 9pt; color: #555;">빌드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#소스코드" style="font-size: 9pt; color: #555;">소스코드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#컴파일" style="font-size: 9.5pt; color: #555;">컴파일</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#통합 개발환경" style="font-size: 9pt; color: #555;">통합 개발환경</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#10진수" style="font-size: 9pt; color: #555;">10진수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#2진수" style="font-size: 9pt; color: #555;">2진수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#bit" style="font-size: 9pt; color: #555;">bit</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#개념" style="font-size: 9pt; color: #555;">개념</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#논리 소자" style="font-size: 9pt; color: #555;">논리 소자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#데이터 표현" style="font-size: 9pt; color: #555;">데이터 표현</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#디지털" style="font-size: 9pt; color: #555;">디지털</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#비트" style="font-size: 9pt; color: #555;">비트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#전기신호" style="font-size: 9pt; color: #555;">전기신호</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#C 코드" style="font-size: 9pt; color: #555;">C 코드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#main함수" style="font-size: 9pt; color: #555;">main함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#return" style="font-size: 9.5pt; color: #555;">return</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#return type" style="font-size: 9pt; color: #555;">return type</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#구조" style="font-size: 9pt; color: #555;">구조</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#반환형" style="font-size: 9.5pt; color: #555;">반환형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#입력 인수" style="font-size: 9pt; color: #555;">입력 인수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#전달인자" style="font-size: 9.5pt; color: #555;">전달인자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#코드" style="font-size: 9.5pt; color: #666;">코드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#variable" style="font-size: 9pt; color: #555;">variable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#변수" style="font-size: 10pt; color: #666;">변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#선언" style="font-size: 9.5pt; color: #555;">선언</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#초기화" style="font-size: 9.5pt; color: #555;">초기화</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#\n" style="font-size: 9pt; color: #555;">\n</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#%c" style="font-size: 9pt; color: #555;">%c</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#%d" style="font-size: 9pt; color: #555;">%d</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#%s" style="font-size: 9.5pt; color: #555;">%s</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#printf" style="font-size: 9pt; color: #555;">printf</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#개행" style="font-size: 9pt; color: #555;">개행</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#서식문자" style="font-size: 9.5pt; color: #555;">서식문자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ASCII" style="font-size: 9pt; color: #555;">ASCII</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#char" style="font-size: 9.5pt; color: #555;">char</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#double" style="font-size: 9pt; color: #555;">double</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#float" style="font-size: 9pt; color: #555;">float</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#int" style="font-size: 9.5pt; color: #555;">int</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#long" style="font-size: 9pt; color: #555;">long</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#long long" style="font-size: 9pt; color: #555;">long long</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#short" style="font-size: 9pt; color: #555;">short</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#실수" style="font-size: 9pt; color: #555;">실수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#아스키코드" style="font-size: 9pt; color: #555;">아스키코드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#정수" style="font-size: 9pt; color: #555;">정수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#const" style="font-size: 9pt; color: #555;">const</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#constant" style="font-size: 9pt; color: #555;">constant</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#literal" style="font-size: 9pt; color: #555;">literal</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#symbolic" style="font-size: 9pt; color: #555;">symbolic</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리터럴" style="font-size: 9pt; color: #555;">리터럴</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리터럴 상수" style="font-size: 9pt; color: #555;">리터럴 상수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#상수" style="font-size: 9.5pt; color: #555;">상수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#심볼릭 상수" style="font-size: 9pt; color: #555;">심볼릭 상수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#type casting" style="font-size: 9pt; color: #555;">type casting</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#강제 형변환" style="font-size: 9pt; color: #555;">강제 형변환</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#형 변환" style="font-size: 9pt; color: #555;">형 변환</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#형변환" style="font-size: 9pt; color: #555;">형변환</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#16진수" style="font-size: 9pt; color: #555;">16진수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#8진수" style="font-size: 9pt; color: #555;">8진수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#binary" style="font-size: 9pt; color: #555;">binary</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hex" style="font-size: 9pt; color: #555;">hex</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hexadecimal" style="font-size: 9pt; color: #555;">hexadecimal</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#oct" style="font-size: 9pt; color: #555;">oct</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#octal" style="font-size: 9pt; color: #555;">octal</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#&amp;&amp;" style="font-size: 9pt; color: #555;">&amp;&amp;</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#감소연산자" style="font-size: 9pt; color: #555;">감소연산자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#논리연산자" style="font-size: 9pt; color: #555;">논리연산자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#대입연산자" style="font-size: 9pt; color: #555;">대입연산자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#비교연산자" style="font-size: 9pt; color: #555;">비교연산자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#산술연산자" style="font-size: 9pt; color: #555;">산술연산자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#연산자" style="font-size: 10pt; color: #666;">연산자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#증가연산자" style="font-size: 9pt; color: #555;">증가연산자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#&amp;" style="font-size: 9.5pt; color: #666;">&amp;</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#scanf" style="font-size: 9pt; color: #555;">scanf</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#띄어쓰기" style="font-size: 9pt; color: #555;">띄어쓰기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#무한루프" style="font-size: 9pt; color: #555;">무한루프</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#반복문" style="font-size: 10pt; color: #666;">반복문</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#별그리기" style="font-size: 9pt; color: #555;">별그리기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#for" style="font-size: 9pt; color: #555;">for</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#조건식" style="font-size: 9pt; color: #555;">조건식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#증감식" style="font-size: 9pt; color: #555;">증감식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#초기식" style="font-size: 9pt; color: #555;">초기식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#do" style="font-size: 9pt; color: #555;">do</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#do-while" style="font-size: 9pt; color: #555;">do-while</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#break" style="font-size: 9.5pt; color: #666;">break</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#else if" style="font-size: 9pt; color: #555;">else if</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#조건문" style="font-size: 9.5pt; color: #555;">조건문</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#code" style="font-size: 9pt; color: #555;">code</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#flower" style="font-size: 9pt; color: #555;">flower</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#iris" style="font-size: 9pt; color: #555;">iris</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#조건 연산자" style="font-size: 9pt; color: #555;">조건 연산자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#case" style="font-size: 9pt; color: #555;">case</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#default" style="font-size: 9.5pt; color: #666;">default</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#switch" style="font-size: 9pt; color: #555;">switch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#type" style="font-size: 9.5pt; color: #555;">type</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#매개변수" style="font-size: 9.5pt; color: #555;">매개변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#몸체" style="font-size: 9pt; color: #555;">몸체</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#{}" style="font-size: 9pt; color: #555;">{}</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#local variable" style="font-size: 9pt; color: #555;">local variable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#로컬변수" style="font-size: 9pt; color: #555;">로컬변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#메모리" style="font-size: 10.5pt; color: #777;">메모리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#소멸" style="font-size: 9pt; color: #555;">소멸</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#수명" style="font-size: 9pt; color: #555;">수명</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#지역변수" style="font-size: 9pt; color: #555;">지역변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#할당" style="font-size: 9pt; color: #555;">할당</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#global" style="font-size: 9pt; color: #555;">global</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#global variable" style="font-size: 9pt; color: #555;">global variable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#local" style="font-size: 9pt; color: #555;">local</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#static" style="font-size: 10pt; color: #666;">static</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#글로벌" style="font-size: 9pt; color: #555;">글로벌</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#글로벌 변수" style="font-size: 9pt; color: #555;">글로벌 변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#로컬" style="font-size: 9pt; color: #555;">로컬</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#로컬 변수" style="font-size: 9pt; color: #555;">로컬 변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#전역" style="font-size: 9pt; color: #555;">전역</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#전역변수" style="font-size: 9pt; color: #555;">전역변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#array" style="font-size: 10.5pt; color: #777;">array</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#index" style="font-size: 9pt; color: #555;">index</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#길이" style="font-size: 9pt; color: #555;">길이</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#배열" style="font-size: 11pt; color: #777;">배열</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#kaggle" style="font-size: 9pt; color: #555;">kaggle</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#model" style="font-size: 9pt; color: #555;">model</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#prediction" style="font-size: 9pt; color: #555;">prediction</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#survival" style="font-size: 9pt; color: #555;">survival</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#titanic" style="font-size: 9pt; color: #555;">titanic</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#titanic survival" style="font-size: 9pt; color: #555;">titanic survival</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캐글" style="font-size: 9pt; color: #555;">캐글</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#pointer" style="font-size: 11pt; color: #777;">pointer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#문자열" style="font-size: 10pt; color: #666;">문자열</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#포인터" style="font-size: 11pt; color: #777;">포인터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#*" style="font-size: 9pt; color: #555;">*</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#address" style="font-size: 9pt; color: #555;">address</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#NULL" style="font-size: 9pt; color: #555;">NULL</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#연산" style="font-size: 9.5pt; color: #666;">연산</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#주소" style="font-size: 9pt; color: #555;">주소</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#주소값" style="font-size: 9.5pt; color: #555;">주소값</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#참조" style="font-size: 9.5pt; color: #555;">참조</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#포인터 타입" style="font-size: 9pt; color: #555;">포인터 타입</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#포인터형" style="font-size: 9pt; color: #555;">포인터형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#배열 이름" style="font-size: 9pt; color: #555;">배열 이름</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#포인터 배열" style="font-size: 9.5pt; color: #555;">포인터 배열</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복사값" style="font-size: 9pt; color: #555;">복사값</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#call by reference" style="font-size: 9pt; color: #555;">call by reference</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#call by value" style="font-size: 9pt; color: #555;">call by value</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#상수포인터" style="font-size: 9pt; color: #555;">상수포인터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#포인터상수" style="font-size: 9pt; color: #555;">포인터상수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#2차원" style="font-size: 9pt; color: #555;">2차원</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#3차원" style="font-size: 9pt; color: #555;">3차원</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#double pointer" style="font-size: 9pt; color: #555;">double pointer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#pointer array" style="font-size: 9pt; color: #555;">pointer array</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#더블" style="font-size: 9pt; color: #555;">더블</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#더블 포인터" style="font-size: 9pt; color: #555;">더블 포인터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#array pointer" style="font-size: 9pt; color: #555;">array pointer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#배열 포인터" style="font-size: 9pt; color: #555;">배열 포인터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Decision Tree" style="font-size: 9pt; color: #555;">Decision Tree</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Gini" style="font-size: 9pt; color: #555;">Gini</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Gini impurity" style="font-size: 9pt; color: #555;">Gini impurity</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#impurity" style="font-size: 9pt; color: #555;">impurity</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#의사결정 트리" style="font-size: 9pt; color: #555;">의사결정 트리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#지니 계수" style="font-size: 9pt; color: #555;">지니 계수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Bagging" style="font-size: 9pt; color: #555;">Bagging</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#bootstrap aggregating" style="font-size: 9pt; color: #555;">bootstrap aggregating</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Ensemble" style="font-size: 9pt; color: #555;">Ensemble</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#배깅" style="font-size: 9pt; color: #555;">배깅</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#앙상블" style="font-size: 9.5pt; color: #555;">앙상블</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#adaboost" style="font-size: 9pt; color: #555;">adaboost</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#boosting" style="font-size: 9pt; color: #555;">boosting</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#부스팅" style="font-size: 9pt; color: #555;">부스팅</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#아다부스트" style="font-size: 9pt; color: #555;">아다부스트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Random Forest" style="font-size: 9pt; color: #555;">Random Forest</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#랜덤 포레스트" style="font-size: 9pt; color: #555;">랜덤 포레스트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#function" style="font-size: 9pt; color: #555;">function</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#function pointer" style="font-size: 9pt; color: #555;">function pointer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#void 포인터" style="font-size: 9pt; color: #555;">void 포인터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#함수 포인터" style="font-size: 9pt; color: #555;">함수 포인터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#area" style="font-size: 9pt; color: #555;">area</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#calloc" style="font-size: 9pt; color: #555;">calloc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#data" style="font-size: 9pt; color: #555;">data</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#free" style="font-size: 9pt; color: #555;">free</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#heap" style="font-size: 9pt; color: #555;">heap</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#malloc" style="font-size: 9pt; color: #555;">malloc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#realloc" style="font-size: 9pt; color: #555;">realloc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#stack" style="font-size: 9.5pt; color: #666;">stack</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#데이터" style="font-size: 9.5pt; color: #555;">데이터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스택" style="font-size: 10pt; color: #666;">스택</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#영역" style="font-size: 9.5pt; color: #555;">영역</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#코드 영역" style="font-size: 9pt; color: #555;">코드 영역</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#힙" style="font-size: 9pt; color: #555;">힙</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#힙 영역" style="font-size: 9pt; color: #555;">힙 영역</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#stdio" style="font-size: 9pt; color: #555;">stdio</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스트림" style="font-size: 10pt; color: #666;">스트림</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#이동" style="font-size: 9pt; color: #555;">이동</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#콘솔" style="font-size: 9pt; color: #555;">콘솔</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#표준" style="font-size: 9pt; color: #555;">표준</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#표준 입력 스트림" style="font-size: 9pt; color: #555;">표준 입력 스트림</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#표준 출력 스트림" style="font-size: 9pt; color: #555;">표준 출력 스트림</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#character" style="font-size: 9pt; color: #555;">character</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#EOF" style="font-size: 9pt; color: #555;">EOF</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#fgetc" style="font-size: 9pt; color: #555;">fgetc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#fputc" style="font-size: 9pt; color: #555;">fputc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#getchar" style="font-size: 9pt; color: #555;">getchar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#putchar" style="font-size: 9pt; color: #555;">putchar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#문자" style="font-size: 9.5pt; color: #555;">문자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#fgets" style="font-size: 9pt; color: #555;">fgets</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#fputs" style="font-size: 9pt; color: #555;">fputs</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#gets" style="font-size: 9pt; color: #555;">gets</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#puts" style="font-size: 9pt; color: #555;">puts</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#strcat" style="font-size: 9pt; color: #555;">strcat</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#strcmp" style="font-size: 9pt; color: #555;">strcmp</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#strcpy" style="font-size: 9pt; color: #555;">strcpy</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#string.h" style="font-size: 9pt; color: #555;">string.h</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#strlen" style="font-size: 9pt; color: #555;">strlen</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#strncat" style="font-size: 9pt; color: #555;">strncat</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#strncmp" style="font-size: 9pt; color: #555;">strncmp</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#strncpy" style="font-size: 9pt; color: #555;">strncpy</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#1부터" style="font-size: 9pt; color: #555;">1부터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#n까지" style="font-size: 9pt; color: #555;">n까지</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#알고리즘" style="font-size: 12.5pt; color: #888;">알고리즘</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#합" style="font-size: 9pt; color: #555;">합</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#algorithm" style="font-size: 9.5pt; color: #666;">algorithm</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#big-O" style="font-size: 9pt; color: #555;">big-O</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#O(1)" style="font-size: 9pt; color: #555;">O(1)</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#O(n^2)" style="font-size: 9pt; color: #555;">O(n^2)</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#O(n)" style="font-size: 9pt; color: #555;">O(n)</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#공간 복잡도" style="font-size: 9pt; color: #555;">공간 복잡도</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#빅 오" style="font-size: 9pt; color: #555;">빅 오</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#빅오" style="font-size: 9pt; color: #555;">빅오</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#시간 복잡도" style="font-size: 9pt; color: #555;">시간 복잡도</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#표기법" style="font-size: 9pt; color: #555;">표기법</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#횟수" style="font-size: 9pt; color: #555;">횟수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#max" style="font-size: 9pt; color: #555;">max</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#최대값" style="font-size: 9pt; color: #555;">최대값</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#중복" style="font-size: 9pt; color: #555;">중복</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#찾기" style="font-size: 9.5pt; color: #555;">찾기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#factorial" style="font-size: 9pt; color: #555;">factorial</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#recursion" style="font-size: 9pt; color: #555;">recursion</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#재귀호출" style="font-size: 9.5pt; color: #555;">재귀호출</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#팩토리얼" style="font-size: 9pt; color: #555;">팩토리얼</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#공약수" style="font-size: 9pt; color: #555;">공약수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#최대" style="font-size: 9pt; color: #555;">최대</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hanoi" style="font-size: 9pt; color: #555;">hanoi</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hanoi top" style="font-size: 9pt; color: #555;">hanoi top</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#옮기기" style="font-size: 9pt; color: #555;">옮기기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#하노이" style="font-size: 9pt; color: #555;">하노이</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#하노이 탑" style="font-size: 9pt; color: #555;">하노이 탑</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#하노이의 탑" style="font-size: 9pt; color: #555;">하노이의 탑</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#순차 탐색" style="font-size: 9pt; color: #555;">순차 탐색</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#selection sort" style="font-size: 9pt; color: #555;">selection sort</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#선택" style="font-size: 9pt; color: #555;">선택</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#선택정렬" style="font-size: 9pt; color: #555;">선택정렬</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#정렬" style="font-size: 9.5pt; color: #666;">정렬</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#insert sort" style="font-size: 9pt; color: #555;">insert sort</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#삽입" style="font-size: 9pt; color: #555;">삽입</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#삽입정렬" style="font-size: 9pt; color: #555;">삽입정렬</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#merge sort" style="font-size: 9pt; color: #555;">merge sort</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#병합" style="font-size: 9pt; color: #555;">병합</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#병합 정렬" style="font-size: 9pt; color: #555;">병합 정렬</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#pivot" style="font-size: 9pt; color: #555;">pivot</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#quick sort" style="font-size: 9pt; color: #555;">quick sort</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#퀵 정렬" style="font-size: 9pt; color: #555;">퀵 정렬</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#bubble sort" style="font-size: 9pt; color: #555;">bubble sort</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#거품 정렬" style="font-size: 9pt; color: #555;">거품 정렬</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#binary search" style="font-size: 9pt; color: #555;">binary search</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#이분 탐색" style="font-size: 9pt; color: #555;">이분 탐색</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#queue" style="font-size: 9pt; color: #555;">queue</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#자료구조" style="font-size: 9pt; color: #555;">자료구조</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#큐" style="font-size: 9pt; color: #555;">큐</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#palindrome" style="font-size: 9pt; color: #555;">palindrome</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#회문" style="font-size: 9pt; color: #555;">회문</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#그래프" style="font-size: 9pt; color: #555;">그래프</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#지인" style="font-size: 9pt; color: #555;">지인</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#추천" style="font-size: 9pt; color: #555;">추천</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#친구" style="font-size: 9pt; color: #555;">친구</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#게이트" style="font-size: 9pt; color: #555;">게이트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#논리" style="font-size: 9.5pt; color: #555;">논리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#대수" style="font-size: 9pt; color: #555;">대수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#부울" style="font-size: 9pt; color: #555;">부울</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#부울대수" style="font-size: 9pt; color: #555;">부울대수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#소자" style="font-size: 9pt; color: #555;">소자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#회로" style="font-size: 9pt; color: #555;">회로</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#AND" style="font-size: 9pt; color: #555;">AND</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#gate" style="font-size: 9pt; color: #555;">gate</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#NAND" style="font-size: 9pt; color: #555;">NAND</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#NOR" style="font-size: 9pt; color: #555;">NOR</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#NOT" style="font-size: 9pt; color: #555;">NOT</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#OR" style="font-size: 9pt; color: #555;">OR</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#XOR" style="font-size: 9pt; color: #555;">XOR</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#logic diagram" style="font-size: 9pt; color: #555;">logic diagram</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#logic expression" style="font-size: 9pt; color: #555;">logic expression</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#truth table" style="font-size: 9pt; color: #555;">truth table</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#논리도" style="font-size: 9pt; color: #555;">논리도</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#논리식" style="font-size: 9pt; color: #555;">논리식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#부울식" style="font-size: 9pt; color: #555;">부울식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#진리표" style="font-size: 9pt; color: #555;">진리표</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#bool" style="font-size: 9pt; color: #555;">bool</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#boolean algebra" style="font-size: 9pt; color: #555;">boolean algebra</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#부울 대수" style="font-size: 9pt; color: #555;">부울 대수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#demultiplexer" style="font-size: 9pt; color: #555;">demultiplexer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#demux" style="font-size: 9pt; color: #555;">demux</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#multiplexer" style="font-size: 9pt; color: #555;">multiplexer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#mux" style="font-size: 9pt; color: #555;">mux</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#디먹스" style="font-size: 9pt; color: #555;">디먹스</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#디멀티플렉서" style="font-size: 9pt; color: #555;">디멀티플렉서</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#먹스" style="font-size: 9pt; color: #555;">먹스</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#멀티플렉서" style="font-size: 9pt; color: #555;">멀티플렉서</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#coder" style="font-size: 9pt; color: #555;">coder</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#decoder" style="font-size: 9pt; color: #555;">decoder</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#encoder" style="font-size: 9pt; color: #555;">encoder</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#디코더" style="font-size: 9pt; color: #555;">디코더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인코더" style="font-size: 9pt; color: #555;">인코더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#코더" style="font-size: 9pt; color: #555;">코더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#코덱" style="font-size: 9pt; color: #555;">코덱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#flipflop" style="font-size: 9.5pt; color: #666;">flipflop</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#latch" style="font-size: 9pt; color: #555;">latch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#SR" style="font-size: 9.5pt; color: #555;">SR</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#래치" style="font-size: 9pt; color: #555;">래치</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#순차" style="font-size: 9pt; color: #555;">순차</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#조합" style="font-size: 9pt; color: #555;">조합</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#플립플롭" style="font-size: 9.5pt; color: #666;">플립플롭</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#clock" style="font-size: 9pt; color: #555;">clock</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#edge" style="font-size: 9pt; color: #555;">edge</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#level" style="font-size: 9pt; color: #555;">level</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#trigger" style="font-size: 9pt; color: #555;">trigger</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#레벨" style="font-size: 9pt; color: #555;">레벨</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#엣지" style="font-size: 9pt; color: #555;">엣지</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#클럭" style="font-size: 9pt; color: #555;">클럭</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#트리거" style="font-size: 9pt; color: #555;">트리거</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#JK" style="font-size: 9pt; color: #555;">JK</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#T" style="font-size: 9pt; color: #555;">T</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#asynchronous" style="font-size: 9pt; color: #555;">asynchronous</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#counter" style="font-size: 9pt; color: #555;">counter</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#synchronous" style="font-size: 9pt; color: #555;">synchronous</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#동기" style="font-size: 9pt; color: #555;">동기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#비동기" style="font-size: 9pt; color: #555;">비동기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#카운터" style="font-size: 9pt; color: #555;">카운터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#CPU" style="font-size: 9pt; color: #555;">CPU</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#I/O" style="font-size: 9pt; color: #555;">I/O</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#memory" style="font-size: 9pt; color: #555;">memory</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ram" style="font-size: 9pt; color: #555;">ram</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#rom" style="font-size: 9pt; color: #555;">rom</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#주 기억장치" style="font-size: 9pt; color: #555;">주 기억장치</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#중앙 처리장치" style="font-size: 9pt; color: #555;">중앙 처리장치</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ALU" style="font-size: 9pt; color: #555;">ALU</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#control unit" style="font-size: 9pt; color: #555;">control unit</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#decode" style="font-size: 9pt; color: #555;">decode</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#execute" style="font-size: 9pt; color: #555;">execute</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#fetch" style="font-size: 9pt; color: #555;">fetch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#instruction register" style="font-size: 9pt; color: #555;">instruction register</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#program counter" style="font-size: 9pt; color: #555;">program counter</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#register" style="font-size: 9pt; color: #555;">register</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#명령어" style="font-size: 9pt; color: #555;">명령어</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#실행" style="font-size: 9pt; color: #555;">실행</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인출" style="font-size: 9pt; color: #555;">인출</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#해독" style="font-size: 9pt; color: #555;">해독</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#compiler" style="font-size: 9pt; color: #555;">compiler</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Java" style="font-size: 18pt; color: #eee;">Java</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#language" style="font-size: 9pt; color: #555;">language</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#object oriented" style="font-size: 9.5pt; color: #555;">object oriented</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#programming" style="font-size: 9pt; color: #555;">programming</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#source code" style="font-size: 9pt; color: #555;">source code</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#객체지향" style="font-size: 9.5pt; color: #666;">객체지향</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#소스" style="font-size: 9pt; color: #555;">소스</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#언어" style="font-size: 9pt; color: #555;">언어</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#자바" style="font-size: 17.5pt; color: #eee;">자바</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#프로그래밍" style="font-size: 9.5pt; color: #555;">프로그래밍</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#byte code" style="font-size: 9pt; color: #555;">byte code</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#JRE" style="font-size: 9pt; color: #555;">JRE</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#JVM" style="font-size: 9pt; color: #555;">JVM</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#가비지 컬렉터" style="font-size: 9pt; color: #555;">가비지 컬렉터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#바이트 코드" style="font-size: 9pt; color: #555;">바이트 코드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#자바 가상머신" style="font-size: 9pt; color: #555;">자바 가상머신</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#자바 실행환경" style="font-size: 9pt; color: #555;">자바 실행환경</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#byte" style="font-size: 9pt; color: #555;">byte</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#final" style="font-size: 9pt; color: #555;">final</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#casting" style="font-size: 9pt; color: #555;">casting</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#강제" style="font-size: 9pt; color: #555;">강제</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#자동" style="font-size: 9pt; color: #555;">자동</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#operator" style="font-size: 9pt; color: #555;">operator</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#감소" style="font-size: 9pt; color: #555;">감소</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#대입" style="font-size: 9pt; color: #555;">대입</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#비교" style="font-size: 9pt; color: #555;">비교</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#산술" style="font-size: 9pt; color: #555;">산술</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#증가" style="font-size: 9pt; color: #555;">증가</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#증감" style="font-size: 9pt; color: #555;">증감</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#loop" style="font-size: 9pt; color: #555;">loop</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#continue" style="font-size: 9pt; color: #555;">continue</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스위치" style="font-size: 9pt; color: #555;">스위치</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#object" style="font-size: 9.5pt; color: #555;">object</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#oriented" style="font-size: 9pt; color: #555;">oriented</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#객체" style="font-size: 10pt; color: #666;">객체</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#멤버 변수" style="font-size: 9pt; color: #555;">멤버 변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#지향" style="font-size: 9pt; color: #555;">지향</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#member variable" style="font-size: 9pt; color: #555;">member variable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#메서드" style="font-size: 9pt; color: #555;">메서드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#멤버 함수" style="font-size: 9pt; color: #555;">멤버 함수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#반환" style="font-size: 9pt; color: #555;">반환</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#가상주소" style="font-size: 9pt; color: #555;">가상주소</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#멤버변수" style="font-size: 9pt; color: #555;">멤버변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#참조변수" style="font-size: 9pt; color: #555;">참조변수</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#클래스 자료형" style="font-size: 9pt; color: #555;">클래스 자료형</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#클래스 타입" style="font-size: 9pt; color: #555;">클래스 타입</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#필드" style="font-size: 9pt; color: #555;">필드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#constructor" style="font-size: 9pt; color: #555;">constructor</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#overload" style="font-size: 9pt; color: #555;">overload</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#디폴트" style="font-size: 9pt; color: #555;">디폴트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#생성자" style="font-size: 9pt; color: #555;">생성자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#오버로드" style="font-size: 9pt; color: #555;">오버로드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#컨스트럭터" style="font-size: 9pt; color: #555;">컨스트럭터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#getter" style="font-size: 9pt; color: #555;">getter</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#private" style="font-size: 9pt; color: #555;">private</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#protected" style="font-size: 9pt; color: #555;">protected</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#public" style="font-size: 9pt; color: #555;">public</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#setter" style="font-size: 9pt; color: #555;">setter</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#게터" style="font-size: 9pt; color: #555;">게터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#세터" style="font-size: 9pt; color: #555;">세터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#접근 제어자" style="font-size: 9pt; color: #555;">접근 제어자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#정보은닉" style="font-size: 9pt; color: #555;">정보은닉</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#this" style="font-size: 9pt; color: #555;">this</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#OOP" style="font-size: 9pt; color: #555;">OOP</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스태틱" style="font-size: 9pt; color: #555;">스태틱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#멤버" style="font-size: 9pt; color: #555;">멤버</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#지역" style="font-size: 9pt; color: #555;">지역</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#singleton" style="font-size: 9pt; color: #555;">singleton</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#싱글톤" style="font-size: 9pt; color: #555;">싱글톤</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#length" style="font-size: 9pt; color: #555;">length</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#arraycopy" style="font-size: 9pt; color: #555;">arraycopy</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복사" style="font-size: 9pt; color: #555;">복사</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ArrayList" style="font-size: 9pt; color: #555;">ArrayList</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#어레이 리스트" style="font-size: 9pt; color: #555;">어레이 리스트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#extends" style="font-size: 9.5pt; color: #555;">extends</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#super()" style="font-size: 9pt; color: #555;">super()</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#부모" style="font-size: 9pt; color: #555;">부모</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#상위" style="font-size: 9pt; color: #555;">상위</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#업캐스팅" style="font-size: 9pt; color: #555;">업캐스팅</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#자식" style="font-size: 9pt; color: #555;">자식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#하위" style="font-size: 9pt; color: #555;">하위</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#override" style="font-size: 9pt; color: #555;">override</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#가상" style="font-size: 9pt; color: #555;">가상</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#가상 메소드" style="font-size: 9pt; color: #555;">가상 메소드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#다형성" style="font-size: 9pt; color: #555;">다형성</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#downcasting" style="font-size: 9pt; color: #555;">downcasting</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#다운캐스팅" style="font-size: 9pt; color: #555;">다운캐스팅</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#abstract" style="font-size: 9pt; color: #555;">abstract</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#추상" style="font-size: 9pt; color: #555;">추상</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#추상메소드" style="font-size: 9pt; color: #555;">추상메소드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#추상클래스" style="font-size: 9pt; color: #555;">추상클래스</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#implements" style="font-size: 9pt; color: #555;">implements</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#interface" style="font-size: 10pt; color: #666;">interface</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인터페이스" style="font-size: 10.5pt; color: #666;">인터페이스</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#정적" style="font-size: 9pt; color: #555;">정적</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#구현" style="font-size: 9pt; color: #555;">구현</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#equals" style="font-size: 9pt; color: #555;">equals</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hashCode" style="font-size: 9pt; color: #555;">hashCode</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#toString" style="font-size: 9pt; color: #555;">toString</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#해쉬코드" style="font-size: 9pt; color: #555;">해쉬코드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#concat" style="font-size: 9pt; color: #555;">concat</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#StringBuffer" style="font-size: 9pt; color: #555;">StringBuffer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#StringBuilder" style="font-size: 9pt; color: #555;">StringBuilder</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Integer" style="font-size: 9pt; color: #555;">Integer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#intValue" style="font-size: 9pt; color: #555;">intValue</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#parseInt" style="font-size: 9pt; color: #555;">parseInt</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#valueOf" style="font-size: 9pt; color: #555;">valueOf</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#wrapper" style="font-size: 9pt; color: #555;">wrapper</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#언박싱" style="font-size: 9pt; color: #555;">언박싱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#오토박싱" style="font-size: 9pt; color: #555;">오토박싱</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#collection" style="font-size: 9pt; color: #555;">collection</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#framework" style="font-size: 9pt; color: #555;">framework</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#map" style="font-size: 9pt; color: #555;">map</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#맵" style="font-size: 9pt; color: #555;">맵</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#컬렉션" style="font-size: 9pt; color: #555;">컬렉션</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#프레임워크" style="font-size: 9pt; color: #555;">프레임워크</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#add" style="font-size: 9pt; color: #555;">add</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#LinkedList" style="font-size: 9pt; color: #555;">LinkedList</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#list" style="font-size: 9pt; color: #555;">list</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#remove" style="font-size: 9pt; color: #555;">remove</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리스트" style="font-size: 9pt; color: #555;">리스트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#comparable" style="font-size: 9pt; color: #555;">comparable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#equal" style="font-size: 9pt; color: #555;">equal</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hashset" style="font-size: 9pt; color: #555;">hashset</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#interate()" style="font-size: 9pt; color: #555;">interate()</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#iterator" style="font-size: 9pt; color: #555;">iterator</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#treeset" style="font-size: 9pt; color: #555;">treeset</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hashmap" style="font-size: 9pt; color: #555;">hashmap</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#keyset" style="font-size: 9pt; color: #555;">keyset</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#treemap" style="font-size: 9pt; color: #555;">treemap</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#values" style="font-size: 9pt; color: #555;">values</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#트리맵" style="font-size: 9pt; color: #555;">트리맵</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#해쉬맵" style="font-size: 9pt; color: #555;">해쉬맵</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#해시맵" style="font-size: 9pt; color: #555;">해시맵</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#inner" style="font-size: 9pt; color: #555;">inner</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#내부" style="font-size: 9pt; color: #555;">내부</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#익명" style="font-size: 9pt; color: #555;">익명</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#람다식" style="font-size: 9pt; color: #555;">람다식</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#reduce" style="font-size: 9pt; color: #555;">reduce</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#stream" style="font-size: 10pt; color: #666;">stream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#autocloseable" style="font-size: 9pt; color: #555;">autocloseable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#catch" style="font-size: 9pt; color: #555;">catch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#예외" style="font-size: 9pt; color: #555;">예외</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#오류" style="font-size: 9pt; color: #555;">오류</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#처리" style="font-size: 9pt; color: #555;">처리</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#throws" style="font-size: 9pt; color: #555;">throws</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#다중" style="font-size: 9pt; color: #555;">다중</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#던지기" style="font-size: 9pt; color: #555;">던지기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#미루기" style="font-size: 9pt; color: #555;">미루기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#InputStream" style="font-size: 9pt; color: #555;">InputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#OutputStream" style="font-size: 9pt; color: #555;">OutputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#PrintStream" style="font-size: 9pt; color: #555;">PrintStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#System.in.read()" style="font-size: 9pt; color: #555;">System.in.read()</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#기반" style="font-size: 9pt; color: #555;">기반</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#바이트" style="font-size: 9pt; color: #555;">바이트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#보조" style="font-size: 9pt; color: #555;">보조</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#scanner" style="font-size: 9pt; color: #555;">scanner</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#System.in" style="font-size: 9pt; color: #555;">System.in</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#FileInputStream" style="font-size: 9pt; color: #555;">FileInputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#FileOutputStream" style="font-size: 9pt; color: #555;">FileOutputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#reader" style="font-size: 9pt; color: #555;">reader</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#writer" style="font-size: 9pt; color: #555;">writer</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#BufferedInputStream" style="font-size: 9pt; color: #555;">BufferedInputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#BufferedOutputStream" style="font-size: 9pt; color: #555;">BufferedOutputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#FilterInputStream" style="font-size: 9pt; color: #555;">FilterInputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#FilterOutputStream" style="font-size: 9pt; color: #555;">FilterOutputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#InputStreamReader" style="font-size: 9pt; color: #555;">InputStreamReader</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#OutputStreamWriter" style="font-size: 9pt; color: #555;">OutputStreamWriter</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ObjectInputStream" style="font-size: 9pt; color: #555;">ObjectInputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ObjectOutputStream" style="font-size: 9pt; color: #555;">ObjectOutputStream</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#serializable" style="font-size: 9pt; color: #555;">serializable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#serialize" style="font-size: 9pt; color: #555;">serialize</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#역직렬화" style="font-size: 9pt; color: #555;">역직렬화</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#직렬화" style="font-size: 9pt; color: #555;">직렬화</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#C" style="font-size: 9pt; color: #555;">C</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Python" style="font-size: 9pt; color: #555;">Python</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#assembler" style="font-size: 9pt; color: #555;">assembler</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#C++" style="font-size: 9pt; color: #555;">C++</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#특징" style="font-size: 9pt; color: #555;">특징</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#sort" style="font-size: 9pt; color: #555;">sort</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#oop" style="font-size: 9pt; color: #555;">oop</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#연결 리스트" style="font-size: 9pt; color: #555;">연결 리스트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#연결" style="font-size: 9pt; color: #555;">연결</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#해시" style="font-size: 9pt; color: #555;">해시</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Hash" style="font-size: 9pt; color: #555;">Hash</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#테이블" style="font-size: 9pt; color: #555;">테이블</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#table" style="font-size: 9pt; color: #555;">table</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#android" style="font-size: 9pt; color: #555;">android</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#project" style="font-size: 9pt; color: #555;">project</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#안드로이드" style="font-size: 9pt; color: #555;">안드로이드</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#프로젝트" style="font-size: 9pt; color: #555;">프로젝트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hello" style="font-size: 9pt; color: #555;">hello</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#뷰" style="font-size: 9pt; color: #555;">뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#view" style="font-size: 9pt; color: #555;">view</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#뷰그룹" style="font-size: 9pt; color: #555;">뷰그룹</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#viewgroup" style="font-size: 9pt; color: #555;">viewgroup</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#제약조건" style="font-size: 9pt; color: #555;">제약조건</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#constraint" style="font-size: 9pt; color: #555;">constraint</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#layout" style="font-size: 9pt; color: #555;">layout</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#레이아웃" style="font-size: 9.5pt; color: #666;">레이아웃</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#위젯" style="font-size: 9.5pt; color: #666;">위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리니어" style="font-size: 9pt; color: #555;">리니어</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리니어 레이아웃" style="font-size: 9pt; color: #555;">리니어 레이아웃</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#LinearLayout" style="font-size: 9pt; color: #555;">LinearLayout</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#상대" style="font-size: 9pt; color: #555;">상대</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#상대 레이아웃" style="font-size: 9pt; color: #555;">상대 레이아웃</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#RelativeLayout" style="font-size: 9pt; color: #555;">RelativeLayout</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#테이블 레이아웃" style="font-size: 9pt; color: #555;">테이블 레이아웃</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#TableLayout" style="font-size: 9pt; color: #555;">TableLayout</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스크롤 뷰" style="font-size: 9pt; color: #555;">스크롤 뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ScrollView" style="font-size: 9pt; color: #555;">ScrollView</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#프레임 레이아웃" style="font-size: 9pt; color: #555;">프레임 레이아웃</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#FrameLayout" style="font-size: 9pt; color: #555;">FrameLayout</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#widget" style="font-size: 9.5pt; color: #555;">widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#텍스트뷰" style="font-size: 9pt; color: #555;">텍스트뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#textview" style="font-size: 9pt; color: #555;">textview</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#버튼" style="font-size: 9pt; color: #555;">버튼</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#button" style="font-size: 9pt; color: #555;">button</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#입력상자" style="font-size: 9pt; color: #555;">입력상자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#EditText" style="font-size: 9pt; color: #555;">EditText</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#액티비티" style="font-size: 10pt; color: #666;">액티비티</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#activity" style="font-size: 10pt; color: #666;">activity</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인플레이션" style="font-size: 9pt; color: #555;">인플레이션</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#inflation" style="font-size: 9pt; color: #555;">inflation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#화면" style="font-size: 9pt; color: #555;">화면</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#인텐트" style="font-size: 9pt; color: #555;">인텐트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#intent" style="font-size: 9pt; color: #555;">intent</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#putExtra" style="font-size: 9pt; color: #555;">putExtra</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#startActivity" style="font-size: 9pt; color: #555;">startActivity</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#startActivityForResult" style="font-size: 9pt; color: #555;">startActivityForResult</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Parcelable" style="font-size: 9pt; color: #555;">Parcelable</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Bundle" style="font-size: 9pt; color: #555;">Bundle</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#번들" style="font-size: 9pt; color: #555;">번들</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#수명주기" style="font-size: 9pt; color: #555;">수명주기</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#lifecycle" style="font-size: 9pt; color: #555;">lifecycle</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onstart" style="font-size: 9pt; color: #555;">onstart</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onrestart" style="font-size: 9pt; color: #555;">onrestart</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onpause" style="font-size: 9pt; color: #555;">onpause</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onstop" style="font-size: 9pt; color: #555;">onstop</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onresume" style="font-size: 9pt; color: #555;">onresume</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ondestroy" style="font-size: 9pt; color: #555;">ondestroy</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#oncreate" style="font-size: 9pt; color: #555;">oncreate</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#SharedPreferences" style="font-size: 9pt; color: #555;">SharedPreferences</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#서비스" style="font-size: 9pt; color: #555;">서비스</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#service" style="font-size: 9pt; color: #555;">service</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#startService" style="font-size: 9pt; color: #555;">startService</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onStartCommand" style="font-size: 9pt; color: #555;">onStartCommand</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#broadcastreceiver" style="font-size: 9pt; color: #555;">broadcastreceiver</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#브로드캐스트" style="font-size: 9pt; color: #555;">브로드캐스트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#수신자" style="font-size: 9pt; color: #555;">수신자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#위험권한" style="font-size: 9pt; color: #555;">위험권한</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#permission" style="font-size: 9pt; color: #555;">permission</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#이벤트" style="font-size: 9pt; color: #555;">이벤트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#event" style="font-size: 9pt; color: #555;">event</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#touch" style="font-size: 9pt; color: #555;">touch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#key" style="font-size: 9pt; color: #555;">key</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#keyCode" style="font-size: 9pt; color: #555;">keyCode</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#delegation" style="font-size: 9pt; color: #555;">delegation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#hierachy" style="font-size: 9pt; color: #555;">hierachy</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#gesture" style="font-size: 9pt; color: #555;">gesture</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#focus" style="font-size: 9pt; color: #555;">focus</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onTouch" style="font-size: 9pt; color: #555;">onTouch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#orientation" style="font-size: 9pt; color: #555;">orientation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onKey" style="font-size: 9pt; color: #555;">onKey</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#fling" style="font-size: 9pt; color: #555;">fling</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#scroll" style="font-size: 9pt; color: #555;">scroll</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#listener" style="font-size: 9pt; color: #555;">listener</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#MotionEvent" style="font-size: 9pt; color: #555;">MotionEvent</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#toast" style="font-size: 9pt; color: #555;">toast</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#토스트" style="font-size: 9pt; color: #555;">토스트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#snackbar" style="font-size: 9pt; color: #555;">snackbar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스낵바" style="font-size: 9pt; color: #555;">스낵바</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#대화상자" style="font-size: 9pt; color: #555;">대화상자</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#dialog" style="font-size: 9pt; color: #555;">dialog</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#AlertDialog" style="font-size: 9pt; color: #555;">AlertDialog</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Builder" style="font-size: 9pt; color: #555;">Builder</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#setTitle" style="font-size: 9pt; color: #555;">setTitle</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#setMessage" style="font-size: 9pt; color: #555;">setMessage</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#setIcon" style="font-size: 9pt; color: #555;">setIcon</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#프로그레스바" style="font-size: 9pt; color: #555;">프로그레스바</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#progressbar" style="font-size: 9pt; color: #555;">progressbar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#시크바" style="font-size: 9pt; color: #555;">시크바</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#seekbar" style="font-size: 9pt; color: #555;">seekbar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#OnSeekBarChangeListener" style="font-size: 9pt; color: #555;">OnSeekBarChangeListener</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onProgressChanged" style="font-size: 9pt; color: #555;">onProgressChanged</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onStartTrackingTouch" style="font-size: 9pt; color: #555;">onStartTrackingTouch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onStopTrackingTouch" style="font-size: 9pt; color: #555;">onStopTrackingTouch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#animation" style="font-size: 9pt; color: #555;">animation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#애니메이션" style="font-size: 9pt; color: #555;">애니메이션</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#startAnimation" style="font-size: 9pt; color: #555;">startAnimation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#loadAnimation" style="font-size: 9pt; color: #555;">loadAnimation</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#setAnimationListener" style="font-size: 9pt; color: #555;">setAnimationListener</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onAnimationStart" style="font-size: 9pt; color: #555;">onAnimationStart</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onAnimationEnd" style="font-size: 9pt; color: #555;">onAnimationEnd</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#페이지 슬라이딩" style="font-size: 9pt; color: #555;">페이지 슬라이딩</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#page sliding" style="font-size: 9pt; color: #555;">page sliding</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#프래그먼트" style="font-size: 9pt; color: #555;">프래그먼트</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#fragment" style="font-size: 9pt; color: #555;">fragment</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#액션바" style="font-size: 9pt; color: #555;">액션바</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#actionbar" style="font-size: 9pt; color: #555;">actionbar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onCreateOptionsMenu" style="font-size: 9pt; color: #555;">onCreateOptionsMenu</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onOptionsItemSelected" style="font-size: 9pt; color: #555;">onOptionsItemSelected</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#메뉴" style="font-size: 9pt; color: #555;">메뉴</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#menu" style="font-size: 9pt; color: #555;">menu</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#탭" style="font-size: 9pt; color: #555;">탭</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#tab" style="font-size: 9pt; color: #555;">tab</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#TabLayout" style="font-size: 9pt; color: #555;">TabLayout</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#OnTabSelectedListener" style="font-size: 9pt; color: #555;">OnTabSelectedListener</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#onTabSelected" style="font-size: 9pt; color: #555;">onTabSelected</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#toolbar" style="font-size: 9pt; color: #555;">toolbar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#AppBarLayout" style="font-size: 9pt; color: #555;">AppBarLayout</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#actionBar" style="font-size: 9pt; color: #555;">actionBar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#웹뷰" style="font-size: 9pt; color: #555;">웹뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#webview" style="font-size: 9pt; color: #555;">webview</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#나인패치" style="font-size: 9pt; color: #555;">나인패치</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#nine patch" style="font-size: 9pt; color: #555;">nine patch</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#image" style="font-size: 9pt; color: #555;">image</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#bitmap" style="font-size: 9pt; color: #555;">bitmap</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#비트맵" style="font-size: 9pt; color: #555;">비트맵</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#리스트뷰" style="font-size: 9pt; color: #555;">리스트뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#ListView" style="font-size: 9pt; color: #555;">ListView</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#선택위젯" style="font-size: 9pt; color: #555;">선택위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#어댑터" style="font-size: 9pt; color: #555;">어댑터</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#adapter" style="font-size: 9pt; color: #555;">adapter</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#baseadapter" style="font-size: 9pt; color: #555;">baseadapter</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#OnItemClickListener" style="font-size: 9pt; color: #555;">OnItemClickListener</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#스피너" style="font-size: 9pt; color: #555;">스피너</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#spinner" style="font-size: 9pt; color: #555;">spinner</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#그리드뷰" style="font-size: 9pt; color: #555;">그리드뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
+        
+      </div>
+    </div>
+	-->
+  </div>
+  <div class="sidebar-item">
+    <p>
+      &copy; 2019. All rights reserved.
+    </p>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('hashchange', function(){
+    location.reload();
+  });
+</script>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://localhost:4000/" title="Home">SW NOMAD의 공부 기록소</a>
+            <small>자유를 꿈꾸는 소프트웨어 엔지니어</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">default메소드와 static메소드</h1>
+  <span class="post-date">21 Dec 2018</span>
+  <p>자바8 이전에는 인터페이스는 상수와 추상메소드 이외의 요소는 가질 수 없었다. 그러나 인터페이스를 구현한 클래스들에 공통적으로 사용할 수 있는 메소드가 필요한 경우 혹은 객체를 만들지 않고도 호출 간으한 메소드가 필요한 경우가 있다.</p>
+
+<p>이러한 경우 편의성을 제공하기 위해 Java8부터는 디폴트 메소드와 정적 메소드 기능을 추가하게 된다.</p>
+
+<p> </p>
+
+<h1 id="1-default-메소드">1. default 메소드</h1>
+
+<hr />
+
+<p>디폴트 메소드는 인터페이스에서 코드를 구현한 메소드이다. 추상 메소드만 가질 수 있던 자바8 이전에는 인터페이스를 구현한 여러 클래스에서 공통된 기능의 메소드가 필요하면 각 클래스마다 같은 코드를 여러 번 구현해야했다. 그러나 디폴트 메소드는 인터페이스를 구현한 모든 클래스가 상속받은 것과 같이 기본적으로 사용할 수 있는 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Calc</span> <span class="o">{</span>
+   
+   <span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999999999</span><span class="o">;</span>
+   
+   <span class="k">default</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="k">default</span> <span class="kt">int</span> <span class="nf">subtract</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">-</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+   <span class="kt">double</span> <span class="nf">div</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>add(), subtract() 두 메소드는 default 예약어를 통해 선언되었다. 인터페이스의 메소드이지만 코드가 구현되어 있다. 그리고 Calc 인터페이스를 구현한 모든 클래스에서는 add(), subtract() 메소드를 기본적으로 사용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCalc</span> <span class="kd">implements</span> <span class="n">Calc</span><span class="o">{</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">*</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">double</span> <span class="nf">div</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="o">(</span><span class="n">num2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="n">ERROR</span> <span class="o">:</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">num1</span><span class="o">/</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>인터페이스의 추상 메소드 mul()과 div()의 코드를 정의 하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalcTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">MyCalc</span> <span class="n">cal</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyCalc</span><span class="o">();</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">mul</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">div</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>mul(), div()와 같이 인터페이스를 구현한 클래스에서 만든 메소드뿐만 아니라 인터페이스에서 만든 default 메소드 역시 사용 가능하다.</p>
+
+<p>추가적으로, <strong>디폴트 메소드는 인터페이스를 구현한 클래스에서 재정의(오버라이딩) 가능하다.</strong></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-static-메소드">2. static 메소드</h1>
+
+<hr />
+
+<p>정적 메소드는 static 선언을 하여 만든 메소드이다. 클래스 내에서 static 변수와 static 메소드는 인스턴스의 생성 여부와 상관 없이 사용 가능 하였다.</p>
+
+<p>인터페이스에서도 같다. 인스턴스를 만들지 않고도 호출 가능한 메소드의 사용을 위해 Java8부터 인터페이스에서도 static 메소드 기능을 지원하는 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Calc</span> <span class="o">{</span>
+   
+   <span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999999999</span><span class="o">;</span>
+   
+   <span class="kd">static</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalcTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Calc</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="http://localhost:4000/2019/05/13/gridview/">
+            39. 그리드뷰(GridView)
+            <small>13 May 2019</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="http://localhost:4000/2019/05/13/spinner/">
+            38. 스피너(Spinner)
+            <small>13 May 2019</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="http://localhost:4000/2019/05/13/listview/">
+            37. 리스트뷰(ListView)
+            <small>13 May 2019</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		 (adsbygoogle = window.adsbygoogle || []).push({
+			  google_ad_client: "ca-pub-5624366650986464",
+			  enable_page_level_ads: true
+		 });
+	</script>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
