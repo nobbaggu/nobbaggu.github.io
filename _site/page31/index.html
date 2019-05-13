@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,63 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/10/30/33-stream/">
+        33. 스트림
+      </a>
+    </h1>
+
+    <span class="post-date">30 Oct 2018</span>
+
+    <p>스트림 을 알면 데이터의 입력과 출력에 대해 이해할 수 있습니다. 프로그래밍을 하는 것은 입력과 출력의 반복이라고 할 수 있습니다. 입력은 넣는거고 출력은 나오는거다 라고 간단하게 정의할 수도 있습니다만 좀 더 정확하게 다음과 같이 정의될 수 있습니다.</p>
+
+<p> </p>
+
+<p><strong>- 입력 : 프로그램으로 데이터가 들어오는 것</strong></p>
+
+<p><strong>- 출력 : 프로그램에서 데이터를 내보내는 것</strong></p>
+
+<p> </p>
+
+<p>가장 대표적인 입력방법은 바로 키보드입니다. 그리고 가장 대표적인 출력방법은 모니터입니다. printf 함수는 모니터를 통해 출력을 내보내는 함수입니다. 하지만 입출력 방법들은 이들만 있는것이 아닙니다. 마우스, 프린터 등 다양한 전자기기들이 입출력 도구가 될 수 있습니다.</p>
+
+<p>오늘은 입출력이 이루어지는 과정에 대해 알아보겠습니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="1-데이터의-이동-통로--스트림">1. 데이터의 이동 통로 : 스트림</h1>
+
+<hr />
+
+<p>우리가 키보드로 입력을 하면 데이터를 프로그램에 전달해주기 위해서는 이동통로가 필요한데, 그 이동 통로를 <strong>‘입력 스트림’</strong>이라고 합니다.</p>
+
+<p>그리고 프로그램이 모니터로 출력을 시켜주기 위해서는 데이터를 이동시켜주어야 하는데 그 통로를 <strong>‘출력 스트림’</strong>이라고 합니다.</p>
+
+<p>입력스트림과 출력스트림은 따로 존재합니다. 스트림의 원래 뜻은 흐르는 물을 뜻하는데 여기서도 그 뜻이 통합니다. <strong>입력 스트림과 출력 스트림은 모두 <span style="text-decoration: underline;">한 방향</span>으로만 데이터를 전달하는 다리역할을 합니다.</strong></p>
+
+<p><img class="aligncenter  wp-image-1036" src="/images/2018/09/A.jpg" alt="" width="719" height="143" srcset="/images/2018/09/A.jpg 900w, /images/2018/09/A-300x60.jpg 300w, /images/2018/09/A-768x153.jpg 768w" sizes="(max-width: 719px) 100vw, 719px" /></p>
+
+<p>데이터를 이동시키기 위해서는 스트림은 필수입니다. 그런데 우리는 지금까지 이러한 스트림을 만든 기억이 없습니다. 사실 <strong>키보드와 모니터를 통한 입출력은 가장 기본적인 것이고, 스트림이 운영체제에 의해서 제공됩니다.</strong></p>
+
+<p>키보드와 모니터의 입출력을 <strong>‘콘솔(console) 입출력’</strong>이라고 합니다.</p>
+
+<p>정리하자면 <strong>‘콘솔 입출력을 위한 스트림은 운영체제(OS)가 제공하며 프로그램 시작시 생성되고 프로그램 종료시 소멸된다’ </strong>입니다. 그리고 이 입출력 스트림을 <strong>‘표준 입출력 스트림’</strong>이라고 합니다.</p>
+
+<p> </p>
+
+<p><strong>표준 입력 스트림(stdin) : 키보드 입력 스트림</strong></p>
+
+<p><strong>표준 출력 스트림(stdout) : 모니터 출력 스트림</strong></p>
+
+<p> </p>
+
+<p>콘솔 입출력 이외의 입출력을 하려면 소스코드상에서 우리가 직접 데이터의 이동 스트림을 만들어주어야합니다. 파일 입출력도 마찬가지입니다. 우리가 입출력 스트림을 만들어 데이터를 파일에 저장시키고 읽어들일 수 있는겁니다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11021,37 +11122,6 @@
 <p>물론 Bagging과 마찬가지로 각각의 model은 <strong>중복되는 데이터를 가질 수 있다.</strong></p>
 
 <p>최종적으로 만들어진 여러개의 model이 예측한 결과를 평균을 내어 최종 예측 결과가 나온다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/28/ensemble-bagging/">
-        Ensemble - Bagging
-      </a>
-    </h1>
-
-    <span class="post-date">28 Oct 2018</span>
-
-    <p>앙상블이란 새로운 머신러닝 알고리즘이 아닌 여러개의 모델을 합쳐서 예측 결과를 평균내는 것이다. 이러한 학습법은 서로 다른 dataset을 사용하기 때문에 overfitting을 막아주고 평균적으로 더 좋은 예측 성능을 낸다. 오늘은 Ensemble 방법 중 Bagging 에 대해 다룬다.</p>
-
-<p> </p>
-
-<h1 id="1-bagging">1. Bagging</h1>
-
-<hr />
-
-<p><strong> 여러개의 모델을 <span style="text-decoration: underline;">같은 알고리즘</span>으로 <span style="text-decoration: underline;">서로 다른 dataset</span>을 이용해서 학습시켜 합치는 것</strong>이다.</p>
-
-<p><img class="aligncenter wp-image-1242" src="/images/2018/10/no-name-6.jpg" alt="" width="750" height="358" srcset="/images/2018/10/no-name-6.jpg 971w, /images/2018/10/no-name-6-300x143.jpg 300w, /images/2018/10/no-name-6-768x367.jpg 768w" sizes="(max-width: 750px) 100vw, 750px" /></p>
-
-<p>각각의 model은 training dataset이 n개 중 랜덤으로 n’(&lt;n)개를 뽑아 모델을 학습 시킨다. 이 때 중요한 것이 있다.</p>
-
-<p><strong>n’개의 데이터에는 중복되는 데이터가 포함될 수 있다.</strong> n개 중 중복을 허용하여 n’개의 데이터를 선정하여 모델을 학습시키는 것이다.</p>
-
-<p>각각의 model이 예측한 결과를 평균을 내어 최종 예측 결과가 나온다.</p>
-
-<p>Bagging을 사용하면 서로 다른 dataset으로 학습을 시키기 때문에 overfitting을 막을 수 있다.</p>
 
   </div>
   

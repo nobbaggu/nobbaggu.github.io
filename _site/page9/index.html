@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,57 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/04/21/what-is-hash/">
+        7. 해시(Hash)란?
+      </a>
+    </h1>
+
+    <span class="post-date">21 Apr 2019</span>
+
+    <p>해시(hash)란 <strong><u>임의의 길이의 입력 데이터를 고정된 길이의 출력 데이터로 변환</u></strong>시키는 것이다. 입력(key)를 넣었을 때 해시 값(hash value)가 계산되는 알고리즘을 해시함수라고 한다.
+ </p>
+
+<p><img src="/images/sw_interview/hash_function.png" alt="hash" width="30%" height="30%" /></p>
+
+<p> 
+ 
+해시 함수의 특징은 아래와 같다.</p>
+
+<ol>
+  <li>가변적인 길이의 입력 데이터에 적용 가능해야한다.</li>
+  <li>출력 데이터 길이가 일정해야한다.</li>
+  <li>해시 결과값으로 입력 데이터를 역추적 하는 것이 불가능해야한다.</li>
+  <li>해시 충돌 빈도가 낮아야한다.</li>
+</ol>
+
+<p> 
+ 
+<strong>※해시 충돌</strong></p>
+
+<p>해시 값의 갯수는 제한되어 있다. 따라서 수많은 입력데이터가 해싱(hashing)되었을 때, 같은 해시 값을 가지는 경우가 존재하는데, 이것을 <strong>해시 충돌(collision)</strong>이라고 한다. 현재까지 개발된 모든 해시 함수들은 해시 충돌을 가지고 있다.</p>
+
+<p> 
+<strong>해시 테이블</strong>은 해시를 사용한 자료 구조이다. 일반 배열과 다리 해시 테이블은 입력 데이터(key)를 해시함수로 계산한 해시 값(hash value)를 자료구조의 index로 사용한다.</p>
+
+<p> 
+ 
+해시를 사용했을 때의 장단점은 아래와 같다.</p>
+
+<h3 id="1-데이터-축약">1. 데이터 축약</h3>
+
+<p>해시 함수를 사용하면 수 많은 입력 데이터가 제한된 길이와 수를 가지는 해시 값에 매핑이 됨으로써, 방대한 용량의 데이터를 제한된 리소스를 사용하여 효율적으로 관리할 수 있다. 즉, 해시 함수는 <strong>데이터 축약 기능</strong>이 있다.</p>
+
+<h3 id="2-빠른-탐색">2. 빠른 탐색</h3>
+
+<p>해시 테이블에서 자료를 검색할 때는 key에 해당하는 value가 있는지만 확인하면 되므로 (해시 충돌이 0에 가깝다는 가정하에)시간 복잡도가 <em>O(1)</em>이다.</p>
+
+<h3 id="3-공간-낭비">3. 공간 낭비</h3>
+<p>해시 자료구조에서는 배열의 index가 연소적이지 않고, 해시함수에 의해 계산된 데이터 자신만의 고유한 값을 가진다. 따라서 공간낭비적 측면이 있으며, 공간을 팔아 속도를 가지는 자료구조라고 볼 수도 있다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10662,100 +10757,6 @@
 <p>여기서 객체란 프로그래밍적인 의미로는 메모리에 로딩 된 클래스의 인스턴스를 의미한다. 넓은 범위로는 실존하는 사물, 추상적인 대상 전부를 의미한다. 하나의 사물의 속성 및 동작을 하나의 클래스로 표현할 수 있다. 객체지향 프로그래밍이란 이러한 객체간의 상관관계를 프로그래밍에 그대로 구현해 문제를 풀어내는 것이다.</p>
 
 <p>예를 들어 버스 클래스와 승객 클래스가 있다. 버스 클래스는 ‘비용’이라는 데이터, 그리고 ‘출발’ 기능을 가지며 승객은 ‘가진 돈’, ‘나이’ 라는 데이터와 ‘요금 내기’라는 기능을 가질 수 있다. 이 때, 승객 클래스 안에 버스를 골라서 타는 기능을 추가하고 버스에는 타고 있는 승객을 저장할 수 있는 배열을 추가한다면 이 두 클래스가 서로 상관관계를 가지면서 특정한 일을 할 수 있다. 이처럼 현실 세계는 객체와 객체간의 상호작용으로 볼 수 있으며 이를 가장 적절히 표현해낼 수 있는 것이 객체지향 프로그래밍인 것이다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/04/20/fastest-sort-algorithm/">
-        2. 가장 빠른 정렬 알고리즘
-      </a>
-    </h1>
-
-    <span class="post-date">20 Apr 2019</span>
-
-    <p>정렬 알고리즘 중 가장 빠른 알고리즘은 <strong>퀵 정렬(quick sort)</strong> 알고리즘이다.</p>
-
-<h2 id="1-알고리즘">1. 알고리즘</h2>
-<hr />
-
-<p>먼저 원소중 하나를 기준(pivot)으로 잡는다. 리스트의 왼쪽 끝, 오른 쪽 끝 두 곳을 시작으로 탐색해 나가며 크기 비교를 하여 위치를 바꾸는 식으로 리스트를 정렬한다. 기준은 보통 3개 정도를 임의로 추출해 그 중 중간값을 가지는 원소로 정하는 방식이다.</p>
-
-<p>여기서는 편의상 리스트의 마지막 원소를 기준(pivot)으로 잡는다.</p>
-
-<ol>
-  <li>
-    <p>첫 번째 원소의 index를 low, 마지막 두 번째 원소 index를 high라고 한다.</p>
-  </li>
-  <li>
-    <p>low가 pivot보다 큰 값을 가르킬 때 까지 low를 오른쪽으로 +1 씩 이동</p>
-  </li>
-  <li>
-    <p>high가 pivot보다 작은 값을 가르킬 때 까지 high를 왼쪽으로 -1씩 이동</p>
-  </li>
-  <li>
-    <p>low&lt;high면 두 곳의 위치 교환</p>
-  </li>
-  <li>
-    <p>위 과정을 low와 high가 만날 때 까지 반복</p>
-  </li>
-  <li>
-    <p>low, high가 만나면 그 곳의 숫자와 pivot의 값 교환</p>
-  </li>
-  <li>
-    <p>pivot의 값이 옮겨진 위치 즉, 현재의 low를 기준으로 리스트를 나누어 각각에 대해 퀵 정렬 재실행(재퀴호출)</p>
-  </li>
-</ol>
-
-<p><img class="wp-image-1348 aligncenter" src="/images/2018/11/4123.jpg" alt="" width="546" height="356" srcset="/images/2018/11/4123.jpg 752w, /images/2018/11/4123-300x195.jpg 300w" sizes="(max-width: 546px) 100vw, 546px" /></p>
-
-<p><img class="wp-image-1350 aligncenter" src="/images/2018/11/4123-2.jpg" alt="" width="517" height="305" srcset="/images/2018/11/4123-2.jpg 731w, /images/2018/11/4123-2-300x177.jpg 300w" sizes="(max-width: 517px) 100vw, 517px" /></p>
-
-<p><img class="wp-image-1351 aligncenter" src="/images/2018/11/4123-3.jpg" alt="" width="344" height="180" srcset="/images/2018/11/4123-3.jpg 500w, /images/2018/11/4123-3-300x157.jpg 300w" sizes="(max-width: 344px) 100vw, 344px" /></p>
-
-<p> </p>
-
-<p>위 과정을 파이썬 코드로 표현하면 다음과 같다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span> <span class="c"># 원소가 한 개면</span>
-        <span class="k">return</span> <span class="c"># 종료</span>
-
-    <span class="n">low</span> <span class="o">=</span> <span class="n">start</span> <span class="c"># 왼쪽 탐색 막대</span>
-    <span class="n">high</span> <span class="o">=</span> <span class="n">end</span> <span class="c"># 오른쪽 탐색 막대</span>
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="c"># 마지막 원소를 기준으로</span>
-
-    <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽 막대보다 작은 동안 실행</span>
-        <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">pivot</span><span class="p">:</span>
-            <span class="n">low</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">pivot</span><span class="p">:</span>
-            <span class="n">high</span><span class="o">-=</span><span class="mi">1</span>
-        <span class="k">if</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽 막대보다 작으면</span>
-            <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="c"># 위치 교환</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽으로 넘어가면</span>
-            <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="c"># 기준과 a[low] 교환하고</span>
-            <span class="k">break</span> <span class="c"># 반복문 탈출</span>
-
-    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">low</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># 새로운 기준을 중심으로 왼쪽 리스트 부분 정렬</span>
-    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">low</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="c"># 새로운 기준을 중심으로 오른쪽 리스트 부분 정렬</span>
-
-<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">quick_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">quick_sort</span><span class="p">(</span><span class="n">arr2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="c"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span> <span class="c"># [1, 1, 2, 2, 3, 3, 4, 4]</span>
-</code></pre></div></div>
-
-<p> </p>
-<h2 id="2-on-복잡도">2. O(n) 복잡도</h2>
-<hr />
-
-<p>퀵 정렬의 계산 복잡도는 최악의 경우 O(n^2), 평균적으로 O(nlog(n))을 따른다. 즉, 기준을 얼마나 잘 잡느냐에 따라 계산 복잡도가 달라진다.</p>
-
-<p>따라서 퀵 정렬을 효율적으로 사용하려면 기준을 잡는 방법에 대해 따로 공부할 필요가 있다. 퀵 정렬의 기준을 잡는 방법에 대한 연구된 좋은 방법들은 많으므로 궁금하면 자료를 찾아보자.</p>
-
-<p>퀵 정렬은 배열이 클 경우에 사용하기 좋다. 그러나 진행하면서 블록이 점점 작아지면 잦은 재귀호출로 인해 불필요한 로드가 생길 수 있다. 따라서 기준을 정한 이후 어느정도 이후부터는 다른 정렬 알고리즘으로 대체하는 것이 좋다.</p>
 
   </div>
   

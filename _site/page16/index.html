@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,210 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/17/inheritance/">
+        상속
+      </a>
+    </h1>
+
+    <span class="post-date">17 Dec 2018</span>
+
+    <p>상속은 객체지향 프로그래밍에서 핵심적인 역할을 하는 기능이다. 객체지향 프로그램의 재사용성과 확장성을 넓히는 첫 번째 키가 바로 상속이다.</p>
+
+<p> </p>
+
+<h1 id="1-상속이란">1. 상속이란?</h1>
+
+<hr />
+
+<p>클래스는 ‘상속(inheritance)’ 라는 것을 할 수 있다. 이 때 상속 해주는 클래스를 ‘부모 클래스’, ‘상위 클래스’ 등으로 부르고 상속받는 클래스를 ‘자식 클래스’ 혹은 ‘하위 클래스’ 라고 부른다. 먼저 상속이란 것은 어떤 문법으로 이루어지는지 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+   <span class="kd">protected</span> <span class="kt">int</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="kd">protected</span> <span class="n">String</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="kd">protected</span> <span class="n">String</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">bonusPoint</span><span class="o">;</span>
+   <span class="kt">double</span> <span class="n">bonusRatio</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Customer</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"SILVER"</span><span class="o">;</span> <span class="c1">// 기본 등급</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">;</span> <span class="c1">// 기본 적립율</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcPrice</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">bonusPoint</span> <span class="o">+=</span> <span class="n">price</span> <span class="o">*</span> <span class="n">bonusRatio</span><span class="o">;</span> <span class="c1">// 보너스 포인트 적립</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">showCustomerInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerName</span><span class="o">+</span><span class="s">"'s grade is "</span><span class="o">+</span><span class="n">customerGrade</span><span class="o">+</span><span class="s">" and bonus point is "</span><span class="o">+</span><span class="n">bonusPoint</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCustomerID</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerID</span><span class="o">(</span><span class="kt">int</span> <span class="n">customerID</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerID</span> <span class="o">=</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCustomerName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerName</span><span class="o">(</span><span class="n">String</span> <span class="n">customerName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerName</span> <span class="o">=</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCustomerGrade</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerGrade</span><span class="o">(</span><span class="n">String</span> <span class="n">customerGrade</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerGrade</span> <span class="o">=</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위와 같은 고객 클래스가 있다. 그런데 VIP고객 클래스를 하나 더 만들고 싶다. 상식적으로 VIP고객은 고객의 부분집합이므로 고객 클래스가 가지고있는 멤버변수와 메소드를 기본적으로 가지고 있어야 한다. 그리고 추가적인 기능을 넣고싶을 때 아래와 같이 하면된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VIPCustomer</span> <span class="kd">extends</span> <span class="n">Customer</span><span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">agentID</span><span class="o">;</span> <span class="c1">// 담당 상담원 멤버변수 추가</span>
+   <span class="kt">double</span> <span class="n">saleRatio</span><span class="o">;</span> <span class="c1">// 할인율 멤버변수 추가</span>
+   
+   <span class="kd">public</span> <span class="nf">VIPCustomer</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"VIP"</span><span class="o">;</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">;</span> <span class="c1">// 보너스 적립율 0.05로 상승</span>
+      <span class="n">saleRatio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">;</span> <span class="c1">// 할인율 0.1 적용</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">agentID</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">agentID</span><span class="o">;</span> <span class="c1">// 담당 상담원 ID 반환</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcPrice</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">bonusPoint</span> <span class="o">+=</span> <span class="n">price</span><span class="o">*</span><span class="n">bonusRatio</span><span class="o">;</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">-(</span><span class="kt">int</span><span class="o">)(</span><span class="n">price</span><span class="o">*</span><span class="n">saleRatio</span><span class="o">);</span> <span class="c1">//가격 할인 추가</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>extends 예약어를 사용해서 VIPCustomer 클래스가 Customer 클래스를 상속받도록 하였다. 주의해야 할 것은 부모 클래스에서 멤버변수를 protected라고 선언했다는 것이다. <strong>private로 선언하면 다른 클래스에서 사용하는 것을 막으므로 상속받은 클래스에서 사용할 수 없게된다. protected 예약어는 상속받는 하위 클래스에게만 접근을 허용하는 접근제어자이므로 알아두자.</strong></p>
+
+<p>상속받은 하위 클래스는 기본적으로 상위 클래스의 멤버변수와 메소드를 사용할 수 있다. main 메소드에서 실행해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Customer</span> <span class="n">customerJohn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="o">();</span>
+      <span class="n">VIPCustomer</span> <span class="n">customerKelly</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VIPCustomer</span><span class="o">();</span>
+      
+      <span class="n">customerJohn</span><span class="o">.</span><span class="na">setCustomerID</span><span class="o">(</span><span class="mi">10010</span><span class="o">);</span>
+      <span class="n">customerJohn</span><span class="o">.</span><span class="na">setCustomerName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+      <span class="n">customerJohn</span><span class="o">.</span><span class="na">bonusPoint</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+      
+      <span class="n">customerKelly</span><span class="o">.</span><span class="na">setCustomerID</span><span class="o">(</span><span class="mi">10020</span><span class="o">);</span>
+      <span class="n">customerKelly</span><span class="o">.</span><span class="na">setCustomerName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span>
+      <span class="n">customerKelly</span><span class="o">.</span><span class="na">bonusPoint</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">;</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customerLee</span><span class="o">.</span><span class="na">showCustomerInfo</span><span class="o">());</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customerKim</span><span class="o">.</span><span class="na">showCustomerInfo</span><span class="o">());</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>John’s grade is SILVER and bonus point is 1000</p>
+
+<p>Kelly’s grade is VIP and bonus point is 10000.&lt;/pre&gt;</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-하위-클래스-생성-과정">2. 하위 클래스 생성 과정</h1>
+
+<hr />
+
+<p>하위 클래스의 생성자 안에는 컴파일러가 자동으로 super(); 라는 문장을 추가한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">VIPCustomer</span><span class="o">()</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">();</span> <span class="c1">//컴파일러가 자동으로 추가</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"VIP"</span><span class="o">;</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">;</span>
+      <span class="n">saleRatio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>super란 상위 클래스를 참조하는 지시자이다. this 예약어가 클래스 자신을 지칭하는 것과 같은 것이다.</p>
+
+<p>사실 하위 클래스 객체가 만들어질 때는 상위클래스 객체가 먼저 만들어지면서 멤버변수와 메소드가 힙 메모리에 생성된다. 그리고 이어서 나머지 하위 클래스의 추가적인 멤버변수와 메소드가 생성되는 것이다.</p>
+
+<p>Customer 클래스와 VIPCustomer 생성자 안에 다음의 문장 출력문을 추가해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">Customer</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"SILVER"</span><span class="o">;</span> <span class="c1">// 기본 등급</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">;</span> <span class="c1">// 기본 적립율</span>
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Customer instance made!"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">VIPCustomer</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"VIP"</span><span class="o">;</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">;</span> <span class="c1">// 보너스 적립율 0.05로 상승</span>
+      <span class="n">saleRatio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">;</span> <span class="c1">// 할인율 0.1 적용</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"VIPCustomer instance made!"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이어서 main 함수에 아래의 문장을 통해서 VIPCustomer 인스턴스를 하나 생성하면</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">VIPCustomer</span> <span class="n">customerKelly</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VIPCustomer</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Customer instance made!</p>
+
+<p>VIPCustomer instance made</p>
+
+<p>두 개의 문장이 출력된다. 다시 말하자면 자식 클래스 객체를 생성할 때에는 부모 클래스 객체가 먼저 하나 생성이 되고(super(); 를 통해) 자식 클래스의 나머지 멤버변수와 메소드를 메모리에 추가로 할당하는 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-하위-클래스의-형-변환up-casting">3. 하위 클래스의 형 변환(up-casting)</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Customer</span> <span class="n">customerJohn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VIPCustomer</span><span class="o">(</span><span class="mi">10010</span><span class="o">,</span> <span class="s">"John"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customerJohn</span><span class="o">.</span><span class="na">agentID</span><span class="o">());</span> <span class="c1">// 오류 발생</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>VIPCustomer 인스턴스를 생성하여 customerJohn 참조변수에 저장했다. 그런데 customerJohn 참조변수는 Customer 타입이다.</p>
+
+<p><strong>결론부터 말하자면 자식 클래스의 인스턴스는 자료형을 부모클래스 자료형으로 형 변환하여 선언할 수 있다.</strong></p>
+
+<p>이렇게 생성된 객체를 참조하는 <strong>참조변수는 부모클래스 자료형이므로 생성된 객체의 모든 멤버변수와 메소드에 접근할 수 있지는 않다. 부모 클래스에 포함이 된 멤버변수와 메소드만 사용할 수 있다.</strong></p>
+
+<p>그렇다면 부모 클래스의 객체를 자식 클래스 자료형으로 형 변환하여 선언하는 것도 가능할까? 불가능하다. 상위 클래스 객체가 하위 클래스의 모든 기능을 다 가지고 있지 않기 때문이다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10989,91 +11237,6 @@ JavaDoc에서 ArrayList에 관한 설명을 한 번 읽어보는 것이 도움�
 </code></pre></div></div>
 
 <p>myNums.length는 myNums배열의 길이인 5를 반환한다. length속성을 사용해서 for문으로 myNums의 모든 요소를 한 번에 출력할 수 있다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/15/singleton/">
-        싱글톤 패턴
-      </a>
-    </h1>
-
-    <span class="post-date">15 Dec 2018</span>
-
-    <p>객체지향 프로그래밍에서 클래스의 인스턴스를 단 한 개만 만들어서 사용하는 디자인 패턴이다. 학교 객체와 학생들 객체가 있을 때, 학교는 1개이므로 인스턴스를 한 개만 만들면 된다. 이럴 경우 싱글톤 패턴을 사용한다.</p>
-
-<p>싱글톤 패턴을 단계적으로 프로그래밍 해보자.</p>
-
-<p> </p>
-
-<h2 id="1-private-생성자-생성">1. private 생성자 생성</h2>
-
-<p>생성자가 없을 경우 컴파일러가 넣어주는 default 생성자는 항상 public이다. 싱글톤 패턴에서는 외부에서 인스턴스를 생성할 수 없도록 항상 private 생성자를 선언해준다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
-   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<h2 id="2-static을-사용하여-유일한-인스턴스-생성">2. static을 사용하여 유일한 인스턴스 생성</h2>
-
-<p>단계1에서 private 생성자를 만들어놓았으므로 외부에서는 인스턴스를 생성할 수 없게 되었다. 따라서 미리 클래스 내부에서 인스턴스를 하나 만들어 주는 것이다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
-   <span class="kd">private</span> <span class="kd">static</span> <span class="n">School</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">School</span><span class="o">();</span> <span class="c1">// 클래스의 유일한 인스턴스</span>
-   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<h2 id="3-외부에-공개되는-메소드-생성">3. 외부에 공개되는 메소드 생성</h2>
-
-<p>클래스 내부에서 생성한 private 인스턴스를 외부에서 사용 가능하도록 메소드를 만들어준다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
-   <span class="kd">private</span> <span class="kd">static</span> <span class="n">School</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">School</span><span class="o">();</span> <span class="c1">// 클래스의 유일한 인스턴스</span>
-   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
-   
-   <span class="kd">public</span> <span class="kd">static</span> <span class="n">School</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">if</span><span class="o">(</span><span class="n">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-          <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">School</span><span class="o">();</span>
-      <span class="o">}</span>
-      <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>getInstance() 메소드는 static 메소드로 선언했다. 왜냐하면 인스턴스가 만들어지기 전부터 사용할 수 있어야 하기 때문이다.</p>
-
-<h2 id="4-사용하기">4. 사용하기</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-       <span class="n">School</span> <span class="n">school1</span> <span class="o">=</span> <span class="n">School</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-       <span class="n">School</span> <span class="n">school2</span> <span class="o">=</span> <span class="n">School</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-       
-       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">school1</span><span class="o">==</span><span class="n">school2</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>true</p>
-
-<p>school1 참조변수와 school2 참조변수 모두 같은 인스턴스를 참조한다.</p>
 
   </div>
   

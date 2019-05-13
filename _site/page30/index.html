@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,117 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/01/38-struct-1/">
+        38. 구조체(1)
+      </a>
+    </h1>
+
+    <span class="post-date">01 Nov 2018</span>
+
+    <p>어떤 조직에 10명의 구성원이 있고 우리는 이들의 이름, 나이, 혈액형을 조사하여 데이터로 저장해두고 싶어요. 일반적인 변수를 사용하는 가장 간단한 방법은 다음의 형식으로 저장하는 형태일겁니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//구성원1
+</span><span class="kt">char</span> <span class="n">name1</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">age1</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">blood_type1</span> <span class="o">=</span> <span class="s">"B"</span><span class="p">;</span>
+
+<span class="c1">//구성원2
+</span><span class="kt">char</span> <span class="n">name2</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Jerry"</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">age2</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">blood_type2</span> <span class="o">=</span> <span class="s">"O"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>한 명 한 명의 데이터별로 모두 변수를 지정하여 값을 저장했습니다.</p>
+
+<p>하지만 이런 묶음 데이터를 간편하게 저장할 수 있는 자료구조가 있습니다.</p>
+
+<p><strong>구조체란 여러개의 자료형을 묶어서 만든 하나의 그룹화된 자료형</strong>입니다.</p>
+
+<p>아까 예시로 든 자료를 구조체를 사용해서 표현해 보겠습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="k">struct</span> <span class="n">person</span> <span class="c1">// struct 선언자를 사용하여 person이라는 자료형 정의
+</span><span class="p">{</span>
+	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">blood_type</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>	
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">per1</span><span class="p">,</span> <span class="n">per2</span><span class="p">;</span> <span class="c1">//person 타입의 두 변수 per1, per2 선언
+</span>	
+	<span class="n">per1</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">;</span> <span class="c1">//per1의 name 멤버에 John 이라는 문자열 저장
+</span>	<span class="n">per1</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// per1의 age 멤버에 접근하여 20 저장
+</span>	<span class="n">per1</span><span class="p">.</span><span class="n">blood_type</span> <span class="o">=</span> <span class="sc">'B'</span><span class="p">;</span> <span class="c1">//per1의 blood_type 멤버에 'B' 저장
+</span>	
+	<span class="n">per2</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"Jerry"</span><span class="p">;</span>
+	<span class="n">per2</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
+	<span class="n">per2</span><span class="p">.</span><span class="n">blood_type</span> <span class="o">=</span> <span class="sc">'O'</span><span class="p">;</span>
+	
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%2s %2d %2c"</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">blood_type</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%2s %2d %2c"</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">blood_type</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>John 20  B</p>
+
+<p>Jerry 31  O</p>
+
+<p>계속하려면 아무 키나 누르십시오…</p>
+
+<p>위에서 우리는 person이라는 새로운 구조체 자료형을 정의했습니다. 구조체는 C언어에서 제공하는 기본자료형은 아니지만 하나의 새로운 자료형처럼 사용이 가능하다고해서 <strong>사용자 정의 자료형(User Defined Data Type)</strong> 이라고 합니다.</p>
+
+<p>per1과 per2는 person 자료형이기 때문에 3개의 멤버에 대해서 데이터를 저장할 수 있습니다. 다만 한 가지 주의할 것은 잘료형 앞에 struct를 붙여서 선언해주어야 합니다. struct person per1 혹은 struct person per2 처럼 말입니다.</p>
+
+<p><img class="aligncenter  wp-image-1052" src="https://itdogg.com/wp-content/uploads/2018/09/ㄹㄹ.jpg" alt="" width="663" height="390" srcset="https://itdogg.com/wp-content/uploads/2018/09/ㄹㄹ.jpg 891w, https://itdogg.com/wp-content/uploads/2018/09/ㄹㄹ-300x176.jpg 300w, https://itdogg.com/wp-content/uploads/2018/09/ㄹㄹ-768x452.jpg 768w" sizes="(max-width: 663px) 100vw, 663px" /></p>
+
+<p><img src="/images/2018/09/struct.jpg" alt="struct" width="70%" height="70%" /></p>
+
+<p>앞에 보았던 것처럼 구조체를 정의한다는 것은 새로운 자료형을 정의하는 것입니다.</p>
+
+<p>구조체 변수는 기본 자료형과 동일하게 선언과 동시에 초기화 시킬수도 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">struct</span> <span class="n">person</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">blood_type</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">per1</span> <span class="o">=</span> <span class="p">{</span><span class="s">"John"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="sc">'B'</span><span class="p">};</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">per2</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Jerry"</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="sc">'O'</span><span class="p">};</span>
+	
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%2s %2d %2c"</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">blood_type</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%2s %2d %2c"</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">blood_type</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>John 20 B</p>
+
+<p>Jerry 31 O</p>
+
+<p>계속하려면 아무 키나 누르십시오…</p>
+
+<p>구조체변수는 일반 변수와 동일하게 사용 가능합니다. 배열의 원소가 될 수도있고, 주소를 포인터변수에 저장할 수도 있습니다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11128,63 +11283,6 @@ Type a sentence : sentence 2 : the
 <p>계속하려면 아무 키나 누르십시오 . . .</p>
 
 <p>우리가 문장을 입력해주고 엔터를 치면 버퍼에 담겨있던 데이터들이 while문을 통해 하나씩하나씩 출력이 됩니다. while문의 조건은 ch에 저장된 값, 즉 getchar() 함수가 읽어들이는 문자가 EOF가 되면 반복문을 종료시켜달라는 겁니다. <strong>EOF란 End Of File의 약자로 문자나 문자열 입력 함수들이 더 이상 읽어들일 값이 없거나 어떠한 에러로인해 호출에 실패하였을 때 반환하는 값</strong>입니다. Window에서  <strong>EOF는 Ztrl + Z 로 입력</strong>합니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/30/33-stream/">
-        33. 스트림
-      </a>
-    </h1>
-
-    <span class="post-date">30 Oct 2018</span>
-
-    <p>스트림 을 알면 데이터의 입력과 출력에 대해 이해할 수 있습니다. 프로그래밍을 하는 것은 입력과 출력의 반복이라고 할 수 있습니다. 입력은 넣는거고 출력은 나오는거다 라고 간단하게 정의할 수도 있습니다만 좀 더 정확하게 다음과 같이 정의될 수 있습니다.</p>
-
-<p> </p>
-
-<p><strong>- 입력 : 프로그램으로 데이터가 들어오는 것</strong></p>
-
-<p><strong>- 출력 : 프로그램에서 데이터를 내보내는 것</strong></p>
-
-<p> </p>
-
-<p>가장 대표적인 입력방법은 바로 키보드입니다. 그리고 가장 대표적인 출력방법은 모니터입니다. printf 함수는 모니터를 통해 출력을 내보내는 함수입니다. 하지만 입출력 방법들은 이들만 있는것이 아닙니다. 마우스, 프린터 등 다양한 전자기기들이 입출력 도구가 될 수 있습니다.</p>
-
-<p>오늘은 입출력이 이루어지는 과정에 대해 알아보겠습니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="1-데이터의-이동-통로--스트림">1. 데이터의 이동 통로 : 스트림</h1>
-
-<hr />
-
-<p>우리가 키보드로 입력을 하면 데이터를 프로그램에 전달해주기 위해서는 이동통로가 필요한데, 그 이동 통로를 <strong>‘입력 스트림’</strong>이라고 합니다.</p>
-
-<p>그리고 프로그램이 모니터로 출력을 시켜주기 위해서는 데이터를 이동시켜주어야 하는데 그 통로를 <strong>‘출력 스트림’</strong>이라고 합니다.</p>
-
-<p>입력스트림과 출력스트림은 따로 존재합니다. 스트림의 원래 뜻은 흐르는 물을 뜻하는데 여기서도 그 뜻이 통합니다. <strong>입력 스트림과 출력 스트림은 모두 <span style="text-decoration: underline;">한 방향</span>으로만 데이터를 전달하는 다리역할을 합니다.</strong></p>
-
-<p><img class="aligncenter  wp-image-1036" src="/images/2018/09/A.jpg" alt="" width="719" height="143" srcset="/images/2018/09/A.jpg 900w, /images/2018/09/A-300x60.jpg 300w, /images/2018/09/A-768x153.jpg 768w" sizes="(max-width: 719px) 100vw, 719px" /></p>
-
-<p>데이터를 이동시키기 위해서는 스트림은 필수입니다. 그런데 우리는 지금까지 이러한 스트림을 만든 기억이 없습니다. 사실 <strong>키보드와 모니터를 통한 입출력은 가장 기본적인 것이고, 스트림이 운영체제에 의해서 제공됩니다.</strong></p>
-
-<p>키보드와 모니터의 입출력을 <strong>‘콘솔(console) 입출력’</strong>이라고 합니다.</p>
-
-<p>정리하자면 <strong>‘콘솔 입출력을 위한 스트림은 운영체제(OS)가 제공하며 프로그램 시작시 생성되고 프로그램 종료시 소멸된다’ </strong>입니다. 그리고 이 입출력 스트림을 <strong>‘표준 입출력 스트림’</strong>이라고 합니다.</p>
-
-<p> </p>
-
-<p><strong>표준 입력 스트림(stdin) : 키보드 입력 스트림</strong></p>
-
-<p><strong>표준 출력 스트림(stdout) : 모니터 출력 스트림</strong></p>
-
-<p> </p>
-
-<p>콘솔 입출력 이외의 입출력을 하려면 소스코드상에서 우리가 직접 데이터의 이동 스트림을 만들어주어야합니다. 파일 입출력도 마찬가지입니다. 우리가 입출력 스트림을 만들어 데이터를 파일에 저장시키고 읽어들일 수 있는겁니다.</p>
 
   </div>
   

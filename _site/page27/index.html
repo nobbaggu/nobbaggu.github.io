@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,144 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/10/6-factorial/">
+        6. 재귀호출 (1) - 팩토리얼
+      </a>
+    </h1>
+
+    <span class="post-date">10 Nov 2018</span>
+
+    <h1 id="1-문제-정의">1. 문제 정의</h1>
+
+<hr />
+
+<p><img class="aligncenter  wp-image-1309" src="/images/2018/11/no-name-4.jpg" alt="" width="630" height="160" srcset="/images/2018/11/no-name-4.jpg 771w, /images/2018/11/no-name-4-300x76.jpg 300w, /images/2018/11/no-name-4-768x195.jpg 768w" sizes="(max-width: 630px) 100vw, 630px" /></p>
+
+<p>n! 은 n 팩토리얼 이라 부르며 1부터 n까지의 정수를 모두 곱한 값이다.</p>
+
+<p>0! = 1로 약속되어 있다.</p>
+
+<p>정수가 아닌 실수, 음수에 대해서는 팩토리얼이 정의되지 않는다.</p>
+
+<p>위의 조건들을 가지고 정수 n을 넣으면 n!을 돌려주는 알고리즘을 만들어본다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-재귀호출">2. 재귀호출</h1>
+
+<hr />
+
+<p>재귀호출 (Recursion)은 어떤 함수가 자신을 다시 호출하는 것을 말한다.</p>
+
+<p>재귀호출을 사용할 때 주의해야 할 것은 <strong>호출 종료 조건을 반드시 포함</strong>시키는 것이다.</p>
+
+<p>가령 다음과 같은 잘못된 재귀호출 사례가 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span> <span class="c"># 'hello'를 호출하고</span>
+    <span class="n">hello</span><span class="p">()</span> <span class="c"># 자신을 다시 호출</span>
+
+<span class="n">hello</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>위 코드에서 hello() 함수를 호출하면 ‘hello’를 한 번 출력해주고 다시 자기자신을 호출한다. 그럼 또 ‘hello’가 출력되고, 다시 또 자신을 호출한다. 이 함수는 영원히 끝나지 않고 반복되는 로직이다. 다만 메모리공간 사용에는 한계가 있으므로 재귀 에러를 내며 함수가 종료된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-알고리즘">3. 알고리즘</h1>
+
+<hr />
+
+<h2 id="1-재귀호출을-사용하지-않은-알고리즘">1) 재귀호출을 사용하지 않은 알고리즘</h2>
+
+<p>재귀 호출을 사용하지 않고 다음과 같은 방식으로 알고리즘을 만들 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">n</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span> <span class="c"># i는 1~n</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">*</span><span class="n">i</span> <span class="c"># i를 곱한 값으로 s를 업데이트</span>
+        <span class="k">return</span> <span class="n">s</span> <span class="c"># s 반환</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">'Wrong input. Please give me zero or positive integer'</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">fac</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c"># 5*4*3*2*1 = 120</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fac</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">))</span> <span class="c"># 음의 정수 : 에러 구문 출력</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fac</span><span class="p">(</span><span class="mf">5.1</span><span class="p">))</span> <span class="c"># 정수가 아닌 실수 : 에러 구문 출력</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h2 id="2-재귀호출-알고리즘">2) 재귀호출 알고리즘</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">==</span><span class="nb">int</span><span class="p">:</span> <span class="c"># 0보다 큰 정수면</span>
+        <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fac</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># n 곱하기 fac(n-1). 함수 자신을 다시 호출</span>
+    <span class="k">elif</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c"># n이 0이 되면</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="c"># 1 반환하고 더 이상 호출하지 않는다.</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c"># 양의 정수 혹은 0이 아닌 수가 입력되면 에러 구문 출력</span>
+        <span class="k">return</span> <span class="s">'Wrong input. Please give me zero or positive integer'</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">fac</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c"># 5*4*3*2*1 = 120</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fac</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">))</span> <span class="c"># 음의 정수 : 에러 구문 출력</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fac</span><span class="p">(</span><span class="mf">5.1</span><span class="p">))</span> <span class="c"># 정수가 아닌 실수 : 에러 구문 출력</span>
+</code></pre></div></div>
+
+<p>위의 재귀호출 알고리즘은 다음의 순서로 실행이 된다.</p>
+
+<ol>
+  <li>
+    <p>fac(n)은 n*fac(n-1) 이므로 fac(n-1) 다시 호출</p>
+  </li>
+  <li>
+    <p>fac(n-1)은 (n-1)*fac(n-2) 이므로 fac(n-2) 다시 호출</p>
+  </li>
+  <li>
+    <p>n이 1이 되기 전까지 위의 과정 반복하다가 n이 1이 되면 fac(1) = 1*fac(0)이므로 fac(0) 호출</p>
+  </li>
+  <li>
+    <p>n이 0이므로 return 1</p>
+  </li>
+</ol>
+
+<p> </p>
+
+<p> </p>
+
+<ol>
+  <li>알고리즘 효율</li>
+</ol>
+
+<hr />
+
+<p>위의 두 알고리즘에서 가장 중요한 연산은 모두 곱셈 이다.</p>
+
+<h3 id="알고리즘-1">알고리즘 1)</h3>
+
+<p>곱셈 n-1 번 필요</p>
+
+<p> </p>
+
+<h3 id="알고리즘-2">알고리즘 2)</h3>
+
+<p>0!=1을 포함하므로 위의 알고리즘보다 곱셈을 한 번 더 하므로, 곱셈 n번 필요</p>
+
+<p> </p>
+
+<p>따라서 두 알고리즘 모두 시간 복잡도 O(n)을 따른다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10939,92 +11121,6 @@
 <p> </p>
 
 <p>위에서 표기한 O( )의 표기법을 빅 오 표기법이라고 하는데, 이에 대해서 한 번 정리를 할 것이다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/07/1-algorithm/">
-        1 Algorithm
-      </a>
-    </h1>
-
-    <span class="post-date">07 Nov 2018</span>
-
-    
-<hr />
-<p>title: 1. 알고리즘 소개
-date: 2018-11-07T21:16:42+09:00
-author: SWnomad
-layout: post
-categories: 알고리즘
-image: /images/2018/11/algorithm-thumbnail.jpg
-tags:</p>
-<ul>
-  <li>algorithm</li>
-  <li>python</li>
-  <li>알고리즘</li>
-  <li>
-    <h2 id="파이썬">파이썬</h2>
-    <p>알고리즘 이란, 어떠한 조건(입력)이 주어졌을 때, 우리가 원하는 결과(출력)을 얻기 위한 방법, 설계도 같은 것이다. 정확히 정의하자면 ‘<strong>문제를 해결하는 방법</strong>‘이 알고리즘이다. 물론 같은 주어진 입력에서 원하는 출력을 내는 방법에 여러가지가 있을 수 있다.</p>
-  </li>
-</ul>
-
-<p><img class="aligncenter  wp-image-1268" src="/images/2018/11/no-name.jpg" alt="" width="499" height="171" srcset="/images/2018/11/no-name.jpg 668w, /images/2018/11/no-name-300x103.jpg 300w" sizes="(max-width: 499px) 100vw, 499px" /></p>
-
-<p> </p>
-
-<p>예를 들어보자. 숫자 2개가 주어지고, 이 중 큰 수를 출력하는 프로그램을 만들고 싶다.</p>
-
-<p>입력 : 우리가 입력하는 숫자 2개</p>
-
-<p>출력 : 큰 수</p>
-
-<p>입력에서 출력을 구하는 방법(알고리즘)을 파이썬으로 구현하면 다음과 같이 할 수도 있을 것이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">number1</span><span class="p">,</span> <span class="n">number2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"두 개의 숫자를 입력하세요: "</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c">#input() 함수로 사용자로부터 입력받기. split()함수로 공백을 기준으로 분리</span>
-
-<span class="n">number1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">number1</span><span class="p">)</span><span class="c"># input함수는 문자열 입력 함수이므로 숫자로 변환</span>
-<span class="n">number2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">number2</span><span class="p">)</span><span class="c"># input함수는 문자열 입력 함수이므로 숫자로 변환</span>
-
-<span class="k">if</span><span class="p">(</span><span class="n">number1</span><span class="o">&gt;</span> <span class="n">number2</span><span class="p">):</span> <span class="c"># number1이 number2보다 크면</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">number1</span><span class="p">)</span> <span class="c"># number1 출력</span>
-<span class="k">else</span><span class="p">:</span> <span class="c"># 아니면</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">number2</span><span class="p">)</span> <span class="c"># number2 출력</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>아니면 다음과 같은 방법도 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">a</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">b</span>
-
-<span class="p">[</span><span class="n">number1</span><span class="p">,</span> <span class="n">number2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"두 개의 숫자를 입력하세요: "</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span> <span class="c">#input() 함수로 사용자로부터 입력받기. split()함수로 공백을 기준으로 분리</span>
-<span class="n">number1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">number1</span><span class="p">)</span> <span class="c"># input함수는 문자열 입력 함수이므로 숫자로 변환</span>
-<span class="n">number2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">number2</span><span class="p">)</span> <span class="c"># input함수는 문자열 입력 함수이므로 숫자로 변환</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="n">number1</span><span class="p">,</span> <span class="n">number2</span><span class="p">)</span> <span class="c"># calc 함수가 반환하는 값 result에 저장</span>
-<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>이번 경우에는 함수를 사용했다.</p>
-
-<p>아무튼 주어진 ‘입력’에 대해 원하는 ‘출력’을 얻기 위한 문제를 해결하는 방법인 ‘알고리즘’에는 여러가지 방법이 있다.</p>
-
-<p>사실 위와 같은 문제들은 일반적으로 프로그래밍 언어를 배울 때 나올 법한 예제들이다. 그런데 알고리즘이라는 학문으로 따로 존재하는 이유가 있다.</p>
-
-<ol>
-  <li>널리 알려진 대표적인 알고리즘을 체계화하여 익혀두면 응용하여 좋은 알고리즘을 짤 가능성이 높아진다.</li>
-  <li>시간 복잡도와 공간 복잡도의 관점에서 알고리즘에 접근하여 컴퓨터 자원의 사용을 최소화 시킬 수 있다.</li>
-</ol>
-
-<p>대부분의 책에서 가장 먼저 소개되는 알고리즘인 1부터 n까지의 합을 구하는 경우를 생각해보자. 고등학교까지의 수학과정을 마쳤다면 이미 답을 구하는 과정을 알고 있을 것이고, 단지 조금의 생각을 통하여 코드로 표현하면 된다. 특별할 것이 없다.</p>
-
-<p>다른 알고리즘들도 마찬가지다. 시간만 충분히 주어지면 결국에는 우리가 만들어낼 수 있는 알고리즘들이다. 하지만 대표적인 알고리즘들을 체계적으로 정리하여 익히고 코드로 표현하는 법을 정리해 두는 것은 이후에 프로그래밍을 할 때 응용하여 코드의 효율성을 높이고 컴퓨터 자원의 활용을 최소화 하기 위함이다.</p>
 
   </div>
   

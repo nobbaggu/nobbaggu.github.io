@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,405 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/22/20-built-in-function/">
+        20. 파이썬의 유용한 내장함수들
+      </a>
+    </h1>
+
+    <span class="post-date">22 Sep 2018</span>
+
+    <p>라이브러리를 잘 활용하는 것은 프로그래밍에 있어 매우 중요하다. 직접 코딩하여 만들고 사용하기보다는 이미 수없이 최적화 검증이 된 라이브러리를 활용하면 시간, 메모리관리, 프로그램 작동 면에서 효율적이다. 그 중에서 파이썬을 설치하면 자동으로 따라오는 내장함수들은 이미 라이브러리 패쓰 리스트에 포함되어있어 import 없이 사용할 수 있다. 오늘은 자주 활용되고 유용한 몇 가지 내장함수에 대해 설명한다.</p>
+
+<p><span style="font-size: 14pt;"><strong>1) abs()</strong></span></p>
+
+<p>절대값을 리턴해준다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c"># 10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c"># 7</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>2) all()</strong></span></p>
+
+<p>반복 가능한 자료형(for문에서 값을 출력할 수 있는 자료형)을 입력 인수로 받아 모두 참이면 True, 거짓이 하나라도 있으면 False를 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s">'a'</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="s">''</span><span class="p">]</span> <span class="c"># 공백 문자열</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,()]</span> <span class="c"># 공백 튜플</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="c"># 0은 숫자형의 False</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="c"># False</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>3) any()</strong></span></p>
+
+<p>하나라도 ‘참’이면 True를, 모두 ‘거짓’이면 False를 리턴한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">''</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[(),[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="s">'hello'</span><span class="p">]</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s">''</span><span class="p">,()]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="c"># False</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>4) chr()</strong></span></p>
+
+<p>입력 인수로 ASCII CODE값을 받아 해당 하는 문자력 출력해준다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span> <span class="c"># ''</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span> <span class="c"># ''</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="c"># '2'</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">70</span><span class="p">))</span> <span class="c"># 'F'</span>
+</code></pre></div></div>
+
+<p>ASCII(American Standard Code for Information Interchange)통신에서 문자열 전송을 위해 국제적으로 약속된 정보교환 규격이다. 통신상에서 디지털 신호를 보내면 해당하는 문자열을 출력해준다. 참고로 우리 모니터에 숫자 2가 뜨게하려면 디지털 값 50(110010)을 전송해야 한다. 전송할 때는 2진수 형태로 전송을 한다.</p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>5) dir()</strong></span></p>
+
+<p>객체, 모듈이 자체지원하는 함수, 메소드를 보여준다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">tuple</span><span class="p">))</span> <span class="c"># ['__add__', '__class__', '__contains__', ...]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span> <span class="c"># ['__abs__', '__add__', '__and__', '__bool__',...]</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>6) divmod()</strong></span></p>
+
+<p>2개의 숫자를 입력인수로 받아 몫과 나머지를 튜플 형태로 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c"># (2,2)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>7) enumerate()</strong></span></p>
+
+<p>순서가 있는 자료형을 입력인수로 받아 index, 해당index 값 을 객체로 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">,</span><span class="s">'d'</span><span class="p">]):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>0 a</p>
+
+<p>1 b</p>
+
+<p>2 c</p>
+
+<p>3 d</p>
+
+<p>주의할 건 enumerate가 리턴하는 것은 하나의 객체이기 때문에 객체 자체를 출력하면 객체가 저장된 메모리공간의 주소값이 출력된다. 위 처럼 for문 내에서 enumerate 함수를 사용하면 리스트, 튜플 등 자료형의 index와 내용을 헷갈리지 않고 쉽게 파악 가능하다.</p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>8) eval()</strong></span></p>
+
+<p>문자열을 실행 가능한 코드 형태로 변환해준다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'1+1'</span><span class="p">)</span> <span class="c"># '1+1'</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'len([1,2,3])'</span><span class="p">)</span> <span class="c"># len([1,2,3])</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="s">'1+1'</span><span class="p">))</span> <span class="c"># '2'</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="s">'len([1,2,3])'</span><span class="p">))</span> <span class="c"># '3'</span>
+</code></pre></div></div>
+
+<p>외부에서 문자열 형태로 전송된 실행코드를 eval함수를 통해 바로 실행이 가능하다.</p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>9) filter()</strong></span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">returnNum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span>
+
+<span class="n">numList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">returnNum</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="s">'a'</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">'hi'</span><span class="p">,</span><span class="mi">5</span><span class="p">,(</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">)]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numList</span><span class="p">)</span> <span class="c"># [1,2,3,5]</span>
+</code></pre></div></div>
+
+<p>returnNum 이라는 함수는 변수를 판별해 숫자 자료형이면 리턴시켜주고 아니면 함수를 벗어난다.</p>
+
+<p>filter 는 첫 번째 인수로 함수의 이름을 넣어주면 두 번째 인수로 들어온 반복 가능한 자료형들의 요소를 하나씩 해당함수에 집어넣어 결과를 돌려준다. filter함수를 쓰지 않으면 애초에 returnNum 함수의 입력인수가 리스트나 튜플 형태가 되게 정의해야 하지만 단순히 변수 하나만 입력인수로 받을 수 있게 되었다. 하지만 객체 형태로 돌려주기 때문에 list() 를 써서 list 형태로 형 변환을 시키고 출력했다.</p>
+
+<p><span style="font-size: 14pt;"><strong>10) hex()</strong></span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="mi">0</span><span class="n">b1101110</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>정수를 입력받아 16진수 형태로 되돌려준다. 참고로 2진수를 표현하기 위해 앞에 0b를 붙이고 16진수를 표현하기위해 앞에 0x를 붙인다.</p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>11) id()</strong></span></p>
+
+<p>객체를 입력받아 고유주소값 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c"># 1754020128</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="nb">sum</span><span class="p">))</span> <span class="c"># 2951256</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">Person</span><span class="p">))</span> <span class="c"># 5706720</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>12) input()</strong></span></p>
+
+<p>사용자로부터 입력을 받아 문자열 형태로 출력</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Type anything!"</span><span class="p">)</span> <span class="c"># hi + enter</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c"># 'hi'</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>13) int()</strong></span></p>
+
+<p>문자열 형태로 있는 숫자나 실수를 정수로 변환하여 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">3.141592</span><span class="p">))</span> <span class="c"># 3</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s">'10'</span><span class="p">))</span> <span class="c"># 10</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>14) isinstance()</strong></span></p>
+
+<p>첫 번째 입력인수로 인스턴스, 두 번째 입력인수로 클래스를 입력받아 인스턴스가 해당 클래스의 인스턴스인지 판단하여 ‘참’이면 True ‘거짓’이면 False를 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">Person</span><span class="p">))</span> <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">Dog</span><span class="p">))</span> <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">Person</span><span class="p">))</span> <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">Dog</span><span class="p">))</span> <span class="c"># True</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>15) len()</strong></span></p>
+
+<p>문자열, 튜플, 리스트 등을 입력받아 길이(요소의 갯수) 반환</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"hello"</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c"># 5</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="c"># 5</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>16) list()</strong></span></p>
+
+<p>반복 가능한 형태의 자료형을 리스트 형태로 변환하여 반환</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)))</span> <span class="c"># [1,2,3,4,5]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s">"hello"</span><span class="p">))</span> <span class="c"># ['h','e','l','l','o']</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>17) map()</strong></span></p>
+
+<p>첫 번째 입력인수로 받은 함수에 두 번째 입력인수로 받은 반복 가능한 자료형의 요소를 하나하나 대입해 결과를 묶어서 리턴시켜준다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">double</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])))</span> <span class="c"># [2,4,6,8,10]</span>
+</code></pre></div></div>
+
+<p>map 함수의 리턴 결과는 객체 형태라 그냥 출력하면 메모리공간의 주소값이 나오기때문에 list() 함수로 형 변환을 해주어야한다.</p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>18) max()</strong></span></p>
+
+<p>반복가능한 자료형 요소들 중 최대값을 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">22</span><span class="p">]))</span> <span class="c"># 41</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="s">"python"</span><span class="p">))</span> <span class="c"># 'y'</span>
+</code></pre></div></div>
+
+<p>두 번째 결과가 ‘y’ 인 이유는 y의 ASCII CODE 가 가장 크기 때문이다.</p>
+
+<p><span style="font-size: 14pt;"><strong>19) min()</strong></span></p>
+
+<p>반복가능한 자료형 요소들 중 최소값을 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">min</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">22</span><span class="p">]))</span> <span class="c"># 1</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="s">"python"</span><span class="p">))</span> <span class="c"># 'h'</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>20) open()</strong></span></p>
+
+<p>첫 번째 입력인수로 파일명, 두 번째 입력인수로 읽기 모드를 받아 파일을 열어 객체를 변수에 저장</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"doitpython.txt"</span><span class="p">,</span><span class="s">'r'</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"doitpython.txt"</span><span class="p">)</span> <span class="c"># 읽기 모드 생략되면 default로 'r' 읽기모드</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>21) ord()</strong></span></p>
+
+<p>입력받은 문자열의 아스키 코드 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s">'a'</span><span class="p">))</span> <span class="c"># 97</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s">'@'</span><span class="p">))</span> <span class="c"># 64</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s">';'</span><span class="p">))</span> <span class="c"># 59</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>22) pow()</strong></span></p>
+
+<p>‘첫 번째 입력인수’ 의 ‘두 번째 입력인수’ 승수한 값을 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c"># 2^3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c"># 10^2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c"># 8</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c"># 100</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>23) range()</strong></span></p>
+
+<p>숫자를 입력받아 범위를 반복가능한 객체형태로 리턴</p>
+
+<ul>
+  <li>입력인수 1개</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c"># [0,1,2,3,4]</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>입력인수 2개</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="c"># [3,4,5,6]</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>입력인수 3개</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c"># 1이상, 10미만의 수를 2 간격으로</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="c"># [1,3,5,7,9]</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>24) sorted()</strong></span></p>
+
+<p>반복 가능한 자료형을 크기순으로 재정렬하여 <strong>‘리스트’</strong> 형태로 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s">"python"</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c"># [1,2,3,4]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="c"># ['h','n','o','p','t','y']</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="c"># [1,3,8,10]</span>
+</code></pre></div></div>
+
+<p>list 자료형의 내장함수 sort() 도 있었다. 하지만 sort() 함수는 리스트를 재정렬 하고 끝이다. 그 결과를 리턴하지 않는다. 필요에 따라 sort()와 sorted()를 적절히 구별하여 사용하면 된다.</p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>25) str()</strong></span></p>
+
+<p>입력받은 객체를 문자열 형태로 변환하여 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="c"># '100'</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>26) tuple()</strong></span></p>
+
+<p>반복가능한 자료형을 입력받아 튜플 자료형으로 변환하여 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span> <span class="c"># (1,2,3)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">tuple</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}))</span> <span class="c"># (1,2,3)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="s">"hello"</span><span class="p">))</span> <span class="c"># ('h','e','l','l','o')</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>27) type()</strong></span></p>
+
+<p>입력인수로 받은 객체의 자료형을 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c"># &lt;class 'int'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s">'a'</span><span class="p">))</span> <span class="c"># &lt;class 'str'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span> <span class="c"># &lt;class 'list'&gt;</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>28) zip()</strong></span></p>
+
+<p>같은 갯수를 가진 여러개의 반복가능 자료형의 요소를 같은 index끼리 묶어 리턴</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">],[</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">])))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">],[</span><span class="s">'A'</span><span class="p">,</span><span class="s">'B'</span><span class="p">,</span><span class="s">'C'</span><span class="p">])))</span>
+</code></pre></div></div>
+
+<p>[(1, 11, 21), (2, 12, 22), (3, 13, 23)]</p>
+
+<p>[(‘a’, ‘A’), (‘b’, ‘B’), (‘c’, ‘C’)]</p>
+
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11189,250 +11632,6 @@
 <span class="n">__mul__</span> <span class="c"># *</span>
 <span class="n">__truediv__</span> <span class="c"># /</span>
 </code></pre></div></div>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/21/15-class/">
-        15. 클래스
-      </a>
-    </h1>
-
-    <span class="post-date">21 Sep 2018</span>
-
-    <h1 id="1-클래스의-필요성">1. 클래스의 필요성</h1>
-
-<hr />
-
-<p>최근 프로그래밍 언어들의 특징은 객체지향을 등에 업고 나온다는 것이다. C언어처럼 철저히 절차지향적인 언어 이외에는 대부분의 프로그래밍 언어들이 객체지향을 지원한다. 객체지향의 최대 강점은 재사용성이다. 변수, 함수 등을 포함하는 클래스를 한 번 만들어 놓으면 클래스와 같은 구조의 함수를 쉽게 여러개 찍어내어 사용할 수 있다.</p>
-
-<p>가령 여러개의 독립적인 계산기가 필요한 경우를 생각해보자.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result1</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">def</span> <span class="nf">cal1</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">result1</span> <span class="c"># 글로벌 변수 result1을 가져다 쓰겠다는 선언</span>
-    <span class="n">result1</span> <span class="o">+=</span> <span class="n">num</span> <span class="c"># result1에 cal1함수의 입력인수 num 더하기</span>
-    <span class="k">return</span> <span class="n">result1</span>
-
-<span class="k">def</span> <span class="nf">cal2</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">result2</span>
-    <span class="n">result2</span> <span class="o">+=</span> <span class="n">num</span>
-    <span class="k">return</span> <span class="n">result2</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">cal1</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c"># 5</span>
-<span class="k">print</span><span class="p">(</span><span class="n">cal1</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c"># 15</span>
-<span class="k">print</span><span class="p">(</span><span class="n">cal2</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span> <span class="c"># 7</span>
-<span class="k">print</span><span class="p">(</span><span class="n">cal2</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c"># 17</span>
-</code></pre></div></div>
-
-<p>새로운 수를 더해줄 때 마다 최종결과가 메모리에 저장되고 다음에 입력하는 수를 기존의 결과에 더하는 계산기이다. 위 처럼 계산기가 2개 필요한 경우 글로벌 변수도 2개, 함수도 2개 정의해 주어야한다. 하지만 계산기의 수가 10개, 100개 처럼 많아져야 한다면 매우 수고롭고 더러운 코드가 될 것이다. 이럴 때 사용할 수 있는것이 클래스이다.</p>
-
-<p>클래스에 대해 알아보기 전 맛보기로 개념을 파악하기 위해 다음 코드를 보자.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Cal</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">def</span> <span class="nf">adder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">+=</span> <span class="n">num</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span>
-
-<span class="n">cal1</span> <span class="o">=</span> <span class="n">Cal</span><span class="p">()</span>
-<span class="n">cal2</span> <span class="o">=</span> <span class="n">Cal</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">cal1</span><span class="o">.</span><span class="n">adder</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">cal1</span><span class="o">.</span><span class="n">adder</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">cal2</span><span class="o">.</span><span class="n">adder</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">cal2</span><span class="o">.</span><span class="n">adder</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>위 코드는 필요한 구조의 변수와 함수를 하나의 클래스로 만들어놓은 다음 클래스 타입의 함수 cal1과 cal2를 만들어 사용한다. 이처럼 클래스를 사용하면 구조적으로 동일한 여러개의 함수를 클래스를 사용해 여러 개 쉽게 찍어낼 수 있다. 클래스는 하나의 틀이다. 클래스로 찍어낸 객체 하나하나를 특별히 인스턴스(instance)라 부른다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-클래스의-개념과-구조">2. 클래스의 개념과 구조</h1>
-
-<hr />
-
-<p>1) 기본 개념</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="n">age</span> <span class="o">=</span> <span class="bp">None</span>
-
-<span class="n">per1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
-
-<span class="n">per2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
-<span class="n">per2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"Sara"</span>
-<span class="n">per2</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">31</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"person 1 : </span><span class="si">%</span><span class="s">s, </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="p">(</span><span class="n">per1</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per1</span><span class="o">.</span><span class="n">age</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"person 2 : </span><span class="si">%</span><span class="s">s, </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="p">(</span><span class="n">per2</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per2</span><span class="o">.</span><span class="n">age</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>위에서는 Person이라는 클래스를 만들고, 내부에 이름과 나이 두 가지를 변수로 선언했다. 그리고 per1과 per2라는 인스턴스 2 개를 Person 클래스로 생성하고, 이름과 나이 정보를 입력해주었다. 만약 클래스를 사용하지 않았다면 각 사람마다 이름과 나이를 위한 변수를 각각 선언해 주어야한다. 지금은 그나마 사람이 2명이지, 만약 국가정보원에서 국민의 정보를 데이터베이스화 시켜 관리한다면 클래스 없이는 도저히 불가능할 것이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-클래스-함수와-self">3. 클래스 함수와 self</h1>
-
-<hr />
-
-<p>위의 코드를 확장해보겠다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="n">age</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="k">def</span> <span class="nf">loan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">money</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"You borrowed </span><span class="si">%</span><span class="s">d won"</span> <span class="o">%</span><span class="n">money</span><span class="p">)</span>
-
-<span class="n">per1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">22</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">loan</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="c"># per1이 클래스의 loan 함수를 호출</span>
-<span class="n">Person</span><span class="o">.</span><span class="n">loan</span><span class="p">(</span><span class="n">per1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span> <span class="c"># per1.loan(1000)과 같은 의미</span>
-</code></pre></div></div>
-
-<p>먼저, <strong>클래스 내부 함수의 첫 번째 인수는 무조건 self 이다.</strong> self는 어떠한 객체가 이 함수를 호출할 때 이 클래스의 인스턴스인지 판단을 하기위해 사용한다. 위 코드의 클래스 내부에있는 loan 함수는 돈을 입력하면 빌려주는 대출 서비스함수라고 하자.</p>
-
-<p>위의 per1.loan(1000) 을 통해서 1000원 대출 신청을 하면 loan 함수의 첫 번째 인수인 self에 자동으로 per1이 대입이 되어 이 클래스의 인스턴스인지 판단을 하여 클래스의 인스턴스면 실행을 해준다. 이렇듯 함수를 호출할 때에 첫 번째 인수인 self는 무시하면 된다. 실제로 Person.loan(per1,1000) 처럼 클래스 자체를 통해서 함수를 호출하면서 self에 per1을 넣어주는 것과 동일하다.</p>
-
-<p>정리를 하자면 다음과 같다.</p>
-
-<p><strong>클래스 내부에 함수를 선언할 때에는 첫 번째 인수로 무조건 self를 넣어주어야 한다. 하지만 클래스의 인스턴스를 만들어 함수를 호출하여 사용할 때에는 첫 번째 입력인수인 self에 자동으로 인스턴스의 이름이 대입이 되어 클래스의 인스턴스인지 확인을 한다. 따라서 self는 없는 것 처럼 사용해도 된다.</strong></p>
-
-<p>한 가지 말해주고 싶은게 있다. <strong>클래스 내부의 함수를 특별히 ‘메소드(method)’라고 부른다.</strong></p>
-
-<p>조금 더 자세하게 알아보기 위해 메소드를 하나 더 추가했다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">getcredit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">credit</span> <span class="o">=</span> <span class="n">score</span>
-
-    <span class="k">def</span> <span class="nf">loan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">money</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">credit</span> <span class="o">&lt;=</span><span class="mi">3</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"You borrowed </span><span class="si">%</span><span class="s">d won"</span> <span class="o">%</span><span class="n">money</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"You cannot borrow money"</span><span class="p">)</span>
-
-<span class="n">per1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">getcredit</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">loan</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>위에서는 인스턴스의 신용정보를 저장하기 위해 getcredit이라는 메소드로 신용점수(score)를 입력받아 저장한다. 위의 코드에서 per1.getcredit(7) 이라는 명령을 실행하면 다음의 과정이 이루어진다. getcredit 메소드의 self에 per1이 대입이 되고 self.credit = score는 per1.credit = score 로 자동으로 바뀐다. 따라서 이후에 per1이라는 인스턴스 명으로 클래스에 접근했을 때에는 per1이라는 사람의 신용등급이 7이라는 기존에 저장된 정보를 알 수 있다. 이처럼 <strong>self는 클래스의 서로 다른 인스턴스를 구분하기 위해 쓰이는 것이다. 그리고 특정한 인스턴스로 클래스 메소드에 접근하면 메소드의 첫 번째 인수인 self에는 자동으로 인스턴스 이름이 대입이 된다.</strong></p>
-
-<p>같은 클래스의 메소드라도 인스턴스마다 각각의 변수나 메소드의 내부 값은 다르게 설정할 것이다. 그렇기 때문에 메소드는 서로 다른 인스턴스를 구분할 수 있어야한다. self에 각각의 인스턴스 명이 대입이 되기때문에 인스턴스 마다의 구분이 가능한 것이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="4-클래스-함수와-__init__">4. 클래스 함수와 __init__</h1>
-
-<hr />
-
-<p>위에서 설명한 코드에서 어떤 사람이 대출을 하기 위해 메소드를 실행한다고 해보자.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">per1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">loan</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>위의 코드를 실행하면 오류가 난다. loan 메소드에서는 신용등급을 확인하여 돈을 빌려줄 지 말지를 결정하는데, 신용등급을 입력해주지 않았기 때문이다. 애초에 인스턴스를 만들 때, 신용도를 입력해야만 인스턴스가 만들어지도록 해놓으면 괜히 잘못된 사용으로 오류가 나는 것을 막을 수 있을 것이다. 이 때 사용하는 것이 __init__이다.</p>
-
-<p>위에서 설명한 코드를 조금 수정해보겠다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">credit</span> <span class="o">=</span> <span class="n">score</span>
-
-    <span class="k">def</span> <span class="nf">loan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">money</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">credit</span> <span class="o">&lt;=</span><span class="mi">3</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"You borrowed </span><span class="si">%</span><span class="s">d won"</span> <span class="o">%</span><span class="n">money</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"You cannot borrow money"</span><span class="p">)</span>
-
-<span class="n">per1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">loan</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>기존의 getcredit 메소드의 이름 대신에 __init__ 을 넣었다. 이렇게 <strong>__init__으로 설정을 해놓으면 인스턴스를 만들 때 per1 = Person(2) 처럼 클래스 명 옆의 괄호 안에 __init__의 입력 인수를 넣지 않으면 인스턴스가 만들어지지 않는다.</strong> 물론 self에는 per1 이라는 인스턴스명이 자동으로 대입이 되니까 문제없다.</p>
-
-<p>아무튼 <strong>__init__은 인스턴스를 만들기 위해 필수적으로 초기화가 되어야 하는 변수를 설정하기 위해 사용한다.</strong></p>
-
-<p>위의 코드에서 기존에 대출실행을 하기위한 코드는 다음과 같았다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">per1</span><span class="o">.</span><span class="n">Person</span><span class="p">()</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">getcredit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">loan</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>그러나 __init__ 으로 인해 다음과 같이 해야만 인스턴스가 만들어진다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">per1</span><span class="o">.</span><span class="n">Person</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">per1</span><span class="o">.</span><span class="n">loan</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="5-클래스를-활용한-사칙연산-계산기">5. 클래스를 활용한 사칙연산 계산기</h1>
-
-<hr />
-
-<p> </p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Cal</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num1</span><span class="p">,</span><span class="n">num2</span><span class="p">):</span> <span class="c"># 입력인수 2개 필수로 받아야 인스턴스 생성 가능</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">num1</span> <span class="c"># 첫 번째 수에 인수 num1 대입</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="n">num2</span> <span class="c"># 두 번째 수에 인수 num2 대입</span>
-
-    <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">second</span> <span class="c"># 두 인수의 합</span>
-
-    <span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">second</span> <span class="c"># 두 인수의 차</span>
-
-    <span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">second</span> <span class="c"># 두 인수의 곱</span>
-
-    <span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">second</span> <span class="c"># 두 인수의 나누기</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="n">Cal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c"># 인스턴스 a의 인수를 (10,5)로 설정</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">Cal</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c"># 인스턴스 b의 인수를 (30,6)으로 설정</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="nb">sum</span><span class="p">())</span> <span class="c"># a의 sum 메소드 리턴값 출력</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sub</span><span class="p">())</span> <span class="c"># a의 sub 메소드 리턴값 출력</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mul</span><span class="p">())</span> <span class="c"># a의 mul 메소드 리턴값 출력</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">div</span><span class="p">())</span> <span class="c"># a의 div 메소드 리턴값 출력</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="nb">sum</span><span class="p">())</span> <span class="c"># b의 sum 메소드 리턴값 출력</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">sub</span><span class="p">())</span> <span class="c"># b의 sub 메소드 리턴값 출력</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">mul</span><span class="p">())</span> <span class="c"># b의 mul 메소드 리턴값 출력</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">div</span><span class="p">())</span> <span class="c"># b의 div 메소드 리턴값 출력</span>
-</code></pre></div></div>
-
-<p>위 코드의 주석을 보면서 천천히 이해해 보기를 바란다.</p>
-
-<p>먼저 __init__으로 숫자 2개를 받아야만 인스턴스 생성이 되도록 했다. 그리고 두 개의 변수에 두 개의 입력인수를 각각 저장했다.</p>
-
-<p>다음으로 4개의 메소드에서 2개의 변수를 불러와 각각의 연산을 수행 후 이를 리턴시킨다.</p>
-
-<p>마지막으로 a,b 각각의 인스턴스마다 4가지의 메소드 리턴값을 출력한다.</p>
-
-<p>이 때 다시 한 번 마음에 새겨야 할 건 클래스 내부의 메소드가 포함하는 입력인수 self와 변수 first, second가 단독으로 쓰이지 않고 self.first와 self.second로 선언되었기 때문에 인스턴스 a와 인스턴스 b가 각각의 서로 다른 변수 값을 가지고 다른 결과를 내어놓을 수 있는 것이다. 따라서 인스턴스 a와 인스턴스 b가 같은 구조의 클래스에 의해 만들어졌지만 서로 독립적인 저장공간과 값을 가지고 독립적으로 동작한다.</p>
 
   </div>
   

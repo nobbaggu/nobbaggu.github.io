@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,143 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/09/cpu/">
+        CPU
+      </a>
+    </h1>
+
+    <span class="post-date">09 Dec 2018</span>
+
+    <p>CPU(Central Processing Unit)은 중앙처리장치라고 불리며 각종 산술/논리의 연산(+,-,AND,XOR 등)과 그를 위한 장치의 제어 역할을 한다.</p>
+
+<p>CPU의 핵심 모듈은 <strong>산술/논리 연산 장치</strong>, <strong>레지스터</strong>, <strong>제어장치</strong>로 나뉠 수 있다.</p>
+
+<p> </p>
+
+<h1 id="1-register">1. Register</h1>
+
+<hr />
+
+<p>프로그램의 실행에 필요한 모든 데이터는 메인 메모리에 로드되어 있다. CPU에서는 필요한 데이터를 가져와 임시로 레지스터에 저장해두고 사용한다. 또한 CPU의 내부 상태를 저장하기 위한 용도로도 레지스터를 사용한다.</p>
+
+<p>레지스터에는 아주 많은 종류가 있는데, 그 중 핵심적인 레지스터의 용도는 다음과 같다.</p>
+
+<p> </p>
+
+<h3 id="1-pcprogram-counter">1) PC(Program Counter)</h3>
+
+<p>다음에 실행할 명령어의 주소를 기억</p>
+
+<p>###</p>
+
+<h3 id="2-irinstruction-register">2) IR(Instruction Register)</h3>
+
+<p>현재 실행중인 명렁어를 기억</p>
+
+<p> </p>
+
+<h3 id="3-marmemory-address-register">3) MAR(Memory Address Register)</h3>
+
+<p>메인 메모리 접근을 위한 주소를 기억</p>
+
+<p> </p>
+
+<h3 id="4-mbrmemory-buffer-register">4) MBR(Memory Buffer Register)</h3>
+
+<p>메인 메모리에서 읽기/쓰기 할 데이터를 기억</p>
+
+<p> </p>
+
+<h3 id="5-acaccumulator">5) AC(Accumulator)</h3>
+
+<p>연산 결과를 기억</p>
+
+<p> </p>
+
+<p><a href="https://SWnomad.com/cpu/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-188/" rel="attachment wp-att-1525"><img class="aligncenter wp-image-1525" src="/images/2018/12/no-name-33.jpg" alt="" width="467" height="344" srcset="/images/2018/12/no-name-33.jpg 716w, /images/2018/12/no-name-33-300x221.jpg 300w" sizes="(max-width: 467px) 100vw, 467px" /></a></p>
+
+<p>레지스터는 메인 메모리의 RAM 보다도 빠르다. 따라서 그 가격 또한 비싸다.</p>
+
+<p>실제로 C언어나 어셈블리어를 통하여 레지스터형 변수, 일반 변수를 사용해서 clock을 재면 결과가 다르게 나타난다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-alu">2. ALU</h1>
+
+<hr />
+
+<p>ALU(Arithmetic Logical Unit)은 CPU의 각종 산술연산, 논리연산을 담당한다.</p>
+
+<p> </p>
+
+<h3 id="1-산술-연산기">1) 산술 연산기</h3>
+
+<p>덧셈, 뺄셈, 곱셈, 나눗셈 등을 담당한다.</p>
+
+<p>이 모든 산술연산의 근본은 1비트 반가산기(half-adder)에서 시작한다.</p>
+
+<p><a href="https://SWnomad.com/cpu/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-189/" rel="attachment wp-att-1526"><img class="aligncenter wp-image-1526" src="/images/2018/12/no-name-34.jpg" alt="" width="438" height="162" srcset="/images/2018/12/no-name-34.jpg 578w, /images/2018/12/no-name-34-300x111.jpg 300w" sizes="(max-width: 438px) 100vw, 438px" /></a>위와 같은 1bit 반가산기를 연결하여 1bit 전가산기를 만들고, 이를 직렬 연결하여 4bit, 8bit 등의 가산기를 만드는 것이다. 그리고 가산기를 응용하여 감산기(뺄셈)를 만들 수 있고 곱셈, 나눗셈의 연산도 만들 수 있다.</p>
+
+<p> </p>
+
+<h3 id="2-논리-연산기">2) 논리 연산기</h3>
+
+<p>논리 연산은 비트 간의 연산이며, 앞에서 배운 논리 게이트들을 물리적으로 연결하여 만들 수 있다.</p>
+
+<p><a href="https://SWnomad.com/cpu/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-190/" rel="attachment wp-att-1527"><img class="aligncenter wp-image-1527" src="/images/2018/12/no-name-35.jpg" alt="" width="242" height="249" srcset="/images/2018/12/no-name-35.jpg 443w, /images/2018/12/no-name-35-291x300.jpg 291w" sizes="(max-width: 242px) 100vw, 242px" /></a></p>
+
+<p>논리 연산은 산술 연산보다 속도가 월등히 빠르다.</p>
+
+<p>가령 *2 연산 같은 경우, 산술 연산을 이용하기보다는 « 연산자를 사용해서 모든 bit를 왼쪽으로 1칸씩 이동시키는 것이 빠르다.</p>
+
+<p> </p>
+
+<h3 id="3-alu-내부-레지스터">3) ALU 내부 레지스터</h3>
+
+<p>ALU는 연산기 뿐만 아니라 산술 연산을 하다가 bit수를 넘어서는 연산이 일어났을 때 overflow를 알리는 flag를 띄우거나 계산의 중간값을 임시적으로 저장하는 레지스트 등도 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-control-unit">3. Control Unit</h1>
+
+<hr />
+
+<p>PC가 가르키는 주소의 명령어를 읽어서 해독하고 실행을 위한 제어 신호들을 다른 디바이스로 전달하는 역할을 한다. CPU의 모든 모듈을 제어하는 대장격 디바이스. ALU에 연산 명령, 메인 메모리에 읽기/쓰기 명령 등은 모두 CU에서 내린다.</p>
+
+<p>PC에 의한 명령어 실행 cycle은 아래와 같다.</p>
+
+<h3 id="1-fetch--명령어-인출">1) fetch : 명령어 인출</h3>
+
+<p>PC 레지스터의 주소를 참조하여 메인 메모리로부터 실행할 명령어를 읽어온다</p>
+
+<p> </p>
+
+<h3 id="2-decode--명령어-해독">2) decode : 명령어 해독</h3>
+
+<p>인출된 명령어를 해독</p>
+
+<p> </p>
+
+<h3 id="3-execute--명령어-실행">3) execute : 명령어 실행</h3>
+
+<p>decode 결과에 따라 실행을 하기 위한 신호를 control bus를 통해서 다른 장치로 전송</p>
+
+<p> </p>
+
+<p><a href="https://SWnomad.com/cpu/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-191/" rel="attachment wp-att-1529"><img class="aligncenter  wp-image-1529" src="/images/2018/12/no-name-36.jpg" alt="" width="266" height="226" srcset="/images/2018/12/no-name-36.jpg 320w, /images/2018/12/no-name-36-300x255.jpg 300w" sizes="(max-width: 266px) 100vw, 266px" /></a></p>
+
+<p> </p>
+
+<p> </p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10927,273 +11108,6 @@
 <hr />
 
 <p><a href="https://SWnomad.com/sr-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-175/" rel="attachment wp-att-1499"><img class="aligncenter size-full wp-image-1499" src="/images/2018/12/no-name-20.jpg" alt="" width="1146" height="264" srcset="/images/2018/12/no-name-20.jpg 1146w, /images/2018/12/no-name-20-300x69.jpg 300w, /images/2018/12/no-name-20-768x177.jpg 768w, /images/2018/12/no-name-20-1024x236.jpg 1024w" sizes="(max-width: 1146px) 100vw, 1146px" /></a></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/08/sequential-logic-circuit/">
-        순차 논리회로와 SR래치
-      </a>
-    </h1>
-
-    <span class="post-date">08 Dec 2018</span>
-
-    <h1 id="1조합논리회로">1. 조합 논리회로</h1>
-
-<hr class="wp-block-separator" />
-
-<p>오직 ‘입력’ 만이 ‘출력’을 결정. 같은 입력이 들어오는 이상 같은 출력. 따라서 기억소자(메모리)로 사용할 수 없다.    </p>
-
-<h1 id="2순차논리회로">2. 순차 논리회로</h1>
-
-<hr class="wp-block-separator" />
-
-<p>‘입력’ + ‘회로의 상태’가 ‘출력’을 결정. 같은 입력이 들어오더라도 회로의 현재 bit 상태(기억)에 따라 다른 ‘출력’ 순차 논리회로는 메모리 소자이며, 플립플롭(flip-flop)을 이용한다. 플립플롭에는 SR 플립플롭, JK 플립플롭, D 플립플롭 등 여러가지가 있다. 플립플롭에 대해 알아보기 전에 오늘은 SR래치에 대해 알아본다.    </p>
-
-<h1 id="3srlatch">3. SR Latch</h1>
-
-<hr class="wp-block-separator" />
-
-<p>비트(bit)의 정보를 저장할 수 있는 소자이다. SR Latch 1개는 1bit 정보를 저장할 수 있다. 따라서 메모리 소자로 사용 가능하다.</p>
-
-<div class="wp-block-image">
-  <figure class="aligncenter is-resized"><img class="wp-image-1484 aligncenter" src="/images/2018/12/1.jpg" alt="" width="240" height="191" /></figure>
-</div>
-<p>래치의 출력 Q를 Set 혹은 Reset 한다는 의미에서 SR Latch라고 이름 지어졌다. Q’는 Q와 다른 값을 가지는 값이다. 회로를 보면 연산의 결과, 즉 출력이 다시 입력으로 피드백되어 입력값과 NOR 연산을 진행하여 다시 출력으로 내보낸다. 이것을 고려하여 SR Latch의 입력에 따른 결과를 계산해보자. 초기 상태를 S=0, R=0, Q=0, Q’=1 이라고 해보자. NOR게이트의 연산을 유념하여 계산을 해보면 안정적으로 이 값이 계속 유지된다. 입력을 S=1, R=0으로 바꿔본다.  S=1로 변하면 현재 Q의 출력 0과의 NOR연산으로 Q’=0이 된다. 또한 현재 Q’의 출력 1과 R=0의 NOR연산의 결과로 Q=0이 된다. Q와 Q’의 값이 같기 때문에 아직 불안정(unstable)한 상태이다. 다시 S=1, Q=0과의 NOR 연산으로 Q’=0, R=0과 Q’=0과의 연산으로 Q=1로 된다. 이 상태는 Q와 Q’의 상태가 서로 반대이며 안정(stable)하다. S=1, R=0은 Latch를 set 하는 것으로, Q=1의 결과를 만들어낸다. 반대로 S=0, R=1 입력은 Latch를 Reset하는 것으로, Q=0으로 clear한다. S와 R 모두 0인 입력은 단순히 회로의 현재 상태를 읽는다(Read). 입력에 따른 출력의 경과를 테이블로 정리하면 다음과 같다.</p>
-
-<table style="border-collapse: collapse; width: 37.0909%; height: 192px;" border="1">
-  <tr style="height: 24px;">
-    <td style="width: 6.78788%; height: 24px; text-align: center;">
-      <strong>S</strong>
-    </td>
-    
-    <td style="width: 6.78786%; height: 24px; text-align: center;">
-      <strong>R</strong>
-    </td>
-    
-    <td style="width: 6.4242%; height: 24px; text-align: center;">
-      <strong>Q</strong>
-    </td>
-    
-    <td style="width: 6.54545%; height: 24px; text-align: center;">
-      <strong>Q&#8217;</strong>
-    </td>
-    
-    <td style="width: 10.5454%; height: 24px; text-align: center;">
-      <strong>stability</strong>
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 6.78788%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.78786%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.4242%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.54545%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 10.5454%; height: 24px; text-align: center;">
-      stable
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 6.78788%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 6.78786%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.4242%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.54545%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 10.5454%; height: 24px; text-align: center;">
-      unstable
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 6.78788%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 6.78786%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.4242%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 6.54545%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 10.5454%; height: 24px; text-align: center;">
-      stable
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 6.78788%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.78786%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.4242%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 6.54545%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 10.5454%; height: 24px; text-align: center;">
-      stable
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 6.78788%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.78786%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 6.4242%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.54545%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 10.5454%; height: 24px; text-align: center;">
-      unstable
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 6.78788%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.78786%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 6.4242%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.54545%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 10.5454%; height: 24px; text-align: center;">
-      stable
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 6.78788%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.78786%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.4242%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 6.54545%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 10.5454%; height: 24px; text-align: center;">
-      stable
-    </td>
-  </tr>
-</table>
-<p>SR Latch는 입력이 들어오면 현재 입력에 맞는 안정한 상태로 수렴할 때 까지 몇 번의 동작 이후 안정한 상태를 유지하며 현재의 정보를 기억한다. 즉, 이것이 메모리이다. 참고로 S=1, R=1은 Q와 Q’이 동일한 값을 가지게 하며 이를 부정 상태라고 한다. 이러한 입력을 SR 래치에서는 사용하지 않는다. SR래치의 특성표는 다음과 같다.</p>
-
-<table style="border-collapse: collapse; width: 22.5455%; height: 120px;" border="1">
-  <tr style="height: 24px;">
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      <strong>S</strong>
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      <strong>R</strong>
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      <strong>Q(t+1)</strong>
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      Q(t)
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      1
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 2.73973%; height: 24px; text-align: center;">
-      부정
-    </td>
-  </tr>
-</table>
-<p>Latch를 Enable/Disable 시킬 수 있는 pin을 하나 더 달아서 E=1이면 래치가 동작, E=0이면 래치가 비활성화 되어 어떠한 입력이 들어와도 현재의 상태를 유지할 수 있도록 할 수 있다.</p>
-
-<div class="wp-block-image">
-  <figure class="aligncenter"><img class="wp-image-1488 aligncenter" src="/images/2018/12/2.jpg" alt="" /><figcaption></figcaption></figure>
-</div>
-<p>위 그림에서 E=0이면 항상 입력으로 S=0, R=0이 들어가는 것과 같은 효과를 내고, 이는 위에서 설명한 바에 의하면 상태를 변화시키지 않고 유지시킨다. 반대로 E=1이면 기존의 SR래치와 같다. 플립플롭을 배울 때에는 Enable pin에 clock source를 달아서 주기적으로 동작하는 소자를 만들 수 있다.</p>
 
   </div>
   

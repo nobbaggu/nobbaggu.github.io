@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,200 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/04/29/activity/">
+        15. 액티비티(Activity)
+      </a>
+    </h1>
+
+    <span class="post-date">29 Apr 2019</span>
+
+    <p>안드로이드 애플리케이션에는 4대 기본 구성요소가 있다.</p>
+
+<p><img src="/images/android/15/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p>앱을 안드로이드 디바이스에 설치하면 시스템은 위 4대 구성요소에 대한 정보를 요구하며, 앱은 이들에 대한 정보를 AndroidManifest.xml 파일에 가지고 있다.</p>
+
+<p>액티비티는 안드로이드의 4대 컴포넌트 중 하나인 만큼 액티비티의 구성과 동작에 대해 이해하는 것은 매우 중요하다.</p>
+
+<p>안드로이드 애플리케이션에서 하나의 화면은 하나의 액티비티라고 할 수 있다. 화면을 전환하는 행위는 액티비티를 띄우고 닫는 행위이다.</p>
+
+<p>새로운 액티비티를 화면에 띄울 때 startActivity() 메소드를 사용한다. 이 메소드는 단순히 화면을 띄우는 기능만 한다. 하지만 여러 개의 액티비티를 띄우거나 새로 띄운 액티비티에서 기존의 액티비티로 돌아올 때 응답을 받아 처리하거나, 이 응답이 어떤 액티비티에서 온 것이 구분하는 등의 일을 해야할 때가 있다. 이 때에는 startActivityForResult()를 사용하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">startActivityForResult</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">,</span> <span class="kt">int</span> <span class="n">requestCode</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>requestCode는 여러개의 액티비티를 띄웠을 때 원래의 액티비티로 보내오는 응답이 어떤 액티비티에서 온 것인기 구분하기 위해 사용한다.</p>
+
+<p>구체적으로 어떻게 사용하는지 프로젝트를 만들어보자.</p>
+
+<p>먼저, 새로운 프로젝트를 만들면 MainActivity.java와 activity_main.xml 두 개의 파일이 자동으로 생성된다. 여기에 추가적으로 MenuActivity라는 새로운 액티비티를 추가한다.</p>
+
+<p>그러면 AndroidManifest.xml에 새로운 activity 태그가 등록이 된다. 여기에 두 개의 속성을 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;activity</span>
+	<span class="na">android:name=</span><span class="s">".MenuActivity"</span>
+	<span class="na">android:label=</span><span class="s">"메뉴 액티비티"</span>
+	<span class="na">android:theme=</span><span class="s">"@style/Theme.AppCompat.Dialog"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</code></pre></div></div>
+
+<p>label은 화면의 타이틀, theme는 테마를 설정하는 속성이다. theme를 Dialog로 설정했기 때문에 대화상자 형식의 액티비티가 된다.</p>
+
+<p>먼저 activity_menu.xml 파일에 다음 코드를 작성한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">tools:context=</span><span class="s">".MenuActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginStart=</span><span class="s">"8dp"</span>
+        <span class="na">android:layout_marginLeft=</span><span class="s">"8dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"8dp"</span>
+        <span class="na">android:layout_marginEnd=</span><span class="s">"8dp"</span>
+        <span class="na">android:layout_marginRight=</span><span class="s">"8dp"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"8dp"</span>
+        <span class="na">android:text=</span><span class="s">"돌아가기"</span>
+        <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintStart_toStartOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
+</code></pre></div></div>
+
+<p>버튼 1개만 있는 단순한 레이아웃이다.</p>
+
+<p>MenuActivity.java 파일에는 버튼을 누르면 원래의 화면으로 응답과 부가 데이터를 보내고 화면을 닫는 코드를 작성할 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleactivity</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MenuActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_menu</span><span class="o">);</span>
+
+        <span class="n">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span> <span class="c1">//레이아웃의 버튼 객체 참조</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span> <span class="c1">// 인텐트 객체 생성</span>
+                <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"mike"</span><span class="o">);</span> <span class="c1">//인텐트에 부가 데이터 추가</span>
+                <span class="n">setResult</span><span class="o">(</span><span class="n">RESULT_OK</span><span class="o">,</span> <span class="n">intent</span><span class="o">);</span> <span class="c1">//이 액티비티를 띄원 원래 액티비티로 응답 보내기</span>
+
+                <span class="n">finish</span><span class="o">();</span> <span class="c1">//액티비티 종료</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>버튼을 누르면 Intent 객체를 생성하고 여기에 부가적인 데이터를 넣는다. 부가데이터를 넣을 때에는 putExtra() 메소드를 사용하면 되는데, 데이터의 key-value 쌍을 함께 넣어야 한다. setResult 메소드는 원래의 액티비티로 응답을 보낼 때 사용하는 메소드인데, 응답코드와 인텐트 객체를 파라미터로 넣어준다. 응답코드 RESUlT_OK는 기본 API에 정의 된 상수로 -1이며, 정상 처리 되었음을 의미한다. 마지막으로는 finish() 메소드를 통해 화면을 닫는다.</p>
+
+<p>이제 MainActivity.java 에서는 버튼을 클릭하면 MenuActivity를 띄우는 코드를 작성할 것이다. 먼저 activity_main.xml 파일에 버튼을 하나 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">tools:context=</span><span class="s">".MainActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"Button"</span>
+        <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintStart_toStartOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleactivity</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.annotation.Nullable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+ <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">REQUEST_CODE_MENU</span> <span class="o">=</span> <span class="mi">101</span><span class="o">;</span> <span class="c1">//액티비티를 띄우기 위한 요청코드 정의</span>
+
+
+     <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">Button</span> <span class="n">button2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button2</span><span class="o">);</span>
+        <span class="n">button2</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">MenuActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">//MenuActivity를 띄우기 위한 인텐트 객체 생성</span>
+                <span class="n">startActivityForResult</span><span class="o">(</span><span class="n">intent</span><span class="o">,</span> <span class="n">REQUEST_CODE_MENU</span><span class="o">);</span> <span class="c1">//액티비티 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="cm">/* AppCompatActivity 클래스에 정의된 onActivityResult() 메소드 재정의 */</span>
+     <span class="cm">/* onActivityResult() 메소드는 새로 띄운 액티비티가 보내온 응답을 처리하는 기능을 한다. */</span>
+     <span class="nd">@Override</span>
+     <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onActivityResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resultCode</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Intent</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+         <span class="kd">super</span><span class="o">.</span><span class="na">onActivityResult</span><span class="o">(</span><span class="n">requestCode</span><span class="o">,</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span>
+
+         <span class="k">if</span><span class="o">(</span><span class="n">requestCode</span> <span class="o">==</span> <span class="n">REQUEST_CODE_MENU</span><span class="o">){</span> <span class="c1">//MenuActivity를 띄울 때 사용했던 요청코드이면</span>
+             <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span>
+                     <span class="s">"onActivityResult 메소드 호출됨. 요청코드 : "</span> <span class="o">+</span> <span class="n">requestCode</span> <span class="o">+</span> <span class="s">", 결과코드 : "</span> <span class="o">+</span> <span class="n">resultCode</span><span class="o">,</span>
+                     <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+         <span class="o">}</span>
+
+         <span class="k">if</span><span class="o">(</span><span class="n">resultCode</span> <span class="o">==</span> <span class="n">RESULT_OK</span><span class="o">){</span> <span class="c1">//응답 코드가 RESULT_OK 이면</span>
+             <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getExtras</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span> <span class="c1">// 부가 데이터의 값(value) 얻기</span>
+             <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"전달된 name : "</span> <span class="o">+</span> <span class="n">name</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+         <span class="o">}</span>
+     <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>startActivityForResult 메소드를 통해 액티비티를 띄우는데, 액티비티를 띄울 때 인텐트 객체가 사용되었다.인텐트 객체는 액티비티를 띄우거나 부가적인 데이터를 담아서 전송하는 등 여러가지 용도로 쓰이는 중요한 객체이다. 여기서는 액티비티를 띄운다는 것과 부가 데이터를 넣을 수 있다는 것만 알면 된다.</p>
+
+<p>액티비티를 띄울 때 미리 정의한 요청코드를 함께 넣어주었다. 새로 띄운 액티비티에서 응답을 보내올 때, 방금 보낸 요청코드를 같이 보내온다. 이 요청코드를 보고 어떤 액티비티로부터 온 응답인지 알 수 있는 것이다. 요청코드의 값은 임의로 지정할 수 있지만 띄울 액티비티가 여러개인 경우 중복되지 않도록 설정해야 한다.</p>
+
+<p><img src="/images/android/15/2.png" alt="2" width="70%" height="70%" /></p>
+
+<p>onActivityResult() 메소드는 액티비티로부터 오는 응답을 처리하는 역할을 한다. 이 메소드는 AppCompatActivity 클래스에 정의된 메소드를 재정의한 것이다. 첫 번째 전달인자인 requestCode를 읽어서 어떤 액티비티로 온 응답인지 확인할 수 있다. 그리고 resultCode를 확인하여 띄운 액티비티에서 처리한 결과의 정상 유무를 알 수 있다. 세 번째 전달인자인 인텐트 객체에서 부가데이터를 읽을 수 있다. 부가데이터가 없는 경우가 있을 수 있으므로 이 전달인자는 @Nullable 이 앞에 붙었다.</p>
+
+<p>요청코드가 MenuActivity를 띄울 때 사용한 코드라면 요청코드와 결과코드를 확인하는 토스트 메시지를 하나 띄운다. 그리고 응답코드가 정상이라면 부가 데이터를 토스트 메시지로 띄운다. 부가 데이터의 값을 가져올 때는 key-value 쌍의 key를 사용한다.</p>
+
+<p><img src="/images/android/15/3.jpg" alt="3" width="30%" height="30%" />
+<img src="/images/android/15/4.jpg" alt="4" width="30%" height="30%" />
+<img src="/images/android/15/5.jpg" alt="5" width="30%" height="30%" /></p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11218,112 +11456,6 @@ Java에서는 객체로 메모리에 존재하지 않는 것을 참조할 수 �
 <p><img src="/images/android/11/1.jpg" alt="1" width="30%" height="30%" /></p>
 
 <p>RRGGBB 에서 ff0000은 빨간색인데, AA 값을 50으로 설정해서 투명도가 생겼다. 또한 text 속성의 값으로 @string/hello를 넣어주었는데, maxLines 값이 1이라 뒷부분이 잘려나갔다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/04/28/frame-layout/">
-        10. 프레임 레이아웃(FrameLayout)
-      </a>
-    </h1>
-
-    <span class="post-date">28 Apr 2019</span>
-
-    <p>프레임 레이아웃은 가지고 있는 여러개의 뷰 중 한 번에 하나만 보여주는 레이아웃이다. 무척 단순하지만 꽤 자주 사용되는 레이아웃이다. 프레임 레이아웃에 여러개의 뷰를 차례차례 추가하면 가장 마지막에 추가한 뷰만 화면에 보이는 상태가 된다. 이 때, 프레임 레이아웃에 있는 뷰의 가시성(Visibility) 속성을 설정함으로써 특정 뷰를 보이거나 보이지 않게 함으로써 화면을 전환할 수 있다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
-        <span class="na">android:text=</span><span class="s">"이미지 바꾸기"</span>
-        <span class="na">android:onClick=</span><span class="s">"onButtonClicked"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;FrameLayout</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
-
-        <span class="nt">&lt;ImageView</span>
-            <span class="na">android:id=</span><span class="s">"@+id/imageView1"</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:src=</span><span class="s">"@drawable/dream01"</span>
-            <span class="na">android:visibility=</span><span class="s">"invisible"</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;ImageView</span>
-            <span class="na">android:id=</span><span class="s">"@+id/imageView2"</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:src=</span><span class="s">"@drawable/dream02"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/FrameLayout&gt;</span>
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p>이미지를 전환할 버튼을 하나 넣어주고 onClick 속성의 값으로 onButtonClicked 메소드를 넣어주었다.</p>
-
-<p>그리고 그 아래에 프레임 레이아웃을 넣고 레이아웃 안에 ImageView를 2개 추가하였다. 이렇게 했을 때 중첩 된 ImageView들 중 2번째 ImageView만 화면에 보인다. 이제 뷰를 전환하는 기능을 적용하기 위해서 자바 소스코드를 수정해야한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleframelayout</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.ImageView</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-
-    <span class="n">ImageView</span> <span class="n">imageView1</span><span class="o">;</span>
-    <span class="n">ImageView</span> <span class="n">imageView2</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">imageIndex</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">//현재 FrameLayout에 보이는 이미지 번호</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
-
-        <span class="n">imageView1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView1</span><span class="o">);</span> <span class="c1">//imageView1 객체 참조</span>
-        <span class="n">imageView2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView2</span><span class="o">);</span> <span class="c1">//imageView2 객체 참조</span>
-    <span class="o">}</span>
-
-    <span class="cm">/* 버튼 onClick 속성 값 메소드 */</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onButtonClicked</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
-        <span class="n">changeImage</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="cm">/* 프레임 레이아웃에 보이는 이미지 전환 메소드 */</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changeImage</span><span class="o">(){</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">imageIndex</span><span class="o">==</span><span class="mi">1</span><span class="o">){</span> <span class="c1">//현재의 imageIndex가 1이면</span>
-            <span class="n">imageView1</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">INVISIBLE</span><span class="o">);</span> <span class="c1">//첫 번째 이미지 안보이게</span>
-            <span class="n">imageView2</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span> <span class="c1">//두 번째 이미지 보이게</span>
-            <span class="n">imageIndex</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">//현재 imageIndex 2로 변경</span>
-
-        <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">imageIndex</span><span class="o">==</span><span class="mi">2</span><span class="o">){</span> <span class="c1">//현재의 imageIndex가 2면</span>
-            <span class="n">imageView1</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span> <span class="c1">//첫 번째 이미지 보이게</span>
-            <span class="n">imageView2</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">INVISIBLE</span><span class="o">);</span> <span class="c1">//두 번째 이미지 안보이게</span>
-            <span class="n">imageIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">//현재 imageIndex 1로 변경</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>imageIndex 변수는 현재 화면에 보이는 이미지를 무엇인지 판단하기 위해 정의한 변수이다. 먼저 imageView1, imageView2 변수는 각각 이미지뷰 객체 ImageView1과 ImageView2 객체를 참조한다.</p>
-
-<p>onButtonClicked 메소드에 changeImage() 메소드를 넣어줌으로써 버튼이 눌리면 changeImage() 메소드의 코드가 동작하도록 하였다. 현재의 imageIndex 변수의 값에 따라 ImageView의 visibility 속성을 setVisibility 메소드를 통해 제어해준다. 그리고 화면의 visibility 속성 변경 이후 imageIndex 변수의 값도 변경해주는 것을 잊으면 안된다.</p>
-
-<p>이렇게 했을 때 앱을 실행하면 다음과 같은 화면이 보인다.</p>
-
-<p><img src="/images/android/10/1.jpg" alt="1" width="30%" height="30%" />
-<img src="/images/android/10/2.jpg" alt="2" width="30%" height="30%" /></p>
-
-<p>버튼을 누를 때 마다 화면이 전환되지만 이는 단순히 두 개의 이미지가 중첩된 상태에서 보이게 하거나 보이지 않게 하는 것일 뿐이다.</p>
 
   </div>
   

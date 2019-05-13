@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,110 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/10/12/27-pointer-and-function-2/">
+        27. 포인터와 함수(2)
+      </a>
+    </h1>
+
+    <span class="post-date">12 Oct 2018</span>
+
+    <h1 id="1-call-by-value--vs--call-by-reference">1. Call-by-Value    vs.    Call-by-Reference</h1>
+
+<hr />
+
+<p>함수의 전달인자로서 일반 변수와 포인터 변수를 넘겨받은 경우에 우리가 데이터를 다루게 되는 방식에는 차이가 있다고 했습니다.</p>
+
+<p><img class="aligncenter  wp-image-1000" src="/images/2018/09/111.jpg" alt="" width="537" height="267" srcset="/images/2018/09/111.jpg 900w, /images/2018/09/111-300x149.jpg 300w, /images/2018/09/111-768x381.jpg 768w" sizes="(max-width: 537px) 100vw, 537px" /></p>
+
+<p>위처럼 일반 변수를 함수의 전달인자를 통해 넘길때는 변수 자체가 아닌 변수의 값이 전달된다 했습니다. func함수의 num과 main함수의 x는 애초에 할당된 메모리공간이 다릅니다. func함수의 num변수의 메모리공간에 x의 값인 10이 복사되어 저장되고 ++연산이 수행되면서 num의 값이 10에서 11로 증가합니다. 그리고 func함수의 호출이 끝나며 변수 num에 할당된 메모리공간의 데이터는 소멸되어요.</p>
+
+<p><img class="aligncenter  wp-image-1001" src="/images/2018/09/222.jpg" alt="" width="601" height="277" srcset="/images/2018/09/222.jpg 900w, /images/2018/09/222-300x138.jpg 300w, /images/2018/09/222-768x353.jpg 768w" sizes="(max-width: 601px) 100vw, 601px" /></p>
+
+<p>반면에 전달인자를 포인터 형으로 선언하고 main함수의 변수 x가 있는 메모리의 주소값을 전달해주면 *연산자를 써서 직접 그 주소의 메모리공간에 접근해서 ++연산을 시켜줄 수 있습니다. 이 때는 함수의 호출이 종료되어도 변수 x의 값은 11인 상태로 유지가 됩니다. 직접 메모리공간에 접근하여 데이터를 변경시켜주었기 때문입니다.</p>
+
+<p>첫 번째 경우처럼 변수의 값을 복사하여 전달인자로 주며 함수를 호출하는 경우를 값에 의한 호출이라 하여 특별히 <strong>call by value</strong>라고 부릅니다. 그리고 두 번째 경우처럼 주소값을 전달인자로 넘겨주며 메모리를 직접 참조하며 함수를 호출하는 경우를 참조에 의한 호출이라 하여 <strong>call by reference</strong>라고 부릅니다.</p>
+
+<p>call by value와 call by reference는 직접 메모리공간을 참조하느냐 아니냐의 차이가 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="nf">PosChange_val</span><span class="p">(</span><span class="kt">int</span> <span class="n">val1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val2</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">moment</span> <span class="o">=</span> <span class="n">val1</span><span class="p">;</span> <span class="c1">//val1의 값을 잠시 저장
+</span>    <span class="n">val1</span> <span class="o">=</span> <span class="n">val2</span><span class="p">;</span> <span class="c1">//val1에 val2의 값을 저장
+</span>    <span class="n">val2</span> <span class="o">=</span> <span class="n">moment</span><span class="p">;</span> <span class="c1">//val2에 moment변수에 담겨있던 val1의 값 저장
+</span><span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">PosChange_ref</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">ptr1</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr2</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">moment</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr1</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">ptr1</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr2</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">ptr2</span> <span class="o">=</span> <span class="n">moment</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num1 : %d, num2 : %d</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    
+    <span class="n">PosChange_val</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num1 : %d, num2 : %d</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    
+    <span class="n">PosChange_ref</span><span class="p">(</span><span class="o">&amp;</span><span class="n">num1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num2</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num1 : %d, num2 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>num1 : 10, num2 : 20</p>
+
+<p>num1 : 10, num2 : 20</p>
+
+<p>num1 : 20, num2 : 10</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>PosChange_val 함수는 call by value의 호출방법을 사용하고 PosChange_ref 함수는 call by reference의 호출방법을 사용합니다. PosChange_val 함수는 num1과 num2의 복사값을 val1과 val2에 저장하고 두 변수의 값을 서로 교환시킵니다. 하지만 이 때에 바뀌는 값은 val1과 val2이며 num1과 num2의 값이 교환되는 것은 아닙니다. PosChange_val 함수는 val1과 val2에 할당된 메모리에 num1과 num2의 값을 복사하여 교환을 실행했기 때문입니다.</p>
+
+<p>하지만 PosChange_ref 함수는 num1과 num2의 주소값을 넘겨받아 *연산자를 이용하여 직접 num1과 num2의 메모리공간에 접근하여 값을 뒤바꿔 놓습니다. 그리고 PosChange_ref 함수의 호출이 종료되면서 ptr1과 ptr2 두 개의 포인터변수가 소멸되더라도 num1과 num2의 데이터 값은 유효합니다. 이처럼 call by value는 메모리상에 직접적으로 접근이 불가능하지만 call by reference는 메모리상에 직접 접근을 할 수 있기때문에 위의 일이 가능한 것입니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-상수-포인터와-포인터-상수">2. 상수 포인터와 포인터 상수</h1>
+
+<hr />
+
+<p>포인터 변수도 일반 변수와 마찬가지로 const 선언이 가능합니다. 일반 변수에서의 const 선언은 변수의 값이 변경되는것을 방지하기 위한 목적으로 사용이 되었습니다.</p>
+
+<p>포인터변수는 2 가지의 const 선언 방법이 있습니다. 이 둘은 const의 위치를 달리 하는 것인데 이 둘은 상수화시키는 대상이 다릅니다.</p>
+
+<p><strong>1. const int * ptr; : 포인터가 가르키는 데이터가 상수</strong></p>
+
+<p><strong>2. int * const ptr; : 포인터가 가르키는 위치가 상수</strong></p>
+
+<p><img class="aligncenter size-full wp-image-1003" src="/images/2018/09/333.jpg" alt="" width="814" height="454" srcset="/images/2018/09/333.jpg 814w, /images/2018/09/333-300x167.jpg 300w, /images/2018/09/333-768x428.jpg 768w" sizes="(max-width: 814px) 100vw, 814px" /></p>
+
+<p>위의 코드에서 ptr1과 ptr2 모두 변수  num을 참고하고 있습니다. 하지만 둘은 분명 차이를 보입니다. ptr1에 의한 num값의 변경은 되지만 ptr2에 의한 num값의 변경은 컴파일 에러를 일으킵니다. 이는 ptr2가 const 선언에 의해 <strong>상수포인터</strong>가 되어서입니다. <strong>상수 포인터란 말 그대로 상수를 가르키는 포인터입니다. 포인터에 의해서는 상수로 취급되어 값을 바꿀 수 없습니다.</strong></p>
+
+<p> </p>
+
+<p><img class="aligncenter size-full wp-image-1004" src="/images/2018/09/444.jpg" alt="" width="804" height="447" srcset="/images/2018/09/444.jpg 804w, /images/2018/09/444-300x167.jpg 300w, /images/2018/09/444-768x427.jpg 768w" sizes="(max-width: 804px) 100vw, 804px" /></p>
+
+<p>ptr1과 ptr2는 모두 num1을 가르키도록 초기화 시켰습니다. 하지만 ptr1은 가르키는 위치를 num2로 변경이 가능한데 ptr2가 가르키는 위치를 num2로 변경하려 했더니 컴파일 에러가 일어났습니다. 위와 같이 const 선언을 하면 포인터를 상수화시켜 포인터상수로 만들어버립니다. <strong>포인터상수란 포인터가 상수입니다. 위치의 변경이 불가능합니다. </strong>포인터상수의 대표적인 경우가 배열의 이름입니다. 배열의 이름은 항상 자신의 첫 번째 원소만을 가르키도록 상수화 되어있습니다.</p>
+
+<p>포인터를 const 선언하는 이유는 실수로 포인터로 위치만 참조하고 건들지는 말아야 할 데이터를 변경하거나 포인터가 가르키는 위치를 변경시켜 엉뚱한 데이터를 참조하여 예상치 못한 결과가 나옴을 방지하기 위해서입니다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11604,216 +11752,6 @@ int main(void)
 <p>계속하려면 아무 키나 누르십시오 . . . </p>
 
 <p>위와 같이 포인터변수를 선언하면서 초기화를 하지 않으면 아무런 의미가 없는 쓰레기값으로 초기화가 됩니다. 초기화 없이 포인터변수를 선언하면 어디를 가르킬지 몰라 실수로 건드려서는 안 될 메모리공간을 건드게 될 수가 있습니다. 따라서 이후에 사용하기 위해 미리 포인터변수를 선언하는 경우에는 0이나 NULL로 초기화를 시켜줘야 합니다. <strong>여기서 0은 ASCILL CODE 값 NULL을 의미합니다. 0이나 NULL이나 똑같은 표현입니다. 여기서 0과 NULL이 의미하는 것은 0번지가 아닙니다. ‘아무데도 가르키지 않는다’는 뜻입니다.</strong></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/07/22-array-string/">
-        22. 배열(2) - 배열과 문자열
-      </a>
-    </h1>
-
-    <span class="post-date">07 Oct 2018</span>
-
-    <p>문자열 이전에 문자에 관해 상기 해보겠습니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">char</span> <span class="n">ch1</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="n">ch2</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
-    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"ch1 dec : %d, ch1 ASCII : %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch1</span><span class="p">,</span> <span class="n">ch1</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"ch2 dec : %d, ch2 ASCII : %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch2</span><span class="p">,</span> <span class="n">ch2</span><span class="p">);</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>ch1 dec : 65, ch1 ASCII : A</p>
-
-<p>ch2 dec : 65, ch2 ASCII : A</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>문자 ‘A’의 10진수 ASCII code는 10입니다. 그리고 10진수 65의 ASCII 문자는 ‘A’ 입니다. ‘A’를 저장하던지 십진수 65를 저장 하던지 같은 겁니다. 물론 문자를 표현할 때 char형 말고 다른 정수 자료형을 써도 되지만 아스키 코드는 0~127의 정수를 다루기 때문에 char 자료형만으로도 충분히 표현가능하기 때문에 문자를 저장할 때 보통 char 자료형을 쓰는 것입니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="1-배열에-여러-개의-문자를-저장">1. 배열에 여러 개의 문자를 저장</h1>
-
-<hr />
-
-<p>아무튼 변수에는 문자 ‘한 개’만 저장이 가능합니다. 문자가 여러개인 문자열은 하나의 변수에 저장이 되지 않습니다. 배열을 이용하면 문자열을 저장할 수 있습니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'C'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'i'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'v'</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'r'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'a'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">'!'</span><span class="p">};</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-    
-    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-    <span class="p">}</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"The length of str : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>C is very easy!</p>
-
-<p>The length of str : 15</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p>위와 같이 우리는 문자를 하나하나 배열에 저장할 수 있습니다. 하지만 하나하나 저장하기가 너무 귀찮습니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-큰-따움표를-사용한-문자열-저장">2. 큰 따움표를 사용한 문자열 저장</h1>
-
-<hr />
-
-<p>배열을 선언하지 않고도 선언하는 방법이 있는데, 큰 따움표 “ “ 를 사용하는 것입니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span><span class="o">=</span><span class="s">"C is very easy!"</span><span class="p">;</span>
-    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"The length of str : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>C is very easy!</p>
-
-<p>The length of str : 16</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p><strong>%s는 문자열을 출력해주는 서식문자입니다.</strong></p>
-
-<p>그리고 저장한 문자열의 길이를 출력했는데,  16이 나왔습니다. 위에서 문자 하나하나를 저장했던 것과 다른 결과입니다. 비밀은 바로 큰 따움표 “ “ 입니다.</p>
-
-<p><strong>큰 따움표 “ “를 이용하여 문자열을 저장하면 항상 마지막에는 null문자 \0이 추가가 됩니다. 그리고 null문자 \0은 ASCII code 값 0에 해당합니다. 그리고 이 null문자를 %c를 이용하여 문자형태로 출력하면 아무런 출력이 발생하지 않습니다. 그리고 이 null 문자 ‘\0’은 공백문자 ‘ ‘와는 엄연히 다릅니다.</strong></p>
-
-<p><img class="aligncenter wp-image-974" src="/images/2018/09/1-9.jpg" alt="" width="673" height="86" srcset="/images/2018/09/1-9.jpg 900w, /images/2018/09/1-9-300x38.jpg 300w, /images/2018/09/1-9-768x98.jpg 768w" sizes="(max-width: 673px) 100vw, 673px" /></p>
-
-<p><strong>C언어에서 무조건 모든 문자열의 끝에는 null문자가 삽입됩니다. 반대로 null문자가 존재하면 그것은 문자열로 인식이 가능합니다. 그리고 <span style="text-decoration: underline;">%s 서식문자는 배열의 시작부터 문자를 하나하나 출력해주다가 바로 null문자를 만나면 출력을 종료해합니다.</span> null 문자가 필요한 이유기도 합니다. 어디까지를 하나의 문자열로 인식하여 출력해주는지 null문자가 기준이 되어주는 것입니다.</strong></p>
-
-<p>%s를 이용하여 문자열을 출력할 수 있는 것처럼, 사용자로부터 문자열을 입력받는것도 당연히 가능합니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Type a sentence : "</span><span class="p">);</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>실행결과</p>
-
-<p>Type a sentence : Hello</p>
-
-<p>Hello</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p>Hello를 입력하면 마지막에 null문자가 자동으로 삽입이 되어 Hello\0으로 저장이 됩니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-scanf-함수와-문자열">3. scanf 함수와 문자열</h1>
-
-<hr />
-
-<p>그런데 scanf 함수를 이용하여 변수에 데이터를 저장할 때는 &amp; 연산자를 붙여주었었습니다. 그런데 이번에는 없습니다. <strong>&amp;연산자는 주소값을 반환시켜주는 연산자입니다.</strong> 가령 변수 num에 &amp;연산자를 이용하여 &amp;num으로 표현하면 num 변수의 주소값이 반환됩니다. scanf(“%d”, &amp;num)은 사용자로부터 입력을 받아 10진수 정수 형태로 num이라는 변수의 주소가 가르키는 메모리공간에 저장을하라는 의미인데, <strong>사실 배열의 이름은 그 자체가 메모리공간의 주소를 의미합니다. 더 정확히는 그 배열에 할당된 메모리공간의 첫 번째 byte의 주소를 의미합니다.</strong> 따라서 &amp;연산자를 붙여줄 필요가 없던겁니다. 사실 <strong>서식문자 %s의 원리도 배열의 이름인 메모리공간의 첫 byte 주소값부터 시작하여 null문자를 만날 때 까지 출력을 해주는 것이었습니다.</strong> 이 부분은 포인터를 배우면 확실히 이해가 갈 것이기 때문에 <strong>%s 서식문자로 배열을 출력할 때에는 &amp;연산자를 사용하지 않는다</strong>는 것 정도만 아시면 됩니다.</p>
-
-<p>우리가 처음에 출력한 “C is very easy!” 라는 문장을 출력할 때는 %s 서식문자를 사용할 수 없습니다. 왜냐하면 마지막에 null 문자를 넣어주지 않아 %s 서식문자가 어디까지를 문자열의 끝으로 인식할 지 알 수 없기 때문입니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">char</span> <span class="n">str1</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'C'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'i'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'v'</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'r'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'a'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">'!'</span><span class="p">};</span>
-    <span class="kt">char</span> <span class="n">str2</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'C'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'i'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'v'</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'r'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'a'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">'!'</span><span class="p">,</span><span class="sc">'\0'</span><span class="p">};</span>
-    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str1</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str2</span><span class="p">);</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>C is very easy!儆儆?．???</p>
-
-<p>C is very easy!</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p>첫 번째 배열은 null문자가 없어 끝에 알 수 없는 값을 출력합니다.</p>
-
-<p>또 한 가지 팁을 드리자면 scanf 함수를 이용하여 문자열을 입력받을 때 띄어쓰기를 사용할 수 없습니다. 띄어쓰기가 없는 문자열만 넣을 수 있습니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Type a sentence : "</span><span class="p">);</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>Type a sentence : C is very easy!</p>
-
-<p>C</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>scanf 함수는 띄어쓰기나 탭 등의 공백을 기준으로 문자열을 구분짓습니다. 위와 같은 경우에는 C\0 , is\0 , very\0 , easy!\0 처럼 총 4개의 문자열로 인식을 합니다. scanf 함수는 문자열을 입력받기에 적절하지 않은 함수입니다. 나중에 문자열을 입력받기 위한 함수도 소개드릴 겁니다.</p>
 
   </div>
   

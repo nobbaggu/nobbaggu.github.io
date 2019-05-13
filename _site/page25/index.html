@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,106 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/17/16-queue-stack/">
+        16. 큐와 스택
+      </a>
+    </h1>
+
+    <span class="post-date">17 Nov 2018</span>
+
+    <h1 id="1-큐와-스택">1. 큐와 스택</h1>
+
+<hr />
+
+<p>자료구조란 자료를 메모리에 저장, 보관하는 형식을 말한다.</p>
+
+<p>자료구조 중에서도 가장 기본적인 것 중에 ‘큐’와 ‘스택’이 있다. 두 자료구조 모두 자료를 일렬로 저장한다. 그리고 가장 기본적인 기능은 요소의 추가, 제거이다.</p>
+
+<p>큐와 스택의 차이점은 자료를 추가하고 빼내는 방법에 있다.</p>
+
+<p> </p>
+
+<h2 id="1-큐">1) 큐</h2>
+
+<p>큐(queue)는 ‘first in first out’이다. 줄 서기에 비유할 수 있다. 줄을 먼저 선 사람이 먼저 빠져나간다.</p>
+
+<p>즉, 1, 2, 3, 4 순으로 리스트에 추가되었다면 들어온 순서 1, 2, 3, 4 순으로 빠져나간다.</p>
+
+<p><img class="aligncenter size-full wp-image-1369" src="/images/2018/11/12333.jpg" alt="" width="395" height="84" srcset="/images/2018/11/12333.jpg 395w, /images/2018/11/12333-300x64.jpg 300w" sizes="(max-width: 395px) 100vw, 395px" /></p>
+
+<p>큐에서 자료를 집어넣는 동작을 enqueue, 빼내는 동작을 dequeue라 한다.</p>
+
+<p> </p>
+
+<h2 id="2-스택">2) 스택</h2>
+
+<p>스택은 ‘last in first out’이다. 접시 쌓기에 비유한다. 마지막에 쌓은 접시를 먼저 꺼낸다.</p>
+
+<p>즉, 1, 2, 3, 4 순으로 리스트에 추가되었다면 빠져나올 때는 역순 4,3,2,1 순으로 빠져나온다.</p>
+
+<p><img class="aligncenter size-full wp-image-1370" src="/images/2018/11/12333-1.jpg" alt="" width="337" height="84" srcset="/images/2018/11/12333-1.jpg 337w, /images/2018/11/12333-1-300x75.jpg 300w" sizes="(max-width: 337px) 100vw, 337px" /></p>
+
+<p>스택에 자료를 집어넣는 동작을 push, 빼내는 동작을 pop이라 한다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-큐와-스택-구현">2. 큐와 스택 구현</h1>
+
+<hr />
+
+<p>큐와 스택은 C언어의 배열이나 Python의 리스트 자료형 등으로 만들어볼 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># queue</span>
+<span class="n">que</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c"># enqueue</span>
+<span class="n">que</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">que</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">que</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c"># dequeue</span>
+<span class="k">print</span><span class="p">(</span><span class="n">que</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">que</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">que</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+
+<span class="c"># stack</span>
+<span class="n">stk</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c"># push</span>
+<span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c"># pop</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stk</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stk</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stk</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>파이썬 내장함수 pop()의 특징은 다음과 같다.</p>
+
+<ol>
+  <li>
+    <p>() 안에 index를 넣어주면 해당 index의 요소가 튀어나온다.</p>
+  </li>
+  <li>
+    <p>() 를 공백으로 놔두면 가장 마지막의 요소가 튀어나온다.</p>
+  </li>
+</ol>
+
+<p> </p>
+
+<p>앞선 예제의 파이썬 코드는 파이썬 내장함수 pop()을 사용해서 큐와 스택을 구현한 것이다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10844,134 +10988,6 @@
 <p>병합 정렬 알고리즘의 계산 복잡도는 O(nlog(n))이며 이는 O(n^2)의 계산복잡도를 가졌던 앞선 정렬 알고리즘들 보다 계산복잡도가 낮은 더욱 효율적인 알고리즘이다.</p>
 
 <p>즉, 데이터의 수가 많을수록 병합 정렬은 그 힘을 발휘한다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/12/11-insertion-sort/">
-        11. 삽입 정렬
-      </a>
-    </h1>
-
-    <span class="post-date">12 Nov 2018</span>
-
-    <h1 id="1-문제-정의">1. 문제 정의</h1>
-
-<hr />
-
-<p>삽입 정렬 알고리즘은 리스트 안의 숫자를 작은 순서로, 혹은 큰 순서로 정렬하는 알고리즘이다.</p>
-
-<p><img class="aligncenter size-full wp-image-1335" src="/images/2018/11/no-name-9.jpg" alt="" width="783" height="196" srcset="/images/2018/11/no-name-9.jpg 783w, /images/2018/11/no-name-9-300x75.jpg 300w, /images/2018/11/no-name-9-768x192.jpg 768w" sizes="(max-width: 783px) 100vw, 783px" /></p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-알고리즘">2. 알고리즘</h1>
-
-<hr />
-
-<h2 id="1-하나씩-빼서-다른-리스트로-옮기기">1) 하나씩 빼서 다른 리스트로 옮기기</h2>
-
-<p>a : 정렬해야 할 리스트</p>
-
-<p>result : 정렬 된 리스트</p>
-
-<ol>
-  <li>
-    <p>a의 첫 번째 요소를 빼서 rseult에 추가</p>
-  </li>
-  <li>
-    <p>a의 첫 번째 요소를 빼서 result의 모든 요소와 비교하여 크기순에 맞게 배치</p>
-  </li>
-  <li>
-    <p>a의 첫 번째 요소를 빼서 result의 모든 요소와 비교하여 크기순에 맞게 배치</p>
-  </li>
-  <li>
-    <p>위의 과정을 리스트 a가 빌 때 까지 반복</p>
-  </li>
-</ol>
-
-<p><img class="aligncenter  wp-image-1337" src="/images/2018/11/44.jpg" alt="" width="555" height="328" srcset="/images/2018/11/44.jpg 783w, /images/2018/11/44-300x177.jpg 300w, /images/2018/11/44-768x454.jpg 768w" sizes="(max-width: 555px) 100vw, 555px" /></p>
-
-<p>이 과정을 코드로 표현하면 다음과 같다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c"># 일단 a의 첫 번째 요소 추가</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="c"># a가 다 나가고 비기 전까지</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)):</span> <span class="c"># a[0]을 result의 각 요소와 크기 비교</span>
-            <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="c"># a[0]이 result[i]보다 작으면</span>
-                <span class="n">result</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c"># result index i자리에 a[0] 삽입</span>
-                <span class="k">break</span> <span class="c"># for문 탈출</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="c"># result의 마지막 요소까지 비교했는데 어떤 것 보다도 작지 않으면</span>
-                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c"># result의 마지막에 a[0] 삽입</span>
-                <span class="k">else</span><span class="p">:</span> <span class="c"># 아니면</span>
-                    <span class="k">continue</span> <span class="c"># 계속 비교</span>
-    <span class="k">return</span> <span class="n">result</span>
-
-<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
-<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">insert_sort</span><span class="p">(</span><span class="n">list1</span><span class="p">))</span> <span class="c"># [1,4,9,11,14,20,23]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">insert_sort</span><span class="p">(</span><span class="n">list2</span><span class="p">))</span> <span class="c"># [1,2,3,4,5]</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<h2 id="2-일반적인-삽입정렬">2) 일반적인 삽입정렬</h2>
-
-<ol>
-  <li>
-    <p>a[1]을 왼쪽의 모든 요소들과 비교하여 적절한 위치를 찾아 삽입</p>
-  </li>
-  <li>
-    <p>a[2]를 왼쪽의 모든 요소들과 비교하여 적절한 위치를 찾아 삽입</p>
-  </li>
-  <li>
-    <p>마지막 요소까지 위의 과정 반복</p>
-  </li>
-</ol>
-
-<p><img class="aligncenter size-full wp-image-1338" src="/images/2018/11/44-1.jpg" alt="" width="1227" height="356" srcset="/images/2018/11/44-1.jpg 1227w, /images/2018/11/44-1-300x87.jpg 300w, /images/2018/11/44-1-768x223.jpg 768w, /images/2018/11/44-1-1024x297.jpg 1024w" sizes="(max-width: 1227px) 100vw, 1227px" /></p>
-
-<p>위의 과정을 파이썬 코드로 표현하면 다음과 같다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
-        <span class="n">key</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span>
-        <span class="k">while</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="n">key</span> <span class="ow">and</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
-            <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-            <span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-
-    <span class="k">return</span> <span class="n">a</span>
-
-<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
-<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">insert_sort</span><span class="p">(</span><span class="n">list1</span><span class="p">))</span> <span class="c"># [1,4,9,11,14,20,23]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">insert_sort</span><span class="p">(</span><span class="n">list2</span><span class="p">))</span> <span class="c"># [1,2,3,4,5]</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-알고리즘-효율">3. 알고리즘 효율</h1>
-
-<hr />
-
-<p>삽입정렬 알고리즘은 계산 복잡도를 따지기에 애매한 구석이 있다.</p>
-
-<p>가령 [5,4,3,2,1]과 [1,2,3,4,5]를 비교해보면 데이터의 크기는 같지만 연산의 횟수는 완전히 다르다.</p>
-
-<p>단순히 완전히 크기의 역순으로 되어있는 경우, 즉 연산 횟수의 최대의 경우를 따지면 계산 복잡도는 O(n^2)이다.</p>
 
   </div>
   

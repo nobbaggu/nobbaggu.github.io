@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,100 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/04/20/fastest-sort-algorithm/">
+        2. 가장 빠른 정렬 알고리즘
+      </a>
+    </h1>
+
+    <span class="post-date">20 Apr 2019</span>
+
+    <p>정렬 알고리즘 중 가장 빠른 알고리즘은 <strong>퀵 정렬(quick sort)</strong> 알고리즘이다.</p>
+
+<h2 id="1-알고리즘">1. 알고리즘</h2>
+<hr />
+
+<p>먼저 원소중 하나를 기준(pivot)으로 잡는다. 리스트의 왼쪽 끝, 오른 쪽 끝 두 곳을 시작으로 탐색해 나가며 크기 비교를 하여 위치를 바꾸는 식으로 리스트를 정렬한다. 기준은 보통 3개 정도를 임의로 추출해 그 중 중간값을 가지는 원소로 정하는 방식이다.</p>
+
+<p>여기서는 편의상 리스트의 마지막 원소를 기준(pivot)으로 잡는다.</p>
+
+<ol>
+  <li>
+    <p>첫 번째 원소의 index를 low, 마지막 두 번째 원소 index를 high라고 한다.</p>
+  </li>
+  <li>
+    <p>low가 pivot보다 큰 값을 가르킬 때 까지 low를 오른쪽으로 +1 씩 이동</p>
+  </li>
+  <li>
+    <p>high가 pivot보다 작은 값을 가르킬 때 까지 high를 왼쪽으로 -1씩 이동</p>
+  </li>
+  <li>
+    <p>low&lt;high면 두 곳의 위치 교환</p>
+  </li>
+  <li>
+    <p>위 과정을 low와 high가 만날 때 까지 반복</p>
+  </li>
+  <li>
+    <p>low, high가 만나면 그 곳의 숫자와 pivot의 값 교환</p>
+  </li>
+  <li>
+    <p>pivot의 값이 옮겨진 위치 즉, 현재의 low를 기준으로 리스트를 나누어 각각에 대해 퀵 정렬 재실행(재퀴호출)</p>
+  </li>
+</ol>
+
+<p><img class="wp-image-1348 aligncenter" src="/images/2018/11/4123.jpg" alt="" width="546" height="356" srcset="/images/2018/11/4123.jpg 752w, /images/2018/11/4123-300x195.jpg 300w" sizes="(max-width: 546px) 100vw, 546px" /></p>
+
+<p><img class="wp-image-1350 aligncenter" src="/images/2018/11/4123-2.jpg" alt="" width="517" height="305" srcset="/images/2018/11/4123-2.jpg 731w, /images/2018/11/4123-2-300x177.jpg 300w" sizes="(max-width: 517px) 100vw, 517px" /></p>
+
+<p><img class="wp-image-1351 aligncenter" src="/images/2018/11/4123-3.jpg" alt="" width="344" height="180" srcset="/images/2018/11/4123-3.jpg 500w, /images/2018/11/4123-3-300x157.jpg 300w" sizes="(max-width: 344px) 100vw, 344px" /></p>
+
+<p> </p>
+
+<p>위 과정을 파이썬 코드로 표현하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span> <span class="c"># 원소가 한 개면</span>
+        <span class="k">return</span> <span class="c"># 종료</span>
+
+    <span class="n">low</span> <span class="o">=</span> <span class="n">start</span> <span class="c"># 왼쪽 탐색 막대</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="n">end</span> <span class="c"># 오른쪽 탐색 막대</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="c"># 마지막 원소를 기준으로</span>
+
+    <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽 막대보다 작은 동안 실행</span>
+        <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">pivot</span><span class="p">:</span>
+            <span class="n">low</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">pivot</span><span class="p">:</span>
+            <span class="n">high</span><span class="o">-=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽 막대보다 작으면</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="c"># 위치 교환</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽으로 넘어가면</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="c"># 기준과 a[low] 교환하고</span>
+            <span class="k">break</span> <span class="c"># 반복문 탈출</span>
+
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">low</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># 새로운 기준을 중심으로 왼쪽 리스트 부분 정렬</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">low</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="c"># 새로운 기준을 중심으로 오른쪽 리스트 부분 정렬</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">quick_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">quick_sort</span><span class="p">(</span><span class="n">arr2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="c"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span> <span class="c"># [1, 1, 2, 2, 3, 3, 4, 4]</span>
+</code></pre></div></div>
+
+<p> </p>
+<h2 id="2-on-복잡도">2. O(n) 복잡도</h2>
+<hr />
+
+<p>퀵 정렬의 계산 복잡도는 최악의 경우 O(n^2), 평균적으로 O(nlog(n))을 따른다. 즉, 기준을 얼마나 잘 잡느냐에 따라 계산 복잡도가 달라진다.</p>
+
+<p>따라서 퀵 정렬을 효율적으로 사용하려면 기준을 잡는 방법에 대해 따로 공부할 필요가 있다. 퀵 정렬의 기준을 잡는 방법에 대한 연구된 좋은 방법들은 많으므로 궁금하면 자료를 찾아보자.</p>
+
+<p>퀵 정렬은 배열이 클 경우에 사용하기 좋다. 그러나 진행하면서 블록이 점점 작아지면 잦은 재귀호출로 인해 불필요한 로드가 생길 수 있다. 따라서 기준을 정한 이후 어느정도 이후부터는 다른 정렬 알고리즘으로 대체하는 것이 좋다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11044,127 +11182,6 @@ if 1 in[1,2,3]: print("1이 있다")
 <p>39</p>
 
 <p>0.039초가 걸린다. 아주 심하게 차이가 난다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/31/reader-writer/">
-        Reader와 Writer
-      </a>
-    </h1>
-
-    <span class="post-date">31 Dec 2018</span>
-
-    <h1 id="1-filereader-클래스">1. FileReader 클래스</h1>
-
-<hr />
-
-<p>FileInputStream과 FileOutputStream은 byte 단위로 데이터를 전송한다. 그런데 한글같은 경우는 표현하기 위해 2byte를 사용해야 한다. “hello.txt”파일에 한글로 내용을 적고 읽어보면 다음과 같이 된다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">stream</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileInputStreamTest</span> <span class="o">{</span>
-
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      
-      <span class="k">try</span><span class="o">(</span><span class="n">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">"hello.txt"</span><span class="o">))</span> <span class="o">{</span>
-         
-         <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
-         <span class="k">while</span><span class="o">((</span><span class="n">i</span> <span class="o">=</span> <span class="n">fis</span><span class="o">.</span><span class="na">read</span><span class="o">())!=-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="n">i</span><span class="o">);</span>
-         <span class="o">}</span>
-      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-      <span class="o">}</span>
-      
-   <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>”??¹?¸???¹?¶?”</p>
-
-<p>문자가 깨진다.</p>
-
-<p>이런경우에 사용하는 것이 문자 단위로 데이터를 읽는 스트림의 최사위 클래스인 Reader 클래스이다. 가장 대표적인 하위클래스인 FileReader를 통해 다시 파일 내용을 읽어보겠다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">stream</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.FileReader</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileInputStreamTest</span> <span class="o">{</span>
-
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      
-      <span class="k">try</span><span class="o">(</span><span class="n">FileReader</span> <span class="n">fr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">"hello.txt"</span><span class="o">))</span> <span class="o">{</span>
-         
-         <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
-         <span class="k">while</span><span class="o">((</span><span class="n">i</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="na">read</span><span class="o">())!=-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="n">i</span><span class="o">);</span>
-         <span class="o">}</span>
-      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-      <span class="o">}</span>
-      
-   <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>“자바를자바라”</p>
-
-<p>한글이 깨지지않고 잘 출력되는 것을 볼 수 있다.</p>
-
-<p> </p>
-
-<h1 id="2-filewriter-클래스">2. FileWriter 클래스</h1>
-
-<hr />
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">stream</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileOutputStreamTest</span> <span class="o">{</span>
-
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">try</span><span class="o">(</span><span class="n">FileWriter</span> <span class="n">fw</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileWriter</span><span class="o">(</span><span class="s">"test.txt"</span><span class="o">))</span> <span class="o">{</span>
-         
-         <span class="kt">char</span><span class="o">[]</span> <span class="n">buf</span> <span class="o">=</span> <span class="o">{</span><span class="sc">'B'</span><span class="o">,</span> <span class="sc">'C'</span><span class="o">,</span> <span class="sc">'D'</span><span class="o">};</span>
-         
-         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="sc">'A'</span><span class="o">);</span>
-         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="sc">'가'</span><span class="o">);</span>
-         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
-         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"자바를자바라"</span><span class="o">);</span>
-         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="mi">65</span><span class="o">);</span>
-         
-         
-      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-      <span class="o">}</span>
-   <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>배열, 문자, 문자열은 물론 한글도 잘 써진다.</p>
-
-<p>실행결과</p>
-
-<p>A가CD자바를자바라A</p>
-
-<p> </p>
 
   </div>
   

@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,299 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/23/object-class/">
+        Object 클래스
+      </a>
+    </h1>
+
+    <span class="post-date">23 Dec 2018</span>
+
+    <p>모든 클래스의 최상위 클래스는 Object 클래스이다. 컴파일러는 모든 클래스의 뒷부분에 ‘extends Object’를 자동으로 추가하여 컴파일한다. 따라서 우리는 Object 클래스의 모든 메소드를 호출하여 사용할 수 있었다.</p>
+
+<p> </p>
+
+<h1 id="1-object-클래스란">1. Object 클래스란?</h1>
+
+<hr />
+
+<p>java.lang 패키지의 클래스이며 자바의 모든 클래스들의 최상위 클래스이다. Object 클래스 뿐만 아니라 java.lang 패키지의 모든 클래스는 컴파일 과정에서 자동으로 import문으로 추가하게 되어있다. 그 유명한 String 클래스도 java.lang 패키지의 하위 클래스이다. 그래서 우리가 지금까지 String 클래스를 사용하여 문자열을 표현할 수 있었던 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.lang.*</span><span class="o">;</span> <span class="c1">// 컴파일러가 java.lang 패키지의 모든 하위 클래스 import</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 컴파일러가 자동으로 extends Object 구문 추가</span>
+<span class="kd">class</span> <span class="nc">Student</span><span class="o">{</span>                       <span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Object</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">studentID</span><span class="o">;</span>          <span class="o">-&gt;</span>           <span class="kt">int</span> <span class="n">studentID</span><span class="o">;</span>
+   <span class="n">String</span> <span class="n">studentName</span><span class="o">;</span>                  <span class="n">String</span> <span class="n">studentName</span><span class="o">;</span>
+<span class="o">}</span>                                    <span class="o">}</span>
+
+
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-object-클래스-대표적인-메소드들">2. Object 클래스 대표적인 메소드들</h1>
+
+<hr />
+
+<h2 id="1-string-tostring">1) String toString()</h2>
+
+<p>String타입의 toString() 메소드는 객체의 정보를 반환한다. 기본적으로 객체를 System.out.println함수 안에 집어넣으면 .toString()이 자동으로 붙는다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">bookNumber</span><span class="o">;</span>
+   <span class="n">String</span> <span class="n">bookTitle</span><span class="o">;</span>
+   
+   <span class="n">Book</span><span class="o">(</span><span class="kt">int</span> <span class="n">bookNumber</span><span class="o">,</span> <span class="n">String</span> <span class="n">bookTitle</span><span class="o">){</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookNumber</span> <span class="o">=</span> <span class="n">bookNumber</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookTitle</span> <span class="o">=</span> <span class="n">bookTitle</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"Titanic"</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>     
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>objectClass.Book@15db9742</p>
+
+<p>objectClass.Book@15db9742</p>
+
+<p>Object.class 파일에 정의되어있는 toString() 메소드의 원형은 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getClass</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"@"</span> <span class="o">+</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hashCode</span><span class="o">());</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>그래서 지금까지 객체의 정보를 출력하면  <em>클래스 이름@해쉬코드값</em>  이 출력된 것이었다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"Titanic"</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+      
+      <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"test"</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+      <span class="n">Integer</span> <span class="n">i1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i1</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>그러나 str과 il은 클래스이름@해쉬코드 값이 출력되는게 아니라 문자열과 정수값이 출력된다. 모든 클래스는 Object클래스를 상속받는다고 했다. String과 Integer 클래스도 마찬가지다. 이 두 클래스들은 Object 클래스를 상속받고 toString() 메소드를 재정의한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//String 클래스의 toString() 오버라이딩</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Integer 클래스의 toString() 오버라이딩</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">toString</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>그렇다면 우리가 직접 Book 클래스에서 toString()을 재정의 해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">bookNumber</span><span class="o">;</span>
+   <span class="n">String</span> <span class="n">bookTitle</span><span class="o">;</span>
+   
+   <span class="n">Book</span><span class="o">(</span><span class="kt">int</span> <span class="n">bookNumber</span><span class="o">,</span> <span class="n">String</span> <span class="n">bookTitle</span><span class="o">){</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookNumber</span> <span class="o">=</span> <span class="n">bookNumber</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookTitle</span> <span class="o">=</span> <span class="n">bookTitle</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"Titanic"</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100,Titanic</p>
+
+<h2 id="2-boolean-equalsobject-obj">2) boolean equals(Object obj)</h2>
+
+<p>equals() 메소드는 두 객체를 비교하여 같은 객체면 true, 다른 객체면 false를 반환한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"Titanic"</span><span class="o">);</span>
+      <span class="n">Book</span> <span class="n">book2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="s">"LionKing"</span><span class="o">);</span>
+      <span class="n">Book</span> <span class="n">book3</span> <span class="o">=</span> <span class="n">book1</span><span class="o">;</span> <span class="c1">//book3 참조변수에 book1을 대입</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book2</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book3</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">book2</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">book3</span><span class="o">));</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>objectClass.Book@15db9742</p>
+
+<p>objectClass.Book@6d06d69c</p>
+
+<p>objectClass.Book@15db9742</p>
+
+<p>false</p>
+
+<p>true</p>
+
+<p>book3 참조변수에 book1을 대입하였다. 따라서 이 두 참조변수는 같은 인스턴스를 가르킬 것이다. 그리고 book2에는 다른 인스턴스를 생성하여 저장하였다. 따라서 book1.equals(book2)는 false, book1.equals(book3)는 true를 반환한다.</p>
+
+<p>String 클래스와 Integer 클래스에서는 equals()메소드가 이미 재정의 되어있다. 먼저 코드를 보고 결과를 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+      <span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+      
+      <span class="n">Integer</span> <span class="n">int1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="n">Integer</span> <span class="n">int2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">==</span><span class="n">str2</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">int1</span><span class="o">==</span><span class="n">int2</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">int1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">int2</span><span class="o">));</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>false</p>
+
+<p>true</p>
+
+<p>false</p>
+
+<p>true</p>
+
+<p>==은 말 그대로 두 객체의 주소값을 비교한다. 그러나 Integer와 String 클래스에서 equals() 메소드가 두 문자열 자체 혹은 정수 자체를 비교하여 같으면 true를 반환하도록 재정의 되어있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">bookNumber</span><span class="o">;</span>
+   <span class="n">String</span> <span class="n">bookTitle</span><span class="o">;</span>
+   
+   <span class="n">Book</span><span class="o">(</span><span class="kt">int</span> <span class="n">bookNumber</span><span class="o">,</span> <span class="n">String</span> <span class="n">bookTitle</span><span class="o">){</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookNumber</span> <span class="o">=</span> <span class="n">bookNumber</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookTitle</span> <span class="o">=</span> <span class="n">bookTitle</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="n">Book</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//매개변수의 자료형이 같다면 비교 시작</span>
+         <span class="n">Book</span> <span class="n">book</span> <span class="o">=</span> <span class="o">(</span><span class="n">Book</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span> <span class="c1">//obj객체를 Book타입으로 변환하여 book에 저장</span>
+         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">bookNumber</span> <span class="o">==</span> <span class="n">book</span><span class="o">.</span><span class="na">bookNumber</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//bookNumber가 같으면 true, 다르면 false 반환</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="c1">//매개변수의 자료형이 다르면 false 반환</span>
+      <span class="o">{</span>
+         <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Book 클래스에서 책 번호가 같으면 같은 것으로, 다르면 다른 것으로 인식되도록 직접 equals() 메소드를 재정의 하여보았다.</p>
+
+<p> </p>
+
+<h2 id="3-int-hashcode-메소드">3) int hashCode() 메소드</h2>
+
+<p>hashCode()는 객체가 저장된 힙 메모리의 주소를 반환한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">objectClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"hello"</span><span class="o">);</span>
+      <span class="n">Book</span> <span class="n">book2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"hi"</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book2</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>366712642</p>
+
+<p>1829164700</p>
+
+<p>두 객체는 서로 다른 객체이므로 hashCode값이 다르다. Object 클래스의 toString() 메소드는 클래스이름@메모리 주소 를 반환하였었다. 이 때 메모리 주소는 hashCode값을 16진수로 변환한 값이었다.</p>
+
+<p> </p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11024,87 +11361,6 @@
 <p>일단 <strong>인터페이스의 형 변환이 가능한 점과 인터페이스를 구현한 여러개의 클래스마다 자신의 메소드를 호출한다는 점은 다형성이 가능케 하는 부분이다.</strong></p>
 
 <p> </p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/19/final/">
-        final 선언
-      </a>
-    </h1>
-
-    <span class="post-date">19 Dec 2018</span>
-
-    <p>final이라는 단어의 뜻은 ‘마지막의’, ‘최종의’ 정도로 해석된다. 단어의 뜻에서 유추할 수 있듯이 final로 선언한 변수 , 메소드, 클래스 등은 최종적인 것이라 생각하면 된다. final로 선언한 변수는 더 이상 바꿀 수 없고 final 클래스는 상속이 불가능하며 final 메소드는 재정의(오버라이딩)이 불가능하다.</p>
-
-<p>각각에 대해 final로 선언된 코드를 보면 바로 이해할 수 있을 것이다.</p>
-
-<p> </p>
-
-<h1 id="1-final-메소드">1. final 메소드</h1>
-
-<hr />
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">abstractpractice</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">drive</span><span class="o">();</span>
-   <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">();</span>
-   
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">startCar</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"turn on"</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">turnOff</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"turn off"</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-   <span class="kd">final</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">startCar</span><span class="o">();</span>
-      <span class="n">drive</span><span class="o">();</span>
-      <span class="n">stop</span><span class="o">();</span>
-      <span class="n">turnOff</span><span class="o">();</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>Car 클래스는 추상 클래스이며 startCar(), drive(), stop(), turnOff(), run()메소드를 가지고 있다. 어떤 차이든지 시동을 켜는 방법과 끄는 방법은 같을 것이므로 메소드를 구현해 놓았다. 그러나 조작법, 브레이크 작동이 달라 drive()와 stop() 메소드는 추상 메소드로 구현해놓았다.</p>
-
-<p>마지막으로 run() 메소드는 시동on-운전-멈춤-시동off라는 자동차의 로직을 구현해놓은 메소드이다. 모든 차는 저 순서대로 움직이므로 일반 메소드에 미리 로직을 구현해 놓은것이다. 그리고 특정 하위 클래스에서 저 로직을 거스르는 것을 막기 위해 final로 선언을 해놓았다. final 메소드는 하위클래스에서 재정의가 불가능하다.</p>
-
-<p> </p>
-
-<h1 id="2-final-변수">2. final 변수</h1>
-
-<hr />
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">abstractpractice</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-   <span class="kd">final</span> <span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
-   <span class="kd">final</span> <span class="n">String</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s">"Kim"</span><span class="o">;</span>
-   <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAX</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
-   
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">PI</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">;</span> <span class="c1">//오류</span>
-      <span class="n">NAME</span> <span class="o">=</span> <span class="s">"Lee"</span><span class="o">;</span> <span class="c1">//오류</span>
-      <span class="n">MAX</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span><span class="c1">//오류</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>변수를 final로 선언하면 상수가 된다. 상수는 변수처럼 그 값이 변할 수 있는 수가 아니다. final로 선언된 상수에 다른 값을 대입하여 저장하려 하면 오류가 난다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-final-클래스">3. final 클래스</h1>
-
-<hr />
-
-<p>final로 선언된 클래스는 상속될 수 없다. 더 이상 멤버변수나 메소드를 재정의 할 수 없다는 말이다. 우리가 흔히 정수를 선언할 때 쓰는 Int 클래스, 혹은 String 클래스등은 final로 선언되어있다. 쓰는 방법을 바꿀 수 없도록 말이다.</p>
 
   </div>
   

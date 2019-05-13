@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,95 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/14/class/">
+        클래스
+      </a>
+    </h1>
+
+    <span class="post-date">14 Dec 2018</span>
+
+    <p>클래스(class)는 객체지향 프록래밍의 기반이다. 객체지향 프로그래밍은 클래스를 선언하고 정의하는 것부터 시작한다. 클래스는 객체의 속성, 특성을 정의하고 또한 그 객체가 지원하는 기능을 정의해놓은 것이라 할 수 있다. 즉 객체는 클래스를 정의함으로 만들어진다.</p>
+
+<p> </p>
+
+<h1 id="1-class의-속성--멤버-변수">1. class의 속성 : 멤버 변수</h1>
+
+<hr />
+
+<p>사람이라는 객체를 만들려 한다.</p>
+
+<p>객체의 속성으로는 나이, 이름, 주소가 있다고 해보자. 이를 클래스로 구현하려면 다음과 같이 하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="c1">//멤버 변수</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>클래스의 속성은 클래스 내부에 변수로 선언한다. 클래스의 속성을 <span style="text-decoration: underline;"><strong>‘멤버 변수’</strong> 라고 부른다.</span></p>
+
+<p>참고로 자바는 객체지향 언어 답게 모든 요소가 클래스 내부에 온다. 클래스 외부에 올 수 있는것은 package 선언과 외부 라이브러리를 가져오는 import 선언밖에 없다.</p>
+
+<p>이렇게 만들어진 클래스는 하나의 또다른 자료형이 될 수 있다. 사실 String자료형 역시 자료형은 int, double과 같이 자바가 기본적으로 지원하는 자료형이 아니고 우리가 컴퓨터에 설치한 JDK에서 지원하는 하나의 클래스이다.</p>
+
+<p>이처럼 하나의 클래스로 이루어진 자료형을 <span style="text-decoration: underline;"><strong>참조 자료형</strong>이라고 하며 뒤에서 자세히 다룰 것이다.</span></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-class의-기능--메소드">2. class의 기능 : 메소드</h1>
+
+<hr />
+
+<p>클래스는 멥버 변수 뿐만 아니라 클래스가 수행하는 기능이 정의된 메소드(method)를 가질 수 있다. 이름을 개명한다던지, 밥을 먹는다던지 하는 기능을 수행하는 메소드를 정의해보겠다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="c1">// Person 클래스의 속성</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
+
+    <span class="c1">// 밥먹기 메소드</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eatMeal</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"냠냠쩌쩝쩝"</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 이름 바꾸기 메소드</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changeName</span><span class="o">(</span><span class="n">String</span> <span class="n">newName</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이처럼 클래스의 기능을 구현한 것을 메소드 혹은 멤버 함수라고 부르는데, 주로 메소드라고 부른다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-패키지">3. 패키지</h1>
+
+<hr />
+
+<p>패키지란 클래스 파일들의 묶음이다. 어떠한 프로젝트를 일정한 기준으로 클래스 파일들을 분류하여 하나의 패키지에 넣어놓고 관리할 수 있다.</p>
+
+<p>패키지를 사용해서 프로젝트의 계층 구조를 효율적으로 잘 구성해야 프로젝트의 관리와 유지보수가 편리해진다.</p>
+
+<p>위에서 정의한 클래스는 Person이라는 이름을 가지고 있다. 사실 Person의 풀 네임은 classpart.Person이다. 같은 패키지 내에서는 패키지 명을 생략할 수 있어서 그렇게 한 것이었다.</p>
+
+<p>따라서 클래스 이름이 같더라도 다른 패키지에 있으면 풀네임이 다르므로 서로 연관이 없는 완전히 다른 클래스이다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10941,58 +11074,6 @@ The number is 3</p>
 <p>다시 한 번 강조드리지만 <strong>break은 break을 포함하는 가장 하위단의 반복문을 탈출하게 해줍니다.</strong></p>
 
 <p>break와 반대되는 continue라는 것도 있는데 이는 아래의 반복문 이내의 아래의 코드를 무시하고 다시 조건 판단 구문으로 돌아가도록 합니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/14/do-while/">
-        반복문(3) - do-while
-      </a>
-    </h1>
-
-    <span class="post-date">14 Dec 2018</span>
-
-    <p>while문과 for문은 조건을 만족하지 않으면 반복문 내의 코드가 한 번도 실행되지 않습니다. 최소 한 번은 반복문을 실행하고 그 이후에 조건에 따라 실행 여부를 결정하고 싶을 때 사용하는 것이 do-while 반복문입니다.</p>
-
-<p> </p>
-
-<h1 id="1-do-while-반복문-구조">1. do while 반복문 구조</h1>
-
-<hr />
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span>
-<span class="o">{</span>
-<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
-<span class="o">}</span><span class="k">while</span><span class="o">(.</span> <span class="o">.</span> <span class="o">.)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>do- while 반복문이 실행되면 처음으로 do를 통해 {. . .}를 한 번 실행합니다. 그 이후 (. . .)의 조건식을 판단합니다. 이 조건식이 맞다면 다시 한 번 {. . .}를 실행하고 다시 (. . .)의 조건식을 판단합니다. while문과의 차이점은 최초 실행 여부입니다.</p>
-
-<p>사실 do-while문은 while문에 비해서 활용빈도가 그리 높지 않습니다. 그리고 do-while문으로 구현가능한 코드는 while문이 100% 대체 가능할 수 있기도 합니다. 그럼에도 불구하고 do-while문이 while문보다 더 적절한 경우도 있습니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
-        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="k">do</span><span class="o">{</span>
-            <span class="n">sum</span><span class="o">+=</span><span class="n">sum</span><span class="o">;</span>
-        <span class="o">}</span><span class="k">while</span><span class="o">(</span><span class="n">sum</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">)</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sum</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p>실행결과</p>
-
-<p>16</p>
 
   </div>
   

@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,144 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/04/19-anomaly-detection/">
+        19. Anomaly Detection
+      </a>
+    </h1>
+
+    <span class="post-date">04 Sep 2018</span>
+
+    <p>정상적인 범주 내에 있는 normal한 data들의 분포에서 많이 벗어나는 data를 anomaly 라고 한다. anomaly 는 ‘변칙’이란 뜻을 가지고 있다.</p>
+
+<p><img class="aligncenter wp-image-694" src="/images/2018/09/no-name-1.png" alt="" width="289" height="243" srcset="/images/2018/09/no-name-1.png 423w, /images/2018/09/no-name-1-300x252.png 300w" sizes="(max-width: 289px) 100vw, 289px" /></p>
+
+<p>위와 같은 비이상적 data인 anomaly 를 detect 하는 알고리즘은 제품 공정에서 불량을 찾거나 데이터 센터에서 소자의 이상한 움직임을 감지한다던지 하는데에 적용할 수 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="1-gaussian-distribution"><span style="font-size: 18pt;"><strong>1. Gaussian Distribution</strong></span></h1>
+
+<hr />
+
+<p>일반적인 normal 데이터들의 분포는 보통 Gaussian distribution(가우스 분포) – normal distribution(정규분포)라고도 한다- 를 따른다. 가우스 분포는 다음과 같다.</p>
+
+<p><img class="aligncenter wp-image-696" src="/images/2018/09/no-name-3.png" alt="" width="533" height="162" srcset="/images/2018/09/no-name-3.png 819w, /images/2018/09/no-name-3-300x91.png 300w, /images/2018/09/no-name-3-768x233.png 768w" sizes="(max-width: 533px) 100vw, 533px" /></p>
+
+<p>위는 mean(평균)이 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu" alt="\dpi{120} \mu" align="absmiddle" />이고 variance(분산)이 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" />인 가우스 분포이다.</p>
+
+<p>어떤 데이터의 집합이 가우스 분포를 따른다고 할 때 다음과 같이 나타낸다.   <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}\sim&space;N(\mu,\sigma^{2})" alt="\dpi{120} x^{(i)}\sim N(\mu,\sigma^{2})" align="absmiddle" /></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-algorithm"><span style="font-size: 18pt;"><strong>2. Algorithm</strong></span></h1>
+
+<hr />
+
+<p>training dataset <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" alt="\dpi{120} x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" align="absmiddle" />이 있다고 해보자.</p>
+
+<p>먼저 anomaly 에 대해서는 p가 작고 normal data에 대해서는 p를 크게 해 줄 것 같은 적절한 feature를 선정한다. feature의 수는 n이라고 하고<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(i)}\in&space;\mathbb{R}^{n})" alt="\dpi{120} (x^{(i)}\in \mathbb{R}^{n})" align="absmiddle" />  data들이 가우스 분포를 따른다고 하면 model 식은 다음과 같다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\\p(x;\mu,\sigma^{2})=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}" alt="\dpi{150} \\p(x;\mu,\sigma^{2})=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}" align="absmiddle" />                      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}&space;\\&space;\sigma^{2}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^{2}" alt="\dpi{120} \\ \mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)} \\ \sigma^{2}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^{2}" align="absmiddle" /></p>
+
+<p>각 data의 feature은 각각이 서로 독립적이라고 가정하면 모델은 다음과 같이 표현 가능하다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x;\mu,\sigma^{2})=p(x_{1};\mu_{1},\sigma_{1^{2}})p(x_{2};\mu_{2},\sigma_{2}^{2})\cdot\cdot\cdotp(x_{n};\mu_{n},\sigma_{n}^{2})=\prod_{j=1}^{n}p(x_{j};\mu_{j},\sigma_{j}^{2})" alt="\dpi{120} p(x;\mu,\sigma^{2})=p(x_{1};\mu_{1},\sigma_{1^{2}})p(x_{2};\mu_{2},\sigma_{2}^{2})\cdot\cdot\cdotp(x_{n};\mu_{n},\sigma_{n}^{2})=\prod_{j=1}^{n}p(x_{j};\mu_{j},\sigma_{j}^{2})" align="absmiddle" /></p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_{j}&space;\\&space;\sigma^{2}_{j}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}_{j}-\mu_{j})^{2}" alt="\dpi{120} \\ \mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_{j} \\ \sigma^{2}_{j}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}_{j}-\mu_{j})^{2}" align="absmiddle" /></p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x^{(i)})" alt="\dpi{120} p(x^{(i)})" align="absmiddle" /> 는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" /> 가 normal한 data일 확률이다. 여기에 새로운 data  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{test}" alt="\dpi{120} x_{test}" align="absmiddle" />가 들어왔을 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x_{test})" alt="\dpi{120} p(x_{test})" align="absmiddle" /> 우리가 정한 어떤 수 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />보다 작으면 anomaly 라고 판단한다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;p(x_{test})&gt;&space;\epsilon:normal(y=0)&space;\\&space;p(x_{test})&lt;&space;\epsilon:anomaly(y=1)" alt="\dpi{120} \\ p(x_{test})&gt; \epsilon:normal(y=0) \\ p(x_{test})&lt; \epsilon:anomaly(y=1)" align="absmiddle" /></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-model-evaluation"><span style="font-size: 18pt;"><strong>3. model evaluation</strong></span></h1>
+
+<hr />
+
+<p>model을 세운다고 끝이 아니다. 모델의 성능이 쓸만해야한다.</p>
+
+<p>normal한 data가 10,000개 있고 anomaly data가 20개 있을 때 모든 데이터를 모델 훈련에 쓰는 것이 아니라 다음과 같이 나눈다.</p>
+
+<p> </p>
+
+<p><strong>training data : normal 6,000개<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" alt="\dpi{120} x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" align="absmiddle" /></strong></p>
+
+<p><strong>cv(cross validation) data : normal 2,000개 / anomaly 10개 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{cv})},y^{(m_{cv})})" alt="\dpi{120} (x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{cv})},y^{(m_{cv})})" align="absmiddle" /></strong></p>
+
+<p><strong>test data : normal 2,000개 / anomaly 10개 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{test})},y^{(m_{test})})" alt="\dpi{120} (x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{test})},y^{(m_{test})})" align="absmiddle" /></strong></p>
+
+<p> </p>
+
+<p>training data는 normal한 데이터만 가지고 이를 사용해 모델을 구한다.</p>
+
+<p>그리고 cv dataset을 사용해서<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" /> 를 조정한다. model의 성능을 확인하는 지표로 F score를 활용하면 된다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;F=\frac{PR}{P+R}\quad&space;(P:precision\quad&space;R:recall)" alt="\dpi{120} F=\frac{PR}{P+R}\quad (P:precision\quad R:recall)" align="absmiddle" /></p>
+
+<p>ex) 여러 개의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />으로 model <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />를 학습시켜 각각의 model의 F score를 비교하여 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" /> 결정</p>
+
+<p>ex) 어떤 featrue를 포함 시킬지 말지 결정해야할 때, 포함시킨 경우의 F score와 포함시키지 않은 경우 F score 비교</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-anomaly-detection-vs-supervised-learning"><span style="font-size: 18pt;"><strong>4. Anomaly Detection   vs.   Supervised Learning</strong></span></h1>
+
+<hr />
+
+<p>언뜻 보면 supervised learning의 binary classification 알고리즘을 사용하여 cv data와 test data가 normal data인 경우를 y=0, anomaly data인 경우를 y=1로 놓고 학습을 시켜 모델을 만들 수도 있을 것 같다. 그도 그럴것이 cv dataset과 test dataset은 label(y=1,y=0)을 가지고 있다. 이는 실제로 결함이 있는 data에 대해 예측을 하여 모델의 성능을 평가해야하기 때문에 특별히 실제로 결함인지 아닌지 판단하기 위해 label을 넣은 것이다. 하지만 두 알고리즘은 서로 다른 상황에서 적용된다. 그 차이를 짚고 넘어가겠다.</p>
+
+<p> </p>
+
+<p><strong>1) Anomaly Detection</strong></p>
+
+<ul>
+  <li>매우 적은 수의 anomaly data / 아주 많은 수의 normal data</li>
+  <li>적은 수의 anomaly data로는 모델을 학습시키기가 힘들다. anomaly에는 많은 종류가 있기 때문에 현재 가진 anomaly 로 학습을 시켜도 미래에 들어올 data의 anomaly 가 이와 비슷한 종류라는 보장이 없다. 가령, 비행기 엔진 생산라인에서 anomaly detection 알고리즘으로 결함이 있는 엔진을 가려낼 때, 엔진의 파손이나 동작이상에는 매우 많은 종류의 원인이 있을 것이다.</li>
+</ul>
+
+<p> </p>
+
+<p><strong>2) Supervised Learning</strong></p>
+
+<ul>
+  <li>많은 수의 positive class / negative class 데이터</li>
+  <li>충분한 수의 positive data가 있고 이는 abnormal한 경우가 아니라 다른 하나의 class일 뿐이기 때문에 미래에 들어올 data가 positive class에 속한다면 현재 가지고 있는 positive class와 비슷할 것이라는 자신감이 있다.</li>
+</ul>
+
+<p> </p>
+
+<h1 id="5-tips"><span style="font-size: 18pt;"><strong>5. Tips</strong></span></h1>
+
+<hr />
+
+<p>histogram을 그리든 다른 방법을 쓰든 feature가 Gaussian을 따르는지 확인을 해서 따르지 않는 경우는 데이터를 좀 주물러서(?) Gaussian 형태가 되도록 하는 방법이 있다.</p>
+
+<p>*<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;log(x)" alt="\dpi{120} log(x)" align="absmiddle" /> 
+  *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;log(x+c)" alt="\dpi{120} log(x+c)" align="absmiddle" /> 
+  *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sqrt{x}" alt="\dpi{120} \sqrt{x}" align="absmiddle" /> 
+  *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{p}" alt="\dpi{120} x^{p}" align="absmiddle" /></p>
+
+<p>위의 수식을들 통해 data를 변형해서 Gaussian을 따르도록 한 새로운 feature를 사용하면 된다.</p>
+
+<p> </p>
+
+<p>우리의 최종 목표는 normal한 data에 대해서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />가 매우 크고 anomaly 에 대해서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />가 매우 작게 하는 모델을 만드는 것이다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11098,237 +11280,6 @@
 <p>large data : low bias(high variance)를 해소시켜<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}\approx&space;J_{train}" alt="\dpi{120} J_{test}\approx J_{train}" align="absmiddle" />  이 되도록 도와준다.</p>
 
 <p>위 두 가지를 종합하면 <span style="color: #ff0000;"><strong>복잡한 high bias 알고리즘에 large data를 넣어주면 알고리즘의 성능을 개선하는 데 도움이 된다.</strong></span></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/08/20/15-2-machine-learning-system-design-2-handling-skewed-data/">
-        15-2. Machine Learning System Design - Handling Skewed Data
-      </a>
-    </h1>
-
-    <span class="post-date">20 Aug 2018</span>
-
-    <p>암을 진단하는 모델을 test data에 적용했는데 에러율 1%의 정확도로 예측했다고 해보자. 그런데 실제로 암을 가진 환자는 test data의 0.5% 라면? 암이 class1, 암이 아닌경우 class0으로 분류된다고 하면 모든 경우를 class0으로 예측을 한다해도 에러율이 0.5%밖에 되지 않는다. 아무런 알고리즘의 개선 없이 예측 error를 올린 것이다. 따라서 이런 경우 error율 자체로 모델의 성능을 평가하기에는 무리가 있다고 볼 수 있다. 이처럼 class의 data수 차이가 아주 많이 나는 data를 skewed data라고 한다.  skewed data란 직역하자면 ‘왜곡된 데이터, 꼬인 데이터’ 정도가 된다. 따라서 일반적으로 모델의 성능을 파악할 수 있는 ‘하나의 수로 된 지표’를 정의하여 사용할 수 있다면 아주 좋을 것이다.</p>
-
-<p> </p>
-
-<p><span style="font-size: 18pt;"><strong>1. Precision / Recall</strong></span></p>
-
-<hr />
-
-<p>test data를 다음과 같이 분류한다.</p>
-
-<p>true positive(TP) : predicted 1 / actual 1</p>
-
-<p>true negative(TN) : predicted 0 / actual 0</p>
-
-<p>false negative(FN) : predicted 0 / actual 1</p>
-
-<p>false positive(FP) : predicted 1 / actual 0</p>
-
-<p> </p>
-
-<p>1) Precision : 1이라고 예측한 환자들 중 정말로 1인 비율</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;P=\frac{TP}{TP+FP}" alt="\dpi{120} P=\frac{TP}{TP+FP}" align="absmiddle" /></p>
-
-<p> </p>
-
-<p>2) Recall : 실제로 1인 환자들 중 제대로 1로 골라낸 수</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;R&space;=&space;\frac{TP}{TP+FN}" alt="\dpi{120} R = \frac{TP}{TP+FN}" align="absmiddle" /></p>
-
-<p> </p>
-
-<p>위에서 언급했던 암 환자 예측 모델에서 모든 data에 대해 class0으로 판단한다고 하면 R=0이 된다. 따라서 이 모델은 좋은 모델이 아니라고 할 수 있다.</p>
-
-<p> </p>
-
-<p><span style="font-size: 18pt;"><strong>2. P와 R 사이 Trade-off</strong></span></p>
-
-<hr />
-
-<p>classification(logistic regression)의 경우를 다시 떠올려보자.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;h_{\theta}(x)&space;&lt;&space;0.5&space;\rightarrow&space;class0\\&space;h_{\theta}(x)&space;\geq&space;0.5&space;\rightarrow&space;class1" alt="\dpi{120} \\ h_{\theta}(x) &lt; 0.5 \rightarrow class0\\ h_{\theta}(x) \geq 0.5 \rightarrow class1" align="absmiddle" />  hypothesis function의 결과값이 0.5를 기준으로 positive / negative class로 구분한다.</p>
-
-<p> </p>
-
-<p>하지만 위의 threshold를 옮기면 어떻게 될까?</p>
-
-<p>(i)   <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;h_{\theta}(x)&space;&lt;&space;0.7&space;\rightarrow&space;class0\\&space;h_{\theta}(x)&space;\geq&space;0.7&space;\rightarrow&space;class1" alt="\dpi{120} \\ h_{\theta}(x) &lt; 0.7 \rightarrow class0\\ h_{\theta}(x) \geq 0.7 \rightarrow class1" align="absmiddle" />                                (ii)  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;h_{\theta}(x)&space;&lt;&space;0.3&space;\rightarrow&space;class0\\&space;h_{\theta}(x)&space;\geq&space;0.3&space;\rightarrow&space;class1" alt="\dpi{120} \\ h_{\theta}(x) &lt; 0.3 \rightarrow class0\\ h_{\theta}(x) \geq 0.3 \rightarrow class1" align="absmiddle" /></p>
-
-<p> </p>
-
-<p>(i)는 class1로 분류하는 기준을 조금 더 엄격하게 잡은 경우이다. 이 때에는 암이라고 예측한 경우에 대해 맞을 비율이 높아질 것이다. 하지만 실제 암 환자들 중 우리가 골라내는 확률은 낮아진다. 따라서 이 때에는 P가 커지고 R이 작아진다.</p>
-
-<p>(ii)는 class1로 분류하는 기준을 조금 더 안정적으로 잡은 경우이다. 이 때에는 암이라고 예측한 경우에 대해 맞을 확률이 낮아진다. 기준을 너무 널널하게 잡았기 때문이다. 하지만 실제 암 환자들 중 우리가 골라내는 비율은 높아진다. 따라서 이 때에는 P는 작아지고 R이 커진다.</p>
-
-<p>P와 R의 개념을 봤을 때 둘 모두 높은 것이 좋다. 하지만 하나가 커지면 하나는 작아진다.</p>
-
-<p><img class="aligncenter size-medium wp-image-590" src="/images/2018/08/no-name-80-300x263.png" alt="" width="300" height="263" srcset="/images/2018/08/no-name-80-300x263.png 300w, /images/2018/08/no-name-80.png 440w" sizes="(max-width: 300px) 100vw, 300px" /></p>
-
-<table style="border-collapse: collapse; width: 85.4545%;" border="1">
-  <tr>
-    <td style="width: 15.3939%; text-align: center;">
-    </td>
-    
-    <td style="width: 13.3334%; text-align: center;">
-      P
-    </td>
-    
-    <td style="width: 12.606%; text-align: center;">
-      R
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 15.3939%; text-align: center;">
-      model 1
-    </td>
-    
-    <td style="width: 13.3334%; text-align: center;">
-      0.99
-    </td>
-    
-    <td style="width: 12.606%; text-align: center;">
-      0.23
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 15.3939%; text-align: center;">
-      model 2
-    </td>
-    
-    <td style="width: 13.3334%; text-align: center;">
-      0.9
-    </td>
-    
-    <td style="width: 12.606%; text-align: center;">
-      0.3
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 15.3939%; text-align: center;">
-      model 3
-    </td>
-    
-    <td style="width: 13.3334%; text-align: center;">
-      0.6
-    </td>
-    
-    <td style="width: 12.606%; text-align: center;">
-      0.5
-    </td>
-  </tr>
-</table>
-
-<p>위와 같은 표가 있을 때 어떠한 알고리즘이 좋은 알고리즘인지 판단할 수 있겠는가? 물론 감으로 선택할 수 있겠지만 모델의 성능을 평가하는 지표가 하나의 숫자로 되어있다면 판단하기 수월하겠다. 따라서 우리는 다음과 같은 모델 성능의 평가 지표인 F score를 정의할 수도 있다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;F=\frac{P+R}{2}" alt="\dpi{120} F=\frac{P+R}{2}" align="absmiddle" /></p>
-
-<p>하지만 예를들어 우리가 모든 test datad의 결과를 class1로 예측한다 해보자. 그럼 Recall은 1로 아주 높아지고 좋은 F score를 얻을 수 있다. 즉, P와 R의 평균값을 F score로 쓰는 것은 좋지 않아 보인다. 따라서 F score는 다음과 같이 정의한다.</p>
-
-<p> </p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mathbf{F=2\frac{PR}{P+R}}" alt="\dpi{120} \mathbf{F=2\frac{PR}{P+R}}" align="absmiddle" /></p>
-
-<p> </p>
-
-<table style="border-collapse: collapse; width: 85.4545%;" border="1">
-  <tr>
-    <td style="width: 15.3939%; text-align: center;">
-    </td>
-    
-    <td style="width: 13.3334%; text-align: center;">
-      P
-    </td>
-    
-    <td style="width: 12.606%; text-align: center;">
-      R
-    </td>
-    
-    <td style="width: 22.3031%; text-align: center;">
-      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;F=\frac{P+R}{2}" alt="\dpi{120} F=\frac{P+R}{2}" align="absmiddle" />
-    </td>
-    
-    <td style="width: 21.876%; text-align: center;">
-      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;F=2\frac{PR}{P+R}" alt="\dpi{120} F=2\frac{PR}{P+R}" align="absmiddle" />
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 15.3939%; text-align: center;">
-      model 1
-    </td>
-    
-    <td style="width: 13.3334%; text-align: center;">
-      0.99
-    </td>
-    
-    <td style="width: 12.606%; text-align: center;">
-      0.23
-    </td>
-    
-    <td style="width: 22.3031%; text-align: center;">
-      <strong>0.61</strong>
-    </td>
-    
-    <td style="width: 21.876%; text-align: center;">
-      <strong>0.37</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 15.3939%; text-align: center;">
-      model 2
-    </td>
-    
-    <td style="width: 13.3334%; text-align: center;">
-      0.9
-    </td>
-    
-    <td style="width: 12.606%; text-align: center;">
-      0.3
-    </td>
-    
-    <td style="width: 22.3031%; text-align: center;">
-      <strong>0.6</strong>
-    </td>
-    
-    <td style="width: 21.876%; text-align: center;">
-      <strong>0.45</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 15.3939%; text-align: center;">
-      model 3
-    </td>
-    
-    <td style="width: 13.3334%; text-align: center;">
-      0.6
-    </td>
-    
-    <td style="width: 12.606%; text-align: center;">
-      0.5
-    </td>
-    
-    <td style="width: 22.3031%; text-align: center;">
-      <strong>0.55</strong>
-    </td>
-    
-    <td style="width: 21.876%; text-align: center;">
-      <strong>0.55</strong>
-    </td>
-  </tr>
-</table>
-
-<p>F score를 위와 같이 정의하여야 가장 합리적인 model3의 F score가 높게 나오는 것을 볼 수 있다. 이러한 Precision과 Recall, 그리고 F score를모델의 평가지표로 활용하면 아주 skewed한 data에 대해서도 충분히 model의 성능을 평가할 수 있다. <span style="color: #ff0000;"><strong>threshold를 바꿔가면서 model을 훈련시키고</strong></span> <span style="color: #ff0000;"><strong>cross validation dataset에 대해 P와 R을 구한다음 F score를 계산하여 가장 높은 점수를 얻은 모델을 선택하면 된다.</strong></span></p>
 
   </div>
   

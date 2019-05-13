@@ -275,6 +275,10 @@
     
     
     
+    
+    
+    
+    
 	-->
     <!--<a class="sidebar-nav-item" href="">GitHub project</a>-->
   </nav>
@@ -343,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">39</span>
+        <span class="badge">40</span>
       </a>
       
     </nav>
@@ -3249,7 +3253,7 @@
 
         
         
-        <a href="/tag/#상속" style="font-size: 9.5pt; color: #666;">상속</a>
+        <a href="/tag/#상속" style="font-size: 10pt; color: #666;">상속</a>
         
         
         
@@ -10451,6 +10455,46 @@
         
         <a href="/tag/#gridview" style="font-size: 9pt; color: #555;">gridview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#복합 위젯" style="font-size: 9pt; color: #555;">복합 위젯</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Composite Widget" style="font-size: 9pt; color: #555;">Composite Widget</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#커스텀뷰" style="font-size: 9pt; color: #555;">커스텀뷰</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
+        
       </div>
     </div>
 	-->
@@ -10483,6 +10527,202 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/03/43-file-io-1/">
+        43. 파일 입출력(1) - 스트림 생성과 개방모드
+      </a>
+    </h1>
+
+    <span class="post-date">03 Nov 2018</span>
+
+    <p>C언어를 공부하면서 대부분은 실행결과를 확인하고 싶을 때 콘솔 입출력(키보드, 모니터의 입출력)을 사용해왔습니다. 기본적으로 운영체제에 의해 제공되는 표준 입력 스트림을 통해서 키보드로 데이터를 입력하고 표준 출력 스트림을 통해서 모니터로 데이터를 출력해왔던거에요. 하지만 모두들 아시다시피 우리가 데이터를 읽고 쓰는 행위는 이런 형태만 존재하는게 아닙니다. 오늘 얘기할 내용은 우리가 어떠한 입력/출력 스트림을 놓고 그 다리를 이용해서 ‘파일’이란 것과 데이터를 주고 받을 수 있는 방법입니다.</p>
+
+<p>먼저 ‘파일’이란 무엇일까요? 흔히 일상생활에서 우리는 .pdf확장자의 PDF파일이라던지 .avi확장자의 동영상파일, .xls확장자의 엑셀 파일 등등이 어떻고 하며 이야기를 해요. 여기에 바로 답이 있습니다. 단순하게 설명하자면 파일이란것은 어떠한 데이터를 저장해두고 외부 프로그램과 데이터를 주고 받을 수 있는(읽고 쓸 수 있는) 저장소같은겁니다. 우리가 C언어를 사용해서 작성하는 소스코드도 .c확장자를 가지는 하나의 파일이에요. 그리고 여러가지 소스코드들을 묶어서 컴파일하면 binary형태의 파일이 나오고 이것을 링크해서 .exe확장자의 실행파일을 만드는거구요.</p>
+
+<p>그렇다면 파일이란 것은 단순히 무작위 데이터들의 집합이냐? 물으신다면 물론 그런 형태의 파일도 만들수는 있겠습니다만 별 의미가 없어질겁니다. 흔히 전제를 까는것이 파일은 관련성이 있는 데이터들의 집합이에요. 무슨말이냐하면 .c확장자의 파일은 C언어 명령어와 관련된 데이터들의 집합일것이고 .avi파일은 동영상의 프레임을 표현하기 위한 특정 시간과 위치에서 화소의 빛의밝기 등의 데이터가 기록된 파일일겁니다. 다시 한 번 제대로 정리하자면 ‘파일은 서로 연관된 데이터 집합의 기록이다’ 정도가 더 정확한 설명입니다. 여러분들이 직관적으로 이해하고 계시던대로 알고계셔도 무방합니다. 그저 파일이란것이 외부와 데이터를 주고 받을 수 있다는 사실과 그러기 위해서는 데이터가 입출력과 프로그램 사이를 오갈 수 있도록하는 스트림이 운영체제에 의해 제공되어야한다는 사실을 기억해주세요.</p>
+
+<p><img src="/images/2018/09/stream.jpg" alt="stream" width="70%" height="70%" /></p>
+
+<p>콘솔입출력은 운영체제에서 기본적으로 제공되는 표준 입출력 스트림이 있어서 우리가 따로 스트림을 놓으라는 명령을 하지 않아도 데이터의 읽기/쓰기가 되었지만 파일과의 입출력을 할 때에는 우리가 따로 스트림을 놓아주어야합니다. 오늘은 그 방법을 설명드릴 겁니다.</p>
+
+<p>– 파일과의 스트림 형성 함수 : fopen</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">FILE</span> <span class="o">*</span> <span class="n">fopen</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">filename</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">mode</span><span class="p">);</span>
+<span class="c1">// fopen함수 호출 정상 수행시 fopen 함수의 주소값을 반환 / 호출 실패 시 NULL포인터 반환
+</span></code></pre></div></div>
+
+<p>전달인자 1 : 스트림을 형성할 파일</p>
+
+<p>전달인자 2 : 스트림의 종류(입력 = 읽기 or 출력 = 쓰기)&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt;</p>
+
+<p>fopen함수의 반환형을 보시면 FILE * 이라고 되어있습니다. 기본 자료형 중에서 FILE이라는 자료형은 없습니다. 그럼 구조체밖에 없겠네요. FILE은 구조체로 정의된 사용자 정의 자료형이에요. fopen함수는 FILE이라는 구조체의 포인터 형태이구요. FILE구조체의 포인터는 파일의 위치를 가리키기 때문에 파일입출력을 위해 사용이됩니다. 어떻게 정의 된 구조체인지 형태가 궁금하실 수도 있습니다만 이미 잘 만들어진 라이브러리에의해 제공되는 함수이고 직접 구조체의 멤버에 접근할 일은 없는 구조체이기때문에 따로 짚고 넘어가진 않겠습니다. 사실 저도 잘 모릅니다.</p>
+
+<p>또한 전달인자가 두 개인데, 첫 번째 전달인자는 스트림을 형성할 대상이 될 파일의 이름이고 두 번째 전달인자는 형성할 스트림의 종류입니다. 그리고 이는 둘 모두 문자열의 형태로 전달해요. 그렇기때문에 전달인자의 자료형이 포인터의 형태로 되어있는 것입니다.</p>
+
+<p><img src="/images/2018/09/fopen.jpg" alt="fopen" width="70%" height="70%" /></p>
+
+<p>위 그림과 같이 ‘fopen함수를 호출하여 FILE 자료형 포인터변수를 선언하고 각각이 가르키는 파일을 지정할 수 있어요. 이제 이 포인터변수를 가지고 원하는 파일에 접근하시면 됩니다.‘ 위 그림의 foepn함수에서 두 번째 인자가 가르키는 rt, wt는 각각 읽기모드와 쓰기모드를 의미합니다. 자세한 mode에 관한 내용은 조금있다가 설명드릴겁니다.</p>
+
+<p>그럼 실제로 fopen함수를 이용해서 파일과 데이터를 주고받아보겠습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+	FILE * f0;
+	f0 = fopen(“hello.txt”, “wt”); //hello.txt 파일에 wt(쓰기 = 출력스트림) 생성
+	if(f0 == NULL)
+	{
+		printf(“Fail to open the file”);
+		
+		return -1; // 운영체제에 -1 반환 : 비정상적 프로그램 종료
+	}
+
+	fputs(“Hello, everybody!\n”, f0);
+	fputs(“I love C language\n”, f0);
+	fclose(f0); // 스트림 소멸
+
+	return 0;
+}
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p><img src="/images/2018/09/3-1.png" alt="3-1" width="70%" height="70%" /></p>
+
+<p>hello.txt라는 파일이 생성되고 거기에 제가 입력한 문자열이 담겼습니다.</p>
+
+<p>참고로 파일이 생성되는 위치는 VC++을 사용하고 계시다면 여러분이 작성성하신 소스코드의 프로젝트 디렉토리입니다.</p>
+
+<p>f0 = fopen(“C:\Users\jch\Desktop\hello.txt”, “wt”);와 같은식으로 특정 디렉토리를 지정해 줄 수도 있습니다.</p>
+
+<p>그리고 스트림을 다 사용하고 나면 스트림을 닫아주어야 합니다. 스트림을 해제하기 위한 함수는 fclose함수인데 해제할 스트림을 전달인자로 주면 됩니다.</p>
+
+<p>flcose함수를 사용해서 스트림을 닫아야 하는데 만약 닫지 않는다면</p>
+
+<ol>
+  <li>
+    <p>시스템의 자원(특히 메모리) 낭비</p>
+  </li>
+  <li>
+    <p>버퍼에 남아있는 데이터를 마저 파일로 이동시켜 저장</p>
+  </li>
+</ol>
+
+<p>1번은 당연한 이야기고 2번에 관해 조금 더 설명을 드리자면 모든 스트림은 버퍼를 가지고 있습니다. 프로그램상에서 파일로, 파일에서 프로그램으로 데이터가 바로바로 이동하는것이 아니고 버퍼에 담겨있다가 운영체제가 제공하는 버퍼링 방식에 맞게 이동합니다. 따라서 버퍼에 남아있는 데이터를 마저 목적지로 이동시켜야 갑자기 파일이 종료된다거나 한다고 하더라도 데이터를 잃을 가능성이 낮아집니다.</p>
+
+<p><img src="/images/2018/09/4-3.jpg" alt="4-3" width="70%" height="70%" /></p>
+
+<p>이번에는 파일에 있는 데이터를 읽어보겠습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+	<span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">hello</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">f0</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Fail</span> <span class="n">to</span> <span class="n">open</span> <span class="n">the</span> <span class="n">file</span><span class="err">”</span><span class="p">);</span>
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// 운영체제에 -1 반환 : 비정상적 프로그램 종료
+</span>	<span class="p">}</span>
+	
+	<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span><span class="n">f0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">s</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+	
+	<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span><span class="n">f0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">s</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Hello, everybody!</p>
+
+<p>I love C language</p>
+
+<p>사실 파일을 읽는것에 대한 내용은 위치지시자(커서)같은 내용을 알아야 좀 더 효율적으로 데이터를 읽는법에 대한 코드를 작성할 수 있는데, 이는 이후에 설명드리겠습니다. 여기서는 “rt”라는 입력스트림을 생성해서 파일로부터 데이터를 읽어올 수 있는 통로를 만들었다는 것이 중요합니다.</p>
+
+<p>우리는 파일에 데이터를 쓰거나 파일로부터 데이터를 읽어들일 때 “wt”와 “rt”를 이용해서 스트림 생성을 운영체제에 요구했습니다. 스트림에 대해서 한 번 설명드린적이 있는데 거기서 중요한 내용은 스트림은 데이터가 흘러다닐 수 있는 통로이며 방향성을 가진다는 사실이었습니다. 따라서 우리는 프로그램과 파일 사이에 스트림을 생성할 때에 읽을것이냐, 쓸것이냐를 기준으로 스트림을 생성해야합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>모드(mode)</th>
+      <th>스트림(stream)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>r</td>
+      <td>읽기</td>
+    </tr>
+    <tr>
+      <td>w</td>
+      <td>쓰기</td>
+    </tr>
+    <tr>
+      <td>a</td>
+      <td>덧붙이기</td>
+    </tr>
+    <tr>
+      <td>r+</td>
+      <td>읽기/쓰기</td>
+    </tr>
+    <tr>
+      <td>w+</td>
+      <td>읽기/쓰기</td>
+    </tr>
+    <tr>
+      <td>a+</td>
+      <td>읽기/덧붙이기</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위는 읽기/쓰기를 기준으로 스트림을 생성하는 방법이에요. mode는 파일에 어떤식으로 스트림을 연결할 것인지 결정하는 요소이며 이를 <strong>파일의 개방모드</strong>라고 합니다. +가 붙은것은 뭔가 r,w,a에 비해서 더 다양한 기능을 제공하지만 잘못된 사용으로인한 에러발생 가능성과 읽기와 쓰기 사이를 왔다갔다하면서 버퍼를 비워주지 않았을 때의 에러발생 가능성을 생각하면 보통은 r,w,a 중에서 선택해서 쓰는게 좋습니다.
+그런데 우리는 위의 예제코드에서 스트림을 생성할 때 “r”, “w”, “a”가 아닌 “rt”, “wt”, “at”를 썼습니다. rt, wt, at에서 앞의 문자는 읽기/쓰기를 구분하는 기준이고 사실 스트림을 개방할 때 고려해야 하는 기준이 하나 더 있습니다. 바로 텍스트(text)파일이냐 이진(binary)파일이냐 인데, 이 두 가지는 각각 t와 b로 표현합니다. 우리가 위에서 썼던 “wt”와 “rt”는 각각 ‘텍스트파일 쓰기 모드’와 ‘텍스트파일 읽기 모드’였던 겁니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>모드(mode)</th>
+      <th>스트림(stream)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>t</td>
+      <td>텍스트(text)</td>
+    </tr>
+    <tr>
+      <td>b</td>
+      <td>바이너리(binary)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>텍스트 파일 : .txt의 텍스트파일, .hwp의 한글파일, .xls의 엑셀파일 등등 사람이 인식할 수 있는 문자열이 저장된 파일</p>
+
+<p>바이너리파일 : .avi의 동영상파일, .mp3의 음원파일 등등 컴퓨터가 인식할 수 있는 2진데이터가 저장된 파일</p>
+
+<p>여기까지가 우리가 파일을 대상으로 입출력을 할 때 필요한 함수의 호출하는 방법에 대한 내용이었습니다. 많은 이야기가 있었지만 간단히 정리해보겠습니다.</p>
+
+<h4 id="1-파일을-대상으로-입출력을-할-때에는-프로그램과-파일-사이의-데이터-이동통로인-스트림stream을-놓아주어야-한다">1. 파일을 대상으로 입출력을 할 때에는 프로그램과 파일 사이의 데이터 이동통로인 스트림(stream)을 놓아주어야 한다.</h4>
+
+<h4 id="2-스트림을-생성하는-방법은-파일-구조체-포인터변수를-선언하고-fopen함수를-호출하여-파일의-주소값을-담아야한다">2. 스트림을 생성하는 방법은 파일 구조체 포인터변수를 선언하고 fopen함수를 호출하여 파일의 주소값을 담아야한다.</h4>
+
+<h4 id="3-fopen함수의-전달인자로는-파일의-주소정보가-담긴-filename과-생성할-스트림의-종류를-전달해야한다">3. fopen함수의 전달인자로는 파일의 주소정보가 담긴 filename과 생성할 스트림의 종류를 전달해야한다.</h4>
+
+<h4 id="4-파일과의-스트림을-생성할-때에는-읽기쓰기와-텍스트바이너리를-고려하여-모드를-선택해야한다">4. 파일과의 스트림을 생성할 때에는 ‘읽기/쓰기’와 ‘텍스트/바이너리’를 고려하여 모드를 선택해야한다.</h4>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11361,117 +11601,6 @@
 <p>구조체를 가르키는 포인터 변수로 메모리에서 데이터를 읽었는데 10이 나왔습니다. 즉, 구조체를 가르키는 포인터 변수가 a를 가르킨다는 겁니다.</p>
 
 <p>결론 : 구조체 변수의 주소값은 구조체 변수의 첫 번째 멤버의 주소값이다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/01/38-struct-1/">
-        38. 구조체(1)
-      </a>
-    </h1>
-
-    <span class="post-date">01 Nov 2018</span>
-
-    <p>어떤 조직에 10명의 구성원이 있고 우리는 이들의 이름, 나이, 혈액형을 조사하여 데이터로 저장해두고 싶어요. 일반적인 변수를 사용하는 가장 간단한 방법은 다음의 형식으로 저장하는 형태일겁니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//구성원1
-</span><span class="kt">char</span> <span class="n">name1</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">age1</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-<span class="kt">char</span> <span class="n">blood_type1</span> <span class="o">=</span> <span class="s">"B"</span><span class="p">;</span>
-
-<span class="c1">//구성원2
-</span><span class="kt">char</span> <span class="n">name2</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Jerry"</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">age2</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
-<span class="kt">char</span> <span class="n">blood_type2</span> <span class="o">=</span> <span class="s">"O"</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>한 명 한 명의 데이터별로 모두 변수를 지정하여 값을 저장했습니다.</p>
-
-<p>하지만 이런 묶음 데이터를 간편하게 저장할 수 있는 자료구조가 있습니다.</p>
-
-<p><strong>구조체란 여러개의 자료형을 묶어서 만든 하나의 그룹화된 자료형</strong>입니다.</p>
-
-<p>아까 예시로 든 자료를 구조체를 사용해서 표현해 보겠습니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-</span>
-<span class="k">struct</span> <span class="n">person</span> <span class="c1">// struct 선언자를 사용하여 person이라는 자료형 정의
-</span><span class="p">{</span>
-	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
-	<span class="kt">char</span> <span class="n">blood_type</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>	
-	<span class="k">struct</span> <span class="n">person</span> <span class="n">per1</span><span class="p">,</span> <span class="n">per2</span><span class="p">;</span> <span class="c1">//person 타입의 두 변수 per1, per2 선언
-</span>	
-	<span class="n">per1</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">;</span> <span class="c1">//per1의 name 멤버에 John 이라는 문자열 저장
-</span>	<span class="n">per1</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// per1의 age 멤버에 접근하여 20 저장
-</span>	<span class="n">per1</span><span class="p">.</span><span class="n">blood_type</span> <span class="o">=</span> <span class="sc">'B'</span><span class="p">;</span> <span class="c1">//per1의 blood_type 멤버에 'B' 저장
-</span>	
-	<span class="n">per2</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"Jerry"</span><span class="p">;</span>
-	<span class="n">per2</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
-	<span class="n">per2</span><span class="p">.</span><span class="n">blood_type</span> <span class="o">=</span> <span class="sc">'O'</span><span class="p">;</span>
-	
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%2s %2d %2c"</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">blood_type</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%2s %2d %2c"</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">blood_type</span><span class="p">);</span>
-	
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>John 20  B</p>
-
-<p>Jerry 31  O</p>
-
-<p>계속하려면 아무 키나 누르십시오…</p>
-
-<p>위에서 우리는 person이라는 새로운 구조체 자료형을 정의했습니다. 구조체는 C언어에서 제공하는 기본자료형은 아니지만 하나의 새로운 자료형처럼 사용이 가능하다고해서 <strong>사용자 정의 자료형(User Defined Data Type)</strong> 이라고 합니다.</p>
-
-<p>per1과 per2는 person 자료형이기 때문에 3개의 멤버에 대해서 데이터를 저장할 수 있습니다. 다만 한 가지 주의할 것은 잘료형 앞에 struct를 붙여서 선언해주어야 합니다. struct person per1 혹은 struct person per2 처럼 말입니다.</p>
-
-<p><img class="aligncenter  wp-image-1052" src="https://itdogg.com/wp-content/uploads/2018/09/ㄹㄹ.jpg" alt="" width="663" height="390" srcset="https://itdogg.com/wp-content/uploads/2018/09/ㄹㄹ.jpg 891w, https://itdogg.com/wp-content/uploads/2018/09/ㄹㄹ-300x176.jpg 300w, https://itdogg.com/wp-content/uploads/2018/09/ㄹㄹ-768x452.jpg 768w" sizes="(max-width: 663px) 100vw, 663px" /></p>
-
-<p><img src="/images/2018/09/struct.jpg" alt="struct" width="70%" height="70%" /></p>
-
-<p>앞에 보았던 것처럼 구조체를 정의한다는 것은 새로운 자료형을 정의하는 것입니다.</p>
-
-<p>구조체 변수는 기본 자료형과 동일하게 선언과 동시에 초기화 시킬수도 있습니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="k">struct</span> <span class="n">person</span>
-<span class="p">{</span>
-	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
-	<span class="kt">char</span> <span class="n">blood_type</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="k">struct</span> <span class="n">person</span> <span class="n">per1</span> <span class="o">=</span> <span class="p">{</span><span class="s">"John"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="sc">'B'</span><span class="p">};</span>
-	<span class="k">struct</span> <span class="n">person</span> <span class="n">per2</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Jerry"</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="sc">'O'</span><span class="p">};</span>
-	
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%2s %2d %2c"</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">per1</span><span class="p">.</span><span class="n">blood_type</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%2s %2d %2c"</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">per2</span><span class="p">.</span><span class="n">blood_type</span><span class="p">);</span>
-	
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>John 20 B</p>
-
-<p>Jerry 31 O</p>
-
-<p>계속하려면 아무 키나 누르십시오…</p>
-
-<p>구조체변수는 일반 변수와 동일하게 사용 가능합니다. 배열의 원소가 될 수도있고, 주소를 포인터변수에 저장할 수도 있습니다.</p>
 
   </div>
   
