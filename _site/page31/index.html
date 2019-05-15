@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,253 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/10/30/35-string-input-output/">
+        35. 문자열 입출력 함수들
+      </a>
+    </h1>
+
+    <span class="post-date">30 Oct 2018</span>
+
+    <p>printf함수와 scanf함수 이외에도 문자열 입출력 함수들이 있습니다. 특히 scanf함수는 띄어쓰기를 포함하는 문자열을 표현하지 못했는데 이제는 공백까지도 표현할 수 있는 문자열 입력함수도 알아보겠습니다.</p>
+
+<p> </p>
+
+<h1 id="1-문자열-출력-함수">1. 문자열 출력 함수</h1>
+
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">puts</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">);</span> <span class="c1">// 문자열의 주소값을 전달인자로 받아  표준 출력 스트림을 통해 전송
+</span><span class="kt">int</span> <span class="n">fputs</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span><span class="err"> </span><span class="c1">// 문자열의 주소값을 전달인자로 받아 지정된 출력 스트림을 통해 전송
+</span></code></pre></div></div>
+
+<p>**<br />
+위의 두 함수는 호출을 성공하면 양수를, 실패하면 EOF == -1 을 반환합니다.**</p>
+
+<p>puts함수와 fputs함수에는 출력스트림 지정 이외에도 하나의 차이점이 또 있습니다. <strong>puts함수는 출력을 한 이후 자동으로 줄이 바뀌지만 fputs함수는 자동으로 줄을 바꿔주지 않아 ‘\n’을 사용해 직접 줄을 바꿔주어야 합니다.</strong></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-문자열-입력-함수">2. 문자열 입력 함수</h1>
+
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="o">*</span> <span class="n">gets</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">);</span> <span class="c1">// 문자열을 표준 입력 스트림을 통해 전달받아 str에 저장
+</span><span class="kt">char</span> <span class="o">*</span> <span class="n">fgets</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="err"> </span><span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">// 문자열을 지정된 입력 스트림을 통해 전달받아 str에 저장. 입력받는 문자열의 길이도 포함해야 함
+</span></code></pre></div></div>
+
+<p><strong>위의 두 함수는 호출을 실패하거나 파일의 끝에 도달하여 더 이상 읽어들일 값이 없을시에 널 포인터(null pointer)를 반환합니다. 그래서 반환형이 포인터형 변수로 선언이 된 것입니다.</strong> 널 포인터란 말 그대로 포인터가 없다는 뜻입니다. 가르키는 곳이 없다는 것은 호출이 실패하거나 더 이상 읽어들일 주소값이 없는 경우 입니다.</p>
+
+<p>fgets 함수는 gets함수와는 다른 두드러지는 특징이 두 개 있습니다.</p>
+
+<p><strong>1) 입력받을 문자열의 길이를 지정해야 합니다.</strong></p>
+
+<p>이 특징은 설정한 길이보다 많은 문자열을 입력하더라도 알아서 걸러내기 때문에 메모리공간을 넘어서 침범하는 것을 방지할 수 있습니다.</p>
+
+<p> </p>
+
+<p><strong>2) 엔터 키(‘\n’)까지도 하나의 문자로 읽어들입니다.</strong></p>
+
+<p>fgets 함수는 scanf함수와 다르게 개행(‘\n’)을 기준으로 문자열을 인식하는데, 이 때 개행(‘\n’)까지도 문자로 인식하여 입력으로 받아들입니다. 따라서 굳이 따로 개행을 넣어 줄 필요가 없습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+    <span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과1</p>
+
+<p>Hello</p>
+
+<p>Hello //출력 후 문자로 입력된 ‘\n’에 의한 첫 번째 개행 - fgets함수가 ‘\n’도 하나의 문자로 읽어들이기 때문</p>
+
+<p>//printf함수에 삽인된 ‘\n’에 의한 두 번째 개행</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>실행결과2</p>
+
+<p>abcdefghijklmnopqrstu</p>
+
+<p>abcdefghi</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>fgets 함수의 특징으로 인해 NULL문자를 포함하여 총 10개의 문자만 출력이 되었습니다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/10/30/34-character-input-output/">
+        34. 문자 입출력 함수들
+      </a>
+    </h1>
+
+    <span class="post-date">30 Oct 2018</span>
+
+    <h1 id="1-scanf-함수의-한계">1. scanf 함수의 한계</h1>
+
+<hr />
+
+<p>입출력되는 대부분의 데이터는 문자나 숫자 형태입니다. 변수나 배열을 이용하여 숫자와 문자, 그리고 문자열을 저장할 수 있고 printf함수와 scanf함수를 이용하여 문자와 문자열을 저장 및 표현할 수 있었습니다.</p>
+
+<p>scanf함수가 문자열을 구분하는 기준은 ‘띄어쓰기’입니다. scanf함수는 띄어쓰기를 만나면 거기가 문자열의 끝이라 생각하고 저장을 거기서 끝내버립니다. 따라서 띄어쓰기가 있는 문자열을 저장할 수 없었습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Type any sentences : "</span><span class="p">);</span>
+    
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Type any sentences : Hello there</p>
+
+<p>Hello</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>위 예제에서 scanf함수를 사용하여 배열 str에 “Hello there”이라는 문자열을 저장하려했지만 정작 담긴 데이터는 Hello 까지입니다.</p>
+
+<p>scanf 함수를 대체할 수 있고 공백도 포함할 수 있는 문자열 입출력 함수들이 있습니다. 문자열 입출력 함수들에 대해서는 다음 포스팅에 설명 드리고, 오늘은 이전에 문자 입출력 함수에 대해 알아보겠습니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-문자-출력-함수">2. 문자 출력 함수</h1>
+
+<hr />
+
+<p>putchar와 fputc는 문자 1개를 출력하는 함수입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">putchar</span><span class="p">(</span><span class="kt">int</span> <span class="n">ch</span><span class="p">);</span> <span class="c1">// 문자전달, 표준 출력 스트림으로 전송
+</span><span class="kt">int</span> <span class="n">fputc</span><span class="p">(</span><span class="kt">int</span> <span class="n">ch</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span><span class="err"> </span> <span class="c1">//문자 전달, 원하는 스트림 지정하여 전송
+</span></code></pre></div></div>
+
+<p>두 함수 모두 반환형이 int입니다. char 자료형과 마찬가지로 int 자료형 역시 정수 자료형이므로 문자가 대입될 수 있습니다.</p>
+
+<p>putchar는 전달인자로 원하는 문자를 넣어주면 됩니다. 그리고 그것을 ‘표준 출력 스트림’으로 보내 ‘모니터’를 통해 출력을 시킵니다.</p>
+
+<p>fputc는 전달인자로 문자이외에도 전송 스트림도 넣어줘야 합니다. putchar와는 다르게 표준 출력 스트림 이외의 다른 스트림으로도 전송이 가능합니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-문자-출력-함수">3. 문자 출력 함수</h1>
+
+<hr />
+
+<p>getchar와 fgetc는 문자 하나를 입력으로 받는 함수입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">getchar</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span> <span class="c1">// 문자를 사용자로부터 표준 입력 스트림을 통해 입력받아 int형으로 반환
+</span><span class="kt">int</span> <span class="n">fgetc</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span><span class="err"> </span> <span class="c1">// 문자를 사용자로부터 지정된 스트림을 통해 입력받아 int형으로 반환
+</span></code></pre></div></div>
+
+<p>getchar함수는 사용자로부터 문자를 하나 입력받아서 반환시켜주는 함수입니다. 따로 스트림을 지정하지 않아 표준 입력 스트림을 통해 데이터를 받습니다.</p>
+
+<p>fgetc함수는 사용자로부터 문자를 하나 입력받고 반환시켜 줍니다. 하지만 getchar함수와는 다르게 지정받은 스트림을 통하여 데이터를 받을 수 있습니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-예제">4. 예제</h1>
+
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ch1</span><span class="p">,</span> <span class="n">ch2</span><span class="p">;</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"A or B? : "</span><span class="p">);</span>
+    <span class="n">ch1</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span> <span class="c1">//getchar함수를 사용하여 문자를 입력받아 변수 ch1에 저장
+</span>    <span class="n">putchar</span><span class="p">(</span><span class="n">ch1</span><span class="p">);</span> <span class="c1">// putchar함를 사용하여 ch1에 저장된 문자 출력
+</span>    <span class="n">putchar</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"C or D? : "</span><span class="p">);</span>
+    <span class="n">ch2</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">stdin</span><span class="p">);</span> <span class="c1">// fgetc함수를 사용하여 문자를 입력받아 ch1에 저장. 입력 스트림은 표준입력스트림으로 지정
+</span>    <span class="n">fputc</span><span class="p">(</span><span class="n">ch2</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span> <span class="c1">//fputc함수를 사용하여 ch2에 저장된 문자 출력. 출력 스트림은 표준출력스트림으로 지정
+</span>    <span class="n">fputc</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>출력결과</p>
+
+<p>A or B? : A</p>
+
+<p>A</p>
+
+<p>C or D? :</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p> </p>
+
+<p>‘C or D?’ 문장이 출력이 되자마자 우리가 입력할 기회도 얻지 못하고 프로그램은 끝이 납니다. 앞선 질문에서 우리는 ‘A’를 입력했습니다. 이어서 엔터 ‘\n’도 입력했는데, getchar() 함수는 문자를 하나밖에 저장하지 못해서 버퍼에 남아있던 ‘\n’이 뒤의 fgetc()함수로 입력이 된 것입니다. 이 부분은 이후에 버퍼에 대해 배우면 이해가 되실겁니다.</p>
+
+<p>반복문을 사용하면 문자 입출력 함수로 문자열도 입출력 시킬 수 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ch</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">while</span><span class="p">(</span><span class="n">ch</span><span class="o">!=</span><span class="n">EOF</span><span class="p">)</span> <span class="c1">//EOF는 getchar함수가 더 이상 읽을 게 없을 때 반환하는 값으로 -1입니다.
+</span>    <span class="p">{</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span>
+        <span class="n">putchar</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>C is very easy!</p>
+
+<p>C is very easy!</p>
+
+<p>Yo man</p>
+
+<p>Yo man</p>
+
+<p>^Z</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>우리가 문장을 입력해주고 엔터를 치면 버퍼에 담겨있던 데이터들이 while문을 통해 하나씩하나씩 출력이 됩니다. while문의 조건은 ch에 저장된 값, 즉 getchar() 함수가 읽어들이는 문자가 EOF가 되면 반복문을 종료시켜달라는 겁니다. <strong>EOF란 End Of File의 약자로 문자나 문자열 입력 함수들이 더 이상 읽어들일 값이 없거나 어떠한 에러로인해 호출에 실패하였을 때 반환하는 값</strong>입니다. Window에서  <strong>EOF는 Ztrl + Z 로 입력</strong>합니다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10874,254 +11191,6 @@
 <p><img class="aligncenter wp-image-1028" src="/images/2018/09/rr.jpg" alt="" width="682" height="457" srcset="/images/2018/09/rr.jpg 795w, /images/2018/09/rr-300x201.jpg 300w, /images/2018/09/rr-768x515.jpg 768w" sizes="(max-width: 682px) 100vw, 682px" /></p>
 
 <p>일단 포인터형이 없으므로 얼마만큼이 메모리공간을 참조해야할지 알 수 없으므로 포인터로 변수에 접근을하여 값을 변경하는것도 불가능합니다. 또한 포인터 증가연산을 하였을 때에도 얼마만큼의 메모리공간을 뛰어넘어서 가르키는 곳을 변경해야 할 지의 기준도 없어서 포인터 연산도 불가능합니다. 도대체 이러한 포인터를 왜 쓰는지 이해가 가지않더라도, 지금은 void포인터의 존재와 성질에 관해서만 알아두어도 충분합니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/28/ensemble-random-forest/">
-        Ensemble - Random Forest
-      </a>
-    </h1>
-
-    <span class="post-date">28 Oct 2018</span>
-
-    <p>Random Forest 는 Decision Tree를 앙상블 Bagging을 사용하여 만든 알고리즘이다. 따라서 의사결정 트리와 Ensemble 방법 중 Bagging에 대해 먼저 이해해야 한다. 아래의 두 포스트는 이 두 내용에 대한 설명이며, 그리 길지 않다.</p>
-
-<p> </p>
-
-<blockquote class="wp-embedded-content" data-secret="oTG2C9rELN">
-  <p>
-    <a href="https://SWnomad.com/decision-tree/">Decision Tree</a>
-  </p>
-</blockquote>
-
-<blockquote class="wp-embedded-content" data-secret="AKPcjJQHmb">
-  <p>
-    <a href="https://SWnomad.com/ensemble-bagging/">Ensemble &#8211; Bagging</a>
-  </p>
-</blockquote>
-
-<p> </p>
-
-<h1 id="1-random-forest-알고리즘">1. Random Forest 알고리즘</h1>
-
-<hr />
-
-<table style="border-collapse: collapse; width: 60.1212%;" border="1">
-  <tr>
-    <td style="width: 12%; text-align: center;">
-      feature1
-    </td>
-    
-    <td style="width: 12.1212%; text-align: center;">
-      feature2
-    </td>
-    
-    <td style="width: 12.8485%; text-align: center;">
-      feature3
-    </td>
-    
-    <td style="width: 13.2122%; text-align: center;">
-      feature4
-    </td>
-    
-    <td style="width: 9.96152%; text-align: center;">
-      <strong>class</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 12%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 12.1212%; text-align: center;">
-      NO
-    </td>
-    
-    <td style="width: 12.8485%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 13.2122%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 9.96152%; text-align: center;">
-      <strong>NO</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 12%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 12.1212%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 12.8485%; text-align: center;">
-      NO
-    </td>
-    
-    <td style="width: 13.2122%; text-align: center;">
-      EYS
-    </td>
-    
-    <td style="width: 9.96152%; text-align: center;">
-      <strong>YES</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 12%; text-align: center;">
-      NO
-    </td>
-    
-    <td style="width: 12.1212%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 12.8485%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 13.2122%; text-align: center;">
-      NO
-    </td>
-    
-    <td style="width: 9.96152%; text-align: center;">
-      <strong>YES</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 12%; text-align: center;">
-      NO
-    </td>
-    
-    <td style="width: 12.1212%; text-align: center;">
-      NO
-    </td>
-    
-    <td style="width: 12.8485%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 13.2122%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 9.96152%; text-align: center;">
-      <strong>NO</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 12%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 12.1212%; text-align: center;">
-      NO
-    </td>
-    
-    <td style="width: 12.8485%; text-align: center;">
-      YES
-    </td>
-    
-    <td style="width: 13.2122%; text-align: center;">
-      NO
-    </td>
-    
-    <td style="width: 9.96152%; text-align: center;">
-      <strong>YES</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 12%; text-align: center;">
-      ···
-    </td>
-    
-    <td style="width: 12.1212%; text-align: center;">
-      ···
-    </td>
-    
-    <td style="width: 12.8485%; text-align: center;">
-      ···
-    </td>
-    
-    <td style="width: 13.2122%; text-align: center;">
-      ···
-    </td>
-    
-    <td style="width: 9.96152%; text-align: center;">
-      <strong>···</strong>
-    </td>
-  </tr>
-</table>
-
-<p>위와 같은 데이터가 주어졌다.</p>
-
-<p>먼저, 우리는 2개의 feature만 골라서 학습을 시킨다. Bagging Ensembl에 따라 학습 시킬 데이터를 추출한다. 물론, 중복 데이터가 들어갈 수 있다. 이렇게 고른 feature와 data의 subset으로 모델을 학습시킨다.</p>
-
-<p>트리의 수가 100개라고 하면 모델을 100개를 만들어 서로 다른 feature, data로 학습을 시키는 것이다.</p>
-
-<p>그런데 우리는 위에서 2개의 feature만 사용했다. 하지만 3개의 feature를 사용하면 더 좋은 성능을 내지 않을까?</p>
-
-<p>3개의 feature를 사용하여 위의 과정을 반복해보았다.</p>
-
-<p>두 Random Forest의 성능을 비교하여 더 좋은 성능을 내는 Random Forest를 선택하면 된다. 성능을 비교하는 방법은 잠시 후 설명한다.</p>
-
-<p>아무튼 최종적으로 아래와 같이 여러개(100개)의 decision tree가 만들어진다.</p>
-
-<p><img class="aligncenter  wp-image-1253" src="/images/2018/10/no-name-8.jpg" alt="" width="669" height="312" srcset="/images/2018/10/no-name-8.jpg 899w, /images/2018/10/no-name-8-300x140.jpg 300w, /images/2018/10/no-name-8-768x359.jpg 768w" sizes="(max-width: 669px) 100vw, 669px" /></p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-random-forest의-성능-평가">2. Random Forest의 성능 평가</h1>
-
-<hr />
-
-<p>Random Forest의 각각의 Tree는 전체 training dataset 중 중복을 허용하여 일부만을 사용하여 학습한다. 이 때, 어떤 Tree를 학습시키는 데에도 사용되지 않은 data가 있을 것이다. 이러한 data를 ‘out of bag data’라고 한다. 이 out of bag data들을 가지고 Random Forest로 예측을 하여 모델의 정확도를 측정한다.</p>
-
-<p>위에서 말했듯이 이렇게 측정된 Random Forest들 중에서 feature를 3개만 사용한 Random Forest가 가장 좋은 예측성능을 낸다면 이 Random Forest 모델을 사용하면 된다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/28/ensemble-boosting/">
-        Ensemble - Boosting
-      </a>
-    </h1>
-
-    <span class="post-date">28 Oct 2018</span>
-
-    <p>앙상블 방법 중 Bagging에 대해 학습하였다. 또다른 방법으로 Boosting이 있다. 유명한 Ada Boost가 바로 Boosting Ensemble 중 하나이다.</p>
-
-<p> </p>
-
-<h1 id="1-boosting">1. Boosting</h1>
-
-<hr />
-
-<p><strong> Bagging은 여러개의 모델을 <span style="text-decoration: underline;">같은 알고리즘</span>으로 <span style="text-decoration: underline;">서로 다른 dataset</span>을 이용해서 학습시켜 합치는 것</strong>이라 했는데, boosting은 여기에 하나의 개념이 추가된다. n’개의 데이터를 추출해 모델을 학습시켰을 때, 상대적으로 큰 error를 내는 데이터일 수록 다음 모델에서 추출될 가능성이 높아진다는 것이다. 상대적으로 poor한 학습효과를 내는 데이터에 가중치를 부여해서 다음 모델에서 추출될 가능성을 높이는 것이다.</p>
-
-<p> </p>
-
-<p><img class="aligncenter size-full wp-image-1247" src="/images/2018/10/no-name-7.jpg" alt="" width="971" height="464" srcset="/images/2018/10/no-name-7.jpg 971w, /images/2018/10/no-name-7-300x143.jpg 300w, /images/2018/10/no-name-7-768x367.jpg 768w" sizes="(max-width: 971px) 100vw, 971px" /></p>
-
-<p>물론 Bagging과 마찬가지로 각각의 model은 <strong>중복되는 데이터를 가질 수 있다.</strong></p>
-
-<p>최종적으로 만들어진 여러개의 model이 예측한 결과를 평균을 내어 최종 예측 결과가 나온다.</p>
 
   </div>
   

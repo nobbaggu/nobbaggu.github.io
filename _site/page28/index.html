@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,243 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/07/3-big-o/">
+        3. 알고리즘의 복잡도 - big-O 표기법
+      </a>
+    </h1>
+
+    <span class="post-date">07 Nov 2018</span>
+
+    <p>알고리즘의 복잡도를 나타내는 방법 중 big-O(빅 오) 표기법 이란 것이 있다.</p>
+
+<p>알고리즘의 복잡도에는 크게 ‘시간 복잡도’와 ‘공간 복잡도’가 있다. 둘 모두 big-O 표기법으로 나타낼 수 있다.</p>
+
+<p> </p>
+
+<h1 id="1-시간-복잡도">1. 시간 복잡도</h1>
+
+<hr />
+
+<p>알고리즘의 수학 연산이 잡아먹는 시간을 나타낸다. 연산의 횟수와 관련이 있다.</p>
+
+<p>연산의 횟수가 아주 작을 경우는 O(1)과 O(n), O(n^2)의 복잡도를 가진 알고리즘들이 비슷한 효율을 낸다. 시간 복잡도는 데이터의 갯수가 충분히 큰 경우에 의미가 있다.</p>
+
+<p> </p>
+
+<p>O(1) : 연산의 횟수가 데이터의 입력에 관계없이 일정</p>
+
+<p> </p>
+
+<p>O(n) : 연산의 횟수가 데이터의 수에 정비례</p>
+
+<p>ex) 데이터의 수 10개일 때 연산이 50번 필요하다면 데이터의 수 20개 일 때 연산이 100번 필요</p>
+
+<p> </p>
+
+<p>O(n^2) : 연산의 횟수가 데이터의 수의 제곱에 비례</p>
+
+<p>ex) 데이터의 수 10개일 때 연산이 50번 필요하다면 데이터의 수가 2배인 20개일 때 연산이 2^2 = 4배인 200번 필요</p>
+
+<p> </p>
+
+<p>위와 같은 느낌으로 알고리즘의 시간 복잡도를 계산하면 된다. 일반적으로 시간 복잡도는 아래의 순서에 따라 증가한다.</p>
+
+<p><img class="alignleft" src="https://latex.codecogs.com/gif.latex?O(1)&lt;O(log(n))&lt;O(n)&lt;O(nlog(n))&lt;O(n^{2})" alt="O(1)&lt;O(log(n))&lt;O(n)&lt;O(nlog(n))&lt;O(n^{2})" align="absmiddle" /><img class="alignleft" src="https://latex.codecogs.com/gif.latex?&lt;O(2^{n})&lt;O(n!)&lt;O(n^{n})" alt="&lt;O(2^{n})&lt;O(n!)&lt;O(n^{n})" align="absmiddle" /></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-공간-복잡도">2. 공간 복잡도</h1>
+
+<hr />
+
+<p>알고리즘의 연산을 수행하는 데 필요한 메모리공간이 얼마나 필요한지를 나타낸다. 컴퓨터 하드웨어의 비약적인 발전으로 공간 복잡도는 시간 복잡도에 비해 그 중요함이 훨씬 덜하다.</p>
+
+<p>1부터 n^2까지를 순차적으로 리스트에 저장한다고 할 때, n이 10이라면 100개의 리스트가 필요하다. 그런데 n이 20이라면 400개의 리스트가 필요해진다. 이 경우 필요한 메모리 공간이 n의 제곱에 비례하므로 이 알고리즘의 공간 복잡도는 O(n^2)을 따른다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-예제">3. 예제</h1>
+
+<hr />
+
+<h2 id="1-1부터-n까지의-합">1) 1부터 n까지의 합</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>n이 10이면 10번, 20이면 20번의 연산이 필요하므로 연산의 횟수가 n에 정비례한다.</p>
+
+<p>따라서 위의 알고리즘의 시간 복잡도는 <strong>O(n)</strong></p>
+
+<p> </p>
+
+<h2 id="2-n의-제곱까지의-합">2) n의 제곱까지의 합</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>n이 10일 때는 20번, 20일 때는 40번의 연산이 필요하다. 이 때에도 절대적인 크기는 알고리즘 1)의 경우와 같지만 마찬가지로 정비례한다. 이 때에도 시간 복잡도는 <strong>O(n)</strong>을 따른다.</p>
+
+<p> </p>
+
+<h2 id="3-n12-계산">3) (n+1)^2 계산</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>n이 1일 때는 i=0,1/j=0,1 각각의 경우를 고려하므로 4번의 연산이, n이 2일 때는 i=0,1,2/j=0,1,2 각각의 경우를 고려하므로 9번의 연산이 필요하다. n이 2배 늘어날 때 연산의 횟수는 n^2배 늘어나므로 이 알고리즘의 시간 복잡도는 <strong>O(n^2)</strong>이다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/07/2-1-to-n-sum/">
+        2. 1부터 n까지 합 구하기
+      </a>
+    </h1>
+
+    <span class="post-date">07 Nov 2018</span>
+
+    <h1 id="1-문제-정의">1. 문제 정의</h1>
+
+<hr />
+
+<p><img class="aligncenter size-full wp-image-1273" src="/images/2018/11/no-name-1.jpg" alt="" width="771" height="196" srcset="/images/2018/11/no-name-1.jpg 771w, /images/2018/11/no-name-1-300x76.jpg 300w, /images/2018/11/no-name-1-768x195.jpg 768w" sizes="(max-width: 771px) 100vw, 771px" /></p>
+
+<p>입력 n이 주어졌을 때, 1부터 n까지 합 을 출력으로 내기 위한 알고리즘을 짜면 된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-알고리즘-풀이">2. 알고리즘 풀이</h1>
+
+<hr />
+
+<h2 id="1-순차적으로-더하기">1) 순차적으로 더하기</h2>
+
+<ol>
+  <li>
+    <p>합을 저장할 변수 result 선언하고 0으로 초기화</p>
+  </li>
+  <li>
+    <p>변수 i를 선언하여 1부터 n까지 대입</p>
+  </li>
+  <li>
+    <p>s에 i를 더하는 과정을 i가 1부터 n까지 반복</p>
+  </li>
+  <li>
+    <p>최종결과 result를 출력</p>
+  </li>
+</ol>
+
+<p> </p>
+
+<p>이 알고리즘을 코드로 표현하면 다음과 같이 할 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># 초기값 0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="c">#i는 1에서 n까지</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span> <span class="c">#결과에 i를 더한다</span>
+    <span class="k">return</span> <span class="n">result</span> <span class="c">#최종 결과를 리턴</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h2 id="2-수학-공식-적용">2) 수학 공식 적용</h2>
+
+<p>고등학교에서 1부터 n까지 합 을 구하는 방법을 배웠다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\sum_{i=1}^{n}=\frac{n(n+1)}{2}" alt="\sum_{i=1}^{n}=\frac{n(n+1)}{2}" align="absmiddle" /></p>
+
+<p>위의 공식을 사용하면 된다. 이 공식을 사용한 풀이법을 코드로 표현하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-알고리즘-효율">3. 알고리즘 효율</h1>
+
+<hr />
+
+<p>위의 두 방법 중 어떤 것이 더 효율적인 알고리즘인가?</p>
+
+<p>첫 번째 방법은 숫자 n이 커질수록 연산의 횟수가 비례하여 커진다. n이 100이면 100번의 더하기 연산, n이 1억이라면 1억번의 더하기 연산이 필요하다.</p>
+
+<p>두 번째 방법은 n과 상관없이 더하기 1번, 곱하기 1번, 나누기 1번이다. n의 크기와 상관없이 연산은 총 3번 이루어진다.</p>
+
+<p> </p>
+
+<p>n이 작을 때에는 두 알고리즘의 효율이 큰 차이가 나지 않지만, n이 커질수록 알고리즘 효율의 차이는 커진다.</p>
+
+<p>첫 번째 알고리즘처럼 n의 크기와 상관없는 경우의 복잡도를 O(1)이라고 한다.</p>
+
+<p>두 번째 알고리즘처럼 n의 크기와 정비례 하여 계산 복잡도가 증가하는 경우의 계산 복잡도는 O(n) 이라고 한다.</p>
+
+<p>만약 n의 크기에 따라 연산해야하는 횟수가 제곱으로 증가한다면 계산 복잡도는 O(n^2)과 같이 표기한다.</p>
+
+<p> </p>
+
+<p>따라서 일반적으로 두 번째 알고리즘이 더 효율이 좋은 알고리즘이며, 이를 사용하는 것이 좋다.</p>
+
+<p> </p>
+
+<p>위에서 표기한 O( )의 표기법을 빅 오 표기법이라고 하는데, 이에 대해서 한 번 정리를 할 것이다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10768,433 +11075,6 @@ tags:</p>
 <p>구조체의 각 멤버는 저장된 데이터가 그대로 잘 나왔습니다. 그런데 공용체에서는 mem1과 mem2에 저장한 데이터가 아닌 알 수 없는 값들이 출력이 되었습니다. 이는 공용체의 성질 때문인데, mem3에 14.123을 저장하면서 총 8byte의 메모리공간을 덮어썼는데 mem1과 mem2는 각각 상위 1byte와 상위 4byte만 참조하므로 이상한 값이 출력된겁니다.</p>
 
 <p>공용체는 구조체보다 활용빈도가 크지는 않지만 하나의 메모리공간을 여러가지 접근방식으로 접근할 수 있기때문에 유용항 측면이 있습니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/05/45-file-cursor/">
-        45. 파일 입출력(3) - 파일 위치 지시자
-      </a>
-    </h1>
-
-    <span class="post-date">05 Nov 2018</span>
-
-    <p>우리가 파일에서 데이터를 읽을 때 일정부분을 읽어오고 다음에 또다시 읽어오면 읽지 않은 부분부터 알아서 읽어왔습니다. 이것은 FILE 구조체의 멤버에는 파일 위치 지시자란것이 있기 때문인데요, 이 <strong>파일위치 지시자는 fgets나 fputs 등의 데이터를 읽거나 쓰는 함수가 호출될때마다 그 값을 참조해서 현재 위치를 저장해둡니다.</strong></p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">fseek</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="p">,</span> <span class="kt">int</span> <span class="n">wherefrom</span><span class="p">);</span>
-<span class="c1">//전달인자 1 : 파일에 연결된 스트림
-//전달인자 2 : 파일위치 지시자를 얼마만큼 이동시킬지 결정하는 byte수
-//전달인자 3 : 파일위치지시자가 이동되기 전에 이동을 시작할 위치
-</span></code></pre></div></div>
-
-<p>파일위치지시자의 이동 성공 시 0, 실패 시 0이 아닌 값 반환</p>
-
-<p>파일위치 지시자의 3번째 전달인자인 wherefrom에 전달할 수 있는 상수가 몇 개 정의되어있는데 다음과 같습니다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>wherefrom</th>
-      <th>의미</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>SEEK_SET</td>
-      <td>파일의 처음</td>
-    </tr>
-    <tr>
-      <td>SEEK_CUR</td>
-      <td>파일의 현재 위치</td>
-    </tr>
-    <tr>
-      <td>SEEK_END</td>
-      <td>파일의 끝</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>그림으로 예를 들어서 설명해보겠습니다.</p>
-
-<p><img src="/images/2018/09/file-cursor.jpg" alt="file-cursor" width="70%" height="70%" /></p>
-
-<p>첫 번째 fseek함수는 파일구조체 포인터변수 f0가 가르키는 파일을 SEEK_SET(파일의 처음)부터 뒤로 두 칸 이동시켜라 라는 의미에요. 나머지도 그림을 보며 해석해보시면 충분히 이해가 되실겁니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wt</span><span class="err">”</span><span class="p">);</span>
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
-
-	<span class="n">fputs</span><span class="p">(</span><span class="err">“</span><span class="mi">123456789</span><span class="err">”</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span>
-	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
-
-	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span> <span class="c1">//1-&gt;4
-</span>	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f1</span><span class="p">));</span> <span class="c1">//4읽어서 출력하고 5로 이동
-</span>
-	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span><span class="c1">//5-&gt;6
-</span>	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f1</span><span class="p">));</span><span class="c1">//6 읽어서 출력하고 7로 이동
-</span>
-	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span><span class="c1">//7-&gt;4 
-</span>	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f1</span><span class="p">));</span><span class="c1">//4 읽어서 출력하고 5로 이동
-</span>
-	<span class="n">fclose</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>464</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>주석에 설명을 달아놓았으므로 추가설명은 드리지 않겠습니다. <strong>fseek함수를 사용해서 위치를 설정하고 앞이나 뒤로 이동할 수 있다는 사실과 문자 입출력함수를 사용해서 파일의 데이터를 읽으면 위치 지시자는 읽은 만큼 뒤로 이동한다는 사실이 중요합니다.</strong></p>
-
-<p>그리고 현재 파일 위치 지시자를 알려주는 함수가 있습니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">long</span> <span class="n">ftell</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">//stream으로 연결된 파일의 현재 위치 반환
-</span></code></pre></div></div>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wt</span><span class="err">”</span><span class="p">);</span>
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
-
-	<span class="kt">int</span> <span class="n">cur_pos</span><span class="p">;</span>
-	
-	<span class="n">fputs</span><span class="p">(</span><span class="err">“</span><span class="mi">123456789</span><span class="err">”</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span>
-	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
-
-	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span> <span class="c1">//9
-</span>	<span class="n">cur_pos</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="n">cur_pos</span><span class="p">);</span>
-
-	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span> <span class="c1">// 6
-</span>	<span class="n">cur_pos</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="n">cur_pos</span><span class="p">);</span>
-
-	<span class="n">fclose</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>9</p>
-
-<p>6</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>test라는 .txt 파일을 만들고 123456789의 내용을 썼습니다. 처음 fseek함수에 의해 파일의 끝인 9로 이동시켜서 ftell함수로 현재위치를 cur_pos에 담아서 출력해봤는데 정상적으로 9가 나왔습니다. 또다시 fseek함수로 현재위치(9)에서 앞으로 3만큼이동시켜 6을 가르키게 만들고 동일한 방식으로 ftell함수를 이용해서 cur_pos에 현재위치를 담고 출력했는데 정상적으로 6이 나왔습니다.</p>
-
-<p>파일위치 지시자는 우리가 현재 파일에서 어디까지 읽어들였는지, 혹은 썼는지 확인할 때 유용하게 사용할 수 있습니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/04/44-file-io-2/">
-        44. 파일 입출력(2) - text, binary 입출력 함수들
-      </a>
-    </h1>
-
-    <span class="post-date">04 Nov 2018</span>
-
-    <p>이번에는 텍스트 파일과 바이너리 파일을 대상으로 각각 데이터를 어떻게 저장하고 읽어들이는지 설명 드리겠습니다.</p>
-
-<p>먼저 텍스트 파일에 대해 설명드릴건데 이 때에는 우리가 이전에 공부했던 문자와 문자열 관련 함수들을 사용해서 데이터를 저장하고 읽을 수 있습니다.</p>
-
-<p>먼저 문자와 문자열 관련 함수들을 다시 한 번 정리해볼게요.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">fputc</span><span class="p">(</span><span class="kt">int</span> <span class="n">ch</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">//문자 출력(쓰기)
-</span><span class="kt">int</span> <span class="n">fgetc</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">//문자 입력(읽기)
-</span><span class="kt">int</span> <span class="n">fputs</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">//문자열 출력(쓰기)
-</span></code></pre></div></div>
-
-<p>이전에는 위의 함수들의 전달인자 중 스트림에다가 stdin이나 stdout의 표준입출력 스트림을 전달하고 모니터를 통해 콘솔출력을 해왔었는데, 이번에는 파일에 대한 입출력을 해야하기때문에 표준입출력이 아닌 이전시간에 배운 개방모드의 스트림을 넣어주어야합니다.</p>
-
-<p> </p>
-<h4 id="1-텍스트-쓰기">1. 텍스트 쓰기</h4>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wt</span><span class="err">”</span><span class="p">);</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">f0</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Failed</span> <span class="n">to</span> <span class="n">open</span> <span class="n">the</span> <span class="n">file</span> <span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">);</span>
-		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="n">fputc</span><span class="p">(</span><span class="err">‘</span><span class="n">N</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘N’ 전달
-</span>	<span class="n">fputc</span><span class="p">(</span><span class="err">‘</span><span class="n">i</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘i’ 전달
-</span>	<span class="n">fputc</span><span class="p">(</span><span class="err">‘</span><span class="n">c</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘c’ 전달
-</span>	<span class="n">fputc</span><span class="p">(</span><span class="err">‘</span><span class="n">e</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘e’ 전달
-</span>	<span class="n">fputc</span><span class="p">(</span><span class="err">‘\</span><span class="n">n</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘\n’ 전달
-</span>	<span class="n">fputs</span><span class="p">(</span><span class="err">“</span><span class="n">I</span> <span class="n">love</span> <span class="err">“</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0스트림을 통해 문자열 “I love ” 전달
-</span>	<span class="n">fputs</span><span class="p">(</span><span class="err">“</span><span class="n">C</span> <span class="n">language</span><span class="err">”</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0스트림을 통해 문자열 “C language” 전달
-</span>	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p><img src="/images/2018/09/11-2.jpg" alt="11-2" width="70%" height="70%" /></p>
-
-<p>잘 저장 되었습니다. 별로 어려울건 없는것같네요.</p>
-
-<p> </p>
-<h4 id="2-텍스트-읽기">2. 텍스트 읽기</h4>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
-	<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">f0</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Failed</span> <span class="n">to</span> <span class="n">open</span> <span class="n">the</span> <span class="n">file</span> <span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">);</span>
-		
-		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-	<span class="p">}</span>
-	
-	<span class="n">ch</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">ch</span><span class="p">);</span><span class="c1">//N 출력
-</span>
-	<span class="n">ch</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">ch</span><span class="p">);</span><span class="c1">//i출력
-</span>	
-	<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span> <span class="n">f0</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">s</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span><span class="c1">//ce출력
-</span>
-	<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span> <span class="n">f0</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">s</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span><span class="c1">//I love C language출력
-</span>
-	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>Nice</p>
-
-<p>I love C language계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>파일에 들은 문자와 문자열들을 위의 함수들을 이용해서 읽어들였는데, 아직 헷갈리시는 부분이 많으실겁니다. 문자 하나를 출력하고 또 하나를 출력하면 이전에 출력되었던 건 알아서 제외하고 다음 문자가 출력된다는 사실. 어디까지 출력했는지 프로그램이 기억하고 있는걸까요? 이는 다음시간에 위치지시자(커서)에 대해서 배우면 이해가 가실겁니다.</p>
-
-<p>그리고 N과 i만 문자로 출력하고 이 다음에는 문자열 형태로 출력했더니 알아서 ce까지 잘 출력되고 또 한 문장인 “I love C language”까지만 출력이 됩니다. 하지만 우리는 N,i,c,e를 각각 파일에 저장할때에 NULL문자는 저장해주지 않았습니다. 무엇을 기준으로 출력을 하는 걸까요? 사실 <strong><u>문자열이 파일에 저장될때에는 NULL문자가 저장되지 않습니다. 파일은 문장과 문장을 개행문자 '\n'으로 구분합니다.  따라서 우리가 fgets함수를 사용하면 '\n'을 만날 때 까지 문자열을 읽어들입니다.</u></strong></p>
-
-<p>그리고 우리가 위에서 텍스트파일을 읽어들이는 코드를 작성할 때에 끝까지 읽어들여 내용이 끝이나면 그만해야합니다. 우리가 파일을 다 읽어들였는지 아닌지 알 수 있게 도와주는 함수가 있어요. 바로 feof함수라는 겁니다.</p>
-
-<p>int feof(FILE * stream);
-//파일이 끝이 나지 않았으면 0, 끝에 도달했을 경우 0이아닌 값을 return(반환)</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">f0</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Failed</span> <span class="n">to</span> <span class="n">open</span> <span class="n">the</span> <span class="n">file</span> <span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">);</span>
-		
-		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">while</span><span class="p">(</span><span class="n">feof</span><span class="p">(</span><span class="n">f0</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="c1">//파일의 끝에 도달하면 출력 중지
-</span>	<span class="p">{</span>
-		<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span> <span class="n">f0</span><span class="p">);</span>
-		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">s</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-	<span class="p">}</span>
-	
-	<span class="n">flose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
-
-	<span class="n">printf</span><span class="p">(</span><span class="err">“\</span><span class="n">n</span><span class="err">”</span><span class="p">);</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>Nice</p>
-
-<p>I love C language</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>우리는 while문을 써서 feof가 0이 아닌 값을 반환할 때 까지 문자열을 출력하고 0이 되면 프로그램이 종료되도록 했어요. 실행결과를 보시면 의도한대로 나왔습니다.</p>
-
-<p> </p>
-<h4 id="3-바이너리-읽기">3. 바이너리 읽기</h4>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span> <span class="n">fread</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">arr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>첫 번째 전달인자 : 읽어들인 데이터를 저장할 포인터 혹은 배열</p>
-
-<p>두 번째 전달인자 : 한 번에 읽어들일 데이터의 byte 크기</p>
-
-<p>세 번째 전달인자 : 두 번째 전달인자에 해당하는 크기만큼을 한 번으로 카운트하는 데이터를 읽어들일 횟수</p>
-
-<p>네 번째 전달인자 : 스트림 개방모드</p>
-
-<p>fread함수는 2번째 전달인자와 3번째 전달인자의 곱 size * count 만큼의 데이터를 한 번에 읽어들여요. 그리고 다 읽어들이면 size_t 반환형의 값을 반환하는데 이는 count입니다. 읽어들이라고 명령한 횟수 만큼 다 읽어들이면 그 횟수인 count를 반환하고 오류가나거나 다 읽지 못하면 count보다 작은 수를 반환합니다.</p>
-
-<p>가령 fread(arr, sizeof(int), 10, “rb”); 라고 하면 sizeof(int) = 4byte크기의 데이터를 스트림 rb로 개방된 파일에서 10번 읽어들여서 배열 arr에 저장하라는 의미입니다.</p>
-
-<p> </p>
-<h4 id="4-바이너리-쓰기">4. 바이너리 쓰기</h4>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span> <span class="n">fwrite</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">arr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">sze_t</span> <span class="n">count</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>fread함수와 형태가 비슷하지 않나요?</p>
-
-<p>예를들어 fwrite(arr, sizeof(int), 10, “wb”); 라고 하면 sizeof(int) = 4byte크기의 데이터를 배열 arr에서 읽어들여 스트림 wb로 개방된 파일에 저장하라는 의미입니다.</p>
-
-<p>그럼 fread함수와 fwrite함수를 사용하는 예제코드를 한 번 보겠습니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">src</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">bird</span><span class="p">.</span><span class="n">jpg</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rb</span><span class="err">”</span><span class="p">);</span>
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">cpy</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">copy</span><span class="p">.</span><span class="n">jpg</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wb</span><span class="err">”</span><span class="p">);</span>
-
-	<span class="kt">char</span> <span class="n">arr</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-	<span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
-	
-	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">cnt</span> <span class="o">=</span> <span class="n">fread</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">arr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="n">src</span><span class="p">);</span>
-		<span class="k">if</span><span class="p">(</span><span class="n">cnt</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">//cnt가 100보다 작은 경우 : 1. 파일의 끝에 도달 혹은 2.오류
-</span>		<span class="p">{</span>
-			<span class="k">if</span><span class="p">(</span><span class="n">feof</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="c1">//파일의 끝에 도달
-</span>			<span class="p">{</span>
-				<span class="n">fwrite</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">arr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">cpy</span><span class="p">);</span>
-				<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Copy</span> <span class="n">Complete</span><span class="err">”</span><span class="p">);</span>
-				<span class="k">break</span><span class="p">;</span> <span class="c1">// while문 탈출
-</span>			<span class="p">}</span>
-			<span class="k">else</span> <span class="c1">//파일 읽기 실패
-</span>			<span class="p">{</span>
-				<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Copy</span> <span class="n">Failed</span><span class="err">”</span><span class="p">);</span>
-			<span class="p">}</span>
-			
-			<span class="k">break</span><span class="p">;</span> <span class="c1">//반복문 탈출
-</span>		<span class="p">}</span>
-		<span class="k">else</span> <span class="c1">//파일을 덜 읽은 경우 일단 저장된 일부분을 복사 파일에 저장
-</span>		<span class="p">{</span>
-			<span class="n">fwrite</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">arr</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">),</span> <span class="n">cpy</span><span class="p">);</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-
-	<span class="n">fclose</span><span class="p">(</span><span class="n">src</span><span class="p">);</span>
-	<span class="n">fclose</span><span class="p">(</span><span class="n">cpy</span><span class="p">);</span>
-	
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p><img src="/images/2018/09/22.png" alt="22" width="70%" height="70%" /></p>
-
-<p><img src="/images/2018/09/33-1.jpg" alt="33-1" width="70%" height="70%" /></p>
-
-<p>bird.jpg 파일이 복사되어 copy.jpg라는 파일이 생성되었어요. 방금 실행한 코드는 파일 입출력의 대부분의 내용에 대해 담고있어요. 스트림을 생성하고 읽기와 쓰기, 그리고 파일의 끝에 도달했음을 알려주는 feof함수 등. 이 코드를 제대로 이해하신다면 파일입출력에 관해서는 기본적인 사용법을 알고계신거니 충분히 이해하고 넘어가시기 바랍니다.</p>
-
-<p> </p>
-<h4 id="5-텍스트와-바이너리-데이터를-함께-입출력-하는-방법--fprintf함수--fscanf함수">5. 텍스트와 바이너리 데이터를 함께 입출력 하는 방법 : fprintf함수 / fscanf함수</h4>
-
-<p>fprintf함수와 fscanf함수가 printf함수와 scanf함수와 다른점은 가장 첫 번째 전달인자로 데이터를 읽거나 쓸 스트림을 지정해줄 수 있다는 점입니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fprintf</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="err">“</span><span class="o">%</span><span class="n">s</span> <span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
-<span class="n">fscanf</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="err">“</span><span class="o">%</span><span class="n">c</span> <span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>두 함수는 위와 같이 쓰입니다. 눈에 띄는 것은 서식을 따로 지정해서 텍스트와 바이너리 데이터를 한 번에 파일에 입출력 할 수 있습니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">hello</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wt</span><span class="err">”</span><span class="p">);</span>
-	<span class="n">fprintf</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="err">“</span><span class="n">name</span> <span class="o">:</span> <span class="o">%</span><span class="n">s</span><span class="p">,</span> <span class="n">age</span> <span class="o">:</span> <span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">Kelly</span><span class="err">”</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
-	<span class="n">fprintf</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="err">“</span><span class="n">name</span> <span class="o">:</span> <span class="o">%</span><span class="n">s</span><span class="p">,</span> <span class="n">age</span> <span class="o">:</span> <span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">John</span><span class="err">”</span><span class="p">,</span> <span class="mi">31</span><span class="p">);</span>
-	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p><img src="/images/2018/09/44.png" alt="44" width="70%" height="70%" /></p>
-
-<p>printf함수를 사용해서 텍스트 데이터인 이름과 바이너리 데이터인 나이를 저장했습니다.</p>
-
-<p>fscanf함수를 저장하기 위해서 hello.txt의 데이터를 다음과 같이 고쳐보세요.</p>
-
-<p><img src="/images/2018/09/55.png" alt="55" width="70%" height="70%" /></p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">void</span> <span class="nf">Clear</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="k">while</span><span class="p">(</span><span class="n">getchar</span><span class="p">()</span><span class="o">!=</span><span class="err">’\</span><span class="n">n</span><span class="err">’</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-
-	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">hello</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
-	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">num</span> <span class="o">=</span> <span class="n">fscanf</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="err">“</span><span class="o">%</span><span class="n">s</span> <span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">age</span><span class="p">);</span>
-		<span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">==</span><span class="n">EOF</span><span class="p">)</span> <span class="p">{</span><span class="k">break</span><span class="p">;}</span>
-
-		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">name</span> <span class="o">:</span> <span class="o">%</span><span class="n">s</span> <span class="p">,</span> <span class="n">age</span> <span class="o">:</span> <span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">);</span>
-	<span class="p">}</span>
-
-	<span class="n">fclose</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
-	
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>name : Kelly , age : 20</p>
-
-<p>name : John , age : 41</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>fscanf함수를 이용해서 %s형식의 이름과 %d형식의 나이를 불러와서 각각 name과 age 변수에 저장했습니다. 그리고 파일이 끝이 나서 fscanf함수가 더 이상 불러들일 데이터가 없으면 EOF를 반환하기때문에 그걸 이용해서 while문을 탈출하고 있습니다. 그리고 마지막으로 저장된 데이터를 printf함수를 이용해서 콘솔출력으로 확인합니다.</p>
 
   </div>
   

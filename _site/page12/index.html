@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,371 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/31/java-input-output/">
+        Java 입출력
+      </a>
+    </h1>
+
+    <span class="post-date">31 Dec 2018</span>
+
+    <p>입출력이란 <strong>데이터 이동의 방향</strong>을 말한다. 입력은 프로그램으로 데이터가 들어오는 것, 출력은 데이터를 내보내는 것이라고 할 수 있다. 대표적으로 모니터, 키보드, 마우스부터 네트워크 등 모든 것이 데이터를 읽고 써야 제 기능을 한다. 이 때 장치마다 입출력을 제각각 구현해야한다면 비생산적이고 장치간의 호환성도 떨어질 것이다.</p>
+
+<p>Java는 장치에 의존하지 않는 <strong>일관적인 데이터의 입출력을 위해 스트림이라는 것을 제공</strong>한다. 스트림은 데이터의 이동 통로이다. 스트림은 시냇물, 개울을 뜻한다. 데이터가 이동하는 모습이 물이 흐르는 것과 비슷하다하여 붙여진 이름이다.</p>
+
+<p><a href="https://SWnomad.com/?attachment_id=1066" rel="attachment wp-att-1066"><img class="aligncenter wp-image-1066" src="/images/2018/09/1-14.jpg" alt="" width="393" height="197" srcset="/images/2018/09/1-14.jpg 519w, /images/2018/09/1-14-300x150.jpg 300w" sizes="(max-width: 393px) 100vw, 393px" /></a></p>
+
+<h1 id="1-스트림의-세-가지-분류-방식">1. 스트림의 세 가지 분류 방식</h1>
+
+<hr />
+
+<h2 id="1-입력-vs-출력">1) 입력 vs 출력</h2>
+
+<p>스트림은 데이터를 오직 한 방향으로만 보낼 수 있도록 제공된다. 따라서 하나의 스트림으로 입력과 출력을 동시에 할 수 없어 따로 만들어 주어야한다.</p>
+
+<p>입력 스트림 : FileInputStream, FileReader, BufferedInputStream, BufferedReader 등</p>
+
+<p>출력 스트림 : FileOutputStream, FileWriter, BufferedOutputStream, BufferedWriter 등</p>
+
+<p> </p>
+
+<h2 id="2-바이트-vs-문자">2) 바이트 vs 문자</h2>
+
+<p>Java의 스트림은 기본적으로 데이터를 바이트(byte)단위로 묶어 이동시킨다. 그러나 문자를 나타내는 char 자료형은 2byte이며 이를 1byte씩 이동시킨다면 문자가 깨지는 현상이 발생한다. 따라서 문자 데이터를 위해 별도로 2byte씩 데이터를 이동시키는 문자 스트림을 따로 제공한다.</p>
+
+<p>클래스 이름이 Stream으로 끝나면 byte 단위로 데이터를 처리하는 스트림이고 Reader, Writer로 끝나면 문자 스트림 클래스이다.</p>
+
+<p>바이트 스트림 : FileInputStream, FileOutputStream, BufferedInputStream, BufferedOutputStream 등</p>
+
+<p>문자 스트림: FileReader, FileWriter, BufferedReader, BufferedWriter</p>
+
+<p> </p>
+
+<h2 id="3-기반-vs-보조">3) 기반 vs 보조</h2>
+
+<p>데이터를 직접 source로부터 읽어들이거나 target에 쓰는 기능을 제공하기 위해 직접 연결되는 기반스트림 이외에도 항상 다른 스트림에 포함하여 생성되어 보조역할을 하는 보조 스트림이 있다.</p>
+
+<p>기반 스트림 : FileInputStream, FileOutputStream, FileReader, FileWriter 등</p>
+
+<p>보조 스트림 : InputStreamReader, OutputStreamWriter, BufferedInputStream, BufferedOutputStream 등</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-표준-io">2. 표준 I/O</h1>
+
+<hr />
+
+<p>표준 입출력은 키보드와 모니터를 대상으로 데이터를 읽고 쓰는 가장 기본적인 스트림이다. 이 스트림은 프로그램 시작과 동시에 자동으로 생성되므로 따로 만들어 줄 필요가 없다.</p>
+
+<p>우리가 지금까지 많이 쓰던 System.out.println()을 한 번 뜯어보자. System 클래스에는 static 변수 out이 선언되어있다. out은 System의 하위클래스인 PrintStream 클래스 객체를 참조한다. 따라서 System.out을 통해 PrintStream의 println()메소드를 호출한 것이다. PrintStream은 표준 출력 스트림 클래스이다.</p>
+
+<table style="height: 109px;" width="687">
+  <tr>
+    <td style="width: 221px;">
+      자료형
+    </td>
+    
+    <td style="width: 222px;">
+      변수 이름
+    </td>
+    
+    <td style="width: 222px;">
+      설명
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 221px;">
+      static PrintStream
+    </td>
+    
+    <td style="width: 222px;">
+      out
+    </td>
+    
+    <td style="width: 222px;">
+      표준 출력
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 221px;">
+      static InputStream
+    </td>
+    
+    <td style="width: 222px;">
+      in
+    </td>
+    
+    <td style="width: 222px;">
+      표준 입력
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 221px;">
+      static OutputStream
+    </td>
+    
+    <td style="width: 222px;">
+      err
+    </td>
+    
+    <td style="width: 222px;">
+      표준 오류 출력
+    </td>
+  </tr>
+</table>
+
+<p>out은 표준 출력을 위한 참조변수, in은 표준 입력을 위한 참조변수, err는 표준 오류 출력을 위한 참조변수이며 모두 System클래스 안에 정의되어 있다. System.err를 통해 빨간색의 오류 메세지를 출력할 수 있다.</p>
+
+<p>예제를 하나 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SystemInTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="kt">int</span> <span class="n">myData</span><span class="o">;</span>
+      
+      <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">try</span> <span class="o">{</span>
+            <span class="n">myData</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">.</span><span class="na">read</span><span class="o">();</span> <span class="c1">//1byte 읽어들임</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">myData</span> <span class="o">!=</span> <span class="sc">'\n'</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//엔터가 아니면</span>
+               <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="n">myData</span><span class="o">);</span> <span class="c1">//하나 출력하고</span>
+               <span class="k">continue</span><span class="o">;</span><span class="c1">//계속</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span> <span class="c1">//myData == '\n'(엔터)이면</span>
+               <span class="k">break</span><span class="o">;</span> <span class="c1">//while문 탈출</span>
+            <span class="o">}</span>
+         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+         <span class="o">}</span>
+         
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>hello world!</p>
+
+<p>hello world!</p>
+
+<p>in은 InputStream클래스의 객체를 참조하는데, InputStream클래스는 바이트 단위 스트림이므로 1byte씩만 읽어들인다. 따라서 ASCII코드가 아닌 문자 형태로 출력하려면 char형으로 강제 형변환을 해주어야 한다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/30/exception-throws/">
+        예외 throws
+      </a>
+    </h1>
+
+    <span class="post-date">30 Dec 2018</span>
+
+    <h1 id="1-예외-던지기">1. 예외 던지기</h1>
+
+<hr />
+
+<p>예외를 해당 메소드의 코드에서 처리하지 않고 이후 객체의 메소드를 호출하여 사용하는 부분에서 처리하도록 미루는 것이 있는데, 이를 예외 던지기, 예외 미루기 라고 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">exception</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">FileNotFoundException</span> <span class="o">{</span>
+      
+      <span class="n">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">"a.txt"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서는 FileNotFoundException 예외를 main() 메소드를 호출하여 사용하는 부분으로 넘긴다. 그런데 main()메소드는 운영체제의 자바 가상머신(JVM)에서 호출하므로 프로그램이 비정상 종료된다. 따라서 예외를 main() 메소드까지 미루는것은 좋지 않다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">exception</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThrowsException</span> <span class="o">{</span>
+    
+   <span class="c1">// FileNotFoundException, ClassNotFoundException 예외 처리 미루기</span>
+   <span class="kd">public</span> <span class="n">Class</span> <span class="nf">getClass</span><span class="o">(</span><span class="n">String</span> <span class="n">filename</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">FileNotFoundException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+      <span class="n">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">filename</span><span class="o">);</span>
+      <span class="n">Class</span> <span class="n">myClass</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">className</span><span class="o">);</span>
+      
+      <span class="k">return</span> <span class="n">myClass</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">ThrowsException</span> <span class="n">te</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThrowsException</span><span class="o">();</span>
+      <span class="n">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span> <span class="c1">//에러 발생</span>
+
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서는 ThrowsException 클래스에서 두 개의 예외를 던졌다. 이후 main()메소드에서 객체를 만들어 getClass() 메소드를 호출하므로 main메소드에서 예외를 처리해야 한다. 이 때에는 두 가지 방법이 있다.</p>
+
+<p><a href="https://SWnomad.com/%ec%98%88%ec%99%b8-throws/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-196/" rel="attachment wp-att-1661"><img class="aligncenter size-full wp-image-1661" src="/images/2018/12/no-name-41.jpg" alt="" width="524" height="150" srcset="/images/2018/12/no-name-41.jpg 524w, /images/2018/12/no-name-41-300x86.jpg 300w" sizes="(max-width: 524px) 100vw, 524px" /></a></p>
+
+<p>처리하는 방법은 3가지이다. 첫 번째는 다시 던지는 것인데 이는 JVM으로 던져버리므로 프로그램의 비정상적 종료를 불러일으킬 것이므로 아래 두 가지 방법을 선택하는 것이 좋다.</p>
+
+<h3 id="1-surround-with-trymulti-catch">1) Surround with try/multi-catch</h3>
+
+<p>이 방법에서는 하나의 catch문에서 여러개의 예외를 처리하도록 할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+         <span class="n">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">FileNotFoundException</span> <span class="o">|</span> <span class="n">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//두 예외 중 한 가지 발생하면 블록 실행</span>
+         <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+      <span class="o">}</span>
+</code></pre></div></div>
+
+<p>OR 조건 연산자를 사용하여 여러 예외를 하나의 블록문으로 처리할 수 있다.</p>
+
+<p> </p>
+
+<h3 id="2-surround-with-trycatch">2) Surround with try/catch</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+         <span class="n">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Can not find the file"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Can not find the class"</span><span class="o">);</span>
+      <span class="o">}</span>
+</code></pre></div></div>
+
+<p>이 방법은 각각의 예외를 다른 방식으로 처리해야 할 경우 사용할 수 있다.</p>
+
+<p>어떤 방식을 선택할지는 상황에따라, 그리고 만드는 프로그램의 특성에 따라 달리할 수 있다. 예를들어 같은 예외라도 여러곳에서 호출하면서 호출하여 사용하는 부분에 따라 다른 방식의 처리가 필요하다면 일단 throws를 통해 예외를 던진 후 호출하는 부분에서 상황에 맞게 예외를 처리하면 된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-다중-예외처리">2. 다중 예외처리</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+   <span class="n">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>어떤 예외가 발생할 지 파악할 수 없는 경우에 위와 같이 마지막에 모든 예외 클래스의 최상위 클래스인 Exception 클래스로 예외처리를 해줄 수 있다. 이 경우 어떤 예외가 들어오더라도 Exception으로 자동 형변환 되어 예외가 처리된다.</p>
+
+<p>그런데 이런 상황에서 최상위 클래스인 Exception 클래스는 항상 마지막 catch문에 넣어주어야한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+   <span class="n">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위와 같이 Exception클래스를 가장 위의 catch문에 놓을 경우 어떤 예외가 들어오더라도 첫 번째 catch문에 닿기 때문에 이후에 있는 예외에는 도달할 일이 없어 오류가 나게된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-사용자-정의-예외처리">3. 사용자 정의 예외처리</h1>
+
+<hr />
+
+<p>어떤 사이트에서 회원가입 기능을 구현할 때 아이디를 입력받으면 적합성 체크를 한다. 아이디가 비어있거나 길이 제한을 만족하지 않을 때 예외를 발생시켜야 하는데, 이러한 클래스는 자바에서 제공하지 않으므로 직접 만들어 사용해야 한다.</p>
+
+<p>예외처리를 만들어 사용할 경우는 가장 비슷한 예외 클래스를 상속받으면 되는데, 잘 모를 경우는 최상위 클래스인 Exception 클래스를 상속받아도 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">exception</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDException</span> <span class="kd">extends</span> <span class="n">Exception</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="nf">IDException</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>IDException은 Exception 클래스를 상속받았다. IDException 객체를 생성하면서 예외 메세지를 같이 넣어주도록 만들었다. 이제 테스트를 해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">exception</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDTest</span> <span class="o">{</span>
+
+   <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+      
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IDException</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">id</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">IDException</span><span class="o">(</span><span class="s">"ID cannot be empty"</span><span class="o">);</span> <span class="c1">//강제 예외 발생</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="o">||</span> <span class="n">id</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">IDException</span><span class="o">(</span><span class="s">"ID length can be only in 8~20"</span><span class="o">);</span> <span class="c1">//강제 예외 발생</span>
+      <span class="o">}</span>
+      
+      <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+   <span class="o">}</span>
+
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">IDTest</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IDTest</span><span class="o">();</span>
+      
+      <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="n">test</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IDException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+      <span class="o">}</span>
+      
+      <span class="n">String</span> <span class="n">id2</span> <span class="o">=</span> <span class="s">"abcd"</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="n">test</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id2</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IDException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>exception.IDException: ID cannot be empty</p>
+
+<p>exception.IDException: ID length can be only in 8~20</p>
+
+<p>직접 정의한 대로 예외 메세지가 출력된다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11365,575 +11800,6 @@
 <p> </p>
 
 <p><strong>람다식은 인터페이스형의 참조변수에 저장될 수 있는 걸 알았다. 그렇다면 이를 응용하면 참조변수 자료형으로 매개변수로 전달도 될 것이고 참조변수 자료형의 반환형을 가진 메소드의 반환값으로 사용될 수도 있다.</strong></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/27/inner-class/">
-        내부 클래스
-      </a>
-    </h1>
-
-    <span class="post-date">27 Dec 2018</span>
-
-    <p>내부 클래스는 클래스 안에 있는 클래스이다. 중첩 클래스라고도 부른다.</p>
-
-<p>변수에는 인스턴스 변수(멤버 변수), static 변수, 지역 변수(메소드 내부 변수)가 있다. 이와 같이 내부 클래스에도 인스턴스 내부 클래스, static 내부 클래스, 지역 내부 클래스 등이 있다. 여기에 추가적으로 익명 클래스도 있다.</p>
-
-<p> </p>
-
-<h1 id="1-인스턴스-내부클래스">1. 인스턴스 내부클래스</h1>
-
-<hr />
-
-<p>인스턴스 변수의 선언 위치와 같은 곳에 선언한다.</p>
-
-<p>인스턴스 내부 클래스는 이 클래스를 감싸고 있는 클래스에서만 사용하기 위해 만드는 것이 보통이다. 따라서 감싸고 있는 클래스 이외의 다른 클래스에서의 사용을 막기 위해서 내부 클래스를 private로 선언하는 것이 일반적이다.</p>
-
-<p>또한 인스턴스 내부클래스는 외부클래스 생성 후 사용할 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">innerclass</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">OutClass</span> <span class="o">{</span>
-   <span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
-   
-   <span class="kd">private</span> <span class="n">InClass</span> <span class="n">inClass</span><span class="o">;</span> <span class="c1">//내부 클래스 참조 변수 선언만 해놓은 후</span>
-   
-   <span class="kd">public</span> <span class="nf">OutClass</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">inClass</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InClass</span><span class="o">();</span> <span class="c1">//외부 클래스 생성자 만들어진 이후 생성</span>
-   <span class="o">}</span>
-   
-   <span class="kd">class</span> <span class="nc">InClass</span><span class="o">{</span>
-      <span class="kt">int</span> <span class="n">inNum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
-      <span class="c1">//static int sInNum = 200; //외부클래스 객체가 먼저 만들어져야 InClass객체가 만들어질 수 있으므로 static변수는 불가능</span>
-      
-      <span class="kt">void</span> <span class="nf">inTest</span><span class="o">()</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass num = "</span><span class="o">+</span><span class="n">num</span><span class="o">+</span> <span class="s">"(instance variable of outer class"</span><span class="o">);</span> <span class="c1">//외부 클래스 인스턴스 변수 사용 가능</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span> <span class="s">"(static variable of outer class"</span><span class="o">);</span> <span class="c1">//외부 클래스 static 변수 사용 가능</span>
-      <span class="o">}</span>
-   <span class="o">}</span>
-   
-   <span class="c1">//외부 클래스에서는 내부클래스의 메소드 호출 가능</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">usingClass</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">inClass</span><span class="o">.</span><span class="na">inTest</span><span class="o">();</span>
-   <span class="o">}</span>
-   
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">innerclass</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InnerTest</span> <span class="o">{</span>
-
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      
-      <span class="n">OutClass</span> <span class="n">outClass</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutClass</span><span class="o">();</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Call inner class method using outter class"</span><span class="o">);</span>  
-      <span class="n">outClass</span><span class="o">.</span><span class="na">usingClass</span><span class="o">();</span>
-      
-   <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>Call inner class method using outter class</p>
-
-<p>OutClass num = 10(instance variable of outer class</p>
-
-<p>OutClass sNum = 20(static variable of outer class</p>
-
-<p>실행결과를 보면 알 수 있듯 내부 클래스 내부에서는 외부 클래스의 인스턴스 변수와 정적 변수 모두 사용할 수 있다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-static-내부클래스">2. static 내부클래스</h1>
-
-<hr />
-
-<p>인스턴스 내부클래스는 외부클래스 생성 이전에 사용할 수 없고 static변수의 선언도 불가능했다.</p>
-
-<p>외부클래스 생성 이전에도 사용이 필요한 경우 static 내부클래스를 사용하면 된다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">innerclass</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">OutClass</span> <span class="o">{</span>
-   <span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
-   
-   <span class="kd">static</span> <span class="kd">class</span> <span class="nc">InStaticClass</span><span class="o">{</span>
-      <span class="kt">int</span> <span class="n">inNum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
-      <span class="kd">static</span> <span class="kt">int</span> <span class="n">sInNum</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span>
-      
-      <span class="kt">void</span> <span class="nf">inTest</span><span class="o">()</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass inNum = "</span><span class="o">+</span><span class="n">inNum</span><span class="o">+</span><span class="s">"(instance variable of inner class)"</span><span class="o">);</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass sInNum = "</span><span class="o">+</span><span class="n">sInNum</span><span class="o">+</span><span class="s">"(static variable of inner class)"</span><span class="o">);</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span><span class="s">"(static variable of outer class)"</span><span class="o">);</span>
-         
-         <span class="c1">//내부클래스 객체가 외부클래스 객체와 num보다 빨리 생성 가능하므로 외부 인스턴스 변수 사용 불가능</span>
-         <span class="c1">//System.out.println("OutClass sNum = "+num+"(instance variable of outer class)");</span>
-      <span class="o">}</span>
-      
-      <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sTest</span><span class="o">()</span> <span class="o">{</span>
-         <span class="c1">//static 메소드 이므로 외부클래스, 내부클래스 static변수 사용 가능</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass sInNum = "</span><span class="o">+</span><span class="n">sInNum</span><span class="o">+</span><span class="s">"(static variable of inner class)"</span><span class="o">);</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span><span class="s">"(static variable of outer class)"</span><span class="o">);</span>
-      <span class="o">}</span>
-      
-   <span class="o">}</span>
-   
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">innerclass</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InnerTest</span> <span class="o">{</span>
-
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      
-      <span class="c1">//외부클래스 객체 생성 없이 static 내부클래스 객체 생성</span>
-      <span class="n">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span> <span class="n">sInClass</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span><span class="o">();</span>
-      
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=====Call method of InStaticClass====="</span><span class="o">);</span>
-      <span class="n">sInClass</span><span class="o">.</span><span class="na">inTest</span><span class="o">();</span>
-      
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-      
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=====Call static method of InStaticClass====="</span><span class="o">);</span>
-      <span class="c1">//클래스 이름으로 static메소드 사용 가능</span>
-      <span class="n">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span><span class="o">.</span><span class="na">sTest</span><span class="o">();</span>
-      
-   <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>=====Call method of InStaticClass=====</p>
-
-<p>InStaticClass inNum = 100(instance variable of inner class)</p>
-
-<p>InStaticClass sInNum = 200(static variable of inner class)</p>
-
-<p>OutClass sNum = 20(static variable of outer class)</p>
-
-<p>=====Call static method of InStaticClass=====</p>
-
-<p>InStaticClass sInNum = 200(static variable of inner class)</p>
-
-<p>OutClass sNum = 20(static variable of outer class)</p>
-
-<p>static 내부클래스의 일반 메소드는 외부 클래스의 일반 변수를 사용할 수 없다. 왜냐하면 static 내부클래스의 인스턴스가 만들어지면 일반 메소드를 사용할 수 있는데 이 시기가 외부클래스의 생성, 그에 따른 외부 클래스의 멤버변수의 생성 시기보다 빠를 수 있기 때문이다.</p>
-
-<p>당연히 static 내부클래스의 static메소드는 클래스 생성 이전부터 메모리에 로드되므로 외부, 내부클래스에 상관없이 오직 static변수만 사용할 수 있다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-지역-내부클래스">3. 지역 내부클래스</h1>
-
-<hr />
-
-<p>지역변수는 함수(메소드)내에서만 정의하여 사용하는 변수이다. 지역 내부클래스는 이름대로 메소드 내부에 선언한다. 당연히 메소드 내부에서만 사용 가능하다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">innerclass</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.lang.Runnable</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Outer</span> <span class="o">{</span>
-   <span class="kt">int</span> <span class="n">outNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-   <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
-   
-   <span class="n">Runnable</span> <span class="nf">getRunnable</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
-      <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
-      
-      <span class="c1">//getRunnable 메소드 내부에 Runnable 인터페이스를 구현하는 MyRunnable 클래스 정의</span>
-      <span class="kd">class</span> <span class="nc">MyRunnable</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
-         <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-         
-         <span class="nd">@Override</span>
-         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-            <span class="c1">//num = 200; //오류</span>
-            <span class="c1">//i = 20;  //오류</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"i = "</span> <span class="o">+</span><span class="n">i</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="n">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
-         <span class="o">}</span>
-      <span class="o">}</span>
-      
-      <span class="k">return</span> <span class="k">new</span> <span class="nf">MyRunnable</span><span class="o">();</span> <span class="c1">//getRunnable 메소드의 반환값(객체)</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">innerclass</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocalInnerTest</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">Outer</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Outer</span><span class="o">();</span> <span class="c1">//외부 클래스 객체 생성</span>
-      <span class="n">Runnable</span> <span class="n">runner</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">getRunnable</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">//getRunnable()호출이 끝</span>
-      <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">();</span> <span class="c1">//여기서 getRunnable(1)의 매개변수 1이 사용(출력)됨</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>i = 1</p>
-
-<p>num = 100</p>
-
-<p>localNum = 10</p>
-
-<p>outNum= 10</p>
-
-<p>Outer.sNum =20</p>
-
-<p>Runnable 인터페이스는 스레드를 구현하는 인터페이스이다. Runnable 인터페이스를 구현한 모든 클래스는 run() 추상메소드를 구현하여야 한다. 위 예제에서는 MyRunnable이라는 클래스를 getRunnable() 메소드 내부에 정의하고 이 메소드가 MyRunnable 클래스를 반환한다.</p>
-
-<p>위에서 눈여겨 볼 점은 getRunnable() 메소드는 MyRunnable() 객체를 반환하면서 호출이 끝난다. 그런데 원래대로라면 매개변수 i도 메모리에서 같이 사라져야한다. 그런데 출력이 된다는 것은 아직 메모리에 남아있단 것이다.</p>
-
-<p>그 이유는 i가 컴파일러에의해 상수로 변했기 때문이다. 하나 기억해 둘 것은 <strong>지역 내부클래스에서 사용되는 지역변수는 상수로 처리된다</strong>는 것이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="4-익명-내부클래스">4. 익명 내부클래스</h1>
-
-<hr />
-
-<p>지역 내부클래스를 다시보면 MyRunnable이라는 클래스 이름을 getRunnable() 메소드가 객체를 반환할 때 밖에 사용하지 않는다. 이럴 경우 이름을 생략하고 익명 클래스로 정의할 수 있는데, 2가지 방법이 있다.</p>
-
-<h3 id="방법1--myrunnable-클래스-이름-생략하고-클래스-바로-생성">방법1) : MyRunnable 클래스 이름 생략하고 클래스 바로 생성</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="k">new</span> <span class="n">Runnable</span><span class="o">(){</span> <span class="c1">//익명 내부클래스로 Runnable 인터페이스 구현</span>
-         <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-         
-         <span class="nd">@Override</span>
-         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"i = "</span> <span class="o">+</span><span class="n">i</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="n">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
-         <span class="o">}</span>
-      <span class="o">};</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<h3 id="방법2-인터페이스형-참조변수에-클래스-객체를-생성해-대입">방법2) 인터페이스형 참조변수에 클래스 객체를 생성해 대입</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Runnable</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runnable</span><span class="o">(){</span> <span class="c1">//익명 내부클래스로 Runnable 인터페이스 구현</span>
-   <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-   
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="n">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
-   <span class="o">}</span>
-<span class="o">};</span>
-</code></pre></div></div>
-
-<p>익명 내부클래스는 지역 내부클래스와 성질이 같으므로 비슷하게 사용할 수 있다. 지역변수 또한 지역 내부클래스에서 상수화 되었듯이 익명 내부클래스 내에서도 상수화 된다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/25/map-interface/">
-        Map 인터페이스
-      </a>
-    </h1>
-
-    <span class="post-date">25 Dec 2018</span>
-
-    <p>Map 인터페이스는 ‘자료 쌍’을 다루는 데 용이한 라이브러리이다. 흔히 key-value로 이루어진 자료를 다룬다. 이 자료구조에서 key값은 유일하고, value값은 중복이 허용된다.</p>
-
-<p>자료 쌍의 예로는 학번-이름, 고객번호-이름 등이 있을 수 있다.</p>
-
-<p>Map인터페이스를 구현한 HashMap클래스와 TreeMap 클래스에 대해 알아본다.</p>
-
-<p> </p>
-
-<h1 id="1-hashmap-클래스">1. HashMap 클래스</h1>
-
-<hr />
-
-<p>HashMap 클래스를 활용하여 회원관리 프로그램을 만든다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">collection</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span>
-   
-   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
-   <span class="kd">private</span> <span class="n">String</span> <span class="n">memberName</span><span class="o">;</span>
-   
-   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="n">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
-   <span class="o">}</span>
-
-   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
-   <span class="o">}</span>
-
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
-   <span class="o">}</span>
-
-   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
-   <span class="o">}</span>
-
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="n">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
-   <span class="o">}</span>
-   
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
-   <span class="o">}</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
-      <span class="c1">// TODO Auto-generated method stub</span>
-      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
-   <span class="o">}</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="n">Member</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="o">(</span><span class="n">Member</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span>
-         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">==</span> <span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-         <span class="o">}</span>
-         <span class="k">else</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-         <span class="o">}</span>
-      <span class="o">}</span>
-      
-      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-   <span class="o">}</span>
-   
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">collection</span><span class="o">.</span><span class="na">hashmap</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashMap</span> <span class="o">{</span>
-
-   <span class="c1">//HashMap은 key, value 각각을 위한 제네릭 자료형 2개를 사용</span>
-   <span class="kd">private</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Member</span><span class="o">&gt;</span> <span class="n">hashMap</span><span class="o">;</span> <span class="c1">//key : 회원ID,  value : 회원</span>
-   
-   <span class="kd">public</span> <span class="nf">MemberHashMap</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//객체를 만드는 동시에 hashMap 저장소도 같이 생성</span>
-      <span class="n">hashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Member</span><span class="o">&gt;();</span>
-   <span class="o">}</span>
-   
-   <span class="c1">// 회원 추가 - put(key, value) 메소드 사용</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="n">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">hashMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">(),</span> <span class="n">member</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-   <span class="c1">// 회원 삭제 - 회원탐색할 때 containsKey(key)메소드 사용</span>
-   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">if</span><span class="o">(</span><span class="n">hashMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">memberId</span><span class="o">))</span> <span class="o">{</span>
-         <span class="n">hashMap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
-         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-      <span class="o">}</span>
-      
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span> <span class="o">+</span> <span class="s">" does not exist"</span><span class="o">);</span>
-      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-   <span class="o">}</span>
-   
-   <span class="c1">//모든 멤버 출력</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span> <span class="c1">//keySet() 메소드는 해쉬맵의 모든 key값들을 Set 객체로 반환</span>
-      
-      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">memberId</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-         
-         <span class="n">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
-      <span class="o">}</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>HashMap을 사용하여 자료를 관리하는 프로그램을 만들 때 key값으로는 중복이 안되는 자료를 해주어야 한다.</p>
-
-<p>HashMap의 keySet() 메소드는 모든 key값들을 Set 자료로 반환해주어 중복이 안된다. 반면 values()메소드는 모든 value값들을 list 자료형으로 반환해주며 list 자료형은 중복을 허용한다.</p>
-
-<p> </p>
-
-<p>이제 테스트를 해볼 차례다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">collection</span><span class="o">.</span><span class="na">hashmap</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashMapTest</span> <span class="o">{</span>
-
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">MemberHashMap</span> <span class="n">memberHashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MemberHashMap</span><span class="o">();</span>
-      
-      <span class="n">Member</span> <span class="n">member1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">);</span>
-      <span class="n">Member</span> <span class="n">member2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">);</span>
-      <span class="n">Member</span> <span class="n">member3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Son"</span><span class="o">);</span>
-      <span class="n">Member</span> <span class="n">member4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">);</span>
-      
-      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member1</span><span class="o">);</span>
-      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member2</span><span class="o">);</span>
-      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member3</span><span class="o">);</span>
-      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member4</span><span class="o">);</span>
-      
-      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
-      
-      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">removeMember</span><span class="o">(</span><span class="n">member2</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">());</span>
-      
-      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
-      
-      
-   <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>Kim’s ID is 1001</p>
-
-<p>Lee’s ID is 1002</p>
-
-<p>Son’s ID is 1003</p>
-
-<p>Choi’s ID is 1004</p>
-
-<p>Kim’s ID is 1001</p>
-
-<p>Son’s ID is 1003</p>
-
-<p>Choi’s ID is 1004</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-treemap클래스">2. TreeMap클래스</h1>
-
-<hr />
-
-<p>TreeMap은 TreeSet과 마찬가지로 이진 검색 트리 알고리즘이 구현되어있다. TreeMap은 key값으로 정렬을 한다. 따라서 key값에 해당하는 클래스는 Comparable이나 Comparator 인터페이스를 구현해야한다. 하지만 memberId의 자료형인 Integer 클래스는 이미 Comparable 인터페이스를 구현해놓아서 따로 여기서 할 필요는 없다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">collection</span><span class="o">.</span><span class="na">treemap</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.TreeMap</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberTreeMap</span> <span class="o">{</span>
-   <span class="n">TreeMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Member</span><span class="o">&gt;</span> <span class="n">memberTreeMap</span><span class="o">;</span>
-   
-   <span class="kd">public</span> <span class="nf">MemberTreeMap</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">memberTreeMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Member</span><span class="o">&gt;();</span>
-   <span class="o">}</span>
-   
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="n">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">(),</span> <span class="n">member</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">if</span><span class="o">(</span><span class="n">memberTreeMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">memberId</span><span class="o">))</span> <span class="o">{</span>
-         <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
-         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-      <span class="o">}</span>
-      
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span><span class="o">+</span><span class="s">" does not exist"</span><span class="o">);</span>
-      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-   <span class="o">}</span>
-   
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
-      
-      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberTreeMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
-      <span class="o">}</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">collection</span><span class="o">.</span><span class="na">treemap</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberTreeMapTest</span> <span class="o">{</span>
-
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">MemberTreeMap</span> <span class="n">mems</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MemberTreeMap</span><span class="o">();</span>
-      
-      <span class="n">Member</span> <span class="n">member1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">);</span>
-      <span class="n">Member</span> <span class="n">member2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">);</span>
-      <span class="n">Member</span> <span class="n">member3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Son"</span><span class="o">);</span>
-      <span class="n">Member</span> <span class="n">member4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">);</span>
-      
-      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member1</span><span class="o">);</span>
-      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member2</span><span class="o">);</span>
-      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member3</span><span class="o">);</span>
-      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member4</span><span class="o">);</span>
-      <span class="n">mems</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
-      
-      <span class="n">mems</span><span class="o">.</span><span class="na">removeMember</span><span class="o">(</span><span class="n">member2</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">());</span>
-      <span class="n">mems</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>Son’s ID is 1001</p>
-
-<p>Kim’s ID is 1002</p>
-
-<p>Choi’s ID is 1003</p>
-
-<p>Lee’s ID is 1004</p>
-
-<p>Son’s ID is 1001</p>
-
-<p>Kim’s ID is 1002</p>
-
-<p>Choi’s ID is 1003</p>
-
-<p>TreeMap클래스는 Key값에 대해 이진트리를 구현한다. Key에 해당하는 클래스인 Integer는 Comparable인터페이스를 이미 구현하고 있기에 따로 무언가를 할 필요는 없었다.</p>
 
   </div>
   

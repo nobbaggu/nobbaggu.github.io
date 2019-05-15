@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,726 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/16/2-string/">
+        2. 자료형(2) - 문자열(String)
+      </a>
+    </h1>
+
+    <span class="post-date">16 Sep 2018</span>
+
+    <p>문자열 자료형은 우리가 알고 있는 문자들을 열거한 자료형이다.</p>
+
+<p>#</p>
+
+<h1 id="1-문자열-표현방식">1. 문자열 표현방식</h1>
+
+<hr />
+
+<p><strong>1)  큰 따음표(“ “)로 둘러싸기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">"Hello, world 1"</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>2) 작은 따음표(‘ ‘)로 둘러싸기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">'Hello, world 2'</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>3) 큰 따음표 연속 3개(“”” “”“)로 둘러싸기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">"""Hello, world 3"""</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>4) 작은 따음표 연속 3개(‘’’ ‘’‘)로 둘러싸기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">'''Hello, world 4'''</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>문법적 간결함이 자랑인 파이썬이 문자열을 표현하는 방법을 4개나 가지고 있는 이유가 있다.</p>
+
+<p> </p>
+
+<ul>
+  <li><span style="text-decoration: underline;"><strong>문자열 내부에 큰 따음표 혹은 작은 따음표를 포함시키고 싶을 때</strong></span></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Python's funny!"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>큰 따음표 안에 있는 작은 따음표는 문자열기호로 인식되지 않고 하나의 문자로 인식이 된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'he said "Oh, Python is very funny!"'</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>작은 따움표 안에 있는 큰 따움표는 문자열기호로 인식되지 않고 하나의 문자로 인식이 된다.</p>
+
+<p>한 번 큰 따움표 안에 큰따움표, 작은따움표 안에 작은 따움표를 넣고 실행해 보면 Syntax Error가 발생할 것이다. 확인해보기 바란다.</p>
+
+<p>위의 방법 말고도 이스케이프 코드(escape code)를 사용하면 큰 따움표 안에 큰 따움표, 작은 다움표 안에 작은 따움표를 사용할 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'Python</span><span class="se">\'</span><span class="s">s funny!'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>\뒤에 오는 작은따움표 ‘는 문자열기호가 아닌 하나의 문자 자체로 인식이 된다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"he said </span><span class="se">\"</span><span class="s">Oh, Python is very funny!</span><span class="se">\"</span><span class="s">"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>\뒤에 오는 큰 따움표 “는 문자열기호가 아닌 하나의 문자 자체로 인식이 된다.</p>
+
+<p> </p>
+
+<ul>
+  <li><span style="text-decoration: underline;"><strong>여러 줄로 된 문장을 변수에 저장하고 싶을 때</strong></span></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"""
+Life is too short
+You need Python
+"""</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>큰 따움표 세 개를 사용하면 여러줄의 문자열을 변수에 저장할 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'''
+Life is too short
+You need Python
+'''</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>작은 따움표 세 개를 사용하면 여러줄의 문자열을 변수에 저장할 수 있다.</p>
+
+<p> </p>
+
+<p>사실 이스케이프 코드(escape code)를 사용해서 여러줄의 문자열을 표현할 수 있기도 하다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Life is too short</span><span class="se">\n</span><span class="s"> You need Python"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+
+<span class="n">pyfun</span> <span class="o">=</span> <span class="s">'Life is too short</span><span class="se">\n</span><span class="s"> You need Python'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>Q. 이스케이프 코드란?</strong></p>
+
+<table style="border-collapse: collapse; width: 62.1818%; height: 239px;" border="1">
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\n</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      줄 바꿈
+    </td>
+  </tr>
+  
+  <tr style="height: 23px;">
+    <td style="width: 15.5758%; height: 23px;">
+      <strong>\t</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 23px;">
+      탭 간격
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\\</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      \를 하나의 문자로 인식
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\'</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      '를 하나의 문자로 인식
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\"</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      "를 하나의 문자로 인식
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\r</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      캐리지 리턴(줄바꿈, 현재 커서 가장 앞으로 이동)
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\f</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      캐리지 리턴(줄바꿈, 현재 커서 다음 줄로 이동)
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\a</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      벨 소리(출력을 하면 컴퓨터에서 '삑!' 소리)
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\b</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      백 스페이스
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 15.5758%; height: 24px;">
+      <strong>\000</strong>
+    </td>
+    
+    <td style="width: 46.606%; height: 24px;">
+      널(NULL) 문자
+    </td>
+  </tr>
+</table>
+
+<p>굳이 외우기 보다는 활용 빈도가 높은 것들을 위주로 이후 코드를 공부하다보면 알아서 익숙해질 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="2-문자열-연산">2. 문자열 연산</h1>
+
+<hr />
+
+<p> </p>
+
+<p>파이썬은 다른 프로그래밍 언어와 다르게 문자열 간의 연산이 가능하다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first</span> <span class="o">=</span> <span class="s">"Python"</span>
+<span class="n">second</span> <span class="o">=</span> <span class="s">" is fun"</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>1) 문자열 더하기(연결)</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="n">second</span><span class="p">)</span> <span class="c">#두 문자열이 이어서 나오게 된다.</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>2) 문자열 곱하기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span> <span class="c">#문자열이 5번 연속으로 출력된다.</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="3-문자열-인덱싱indexing">3. 문자열 인덱싱(indexing)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Life is too short, You need Python"</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>첫 번째 문자부터 변수 pyfun의 index 0, index 1, index 2, … 이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c"># python에서 숫자는 1이 아닌 0부터 시작한다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c"># space bar ' ' 역시 하나의 문자이다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c"># 뒤에서 부터 index를 읽으려면 -를 붙인 음수를 사용하면 된다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-문자열-슬라이싱slicing">4. 문자열 슬라이싱(slicing)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c"># 'Life'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span> <span class="c"># 'is'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">12</span><span class="p">])</span> <span class="c"># 'too'</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>파이썬에서 가장 혼동하기 쉬운 부분이 문자열 슬라이싱에서 index이다. [a:b]는 a에서 b-1 까지이다. 슬라이싱에서 마지막 index는 포함하지 않는 것이다. 즉, pyfun[a:b]는 a &lt;= pyfun &lt; b 이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">19</span><span class="p">:])</span> <span class="c"># 'You need Python'  pyfun[시작:끝] 에서 끝을 비워두면 문자열의 마지막 index까지를 의미한다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[:</span><span class="mi">17</span><span class="p">])</span> <span class="c"># 'Life is too short'  pyfun[시작:끝] 에서 시작을 비워두면 문자열의 처음 index부터를 의미한다.</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="o">-</span><span class="mi">7</span><span class="p">])</span> <span class="c"># 'You need'  음수도 사용 가능하다. -8은 d 이다. 역시나 index -7은 포함되지 않는다는 것을 잊지 말자.</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="5-문자열-포매팅formatting">5. 문자열 포매팅(formatting)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">man</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">d"</span> <span class="c"># %d 는 정수를 표현하는 포맷 코드이다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="mi">3</span><span class="p">)</span> <span class="c"># %d 에 3이 대입된다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="mi">5</span><span class="p">)</span> <span class="c"># %d 에 5가 대입된다.</span>
+
+<span class="n">man</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">d and I live in </span><span class="si">%</span><span class="s">s"</span> <span class="c"># %s 는 문자열을 표현하는 포맷 코드이다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">'Seoul'</span><span class="p">))</span> <span class="c"># 문자열 포맷 코드가 2개인 문장에는 괄호와 쉼표를 사용하여 구분해주면 된다.</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">home</span> <span class="o">=</span> <span class="s">'Busan'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">home</span><span class="p">))</span> <span class="c"># 문자열 포맷 코드에는 숫자나 문자열 자체가 아닌 변수 형태로도 대입이 된다.</span>
+
+<span class="n">woman</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">s"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">woman</span> <span class="o">%</span><span class="mi">5</span><span class="p">)</span> <span class="c"># 한 가지 Tip은 사실 %s 포맷 코드는 % 뒤에 있는 자료형을 모두 문자열로 변환시키기 때문에 어떤 자료형이든 대입이 된다.</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>문자열 포매팅은 상황에 따라 특정 정보가 달라져야 하는 코드를 작성할 경우에 사용한다.</p>
+
+<h2 id="q-문자열-포맷-코드란"><strong>Q. 문자열 포맷 코드란?</strong></h2>
+
+<table style="border-collapse: collapse; width: 57.3333%;" border="1">
+  <tr>
+    <td style="width: 20.4242%;">
+      %s
+    </td>
+    
+    <td style="width: 36.9091%;">
+      문자열
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 20.4242%;">
+      %c
+    </td>
+    
+    <td style="width: 36.9091%;">
+      문자
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 20.4242%;">
+      %d
+    </td>
+    
+    <td style="width: 36.9091%;">
+      정수
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 20.4242%;">
+      %f
+    </td>
+    
+    <td style="width: 36.9091%;">
+      실수
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 20.4242%;">
+      %0
+    </td>
+    
+    <td style="width: 36.9091%;">
+      8진수
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 20.4242%;">
+      %x
+    </td>
+    
+    <td style="width: 36.9091%;">
+      16진수
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 20.4242%;">
+      %%
+    </td>
+    
+    <td style="width: 36.9091%;">
+      '%' (% 문자 자체)
+    </td>
+  </tr>
+</table>
+
+<p> </p>
+
+<p>문자열 내부에 포맷 코드가 있을 경우 기호 %를 나타내기 위해서는 무조건 %% 로 2개를 사용해야 한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sale</span> <span class="o">=</span> <span class="s">"The ratio is </span><span class="si">%</span><span class="s">d</span><span class="si">%%</span><span class="s">"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sale</span> <span class="o">%</span><span class="mi">50</span><span class="p">)</span> <span class="c"># The ratio is 50% 라는 문자열이 출력된다.</span>
+
+<span class="n">sale</span> <span class="o">=</span> <span class="s">"The ratio is 50</span><span class="si">%</span><span class="s">"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sale</span><span class="p">)</span> <span class="c"># 물론 문자열 안에 전혀 포맷 코드가 없는 경우에는 %기호 하나로 %캐릭터 자체가 출력된다.</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<h2 id="-숫자가-포함된-포맷코드"><strong># 숫자가 포함된 포맷코드</strong></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">say</span> <span class="o">=</span> <span class="s">"she answered</span><span class="si">%10</span><span class="s">s"</span> <span class="c"># %10s는 문자열 저장을 위해 총 10칸의 문자열 길이를 할당하고 오른쪽 정렬을 한다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">say</span> <span class="o">%</span><span class="s">'yes'</span><span class="p">)</span> <span class="c"># 'she answered       yes' 를 출력한다. 총 10개의 문자열에서 3개의 yes가 오른쪽 정렬되어 왼쪽에 7개의 공백이 생긴다.</span>
+
+<span class="n">say</span> <span class="o">=</span> <span class="s">"</span><span class="si">%-10</span><span class="s">ssaid yes"</span> <span class="c"># 문자열 칸을 총 10개 할당하고 왼쪽 정렬 하였으므로 오른쪽에 8개의 공백이 생긴다.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">say</span> <span class="o">%</span><span class="s">'he'</span><span class="p">)</span> <span class="c"># 'he        said yes'</span>
+
+<span class="n">pi_1</span> <span class="o">=</span> <span class="s">"pi is </span><span class="si">%0.2</span><span class="s">f"</span> <span class="c"># 소수점 아래 2자리까지 표현</span>
+<span class="n">pi_2</span> <span class="o">=</span> <span class="s">"pi is </span><span class="si">%0.4</span><span class="s">f"</span> <span class="c"># 소수점 아래 4자리까지 표현</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pi_1</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c"># 'pi is 3.14'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pi_2</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c"># 'pi is 3.1416' (3.1415가 아닌 이유는 소수점아래 5 번째 자리에서 반올림 되어서 그렇다.)</span>
+
+<span class="n">pi_3</span> <span class="o">=</span> <span class="s">"pi is</span><span class="si">%10.2</span><span class="s">f"</span> <span class="c">#10칸의 문자열에서 오른쪽 정렬하여 숫자를 소수점 아래 2 자리까지 표현</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pi_3</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c"># 'pi is      3.14' 10칸의 문자열에서 3,.,1,4 총 4개의 문자열이 오른쪽 정렬되어 왼쪽에 6칸의 공백 형성</span>
+</code></pre></div></div>
+
+<p>#</p>
+
+<p> </p>
+
+<h1 id="6-문자열-관련함수">6. 문자열 관련함수</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">py</span> <span class="o">=</span> <span class="s">"Python is funny"</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>1) 문자 갯수 세기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>2) 위치 반환1</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span> <span class="c"># n이 처음 나온 index인 5 반환</span>
+<span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'z'</span><span class="p">))</span> <span class="c"># 찾는 문자가 없으면 -1 반환</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>3) 위치 반환2</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span> <span class="c"># n이 처음 나온 index인 5 반환</span>
+<span class="c">#print(py.index('z')) # 찾는 문자가 없으면 오류 발생 ## 오류 때문에 뒤의 코드 실행 안되어 주석 처리</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>4) 문자열 삽입</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'123'</span><span class="p">)</span> <span class="c"># 각각의 문자열 사이에 py("Python is funny") 를 삽입</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c">#'1Python is funny2Python is funny3'</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>5) 대문자로 변환</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span> <span class="c"># 모든 문자를 대문자로 변환</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>6) 소문자로 변환</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="c"># 모든 문자를 소문자로 변환</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">py2</span> <span class="o">=</span> <span class="s">"   Python is funny      "</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>7) 왼쪽 공백 삭제</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">lstrip</span><span class="p">())</span> <span class="c"># 문자열 가장 왼쪽의 모든 공백 삭제</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>8) 오른쪽 공백 삭제</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span> <span class="c"># 문자열 가장 오른쪽의 모든 공백 삭제</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>9) 양쪽 공백 삭제</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="c"># 문자열 가장 왼쪽, 오른쪽의 모든 공백 삭제</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>10) 문자열 바꾸기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"funny"</span><span class="p">,</span><span class="s">"GaeNoJam"</span><span class="p">))</span> <span class="c"># ("바뀔 문자열", "대체할 문자열")  'funny'를 'GaeNoJam' 으로 변환</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>11) 문자열 나누기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="c"># 공백(space bar, tab, enter)을 기준으로 문자열을 나눈다. ['Python', 'is', 'funny']</span>
+<span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'is'</span><span class="p">))</span> <span class="c"># 'is' 를 기준으로 문자열을 나눈다. ['Python ', ' funny'] Python 뒤 공백 1칸, funny 앞 공백 1칸은 물론 포함된다.</span>
+</code></pre></div></div>
+
+<p>위와 같이 문자열을 나누면 각각의 요소가 리스트(list)로 들어가게 된다. 리스트는 다음 시간에 공부한다.<br />
+위에서 소개한 문자열 관련 함수들은 사용 빈도나 꽤나 높기때문에 숙지해두면 도움이 된다.</p>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="bonus-문자열-포맷-함수">Bonus) 문자열 포맷 함수</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">man</span> <span class="o">=</span> <span class="s">"My name is {0} and age is {1}. I live in {2}"</span>
+</code></pre></div></div>
+
+<p>문자열 포맷함수로 지정할 항목들을 {0}, {1}, {2}, … 와 같이 indexing 해준다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">'John'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">'Seoul'</span><span class="p">))</span> <span class="c"># .format() 함수를 사용하여 index 항목에 값 저장</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s">'John'</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">home</span> <span class="o">=</span> <span class="s">'Seoul'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">home</span><span class="p">))</span> <span class="c"># 값을 직접 입력하는 대신 변수로도 대입이 가능하다.</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"hello, my name is {name} and age is {age} and I live in {home}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">'John'</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">home</span><span class="o">=</span> <span class="s">'Seoul'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>{0}, {1}, … 형태의 index 대신 {name} 형태로 사용할 수도 있다. 이 경우에는 반드시 name=value 처럼 값을 지정해주어야한다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"{name:&gt;10}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c"># :&gt;10 은 문자열의 크기를 10으로 지정하고 오른쪽 정렬 시키라는 의미이다. 10칸의 {name}에 'John'이 오른쪽 정렬된다.</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{name:^20}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c"># ^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키라는 의미이다. 20칸의 {name}에 'John'이 가운데 정렬된다.</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{name:=^20}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c"># =^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키는데, 공백을 '='로 채운다.</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{name:@^20}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c"># @^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키는데, 공백을 '@'로 채운다.</span>
+</code></pre></div></div>
+
+<p>정렬 시 공백을 지정한 문자로 채워주려면 정렬 문자인 &lt;,&gt;,^ 앞에 채워넣을 문자를 넣어주면 된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"my age is {age:0.4f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">age</span> <span class="o">=</span> <span class="mf">3.141592</span><span class="p">))</span> <span class="c"># :0.4f는 age를 소수점 아래 4 자리까지만 지정한다.</span>
+<span class="k">print</span><span class="p">(</span><span class="s">""</span><span class="o">.</span><span class="n">format</span><span class="p">())</span> <span class="c"># format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문자 자체로 나타내고 싶은 경우 1개가 아닌 2개를 사용한다.</span>
+</code></pre></div></div>
+
+<p>format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문자 자체로 나타내고 싶은 경우 1개가 아닌 2개를 사용한다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/15/1-number/">
+        1. 자료형(1) - 숫자형(Number)
+      </a>
+    </h1>
+
+    <span class="post-date">15 Sep 2018</span>
+
+    <p>#</p>
+
+<h1 id="1-정수형integer">1. 정수형(Integer)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=-</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<h1 id="2-실수형floating-point">2. 실수형(Floating-point)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mf">1.2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=-</span><span class="mf">3.45</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=</span><span class="mf">1.2e10</span> <span class="c">#컴퓨터식 지수 표현 방식 1.2e10 = 1.2*10^10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=</span><span class="mf">1.2e-10</span> <span class="c">#1.2e-10 = 1.2*10^-10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-8진수octal--16진수hexadecimal">3. 8진수(octal) / 16진수(hexadecimal)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="n">o123</span> <span class="c">#10진수로 8^2*1 + 8^1*2 + 8^0*3 = 64 + 16 + 3 = 83</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mh">0x1ff</span> <span class="c">#10진수로 16^2*1 + 16^1*15 + 16^0*15 = 256 + 240 + 15 = 511</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="4-복소수complex-number">4. 복소수(Complex Number)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="n">j</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="o">-</span><span class="mi">5</span><span class="n">j</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>복소수와 관련한 파이썬 내장함수</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="c">#실수부 return</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="c">#허수부 return</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span> <span class="c">#복소수의 켤레 return</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c"># 복소수의 크기 return</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="5-사칙연산">5. 사칙연산</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="c"># 더하기</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span> <span class="c"># 빼기</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="c"># 곱하기</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">)</span> <span class="c"># 나누기</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span> <span class="c"># 나머지</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="n">b</span><span class="p">)</span> <span class="c"># 승수 a^b</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">//</span><span class="n">b</span><span class="p">)</span> <span class="c"># 소수점 아래자리 버림</span>
+</code></pre></div></div>
+
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10929,204 +11719,6 @@ Welcome to Python!</p>
 <p>위에서도 말했듯이 데이터와 결과의 패턴, 트렌드가 변하는 경우에도 적응이 가능하여 이러한 변화들이 반영이 되어야하는 모델에 사용한다.</p>
 
 <p> </p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/11/21-stochastic-gradient-descent/">
-        21. Stochastic Gradient Descent
-      </a>
-    </h1>
-
-    <span class="post-date">11 Sep 2018</span>
-
-    <p>Stochastic Gradient Descent 는 large dataset을 학습시킬 때 쓸 수 있는 방법이다.</p>
-
-<p>학습 데이터가 100,000,000개 있다고 해보자.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\theta)&space;=&space;\frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\theta) = \frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" align="absmiddle" /></p>
-
-<p>cost function이 위와 같을 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />의 update식은 다음과 같다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}" alt="\\for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial J }{ \partial { \theta }_{ j } } ={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \}" align="absmiddle" /></p>
-
-<p>m = 100,000,000에 대한 sum을 계산해야 한다. 심지어 이것이 한 번의 step이다. 이 작업을 cost function이 수렴할 때 까지 하려면 메모리의 부담이 너무 크고 작업속도도 엄청 느릴 것이다.</p>
-
-<p>이 때 우리가 시도할 수 있는 방법 중 하나인 stochastic gradient descent이다.</p>
-
-<p> </p>
-
-<h1 id="1-stochastic-gradient-descent">1. Stochastic Gradient Descent</h1>
-
-<hr />
-
-<p>우리가 지금까지 알던 Gradient Descent 는 다른 말로 Batch Gradient Descent 라고도 부른다. Batch는 여기서 데이터전체 다발을 의미한다. 이 Batch Gradient Descent 에서의 cost function과 update식을 다시 한 번 짚고 넘어가보자.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\theta)&space;=&space;\frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\theta) = \frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" align="absmiddle" /></p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}" alt="\\for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial J }{ \partial { \theta }_{ j } } ={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \}" align="absmiddle" /></p>
-
-<p> </p>
-
-<p>Stochastic Gradient Descent 는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />  update 식에서 전체 data batch의 cost function의 미분의 평균이 아닌 data 하나의 cost의 미분만 사용하는 것이다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;i=1:m&space;\\&space;\left&space;\{&space;for\quad&space;j=1:n&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}&space;\right&space;\}" alt="\\for\quad i=1:m \\ \left \{ for\quad j=1:n \left \{ { \theta }_{ j }: ={ \theta }_{ j }-\frac { \alpha }{ m } { { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \} \right \}" align="absmiddle" /></p>
-
-<p>n개의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 data 하나를 이용해서 update한다. 이 과정을 m개의 data에 대해서 update 하는 것이다.</p>
-
-<p>Batch Gradient Descent 는 m개의 dataset을 사용하여 평균을 내어 한 번 update를 한다.</p>
-
-<p>Stochastic Gradient Descent는 각각의 data마다 cost를 미분하여 update를 m번 한다.</p>
-
-<p>직관적으로 global minimum으로의 방향의 정확도는 BGD가, speed는 SGD가 더 높을 것이라고 생각된다.</p>
-
-<p><img class="aligncenter wp-image-730" src="/images/2018/09/no-name-5.png" alt="" width="373" height="195" srcset="/images/2018/09/no-name-5.png 575w, /images/2018/09/no-name-5-300x157.png 300w" sizes="(max-width: 373px) 100vw, 373px" /></p>
-
-<p>Stochastic Gradient Descent의 특징은 Global minimum으로 수렴하는 것이 아니라 주변을 맴돈다. 아무래도 하나의 데이터만 이용해서 update하다보니 움직임이 가볍고 정확한 global minimum으로 향하지는 못한다. 하지만 learning rate <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\alpha" alt="\dpi{120} \alpha" align="absmiddle" />를 작게 할 수록 수렴하는 것에 가깝게는 만들 수 있다.</p>
-
-<p>Stochastic Gradient Descent 알고리즘은 m개의 data에 대해 parameter를 update하는 이 행위를 보통 1번이면 위의 그림과 같이 수렴한다. Batch Gradient Descent 알고리즘은 m개의 data에 대한 cost function의 미분의 평균을 한 번 update 한 것이 위의 화살표 한 번의 step이다. Stochastic Gradient Descent 는 Batch Gradient Descent 보다 학습 속도가 빠르고 우리가 large dataset에 대해 Stochastic Gradient Descent 알고리즘을 사용하는 이유이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-mini-batch-gradient-descent">2. Mini-Batch Gradient Descent</h1>
-
-<hr />
-
-<p>Mini-Batch Gradient Descent도 Stochastic Gradient Descent 와 마찬가지로 컴퓨터 메모리의 계산부담을 줄이고 학습속도를 향상시키기 위한 알고리즘으로, 위에서 말한 Stochastic Gradient Descent와 원리가 같다. 다만 parameter를 update 하기위해 data를 1개는 아니고 가령 10개, 혹은 b(&lt;m)개를 사용하는 것이다. b는 batch size이다. 가령 10개의 data를 사용한다고 하면 알고리즘은 다음과 같다.</p>
-
-<p> </p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\\for&space;\quad&space;k=1,11,21,...\\&space;\left&space;\{&space;for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=k}^{&space;k+9&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}&space;\right&space;\}" alt="\\for \quad k=1,11,21,...\\ \left \{ for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=k}^{ k+9 }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \} \right \}" align="absmiddle" /></p>
-
-<p>이 알고리즘은 stochastic gradient descent보다도 학습속도에서 더 좋은 성능을 낼 수도 있다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/07/20-recommender-systems/">
-        20. Recommender Systems
-      </a>
-    </h1>
-
-    <span class="post-date">07 Sep 2018</span>
-
-    <p>Recommender System은 머신러닝 알고리즘의 적용이 가장 활발한 분야들 중 하나이다. 어떠한 사용자의 시청기록, 평점부여 기록을 토대로 그 사람에게 관련영화를 추천해 주는 시스템이 있다.</p>
-
-<p><img class="aligncenter wp-image-706" src="/images/2018/09/no-name-4.png" alt="" width="488" height="206" srcset="/images/2018/09/no-name-4.png 663w, /images/2018/09/no-name-4-300x127.png 300w" sizes="(max-width: 488px) 100vw, 488px" /></p>
-
-<p>방법 하나는 각 영화마다 로맨스정도, 액션정도, 코믹 정도등을 feature로 정량화 시키는 것이다.</p>
-
-<p>각 user마다 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta_{1},\theta_{2})" alt="\dpi{120} (\theta_{1},\theta_{2})" align="absmiddle" />의 parameter가 있다고 하면 아직 그 user가 rating하지 않은 영화에 대해서도 feature vector를 곱하여 추측할 수 있다. user2의 parameter vector가 (4,10)이라고 하면 이 유저의 movie2에 대한 예상되는 평점은 3.8점이다.</p>
-
-<p>이를 좀 일반적으로 정리해보겠다.</p>
-
-<p> </p>
-
-<h1 id="1-problem-formulation"><span style="font-size: 18pt;"><strong>1. Problem formulation</strong></span></h1>
-
-<hr />
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n_{u}=" alt="\dpi{120} n_{u}=" align="absmiddle" /> user(사용자) 수</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n_{m}=" alt="\dpi{120} n_{m}=" align="absmiddle" /> movie(영화) 수</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;r(i,j)=" alt="\dpi{120} r(i,j)=" align="absmiddle" /> user<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /> 가 movie<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />  에 rate(평가)를 했으면 1 아니면 0</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;y(i,j)=" alt="\dpi{120} y(i,j)=" align="absmiddle" /> user<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /> 가 movie<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />  에 매긴 rating(평점)       <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;r(i,j)=1" alt="\dpi{120} r(i,j)=1" align="absmiddle" />인 경우만 정의</p>
-
-<p> </p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta&amp;{(j)}=" alt="\dpi{120} \theta&amp;{(j)}=" align="absmiddle" />  parameter vector for user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /></p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}=" alt="\dpi{120} x^{(i)}=" align="absmiddle" />  feature vector for user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" /></p>
-
-<p>prediction =<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta^{(j)})^T&space;x^{(i)}" alt="\dpi{120} (\theta^{(j)})^T x^{(i)}" align="absmiddle" /></p>
-
-<p> </p>
-
-<p>user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" />의 parameter를 optimize 한다고 할 때 결국 우리의 목표는 다음의 cost function을 최소화 시키는 것이다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta^{(j)})=\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^{(T)}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(\theta^{(j)})=\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^{(T)}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
-
-<p>앞서 linear regression에서 배운 gradient descent나 matlab, octave, python 등에서 제공하는 라이브러리의 optimization function을 사용해도 된다.</p>
-
-<p>좀 더 범위를 넓혀 모든 사용자들의 cost function을 계산하는 것이 일반적이다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=\frac{1}{2}\sum_{j=1}^{n_{u}}\sum_{i:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(\theta)=\frac{1}{2}\sum_{j=1}^{n_{u}}\sum_{i:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
-
-<p>우리가 익숙한 cost function과 다른 것은 training dataset(movie)의 갯수 m을 식에 넣지 않았다는 것이다. m이 있으나 없으나 최소화 되는 과정에서 parameter가 정해지는 것에는 아무런 영향이 없기 때문에 상관없다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-collaborative-filtering"><span style="font-size: 18pt;"><strong>2. Collaborative Filtering</strong></span></h1>
-
-<hr />
-
-<p>하지만 영화의 로맨스 정도, 액션 정도 등의 feature는 주관적인 생각이 많이 개입되는 특성이 있어 이를 수치화 하는 것 또한 애매한 부분이 있어 쉽지가 않다. 만약 사용자의 parameter가 정해져 있다고 가정한다면 역으로 위의 parameter에 대한 cost function이 아닌 feature에 대한 cost function을 사용해서 feature를 찾을 수 있다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x)=\frac{1}{2}\sum_{i=1}^{n_{m}}\sum_{j:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}" alt="\dpi{120} J(x)=\frac{1}{2}\sum_{i=1}^{n_{m}}\sum_{j:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}" align="absmiddle" /></p>
-
-<p>이렇게 찾은 feature를 이용해서 parameter를 다시 update한다. 그리고 이 parameter를 사용해서 feature를 다시 update 한다. 이렇게 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta&space;\rightarrow&space;x&space;\rightarrow&space;\theta&space;\rightarrow&space;x&space;\rightarrow&space;\cdot\cdot\cdot" alt="\dpi{120} \theta \rightarrow x \rightarrow \theta \rightarrow x \rightarrow \cdot\cdot\cdot" align="absmiddle" />의 과정을 반복하여 수렴시키면 좋은 parameter와 feature를 구할 수 있다.</p>
-
-<p>위 처럼 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />와 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" />를 왔다갔다 하며 update 하는 것 보다 간단한 방법이 있다.</p>
-
-<p>다음의 식을 minimize 함으로써 parameter와 feature를 <strong>동시에</strong> optimize 할 수 있다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x,\theta)=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(x,\theta)=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
-
-<p>식이 복잡해 보이지만 우리가 익숙하게 알고있던 parameter의 cost function과 feature의 cost function을 합친 것일 뿐이다. 이것을 우리는 collaborative filtering이라고 부른다.</p>
-
-<p>참고로 이 알고리즘은 스스로 학습을 하므로 bias unit은 없다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x\in&space;\mathbb{R}^{n},\quad&space;\theta&space;\in&space;\mathbb{R}^{n}" alt="\dpi{120} x\in \mathbb{R}^{n},\quad \theta \in \mathbb{R}^{n}" align="absmiddle" /></p>
-
-<p>위의 알고리즘을 순서대로 정리해보자.</p>
-
-<p>1.<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(n_{m})}),&space;(\theta^{(1)},\theta^{(2)},\cdot\cdot\cdot,\theta^{(n_{u})})" alt="\dpi{120} (x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(n_{m})}), (\theta^{(1)},\theta^{(2)},\cdot\cdot\cdot,\theta^{(n_{u})})" align="absmiddle" /> 를 small random value로 initialize 한다.</p>
-
-<p>2. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x,\theta)" alt="\dpi{120} J(x,\theta)" align="absmiddle" />를 gradient descent 혹은 라이브러리에서 제공하는 optimization 함수를 사용하여 minimize 한다.</p>
-
-<ol>
-  <li>위에서 구한 parameter를 가지고 아직 어떤 유저가 아직 rating하지 않은 영화를 predict 한다.</li>
-</ol>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-vectorization--low-rank-matrix-factorization"><span style="font-size: 18pt;"><strong>3. Vectorization : Low Rank Matrix Factorization</strong></span></h1>
-
-<hr />
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X=\begin{bmatrix}---x^{(1)}---&space;\\&space;---x^{(2)}---&space;\\&space;\cdot&space;\cdot&space;\cdot&space;\\&space;---x^{(n_{m})}---&space;\end{bmatrix}\quad&space;\qaud&space;\Theta=\begin{bmatrix}&space;---\theta^{(1)}---&space;\\&space;---\theta^{(2)}---&space;\\&space;\cdot&space;\cdot&space;\cdot&space;\\&space;---\theta^{(n_{u})}---&space;\end{bmatrix}" alt="\dpi{120} X=\begin{bmatrix}---x^{(1)}--- \\ ---x^{(2)}--- \\ \cdot \cdot \cdot \\ ---x^{(n_{m})}--- \end{bmatrix}\quad \qaud \Theta=\begin{bmatrix} ---\theta^{(1)}--- \\ ---\theta^{(2)}--- \\ \cdot \cdot \cdot \\ ---\theta^{(n_{u})}--- \end{bmatrix}" align="absmiddle" /></p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" /> 의 각 row는 영화 하나의 feature vector이고, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />의 각 row는 유저 한 명의 parameter vector이다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Y=X\Theta^{T}" alt="\dpi{120} Y=X\Theta^{T}" align="absmiddle" />  matrix의 각 row는 한 편의 영화, 각 column은 한 명의 유저를 나타낸다.</p>
-
-<p>Y의 3행 4열 위치는 3번째 영화에 대한 4번째 유저의 평점을 나타낸다.</p>
-
-<p> </p>
-
-<p>새로운 유저를 추가한다고 했을 때, 초기 parameter는 regularization term에 의하여 모둔 parameter가 0으로 initialize 될 것이다. 따라서 어떤 영화에 대한 예측 평점도 0이 될 것이고, 이는 상식적으로 생각해도 부적절하다.</p>
-
-<p>기존의 유저, 영화들로 계산한 matrix Y가 다음과 같다고 해보자.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Y&space;=&space;\begin{bmatrix}&space;5&amp;5&amp;0&amp;0&space;\\&space;4&amp;?&amp;?&amp;0&space;\\&space;0&amp;0&amp;5&amp;4&space;\\&space;0&amp;0&amp;5&amp;0&space;\end{bmatrix}" alt="\dpi{120} Y = \begin{bmatrix} 5&amp;5&amp;0&amp;0 \\ 4&amp;?&amp;?&amp;0 \\ 0&amp;0&amp;5&amp;4 \\ 0&amp;0&amp;5&amp;0 \end{bmatrix}" align="absmiddle" /></p>
-
-<p>영화 i에 대한 평균은 다음의 식으로 계산 가능하다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{i}=\frac{\sum_{j:r(i,j)=1}Y_{i,j}}{\sum_{j}{r(i,j)}}" alt="\dpi{120} \mu_{i}=\frac{\sum_{j:r(i,j)=1}Y_{i,j}}{\sum_{j}{r(i,j)}}" align="absmiddle" /></p>
-
-<p>위의 matrix의 평균은 다음과 같이 된다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\begin{bmatrix}2.5\\2\\2.25\\1.25&space;\end{bmatrix}" alt="\dpi{120} \begin{bmatrix}2.5\\2\\2.25\\1.25 \end{bmatrix}" align="absmiddle" />  각 영화의 (총 평점의 합) / (평가한 사용자 수) 이다.</p>
-
-<p>따라서 새로운 유저를 추가할 때에는 평점을 기존 데이터의 평균으로 초기화하고 parameter는 위에서 말한 그대로 random small value로 초기화하면 된다. 이후에 위의 collaborative filtering 알고리즘으로 parameter와 feature를 학습시키면 된다.</p>
-
-<p>이 알고리즘의 목적을 다른 식으로 해석하자면 어떤 유저가 어떤 영화 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />를 좋아했다면, 그 영화의 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />와 비슷한 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(j)}" alt="\dpi{120} x^{(j)}" align="absmiddle" />를 가진 영화를 추천해주는 것이다. 즉,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;\|&space;x^{(i)}-x^{(j)}&space;\right&space;\|" alt="\dpi{120} \left \| x^{(i)}-x^{(j)} \right \|" align="absmiddle" /> 가 작은 영화를 찾는 것이다.</p>
 
   </div>
   

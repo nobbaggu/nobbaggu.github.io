@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,330 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/14/operator/">
+        연산자
+      </a>
+    </h1>
+
+    <span class="post-date">14 Dec 2018</span>
+
+    <p>우리가 흔히 알고있는 ＋－×÷의 사칙연산 이외에도 C언어에서 사용할 수 있는 다양한 <strong>연산자</strong> 가 많습니다. 오늘은 C언어에서 활용빈도가 엄청 높은  필수적인 연산자들을 소개드리겠습니다.</p>
+
+<h1 id="1-대입-연산자">1. 대입 연산자</h1>
+
+<hr />
+
+<p>대입 연산자(=)는 변수에 값을 대입시킬 때 사용합니다. 사실 = 연산자는 수학에서 ‘같다’는 의미로 사용됩니다. 하지만 C언어와 대부분의 프로그래밍 언어에서 = 기호는 대입 연산자를 뜻하고 ==연산자가 ‘같다’는 의미의 논리연산자로 사용됩니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-산술-연산자">2. 산술 연산자</h1>
+
+<hr />
+
+<p>산술 연산자는 4칙연산과 관련된 연사자입니다.</p>
+
+<p><strong>+ : 더하기</strong> ex) int add = 3 + 4;</p>
+
+<p><strong>- : 빼기</strong> ex) double sub = 7.14 - 5.25;</p>
+
+<p><strong>* : 곱하기</strong> ex) int mul = 3*4;</p>
+
+<p><strong>/ : 나누기</strong> ex) double div = 7.0/4.2;</p>
+
+<p><strong>% : 나머지</strong> ex) int rem = 14/3; // 14를 3으로 나누면 몫이 4이고 나머지가 2이기 때문에 변수 rem은 2를 가진다.</p>
+
+<p> </p>
+
+<p>산술연산자들은 대입연산자(=)와 같이 쓰면 수식이 간결해집니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span><span class="o">+=</span><span class="mi">3</span><span class="o">;</span> <span class="c1">// 이 코드는 a=a+3;과 동일</span>
+<span class="kt">int</span> <span class="n">a</span><span class="o">-=</span><span class="mi">3</span><span class="o">;</span> <span class="c1">// 이 코드는 a=a-3;과 동일</span>
+<span class="kt">int</span> <span class="n">a</span><span class="o">*=</span><span class="mi">3</span><span class="o">;</span> <span class="c1">// 이 코드는 a=a*3;과 동일</span>
+<span class="kt">int</span> <span class="n">a</span><span class="o">/=</span><span class="mi">3</span><span class="o">;</span> <span class="c1">// 이 코드는 a=a/3;과 동일</span>
+<span class="kt">int</span> <span class="n">a</span><span class="o">%=</span><span class="mi">3</span><span class="o">;</span> <span class="c1">// 이 코드는 a=a%3;과 동일</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="3-증가-감소-연산자">3. 증가, 감소 연산자</h1>
+
+<hr />
+
+<p>증가, 감소 연산자에는 ++, -가 있습니다. ex) num++, ++num, num-, -num</p>
+
+<p>변수의 값을 1 증가시키거나 감소하라는 의미인데, ++과 -의 위치에 주의해야 합니다. ++이나 -이 뒤에오면 위의 증감 명령이 속한 문장을 먼저 다 실행시키고 ++,-을 수행하라는 의미입니다. ++,-이 앞에 오면 먼저 값을 증가, 감소 시킨 후에 문장을 실행하라는 의미입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num</span><span class="o">++;</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+
+        <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="o">++</span><span class="n">num</span><span class="o">;</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>result is 10</p>
+
+<p>num is 11</p>
+
+<p>result is 11</p>
+
+<p>num is 11</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .&lt;/pre&gt;</p>
+
+<p>num++을 사용했을때는 result에 먼저 num의 값이 담기고 난 다음 num++이 실행되어 num이 1 증가했습니다. 하지만, ++num을 사용했을때는 num이 먼저 10에서 11로 1 증가 후 result에 대입이 되었어요. -연산도 동일한 결과를 만들어 냅니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="4-비교-연산자">4. 비교 연산자</h1>
+
+<hr />
+
+<p>비교 연산자에는 &lt;, &gt;, &lt;=, &gt;=, ==, !=이 있습니다. 두 항을 비교하여 논리판단을 할 때 사용합니다.</p>
+
+<p>&lt; : if(a&lt;b){a++;} // a가 b보다 작으면 a의 값을 1 올려라</p>
+
+<p>&gt; : if(a&gt;b){a-;} // a가 b보다 크면 a의 값을 1 줄여라</p>
+
+<p>&lt;= : if(a&lt;=b){a++;} // a가 b보다 작거나 같으면 a의 값을 1 올려라</p>
+
+<p>&gt;= : if(a&gt;=b){a-;} // a가 b보다 크거나 같으면 a의 값을 1 줄여라</p>
+
+<p>== : if(a==5){System.out.println(“a is 5”); // a가 5와 같으면 “a is 5”의 문장을 출력해라</p>
+
+<p>!= : if(a!=5){System.out.println(“a is not 5”); // a가 5와 같지 않다면 “a is not 5”의 문장을 출력해라</p>
+
+<p>if문은 조건문인데, 우리가 제시한 조건을 판단하여 ‘참(1)’이면 { } 안의 문장을 실행하고 ‘거짓(0)’이면 { } 안의 문장을 실행하지 않습니다. 반복문과 조건문 강의에서 다룰겁니다.</p>
+
+<p>우리가 위와 같은 비교연산자를 이용해서 논리연산을 수행하면 수식 자체가 0이나 1을 반환합니다. 예컨데 a&lt;b가 사실이면 a&lt;b 라는 문장이 정수 1과 동일하단 것입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">==</span><span class="mi">10</span><span class="o">);</span> <span class="c1">//참이므로 true</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">!=</span><span class="mi">10</span><span class="o">);</span> <span class="c1">//거짓이므로 false</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">);</span> <span class="c1">//참이므로 true</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">10</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="n">num</span><span class="o">++;</span>
+            <span class="n">num</span><span class="o">++;</span>
+        <span class="o">}</span> <span class="c1">// ( ) 안의 문장이 참이므로 {} 안의 문장 수행 num이 10에서 12로 증가</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span> <span class="c1">// num = 12</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이처럼 비교연산자는 논리를 판단하고 결과에 따라 다른 실행이 필요할 때 사용합니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="5논리-연산자">5. 논리 연산자</h1>
+
+<hr />
+
+<p>&amp;&amp; : AND 연산자 → 두 조건이 ‘모두 참’ 일 때 참이면 1 반환</p>
+
+<p>|| : OR 연산자 → 두 조건 중 ‘하나라도 참’ 일 때 참이면 1 반환</p>
+
+<p>! : NOT 연산자 → 논리 역전 (‘참’→’거짓’,  ’거짓’→’참’)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">b</span><span class="o">=</span><span class="mi">20</span><span class="o">;</span>
+        
+        <span class="k">if</span> <span class="o">((</span><span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="o">)</span> <span class="o">&amp;</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">20</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"a is 10 and b is 20"</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">if</span> <span class="o">((</span><span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="o">)</span> <span class="o">|</span> <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">30</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"a is 10 or b is 30"</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">!=</span> <span class="mi">50</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"a is not 50"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/14/type-casting/">
+        자료형(3) - 형 변환
+      </a>
+    </h1>
+
+    <span class="post-date">14 Dec 2018</span>
+
+    <h1 id="1-자동-형-변환">1. 자동 형 변환</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">byte</span> <span class="n">bNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="n">bNum</span><span class="o">;</span> <span class="c1">//bNum이 int형으로 자동 형 변한되어 iNum에 저장</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iNum</span><span class="o">);</span> <span class="c1">//10 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>크기가 작은 자료형에서 큰 자료형으로는 형 변환이 자동으로 일어납니다.</strong></p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">byte</span> <span class="n">bNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">float</span> <span class="n">fNum</span> <span class="o">=</span> <span class="n">bNum</span><span class="o">;</span> <span class="c1">//bNum이 float형으로 자동 형 변한되어 iNum에 저장</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">fNum</span><span class="o">);</span> <span class="c1">//10.0 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>더욱 정밀한 자료형으로의 형 변환은 자동으로 일어납니다.</strong></p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">float</span> <span class="n">fNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// int -&gt; float</span>
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+
+        <span class="kt">double</span> <span class="n">dNum</span> <span class="o">=</span> <span class="n">fNum</span> <span class="o">+</span> <span class="n">iNum</span><span class="o">;</span> <span class="c1">//iNum이 float으로 변환되어 fNum과 연산되고 그 결과가 double로 변환되어 dNum에 저장</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dNum</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-강제-형-변환">2. 강제 형 변환</h1>
+
+<hr />
+
+<p>강제 형 변환은 명시적으로 형 변환을 시키는 경우입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">byte</span> <span class="n">bNum</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">iNum</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bNum</span><span class="o">);</span> <span class="c1">//10 출력</span>
+
+        <span class="kt">int</span> <span class="n">iNum2</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+        <span class="kt">byte</span> <span class="n">bNum2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">iNum2</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bNum2</span><span class="o">);</span><span class="c1">// -24출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>2번째에서 왜 -24가 출력되는지 알아봅시다.</p>
+
+<p>int자료형에 1000을 저장하면 총 4byte=32bit에 0000 0000 0000 0000 0000 0011 1110 1000이 저장됩니다.</p>
+
+<p>이것을 byte로 형 변환을 하면 1byte=8bit만 남기고 상위의 비트들이 다 날아가고 1110 1000만 남습니다. 이는 10진수로 -24입니다.</p>
+
+<p>결론 : <strong>크기가 큰 자료형이 작은 자료형으로 형 변환을 할 때에는 상위 바이트를 날려버린다.</strong></p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">double</span> <span class="n">dNum</span> <span class="o">=</span> <span class="mf">10.123456</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">dNum</span><span class="o">;</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iNum</span><span class="o">);</span> <span class="c1">//10 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>더 정밀한 자료형을 덜 정밀한 자료형으로 바꿀 경우 소수점 부분이 날아간다.</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">double</span> <span class="n">dNum</span> <span class="o">=</span> <span class="mf">1.2</span><span class="o">;</span>
+        <span class="kt">float</span> <span class="n">fNum</span> <span class="o">=</span> <span class="mf">0.9f</span><span class="o">;</span>
+        
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">dNum</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">fNum</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">iNum2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">dNum</span> <span class="o">+</span> <span class="n">fNum</span><span class="o">);</span>
+        
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iNum</span><span class="o">);</span> <span class="c1">// 1 출력</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iNum2</span><span class="o">);</span> <span class="c1">// 2 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>iNum이 연산 될 때는 dNum과 fNum이 각각 int형인 1, 0으로 형 변환되어 더해져서 iNum에 1로 저장됩니다.</p>
+
+<p>iNum2에는 dNum과 fNum 더해져 2.1이 됩니다. 이 때 fNum이 double로 형 변환되어 더해집니다. 아무튼 이 2.1이 int형으로 형 변환되어 2로 변하고 iNum2에 저장되므로 2가 출력되는 것입니다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10887,122 +11281,6 @@
 <p>정리를 해보겠습니다.</p>
 
 <p>변수란 어떠한 물리적 데이터를 담을 수 있는 <strong>메모리공간에 붙이는 이름</strong>이다. 그리고 변수를 선언할 때에는 필히 그 변수의 <strong>자료형을 명시</strong>해주어야한다. 그래야지 컴파일러가 해석을 하며 얼만큼의 메모리 크기를 할당할지 알 수 있기 때문이다. 그리고 이후에는 우리는 변수명을 사용하여 데이터를 다룰 수 있다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/14/java-characteristic/">
-        Java의 특징
-      </a>
-    </h1>
-
-    <span class="post-date">14 Dec 2018</span>
-
-    <p>자바는 1990년대에 세상에 나왔을 때의 단순한 언어에서 끊임없이 업데이트되고 발전하였다. 자바는 현재 프로그래밍 언어의 왕좌를 차지하고 있는만큼 IT업계로의 진출을 꿈꾸고 있다면 꼭 익혀야 하는 언어이다. 자바가 전 세계 사용 1위 언어가 된 데에는 다음의 중요한 특징들이 작용했다.</p>
-
-<p> </p>
-
-<h1 id="1-어디서든-실행되는-편리함">1. 어디서든 실행되는 편리함</h1>
-
-<hr />
-
-<p>윈도우에서 C언어를 사용하여 프로그램을 개발하고 컴파일하여 .exe 확장자의 실행파일을 만들었다. 만약 이 실행파일을 리눅스나 Mac OS와 같은 다른 운영체제에서 실행을 하려면 코드를 다시 운영체제의 컴파일러를 사용해 실행파일을 만들어야 한다.</p>
-
-<p>그러나 Java는 컴파일 하면 .class 확장자의 파일이 만들어지는데, 이 .class 파일을 ‘바이트 코드’ 라고 부른다. 바이트 코드는 JVM(Java Virtual Machine)이 설치되어있으면 어떤 운영체제의 실행환경에서 바로 실행시킬 수 있다. 이는 무척 편리한 기능이다.</p>
-
-<p><a href="https://SWnomad.com/java%ec%9d%98-%ed%8a%b9%ec%a7%95/java-compile/" rel="attachment wp-att-1536"><img class="aligncenter size-full wp-image-1536" src="/images/2018/12/java-compile.jpg" alt="" width="1194" height="245" srcset="/images/2018/12/java-compile.jpg 1194w, /images/2018/12/java-compile-300x62.jpg 300w, /images/2018/12/java-compile-768x158.jpg 768w, /images/2018/12/java-compile-1024x210.jpg 1024w" sizes="(max-width: 1194px) 100vw, 1194px" /></a></p>
-
-<p> </p>
-
-<p>JVM은 자바 가상머신이라고 하며 자바의 바이트 코드를 실행시켜주는 가상환경 소프트웨어이다. JRE(Java Runtime Environment)라고 하는 자바 실행환경에서 돌아간다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-객체지향으로-인한-쉬운-유지보수와-확장성">2. 객체지향으로 인한 쉬운 유지보수와 확장성</h1>
-
-<hr />
-
-<p>C언어는 절차지향적 언어이다. 프로그램이 코드의 순서를 따라가며 실행이 된다.</p>
-
-<p>Java와 같은 객체지향 언어는 절차지향 언어와는 다르게 필요한 기능들을 각각 모듈화 시켜 따로 관리한다. 가령 Java를 사용해서 홈페이지를 만든다면 로그인,로그아웃의 기능을 하나의 객체로 만들어놓고 화면을 띄우는 것을 하나의 객체로 만드는 등의 방식으로 프로그래밍 한다.</p>
-
-<p>따라서 어떠한 부분이 수정되어야 할 경우 그 모듈의 코드를 수정하면 그 부분의 기능을 손쉽게 수정 가능하다. 또한 새로운 기능을 추가할 때에도 새로운 객체를 생성하면 되고 기존의 기능을 확장하려하면 그 객체 부분을 수정하거나 상속, 다형성 등의 Java 기능을 사용해서 쉽게 할 수 있다. 따라서 Java 프로그램은 유지보수가 쉽고 확장성이 좋다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-손쉬운-메모리-관리에-의한-안정성">3. 손쉬운 메모리 관리에 의한 안정성</h1>
-
-<hr />
-
-<p>C언어나 C++등은 ‘포인터’라는 문법을 제공하는데, 이 포인터를 사용하면 프로그래머가 직접 메모리를 관리할 수 있다.</p>
-
-<p>하지만 Java에서는 이러한 메모리에 접근하는 기능을 지원하지 않는다. 따라서 사용자가 메모리에 잘못된 접근을 하는 것을 미연에 방지할 수 있다. 또한 가비지 컬렉터(Garbage Collector)를 지원하여 사용하지 않는 메모리 수거를 알아서 해준다. C나 C++에서는 프로그래머가 직접 사용하지 않는 동적 메모리를 해제하여야 한다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="4-풍부한-오픈소스-라이브러리">4. 풍부한 오픈소스 라이브러리</h1>
-
-<hr />
-
-<p>Java는 프로그래밍 언어의 왕좌를 지키고 전세계적으로 사용자가 아주 많은 만큼 이미 최적화된 알고리즘, 오픈소스 라이브러리 등이 매우 풍부하다. 중요한 라이브러리를 제공하는 JDK(Java Development Kit)라는 자바 개발키트를 적절하게 사용하여 빠르고 생산적인 프로그램 개발이 가능하다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/14/programming-language/">
-        프로그래밍 언어란?
-      </a>
-    </h1>
-
-    <span class="post-date">14 Dec 2018</span>
-
-    <p>프로그래밍 언어(Programming Language)란 무엇일까?</p>
-
-<p>프로그래밍 언어란 쉽게 설명하여 인간과 컴퓨터간의 대화를 가능하게 해주는 <strong>‘중간언어’</strong>라고 정의 내릴 수 있습니다.</p>
-
-<p>컴퓨터에게 계산을 시킨다고 해봅시다.</p>
-
-<p>사람의 말로 “야 컴퓨터, 1+1을 계산해서 결과가 뭔지 나한테 알려줘” 라고 하면 컴퓨터가 동작을 하지 않을겁니다. 음성인식이나 자연어 처리 같은 머신러닝의 기술을 사용하면 그런 컴퓨터를 만들어 낼 수야 있겠지만, 지금은 그 이야기를 하려는 것이 아닙니다.</p>
-
-<p>그럼 어떻게 해야 컴퓨터와 대화를 할 수 있을까요?</p>
-
-<p>우리는 <strong>‘인간 언어’</strong>를 사용합니다.</p>
-
-<p>컴퓨터는 1과 0의 나열들로 표현되는 2진코드인 <strong>‘기계어’</strong>를 사용합니다.</p>
-
-<p>1) 내가 기계어를 완벽히 익힌다 → 매우 비효율적</p>
-
-<p>2) 컴퓨터에게 인간의 언어를 가르친다 → 현재 기술로 불가능</p>
-
-<p>3) 나와 컴퓨터 모두가 이해할 수 있는 언어를 만든다 → 가능</p>
-
-<div id="quads-ad2" class="quads-location quads-ad2">
-  <a href="https://SWnomad.com/0-c%ec%96%b8%ec%96%b4%eb%9e%80-%eb%ac%b4%ec%97%87%ec%9d%b8%ea%b0%80/1-18/" rel="attachment wp-att-894"><img class="aligncenter size-full wp-image-894" src="/images/2018/09/1-4.jpg" alt="" width="460" height="150" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w" sizes="(max-width: 460px) 100vw, 460px" /></a>
-</div>
-
-<p> </p>
-
-<p>바로 프로그래밍 언어란<span style="text-decoration: underline;"><strong> ‘사용자’와 ‘컴퓨터’ 모두가 소통할 수 있는 중간 단계의 언어</strong>라고 정의내릴 수 있습니다.</span></p>
-
-<p>이렇게 해서 프로그래밍 언어를 통하여 우리와 컴퓨터가 대화를 할 수 있는 겁니다. Java는 이러한 프로그래밍 언어들 중의 하나입니다.</p>
-
-<p><img class="aligncenter size-full wp-image-894 img-responsive" src="/images/2018/09/1-4.jpg" sizes="(max-width: 460px) 100vw, 460px" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w" alt="" width="460" height="150" /></p>
-
-<p>단, 한 가지 주의할 점이 있습니다.</p>
-
-<p>인간은 표준어, 사투리, 유행어, 줄임말 등등 언어를 아주 유연하게 사용해도 뇌에서 어떤 처리 과정을 거치면 서로 대화가 됩니다.</p>
-
-<p>그러나 컴퓨터는 그렇지 않습니다.철자 하나만 틀려도 의사소통이 되지 않습니다. 때문에 우리가 프로그래밍 언어를 딱딱하게 느낄 수 있지만 이는 익숙함의 문제일 뿐이고 배우기도 엄청 쉽습니다.</p>
-
-<p>처음에야 이게 무슨 외계어냐 라고 느낄 수도 있지만 꾹 참고 어느정도만 시간을 투자하면 컴퓨터적인 사고가 생기고 흔히 쓰는 우리 언어랑 조금 다를 뿐 재미있고 매력적이라 느낄 수 있습니다.</p>
 
   </div>
   

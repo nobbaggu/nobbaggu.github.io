@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,392 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/05/13/listview/">
+        37. 리스트뷰(ListView)
+      </a>
+    </h1>
+
+    <span class="post-date">13 May 2019</span>
+
+    <p>리스트뷰(ListView)는 안드로이드에서 가장 많이 사용되는 위젯(widget)들 중의 하나이다. 리스트뷰와 같이 여러 아이템들 중 하나를 선택하는 위젯을 선택위젯이라 부른다. 그리고 선택 위젯은 다른 위젯들과 사용하는 방식이 다르다. 일반 위젯은 데이터를 위젯 위에 바로 표시하지만 선택 위젯은 일반적으로 <strong>어댑터(Adapter)</strong> 패턴을 사용하며 데이터를 위젯이 아닌 어댑터에 설정하고 뷰도 어댑터에서 만든다.</p>
+
+<p><img src="/images/android/37/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p>어댑터에서는 데이터를 설정하고 뷰를 구성하여 <code class="highlighter-rouge">getView()</code> 메소드를 통해 뷰 객체를 return 한다.</p>
+
+<p><br />
+리스트뷰는 사용 패턴이 정해져있어 한 번 익혀두면 계속 쓸 수 있다. 리스트뷰를 사용하는 과정을 설명하면서 간단한 앱을 하나 만들어보자.</p>
+
+<p><br /></p>
+
+<h3 id="1-각-아이템을-보여줄-레이아웃-정의하기">1. 각 아이템을 보여줄 레이아웃 정의하기</h3>
+
+<p>리스트뷰에는 몇 개의 아이템이 있던지간에 각 아이템이 표시되는 레이아웃은 동일하다. 예를들면 전화번호부는 왼쪽에 사진이 있고, 오른쪽에 이름과 전화번호, 나이가 있는 형식일 수 있다. 이 단계에서는 이 레이아웃을 정의한다.</p>
+
+<p><br /></p>
+
+<p>&lt;person_item.xml&gt;</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ImageView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/imageView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"80dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"80dp"</span>
+        <span class="na">android:src=</span><span class="s">"@drawable/panho"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+        <span class="na">android:layout_marginLeft=</span><span class="s">"10dp"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/textView1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"New Text"</span>
+            <span class="na">android:textSize=</span><span class="s">"40dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ff5805"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;RelativeLayout</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;TextView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/textView2"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_alignParentLeft=</span><span class="s">"true"</span>
+                <span class="na">android:text=</span><span class="s">"New Text"</span>
+                <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+                <span class="na">android:textColor=</span><span class="s">"#0223e0"</span>
+                <span class="na">android:layout_marginTop=</span><span class="s">"6dp"</span><span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;TextView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/textView3"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_alignParentRight=</span><span class="s">"true"</span>
+                <span class="na">android:text=</span><span class="s">"New Text"</span>
+                <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+                <span class="na">android:textColor=</span><span class="s">"#4902d6"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;/RelativeLayout&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>이 레이아웃은 왼쪽에 사진을 넣고 오른쪽에는 수직 리니어 레이아웃을 넣어 윗쪽에는 이름을, 아랫쪽에는 휴대폰 번호와 나이를 넣기위해 구성하였다.</p>
+
+<p>형태는 아래 사진과 같이 나온다.</p>
+
+<p><img src="/images/android/37/2.png" alt="2" width="70%" height="70%" /></p>
+
+<p>구성된 레이아웃을 메모리에 인플레이션하고 컨트롤 하기위한 Java 클래스도 정의해야 한다.</p>
+
+<p><br />
+&lt;PersonItemView.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplelistview</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.LayoutInflater</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ImageView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.LinearLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PersonItemView</span> <span class="kd">extends</span> <span class="n">LinearLayout</span> <span class="o">{</span>
+
+    <span class="n">TextView</span> <span class="n">textView1</span><span class="o">;</span>
+    <span class="n">TextView</span> <span class="n">textView2</span><span class="o">;</span>
+    <span class="n">TextView</span> <span class="n">textView3</span><span class="o">;</span>
+    <span class="n">ImageView</span> <span class="n">imageView</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">PersonItemView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">PersonItemView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">){</span>
+
+        <span class="cm">/* 아이템 보여줄 뷰를 객체로 인플레이션 */</span>
+        <span class="n">LayoutInflater</span> <span class="n">inflater</span> <span class="o">=</span> <span class="o">(</span><span class="n">LayoutInflater</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">LAYOUT_INFLATER_SERVICE</span><span class="o">);</span>
+        <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">person_item</span><span class="o">,</span> <span class="k">this</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+
+        <span class="n">textView1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView1</span><span class="o">);</span>
+        <span class="n">textView2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView2</span><span class="o">);</span>
+        <span class="n">textView3</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView3</span><span class="o">);</span>
+        <span class="n">imageView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setImage</span><span class="o">(</span><span class="kt">int</span> <span class="n">resId</span><span class="o">){</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="na">setImageResource</span><span class="o">(</span><span class="n">resId</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+        <span class="n">textView1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMobile</span><span class="o">(</span><span class="n">String</span> <span class="n">mobile</span><span class="o">){</span>
+        <span class="n">textView2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">mobile</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">){</span>
+        <span class="n">textView3</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">age</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="2-실제-데이터를-위한-클래스-정의하기">2. 실제 데이터를 위한 클래스 정의하기</h3>
+
+<p>각 아이템을 위한 뷰를 구성했기때문에 이제 각 아이템에 추가할 데이터를 위한 클래스를 정의해야한다.</p>
+
+<p><br />
+&lt;PersonItem.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplelistview</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PersonItem</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">mobile</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">resId</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">PersonItem</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">mobile</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resId</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span>  <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">mobile</span> <span class="o">=</span> <span class="n">mobile</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resId</span> <span class="o">=</span> <span class="n">resId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMobile</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">mobile</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMobile</span><span class="o">(</span><span class="n">String</span> <span class="n">mobile</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">mobile</span> <span class="o">=</span> <span class="n">mobile</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getResId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">resId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setResId</span><span class="o">(</span><span class="kt">int</span> <span class="n">resId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resId</span> <span class="o">=</span> <span class="n">resId</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="3-어댑터-클래스-정의">3. 어댑터 클래스 정의</h3>
+
+<p>리스트뷰와 같은 선택위젯은 데이터를 어댑터에 설정하고 뷰도 어댑터에서 구성하여 뿌려준다고 했다. <strong>BaseAdapter</strong> 클래스는 어댑터를 만들 때 상속받는 가장 일반적인 클래스이다. 이 클래스는 MainActivity 클래스의 내부 클래스로 정의해야한다. 그래야 Context를 가져올 수 있기 때문이다.</p>
+
+<p><br /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* BaseAdapter 클래스 상속받아 SingerAdapter 클래스 정의 */</span>
+<span class="kd">class</span> <span class="nc">PersonAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span><span class="o">{</span>
+    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">PersonItem</span><span class="o">&gt;</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span> <span class="c1">//SingerItem 객체를 저장할 ArrayList 객체 생성</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//데이터의 갯수 리턴</span>
+        <span class="k">return</span> <span class="n">items</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addItem</span><span class="o">(</span><span class="n">PersonItem</span> <span class="n">item</span><span class="o">){</span> <span class="c1">//ArrayList에 새로운 SingerItem 객체 추가하는 메소드</span>
+        <span class="n">items</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getItem</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">){</span> <span class="c1">// index를 통해 ArrayList의 SingerItem 객체 반환</span>
+        <span class="k">return</span> <span class="n">items</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">position</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getItemId</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">position</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/* getView() 메소드는 어댑터에 데이터를 설정하고 뷰를 구성하여 리턴해주는 메소드이다. */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">View</span> <span class="nf">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="n">View</span> <span class="n">convertView</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">PersonItemView</span> <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PersonItemView</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span> <span class="c1">//뷰 객체 생성</span>
+        <span class="n">PersonItem</span> <span class="n">item</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">position</span><span class="o">);</span> <span class="c1">//뷰에 적용할 데이터 가져오기</span>
+
+        <span class="cm">/* 뷰에 데이터 설정 */</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">setMobile</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getMobile</span><span class="o">());</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getResId</span><span class="o">());</span>
+
+        <span class="k">return</span> <span class="n">view</span><span class="o">;</span> <span class="c1">//뷰를 리턴</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>여기서 중요한 건 <code class="highlighter-rouge">getCount()</code> 메소드와 <code class="highlighter-rouge">getView()</code> 메소드이다. <code class="highlighter-rouge">getCount()</code> 메소드는 어댑터에 설정된 데이터의 갯수를 관리한다. <code class="highlighter-rouge">getView()</code> 메소드는 리스트뷰의 각 아이템의 뷰를 구성해주므로 이 메소드가 잘못되면 화면이 의도하지 않은대로 보일 수 있다. 그리고 어댑터에 아이템을 추가하기 위한 <code class="highlighter-rouge">addItem()</code>와 아이템을 가져오기 위해서 <code class="highlighter-rouge">getItem()</code> 메소드도 정의하였다.</p>
+
+<p><br />
+<br />
+이제 리스트뷰를 위한 뷰와 데이터클래스, 그리고 어댑터를 다 만들었으므로 실제로 리스트뷰에 데이터를 나타내기 위해서 MainActivity 클래스에서 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="n">ListView</span> <span class="n">listView</span><span class="o">;</span>
+    <span class="n">PersonAdapter</span> <span class="n">adapter</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PersonAdapter</span><span class="o">();</span> <span class="c1">//어댑터 객체 생성</span>
+        <span class="cm">/* 어댑터에 데이터 추가 */</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="k">new</span> <span class="n">PersonItem</span><span class="o">(</span><span class="s">"김판호"</span><span class="o">,</span> <span class="s">"123-1234-1234"</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">panho</span><span class="o">));</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="k">new</span> <span class="n">PersonItem</span><span class="o">(</span><span class="s">"최형배"</span><span class="o">,</span> <span class="s">"321-3211-3211"</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">hangebae</span><span class="o">));</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="k">new</span> <span class="n">PersonItem</span><span class="o">(</span><span class="s">"최익현"</span><span class="o">,</span> <span class="s">"567-5675-5676"</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">ikhyeon</span><span class="o">));</span>
+
+        <span class="n">listView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">listView</span><span class="o">);</span>
+        <span class="n">listView</span><span class="o">.</span><span class="na">setAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span> <span class="c1">//리스트뷰에 어댑터 적용</span>
+
+        <span class="cm">/* 리스트의 아이템 클릭 이벤트 리스너 객체 설정 */</span>
+        <span class="n">listView</span><span class="o">.</span><span class="na">setOnItemClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">AdapterView</span><span class="o">.</span><span class="na">OnItemClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onItemClick</span><span class="o">(</span><span class="n">AdapterView</span><span class="o">&lt;?&gt;</span> <span class="n">parent</span><span class="o">,</span> <span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">PersonItem</span> <span class="n">item</span> <span class="o">=</span> <span class="o">(</span><span class="n">PersonItem</span><span class="o">)</span> <span class="n">adapter</span><span class="o">.</span><span class="na">getItem</span><span class="o">(</span><span class="n">position</span><span class="o">);</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">item</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>어댑터 객체를 생성하고 아이템을 추가한다. 그리고 아이템이 선택되었을 때 원하는 효과를 구현하기 위해 <code class="highlighter-rouge">setOnItemClickListener()</code> 메소드를 통해서 리스너 객체를 달아주었다. 아이템을 선택하면 토스트 메시지로 아이템의 이름이 뜨도록 만들었다.</p>
+
+<p><br />
+앱을 실행하면 다음과 같은 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/37/3.jpg" alt="3" width="30%" height="30%" /></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/05/12/bitmap-button/">
+        36. 비트맵(Bitmap) 버튼
+      </a>
+    </h1>
+
+    <span class="post-date">12 May 2019</span>
+
+    <p>앱을 만들때는 기본 위젯이 아닌 직접 만든 버튼을 사용하는 경우가 많다. 단순히 배경만 사진으로 해주는 것도 있는데, 이 때는 클릭 이벤트가 발생해도 버튼에 변화가 없어 사용자가 버튼의 상태를 알아채기 힘들다. 따라서 그래픽 이미지로 된 버튼을 직접 만들어서 사용해야 한다. 이 버튼이 바로 <strong>비트맵 버튼</strong>이다.</p>
+
+<p>비트맵은 메모리에 만들어진 이미지 객체라고 생각하면 된다. 일반적으로 버튼 클래스를 상속받아서 만들게 된다.</p>
+
+<p>비트맵에 대해 제대로 이해하기 위해서는 Canvas아 Bitmap, BitmapFactory 클래스에 대해 자세히 다루어야하는데 이는 그래픽 부분에서 자세히 다룰 것이므로 이번에는 비트맵 버튼을 사용하는 방법만 간단하게 알아본다.</p>
+
+<p>먼저 버튼을 상속받아 클래스를 정의한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplebitmapwidget</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Color</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Typeface</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.widget.AppCompatButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.MotionEvent</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BitmapButton</span> <span class="kd">extends</span> <span class="n">AppCompatButton</span> <span class="o">{</span>
+
+    <span class="kt">int</span> <span class="n">iconNormal</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">bitmap_button_normal</span><span class="o">;</span> <span class="c1">//노멀 상태의 비트맵 이미지</span>
+    <span class="kt">int</span> <span class="n">iconClicked</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">bitmap_button_clicked</span><span class="o">;</span> <span class="c1">//클릭 상태의 비트맵 이미지</span>
+
+    <span class="kd">public</span> <span class="nf">BitmapButton</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">();</span> <span class="c1">//객체 생성 후 초기화</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">BitmapButton</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">();</span><span class="c1">//객체 생성 후 초기화</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">setBackgroundResource</span><span class="o">(</span><span class="n">iconNormal</span><span class="o">);</span> <span class="c1">//비트맵 버튼 노말 상태</span>
+        <span class="n">setTextColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">);</span> <span class="c1">//텍스트 색상 흰색</span>
+        <span class="n">setTypeface</span><span class="o">(</span><span class="n">Typeface</span><span class="o">.</span><span class="na">DEFAULT_BOLD</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTouchEvent</span><span class="o">(</span><span class="n">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onTouchEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">action</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getAction</span><span class="o">();</span>
+
+        <span class="k">switch</span><span class="o">(</span><span class="n">action</span><span class="o">){</span>
+            <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_DOWN</span><span class="o">:</span> <span class="c1">// 버튼 눌렀을 때는 클릭 상태 비트맵 이미지 설정</span>
+                <span class="n">setBackgroundResource</span><span class="o">(</span><span class="n">iconClicked</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+
+            <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_UP</span><span class="o">:</span> <span class="c1">// 버튼에서 손 떼면 노멀 상태 비트맵 이미지 설정</span>
+                <span class="n">setBackgroundResource</span><span class="o">(</span><span class="n">iconNormal</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">invalidate</span><span class="o">();</span> <span class="c1">//다시 그리기</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br />
+객체를 생성 후 초기화하기 위해 생성자 안에 <code class="highlighter-rouge">init()</code> 메소드를 넣어주었다. <code class="highlighter-rouge">init()</code> 메소드 내에서는 버튼의 비트맵 이미지를 노멀 상태의 이미지로 설정하고 텍스트 색상을 흰색, 스타일을 굵은 글씨로 설정한다.</p>
+
+<p>그리고 버튼이 눌리고 떼어질 때의 이벤트 처리를 위해서 <code class="highlighter-rouge">onTouchEvent()</code> 메소드를 재정의하였다. 각각의 이벤트별로 비트맵 이미지를 다르게 설정하면 된다.</p>
+
+<p><code class="highlighter-rouge">invalidate()</code> 메소드는 <code class="highlighter-rouge">View class</code>의 메소드로 그래픽 설정후 레이아웃에 다시 그릴 때 사용한다.</p>
+
+<p>앱을 실행하면 아래의 실행결과가 나온다.</p>
+
+<p><img src="/images/android/36/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/36/2.jpg" alt="2" width="30%" height="30%" /></p>
+
+<p>첫 번째 사진이 노멀 상태이고 두 번째 사진이 버튼을 클릭했을 때이다. 두 가지 터치 이벤트가 발생할 때마다 버튼의 비트맵 이미지가 다시 그려진다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11051,196 +11507,6 @@
 
 <p><img src="/images/android/33/2.jpg" alt="2" width="30%" height="30%" />
 <img src="/images/android/33/3.jpg" alt="3" width="30%" height="30%" /></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/05/11/actionbar/">
-        32. 액션바(ActionBar)
-      </a>
-    </h1>
-
-    <span class="post-date">11 May 2019</span>
-
-    <p>안드로이드 액션바(ActionBar)는 기본적으로 앱의 타이틀을 보여주는 곳이다. 또한 여러가지 옵션 메뉴(Option Menu)들을 표시할 수도 있다.</p>
-
-<p><img src="/images/android/32/1.png" alt="1" width="30%" height="30%" /></p>
-
-<p><br />
-액션바를 보이거나 감추고 싶다면 다음의 메소드를 사용하면 된다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ActionBar</span> <span class="n">actionbar</span> <span class="o">=</span> <span class="n">getActionBar</span><span class="o">();</span> <span class="c1">//액션바 객체 참조</span>
-<span class="n">actionbar</span><span class="o">.</span><span class="na">hide</span><span class="o">();</span> <span class="c1">//액션바 숨기기</span>
-<span class="n">actionbar</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">//액션바 보이기</span>
-</code></pre></div></div>
-
-<p><br />
-옵션 메뉴는 각각의 액티비티마다 설정할 수 있다. 옵션 메뉴를 설정하려면 아래의 메소드를 사용하면 된다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="n">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="c1">//액티비티가 만들어지면서 호출</span>
-<span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="c1">//메뉴의 아이템을 클릭했을 때 호출</span>
-</code></pre></div></div>
-
-<p>이 메소드는 액티비티가 생성될 때 자동으로 호출되어 액티비티에 메뉴를 추가한다.</p>
-
-<p>먼저 메뉴를 위한 XML 레이아웃을 만들어야 한다. /res 폴더에 ‘menu’ 폴더를 추가하고 /res/menu 폴더에 메뉴를 위한 XML 레이아웃 리소스 파일을 생성하고 각각의 메뉴를 위한 &lt;item&gt; 태그를 추가하면 된다. 이 XML 파일을 <code class="highlighter-rouge">onCreateOptionsMenu()</code> 메소드 안에서 인플레이션 한다. 그러면 액티비티가 만들어질 때 액션바에 자동으로 메뉴가 포함된다. 그리고 각각의 메뉴 아이템을 클릭했을 때 나타나기를 원하는 기능은 <code class="highlighter-rouge">onOptionsItemSelected()</code> 메소드에서 처리하면 된다.</p>
-
-<p><br /></p>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;menu</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_refresh"</span>
-        <span class="na">android:title=</span><span class="s">"새로고침"</span>
-        <span class="na">android:icon=</span><span class="s">"@drawable/menu_refresh"</span>
-        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_search"</span>
-        <span class="na">android:title=</span><span class="s">"새로고침"</span>
-        <span class="na">android:icon=</span><span class="s">"@drawable/menu_search"</span>
-        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_settings"</span>
-        <span class="na">android:title=</span><span class="s">"새로고침"</span>
-        <span class="na">android:icon=</span><span class="s">"@drawable/menu_settings"</span>
-        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/menu&gt;</span>
-</code></pre></div></div>
-
-<p>메뉴를 정의한 XML에는 ‘새로고침’, ‘찾기’, ‘설정’ 3개의 아이템을 만들었다. 이제 이 레이아웃을 인플레이션하고 아이템을 클릭했을 때 처리하는 코드를 작성해보자.</p>
-
-<p><br /></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleoptionmenu</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.Menu</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.MenuItem</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
-
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="n">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">getMenuInflater</span><span class="o">().</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">menu</span><span class="o">.</span><span class="na">menu_main</span><span class="o">,</span> <span class="n">menu</span><span class="o">);</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">curId</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getItemId</span><span class="o">();</span>
-
-        <span class="k">switch</span><span class="o">(</span><span class="n">curId</span><span class="o">){</span>
-            <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_refresh</span><span class="o">:</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"새로고침"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                <span class="k">break</span><span class="o">;</span>
-            <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_search</span><span class="o">:</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"찾기"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                <span class="k">break</span><span class="o">;</span>
-            <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_settings</span><span class="o">:</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"설정"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                <span class="k">break</span><span class="o">;</span>
-            <span class="k">default</span><span class="o">:</span>
-                <span class="k">break</span><span class="o">;</span>
-        <span class="o">}</span>
-
-        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onOptionsItemSelected</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">onCreateOptionsMenu()</code> 메소드와 <code class="highlighter-rouge">onOptionsItemSelected()</code> 메소드를 재정의 해주었다. 각 아이템이 클릭되면 간단하게 토스트 메시지를 띄우도록 하였다.</p>
-
-<p>앱을 실행하면 아래의 결과를 확인할 수 있다.</p>
-
-<p><img src="/images/android/32/2.jpg" alt="2" width="30%" height="30%" /></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/05/10/fragment-lifecycle/">
-        31. 프래그먼트 수명주기(Fragment LifeCycle)
-      </a>
-    </h1>
-
-    <span class="post-date">10 May 2019</span>
-
-    <p>프래그먼트는 액티비티를 본따 만든만들었고 독립적으로 관리된다. 액티비티와 동일하게 화면의 상태를 관리할 수 있도록 해주는 수명주기를 가지고 있다. 그러나 액티비티에 올려서 사용되므로 액티비티의 수명주기에 종속된다. 그러나 프래그먼트만 가지는 독립적인 상태정보들이 추가되었다.</p>
-
-<p>아래 그림은 프래그먼트의 상태에 따른 수명주기 메소드의 호출 순서를 보여준다.</p>
-
-<p><img src="/images/android/31/1.png" alt="1" width="70%" height="70%" /></p>
-
-<p><br /></p>
-<h3 id="화면에-보이기-전에-호출되는-메소드">&lt;화면에 보이기 전에 호출되는 메소드&gt;</h3>
-
-<p> </p>
-<h4 id="1-onattachactivity">1. onAttach(Activity)</h4>
-
-<p>프래그먼트가 액티비티와 연결될 때 호출된다. 파라미터로 전달된 Activity는 프래그먼트가 올라갈 액티비티이므로 액티비티와 관련된 설정들은 이 메소드 내에서 처리하면 된다.</p>
-
-<p> </p>
-<h4 id="2-oncreatebundle">2. onCreate(Bundle)</h4>
-
-<p>프래그먼트에 필요한 것들을 초기화한다. 이 단계에서는 액티비티 역시 초기화 되고있는 단계이기 때문에 액티비티의 컨트롤, 뷰 등을 참조하면 안된다.</p>
-
-<p> </p>
-<h4 id="3-oncreateviewlayoutinflater-viewgroup-bundle">3. onCreateView(LayoutInflater, ViewGroup, Bundle)</h4>
-
-<p>프래그먼트의 UI를 구성하고 뷰 객체로 만들어 리턴한다. 뷰 객체로 만드는 과정이 진행되기 때문에 이 메소드 안에서 레이아웃 인플레이션 코드를 작성하면 된다.</p>
-
-<p> </p>
-<h4 id="4-onactivitycreatedbundle">4. onActivityCreated(Bundle)</h4>
-
-<p>프래그먼트가 올라간 액티비티의 onCreate() 메소드가 완료되고 프래그먼트 객체가 메모리에 생성되는 시점에 호출된다. 프래그먼트에 필요한 것들을 초기화하는데, <code class="highlighter-rouge">onCreate()</code> 콜백 메소드와 다른점은 이 단계는 액티비티의 초기화가 끝난 단계라는 것이다. 따라서 액티비티의 요소들을 참조할 수 있다.</p>
-
-<p> </p>
-<h4 id="5-onstart">5. onStart()</h4>
-
-<p>프래그먼트가 사용자에게 보여지기 직전에 호출된다.</p>
-
-<p> </p>
-<h4 id="6-onresume">6. onResume()</h4>
-
-<p>프래그먼트가 사용자에게 보여지고 포커스를 받아 상호작용을 하게 되었을 때 호출된다.</p>
-
-<p><br /></p>
-<h3 id="화면에서-사라질-때-호출되는-메소드">&lt;화면에서 사라질 때 호출되는 메소드&gt;</h3>
-
-<p> </p>
-<h4 id="1-onpause">1. onPause()</h4>
-
-<p>프래그먼트가 포커스를 잃고 사용자와 상호작용을 중지할 때 호출된다.</p>
-
-<p> </p>
-<h4 id="2-onstop">2. onStop()</h4>
-
-<p>프래그먼트와 연결된 액티비티의 onStop() 메소드가 호출되어 화면에서 보이지 않게되고 프래그먼트의 기능이 중지된다.</p>
-
-<p> </p>
-<h4 id="3-ondestroyview">3. onDestroyView()</h4>
-
-<p>프래그먼트의 뷰 구성이 해제될 때 호출된다.</p>
-
-<p> </p>
-<h4 id="4-ondestroy">4. onDestroy()</h4>
-
-<p>프래그먼트가 완전히 해제된다.</p>
-
-<p> </p>
-<h4 id="5-ondetach">5. onDetach()</h4>
-
-<p>프래그먼트가 액티비티와의 연결을 끊기 직전에 호출된다.</p>
 
   </div>
   

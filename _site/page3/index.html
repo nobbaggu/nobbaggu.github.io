@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,196 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/05/11/actionbar/">
+        32. 액션바(ActionBar)
+      </a>
+    </h1>
+
+    <span class="post-date">11 May 2019</span>
+
+    <p>안드로이드 액션바(ActionBar)는 기본적으로 앱의 타이틀을 보여주는 곳이다. 또한 여러가지 옵션 메뉴(Option Menu)들을 표시할 수도 있다.</p>
+
+<p><img src="/images/android/32/1.png" alt="1" width="30%" height="30%" /></p>
+
+<p><br />
+액션바를 보이거나 감추고 싶다면 다음의 메소드를 사용하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ActionBar</span> <span class="n">actionbar</span> <span class="o">=</span> <span class="n">getActionBar</span><span class="o">();</span> <span class="c1">//액션바 객체 참조</span>
+<span class="n">actionbar</span><span class="o">.</span><span class="na">hide</span><span class="o">();</span> <span class="c1">//액션바 숨기기</span>
+<span class="n">actionbar</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">//액션바 보이기</span>
+</code></pre></div></div>
+
+<p><br />
+옵션 메뉴는 각각의 액티비티마다 설정할 수 있다. 옵션 메뉴를 설정하려면 아래의 메소드를 사용하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="n">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="c1">//액티비티가 만들어지면서 호출</span>
+<span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="c1">//메뉴의 아이템을 클릭했을 때 호출</span>
+</code></pre></div></div>
+
+<p>이 메소드는 액티비티가 생성될 때 자동으로 호출되어 액티비티에 메뉴를 추가한다.</p>
+
+<p>먼저 메뉴를 위한 XML 레이아웃을 만들어야 한다. /res 폴더에 ‘menu’ 폴더를 추가하고 /res/menu 폴더에 메뉴를 위한 XML 레이아웃 리소스 파일을 생성하고 각각의 메뉴를 위한 &lt;item&gt; 태그를 추가하면 된다. 이 XML 파일을 <code class="highlighter-rouge">onCreateOptionsMenu()</code> 메소드 안에서 인플레이션 한다. 그러면 액티비티가 만들어질 때 액션바에 자동으로 메뉴가 포함된다. 그리고 각각의 메뉴 아이템을 클릭했을 때 나타나기를 원하는 기능은 <code class="highlighter-rouge">onOptionsItemSelected()</code> 메소드에서 처리하면 된다.</p>
+
+<p><br /></p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;menu</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_refresh"</span>
+        <span class="na">android:title=</span><span class="s">"새로고침"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/menu_refresh"</span>
+        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_search"</span>
+        <span class="na">android:title=</span><span class="s">"새로고침"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/menu_search"</span>
+        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_settings"</span>
+        <span class="na">android:title=</span><span class="s">"새로고침"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/menu_settings"</span>
+        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/menu&gt;</span>
+</code></pre></div></div>
+
+<p>메뉴를 정의한 XML에는 ‘새로고침’, ‘찾기’, ‘설정’ 3개의 아이템을 만들었다. 이제 이 레이아웃을 인플레이션하고 아이템을 클릭했을 때 처리하는 코드를 작성해보자.</p>
+
+<p><br /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleoptionmenu</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.Menu</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.MenuItem</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="n">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">getMenuInflater</span><span class="o">().</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">menu</span><span class="o">.</span><span class="na">menu_main</span><span class="o">,</span> <span class="n">menu</span><span class="o">);</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">curId</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getItemId</span><span class="o">();</span>
+
+        <span class="k">switch</span><span class="o">(</span><span class="n">curId</span><span class="o">){</span>
+            <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_refresh</span><span class="o">:</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"새로고침"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_search</span><span class="o">:</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"찾기"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_settings</span><span class="o">:</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"설정"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onOptionsItemSelected</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">onCreateOptionsMenu()</code> 메소드와 <code class="highlighter-rouge">onOptionsItemSelected()</code> 메소드를 재정의 해주었다. 각 아이템이 클릭되면 간단하게 토스트 메시지를 띄우도록 하였다.</p>
+
+<p>앱을 실행하면 아래의 결과를 확인할 수 있다.</p>
+
+<p><img src="/images/android/32/2.jpg" alt="2" width="30%" height="30%" /></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/05/10/fragment-lifecycle/">
+        31. 프래그먼트 수명주기(Fragment LifeCycle)
+      </a>
+    </h1>
+
+    <span class="post-date">10 May 2019</span>
+
+    <p>프래그먼트는 액티비티를 본따 만든만들었고 독립적으로 관리된다. 액티비티와 동일하게 화면의 상태를 관리할 수 있도록 해주는 수명주기를 가지고 있다. 그러나 액티비티에 올려서 사용되므로 액티비티의 수명주기에 종속된다. 그러나 프래그먼트만 가지는 독립적인 상태정보들이 추가되었다.</p>
+
+<p>아래 그림은 프래그먼트의 상태에 따른 수명주기 메소드의 호출 순서를 보여준다.</p>
+
+<p><img src="/images/android/31/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p><br /></p>
+<h3 id="화면에-보이기-전에-호출되는-메소드">&lt;화면에 보이기 전에 호출되는 메소드&gt;</h3>
+
+<p> </p>
+<h4 id="1-onattachactivity">1. onAttach(Activity)</h4>
+
+<p>프래그먼트가 액티비티와 연결될 때 호출된다. 파라미터로 전달된 Activity는 프래그먼트가 올라갈 액티비티이므로 액티비티와 관련된 설정들은 이 메소드 내에서 처리하면 된다.</p>
+
+<p> </p>
+<h4 id="2-oncreatebundle">2. onCreate(Bundle)</h4>
+
+<p>프래그먼트에 필요한 것들을 초기화한다. 이 단계에서는 액티비티 역시 초기화 되고있는 단계이기 때문에 액티비티의 컨트롤, 뷰 등을 참조하면 안된다.</p>
+
+<p> </p>
+<h4 id="3-oncreateviewlayoutinflater-viewgroup-bundle">3. onCreateView(LayoutInflater, ViewGroup, Bundle)</h4>
+
+<p>프래그먼트의 UI를 구성하고 뷰 객체로 만들어 리턴한다. 뷰 객체로 만드는 과정이 진행되기 때문에 이 메소드 안에서 레이아웃 인플레이션 코드를 작성하면 된다.</p>
+
+<p> </p>
+<h4 id="4-onactivitycreatedbundle">4. onActivityCreated(Bundle)</h4>
+
+<p>프래그먼트가 올라간 액티비티의 onCreate() 메소드가 완료되고 프래그먼트 객체가 메모리에 생성되는 시점에 호출된다. 프래그먼트에 필요한 것들을 초기화하는데, <code class="highlighter-rouge">onCreate()</code> 콜백 메소드와 다른점은 이 단계는 액티비티의 초기화가 끝난 단계라는 것이다. 따라서 액티비티의 요소들을 참조할 수 있다.</p>
+
+<p> </p>
+<h4 id="5-onstart">5. onStart()</h4>
+
+<p>프래그먼트가 사용자에게 보여지기 직전에 호출된다.</p>
+
+<p> </p>
+<h4 id="6-onresume">6. onResume()</h4>
+
+<p>프래그먼트가 사용자에게 보여지고 포커스를 받아 상호작용을 하게 되었을 때 호출된다.</p>
+
+<p><br /></p>
+<h3 id="화면에서-사라질-때-호출되는-메소드">&lt;화면에서 사라질 때 호출되는 메소드&gt;</h3>
+
+<p> </p>
+<h4 id="1-onpause">1. onPause()</h4>
+
+<p>프래그먼트가 포커스를 잃고 사용자와 상호작용을 중지할 때 호출된다.</p>
+
+<p> </p>
+<h4 id="2-onstop">2. onStop()</h4>
+
+<p>프래그먼트와 연결된 액티비티의 onStop() 메소드가 호출되어 화면에서 보이지 않게되고 프래그먼트의 기능이 중지된다.</p>
+
+<p> </p>
+<h4 id="3-ondestroyview">3. onDestroyView()</h4>
+
+<p>프래그먼트의 뷰 구성이 해제될 때 호출된다.</p>
+
+<p> </p>
+<h4 id="4-ondestroy">4. onDestroy()</h4>
+
+<p>프래그먼트가 완전히 해제된다.</p>
+
+<p> </p>
+<h4 id="5-ondetach">5. onDetach()</h4>
+
+<p>프래그먼트가 액티비티와의 연결을 끊기 직전에 호출된다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11144,296 +11404,6 @@
 <p><img src="/images/android/28/1.jpg" alt="1" width="30%" height="30%" />
 <img src="/images/android/28/2.jpg" alt="2" width="30%" height="30%" />
 <img src="/images/android/28/3.jpg" alt="3" width="30%" height="30%" /></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/05/07/seekbar/">
-        27. 시크바(SeekBar)
-      </a>
-    </h1>
-
-    <span class="post-date">07 May 2019</span>
-
-    <p>시크바(seekBar)도 프로그레스바를 상속받은 상태표시 위젯이다. 추가적으로 사용자가 직접 상태값을 조정할 수 있다. 음악이나 동영상 플레이어의 재생 구간 조절이 대표적인 사용 예이다. 상태값이 조정되었을 때의 이벤트를 처리하기 위해 OnSeekBarChangeListener 리스너를 설정할 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">OnSeekBarChangeListener</span>
-</code></pre></div></div>
-
-<p>OnSeekBarChangeListener 리스너 객체 내부에서는 아래 세 가지의 메소드를 재정의하여 사용할 수 있다.</p>
-
-<p> </p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">onStartTrackingTouch</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="c1">//시크바의 핸들러 움직이기 시작할 때</span>
-<span class="kt">void</span> <span class="nf">onStopTrackingTouch</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="c1">// 시크바의 핸들러 움직임 멈췄을 때</span>
-<span class="kt">void</span> <span class="nf">onProgressChanged</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">,</span> <span class="kt">int</span> <span class="n">progress</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">fromUser</span><span class="o">)</span> <span class="c1">//시크바의 값이 바뀌었을 때</span>
-</code></pre></div></div>
-
-<p>시크바를 사용해서 화면 밝기를 조정하는 기능을 적용해보겠다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"시크바를 사용해 화면밝기 조정하기"</span>
-        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
-        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;SeekBar</span>
-        <span class="na">android:id=</span><span class="s">"@+id/seekBar"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span>
-        <span class="na">android:background=</span><span class="s">"#22000000"</span>
-        <span class="na">android:max=</span><span class="s">"100"</span>
-        <span class="na">android:min=</span><span class="s">"10"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
-        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span> <span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p>시크바의 최대값은 100, 최소값은 10으로 설정하였다. 시크바의 값을 설정하면 아래에 있는 텍스트뷰에 그 값을 표시할 것이다.</p>
-
-<p> </p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleseekbar</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.WindowManager</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.SeekBar</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-
-    <span class="n">TextView</span> <span class="n">textView</span><span class="o">;</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
-
-        <span class="n">SeekBar</span> <span class="n">seekBar</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">seekBar</span><span class="o">);</span>
-        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
-
-        <span class="n">seekBar</span><span class="o">.</span><span class="na">setOnSeekBarChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">SeekBar</span><span class="o">.</span><span class="na">OnSeekBarChangeListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onProgressChanged</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">,</span> <span class="kt">int</span> <span class="n">progress</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">fromUser</span><span class="o">)</span> <span class="o">{</span>
-
-                <span class="c1">//윈도우 밝기 값 10% ~ 100% 사이로 제한</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">progress</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">){</span>
-                    <span class="n">progress</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-                <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">progress</span><span class="o">&gt;</span><span class="mi">100</span><span class="o">){</span>
-                    <span class="n">progress</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
-                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
-                    <span class="c1">//NOP</span>
-                <span class="o">}</span>
-				
-				<span class="n">WindowManager</span><span class="o">.</span><span class="na">LayoutParams</span> <span class="n">params</span> <span class="o">=</span> <span class="n">getWindow</span><span class="o">().</span><span class="na">getAttributes</span><span class="o">();</span> <span class="c1">//윈도우 관련정보 참조</span>
-                <span class="n">params</span><span class="o">.</span><span class="na">screenBrightness</span> <span class="o">=</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="n">progress</span> <span class="o">/</span> <span class="mi">100</span><span class="o">;</span>
-                <span class="n">getWindow</span><span class="o">().</span><span class="na">setAttributes</span><span class="o">(</span><span class="n">params</span><span class="o">);</span> <span class="c1">//설정한 밝기 값 적용</span>
-                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"현재 화면 밝기(%) : "</span> <span class="o">+</span> <span class="n">progress</span><span class="o">);</span> <span class="c1">//텍스트뷰에 현재 밝기 %단위로 설정</span>
-            <span class="o">}</span>
-
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStartTrackingTouch</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="o">{</span>
-
-            <span class="o">}</span>
-
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStopTrackingTouch</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="o">{</span>
-
-            <span class="o">}</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>OnSeekBarChangeListener 리스너 객체 내부의 onProgressChanged() 메소드는 시크바의 상태값이 변경되었을 때 호출된다. 이 때 전달인자로 들어오는 progress는 시크바의 상태값인데 이 값이 10보다 작거나 100보다 크면 각각 10과 100으로 재설정하였다.</p>
-
-<p>그리고 getWindow().getAttributes() 메소드를 통해서 현재 윈도우 설정 파라미터 정보를 참조했다. 이 파라미터에서 screenBrightness로 화면 밝기값을 참조할 수 있는데, 0~1 사이의 값을 가지므로 progress를 100으로 나눈 값으로 설정한다.</p>
-
-<p>앱을 실행하여 시크바를 통해 화면 밝기를 설정할 수 있다.</p>
-
-<p><img src="/images/android/27/1.jpg" alt="1" width="30%" height="30%" />
-<img src="/images/android/27/2.jpg" alt="2" width="30%" height="30%" /></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/05/07/progressbar/">
-        26. 프로그레스바(ProgressBar)
-      </a>
-    </h1>
-
-    <span class="post-date">07 May 2019</span>
-
-    <p>프로그레스바(ProgressBar)란 사용자에게 어떠한 작업이 진행중이라는 것을 알려줄 때 사용한다. 추가적으로 작업의 진행 정도까지 알려줄 수 있다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>속성</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>막대 모양</td>
-      <td>작업의 진행 정도를 알려줌</td>
-    </tr>
-    <tr>
-      <td>원 모양</td>
-      <td>작업이 진행 중임을 알려줌</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>XML 레이아웃에서 <ProgressBar> 태그로 추가할 수 있다. max 속성은 프로그레스바 값의 최대치이며 progress 속성은 현재 값을 의미한다. 그러나 진행률은 계속해서 변하는 값이므로 Java 코드에서 아래 두 메소드를 사용해서 업데이트 해주어야한다.</ProgressBar></p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">setPogress</span><span class="o">(</span><span class="kt">int</span> <span class="n">progress</span><span class="o">)</span>
-<span class="kt">void</span> <span class="nf">incrementProgressBy</span><span class="o">(</span><span class="kt">int</span> <span class="n">diff</span><span class="o">)</span>
-</code></pre></div></div>
-
-<p>실제 예제를 보면서 프로그레스바에 대해서 이해해보자.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;ProgressBar</span>
-        <span class="na">style=</span><span class="s">"?android:attr/progressBarStyleHorizontal"</span>
-        <span class="na">android:id=</span><span class="s">"@+id/progressBar"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:indeterminateOnly=</span><span class="s">"false"</span>
-        <span class="na">android:minHeight=</span><span class="s">"20dp"</span>
-        <span class="na">android:minWidth=</span><span class="s">"20dp"</span>
-        <span class="na">android:max=</span><span class="s">"100"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;LinearLayout</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
-            <span class="na">android:gravity=</span><span class="s">"start"</span>
-            <span class="na">android:textSize=</span><span class="s">"15dp"</span>
-            <span class="na">android:text=</span><span class="s">"0%"</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
-            <span class="na">android:gravity=</span><span class="s">"end"</span>
-            <span class="na">android:textSize=</span><span class="s">"15dp"</span>
-            <span class="na">android:text=</span><span class="s">"100%"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;/LinearLayout&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
-        <span class="na">android:text=</span><span class="s">"증가하기"</span>
-        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
-        <span class="na">android:layout_marginTop=</span><span class="s">"150dp"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
-        <span class="na">android:text=</span><span class="s">"제출하기"</span>
-        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
-        <span class="na">android:layout_marginTop=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p>프로그레스바를 하나 만들고 버튼을 두 개 만들었다. “증가하기” 버튼은 프로그레스바의 진행률을 올리기위해서 사용할 것이고 “제출하기” 버튼은 원형 프로그레스 대화상자를 띄우기 위해 사용할 것이다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleprogressbar</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.app.ProgressDialog</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.DialogInterface</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Handler</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.ProgressBar</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-
-    <span class="n">ProgressBar</span> <span class="n">progressBar</span><span class="o">;</span> <span class="c1">//막대 프로그레스바</span>
-    <span class="n">ProgressDialog</span> <span class="n">dialog</span><span class="o">;</span> <span class="c1">//원형 프로그레스바</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
-
-        <span class="n">progressBar</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">progressBar</span><span class="o">);</span>
-        <span class="n">progressBar</span><span class="o">.</span><span class="na">setProgress</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span> <span class="c1">//프로그레스바 초기값 50</span>
-
-        <span class="n">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
-        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">progressBar</span><span class="o">.</span><span class="na">incrementProgressBy</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> <span class="c1">//프로그레스바 진행률 10 증가</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-        <span class="n">Button</span> <span class="n">button2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button2</span><span class="o">);</span>
-        <span class="n">button2</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProgressDialog</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">);</span> <span class="c1">//프로그레스 대화상자 객체 생성</span>
-                <span class="n">dialog</span><span class="o">.</span><span class="na">setProgressStyle</span><span class="o">(</span><span class="n">ProgressDialog</span><span class="o">.</span><span class="na">STYLE_SPINNER</span><span class="o">);</span> <span class="c1">//프로그레스 대화상자 스타일 원형으로 설정</span>
-                <span class="n">dialog</span><span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="s">"제출 중입니다."</span><span class="o">);</span> <span class="c1">//프로그레스 대화상자 메시지 설정</span>
-                <span class="n">dialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">//프로그레스 대화상자 띄우기</span>
-
-                <span class="cm">/* 안드로이드 OS 핸들러 객체 사용하여 3초 시간지연 후 대화상자 닫기*/</span>
-                <span class="n">Handler</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Handler</span><span class="o">();</span>
-                <span class="n">handler</span><span class="o">.</span><span class="na">postDelayed</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">(){</span>
-                    <span class="nd">@Override</span>
-                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-                        <span class="n">dialog</span><span class="o">.</span><span class="na">dismiss</span><span class="o">();</span> <span class="c1">// 3초 시간지연 후 프로그레스 대화상자 닫기</span>
-                        <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"제출되었습니다."</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                    <span class="o">}</span>
-                <span class="o">},</span> <span class="mi">3000</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>버튼1을 누르면 incrementProgressBy() 메소드를 사용하여 프로그레스바 진행률을 10 증가시킨다. 버튼2를 클릭하면 프로그레스 대화상자 객체를 생성하고 띄운 후 3초 이후에 닫는다. 앱을 실행시키면 아래 화면을 확인할 수 있다.</p>
-
-<p><img src="/images/android/26/1.jpg" alt="1" width="30%" height="30%" />
-<img src="/images/android/26/2.jpg" alt="2" width="30%" height="30%" />
-<img src="/images/android/26/3.jpg" alt="3" width="30%" height="30%" /></p>
 
   </div>
   

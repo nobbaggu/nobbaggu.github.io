@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,313 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/08/flip-flop/">
+        다양한 플립플롭
+      </a>
+    </h1>
+
+    <span class="post-date">08 Dec 2018</span>
+
+    <h1 id="1-sr-플립플롭">1. SR 플립플롭</h1>
+
+<hr />
+
+<p>(S,R)=(0,0)이면 보존, (S,R)=(1,0)이면 SET, (S,R)=(0,1)이면 RESET, (S,R)=(1,1)은 정의되지 않는다.</p>
+
+<p><a href="https://SWnomad.com/sr-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-174/" rel="attachment wp-att-1498"><img class="aligncenter  wp-image-1498" src="/images/2018/12/no-name-19.jpg" alt="" width="434" height="236" srcset="/images/2018/12/no-name-19.jpg 600w, /images/2018/12/no-name-19-300x163.jpg 300w" sizes="(max-width: 434px) 100vw, 434px" /></a></p>
+
+<table style="border-collapse: collapse; width: 33.6119%; height: 144px;" border="1">
+  <tr style="height: 24px;">
+    <td style="width: 18.4636%; height: 24px; text-align: center;">
+      <strong>S</strong>
+    </td>
+    
+    <td style="width: 19.046%; height: 24px; text-align: center;">
+      <strong>R</strong>
+    </td>
+    
+    <td style="width: 36.7935%; height: 24px; text-align: center;">
+      <strong>Q(t+1)</strong>
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 18.4636%; height: 24px; text-align: center;">
+    </td>
+    
+    <td style="width: 19.046%; height: 24px; text-align: center;">
+    </td>
+    
+    <td style="width: 36.7935%; height: 24px; text-align: center;">
+      Q(t)
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 18.4636%; height: 24px; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 19.046%; height: 24px; text-align: center;">
+    </td>
+    
+    <td style="width: 36.7935%; height: 24px; text-align: center;">
+      1
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 18.4636%; height: 24px; text-align: center;">
+    </td>
+    
+    <td style="width: 19.046%; height: 24px; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 36.7935%; height: 24px; text-align: center;">
+    </td>
+  </tr>
+  
+  <tr style="height: 24px;">
+    <td style="width: 18.4636%; height: 24px; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 19.046%; height: 24px; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 36.7935%; height: 24px; text-align: center;">
+      부정
+    </td>
+  </tr>
+</table>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-jk-플립플롭">2. JK 플립플롭</h1>
+
+<hr />
+
+<p>SR 플립플롭에서 (S,R) = (1,1) 인 경우에 부정이었던 것을 수정한 플립플롭이다. (S,R)=(1,1)이면 Q의 값이 기존의 값과 반대로 되도록 동작(toggle)한다.</p>
+
+<p><a href="https://SWnomad.com/%eb%8b%a4%ec%96%91%ed%95%9c-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-177/" rel="attachment wp-att-1505"><img class="aligncenter  wp-image-1505" src="/images/2018/12/no-name-22.jpg" alt="" width="412" height="224" srcset="/images/2018/12/no-name-22.jpg 598w, /images/2018/12/no-name-22-300x163.jpg 300w" sizes="(max-width: 412px) 100vw, 412px" /></a></p>
+
+<p>위와 같이 SR 플립플롭으로 JK 플립플롭을 만들 수 있다. (J,K) = (1,1)인 경우에는 S로 Q’, R로 Q가 들어가 출력이 반전된다는 것을 알 수 있다.</p>
+
+<table style="border-collapse: collapse; width: 27.6364%;" border="1">
+  <tr>
+    <td style="width: 7.75754%; text-align: center;">
+      <strong>J</strong>
+    </td>
+    
+    <td style="width: 8.00001%; text-align: center;">
+      <strong>K</strong>
+    </td>
+    
+    <td style="width: 11.8788%; text-align: center;">
+      <strong>Q(t+1)</strong>
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.75754%; text-align: center;">
+    </td>
+    
+    <td style="width: 8.00001%; text-align: center;">
+    </td>
+    
+    <td style="width: 11.8788%; text-align: center;">
+      Q(t)
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.75754%; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 8.00001%; text-align: center;">
+    </td>
+    
+    <td style="width: 11.8788%; text-align: center;">
+      1
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.75754%; text-align: center;">
+    </td>
+    
+    <td style="width: 8.00001%; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 11.8788%; text-align: center;">
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.75754%; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 8.00001%; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 11.8788%; text-align: center;">
+      Q(t)<strong>&#8216;</strong>
+    </td>
+  </tr>
+</table>
+
+<p> </p>
+
+<h1 id="3-d-플립플롭">3. D 플립플롭</h1>
+
+<hr />
+
+<p>D 플립플롭은 입력하는 값을 그대로 저장하는 아주 단순한 기능으로 동작한다.</p>
+
+<p><a href="https://SWnomad.com/%eb%8b%a4%ec%96%91%ed%95%9c-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-178/" rel="attachment wp-att-1506"><img class="aligncenter  wp-image-1506" src="/images/2018/12/no-name-23.jpg" alt="" width="426" height="150" srcset="/images/2018/12/no-name-23.jpg 697w, /images/2018/12/no-name-23-300x105.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" /></a></p>
+
+<p>D가 0이면 (S,R)=(0,1)이므로 Q=0이 되고, D가 1이면 (S,R)=(1,0)이 되므로 Q=1이 된다.</p>
+
+<table style="border-collapse: collapse; width: 26.2159%;" border="1">
+  <tr>
+    <td style="width: 4.62963%; text-align: center;">
+      <strong>D</strong>
+    </td>
+    
+    <td style="width: 2.95858%; text-align: center;">
+      <strong>Q(t+1)</strong>
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 4.62963%; text-align: center;">
+    </td>
+    
+    <td style="width: 2.95858%; text-align: center;">
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 4.62963%; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 2.95858%; text-align: center;">
+      1
+    </td>
+  </tr>
+</table>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-t-플립플롭">4. T 플립플롭</h1>
+
+<hr />
+
+<p>T 플립플롭에서 T는 toggle을 의미한다. T 플립플롭은 T가 1일 때 소자의 현재 상태를 반전시키는 역할을 한다.</p>
+
+<p><a href="https://SWnomad.com/%eb%8b%a4%ec%96%91%ed%95%9c-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-179/" rel="attachment wp-att-1507"><img class="aligncenter  wp-image-1507" src="/images/2018/12/no-name-24.jpg" alt="" width="463" height="172" srcset="/images/2018/12/no-name-24.jpg 753w, /images/2018/12/no-name-24-300x112.jpg 300w" sizes="(max-width: 463px) 100vw, 463px" /></a></p>
+
+<table style="border-collapse: collapse; width: 15.0303%;" border="1">
+  <tr>
+    <td style="width: 6.12121%; text-align: center;">
+      <strong>T</strong>
+    </td>
+    
+    <td style="width: 8.9091%; text-align: center;">
+      <strong>Q(t+1)</strong>
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 6.12121%; text-align: center;">
+    </td>
+    
+    <td style="width: 8.9091%; text-align: center;">
+      Q(t)
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 6.12121%; text-align: center;">
+      1
+    </td>
+    
+    <td style="width: 8.9091%; text-align: center;">
+      Q(t)<strong>&#8216;</strong>
+    </td>
+  </tr>
+</table>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/08/sr-flipflop/">
+        SR 플립플롭
+      </a>
+    </h1>
+
+    <span class="post-date">08 Dec 2018</span>
+
+    <h1 id="1-클럭clock">1. 클럭(Clock)</h1>
+
+<hr />
+
+<p>CPU, 메모리, 주변장치 등 컴퓨터의 모든 소자는 클럭에 맞추어 동작한다. 클럭의 특정 주기마다 모든 소자들이 동기화되어 데이터를 교환하고 명령을 수행하는 등의 일을 한다. 따라서 클럭이 없으면 컴퓨터가 동작할 수 없다. 클럭은 주기적으로 상승, 하강 동작을 반복하면서 1과 0의 값을 가진다.</p>
+
+<p><a href="https://SWnomad.com/sr-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-173/" rel="attachment wp-att-1497"><img class="aligncenter size-full wp-image-1497" src="/images/2018/12/no-name-18.jpg" alt="" width="425" height="154" srcset="/images/2018/12/no-name-18.jpg 425w, /images/2018/12/no-name-18-300x109.jpg 300w" sizes="(max-width: 425px) 100vw, 425px" /></a></p>
+
+<p>가령 클럭이 1Mhz라는 것은 클럭이 1초에 100만 번 발생한다는 것이다. 따라서 컴퓨터는 1초에 100만 번의 명령어를 수행한다. 따라서 클럭의 주파수가 높다는 것은 훨씬 자주, 빨리 명령을 처리한다는 것이고 일반적으로 컴퓨터의 속도가 높다는 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-sr-플립플롭">2. SR 플립플롭</h1>
+
+<hr />
+
+<p>플립플롭은 래치에 clock을 추가한 것이다. 즉, 클럭이 들어올 때에만(1일 때에만) 래치가 동작하도록 한 것이다.</p>
+
+<p><a href="https://SWnomad.com/sr-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-174/" rel="attachment wp-att-1498"><img class="aligncenter  wp-image-1498" src="/images/2018/12/no-name-19.jpg" alt="" width="363" height="197" srcset="/images/2018/12/no-name-19.jpg 600w, /images/2018/12/no-name-19-300x163.jpg 300w" sizes="(max-width: 363px) 100vw, 363px" /></a></p>
+
+<p>위 그림을 해석하면 CLK=1이 되었을 때에만 S,R의 입력이 그대로 들어갈 수 있게 SR래치가 동작이 된다. 따라서 위 SR래치는 클럭의 주파수에 맞춰서 주기적으로 일을 한다.</p>
+
+<p><a href="https://SWnomad.com/sr-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/2-17/" rel="attachment wp-att-1494"><img class="aligncenter  wp-image-1494" src="/images/2018/12/2-1.jpg" alt="" width="545" height="201" srcset="/images/2018/12/2-1.jpg 787w, /images/2018/12/2-1-300x111.jpg 300w, /images/2018/12/2-1-768x283.jpg 768w" sizes="(max-width: 545px) 100vw, 545px" /></a></p>
+
+<p>위 그림에서 input이 변해도 clock이 상승하여 1이 되기 전 까지는 입력이 감지되지 못한다. 왜냐하면 CLK=0과 AND연산을 하면 (S,R) = (0,0)이 되므로 SR래치의 동작은 ‘상태 보존’이 되기 때문이다. 그러다가 클럭이 발생하여 1이 되면 SR래치의 기능이 수행된다.</p>
+
+<p>이처럼 특정 레벨에서만 소자가 동작하도록 하는 방식을 ‘레벨 트리거(level trigger)’ 방식이라고 한다. 그런데 만약 클럭의 주기가 너무 짧아 클럭이 1인 상태에서 input이 2번 바뀌면 output도 두번 바뀔 수가 있다. 이러한 문제 때문에 소자들 간의 동기화가 틀어져 문제가 발생할 수 있다.</p>
+
+<p>위에서 언급한 레벨 트리거 방식의 문제점을 보완하기 위해 실제에서는 ‘엣지 트리거(edge trigger)’ 방식을 사용한다. 엣지 트리거 방식에는 클럭이 ‘상승’할 때에만 동작하도록 하는 positive edge trigger 방식과 그 반대인 negative edge trigger 방식을 쓸 수 있다.</p>
+
+<p>위 그림의 SR 플립플롭을 조금 변경하여 edge탐지 회로를 추가하면 SR플립플롭이 엣지 트리거 방식으로 동작한다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-정리">3. 정리</h1>
+
+<hr />
+
+<p><a href="https://SWnomad.com/sr-%ed%94%8c%eb%a6%bd%ed%94%8c%eb%a1%ad/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-175/" rel="attachment wp-att-1499"><img class="aligncenter size-full wp-image-1499" src="/images/2018/12/no-name-20.jpg" alt="" width="1146" height="264" srcset="/images/2018/12/no-name-20.jpg 1146w, /images/2018/12/no-name-20-300x69.jpg 300w, /images/2018/12/no-name-20-768x177.jpg 768w, /images/2018/12/no-name-20-1024x236.jpg 1024w" sizes="(max-width: 1146px) 100vw, 1146px" /></a></p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10892,285 +11269,6 @@
 <p>4채널 DEMUX의 블록도와 회로도는 아래와 같다.</p>
 
 <p><a href="https://SWnomad.com/mux%ec%99%80-demux/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-169/" rel="attachment wp-att-1450"><img class="aligncenter wp-image-1450" src="/images/2018/12/no-name-14.jpg" alt="" width="552" height="321" srcset="/images/2018/12/no-name-14.jpg 721w, /images/2018/12/no-name-14-300x174.jpg 300w" sizes="(max-width: 552px) 100vw, 552px" /></a></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/05/boolean-algebra/">
-        부울 대수 법칙
-      </a>
-    </h1>
-
-    <span class="post-date">05 Dec 2018</span>
-
-    <p>부울 대수는 19세기 중반 영국의 수학자가 만든 대수 체계인데, 컴퓨터 디지털 연산의 바탕 이론이 되었다.</p>
-
-<p>부울 대수는 일반적인 사칙연산의 법칙들과 유사하므로 한 번 정리하는 느낌으로 보면 될 것이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="1-부울-대수-법칙">1. 부울 대수 법칙</h1>
-
-<hr />
-
-<h3 id="1-교환-법칙">1) 교환 법칙</h3>
-
-<p>x+y=y+x</p>
-
-<p>xy=yx</p>
-
-<p> </p>
-
-<h3 id="2-결합법칙">2) 결합법칙</h3>
-
-<p>(x+y)+z=x+(y+z)</p>
-
-<p>(xy)z=x(yz)</p>
-
-<p> </p>
-
-<h3 id="3-분배법칙">3) 분배법칙</h3>
-
-<p>x+yz = (x+y)(x+z)</p>
-
-<p>x(y+z)=xy+xz</p>
-
-<p> </p>
-
-<h3 id="4-보수의-법칙">4) 보수의 법칙</h3>
-
-<p>x+x’=1</p>
-
-<p>xx’=0</p>
-
-<p> </p>
-
-<h3 id="5-멱등-법칙">5) 멱등 법칙</h3>
-
-<p>x+x=x</p>
-
-<p>x*x=x</p>
-
-<p> </p>
-
-<h3 id="6-흡수-법칙">6) 흡수 법칙</h3>
-
-<p>x+xy=x(1+y)=x</p>
-
-<p>x(x+y)=x</p>
-
-<p> </p>
-
-<h3 id="7드-모르간-법칙">7)드 모르간 법칙</h3>
-
-<p>(ab)’=a’+b’</p>
-
-<p>(a+b)’=a’b’</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/05/logic-table/">
-        논리식 / 논리도 / 진리표
-      </a>
-    </h1>
-
-    <span class="post-date">05 Dec 2018</span>
-
-    <p>논리 회로를 표현하는 방식에는 대표적인 3가지가 있다. A+B’C를 각각의 방법을 사용해서 표현해보자.</p>
-
-<h1 id="1-논리식">1. 논리식</h1>
-
-<hr />
-
-<p>부울 대수를 사용해서 논리를 부울식으로 표현하는 방식</p>
-
-<p>A+B’C</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-논리도">2. 논리도</h1>
-
-<hr />
-
-<p>논리 게이트를 사용해서 회로로 표현하는 방식</p>
-
-<p><a href="https://SWnomad.com/%eb%85%bc%eb%a6%ac%ec%8b%9d-%eb%85%bc%eb%a6%ac%eb%8f%84-%ec%a7%84%eb%a6%ac%ed%91%9c/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-161/" rel="attachment wp-att-1441"><img class="aligncenter size-full wp-image-1441" src="/images/2018/12/no-name-6.jpg" alt="" width="407" height="107" srcset="/images/2018/12/no-name-6.jpg 407w, /images/2018/12/no-name-6-300x79.jpg 300w" sizes="(max-width: 407px) 100vw, 407px" /></a></p>
-
-<p> </p>
-
-<p>논리식이 주어졌을 때, 식을 차례대로 게이트를 사용해서 표현하면서 풀면 논리도로 바꿀 수 있다.</p>
-
-<p>논리도가 주어졌을 때는 역순으로 하면 된다.</p>
-
-<p>논리식과 논리도 사이에는 완벽히 1대1 대응관계가 성립한다.</p>
-
-<p> </p>
-
-<h1 id="3-진리표">3. 진리표</h1>
-
-<hr />
-
-<p>모든 입력의 경우에 수에 대한 결과 테이블</p>
-
-<table style="width: 23.5152%; border-collapse: collapse; background-color: #ede8e8;" border="1">
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-      A
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-      B
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-      C
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-      F=A+B&#8217;C
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-      1
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-      1
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-      1
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-      1
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 7.18182%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 7.30305%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 7.06065%; text-align: center;">
-      1
-    </td>
-    
-    <td style="width: 4.40529%; text-align: center;">
-      1
-    </td>
-  </tr>
-</table>
-
-<p>논리식, 논리도를 진리표로 바꾸는 방법은 단순히 모든 입력의 경우에 대해 출력을 구해서 적어주면 된다.</p>
-
-<p>하지만 진리표가 주어졌을 때 가장 간결한 논리식이나 논리도로 바꾸는 방법은 단순하지만은 않다. 여기에는 몇 가지 통용되는 방법이 있는데, 이에 대해서는 다음 포스팅에서 자세히 다룬다.</p>
 
   </div>
   

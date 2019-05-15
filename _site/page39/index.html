@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,126 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/27/1-c-program/">
+        1. C언어로 프로그램이 제작되는 과정
+      </a>
+    </h1>
+
+    <span class="post-date">27 Sep 2018</span>
+
+    <p>자, 프로그래밍 언어가 무엇인지 이제 알았으니 그 중 C언어로 프로그램이 어떻게 만들질까요?</p>
+
+<p> </p>
+
+<h1 id="1-소스코드source-code생성">1. 소스코드(source code) 생성</h1>
+
+<hr />
+
+<p>우리가 만들고자 하는 프로그램이 어떤것인가? 가령, 간단한 4칙연산 계산기를 C언어로 구현해보려 합니다. 우리가 두 개의 숫자를 넣고, ＋연산, －연산, ×연산, ÷연산 중 하나를 선택하여 계산결과를 모니터로 출력 해주는 기능이 필요합니다. 이 기능을 가능하게 해주는 C 코드를 우리가 작성합니다. 이 과정을 소스코드 작성, 생성이라고 합니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-컴파일compile">2. 컴파일(compile)</h1>
+
+<hr />
+
+<p>우리가 만든 소스코드는 기계(컴퓨터)가 바로 이해할 수 없는 언어입니다. 하지만, 컴파일러를 통하여 기계어로 번역을 해준다면 컴퓨터가 이해할 수 있는 2진코드(0과 1의 나열)로 변환할 수 있죠. 바로 이러한 ‘C언어 → 기계어’ 의 변환과정을 컴파일이라고 합니다. 컴파일러가 바로 이 컴파일의 과정을 해줍니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>자, 그럼 위의 두 과정을 거치면 흔히 우리가 컴퓨터에서 보는 .exe 확장자의 파일(실행파일)이 만들어져요. 즉, 프로그램 실행파일이 만들어지는거에요. 여기서는 간단한 4칙연산 계산기를 예로 들었지만, 크게 보면 우리가 흔히 하는 게임이나, 그림판 같은 프로그램들도 복잡성만 더해졌을 뿐 기본적인 원리는 같아요.</p>
+
+<p>이 과정을 간단한 도표로 나타내 볼까요?</p>
+
+<p><img class="aligncenter wp-image-898" src="/images/2018/09/1-5.jpg" alt="" width="296" height="295" srcset="/images/2018/09/1-5.jpg 516w, /images/2018/09/1-5-150x150.jpg 150w, /images/2018/09/1-5-300x300.jpg 300w" sizes="(max-width: 296px) 100vw, 296px" /></p>
+
+<p>에러 부분이 보이시죠? 에러가 발생하면 컴파일이 되지 않아요. 따라서, 우리는 소스코드를 수정하여 다시 컴파일을 시도해야 합니다.</p>
+
+<p>보통, 컴파일 과정 다음에 링크라는 과정도 있는데, 보통의 개발환경(IDE)에서는 이 두 과정을 합쳐줍니다. 그리고 컴파일, 링크 과정을 합쳐 빌드(build)라고 하는데, 그냥 링크 과정을 컴파일에 포함시켜 컴파일이라고 부르는게 일반적입니다. 즉! 간단하게 1. 소스코드 생성 2. 컴파일 이라고 생각하시면 돼요</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-통합-개발환경ide">3. 통합 개발환경(IDE)</h1>
+
+<hr />
+
+<p>위에서 말씀드린 일련의 과정을 보통은 통합개발환경(IDE) 에서 합니다.</p>
+
+<p>IDE란 소스코드생성(코딩) 할 수 있는 편집작업, 컴파일 작업을 해주는 해주는 소프트웨어(SW) 입니다. 추가로 에러가 어디서 발생하였는지 알려주는 중요한 기능인 디버그(debug)의 기능도 수행해 줍니다. 여기까지만 알면 충분해요~ 부가적인 다른 기능들도 많지만 신경쓰실 필요 없어요.</p>
+
+<p>앞으로 C언어를 하시려면 IDE는 필수인데, 저는 가장 널리 알려진 통합개발환경 중 하나인 Visual Studio를 사용합니다. 이 외에도 무료로 오픈되는 IDE들도 많이 있으니 무엇을 사용할지는 자유입니다.</p>
+
+<p><a href="http://www.orentec.co.kr/jaryosil/C_BASIC_2/add_form1.php">http://www.orentec.co.kr/jaryosil/C_BASIC_2/add_form1.php</a></p>
+
+<p>위 링크는 열혈 C프로그래밍의 저자이신 윤성우님이 운영하시는 오렌지미디어 사이트에요.</p>
+
+<p>위 링크를 타고 들어가시면 visual studio 를 설치하고 초기 세팅하는 과정을 설명해 놓은 자료가 있으니, 혹시 필요하시다면 참고하시면 됩니다.</p>
+
+<p>자 그럼 위의 과정을 직접 실행해 보겠습니다.</p>
+
+<p><img class="aligncenter size-full wp-image-900" src="/images/2018/09/2-1.png" alt="" width="600" height="308" srcset="/images/2018/09/2-1.png 600w, /images/2018/09/2-1-300x154.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></p>
+
+<p><img class="aligncenter size-full wp-image-901" src="/images/2018/09/3.png" alt="" width="600" height="317" srcset="/images/2018/09/3.png 600w, /images/2018/09/3-300x159.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></p>
+
+<p>첫번째 사진은 visual studio에서 코드를 작성한 것입니다. 나중에 알게 되시겠지만, 저기에 있는 코드는 Let’s start C language 라는 구문을 모니터 상으로 출력해줘 라는 내용이에요.</p>
+
+<p>컴파일을 하고 실행을 시키면 window 콘솔창을 통해 모니터로 출력이 됩니다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/27/0-what-is-c/">
+        0. C언어란 무엇인가?
+      </a>
+    </h1>
+
+    <span class="post-date">27 Sep 2018</span>
+
+    <p>C언어 혹은 프로그래밍 언어(Programming Language)란 무엇일까요?</p>
+
+<p>프로그래밍 언어란 쉽게 설명하여 인간과 컴퓨터간의 대화를 가능하게 해주는 <strong>‘중간언어’</strong>라고 정의 내릴 수 있습니다.</p>
+
+<p>저는 컴퓨터에게 어떠한 행동을 명령하고 그 결과물을 저에게 모니터를 통해 출력해 달라는 명령을 하고 싶어요.</p>
+
+<p>육성으로 “야 컴퓨터, 10+10을 계산해서 결과가 뭔지 나한테 알려줘” 라고 하면 컴퓨터가 사람 말을 알아듣고 그 액션을 취할까요? 불가능합니다. 물론 음성인식 같은 기술을 통하여 그러한 컴퓨터를 만들어 낼 수야 있겠지만, 지금은 그 이야기를 하려는 것이 아닙니다.</p>
+
+<p>그럼 어떻게 해야 컴퓨터와 대화를 할 수 있을까요? 생각해 봅시다.</p>
+
+<p>저는 <strong>‘인간의 언어’</strong>를 사용합니다.</p>
+
+<p>컴퓨터는 1과 0의 나열들로 표현되는 2진코드, 즉 <strong>‘기계어’</strong>를 사용합니다.</p>
+
+<p>1) 내가 기계어를 완벽히 익힌다 → 매우 비효율적</p>
+
+<p>2) 컴퓨터에게 인간의 언어를 가르친다 → 현재 기술로 불가능</p>
+
+<p>3) 나와 컴퓨터 모두가 이해할 수 있는 언어를 만든다 → 가능</p>
+
+<p> </p>
+
+<p>바로 프로그래밍 언어란 ‘사용자’와 ‘컴퓨터’ 모두가 소통할 수 있는 중간 단계의 언어라고 정의내릴 수 있습니다.</p>
+
+<p>이렇게 해서 프로그래밍 언어를 통하여 우리와 컴퓨터가 대화를 할 수 있는 겁니다. C언어 역시 프로그래밍 언어들 중 하나입니다.</p>
+
+<p><img class="aligncenter size-full wp-image-894" src="images/2018/09/1-4.jpg" alt="" width="460" height="150" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w" sizes="(max-width: 460px) 100vw, 460px" /></p>
+
+<p>단, 한 가지 주의할 점이 있습니다.</p>
+
+<p>우리 인간은 가령 ‘친구야 학교가자’, ‘마 학교 가자’, ‘야 학교 ㄱㄱ’ 등등 조금씩 다르게 말해도 알아듣죠? 이것은 우리 인간은 유연성 있는 언어를 사용하기 때문입니다.</p>
+
+<p>하지만, 컴퓨터는 그렇지 않아요. 철자 하나만 틀려도 의사소통 불가입니다. 컴파일러가 철자 하나만 틀려도 해석을 해주지 못하기 때문입니다. 이 점 때문에 우리가 인간의 언어보다는 프로그래밍 언어를 더 딱딱하게 느낄 수 있지만 약간의 노력만 있다면 충분히 익히기 어렵지 않고, 익숙해지면 외국어보다 쉽게 느껴질 겁니다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11234,404 +11424,6 @@
 <p>sound 디렉토리의 __init__.py 에 위와 같이 코드를 작성하면 echo 모듈이 포함이 된다. 이후 다시 실행 시켜보면 오류가 나지않고 ‘echo’가 출력된다.</p>
 
 <p> </p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/21/17-module/">
-        17. 모듈
-      </a>
-    </h1>
-
-    <span class="post-date">21 Sep 2018</span>
-
-    <p>모듈은 변수, 함수, 클래스 등을 모아놓은 파이썬(.py) 파일이다. 일반적인 프로그램에서는 하나의 파이썬 파일에 모든것을 정의하고 사용하지 않는다. 필요한 것들을 끼리끼리 묶어서 각각의 모듈을 만들어두고 불러와서 사용한다. 따라서 효율이 좋고 가독성이 높은 코드를 작성할 수 있다.</p>
-
-<p> </p>
-
-<h1 id="1-모듈-생성-및-불러오기">1. 모듈 생성 및 불러오기</h1>
-
-<hr />
-
-<p>먼저 mod.py 라는 파이썬 파일을 만들어보자.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#mod.py</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-
-<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
-</code></pre></div></div>
-
-<p>위 mod.py 모듈은 두 가지의 함수를 가지고 있다. 이제 다른 파이썬 파일에서 mod.py의 함수를 불러와 사용해보자.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">mod</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>가장 첫 줄에서 import mod 라는 선언을 했다. 이는 mod를 불러와 그 안에 있는 내용을 사용하겠다는 말이다. 주의해야 할 것은 <strong>모듈을 불러오기 위해서는 실행중인 파이썬 파일이 모듈과 같은 디렉토리에 있어야 한다.</strong></p>
-
-<p>한 번 다른 디렉토리에서 모듈을 불러와서 함수를 사용해보기 바란다. No module named Error가 날 것이다.</p>
-
-<p> </p>
-
-<p>한 가지 불편한 것은 mod.py 모듈을 불러와도 모듈의 함수를 사용하려면 모듈명.함수명 처럼 함수앞에 모듈명을 붙여야 한다는 것이다. 이렇게 하지않고 함수 이름만 가지고 실행하는 방법이 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="nb">sum</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>‘from 모듈명 import 함수명’ 의 명령을 사용하면 함수 이름만으로도 모듈의 함수를 사용할 수 있어 편리하다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="nb">sum</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>위의 코드를 실행하면 오류가 난다. name mul is not defined 오류이다. 위에서 모듈을 불러온 코드를 보면 mod에서 sum 함수만 불러왔다. 따라서 mul 함수는 현재 파이썬 파일에서는 정의가 되지 않은 것이나 마찬가지다. 이 때에도 방법이 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">mul</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>위와 같이 함수 이름을 여러개 적어주어서 한번에 불러올 수 있다. 아니면 어떤 모듈의 모든 함수를 불러오는 방법이 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li>기호는 ‘모든 것’을 뜻한다.</li>
-</ul>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-if-__name__--__main__">2. if __name__ == “__main__”:</h1>
-
-<hr />
-
-<p> </p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mod.py</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-
-<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
-
-<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">mul</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>위와 같은 모듈을 만들었다. 이제 다른 파일에서 이를 불러온다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#practice.py</span>
-
-<span class="kn">import</span> <span class="nn">mod</span>
-</code></pre></div></div>
-
-<p>mod.py를 불러오는 명령만 있는 파일을 실행하면 다음의 결과가 나온다.</p>
-
-<p>3</p>
-
-<p>6</p>
-
-<p>불러오기만 하는데 출력을 해버린다. 불러오는 행위가 각각의 명령어들을 실행시켜 버리는 것이다. 이를 방지하기 위해 다음과 같이 코드를 작성하면 된다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mod.py</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-
-<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
-
-<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">"__main__"</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">mul</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>if __name__==”__main__”: 조건문은 <strong>모듈을 부르는 행위를 할 때에는 거짓이 되어 아래의 문장을 실행시키지 않고 직접 실행을 시킬 때에는 참이 되어 아래의 문장을 실행하게 해준다.</strong></p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-클래스-변수-함수를-포함하는-모듈">3. 클래스, 변수, 함수를 포함하는 모듈</h1>
-
-<hr />
-
-<p> </p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mod.py</span>
-
-<span class="n">num</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-
-<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">givename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-</code></pre></div></div>
-
-<p>위의 모듈은 변수, 함수, 클래스를 모두 가지고 있다. 다른 파이썬 파일에서 모듈의 변수, 함수, 클래스를 불러올 때에는 항상 모듈명.변수명, 모듈명.함수명, 모듈명.클래스명 형태로 하면 된다. 아주 단순하다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#practice.py</span>
-
-<span class="kn">import</span> <span class="nn">mod</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">Person</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">givename</span><span class="p">(</span><span class="s">"John"</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="4-다른-디렉토리의-모듈-import-하기">4. 다른 디렉토리의 모듈 import 하기</h1>
-
-<hr />
-
-<p>파이썬에서 기본적으로 제공하는 라이브러리들은 같은 디렉토리에 있지 않은데도 지금까지 불러와서 사용했다. 기본적으로 파이썬 라이브러리들이 저장되어 있는 디렉토리들을 훑어서 불러와주기 때문이다. 자동으로 훑는 이 path에 모듈이 있는 디렉토리를 추가한다면 자동으로 훑어서 모듈을 불러와 줄 것이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#practice.py</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"C:/Users/jchg1/PycharmProjects/MyProject/MyDirectory"</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">mod</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">Person</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">givename</span><span class="p">(</span><span class="s">"John"</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>sys 모듈은 파이썬 라이브러리 모듈이다. sys.path 명령어를 사용하면 파이썬 라이브러리가 설치된 디렉토리들을 요소로 가지는 리스트를 반환해준다. 여기에 sys.path.append 함수를 사용해서 모듈이 있는 디렉토리를 추가하면 다른 디렉토리의 파이썬 파일에서 모듈을 불러와 사용할 수 있다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/21/16-inherit-override/">
-        16. 클래스 상속과 메소드 오버라이딩
-      </a>
-    </h1>
-
-    <span class="post-date">21 Sep 2018</span>
-
-    <p>클래스 상속에서 말하는 상속은 우리가 알고있는 유산 상속에서의 상속과 같은 뜻이다. ‘무엇인가를 물려준다’는 느낌으로 접근하면 된다.</p>
-
-<p> </p>
-
-<h1 id="1-클래스-복습">1. 클래스 복습</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Seoul</span><span class="p">:</span>
-
-    <span class="n">live</span> <span class="o">=</span> <span class="s">'Seoul'</span>
-
-    <span class="c"># __init__ 메소드의 입력인수는 인스턴스 생성부터 초기화 필수</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lastname</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lastname</span> <span class="o">=</span> <span class="n">lastname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
-
-
-    <span class="k">def</span> <span class="nf">where</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s">'M'</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Mr.</span><span class="si">%</span><span class="s">s lives in </span><span class="si">%</span><span class="s">s"</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">))</span>
-
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s">'W'</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Ms.</span><span class="si">%</span><span class="s">s lives in </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">))</span>
-
-<span class="n">kim</span> <span class="o">=</span> <span class="n">Seoul</span><span class="p">(</span><span class="s">'Kim'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">)</span>
-<span class="n">kim</span><span class="o">.</span><span class="n">where</span><span class="p">()</span>
-<span class="n">lee</span> <span class="o">=</span> <span class="n">Seoul</span><span class="p">(</span><span class="s">'Lee'</span><span class="p">,</span> <span class="s">'W'</span><span class="p">)</span>
-<span class="n">lee</span><span class="o">.</span><span class="n">where</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>위 예제코드를 천천히 분석해보기 바란다. 서울 사는 사람의 성별과 이름을 알 수 있도록 서울에 산다는 내용을 출력해주는 서비스 코드이다.</p>
-
-<p>__init__ 메소드의 입력인수는 인스턴스를 정의하는 동시에 넣어주어야한다. 그런 이유로 __init__ 메소드를 <strong>생성자(constructor)</strong> 라고도 부른다. __init__ 메소드에서 ‘성씨’와 ‘성별’ 을 넣어주어야한다. 그리고 where 함수에서는 성별에 따라 출력의 앞부분에 Mr.를 넣을지 Ms. 를 넣을지 결정하게 되고, 앞서 정의되었던 ‘성씨’를 집어넣어 문장을 출력해준다.</p>
-
-<p>Mr.Kim lives in Seoul</p>
-
-<p>Ms.Lee lives in Seoul</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-클래스-상속">2. 클래스 상속</h1>
-
-<hr />
-
-<p>위의 코드와 같은 기능을 하는 코드를 작성하려는데, 이번에는 부산 사람들을 대상으로 하려한다. 위와 똑같은 클래스를 부산 버전으로 하나 더 만들어야 할 것 같지만, 상속이라는 기능을 사용하면 이를 편하게 할 수 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Busan</span><span class="p">(</span><span class="n">Seoul</span><span class="p">):</span>
-    <span class="n">live</span> <span class="o">=</span> <span class="s">'Busan'</span>
-</code></pre></div></div>
-
-<p>위처럼 선언을 하면 Seoul 클래스와 같은 구조의 Busan 클래스가 만들어진다. 그리고 Busan 클래스에서는 live 변수만 ‘Busan’으로 <strong>재정의</strong> 하였다. 나머지는 모두 같게 두었다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kim</span> <span class="o">=</span> <span class="n">Seoul</span><span class="p">(</span><span class="s">'Kim'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">)</span>
-<span class="n">kim</span><span class="o">.</span><span class="n">where</span><span class="p">()</span>
-<span class="n">lee</span> <span class="o">=</span> <span class="n">Seoul</span><span class="p">(</span><span class="s">'Lee'</span><span class="p">,</span> <span class="s">'W'</span><span class="p">)</span>
-<span class="n">lee</span><span class="o">.</span><span class="n">where</span><span class="p">()</span>
-<span class="n">park</span> <span class="o">=</span> <span class="n">Busan</span><span class="p">(</span><span class="s">'Park'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">)</span>
-<span class="n">park</span><span class="o">.</span><span class="n">where</span><span class="p">()</span>
-<span class="n">choi</span> <span class="o">=</span> <span class="n">Busan</span><span class="p">(</span><span class="s">'Choi'</span><span class="p">,</span> <span class="s">'W'</span><span class="p">)</span>
-<span class="n">choi</span><span class="o">.</span><span class="n">where</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>위의 출력결과를 확인하면 다음과 같다.</p>
-
-<p>Mr.Kim lives in Seoul</p>
-
-<p>Ms.Lee lives in Seoul</p>
-
-<p>Mr.Park lives in Busan</p>
-
-<p>Ms.Choi lives in Busan</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-메소드-오버라이딩">3. 메소드 오버라이딩</h1>
-
-<hr />
-
-<p>위의 코드에서 클래스를 상속할 때 변수만 재정의하고 메소드는 건드리지 않았다. 하지만 메소드 역시 다른 기능으로 동작하도록 할 수 있는데, 이렇게 메소드를 수정하는 일을 메소드 <strong>오버라이딩(overriding)</strong> 이라고 한다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Busan</span><span class="p">(</span><span class="n">Seoul</span><span class="p">):</span>
-    <span class="n">live</span> <span class="o">=</span> <span class="s">'Busan'</span>
-
-    <span class="k">def</span> <span class="nf">where</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s">'M'</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Mr.</span><span class="si">%</span><span class="s">s has lived in </span><span class="si">%</span><span class="s">s for </span><span class="si">%</span><span class="s">d years"</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span>
-
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s">'W'</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Ms.</span><span class="si">%</span><span class="s">s has lived in </span><span class="si">%</span><span class="s">s for </span><span class="si">%</span><span class="s">d years"</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>위에서 Seoul 클래스를 상속받았던 Busan 클래스와는 다르게 where 함수를 바꾸었다. 일단 year 라는 입력 인수가 추가되었고, 그 인수를 사용해서 부산에 몇 년을 살았는지 출력하려한다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">park</span> <span class="o">=</span> <span class="n">Busan</span><span class="p">(</span><span class="s">'Park'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">)</span>
-<span class="n">park</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">choi</span> <span class="o">=</span> <span class="n">Busan</span><span class="p">(</span><span class="s">'Choi'</span><span class="p">,</span> <span class="s">'W'</span><span class="p">)</span>
-<span class="n">choi</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>위 처럼 park 객체(인스턴스)의 where 함수를 호출하려면 입력인수 year의 값을 같이 주어야한다.</p>
-
-<p>Mr.Park has lived in Busan for 5 years</p>
-
-<p>Ms.Choi has lived in Busan for 10 years</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="4-연산자-오버로딩">4. 연산자 오버로딩</h1>
-
-<hr />
-
-<p>연산자 오버로딩(overloading)은 +,-,*,/ 등의 연산이 객체끼리 가능하게 하는 기법이다. 가령, 클래스 내부의 메소드 이름을 __add__로 설정하면 객체 끼리 + 연산자를 사용 했을 때 이 메소드가 실행되게 하는 것이다. __init__은 인스턴스가 생성될 때 입력인수를 필수로 설정하도록 하는 파이썬 내장 메소드명이었다명 __add__는 인스턴스 끼리의 + 연산이 가능하도록 하는 파이썬 내장 메소드명이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Seoul</span><span class="p">:</span>
-
-    <span class="n">live</span> <span class="o">=</span> <span class="s">'Seoul'</span>
-
-    <span class="c"># __init__ 메소드의 입력인수는 인스턴스 생성부터 초기화 필수</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lastname</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lastname</span> <span class="o">=</span> <span class="n">lastname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
-
-
-    <span class="k">def</span> <span class="nf">where</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s">'M'</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Mr.</span><span class="si">%</span><span class="s">s lives in </span><span class="si">%</span><span class="s">s"</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">))</span>
-
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s">'W'</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Ms.</span><span class="si">%</span><span class="s">s lives in </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="c"># 연산자 오버로딩</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s  vs.  </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">live</span><span class="p">))</span>
-
-<span class="k">class</span> <span class="nc">Busan</span><span class="p">(</span><span class="n">Seoul</span><span class="p">):</span>
-    <span class="n">live</span> <span class="o">=</span> <span class="s">'Busan'</span>
-
-    <span class="k">def</span> <span class="nf">where</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s">'M'</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Mr.</span><span class="si">%</span><span class="s">s has lived in </span><span class="si">%</span><span class="s">s for </span><span class="si">%</span><span class="s">d years"</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span>
-
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s">'W'</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Ms.</span><span class="si">%</span><span class="s">s has lived in </span><span class="si">%</span><span class="s">s for </span><span class="si">%</span><span class="s">d years"</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>위와 같이 Seoul 클래스와 그를 상속받은 Busan 클래스가 있다. Seoul 클래스에 정의된 __add__ 메소드를 보자.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s  vs.  </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">live</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>위에서 입력인수에 self와 other이 있다. self는 __add__를 직접 호출하는 인스턴스이고 other은 다른 인스턴스이다. 두 인스턴스는 ‘self.live   vs.   other.live’ 라는 문장을 출력한다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kim</span> <span class="o">=</span> <span class="n">Seoul</span><span class="p">(</span><span class="s">'Kim'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">)</span>
-<span class="n">lee</span> <span class="o">=</span> <span class="n">Busan</span><span class="p">(</span><span class="s">'Lee'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">)</span>
-<span class="n">kim</span><span class="o">+</span><span class="n">lee</span>
-<span class="n">lee</span><span class="o">+</span><span class="n">kim</span>
-</code></pre></div></div>
-
-<p>Seoul 클래스의 인스턴스 kim과 Busan 클래스의 인스턴스 lee를 만들었다. 그리고 각각의 인스턴스 사이 +연산을 하였다. 여기서 + 연산은 __add__ 메소드에 해당한다. kim + lee 연산은 kim.__add__(lee)와 동등하다. self = kim 이고 other = lee 이다.</p>
-
-<p>그렇다면 lee+kim 연산은 lee.__add__(kim) 과 동등하다. self = lee 이고 other = kim 이다.</p>
-
-<p>Seoul  vs.  Busan</p>
-
-<p>Busan  vs.  Seoul</p>
-
-<p>위에서는 인스턴스 사이의 + 연산으로 __add__ 메소드를 호출했다. 이것이 연산자 오버로딩이다. 연산자 오버로딩에는 + 연산만 있는 것이 아니다. 대표적인 것 몇 개만 말하자면 다음과 같은 것들도 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">__add__</span> <span class="c"># +</span>
-<span class="n">__sub__</span> <span class="c"># -</span>
-<span class="n">__mul__</span> <span class="c"># *</span>
-<span class="n">__truediv__</span> <span class="c"># /</span>
-</code></pre></div></div>
 
   </div>
   

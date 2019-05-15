@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,327 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/23/wrapper-class/">
+        Wrapper 클래스
+      </a>
+    </h1>
+
+    <span class="post-date">23 Dec 2018</span>
+
+    <p>기본 자료형은 정수, 실수, 문자를 지원한다. 그런데 정수나 실수, 문자의 객체형이 필요한 경우가 있다. 정수 객체의 매개변수 전달이나 반환형이 필요한 경우등이 있다.</p>
+
+<p>자바는 이런 경우를 위해 기본 자료형과 같은 클래스를 지원하는데, 이러한 클래스들을 두고 Wrapper클래스라고 한다.</p>
+
+<p><a href="https://SWnomad.com/wrapper-%ed%81%b4%eb%9e%98%ec%8a%a4/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-193/" rel="attachment wp-att-1631"><img class="aligncenter  wp-image-1631" src="/images/2018/12/no-name-38.jpg" alt="" width="365" height="361" srcset="/images/2018/12/no-name-38.jpg 655w, /images/2018/12/no-name-38-300x297.jpg 300w" sizes="(max-width: 365px) 100vw, 365px" /></a></p>
+
+<p> </p>
+
+<p>대표적으로 Integer 클래스로 Wrapper클래스의 사용법을 파헤쳐 본다. 다른 Wrapper클래스의 사용법도 거의 같으며 궁금한 것은 JavaDoc을 찾아보면 된다.</p>
+
+<p>#</p>
+
+<h1 id="1-wrapper-클래스-사용법">1. Wrapper 클래스 사용법</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Integer</span> <span class="n">intValue1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="n">Integer</span> <span class="n">intValue2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="s">"200"</span><span class="o">);</span> 
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intValue1</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intValue2</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100</p>
+
+<p>200</p>
+
+<p>Integer 클래스의 객체를 만들 때 생성자의 매개변수로는 정수형이나 문자열이 올 수 있다. <strong>JavaDoc</strong>에서 Integer.class 파일에서 클래스의 생성자를 찾아보면 어떤 식으로 객체를 생성해야할 지 알 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="kd">public</span> <span class="nf">Integer</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Integer 클래스에는 value가 final int 형으로 선언되어 있어서 한 번 선언되면 그 값을 바꿀 수 없다. 우리가 생성자의 매개변수로 정수를 넣어주면 value에 저 값이 저장된다. Integer클래스의 intValue() 메소드는 value 값을 반환해주는 메소드이다. 지금부터 Integer 클래스의 대표적인 메소드들에 대해 살펴본다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-integer클래스의-주요-메소드">2. Integer클래스의 주요 메소드</h1>
+
+<hr />
+
+<h2 id="1-int-intvalue">1) int intValue()</h2>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Integer</span> <span class="n">iValue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">theValue</span> <span class="o">=</span> <span class="n">iValue</span><span class="o">.</span><span class="na">intValue</span><span class="o">();</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100</p>
+
+<p>intValue 메소드로 클래스의 상수인 value 값을 불러왔다.</p>
+
+<p> </p>
+
+<p>참고로 intValue() 메소드의 반환형은 기본 자료형 int이다.</p>
+
+<p> </p>
+
+<h2 id="2-integer-valueof">2) Integer valueOf()</h2>
+
+<p>valueOf() 메소드는 매개변수로 정수나 문자열이 들어오면 정수형으로 다시 되돌려주는 메소드이다. 이 메소드는 static으로 정의되어 있어 클래스 메소드이다. 따라서 객체를 생성하지 않고도 사용 가능하다. 그리고 메소드의 반환형은 Integer클래스 형이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">theValue1</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">theValue2</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">"200"</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue1</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue2</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100</p>
+
+<p>200</p>
+
+<p>정수를 문자열 형태로 넣어줘도 정수형으로 변환하여 돌려준다. 사실 이 메소드 안에서는 정수를 return해줄 때 parseInt라는 메소드를 사용한다. parseInt 메소드는 문자열을 정수로 돌려주는 메소드이다.</p>
+
+<p> </p>
+
+<h2 id="3-int-parseint">3) int parseInt()</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">theValue</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100</p>
+
+<p> </p>
+
+<h1 id="3-언박싱--오토박싱">3. 언박싱 / 오토박싱</h1>
+
+<hr />
+
+<p>Integer와 int 자료형 사이의 연산이 일어날 때는 언박싱, 오토박싱이 일어난다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Integer</span> <span class="n">num1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span>
+
+      <span class="kt">int</span> <span class="n">sum1</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="o">;</span> <span class="c1">// int에 저장되어야 하므로 num1이 num1.intValue()메소드를 통하여 Integer -&gt; int (&lt;strong&gt;언박싱&lt;/strong&gt;)</span>
+      <span class="n">Integer</span> <span class="n">sum2</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="o">;</span> <span class="c1">// Integer에 저장되어야 하므로 num2가 Integer.valueOf(num2)를 통하여 int -&gt; Integer (&lt;strong&gt;오토박싱&lt;/strong&gt;)</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Integer 자료형이 int 자료형으로 변환되는 것을 언박싱, 그 반대를 오토박싱이라고 한다. 이 과정은 컴파일러가 해주므로 사실 프로그래머는 Integer자료형과 int자료형을 구분 없이 편하게 사용할 수 있다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/23/string-class/">
+        String 클래스
+      </a>
+    </h1>
+
+    <span class="post-date">23 Dec 2018</span>
+
+    <h1 id="1-string-클래스">1. String 클래스</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span> <span class="c1">// str1은 힙 메모리에 생성 된 String클래스의 객체를 참조</span>
+<span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="s">"hello"</span><span class="o">;</span> <span class="c1">// str2는 상수pool에 저장되어있는 hello를 참조</span>
+</code></pre></div></div>
+
+<p>문자열을 생성하는 방법에는 두 가지가 있다. 첫 번째는 문자열을 String클래스의 생성자의 매개변수로 넣어서 생성하는 것이고, 두 번째는 프로그램이 시작되면서 상수pool에 할당되는 문자열을 가르키게 변수에 저장하는 방식이다.</p>
+
+<h3 id="1-string클래스-생성자로-생성">1) String클래스 생성자로 생성</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">stringClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+      <span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span> <span class="c1">// 같은 문자열인지 판단</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">==</span><span class="n">str2</span><span class="o">);</span> <span class="c1">// 같은 객체인지 판단</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>true</p>
+
+<p>false</p>
+
+<p>같은 문자열이더라도 객체를 생성할 때 마다 힙 메모리에 새로운 공간이 할당되어 서로 다른 객체가 된다.</p>
+
+<p> </p>
+
+<h3 id="2-상수pool에-저장-된-문자열-리터럴-가르키도록-생성">2) 상수pool에 저장 된 문자열 리터럴 가르키도록 생성</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">stringClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"hello"</span><span class="o">;</span>
+      <span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="s">"hello"</span><span class="o">;</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span> <span class="c1">// 같은 문자열인지 판단</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">==</span><span class="n">str2</span><span class="o">);</span> <span class="c1">// 같은 객체인지 판단</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>true</p>
+
+<p>true</p>
+
+<p>이번에는 두 참조변수가 같은 메모리 공간을 가르킨다는 결과가 나왔다. “hello” 문자열이 프로그램이 시작되면서 상수pool에 저장이 되고 이제부터 이 문자열을 저장하는 모든 참조변수는 이 상수풀의 “hello”를 가르키도록 지정된다. 따라서 위와 같은 결과가 나온 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-stringbuild와-stringbuffer">2. StringBuild와 StringBuffer</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">stringClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"Java"</span><span class="o">);</span>
+      <span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"Android"</span><span class="o">);</span>
+      
+      <span class="c1">//str1의 주소값</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">str1</span><span class="o">));</span>
+      
+      <span class="c1">//str1에 str2 이어붙이기</span>
+      <span class="n">str1</span> <span class="o">=</span> <span class="n">str1</span><span class="o">.</span><span class="na">concat</span><span class="o">(</span><span class="n">str2</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">);</span>
+      
+      <span class="c1">//str1의 주소값</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">str1</span><span class="o">));</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>문자열을 이어붙였다. concat() 메소드는 문자열을 이어붙일 수 있게 해주는 String클래스의 메소드이다.</p>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>366712642</p>
+
+<p>str1</p>
+
+<p>1829164700</p>
+
+<p>결과를 보면 str1에 문자열을 이어붙이면서 새로 생성된 문자열은 다른 주소에 저장되어 있다. 여기서 알 수 있는것은 <strong>문자열이 변경될 때에는 새로운 메모리공간에 문자열이 생기고 변수가 그것을 가르키도록 갱신된다는 것이다.</strong> 이렇게 되면 메모리 낭비가 생겨버린다. 이렇게 되는 이유는 문자열은 한 번 선언이 되고나면 ‘불변’하기 때문이다.</p>
+
+<p>이 때 메모리 낭비를 해결할 수 있도록 StringBuild와 StringBuffer 클래스가 있다. 두 클래스는 문자열 변경의 안정성에 관련한 기능이 다른데, 문자열을 변경할 때에는 두 클래스 중 아무거나 사용해도 된다. 그럼 StringBuklder 클래스를 사용해서 문자열을 변경하는 코드를 한 번 보겠다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">stringClass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"Java"</span><span class="o">);</span>
+      <span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"Android"</span><span class="o">);</span>
+      <span class="n">String</span> <span class="n">str3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"IOS"</span><span class="o">);</span>
+
+      <span class="n">StringBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">(</span><span class="n">str1</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">builder</span><span class="o">));</span> <span class="c1">//이어붙이기 전 builder 주소</span>
+      
+      <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">str2</span><span class="o">);</span>
+      <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">str3</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">builder</span><span class="o">));</span> <span class="c1">//이어붙인 후 builder 주소</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>366712642</p>
+
+<p>JavaAndroidIOS</p>
+
+<p>366712642</p>
+
+<p>문자열 변환작업을 하면서도 메모리 주소값이 변하지 않았다. 메모리 낭비를 해결한 것이다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11118,247 +11509,6 @@
    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
-
-<p> </p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/19/interface-and-polymorphism/">
-        인터페이스와 다형성
-      </a>
-    </h1>
-
-    <span class="post-date">19 Dec 2018</span>
-
-    <h1 id="-1-인터페이스의-역할">  1. 인터페이스의 역할</h1>
-
-<hr />
-
-<p>인터페이스에는 코드가 작성되지 않은 추상 메소드만 있다. 그러나 인터페이스를 구현한 클래스에서 정의하는 메소드의 반환형과 이름, 매개변수의 타입 등 메소드의 형태를 알 수 있는 정보가 포함되어 있다.</p>
-
-<p>인터페이스는 사용 설명서 같은 역할을 한다. 어떠한 인터페이스를 구현하는 클래스1, 클래스2, 클래스3이 있고 각각 기능에 따라 메소드 구현을 달리 하더라도 메소드의 형태에 관한 정보가 인터페이스에 있기 때문에 인터페이스가 구현된 코드를 보면 이를 구현하는 클래스의 사용 방법에 대해 알 수 있다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-인터페이스와-다형성">2. 인터페이스와 다형성</h1>
-
-<hr />
-
-<p>콜센터 상담원 배분 프로그램을 만들려고 한다. 그런데 3가지의 서로 다른 배분 방식을 구현하고 싶다.</p>
-
-<ol>
-  <li>
-    <p>순서대로 전화를 가져와 상담원 순서대로 배분</p>
-  </li>
-  <li>
-    <p>순서대로 전화를 가져와 대기고객 수가 적은 상담원에 배분</p>
-  </li>
-  <li>
-    <p>고객 등급 순으로 전화를 가져와 업무 능력이 높은 상담원에게 우선 배분</p>
-  </li>
-</ol>
-
-<p>먼저 공통적인 기능의 메소드를 정의한 인터페이스부터 만들 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">scheduler</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Scheduler</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNextCall</span><span class="o">();</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendCallToAgent</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이제 각각의 방법마다 인터페이스를 구현한 3가지의 클래스를 만들어본다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">scheduler</span><span class="o">;</span>
-
-<span class="c1">//배분 방식 1</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RoundRobin</span> <span class="kd">implements</span> <span class="n">Scheduler</span> <span class="o">{</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNextCall</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"get calls as ordered"</span><span class="o">);</span>
-   <span class="o">}</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendCallToAgent</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"send call to next ordered agent"</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">scheduler</span><span class="o">;</span>
-<span class="c1">//배분 방식 2</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LeastJob</span> <span class="kd">implements</span> <span class="n">Scheduler</span> <span class="o">{</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNextCall</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"get calls as ordered"</span><span class="o">);</span>
-   <span class="o">}</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendCallToAgent</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"send calls to agents with least job"</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">scheduler</span><span class="o">;</span>
-<span class="c1">//배분 방식 3</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PriorityAllocation</span> <span class="kd">implements</span> <span class="n">Scheduler</span> <span class="o">{</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNextCall</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"get calls from prior customers first"</span><span class="o">);</span>
-   <span class="o">}</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendCallToAgent</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"give calls to better agents"</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이제 클래스의 객체를 만들어 실행해 볼 차례다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">scheduler</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SchedulerTest</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Select call allocation method"</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"R : RoundRobin"</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"L : LeastJob"</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"P : Priority Allocation"</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Type here : "</span><span class="o">);</span>
-      
-      <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">.</span><span class="na">read</span><span class="o">();</span> <span class="c1">//문자를 입력받을 수 있는 함수</span>
-      <span class="n">Scheduler</span> <span class="n">scheduler</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">//아무런 객체도 참조하지 않는 Scheduler 인터페이스 자료형의 참조변수 생성</span>
-      
-      <span class="c1">//문자를 입력받아 확인 후 객체 생성하여 scheduler 변수에 대입</span>
-      <span class="k">if</span><span class="o">(</span><span class="n">ch</span> <span class="o">==</span> <span class="sc">'R'</span> <span class="o">||</span> <span class="n">ch</span> <span class="o">==</span> <span class="sc">'r'</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">scheduler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RoundRobin</span><span class="o">();</span>
-      <span class="o">}</span>
-      <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">ch</span> <span class="o">==</span> <span class="sc">'L'</span> <span class="o">||</span> <span class="n">ch</span> <span class="o">==</span> <span class="sc">'l'</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">scheduler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LeastJob</span><span class="o">();</span>
-      <span class="o">}</span>
-      <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">ch</span> <span class="o">==</span> <span class="sc">'P'</span> <span class="o">||</span> <span class="n">ch</span> <span class="o">==</span> <span class="sc">'p'</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">scheduler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityAllocation</span><span class="o">();</span>
-      <span class="o">}</span>
-      <span class="k">else</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"fuck you"</span><span class="o">);</span>
-         <span class="k">return</span><span class="o">;</span>
-      <span class="o">}</span>
-      
-      <span class="c1">//객체에 따른 메소드 호출</span>
-      <span class="n">scheduler</span><span class="o">.</span><span class="na">getNextCall</span><span class="o">();</span>
-      <span class="n">scheduler</span><span class="o">.</span><span class="na">sendCallToAgent</span><span class="o">();</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>위에서 참조변수를 인터페이스 자료형인 Scheduler 타입으로 선언하고 일단 null값을 담아 아무런 객체도 참조하지 않도록 선언했다.</p>
-
-<p>이후 입력된 문자에 따라 적절한 객체를 참조하도록 한 이후 메소드를 호출한다. 이 때 메소드는 인터페이스를 구현한 클래스에 해당하는 메소드가 호출된다.</p>
-
-<p>이로써 인터페이스로 구현한 클래스 끼리도 다형성을 구현할 수 있음을 확인했다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/19/interface/">
-        인터페이스
-      </a>
-    </h1>
-
-    <span class="post-date">19 Dec 2018</span>
-
-    <p>인터페이스는 멤버 변수로는 상수(final 변수), 메소드는 추상 메소드만을 포함한다. 따라서 당연히 인터페이스 자체만으로는 인스턴스를 만들어 쓸 수 없다. 그렇다면 자체적으로 아무런 기능도 하지 못하는 인터페이스는 왜 쓸까?</p>
-
-<p> </p>
-
-<h1 id="1-인터페이스-만들기">1. 인터페이스 만들기</h1>
-
-<hr />
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">interfaceprac</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Calc</span> <span class="o">{</span>
-   
-   <span class="c1">//final로 선언하지 않아도 컴파일 과정에서 상수로 변환</span>
-   <span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
-   <span class="kt">int</span> <span class="n">ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999999999</span><span class="o">;</span>
-   
-   <span class="c1">//abstract로 선언하지 않아도 컴파일 과정에서 추상메소드로 변환</span>
-   <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
-   <span class="kt">int</span> <span class="nf">subtract</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
-   <span class="kt">int</span> <span class="nf">multiply</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
-   <span class="kt">int</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>인터페이스에 구현된 변수는 모두 상수로, 메소드는 추상 메소드로 컴파일 과정에서 변환이 된다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-클래스에서-인터페이스-구현">2. 클래스에서 인터페이스 구현</h1>
-
-<hr />
-
-<p>추상 클래스에서는 객체를 만들기 위해서 추상클래스를 상속받는(extends) 클래스를 만든 후 메소드 코드를 작성하여 객체를 만들어 사용하는 것과 같은 과정이 필요하다.</p>
-
-<p>인터페이스는 이 과정을 조금 다르게 표현한다. 상속이 아니라 구현한다(implements)고 한다. 인터페이스를 구현하는 클래스를 만드는 것이다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">interfaceprac</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCalc</span> <span class="kd">implements</span> <span class="n">Calc</span><span class="o">{</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span><span class="o">;</span>
-   <span class="o">}</span>
-
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">subtract</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">num1</span><span class="o">-</span><span class="n">num2</span><span class="o">;</span>
-   <span class="o">}</span>
-   
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>Calc 인터페이스를 구현한 MyCalc 클래스이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-인터페이스를-구현한-클래스의-성질">3. 인터페이스를 구현한 클래스의 성질</h1>
-
-<hr />
-
-<p><strong>1) 인터페이스 자료형으로 형 변환(upcasting) 가능</strong></p>
-
-<p><strong>2) 인터페이스 자료형의 참조변수에 저장되었을 시 클래스에 추가적으로 구현한 메소드는 사용 불가능</strong></p>
-
-<p><strong>3) 인터페이스를 구현한 클래스 객체가 호출하는 메소드는 클래스에서 구현된 메소드(인터페이스에서는 구현된 메소드가 없으므로 당연한 이야기지만…)</strong></p>
-
-<p> </p>
-
-<p>이는 상위 클래스를 상속받은 하위 클래스, 혹은 추상 클래스를 상속받은 하위 클래스와 완전 동일하다.</p>
-
-<p>일단 <strong>인터페이스의 형 변환이 가능한 점과 인터페이스를 구현한 여러개의 클래스마다 자신의 메소드를 호출한다는 점은 다형성이 가능케 하는 부분이다.</strong></p>
 
 <p> </p>
 

@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,204 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/11/21-stochastic-gradient-descent/">
+        21. Stochastic Gradient Descent
+      </a>
+    </h1>
+
+    <span class="post-date">11 Sep 2018</span>
+
+    <p>Stochastic Gradient Descent 는 large dataset을 학습시킬 때 쓸 수 있는 방법이다.</p>
+
+<p>학습 데이터가 100,000,000개 있다고 해보자.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\theta)&space;=&space;\frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\theta) = \frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" align="absmiddle" /></p>
+
+<p>cost function이 위와 같을 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />의 update식은 다음과 같다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}" alt="\\for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial J }{ \partial { \theta }_{ j } } ={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \}" align="absmiddle" /></p>
+
+<p>m = 100,000,000에 대한 sum을 계산해야 한다. 심지어 이것이 한 번의 step이다. 이 작업을 cost function이 수렴할 때 까지 하려면 메모리의 부담이 너무 크고 작업속도도 엄청 느릴 것이다.</p>
+
+<p>이 때 우리가 시도할 수 있는 방법 중 하나인 stochastic gradient descent이다.</p>
+
+<p> </p>
+
+<h1 id="1-stochastic-gradient-descent">1. Stochastic Gradient Descent</h1>
+
+<hr />
+
+<p>우리가 지금까지 알던 Gradient Descent 는 다른 말로 Batch Gradient Descent 라고도 부른다. Batch는 여기서 데이터전체 다발을 의미한다. 이 Batch Gradient Descent 에서의 cost function과 update식을 다시 한 번 짚고 넘어가보자.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\theta)&space;=&space;\frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\theta) = \frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" align="absmiddle" /></p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}" alt="\\for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial J }{ \partial { \theta }_{ j } } ={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \}" align="absmiddle" /></p>
+
+<p> </p>
+
+<p>Stochastic Gradient Descent 는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />  update 식에서 전체 data batch의 cost function의 미분의 평균이 아닌 data 하나의 cost의 미분만 사용하는 것이다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;i=1:m&space;\\&space;\left&space;\{&space;for\quad&space;j=1:n&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}&space;\right&space;\}" alt="\\for\quad i=1:m \\ \left \{ for\quad j=1:n \left \{ { \theta }_{ j }: ={ \theta }_{ j }-\frac { \alpha }{ m } { { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \} \right \}" align="absmiddle" /></p>
+
+<p>n개의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 data 하나를 이용해서 update한다. 이 과정을 m개의 data에 대해서 update 하는 것이다.</p>
+
+<p>Batch Gradient Descent 는 m개의 dataset을 사용하여 평균을 내어 한 번 update를 한다.</p>
+
+<p>Stochastic Gradient Descent는 각각의 data마다 cost를 미분하여 update를 m번 한다.</p>
+
+<p>직관적으로 global minimum으로의 방향의 정확도는 BGD가, speed는 SGD가 더 높을 것이라고 생각된다.</p>
+
+<p><img class="aligncenter wp-image-730" src="/images/2018/09/no-name-5.png" alt="" width="373" height="195" srcset="/images/2018/09/no-name-5.png 575w, /images/2018/09/no-name-5-300x157.png 300w" sizes="(max-width: 373px) 100vw, 373px" /></p>
+
+<p>Stochastic Gradient Descent의 특징은 Global minimum으로 수렴하는 것이 아니라 주변을 맴돈다. 아무래도 하나의 데이터만 이용해서 update하다보니 움직임이 가볍고 정확한 global minimum으로 향하지는 못한다. 하지만 learning rate <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\alpha" alt="\dpi{120} \alpha" align="absmiddle" />를 작게 할 수록 수렴하는 것에 가깝게는 만들 수 있다.</p>
+
+<p>Stochastic Gradient Descent 알고리즘은 m개의 data에 대해 parameter를 update하는 이 행위를 보통 1번이면 위의 그림과 같이 수렴한다. Batch Gradient Descent 알고리즘은 m개의 data에 대한 cost function의 미분의 평균을 한 번 update 한 것이 위의 화살표 한 번의 step이다. Stochastic Gradient Descent 는 Batch Gradient Descent 보다 학습 속도가 빠르고 우리가 large dataset에 대해 Stochastic Gradient Descent 알고리즘을 사용하는 이유이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-mini-batch-gradient-descent">2. Mini-Batch Gradient Descent</h1>
+
+<hr />
+
+<p>Mini-Batch Gradient Descent도 Stochastic Gradient Descent 와 마찬가지로 컴퓨터 메모리의 계산부담을 줄이고 학습속도를 향상시키기 위한 알고리즘으로, 위에서 말한 Stochastic Gradient Descent와 원리가 같다. 다만 parameter를 update 하기위해 data를 1개는 아니고 가령 10개, 혹은 b(&lt;m)개를 사용하는 것이다. b는 batch size이다. 가령 10개의 data를 사용한다고 하면 알고리즘은 다음과 같다.</p>
+
+<p> </p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\\for&space;\quad&space;k=1,11,21,...\\&space;\left&space;\{&space;for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=k}^{&space;k+9&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}&space;\right&space;\}" alt="\\for \quad k=1,11,21,...\\ \left \{ for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=k}^{ k+9 }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \} \right \}" align="absmiddle" /></p>
+
+<p>이 알고리즘은 stochastic gradient descent보다도 학습속도에서 더 좋은 성능을 낼 수도 있다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/07/20-recommender-systems/">
+        20. Recommender Systems
+      </a>
+    </h1>
+
+    <span class="post-date">07 Sep 2018</span>
+
+    <p>Recommender System은 머신러닝 알고리즘의 적용이 가장 활발한 분야들 중 하나이다. 어떠한 사용자의 시청기록, 평점부여 기록을 토대로 그 사람에게 관련영화를 추천해 주는 시스템이 있다.</p>
+
+<p><img class="aligncenter wp-image-706" src="/images/2018/09/no-name-4.png" alt="" width="488" height="206" srcset="/images/2018/09/no-name-4.png 663w, /images/2018/09/no-name-4-300x127.png 300w" sizes="(max-width: 488px) 100vw, 488px" /></p>
+
+<p>방법 하나는 각 영화마다 로맨스정도, 액션정도, 코믹 정도등을 feature로 정량화 시키는 것이다.</p>
+
+<p>각 user마다 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta_{1},\theta_{2})" alt="\dpi{120} (\theta_{1},\theta_{2})" align="absmiddle" />의 parameter가 있다고 하면 아직 그 user가 rating하지 않은 영화에 대해서도 feature vector를 곱하여 추측할 수 있다. user2의 parameter vector가 (4,10)이라고 하면 이 유저의 movie2에 대한 예상되는 평점은 3.8점이다.</p>
+
+<p>이를 좀 일반적으로 정리해보겠다.</p>
+
+<p> </p>
+
+<h1 id="1-problem-formulation"><span style="font-size: 18pt;"><strong>1. Problem formulation</strong></span></h1>
+
+<hr />
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n_{u}=" alt="\dpi{120} n_{u}=" align="absmiddle" /> user(사용자) 수</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n_{m}=" alt="\dpi{120} n_{m}=" align="absmiddle" /> movie(영화) 수</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;r(i,j)=" alt="\dpi{120} r(i,j)=" align="absmiddle" /> user<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /> 가 movie<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />  에 rate(평가)를 했으면 1 아니면 0</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;y(i,j)=" alt="\dpi{120} y(i,j)=" align="absmiddle" /> user<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /> 가 movie<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />  에 매긴 rating(평점)       <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;r(i,j)=1" alt="\dpi{120} r(i,j)=1" align="absmiddle" />인 경우만 정의</p>
+
+<p> </p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta&amp;{(j)}=" alt="\dpi{120} \theta&amp;{(j)}=" align="absmiddle" />  parameter vector for user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /></p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}=" alt="\dpi{120} x^{(i)}=" align="absmiddle" />  feature vector for user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" /></p>
+
+<p>prediction =<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta^{(j)})^T&space;x^{(i)}" alt="\dpi{120} (\theta^{(j)})^T x^{(i)}" align="absmiddle" /></p>
+
+<p> </p>
+
+<p>user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" />의 parameter를 optimize 한다고 할 때 결국 우리의 목표는 다음의 cost function을 최소화 시키는 것이다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta^{(j)})=\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^{(T)}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(\theta^{(j)})=\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^{(T)}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
+
+<p>앞서 linear regression에서 배운 gradient descent나 matlab, octave, python 등에서 제공하는 라이브러리의 optimization function을 사용해도 된다.</p>
+
+<p>좀 더 범위를 넓혀 모든 사용자들의 cost function을 계산하는 것이 일반적이다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=\frac{1}{2}\sum_{j=1}^{n_{u}}\sum_{i:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(\theta)=\frac{1}{2}\sum_{j=1}^{n_{u}}\sum_{i:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
+
+<p>우리가 익숙한 cost function과 다른 것은 training dataset(movie)의 갯수 m을 식에 넣지 않았다는 것이다. m이 있으나 없으나 최소화 되는 과정에서 parameter가 정해지는 것에는 아무런 영향이 없기 때문에 상관없다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-collaborative-filtering"><span style="font-size: 18pt;"><strong>2. Collaborative Filtering</strong></span></h1>
+
+<hr />
+
+<p>하지만 영화의 로맨스 정도, 액션 정도 등의 feature는 주관적인 생각이 많이 개입되는 특성이 있어 이를 수치화 하는 것 또한 애매한 부분이 있어 쉽지가 않다. 만약 사용자의 parameter가 정해져 있다고 가정한다면 역으로 위의 parameter에 대한 cost function이 아닌 feature에 대한 cost function을 사용해서 feature를 찾을 수 있다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x)=\frac{1}{2}\sum_{i=1}^{n_{m}}\sum_{j:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}" alt="\dpi{120} J(x)=\frac{1}{2}\sum_{i=1}^{n_{m}}\sum_{j:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}" align="absmiddle" /></p>
+
+<p>이렇게 찾은 feature를 이용해서 parameter를 다시 update한다. 그리고 이 parameter를 사용해서 feature를 다시 update 한다. 이렇게 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta&space;\rightarrow&space;x&space;\rightarrow&space;\theta&space;\rightarrow&space;x&space;\rightarrow&space;\cdot\cdot\cdot" alt="\dpi{120} \theta \rightarrow x \rightarrow \theta \rightarrow x \rightarrow \cdot\cdot\cdot" align="absmiddle" />의 과정을 반복하여 수렴시키면 좋은 parameter와 feature를 구할 수 있다.</p>
+
+<p>위 처럼 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />와 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" />를 왔다갔다 하며 update 하는 것 보다 간단한 방법이 있다.</p>
+
+<p>다음의 식을 minimize 함으로써 parameter와 feature를 <strong>동시에</strong> optimize 할 수 있다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x,\theta)=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(x,\theta)=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
+
+<p>식이 복잡해 보이지만 우리가 익숙하게 알고있던 parameter의 cost function과 feature의 cost function을 합친 것일 뿐이다. 이것을 우리는 collaborative filtering이라고 부른다.</p>
+
+<p>참고로 이 알고리즘은 스스로 학습을 하므로 bias unit은 없다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x\in&space;\mathbb{R}^{n},\quad&space;\theta&space;\in&space;\mathbb{R}^{n}" alt="\dpi{120} x\in \mathbb{R}^{n},\quad \theta \in \mathbb{R}^{n}" align="absmiddle" /></p>
+
+<p>위의 알고리즘을 순서대로 정리해보자.</p>
+
+<p>1.<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(n_{m})}),&space;(\theta^{(1)},\theta^{(2)},\cdot\cdot\cdot,\theta^{(n_{u})})" alt="\dpi{120} (x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(n_{m})}), (\theta^{(1)},\theta^{(2)},\cdot\cdot\cdot,\theta^{(n_{u})})" align="absmiddle" /> 를 small random value로 initialize 한다.</p>
+
+<p>2. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x,\theta)" alt="\dpi{120} J(x,\theta)" align="absmiddle" />를 gradient descent 혹은 라이브러리에서 제공하는 optimization 함수를 사용하여 minimize 한다.</p>
+
+<ol>
+  <li>위에서 구한 parameter를 가지고 아직 어떤 유저가 아직 rating하지 않은 영화를 predict 한다.</li>
+</ol>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-vectorization--low-rank-matrix-factorization"><span style="font-size: 18pt;"><strong>3. Vectorization : Low Rank Matrix Factorization</strong></span></h1>
+
+<hr />
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X=\begin{bmatrix}---x^{(1)}---&space;\\&space;---x^{(2)}---&space;\\&space;\cdot&space;\cdot&space;\cdot&space;\\&space;---x^{(n_{m})}---&space;\end{bmatrix}\quad&space;\qaud&space;\Theta=\begin{bmatrix}&space;---\theta^{(1)}---&space;\\&space;---\theta^{(2)}---&space;\\&space;\cdot&space;\cdot&space;\cdot&space;\\&space;---\theta^{(n_{u})}---&space;\end{bmatrix}" alt="\dpi{120} X=\begin{bmatrix}---x^{(1)}--- \\ ---x^{(2)}--- \\ \cdot \cdot \cdot \\ ---x^{(n_{m})}--- \end{bmatrix}\quad \qaud \Theta=\begin{bmatrix} ---\theta^{(1)}--- \\ ---\theta^{(2)}--- \\ \cdot \cdot \cdot \\ ---\theta^{(n_{u})}--- \end{bmatrix}" align="absmiddle" /></p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" /> 의 각 row는 영화 하나의 feature vector이고, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />의 각 row는 유저 한 명의 parameter vector이다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Y=X\Theta^{T}" alt="\dpi{120} Y=X\Theta^{T}" align="absmiddle" />  matrix의 각 row는 한 편의 영화, 각 column은 한 명의 유저를 나타낸다.</p>
+
+<p>Y의 3행 4열 위치는 3번째 영화에 대한 4번째 유저의 평점을 나타낸다.</p>
+
+<p> </p>
+
+<p>새로운 유저를 추가한다고 했을 때, 초기 parameter는 regularization term에 의하여 모둔 parameter가 0으로 initialize 될 것이다. 따라서 어떤 영화에 대한 예측 평점도 0이 될 것이고, 이는 상식적으로 생각해도 부적절하다.</p>
+
+<p>기존의 유저, 영화들로 계산한 matrix Y가 다음과 같다고 해보자.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Y&space;=&space;\begin{bmatrix}&space;5&amp;5&amp;0&amp;0&space;\\&space;4&amp;?&amp;?&amp;0&space;\\&space;0&amp;0&amp;5&amp;4&space;\\&space;0&amp;0&amp;5&amp;0&space;\end{bmatrix}" alt="\dpi{120} Y = \begin{bmatrix} 5&amp;5&amp;0&amp;0 \\ 4&amp;?&amp;?&amp;0 \\ 0&amp;0&amp;5&amp;4 \\ 0&amp;0&amp;5&amp;0 \end{bmatrix}" align="absmiddle" /></p>
+
+<p>영화 i에 대한 평균은 다음의 식으로 계산 가능하다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{i}=\frac{\sum_{j:r(i,j)=1}Y_{i,j}}{\sum_{j}{r(i,j)}}" alt="\dpi{120} \mu_{i}=\frac{\sum_{j:r(i,j)=1}Y_{i,j}}{\sum_{j}{r(i,j)}}" align="absmiddle" /></p>
+
+<p>위의 matrix의 평균은 다음과 같이 된다.</p>
+
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\begin{bmatrix}2.5\\2\\2.25\\1.25&space;\end{bmatrix}" alt="\dpi{120} \begin{bmatrix}2.5\\2\\2.25\\1.25 \end{bmatrix}" align="absmiddle" />  각 영화의 (총 평점의 합) / (평가한 사용자 수) 이다.</p>
+
+<p>따라서 새로운 유저를 추가할 때에는 평점을 기존 데이터의 평균으로 초기화하고 parameter는 위에서 말한 그대로 random small value로 초기화하면 된다. 이후에 위의 collaborative filtering 알고리즘으로 parameter와 feature를 학습시키면 된다.</p>
+
+<p>이 알고리즘의 목적을 다른 식으로 해석하자면 어떤 유저가 어떤 영화 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />를 좋아했다면, 그 영화의 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />와 비슷한 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(j)}" alt="\dpi{120} x^{(j)}" align="absmiddle" />를 가진 영화를 추천해주는 것이다. 즉,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;\|&space;x^{(i)}-x^{(j)}&space;\right&space;\|" alt="\dpi{120} \left \| x^{(i)}-x^{(j)} \right \|" align="absmiddle" /> 가 작은 영화를 찾는 것이다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10986,300 +11254,6 @@
 <p>cluster의 수를 늘리다 보면 더 이상 cost function이 거의 줄어들지 않는 시점이 올 것이다. 이 때의 k를 클러스터의 수로 정하는 것이 하나의 방법이다. 위의 iteration 횟수에 대한 cost function J의 그래프를 보면 사람의 팔을 닮았다. 그리고 위에서 빨간색 화살표로 표시한 곳이 팔꿈치이다. 따라서 이런식으로 cluster의 수를 정하는 방법을 elbow method라고 한다.</p>
 
 <p>하지만 elbow method가 통하지 않을때도 있다. 이 때에는 K-means 알고리즘의 분류 목적에 잘 맞도록 cluster의 수를 정할 수 있다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/08/24/16-svmsupport-vector-machine-algorithm/">
-        16. SVM(Support Vector Machine)
-      </a>
-    </h1>
-
-    <span class="post-date">24 Aug 2018</span>
-
-    <p><img class="aligncenter size-medium wp-image-612" src="/images/2018/08/no-name-92-300x187.png" alt="" width="300" height="187" srcset="/images/2018/08/no-name-92-300x187.png 300w, /images/2018/08/no-name-92.png 716w" sizes="(max-width: 300px) 100vw, 300px" /></p>
-
-<p>위 그림의 classification 문제에서 decision boundary는 3가지 모두 될 수 있다. 하지만 어떤 decision boundary를 사용하는 것이 새로운 test data에 대해서도 더 좋은 예측을 할까? 직관적으로 당연히 boundary 2가 가장 좋은 분류를 할 것이라고 알 수 있다. decision boundary 1과 2는 boundary와 가장 인접한 data가 간신히 정답으로 분류된 느낌을 준다. 조금만 벗어났어도 결과가 달라질 수 있다. 하지만 decision boundary 2는 조금 더 여유로운 느낌을 준다. 이 상황을 margin이 많이 남는다고 한다. <span style="color: #ff0000;"><strong>support vector machine은 margin이 최대가 되는 decision boundary를 찾아내도록 해주며, 아직까지도 분류 알고리즘으로 엄청 많이 쓰이고있다.</strong></span></p>
-
-<p>이제부터 SVM 알고리즘을 차근차근 파헤쳐 볼것이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p><span style="font-size: 18pt;"><strong>1. hypothesis function &amp; cost function</strong></span></p>
-
-<hr />
-
-<ul>
-  <li><span style="font-size: 14pt;"><strong>classification(logistic regression) hypothesis function &amp; cost function</strong></span></li>
-</ul>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}" alt="\dpi{120} h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}" align="absmiddle" /></p>
-
-<p>y=1일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)\approx&space;1" alt="\dpi{120} h_{\theta}(x)\approx 1" align="absmiddle" /> 즉, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\gg&space;0" alt="\dpi{120} \theta^{T}x\gg 0" align="absmiddle" />이 되게하는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 찾는것이 목적</p>
-
-<p>y=0일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)\approx&space;0" alt="\dpi{120} h_{\theta}(x)\approx 0" align="absmiddle" /> 즉,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\ll0" alt="\dpi{120} \theta^{T}x\ll0" align="absmiddle" /> 이 되게하는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 찾는것이 목적</p>
-
-<p> </p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\J(\theta)=-\frac{1}{m}[y\cdot&space;log(h_{\theta}(x))+(1-y)\cdot&space;log(1-h_{\theta}(x))]\\&space;\\&space;=&space;-\frac{1}{m}[y\cdot&space;log(\frac{1}{1+e^{-\theta^{T}x}})+(1-y)\cdot&space;log(1-\frac{1}{1+e^{-\theta^{T}x}})]" alt="\dpi{120} \\J(\theta)=-\frac{1}{m}[y\cdot log(h_{\theta}(x))+(1-y)\cdot log(1-h_{\theta}(x))]\\ \\ = -\frac{1}{m}[y\cdot log(\frac{1}{1+e^{-\theta^{T}x}})+(1-y)\cdot log(1-\frac{1}{1+e^{-\theta^{T}x}})]" align="absmiddle" /></p>
-
-<p> </p>
-
-<p> </p>
-
-<ul>
-  <li><span style="font-size: 14pt;"><strong>SVM hypothesis function &amp; cost function</strong></span></li>
-</ul>
-
-<p>classification에서 각 클래스의 cost는 각각 다음과 같았다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\y=1:\quad&space;cost_{1}=-log(\frac{1}{1+e^{-\theta^{T}x}})\\&space;y=0:\quad&space;cost_{0}=-log(1-\frac{1}{1+e^{-\theta^{T}x}})" alt="\dpi{120} \\y=1:\quad cost_{1}=-log(\frac{1}{1+e^{-\theta^{T}x}})\\ y=0:\quad cost_{0}=-log(1-\frac{1}{1+e^{-\theta^{T}x}})" align="absmiddle" /></p>
-
-<p>하지만 SVM에서는 조금 다른 cost를 사용한다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\y=1:\quad&space;cost_{1}=max(0,k(1-z))\quad\quad&space;z=\theta^{T}x\\&space;y=0:\quad&space;cost_{0}=max(0,k(1+z))\quad\quad&space;z=\theta^{T}x" alt="\dpi{120} \\y=1:\quad cost_{1}=max(0,k(1-z))\quad\quad z=\theta^{T}x\\ y=0:\quad cost_{0}=max(0,k(1+z))\quad\quad z=\theta^{T}x" align="absmiddle" /></p>
-
-<p><img class="aligncenter wp-image-614" src="/images/2018/08/no-name-94.png" alt="" width="593" height="273" srcset="/images/2018/08/no-name-94.png 901w, /images/2018/08/no-name-94-300x138.png 300w, /images/2018/08/no-name-94-768x354.png 768w" sizes="(max-width: 593px) 100vw, 593px" /></p>
-
-<p>위와같이 새로운 cost function형태의 함수를 hinge loss function이라 부른다.</p>
-
-<p>다시 cost function을 하나의 식으로 정리하면,</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=&space;\frac{1}{m}[y\cdot&space;cost_{1}(\theta^{T}x)+(1-y)\cdot&space;cost_{0}(\theta^{T}x)]+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} J(\theta)= \frac{1}{m}[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" /></p>
-
-<p>optimization에 영향이 없으므로 m을 곱하여 식을 간단히 하고 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;C=\frac{1}{\lambda}" alt="\dpi{120} C=\frac{1}{\lambda}" align="absmiddle" />라는 새로운 constant를 곱해주면</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=&space;C[y\cdot&space;cost_{1}(\theta^{T}x)+(1-y)\cdot&space;cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" /></p>
-
-<p>결국 우리는 위 식이 최소가 되도록 θ를 optimization 하면 된다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\lambda" alt="\dpi{120} \lambda" align="absmiddle" />를 사용하나 C를 사용하나 같다. 결국 어떠한 parameter를 크게 한다는 이 parameter가 곱해진 term의 weight를 올린다는 말이고 이는 최소화 시키는 과정에 더 큰 영향을 받는다는 말이기 때문이다.</p>
-
-<p> </p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)=\begin{Bmatrix}&space;1\quad\quad\quad&space;if\quad&space;\theta^{T}x\geq&space;0&space;\\&space;0\quad\quad\quad&space;if\quad&space;\theta^{T}x&lt;0&space;\end{Bmatrix}" alt="\dpi{120} h_{\theta}(x)=\begin{Bmatrix} 1\quad\quad\quad if\quad \theta^{T}x\geq 0 \\ 0\quad\quad\quad if\quad \theta^{T}x&lt;0 \end{Bmatrix}" align="absmiddle" /></p>
-
-<p>y=1일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)\approx&space;1" alt="\dpi{120} h_{\theta}(x)\approx 1" align="absmiddle" /> 즉, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\gg&space;0" alt="\dpi{120} \theta^{T}x\gg 0" align="absmiddle" />이 되게하는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 찾는것이 목적</p>
-
-<p>y=0일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)\approx&space;0" alt="\dpi{120} h_{\theta}(x)\approx 0" align="absmiddle" /> 즉,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\ll0" alt="\dpi{120} \theta^{T}x\ll0" align="absmiddle" /> 이 되게하는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 찾는것이 목적</p>
-
-<p> </p>
-
-<p>SVM의 hypothesis는 logistic regression처럼 class가 1이나 0이 될 확률로 해석하지 않는다. 그저 1이나 0이 될 뿐이다.</p>
-
-<p> </p>
-
-<p><span style="font-size: 18pt;"><strong>2. decision boundary with Large margin</strong></span></p>
-
-<hr />
-
-<p><img class="aligncenter size-medium wp-image-616" src="/images/2018/08/no-name-93-300x205.png" alt="" width="300" height="205" srcset="/images/2018/08/no-name-93-300x205.png 300w, /images/2018/08/no-name-93.png 587w" sizes="(max-width: 300px) 100vw, 300px" /></p>
-
-<p>위 그림에서 가운데 있는 굵은 선을 decision boundary로 잡는다고 해보자. decision boundary이기 때문에 이 선은<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\cdot\cdot\codt+\theta_{n}x_{n}&space;=&space;0" alt="\dpi{120} \theta^{T}x=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\cdot\cdot\codt+\theta_{n}x_{n} = 0" align="absmiddle" />  의 방정식을 만족한다. 그리고 이 경계선에서 벗어나 있는 점들에 θ를 곱하면 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=c&space;\quad&space;(c\neq&space;0)" alt="\dpi{120} \theta^{T}x=c \quad (c\neq 0)" align="absmiddle" />가 된다. 모든 데이터가 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;1" alt="\dpi{120} \left | \theta^{T}x \right |\geq 1" align="absmiddle" />을 만족하도록 decision boundary를 잡아 margin을 크게 하여 안정된 예측을 하는 것이 목표이다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;0" alt="\dpi{120} \left | \theta^{T}x \right |\geq 0" align="absmiddle" />이 아니라 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;1" alt="\dpi{120} \left | \theta^{T}x \right |\geq 1" align="absmiddle" /> 인 것에 주목해야한다. 이것이 support vector machine 알고리즘을 사용하는 목적이기 때문이다. 0이 아닌 1을 기준으로 잡은 이유는 넉넉히 여유를 남기고 예측하고 싶어서이다. 여유를 남긴다는 것은 지금까지 본 적 없는 data에 대한 예측 적중률이 올라가는 것을 의미한다.</p>
-
-<p>이를 다른 관점에서 보자.</p>
-
-<p><img class="aligncenter size-full wp-image-617" src="/images/2018/08/no-name-95.png" alt="" width="598" height="193" srcset="/images/2018/08/no-name-95.png 598w, /images/2018/08/no-name-95-300x97.png 300w" sizes="(max-width: 598px) 100vw, 598px" /></p>
-
-<p>기하학적으로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x" alt="\dpi{120} \theta^{T}x" align="absmiddle" />는 (<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" /> 크기)×(<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" />를 벡터 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />에 projection한 벡터의 크기 )이다.</p>
-
-<p><img class="aligncenter size-full wp-image-623" src="/images/2018/08/123.png" alt="" width="273" height="291" /></p>
-
-<p>결국 p가 margin이었다. 즉<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\geq&space;1" alt="\dpi{120} \theta^{T}x\geq 1" align="absmiddle" /> 이라는 조건은<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta&space;\times&space;margin)&space;\geq&space;1" alt="\dpi{120} (\theta \times margin) \geq 1" align="absmiddle" />  와 같이 해석이 된다.</p>
-
-<p> </p>
-
-<p>평면 방정식에 대해 잘 모르시는 분들을 위해 평면 방정식에 관해 설명한 간단한 포스팅 하나를 올려두었다.</p>
-
-<p>https://SWnomad.com/%ED%8F%89%EB%A9%B4-%EB%B0%A9%EC%A0%95%EC%8B%9D/</p>
-
-<p> </p>
-
-<p>정리를 하면 다음과 같다.</p>
-
-<p>우리는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=&space;C[y\cdot&space;cost_{1}(\theta^{T}x)+(1-y)\cdot&space;cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" />가 최소가 되도록 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 최적화 해야한다.</p>
-
-<p>위 식에서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} \sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" /> 가 작아져야 하므로<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=\left&space;|&space;\theta&space;\right&space;|p\geq&space;1" alt="\dpi{120} \theta^{T}x=\left | \theta \right |p\geq 1" align="absmiddle" /> 의 조건을 만족시키는 과정에서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />는 최소화가 되고  p, 즉 마진이 커지게 된다.</p>
-
-<p><strong><span style="color: #ff0000; font-size: 14pt;">즉, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=\left&space;|&space;\theta&space;\right&space;|p\geq&space;1" alt="\dpi{120} \theta^{T}x=\left | \theta \right |p\geq 1" align="absmiddle" />의 조건을 만족하면서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=&space;C[y\cdot&space;cost_{1}(\theta^{T}x)+(1-y)\cdot&space;cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" />를 최소화 시키는 작업은 margin이 최대화 된 decision boundary를 구하는 일인 것이다.</span></strong></p>
-
-<p> </p>
-
-<p>위의 방정식 문제는 Lagrange Multiplier라는 방법을 써서 풀 수 있다. 하지만 위의 수식에 대해 적용하는 것은 그리 간단한 작업이 아니다. 그리고 우리가 그런 대수적인 증명까지 해야 할 필요는 없다. R, matlab, octave, python 등의 프로그래밍 도구는 이미 전산수학 전문가들이 만들어놓은 훌륭한 라이브러리를 제공한다. 위에서 이해한 내용을 바탕으로 라이브러리를 사용하면 간결한 스크립트 몇 줄만으로 SVM 알고리즘을 구현할 수 있다.</p>
-
-<p>한 가지 생각해볼 게 있다.</p>
-
-<p><img class="aligncenter size-medium wp-image-643" src="/images/2018/08/no-name-99-300x281.png" alt="" width="300" height="281" srcset="/images/2018/08/no-name-99-300x281.png 300w, /images/2018/08/no-name-99.png 462w" sizes="(max-width: 300px) 100vw, 300px" /></p>
-
-<p>위의 그림과 같은 dataset의 경우 두 decision boundary 중 어느 것이 더 좋은 선택일까? data 중 1개가 outlier이다. 이런 일반적인 경향에서 벗어나는 data까지 모두 분류하는 것이 좋은 것인가? 1번은 모든 데이터를 완벽히 분류한다. 하지만 이러한 decision boundary는 training dataset은 모두 완벽히 분류할 지 몰라도 2번 decision boundary가 더 일반적인 분류 패턴을 보이기 때문에 처음 보는 data를 예측할 때에는 2번 boundary에 의한 분류가 더 정확도가 높을 것이라 생각된다. C가 크면 overfitting이 일어나 1번과 같은 decision boundary를 가지게 된다. 이런 경우 C를 낮추어 더 일반적인 decision boundary를 찾아야 한다.</p>
-
-<p> </p>
-
-<p><span style="font-size: 18pt;"><strong>3. Kernels</strong></span></p>
-
-<hr />
-
-<p>지금까지의 예시에서는 모든 데이터들이 선형적으로 분류가 가능하여 decision boundary로 평면이 될 수 있었다. 하지만 항상 평면으로 모든 data를 분류할 수 있는것이 아니다. 다음과 같은 경우를 보자.</p>
-
-<p><img class="aligncenter size-medium wp-image-639" src="/images/2018/08/no-name-96-300x274.png" alt="" width="300" height="274" srcset="/images/2018/08/no-name-96-300x274.png 300w, /images/2018/08/no-name-96.png 323w" sizes="(max-width: 300px) 100vw, 300px" /></p>
-
-<p>데이터의 분포가 위와 같을 경우는 non-linear한 decision boundary가 필요하다. SVM에서 non-linear한 classification 문제를 풀기 위해서는 Kernel이란 trick을 사용해야한다.</p>
-
-<p>Kernel이란 것은 간단히 말해 원래 주어진 feature<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" /> 를 어떠한 정해진 규칙에 따라 가공을 하여 새로운 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f" alt="\dpi{120} f" align="absmiddle" />를 만들어 사용하는 것이다. 그럼 decision boundary의 방정식도 다음과 같이 바뀐다.</p>
-
-<p> </p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x&space;\rightarrow&space;\theta^{T}f" alt="\dpi{120} \theta^{T}x \rightarrow \theta^{T}f" align="absmiddle" />                <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;y=1:\theta^{T}f\geq&space;0&space;\\&space;y=0:\theta^{T}f&lt;&space;0" alt="\dpi{120} \\ y=1:\theta^{T}f\geq 0 \\ y=0:\theta^{T}f&lt; 0" align="absmiddle" /></p>
-
-<p>아무튼간에 kernel를 통해 feature 변환을 하면 non-linear classifier SVM을 만들 수 있다.</p>
-
-<p>새로운 feature<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f" alt="\dpi{120} f" align="absmiddle" /> 를 구하는 방법을 알아보자.</p>
-
-<p>총 m개의 training dataset 중 i번째 training data <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />에 대해 변환을 하여보자.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;f^{(i)}_{1}=similarity(x^{(i)},x^{(1)})=exp({-\frac{\left&space;\|&space;x^{(i)}-x^{(1)}&space;\right&space;\|^{2}}{2\sigma^{2}}})\\&space;f^{(i)}_{2}=similarity(x^{(i)},x^{(2)})=exp({-\frac{\left&space;\|&space;x^{(i)}-x^{(2)}&space;\right&space;\|^{2}}{2\sigma^{2}}})&space;\\&space;\cdot&space;\\&space;\cdot&space;\\f^{(i)}_{m}=similarity(x^{(i)},x^{(m)})=exp({-\frac{\left&space;\|&space;x^{(i)}-x^{(m)}&space;\right&space;\|^{2}}{2\sigma^{2}}})" alt="\dpi{120} \\ f^{(i)}_{1}=similarity(x^{(i)},x^{(1)})=exp({-\frac{\left \| x^{(i)}-x^{(1)} \right \|^{2}}{2\sigma^{2}}})\\ f^{(i)}_{2}=similarity(x^{(i)},x^{(2)})=exp({-\frac{\left \| x^{(i)}-x^{(2)} \right \|^{2}}{2\sigma^{2}}}) \\ \cdot \\ \cdot \\f^{(i)}_{m}=similarity(x^{(i)},x^{(m)})=exp({-\frac{\left \| x^{(i)}-x^{(m)} \right \|^{2}}{2\sigma^{2}}})" align="absmiddle" /></p>
-
-<p> </p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}=(x^{(i)}_{1},x^{(i)}_{2},\cdot\cdot\cdot,x^{(i)}_{n})\quad&space;\rightarrow&space;\quad&space;f^{(i)}=(f^{(i)}_{1},f^{(i)}_{2},\cdot\cdot\cdot,f^{(i)}_{m})" alt="\dpi{120} x^{(i)}=(x^{(i)}_{1},x^{(i)}_{2},\cdot\cdot\cdot,x^{(i)}_{n})\quad \rightarrow \quad f^{(i)}=(f^{(i)}_{1},f^{(i)}_{2},\cdot\cdot\cdot,f^{(i)}_{m})" align="absmiddle" /></p>
-
-<p>자신을 포함한 다른 모든 training example과의 similarity를 계산하여 하나의 feature로 만든다.</p>
-
-<p>주의해야 할 것은 feature의 갯수가 n에서 m으로 바뀌었다. 따라서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />의 dimension도 바뀐다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}\in&space;\mathbb{R}^{n+1}\quad&space;\rightarrow&space;\quad&space;f^{(i)}&space;\in&space;\mathbb{R}^{m+1}" alt="\dpi{120} x^{(i)}\in \mathbb{R}^{n+1}\quad \rightarrow \quad f^{(i)} \in \mathbb{R}^{m+1}" align="absmiddle" /></p>
-
-<p>We wanted<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x^{(i)}\right&space;|=\left&space;|\theta_{0}+\theta_{1}x^{(i)}_{1}+\theta_{2}x^{(i)}_{2}+\cdot&space;\cdot&space;\cdot+\theta_{n}x^{(i)}_{n}&space;\right&space;|&space;\geq&space;1" alt="\dpi{120} \left | \theta^{T}x^{(i)}\right |=\left |\theta_{0}+\theta_{1}x^{(i)}_{1}+\theta_{2}x^{(i)}_{2}+\cdot \cdot \cdot+\theta_{n}x^{(i)}_{n} \right | \geq 1" align="absmiddle" /></p>
-
-<p>But now we want <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left|\theta^{T}f^{(i)}\right&space;|=\left&space;|\theta_{0}+\theta_{1}f^{(i)}_{1}+\theta_{2}f^{(i)}_{2}+\cdot&space;\cdot&space;\cdot+\theta_{m}f^{(i)}_{m}&space;\right&space;|&space;\geq&space;1" alt="\dpi{120} \left|\theta^{T}f^{(i)}\right |=\left |\theta_{0}+\theta_{1}f^{(i)}_{1}+\theta_{2}f^{(i)}_{2}+\cdot \cdot \cdot+\theta_{m}f^{(i)}_{m} \right | \geq 1" align="absmiddle" /></p>
-
-<p>Cost function도 다음과 같이 된다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=\sum_{i=1}^{m}y^{(i)}cost_{1}(\theta^{T}f^{(i)})+(1-y^{(i)})cost_{0}(\theta^{T}f^{(i)})+\frac{1}{2}\sum_{j=1}^{m}\theta_{j}^{2}" alt="\dpi{120} J(\theta)=\sum_{i=1}^{m}y^{(i)}cost_{1}(\theta^{T}f^{(i)})+(1-y^{(i)})cost_{0}(\theta^{T}f^{(i)})+\frac{1}{2}\sum_{j=1}^{m}\theta_{j}^{2}" align="absmiddle" /></p>
-
-<p>최적화 과정에서 기존의 training example 대신 kernel로 변환 된 새로운 dataset을 사용하면 된다.</p>
-
-<p>참고로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f_{i}" alt="\dpi{120} f_{i}" align="absmiddle" />를 계산할 때 사용한 함수는 Gaussian function이다. 따라서 위의 Kernel을 Gaussian Kernel이라고 한다. Gaussian Kernel 이외에도 여러가지 다양한 Kernel 함수들이 있다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" /> 은 Gaussian Kernel의 중요한 parameter이다.</p>
-
-<p>higher <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" /> : kernel함수 혹은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f" alt="\dpi{120} f" align="absmiddle" />가 smooth하게 변하며 high bias를 유도한다.</p>
-
-<p>low  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" /> :  kernel함수 혹은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f" alt="\dpi{120} f" align="absmiddle" />가 rapid하게 변하며 high variance를 유도한다.</p>
-
-<p> </p>
-
-<p>아무튼 이제 새로운 feature로 분류를 하면 된다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}f\geq&space;0" alt="\dpi{120} \theta^{T}f\geq 0" align="absmiddle" />이면 positive class,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}f&lt;&space;0" alt="\dpi{120} \theta^{T}f&lt; 0" align="absmiddle" /> 이면 negative class이다.</p>
-
-<p>3개의 feature로 부터 얻은 parameter가<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{0}=-0.5,&space;\theta_{1}=1,&space;\theta_{2}=1,&space;\theta_{3}=0" alt="\dpi{120} \theta_{0}=-0.5, \theta_{1}=1, \theta_{2}=1, \theta_{3}=0" align="absmiddle" /> 이라고 해보자. 그리고 새로운 test data가 있다. 이 data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)}" alt="\dpi{120} x^{(1)}" align="absmiddle" />에 근접해있고 다른 데이터에서는 멀다고 해보자. 그렇다면 이 test data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f_{1}\approx&space;1,&space;f_{2}\approx0,f_{3}\approx0" alt="\dpi{120} f_{1}\approx 1, f_{2}\approx0,f_{3}\approx0" align="absmiddle" />이 될 것이다. 그렇다면 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)=\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}\approx&space;-0.5&space;+1&space;+0+0=0.5&gt;&space;0" alt="\dpi{120} h_{\theta}(x)=\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}\approx -0.5 +1 +0+0=0.5&gt; 0" align="absmiddle" /> 따라서 이 data는 class1으로 분류된다. 이처럼 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(2)},x^{(3)}" alt="\dpi{120} x^{(2)},x^{(3)}" align="absmiddle" />에 근접해 있는 test data에서도 예측을 하였는데 2 번째 data는 positive class, 마지막 data는 negative class로 분류되었다고 해보자. 이런 경우 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)}" alt="\dpi{120} x^{(1)},x^{(2)}" align="absmiddle" />근처는 positive class 영역, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(3)}" alt="\dpi{120} x^{(3)}" align="absmiddle" />근처는 negative class 영역인 것처럼 보인다. 따라서 decision boundary는 다음과 비슷하게 그려질 것이다.</p>
-
-<p><img class="aligncenter size-full wp-image-644" src="/images/2018/08/no-name-100.png" alt="" width="277" height="214" /></p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<p><span style="font-size: 18pt;"><strong>#Tips for using SVM</strong></span></p>
-
-<hr />
-
-<ul>
-  <li>SVM과 관련한 훌륭한 library가 많기 때문에 이를 사용하면 된다.</li>
-</ul>
-
-<p> </p>
-
-<ul>
-  <li>parameter C, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" />과 Kernel function의 종류를 정해야 한다. parameter C는 cross validation set을 사용하여 결정하면 된다.</li>
-</ul>
-
-<p>e.g. No kernel = linear kernel : feature의 갯수 n이 크고, training dataset의 갯수 m이 작은 경우 굳이 kernel을 사용할 필요가 없다. data의 수가 적은 경우 kernel을 통해 non-linear classifier를 만들면 high variance(overfitting)문제가 일어날 가능성이 있기 때문이다. kernel을 적용하지 않을 경우, 즉 no kernel인 경우를 linear kernel라고도 부르고 이는 단지 linear classifier일 뿐이다.</p>
-
-<p> </p>
-
-<ul>
-  <li>Gaussian Kernel을 사용하기 전에 feature scailing은 필수이다.</li>
-</ul>
-
-<p>e.g. feature들의 scale의 차이가 큰 경우 feature scailing이나 feature normalization을 해주지 않으면 linear regression이나 logistic regression의 경우처럼 좋은 훈련 parameter를 얻지 못할 수 있다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<ul>
-  <li>Gaussian Kernel을 사용할 때 high bias와 high variance의 trade-off 사이에서 적절한 값의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" />을 선택해야한다.</li>
-</ul>
-
-<p> </p>
-
-<ul>
-  <li>multi-class classification의 경우에도 이미 만들어져있는 훌륭한 SVM library가 많다. 이 package를 사용하거나 one-vs-all method를 사용해도 된다.</li>
-</ul>
-
-<p> </p>
-
-<ul>
-  <li>Gaussian Kernel을 언제 쓸까?</li>
-</ul>
-
-<p>– n large, m small : 이 경우는 안그래도 high variance로 갈 가능성이 큰 데 non-linear kernel까지 사용해서 overfitting을 부추길 필요 없으므로 linear classification을 하는 것이 좋다.</p>
-
-<p>– n small, m intermediate : 이 경우는 feature 수는 작고 training example 갯수도 SVM 알고리즘을 계산하기에 부담이 없을 경우 non linear kernel를 쓰면 좋은 모델을 만들 수 있을 가능성이 크다.</p>
-
-<p>– n small, m large : feature 수는 작지만 training example의 갯수가 10만, 혹은 100만 정도로 크다면 계산의 시간 복잡도가 너무 커서 차라리 새로운 feature를 추가하거나 polynomial feature를 새로 만들어서 linear kernel SVM이나 logistic regression으로 푸는 것이 오히려 효율적이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/08/20/15-3-machine-learning-system-design-3-using-larger-datasets/">
-        15-3. Machine Learning System Design - Using Larger Datasets
-      </a>
-    </h1>
-
-    <span class="post-date">20 Aug 2018</span>
-
-    <p>머신러닝에서 승자는 “우수한 알고리즘을 가진 자 가 아닌 많은 데이터를 가진 자” 라는 말이 있다. 이러한 말이 맞는 경우도 있고 아닌 경우도 있다.</p>
-
-<p>다음과 같은 알고리즘이 있다 해보자.</p>
-
-<p>For breakfast, I ate _<em>__</em> eggs.</p>
-
-<p>위의 빈 칸에 들어갈 단어를 [to, two, too] 중에서 맞게 고르는 알고리즘이다. 이러한 경우 앞 뒤의 문맥이 feature x로 들어갈 수 있을 것이다. 하지만 이러한 경우 앞 뒤의 단어만으로 빈 칸에 알맞는 단어를 고를 수 있을 정도로 방대한 양의 training dataset이 필요하다고 생각이 든다.</p>
-
-<p>하지만 다음과 같은 반례를 생각해보자. 집의 가격을 예측하는 알고리즘이다. 그리고 집의 크기만을 feature로 가진다. 집의 연식, 층 수, 방의 수, 등등 아무 것도 고려하지 않는다. 이러한 경우는 아무리 많은 데이터를 넣어줘도 집의 가격을 제대로 예측할 수 없을 것이다.</p>
-
-<p> </p>
-
-<p>따라서 많은 양의 데이터가 알고리즘을 개선시키는데 도움이 될 지 안 될지는 다음을 기준으로 판단할 수 있다.</p>
-
-<p>‘주어진 feature의 정보를 가지고 그 분야의 전문가가 결과 y를 예측하기에 충분한가?’</p>
-
-<p>예시 1에서는 영어 전문가가 오면 feature(앞 뒤의 문맥)을 가지고 빈 칸에 맞는 단어를 충분히 선택할 수 있다. 따라서 많은 양의 데이터로 훈련을 시킨다면 좋은 모델이 나올 가능성이 높다.</p>
-
-<p>하지만 예시 2에서는 부동산 전문가가 오더라도 feature(집의 크기) 하나만 딸랑 알려준다면 예측이 힘들 것이다. 따라서 이런 경우는 많은 양의 데이터가 알고리즘을 개선하는 데 아무런 도움이 되지 않는다.</p>
-
-<p> </p>
-
-<p>정리하자면, 충분한 가짓 수의 feature와 parameter가 있는 복잡한 알고리즘은 — 이런 경우 high variance(overfit)이 일어나기 쉬운데 이러한 알고리즘을 low bias(high variance) 알고리즘이라고 부른다 — 많은 양의 데이터가 알고리즘의 성능을 개선하는데 도움을 준다.</p>
-
-<p>low bias 알고리즘 : 많은 feature와 parameter로 인해서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />이 매우 낮을 것이다.</p>
-
-<p><span style="font-size: 14pt;"><strong>+</strong></span></p>
-
-<p>large data : low bias(high variance)를 해소시켜<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}\approx&space;J_{train}" alt="\dpi{120} J_{test}\approx J_{train}" align="absmiddle" />  이 되도록 도와준다.</p>
-
-<p>위 두 가지를 종합하면 <span style="color: #ff0000;"><strong>복잡한 high bias 알고리즘에 large data를 넣어주면 알고리즘의 성능을 개선하는 데 도움이 된다.</strong></span></p>
 
   </div>
   

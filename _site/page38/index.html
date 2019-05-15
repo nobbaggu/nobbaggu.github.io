@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,299 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/29/6-integer-character/">
+        6. 자료형 (1) - 숫자, 문자
+      </a>
+    </h1>
+
+    <span class="post-date">29 Sep 2018</span>
+
+    <p>변수를 선언할 때 자료형 을 명시해주는 이유는 다음과 같습니다.</p>
+
+<ol>
+  <li>
+    <p><strong>‘정수’와 ‘정수가 아닌 실수’를 표현하는 방식 자체가 다르기 때문에 컴파일러에게 미리 알려줘야한다.</strong></p>
+  </li>
+  <li>
+    <p><strong>데이터를 저장할 메모리공간의 크기를 컴파일러에게 알려주어야한다</strong>.</p>
+  </li>
+</ol>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="1-정수-자료형--숫자-표현">1. 정수 자료형 : 숫자 표현</h1>
+
+<hr />
+
+<p>C언어에서는 아래와 같은 자료형이 있습니다.</p>
+
+<table style="width: 75.7599%; border-collapse: collapse;" border="1">
+  <tr>
+    <td style="width: 13.63%; text-align: center;" colspan="2">
+      <strong>자료형</strong>
+    </td>
+    
+    <td style="width: 10.77%; text-align: center;">
+      <strong>메모리</strong>
+    </td>
+    
+    <td style="width: 51.1874%; text-align: center;">
+      <strong>표현할 수 있는 숫자의 범위</strong>
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 6.5%; text-align: center;" rowspan="5">
+      <strong>정수</strong>
+    </td>
+    
+    <td style="width: 7.13%; text-align: center;">
+      char
+    </td>
+    
+    <td style="width: 10.77%; text-align: center;">
+      1byte
+    </td>
+    
+    <td style="width: 51.1874%;">
+      -128 ~ +127
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.13%; text-align: center;">
+      short
+    </td>
+    
+    <td style="width: 10.77%; text-align: center;">
+      2byte
+    </td>
+    
+    <td style="width: 51.1874%;">
+      -32,768 ~ +32,767
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.13%; text-align: center;">
+      int
+    </td>
+    
+    <td style="width: 10.77%; text-align: center;">
+      4byte
+    </td>
+    
+    <td style="width: 51.1874%;">
+      -2,147,483,648 ~ +2,147,483,647
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.13%; text-align: center;">
+      long
+    </td>
+    
+    <td style="width: 10.77%; text-align: center;">
+      4byte
+    </td>
+    
+    <td style="width: 51.1874%;">
+      -2,147,483,648 ~ +2,147,483,647
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.13%; text-align: center;">
+      long long
+    </td>
+    
+    <td style="width: 10.77%; text-align: center;">
+      8byte
+    </td>
+    
+    <td style="width: 51.1874%;">
+      -9,223,372,036,854,775,808 ~ +9,223,372,036,854,775,807
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 6.5%; text-align: center;" rowspan="2">
+      <strong>실수</strong>
+    </td>
+    
+    <td style="width: 7.13%; text-align: center;">
+      float
+    </td>
+    
+    <td style="width: 10.77%; text-align: center;">
+      4byte
+    </td>
+    
+    <td style="width: 51.1874%;">
+      ±3.4×10^-37 ~ ±3.4×10^+38
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 7.13%; text-align: center;">
+      double
+    </td>
+    
+    <td style="width: 10.77%; text-align: center;">
+      8byte
+    </td>
+    
+    <td style="width: 51.1874%;">
+      ±1.7×10^-307 ~ ±1.7×10^+308
+    </td>
+  </tr>
+</table>
+
+<p>사실 우리는 <strong>정수형 변수를 선언할 때 보통 int보다 작은 자료형은 잘 쓰지 않습니다. char나 short, int 중 무엇을 쓰던지 사실 CPU의 처리속도는 차이가 거의 나지 않기 때문이에요.</strong> 그렇다면 굳이 int보다 작은 자료형을 쓸 필요가 없죠. <strong>메모리 공간까지 신경써야 할 상황이 아니라면 말이죠.</strong></p>
+
+<p>정수 자료형을 사용하여 표현할 수 있는 숫자의 범위는 그 자료형의 크기가 나타낼 수 있는 경우의 수와 같습니다. 가령 short는 2byte = 16bit이기 때문에 2^16 = 65,536의 경우의 수를 나타낼 수 있어요. 단, 가장 앞에 오는 최상위 비트(MSB)는 부호를 표현하는데 사용이 됩니다. 따라서 실제로 데이터의 크기를 표현하는데에는 15bit만 사용이 되어 2^15 = 32,768 가지의 상태를 나타낼 수 있어요. 가장 앞의 bit가 0이면 양수, 1이면 음수를 나타냅니다.</p>
+
+<p>음수가 필요없는 경우에는 자료형 앞에 unsigned를 붙여서 해결할 수 있습니다. 예를들어 unsigned short a; 라고 선언을 하면 첫번째 bit도 데이터의 크기를 표현하는데 사용이 되기때문에 2^16 = 65,536 가지의 상태를 온전히 데이터의 크기만 표현하는데 사용할 수 있습니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-정수-자료형--문자-표현">2. 정수 자료형 : 문자 표현</h1>
+
+<hr />
+
+<p>정수 자료형 char는 문자(character)를 나타내는 데 많이 사용됩니다. (물론 다른 정수 자료형도 문자를 나타내는데 사용할 수 있습니다.) 문자가 표현되는 원리를 알려면 ASCII(American Standard Code for Information Interchange)에 에 대해 알아야합니다. 아스키 코드는 미국표준협회(ANSI)에서 만든 표준 코드체계입니다. 아스키 코드에서는 문자를 표현하기 위해서 우리는 문자 하나 하나를 어떠한 정수에 대입시키기로 약속을 하였습니다.</p>
+
+<p><img class="aligncenter size-full wp-image-1213" src="/images/2018/09/ASCII.jpg" alt="" width="1306" height="729" srcset="/images/2018/09/ASCII.jpg 1306w, /images/2018/09/ASCII-300x167.jpg 300w, /images/2018/09/ASCII-768x429.jpg 768w, /images/2018/09/ASCII-1024x572.jpg 1024w" sizes="(max-width: 1306px) 100vw, 1306px" /></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">char</span> <span class="n">char1</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>
+   <span class="kt">char</span> <span class="n">char2</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
+
+   <span class="n">printf</span><span class="p">(</span><span class="s">"The character of ch1 is %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">char1</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"The ASCII code of ch1 is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">char1</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"The character of ch2 is %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">char2</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"The ASCII code of ch2 is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">char2</span><span class="p">);</span>
+
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>The character of ch1 is A</p>
+
+<p>The ASCII code of ch1 is 65</p>
+
+<p>The character of ch2 is A</p>
+
+<p>The ASCII code of ch2 is 65</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p> </p>
+
+<p>char1 변수에 ‘A’ 를 저장했습니다. <strong>문자를 대입할때는 ‘ ‘ 을 사용합니다</strong>. char2에는 65를 저장했습니다. char1은 ‘A’로 저장했는데 %d의 서식문자를 사용해 출력을 하면 65가 나옵니다.</p>
+
+<p>반면에 char2에는 정수 65를 저장하였는데 %c의 서식문자를 사용해 출력을 하니 A가 나옵니다. 여기서 알 수 있는건 <strong>char형 변수에 정수를 저장하든 그 정수에 아스키코드상에서 대입이 되는 문자를 저장하든 그 둘은 정확히 같은 행위라는 사실입니다.</strong></p>
+
+<p>추가로 한 가지를 더 확인을 해보죠.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">char</span> <span class="n">ch1</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch1</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch1</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>75</p>
+
+<p>K</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>char1+10의 출력결과는 75입니다. ‘A’에 해당하는 아스키 코드 65에 10을 더했기 때문입니다. char1+10을 %c(문자형태)로 출력하면 ‘K’가 나옵니다. 아스키코드 75는 문자 ‘K’이기 때문입니다.</p>
+
+<p>어느 정수 자료형도 문자를 출력할 수 있지만 아스키코드는 0~127의 값밖에 없기 때문에 char 자료형을 사용하여 모두 표현 가능합니다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/28/5-printf/">
+        5. printf 함수
+      </a>
+    </h1>
+
+    <span class="post-date">28 Sep 2018</span>
+
+    <p>printf()함수는 거의 모든 C코드에 들어갑니다.</p>
+
+<p>printf()함수는 모니터를 통해서 어떠한 문장을 출력해주는 함수입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+   <span class="kt">char</span> <span class="n">sex</span> <span class="o">=</span> <span class="sc">'M'</span><span class="p">;</span>
+   <span class="kt">char</span> <span class="n">say</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="s">"I will be a C language master</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+
+   <span class="n">printf</span><span class="p">(</span><span class="s">"I love C language</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"my age is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">age</span><span class="p">);</span> <span class="c1">// %d는 정수 서식문자
+</span>   <span class="n">printf</span><span class="p">(</span><span class="s">"my age is %d and sex is %c </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">);</span> <span class="c1">// %c는 문자 서식문자
+</span>   <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n\n\n</span><span class="s">"</span><span class="p">);</span> <span class="c1">//개행 3번
+</span>   <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">say</span><span class="p">);</span> <span class="c1">// %s는 문자열 서식문자
+</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>I love C language<br />
+my age is 80<br />
+my age is 80 and sex is M</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>I will be a C language master<br />
+계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p> </p>
+
+<p>먼저 문장 1번 문장을 통해서 알 수 있는건, <strong>printf() 함수는 “ “ 사이에 있는 문장을 출력해준다</strong>는 것을 알 수 있어요. 간단하죠?</p>
+
+<p>자 그럼 2,3번 문장을 봐주세요. 저기서 %d와 %c를 서식 문자라고 하는데, 촐력을 할 때 출력이 되는 형태를 지정해주기 위해 씁니다. age는 정수이기 때문에 %d, M은 하나의 문자이기 때문에 %c를 사용했습니다. %s는 문자가 여러개인 문자열을 출력할 때 쓰는 서식문자입니다.</p>
+
+<p>\n은 <strong>‘개행’</strong>을 의미합니다. 줄을 띄울 때 씁니다. \n을 넣지않고 출력하면 줄이 바뀌지 않고 바로 이어서 다음 문장이 오기때문에 \n을 써주어야 합니다.</p>
+
+<p>정리를 해볼게요.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10826,126 +11189,6 @@
 <p>여기서 말씀드린 내용이 이해가 안가도 C언어를 공부하는데는 아무런 지장도 없습니다.</p>
 
 <p><u><b>'bit가 data를 나타낼 수 있는 최소 단위이다'</b></u> 라는 것 정도만 기억해 두셔도 충분합니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/27/1-c-program/">
-        1. C언어로 프로그램이 제작되는 과정
-      </a>
-    </h1>
-
-    <span class="post-date">27 Sep 2018</span>
-
-    <p>자, 프로그래밍 언어가 무엇인지 이제 알았으니 그 중 C언어로 프로그램이 어떻게 만들질까요?</p>
-
-<p> </p>
-
-<h1 id="1-소스코드source-code생성">1. 소스코드(source code) 생성</h1>
-
-<hr />
-
-<p>우리가 만들고자 하는 프로그램이 어떤것인가? 가령, 간단한 4칙연산 계산기를 C언어로 구현해보려 합니다. 우리가 두 개의 숫자를 넣고, ＋연산, －연산, ×연산, ÷연산 중 하나를 선택하여 계산결과를 모니터로 출력 해주는 기능이 필요합니다. 이 기능을 가능하게 해주는 C 코드를 우리가 작성합니다. 이 과정을 소스코드 작성, 생성이라고 합니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-컴파일compile">2. 컴파일(compile)</h1>
-
-<hr />
-
-<p>우리가 만든 소스코드는 기계(컴퓨터)가 바로 이해할 수 없는 언어입니다. 하지만, 컴파일러를 통하여 기계어로 번역을 해준다면 컴퓨터가 이해할 수 있는 2진코드(0과 1의 나열)로 변환할 수 있죠. 바로 이러한 ‘C언어 → 기계어’ 의 변환과정을 컴파일이라고 합니다. 컴파일러가 바로 이 컴파일의 과정을 해줍니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p>자, 그럼 위의 두 과정을 거치면 흔히 우리가 컴퓨터에서 보는 .exe 확장자의 파일(실행파일)이 만들어져요. 즉, 프로그램 실행파일이 만들어지는거에요. 여기서는 간단한 4칙연산 계산기를 예로 들었지만, 크게 보면 우리가 흔히 하는 게임이나, 그림판 같은 프로그램들도 복잡성만 더해졌을 뿐 기본적인 원리는 같아요.</p>
-
-<p>이 과정을 간단한 도표로 나타내 볼까요?</p>
-
-<p><img class="aligncenter wp-image-898" src="/images/2018/09/1-5.jpg" alt="" width="296" height="295" srcset="/images/2018/09/1-5.jpg 516w, /images/2018/09/1-5-150x150.jpg 150w, /images/2018/09/1-5-300x300.jpg 300w" sizes="(max-width: 296px) 100vw, 296px" /></p>
-
-<p>에러 부분이 보이시죠? 에러가 발생하면 컴파일이 되지 않아요. 따라서, 우리는 소스코드를 수정하여 다시 컴파일을 시도해야 합니다.</p>
-
-<p>보통, 컴파일 과정 다음에 링크라는 과정도 있는데, 보통의 개발환경(IDE)에서는 이 두 과정을 합쳐줍니다. 그리고 컴파일, 링크 과정을 합쳐 빌드(build)라고 하는데, 그냥 링크 과정을 컴파일에 포함시켜 컴파일이라고 부르는게 일반적입니다. 즉! 간단하게 1. 소스코드 생성 2. 컴파일 이라고 생각하시면 돼요</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-통합-개발환경ide">3. 통합 개발환경(IDE)</h1>
-
-<hr />
-
-<p>위에서 말씀드린 일련의 과정을 보통은 통합개발환경(IDE) 에서 합니다.</p>
-
-<p>IDE란 소스코드생성(코딩) 할 수 있는 편집작업, 컴파일 작업을 해주는 해주는 소프트웨어(SW) 입니다. 추가로 에러가 어디서 발생하였는지 알려주는 중요한 기능인 디버그(debug)의 기능도 수행해 줍니다. 여기까지만 알면 충분해요~ 부가적인 다른 기능들도 많지만 신경쓰실 필요 없어요.</p>
-
-<p>앞으로 C언어를 하시려면 IDE는 필수인데, 저는 가장 널리 알려진 통합개발환경 중 하나인 Visual Studio를 사용합니다. 이 외에도 무료로 오픈되는 IDE들도 많이 있으니 무엇을 사용할지는 자유입니다.</p>
-
-<p><a href="http://www.orentec.co.kr/jaryosil/C_BASIC_2/add_form1.php">http://www.orentec.co.kr/jaryosil/C_BASIC_2/add_form1.php</a></p>
-
-<p>위 링크는 열혈 C프로그래밍의 저자이신 윤성우님이 운영하시는 오렌지미디어 사이트에요.</p>
-
-<p>위 링크를 타고 들어가시면 visual studio 를 설치하고 초기 세팅하는 과정을 설명해 놓은 자료가 있으니, 혹시 필요하시다면 참고하시면 됩니다.</p>
-
-<p>자 그럼 위의 과정을 직접 실행해 보겠습니다.</p>
-
-<p><img class="aligncenter size-full wp-image-900" src="/images/2018/09/2-1.png" alt="" width="600" height="308" srcset="/images/2018/09/2-1.png 600w, /images/2018/09/2-1-300x154.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></p>
-
-<p><img class="aligncenter size-full wp-image-901" src="/images/2018/09/3.png" alt="" width="600" height="317" srcset="/images/2018/09/3.png 600w, /images/2018/09/3-300x159.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></p>
-
-<p>첫번째 사진은 visual studio에서 코드를 작성한 것입니다. 나중에 알게 되시겠지만, 저기에 있는 코드는 Let’s start C language 라는 구문을 모니터 상으로 출력해줘 라는 내용이에요.</p>
-
-<p>컴파일을 하고 실행을 시키면 window 콘솔창을 통해 모니터로 출력이 됩니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/27/0-what-is-c/">
-        0. C언어란 무엇인가?
-      </a>
-    </h1>
-
-    <span class="post-date">27 Sep 2018</span>
-
-    <p>C언어 혹은 프로그래밍 언어(Programming Language)란 무엇일까요?</p>
-
-<p>프로그래밍 언어란 쉽게 설명하여 인간과 컴퓨터간의 대화를 가능하게 해주는 <strong>‘중간언어’</strong>라고 정의 내릴 수 있습니다.</p>
-
-<p>저는 컴퓨터에게 어떠한 행동을 명령하고 그 결과물을 저에게 모니터를 통해 출력해 달라는 명령을 하고 싶어요.</p>
-
-<p>육성으로 “야 컴퓨터, 10+10을 계산해서 결과가 뭔지 나한테 알려줘” 라고 하면 컴퓨터가 사람 말을 알아듣고 그 액션을 취할까요? 불가능합니다. 물론 음성인식 같은 기술을 통하여 그러한 컴퓨터를 만들어 낼 수야 있겠지만, 지금은 그 이야기를 하려는 것이 아닙니다.</p>
-
-<p>그럼 어떻게 해야 컴퓨터와 대화를 할 수 있을까요? 생각해 봅시다.</p>
-
-<p>저는 <strong>‘인간의 언어’</strong>를 사용합니다.</p>
-
-<p>컴퓨터는 1과 0의 나열들로 표현되는 2진코드, 즉 <strong>‘기계어’</strong>를 사용합니다.</p>
-
-<p>1) 내가 기계어를 완벽히 익힌다 → 매우 비효율적</p>
-
-<p>2) 컴퓨터에게 인간의 언어를 가르친다 → 현재 기술로 불가능</p>
-
-<p>3) 나와 컴퓨터 모두가 이해할 수 있는 언어를 만든다 → 가능</p>
-
-<p> </p>
-
-<p>바로 프로그래밍 언어란 ‘사용자’와 ‘컴퓨터’ 모두가 소통할 수 있는 중간 단계의 언어라고 정의내릴 수 있습니다.</p>
-
-<p>이렇게 해서 프로그래밍 언어를 통하여 우리와 컴퓨터가 대화를 할 수 있는 겁니다. C언어 역시 프로그래밍 언어들 중 하나입니다.</p>
-
-<p><img class="aligncenter size-full wp-image-894" src="images/2018/09/1-4.jpg" alt="" width="460" height="150" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w" sizes="(max-width: 460px) 100vw, 460px" /></p>
-
-<p>단, 한 가지 주의할 점이 있습니다.</p>
-
-<p>우리 인간은 가령 ‘친구야 학교가자’, ‘마 학교 가자’, ‘야 학교 ㄱㄱ’ 등등 조금씩 다르게 말해도 알아듣죠? 이것은 우리 인간은 유연성 있는 언어를 사용하기 때문입니다.</p>
-
-<p>하지만, 컴퓨터는 그렇지 않아요. 철자 하나만 틀려도 의사소통 불가입니다. 컴파일러가 철자 하나만 틀려도 해석을 해주지 못하기 때문입니다. 이 점 때문에 우리가 인간의 언어보다는 프로그래밍 언어를 더 딱딱하게 느낄 수 있지만 약간의 노력만 있다면 충분히 익히기 어렵지 않고, 익숙해지면 외국어보다 쉽게 느껴질 겁니다.</p>
 
   </div>
   

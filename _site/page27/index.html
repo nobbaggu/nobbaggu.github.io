@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,340 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/11/8-hanoi-top/">
+        8. 재귀호출 (3) - 하노이 탑 옮기기
+      </a>
+    </h1>
+
+    <span class="post-date">11 Nov 2018</span>
+
+    <h1 id="1-하노이-탑">1. 하노이 탑</h1>
+
+<hr />
+
+<p><img class="aligncenter  wp-image-1321" src="/images/2018/11/1.jpg" alt="" width="491" height="212" srcset="/images/2018/11/1.jpg 725w, /images/2018/11/1-300x130.jpg 300w" sizes="(max-width: 491px) 100vw, 491px" /></p>
+
+<p>하노이 탑 옮기기는 세 개의 기둥이 있을 때, 첫 번째 기둥에 있는 원반을 모두 세 번째 기둥으로 옮기는 문제이다.</p>
+
+<p>원반을 옮길 때에는 아래의 두 가지 규칙을 지켜야 한다.</p>
+
+<p>1) 한 번에 한 개의 원반만 움직일 수 있다.</p>
+
+<p>2) 큰 원반이 작은 원반 위에 있을 수 없다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-문제-정의">2. 문제 정의</h1>
+
+<hr />
+
+<p>하노이의 탑 문제는 원반의 갯수가 입력으로 들어오면, 모든 원반을 세 번째 기둥으로 옮기는 방법들 중 원반 이동 횟수가 최소화가 되는 루트를 찾는 것이다.</p>
+
+<p><img class="aligncenter  wp-image-1322" src="/images/2018/11/no-name-6.jpg" alt="" width="610" height="155" srcset="/images/2018/11/no-name-6.jpg 771w, /images/2018/11/no-name-6-300x76.jpg 300w, /images/2018/11/no-name-6-768x195.jpg 768w" sizes="(max-width: 610px) 100vw, 610px" /></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-알고리즘">3. 알고리즘</h1>
+
+<hr />
+
+<p>이 문제를 정해진 알고리즘으로 풀 수 있다는 것은, 원반의 갯수 n이 몇 개가 되든 상관없이 공통적으로 적용되는 규칙이 있다는 사실을 말한다.</p>
+
+<p> </p>
+
+<p>1) 원반이 1개인 경우는 1-&gt;3의 1 번의 이동횟수를 가지는 루트가 최소 루트이다.</p>
+
+<p>2) 원반이 2개인 경우는 1-&gt;2,  1-&gt;3,  2-&gt;3의 3 번의 이동횟수를 가지는 루트가 최소 루트이다.</p>
+
+<p>3) 원반이 3개인 경우는 1-&gt;3,  1-&gt;2,  3-&gt;2,  1-&gt;3,  2-&gt;1,  2-&gt;3,  1-&gt;3의 7번의 이동횟수를 가지는 루트가 최소 루트이다.</p>
+
+<p>이 경우는 위의 원반 2개를 일단 보조기둥으로 옮기는데, 이 경우는 원반이 2개인 경우랑 같은 실행 과정을 거친다. 그리고 마지막으로 남은 세 번째 원반을 세 번째 기둥으로 옮긴 다음 2번기둥에 있는 원반 2개를 세 번째 기둥으로 옮기는 ‘원반 2개 옮기기 과정’을 실행하면 된다.</p>
+
+<p> </p>
+
+<p>이렇게 생각해보니 원반이 n개인 경우에 대해서도 통찰이 생긴다.</p>
+
+<p>원반 n개를 세 번째 기둥으로 옮기는 과정은 원반 n-1개를 먼저 두 번째 기둥으로 옮기고 가장 큰 원반을 세 번째 기둥으로 옮긴 후 다시 n-1개의 원반을 세 번째 기둥으로 옮기는 과정을 거치면 된다.</p>
+
+<p><img class="aligncenter  wp-image-1323" src="/images/2018/11/1-1.jpg" alt="" width="522" height="211" srcset="/images/2018/11/1-1.jpg 717w, /images/2018/11/1-1-300x121.jpg 300w" sizes="(max-width: 522px) 100vw, 522px" /></p>
+
+<p> </p>
+
+<p>다시 한 번 정리하자면 다음과 같다.</p>
+
+<p>n개의 원반 이동 = n-1개 원반이동 + n번째 원반이동</p>
+
+<p>= (n-2개 원반이동 + n-1번째 원반이동) + n번째 원반이동</p>
+
+<p>= conitnue…</p>
+
+<p>단, 괄호 안에 있는 이동은 3번째 기둥이 아닌 두 번째 기둥으로의 임시적 이동이다.</p>
+
+<p> </p>
+
+<p>이 과정을 코드로 표현하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#hianoi(원반 갯수, 출발지, 도착지, 임시거처)</span>
+
+<span class="k">def</span> <span class="nf">hanoi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">temp</span><span class="p">):</span>   <span class="c">#hianoi(원반 갯수, 출발지, 도착지, 임시거처)</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>   <span class="c">#원반이 한 개인 경우. 재귀호출의 마지막 종착지. n==1이 되면 재귀호출 종료</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="s">"-&gt;"</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>   <span class="c"># n-1개를 일단 start에서 temp로 옮기는데, end를 임시 거처로 사용</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="s">'-&gt;'</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>   <span class="c"># n번째 원반을 start에서 end로 이동</span>
+        <span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>   <span class="c"># n-1개를 다시 temp에서 end로 옮기는데, 출발지를 임시거처로 사용</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"----n=2----"</span><span class="p">)</span>
+<span class="n">hanoi</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"-----n=5----"</span><span class="p">)</span>
+<span class="n">hanoi</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>실행 결과는 다음과 같이 나온다.</p>
+
+<p>`—-n=2—-</p>
+
+<p>1 -&gt; 2</p>
+
+<p>1 -&gt; 3</p>
+
+<p>2 -&gt; 3</p>
+
+<p>—–n=5—-</p>
+
+<p>1 -&gt; 3</p>
+
+<p>1 -&gt; 2</p>
+
+<p>3 -&gt; 2</p>
+
+<p>1 -&gt; 3</p>
+
+<p>2 -&gt; 1</p>
+
+<p>2 -&gt; 3</p>
+
+<p>1 -&gt; 3</p>
+
+<p>1 -&gt; 2</p>
+
+<p>3 -&gt; 2</p>
+
+<p>3 -&gt; 1</p>
+
+<p>2 -&gt; 1</p>
+
+<p>3 -&gt; 2</p>
+
+<p>1 -&gt; 3</p>
+
+<p>1 -&gt; 2</p>
+
+<p>3 -&gt; 2</p>
+
+<p>1 -&gt; 3</p>
+
+<p>2 -&gt; 1</p>
+
+<p>2 -&gt; 3</p>
+
+<p>1 -&gt; 3</p>
+
+<p>2 -&gt; 1</p>
+
+<p>3 -&gt; 2</p>
+
+<p>3 -&gt; 1</p>
+
+<p>2 -&gt; 1</p>
+
+<p>2 -&gt; 3</p>
+
+<p>1 -&gt; 3</p>
+
+<p>1 -&gt; 2</p>
+
+<p>3 -&gt; 2</p>
+
+<p>1 -&gt; 3</p>
+
+<p>2 -&gt; 1</p>
+
+<p>2 -&gt; 3</p>
+
+<p>1 -&gt; 3`</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-알고리즘-효율">4. 알고리즘 효율</h1>
+
+<hr />
+
+<p>위 알고리즘에서 가장 중요한 실행은 이동 경로의 출력이다.</p>
+
+<p>원반 1개 : 1번</p>
+
+<p>원반 2개 : 3번</p>
+
+<p>원반 3개 : 7번</p>
+
+<p>원반 4개 : 15번</p>
+
+<p>원반 5개 : 31번</p>
+
+<p>n을 늘리며 실행시키면 위와 같은 실행 횟수가 나온다.</p>
+
+<p>규칙을 찾으면 원반이 n개인 경우의 실행횟수는 2^n-1이다.</p>
+
+<p>따라서 하노이 탑 옮기기 알고리즘의 시간 복잡도는 O(n^2)이다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/10/7-greatest-common-divisor/">
+        7. 재귀호출 (2) - 최대 공약수
+      </a>
+    </h1>
+
+    <span class="post-date">10 Nov 2018</span>
+
+    <h1 id="1-문제-정의">1. 문제 정의</h1>
+
+<hr />
+
+<p><img class="aligncenter  wp-image-1316" src="/images/2018/11/no-name-5.jpg" alt="" width="559" height="142" srcset="/images/2018/11/no-name-5.jpg 771w, /images/2018/11/no-name-5-300x76.jpg 300w, /images/2018/11/no-name-5-768x195.jpg 768w" sizes="(max-width: 559px) 100vw, 559px" /></p>
+
+<p>최대 공약수 는 공통적인 약수의 최대값이다.</p>
+
+<p>가령 30, 12의 약수들의 집합은 {1, 2, 3, 6} 이다. 이 중 최대값은 6이므로 30, 12의 최대 공약수는 6이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-알고리즘">2. 알고리즘</h1>
+
+<hr />
+
+<h2 id="1-재귀호출-사용하지-않은-알고리즘">1) 재귀호출 사용하지 않은 알고리즘</h2>
+
+<p>입력을 두 개의 정수 a, b가 있고 a&lt;b 라고 해보자.</p>
+
+<p> </p>
+
+<p>먼저, 1은 모든 수의 약수이므로 최대 공약수(great common divisor)를 gcd = 1로 초기화한다.</p>
+
+<ol>
+  <li>
+    <p>a/2와 b/2가 모두 정수인지 확인하여 맞다면 최대공약수 2로 업데이트</p>
+  </li>
+  <li>
+    <p>a/3과 b/3이 모두 정수인지 확인하여 맞다면 최대공약수 3으로 업데이트</p>
+  </li>
+  <li>
+    <p>a/4와 b/4가 모두 정수이지 확인하여 맞다면 최대공약수 4로 업데이트</p>
+  </li>
+  <li>
+    <p>위의 과정을 a로 나누는 것까지 반복</p>
+  </li>
+</ol>
+
+<p> </p>
+
+<p>위의 알고리즘을 코드로 표현하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">find_gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">gcd</span><span class="o">=</span><span class="mi">1</span> <span class="c">#최대 공약수 초기값 1</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span><span class="o">&lt;</span><span class="n">b</span> <span class="k">else</span> <span class="n">b</span> <span class="c"># a, b 중 작은 값 k</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span> <span class="c"># i는 1~k</span>
+        <span class="k">if</span> <span class="n">a</span><span class="o">/</span><span class="n">i</span><span class="o">==</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">i</span><span class="p">)</span> <span class="ow">and</span> <span class="n">b</span><span class="o">/</span><span class="n">i</span><span class="o">==</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">i</span><span class="p">):</span> <span class="c"># a/i, b/i가 각각 정수면 i는 a,b의 공약수이므로</span>
+            <span class="n">gcd</span><span class="o">=</span><span class="n">i</span> <span class="c"># 최대 공약수 업데이트</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">gcd</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">find_gcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">18</span><span class="p">))</span> <span class="c"># 6</span>
+<span class="k">print</span><span class="p">(</span><span class="n">find_gcd</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span> <span class="c"># 5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">find_gcd</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">33</span><span class="p">))</span> <span class="c"># 1</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>참고로 a/i==int(a/i)는 i가 a의 약수인지 확인하는 과정이다.</p>
+
+<p>예를 들어 a가 12이고 i가 5라면 12/5=2.4이고 int(12/5)=int(2.4)=2가 되어 조건이 False가 된다.</p>
+
+<p> </p>
+
+<h2 id="2-재귀호출을-사용한-알고리즘">2) 재귀호출을 사용한 알고리즘</h2>
+
+<p>먼저 재귀호출을 사용하기 전에 수학자 유클리드(Euclid)가 증명한 공약수의 성질 중 한 가지에 대해 상기시켜보자.</p>
+
+<p>a, b(a&gt;b) 일 때, a와 b의 최대 공약수는 b와 (a를 b로 나눈 나머지)의 최대 공약수와 같다.</p>
+
+<p>예를 들어 12와 9의 최대 공약수는 9와 12%9==3의 최대공약수와 같고, 9와 3의 최대 공약수는 3과 9%3==0의 최대 공약수와 같다. 그런데 0은 어떠한 수로 나누어도 나머지가 0이므로 3과 0의 최대 공약수는 3이다. 따라서 12와 9의 최대 공약수는 3이다.</p>
+
+<p>이 성질을 사용하여 최대공약수를 구하는 과정은 또 다른 두 수의 최대공약수를 구하는 과정을 포함한다. 따라서 최대 공약수를 구하는 알고리즘은 재귀호출로 풀 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">find_gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span> <span class="c"># 0과 b의 최대 공약수는 b</span>
+        <span class="k">return</span> <span class="n">b</span>
+    <span class="k">elif</span> <span class="n">a</span><span class="o">!=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c"># a와 0의 최대 공약수는 a</span>
+        <span class="k">return</span> <span class="n">a</span>
+    <span class="k">elif</span> <span class="n">a</span><span class="o">!=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span> <span class="c"># 둘 다 0이 아니면</span>
+        <span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">find_gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span> <span class="c"># (작은 값)과 (큰 값을 작은 값으로 나눈 나머지)의 최대공약수</span>
+        <span class="k">elif</span> <span class="n">a</span><span class="o">&lt;</span><span class="n">b</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">find_gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">%</span><span class="n">a</span><span class="p">)</span> <span class="c"># (작은 값)과 (큰 값을 작은 값으로 나눈 나머지)의 최대공약수</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c"># a와 b가 같으면</span>
+            <span class="k">return</span> <span class="n">a</span> <span class="c"># a 리턴 혹은 b 리턴도 무관</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c"># 0과 0의 최대 공약수는 무한대로 발산.</span>
+        <span class="k">return</span> <span class="s">'both numbers are zero!'</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">find_gcd</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span> <span class="c"># 5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">find_gcd</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">21</span><span class="p">))</span> <span class="c"># 3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">find_gcd</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">49</span><span class="p">))</span> <span class="c"># 7</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-알고리즘-효율">3. 알고리즘 효율</h1>
+
+<hr />
+
+<p>첫 번째 알고리즘에서 가장 중요한 연산은 나누기와 비교 연산자이다.</p>
+
+<p>입력된 두 개의 수 중 작은 값이 n이라 해보자.</p>
+
+<p>나누기 연산은 1~n까지 각각 4번씩이므로 4n 번이다.</p>
+
+<p>비교 연산은 1~n까지 각각 2번이므로 2n 번이다.</p>
+
+<p>총 연산의 수가 입력된 수 n에 비례하므로 첫 번째 알고리즘의 시간복잡도는 O(n)인 것을 알 수 있다.</p>
+
+<p> </p>
+
+<p>두 번째 알고리즘에서 가장 중요한 연산은 비교 연산이다. 하지만 비교 연산의 횟수는 입력 값과 연관되는 법칙이 딱히 존재하지 않는다. n이 아무리 커도 (1, 10000000000)의 최대 공약수는 1이므로 한 번에 값이 나와버린다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10884,243 +11288,6 @@
 <p>첫 번째와 두 번째 알고리즘 모두 가장 중요한 연산은 바로 비교 연산이다. 두 알고리즘 모두 변수가 2배 늘어날 때 비교도 2배, 10배 늘어나면 배교횟수도 10배가 되어야 한다. 즉, 데이터의 수와 연산의 수가 정비례 관계에 있다.</p>
 
 <p>따라서 두 알고리즘 모두 시간 복잡도 O(n) 을 따른다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/07/3-big-o/">
-        3. 알고리즘의 복잡도 - big-O 표기법
-      </a>
-    </h1>
-
-    <span class="post-date">07 Nov 2018</span>
-
-    <p>알고리즘의 복잡도를 나타내는 방법 중 big-O(빅 오) 표기법 이란 것이 있다.</p>
-
-<p>알고리즘의 복잡도에는 크게 ‘시간 복잡도’와 ‘공간 복잡도’가 있다. 둘 모두 big-O 표기법으로 나타낼 수 있다.</p>
-
-<p> </p>
-
-<h1 id="1-시간-복잡도">1. 시간 복잡도</h1>
-
-<hr />
-
-<p>알고리즘의 수학 연산이 잡아먹는 시간을 나타낸다. 연산의 횟수와 관련이 있다.</p>
-
-<p>연산의 횟수가 아주 작을 경우는 O(1)과 O(n), O(n^2)의 복잡도를 가진 알고리즘들이 비슷한 효율을 낸다. 시간 복잡도는 데이터의 갯수가 충분히 큰 경우에 의미가 있다.</p>
-
-<p> </p>
-
-<p>O(1) : 연산의 횟수가 데이터의 입력에 관계없이 일정</p>
-
-<p> </p>
-
-<p>O(n) : 연산의 횟수가 데이터의 수에 정비례</p>
-
-<p>ex) 데이터의 수 10개일 때 연산이 50번 필요하다면 데이터의 수 20개 일 때 연산이 100번 필요</p>
-
-<p> </p>
-
-<p>O(n^2) : 연산의 횟수가 데이터의 수의 제곱에 비례</p>
-
-<p>ex) 데이터의 수 10개일 때 연산이 50번 필요하다면 데이터의 수가 2배인 20개일 때 연산이 2^2 = 4배인 200번 필요</p>
-
-<p> </p>
-
-<p>위와 같은 느낌으로 알고리즘의 시간 복잡도를 계산하면 된다. 일반적으로 시간 복잡도는 아래의 순서에 따라 증가한다.</p>
-
-<p><img class="alignleft" src="https://latex.codecogs.com/gif.latex?O(1)&lt;O(log(n))&lt;O(n)&lt;O(nlog(n))&lt;O(n^{2})" alt="O(1)&lt;O(log(n))&lt;O(n)&lt;O(nlog(n))&lt;O(n^{2})" align="absmiddle" /><img class="alignleft" src="https://latex.codecogs.com/gif.latex?&lt;O(2^{n})&lt;O(n!)&lt;O(n^{n})" alt="&lt;O(2^{n})&lt;O(n!)&lt;O(n^{n})" align="absmiddle" /></p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-공간-복잡도">2. 공간 복잡도</h1>
-
-<hr />
-
-<p>알고리즘의 연산을 수행하는 데 필요한 메모리공간이 얼마나 필요한지를 나타낸다. 컴퓨터 하드웨어의 비약적인 발전으로 공간 복잡도는 시간 복잡도에 비해 그 중요함이 훨씬 덜하다.</p>
-
-<p>1부터 n^2까지를 순차적으로 리스트에 저장한다고 할 때, n이 10이라면 100개의 리스트가 필요하다. 그런데 n이 20이라면 400개의 리스트가 필요해진다. 이 경우 필요한 메모리 공간이 n의 제곱에 비례하므로 이 알고리즘의 공간 복잡도는 O(n^2)을 따른다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-예제">3. 예제</h1>
-
-<hr />
-
-<h2 id="1-1부터-n까지의-합">1) 1부터 n까지의 합</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span>
-    <span class="k">return</span> <span class="n">result</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>n이 10이면 10번, 20이면 20번의 연산이 필요하므로 연산의 횟수가 n에 정비례한다.</p>
-
-<p>따라서 위의 알고리즘의 시간 복잡도는 <strong>O(n)</strong></p>
-
-<p> </p>
-
-<h2 id="2-n의-제곱까지의-합">2) n의 제곱까지의 합</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
-    <span class="k">return</span> <span class="n">result</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>n이 10일 때는 20번, 20일 때는 40번의 연산이 필요하다. 이 때에도 절대적인 크기는 알고리즘 1)의 경우와 같지만 마찬가지로 정비례한다. 이 때에도 시간 복잡도는 <strong>O(n)</strong>을 따른다.</p>
-
-<p> </p>
-
-<h2 id="3-n12-계산">3) (n+1)^2 계산</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">result</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>n이 1일 때는 i=0,1/j=0,1 각각의 경우를 고려하므로 4번의 연산이, n이 2일 때는 i=0,1,2/j=0,1,2 각각의 경우를 고려하므로 9번의 연산이 필요하다. n이 2배 늘어날 때 연산의 횟수는 n^2배 늘어나므로 이 알고리즘의 시간 복잡도는 <strong>O(n^2)</strong>이다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/07/2-1-to-n-sum/">
-        2. 1부터 n까지 합 구하기
-      </a>
-    </h1>
-
-    <span class="post-date">07 Nov 2018</span>
-
-    <h1 id="1-문제-정의">1. 문제 정의</h1>
-
-<hr />
-
-<p><img class="aligncenter size-full wp-image-1273" src="/images/2018/11/no-name-1.jpg" alt="" width="771" height="196" srcset="/images/2018/11/no-name-1.jpg 771w, /images/2018/11/no-name-1-300x76.jpg 300w, /images/2018/11/no-name-1-768x195.jpg 768w" sizes="(max-width: 771px) 100vw, 771px" /></p>
-
-<p>입력 n이 주어졌을 때, 1부터 n까지 합 을 출력으로 내기 위한 알고리즘을 짜면 된다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-알고리즘-풀이">2. 알고리즘 풀이</h1>
-
-<hr />
-
-<h2 id="1-순차적으로-더하기">1) 순차적으로 더하기</h2>
-
-<ol>
-  <li>
-    <p>합을 저장할 변수 result 선언하고 0으로 초기화</p>
-  </li>
-  <li>
-    <p>변수 i를 선언하여 1부터 n까지 대입</p>
-  </li>
-  <li>
-    <p>s에 i를 더하는 과정을 i가 1부터 n까지 반복</p>
-  </li>
-  <li>
-    <p>최종결과 result를 출력</p>
-  </li>
-</ol>
-
-<p> </p>
-
-<p>이 알고리즘을 코드로 표현하면 다음과 같이 할 수 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># 초기값 0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="c">#i는 1에서 n까지</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span> <span class="c">#결과에 i를 더한다</span>
-    <span class="k">return</span> <span class="n">result</span> <span class="c">#최종 결과를 리턴</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<h2 id="2-수학-공식-적용">2) 수학 공식 적용</h2>
-
-<p>고등학교에서 1부터 n까지 합 을 구하는 방법을 배웠다.</p>
-
-<p><img src="https://latex.codecogs.com/gif.latex?\sum_{i=1}^{n}=\frac{n(n+1)}{2}" alt="\sum_{i=1}^{n}=\frac{n(n+1)}{2}" align="absmiddle" /></p>
-
-<p>위의 공식을 사용하면 된다. 이 공식을 사용한 풀이법을 코드로 표현하면 다음과 같다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"n을 입력하세요: "</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"1부터 n까지의 합 : </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-알고리즘-효율">3. 알고리즘 효율</h1>
-
-<hr />
-
-<p>위의 두 방법 중 어떤 것이 더 효율적인 알고리즘인가?</p>
-
-<p>첫 번째 방법은 숫자 n이 커질수록 연산의 횟수가 비례하여 커진다. n이 100이면 100번의 더하기 연산, n이 1억이라면 1억번의 더하기 연산이 필요하다.</p>
-
-<p>두 번째 방법은 n과 상관없이 더하기 1번, 곱하기 1번, 나누기 1번이다. n의 크기와 상관없이 연산은 총 3번 이루어진다.</p>
-
-<p> </p>
-
-<p>n이 작을 때에는 두 알고리즘의 효율이 큰 차이가 나지 않지만, n이 커질수록 알고리즘 효율의 차이는 커진다.</p>
-
-<p>첫 번째 알고리즘처럼 n의 크기와 상관없는 경우의 복잡도를 O(1)이라고 한다.</p>
-
-<p>두 번째 알고리즘처럼 n의 크기와 정비례 하여 계산 복잡도가 증가하는 경우의 계산 복잡도는 O(n) 이라고 한다.</p>
-
-<p>만약 n의 크기에 따라 연산해야하는 횟수가 제곱으로 증가한다면 계산 복잡도는 O(n^2)과 같이 표기한다.</p>
-
-<p> </p>
-
-<p>따라서 일반적으로 두 번째 알고리즘이 더 효율이 좋은 알고리즘이며, 이를 사용하는 것이 좋다.</p>
-
-<p> </p>
-
-<p>위에서 표기한 O( )의 표기법을 빅 오 표기법이라고 하는데, 이에 대해서 한 번 정리를 할 것이다.</p>
 
   </div>
   

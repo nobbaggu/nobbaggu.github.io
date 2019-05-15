@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,415 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/18/polymorphism/">
+        다형성
+      </a>
+    </h1>
+
+    <span class="post-date">18 Dec 2018</span>
+
+    <p>다형성은 클래스의 형 변환과 가상 메소드 개념의 장점을 최대한 활용하는 객체지향의 매우 핵심적인 개념이다.</p>
+
+<p>결국 다형성이란 것은 하위 클래스 객체를 상위 클래스 자료형으로 변환 가능하다는 사실, 그러나 참조자료형이 호출하는 메소드는 인스턴스 객체에 좌우된다는 사실이 핵심이자 전부이다. 다만 이것을 최대한 활용하는 개념인 것이다.</p>
+
+<p> </p>
+
+<h1 id="1-다형성이란">1. 다형성이란?</h1>
+
+<hr />
+
+<p>다형성이란 상위 클래스와 이를 상속받는 여러 하위클래스들이 같은 이름의 메소드를 호출하면서도 객체의 자료형마다 재정의 된 코드를 실행할 수 있는 편리한 방법이다. 코드를 통해 무슨 말인지 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"animal moves"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Human</span> <span class="kd">extends</span> <span class="n">Animal</span><span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"human walks"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tiger</span> <span class="kd">extends</span> <span class="n">Animal</span><span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"tiger runs"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Eagle</span> <span class="kd">extends</span> <span class="n">Animal</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"eagle flys"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Animal이라는 상위 클래스와 이를 상속하는 Human, Tiger, Eagle 클래스가 있다. 그리고 각각 move() 메소드를 재정의하고 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnimalTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">AnimalTest</span> <span class="n">animalTest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnimalTest</span><span class="o">();</span>
+      <span class="n">Human</span> <span class="n">human</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Human</span><span class="o">();</span>
+      <span class="n">Tiger</span> <span class="n">tiger</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Tiger</span><span class="o">();</span>
+      <span class="n">Eagle</span> <span class="n">eagle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Eagle</span><span class="o">();</span>
+      
+      <span class="n">animalTest</span><span class="o">.</span><span class="na">moveAnimal</span><span class="o">(</span><span class="n">human</span><span class="o">);</span>
+      <span class="n">animalTest</span><span class="o">.</span><span class="na">moveAnimal</span><span class="o">(</span><span class="n">tiger</span><span class="o">);</span>
+      <span class="n">animalTest</span><span class="o">.</span><span class="na">moveAnimal</span><span class="o">(</span><span class="n">eagle</span><span class="o">);</span>
+   <span class="o">}</span>
+   <span class="c1">//매개변수로 Animal 자료형 참조변수를 넣어준다.</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">moveAnimal</span><span class="o">(</span><span class="n">Animal</span> <span class="n">animal</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">animal</span><span class="o">.</span><span class="na">move</span><span class="o">();</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드를 실행시키면 다음과 같은 결과가 나온다.</p>
+
+<p>human walks</p>
+
+<p>tiger runs</p>
+
+<p>eagle flys</p>
+
+<p>moveAnimal 메소드의 매개변수의 자료형은 Animal이다. 따라서 하위 클래스인 Human, Tiger, Eagle 모든 객체가 올 수 있다. 하위 클래스 객체의 상위 클래스 자료형으로의 형 변환을 이용한 것이다. 그런데 더 놀라운 것은 각각의 참조변수가 참조하는 객체마다 각자 자신이 참조하는 다른 메소드가 실행된다는 것이다.</p>
+
+<p>매개변수의 자료형을 상위 클래스의 자료형으로 퉁쳐서 코드를 한 줄만 구현하고도 전달되는 객체마다 서로 다른 메소드가 실행될 수 있다는 것이다. 또 다른 포유류를 상속받는 몇개의 클래스가 추가되더라도 이 부분은 달라질 필요가 없는 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-배열과-다형성">2. 배열과 다형성</h1>
+
+<hr />
+
+<p>하나의 상위 클래스를 상속받는 여러 개의 하위 클래스 객체들이 여러 개 있을 때는 같은 상위 클래스 타입 자료형으로 선언할 수 있으므로 배열로 관리하는 것이 편리하다. 다음 코드를 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="c1">//상위 Customer 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+   <span class="kd">protected</span> <span class="kt">int</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="kd">protected</span> <span class="n">String</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="kd">protected</span> <span class="n">String</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">bonusPoint</span><span class="o">;</span>
+   <span class="kt">double</span> <span class="n">bonusRatio</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Customer</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">initCustomer</span><span class="o">();</span>
+   <span class="o">}</span>
+   <span class="c1">//객체 생성과 동시에 고객번호와 이름 필수로 정의</span>
+   <span class="kd">public</span> <span class="nf">Customer</span><span class="o">(</span><span class="kt">int</span> <span class="n">customerID</span><span class="o">,</span> <span class="n">String</span> <span class="n">customerName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerID</span> <span class="o">=</span> <span class="n">customerID</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerName</span> <span class="o">=</span> <span class="n">customerName</span><span class="o">;</span>
+      <span class="n">initCustomer</span><span class="o">();</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcPrice</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">bonusPoint</span> <span class="o">+=</span> <span class="n">price</span> <span class="o">*</span> <span class="n">bonusRatio</span><span class="o">;</span> <span class="c1">// 보너스 포인트 적립</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initCustomer</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"SILVER"</span><span class="o">;</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">showCustomerInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerName</span><span class="o">+</span><span class="s">"'s grade is "</span><span class="o">+</span><span class="n">customerGrade</span><span class="o">+</span><span class="s">" and bonus point is "</span><span class="o">+</span><span class="n">bonusPoint</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCustomerID</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerID</span><span class="o">(</span><span class="kt">int</span> <span class="n">customerID</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerID</span> <span class="o">=</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCustomerName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerName</span><span class="o">(</span><span class="n">String</span> <span class="n">customerName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerName</span> <span class="o">=</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCustomerGrade</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerGrade</span><span class="o">(</span><span class="n">String</span> <span class="n">customerGrade</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerGrade</span> <span class="o">=</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+<span class="c1">//Customer를 상속하는 VIPCustomer</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VIPCustomer</span> <span class="kd">extends</span> <span class="n">Customer</span><span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">agentID</span><span class="o">;</span>
+   <span class="kt">double</span> <span class="n">saleRatio</span><span class="o">;</span>
+   
+   <span class="c1">// 상위클래스의 생성자가 고객번호와 이름을 매개변수로 받으므로 이를 super()에 전달하고 담당 직원번호 정의</span>
+   <span class="kd">public</span> <span class="nf">VIPCustomer</span><span class="o">(</span><span class="kt">int</span> <span class="n">customerID</span><span class="o">,</span> <span class="n">String</span> <span class="n">customerName</span><span class="o">,</span> <span class="kt">int</span> <span class="n">agentID</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">customerID</span><span class="o">,</span> <span class="n">customerName</span><span class="o">);</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"VIP"</span><span class="o">;</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">;</span>
+      <span class="n">saleRatio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">agentID</span> <span class="o">=</span> <span class="n">agentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">agentID</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">agentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//메소드 재정의</span>
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">showCustomerInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">showCustomerInfo</span><span class="o">()+</span><span class="s">". The agentID is "</span><span class="o">+</span><span class="n">agentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//메소드 재정의</span>
+   <span class="nd">@Override</span> <span class="c1">//컴파일러에게 메소드 오버라이딩임을 알려줌</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcPrice</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">bonusPoint</span> <span class="o">+=</span> <span class="n">price</span><span class="o">*</span><span class="n">bonusRatio</span><span class="o">;</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">-(</span><span class="kt">int</span><span class="o">)(</span><span class="n">price</span><span class="o">*</span><span class="n">saleRatio</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+<span class="c1">//Customer를 상속받는 GoldCustomer</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GoldCustomer</span> <span class="kd">extends</span> <span class="n">Customer</span><span class="o">{</span>
+   
+   <span class="kt">double</span> <span class="n">saleRatio</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">GoldCustomer</span><span class="o">(</span><span class="kt">int</span> <span class="n">customerID</span><span class="o">,</span> <span class="n">String</span> <span class="n">customerName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">customerID</span><span class="o">,</span> <span class="n">customerName</span><span class="o">);</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"GOLD"</span><span class="o">;</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.02</span><span class="o">;</span>
+      <span class="n">saleRatio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="c1">//메소드 재정의</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcPrice</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">bonusPoint</span> <span class="o">+=</span> <span class="n">price</span><span class="o">*</span><span class="n">bonusRatio</span><span class="o">;</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">-(</span><span class="kt">int</span><span class="o">)(</span><span class="n">price</span><span class="o">*</span><span class="n">saleRatio</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>VIPCustomer와 GoldCustomer는 Customer를 상속하고 메소드를 재정의 하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span> <span class="n">customers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;();</span>
+      <span class="c1">//배열 요소의 자료형이 Customer이므로 상속받는 클래스 객체가 추가될 수 있다.</span>
+      <span class="n">customers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Customer</span><span class="o">(</span><span class="mi">10010</span><span class="o">,</span> <span class="s">"Kelly"</span><span class="o">));</span>
+      <span class="n">customers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">VIPCustomer</span><span class="o">(</span><span class="mi">10020</span><span class="o">,</span> <span class="s">"John"</span><span class="o">,</span> <span class="mi">12334</span><span class="o">));</span>
+      <span class="n">customers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">GoldCustomer</span><span class="o">(</span><span class="mi">10030</span><span class="o">,</span> <span class="s">"Tomson"</span><span class="o">));</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">calcPrice</span><span class="o">(</span><span class="mi">10000</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">calcPrice</span><span class="o">(</span><span class="mi">10000</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">calcPrice</span><span class="o">(</span><span class="mi">10000</span><span class="o">));</span>
+      
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">showCustomerInfo</span><span class="o">());</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">showCustomerInfo</span><span class="o">());</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">showCustomerInfo</span><span class="o">());</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>10000</p>
+
+<p>9000</p>
+
+<p>9000</p>
+
+<p>Kelly’s grade is SILVER and bonus point is 100</p>
+
+<p>John’s grade is VIP and bonus point is 500. The agentID is 12334</p>
+
+<p>Tomson’s grade is GOLD and bonus point is 200</p>
+
+<p>배열의 자료형을 Customer로 선언하였지만 이를 상속하는 모든 클래스의 객체를 추가할 수 있었다. 더군다나 각 객체가 메소드를 호출하면 객체의 자료형에 따른 서로 다른 메소드가 호출된다.</p>
+
+<p>만약 상속고 다형성을 사용하지 않고 모든 등급의 변수와 메소드를 하나의 클래스 파일에 때려넣으면 bonusPoint라던지 saleRatio, 심지어 모든 메소드도 if else문을 사용하여 고객 등급마다 서로 다른 내용을 구현해야 할 것이다. 이렇게 되면 코드가 복잡해지고 새로운 등급이 추가되는 경우 코드 수정도 어려워진다.</p>
+
+<p>상속과 다형성은 단순히 멤버변수나 메소드의 재사용 가능의 유무만 따지는 것이 아니다. 하나의 클래스가 다른 클래스에 포함되는 하위 개념 혹은 일반적인 클래스와 이것이 더욱 구체화되는 클래스의 관계에 사용하는 것이 맞다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/17/method-override/">
+        메소드 오버라이딩
+      </a>
+    </h1>
+
+    <span class="post-date">17 Dec 2018</span>
+
+    <h1 id="1-메소드-오버라이딩이란">1. 메소드 오버라이딩이란?</h1>
+
+<hr />
+
+<p>상위 클래스를 상속받은 하위 클래스는 상위 클래스의 메소드를 재정의하여 사용할 수 있다. 이 때 메소드의 반환형, 매개변수의 갯수와 자료형, 메소드의 이름은 동일해야 한다. 그렇지 않으면 컴파일러가 다른 메소드로 인식해버린다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+   <span class="kd">protected</span> <span class="kt">int</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="kd">protected</span> <span class="n">String</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="kd">protected</span> <span class="n">String</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">bonusPoint</span><span class="o">;</span>
+   <span class="kt">double</span> <span class="n">bonusRatio</span><span class="o">;</span>
+   
+   <span class="c1">//객체 생성과 동시에 고객번호와 이름 필수로 정의</span>
+   <span class="kd">public</span> <span class="nf">Customer</span><span class="o">(</span><span class="kt">int</span> <span class="n">customerID</span><span class="o">,</span> <span class="n">String</span> <span class="n">customerName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerID</span> <span class="o">=</span> <span class="n">customerID</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerName</span> <span class="o">=</span> <span class="n">customerName</span><span class="o">;</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"SILVER"</span><span class="o">;</span> <span class="c1">// 기본 등급</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">;</span> <span class="c1">// 기본 적립율</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcPrice</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">bonusPoint</span> <span class="o">+=</span> <span class="n">price</span> <span class="o">*</span> <span class="n">bonusRatio</span><span class="o">;</span> <span class="c1">// 보너스 포인트 적립</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">showCustomerInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerName</span><span class="o">+</span><span class="s">"'s grade is "</span><span class="o">+</span><span class="n">customerGrade</span><span class="o">+</span><span class="s">" and bonus point is "</span><span class="o">+</span><span class="n">bonusPoint</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCustomerID</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerID</span><span class="o">(</span><span class="kt">int</span> <span class="n">customerID</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerID</span> <span class="o">=</span> <span class="n">customerID</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCustomerName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerName</span><span class="o">(</span><span class="n">String</span> <span class="n">customerName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerName</span> <span class="o">=</span> <span class="n">customerName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCustomerGrade</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCustomerGrade</span><span class="o">(</span><span class="n">String</span> <span class="n">customerGrade</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">customerGrade</span> <span class="o">=</span> <span class="n">customerGrade</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VIPCustomer</span> <span class="kd">extends</span> <span class="n">Customer</span><span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">agentID</span><span class="o">;</span>
+   <span class="kt">double</span> <span class="n">saleRatio</span><span class="o">;</span>
+   
+   <span class="c1">// 상위클래스의 생성자가 고객번호와 이름을 매개변수로 받으므로 이를 super()에 전달하고 담당 직원번호 정의</span>
+   <span class="kd">public</span> <span class="nf">VIPCustomer</span><span class="o">(</span><span class="kt">int</span> <span class="n">customerID</span><span class="o">,</span> <span class="n">String</span> <span class="n">customerName</span><span class="o">,</span> <span class="kt">int</span> <span class="n">agentID</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">customerID</span><span class="o">,</span> <span class="n">customerName</span><span class="o">);</span>
+      <span class="n">customerGrade</span> <span class="o">=</span> <span class="s">"VIP"</span><span class="o">;</span>
+      <span class="n">bonusRatio</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">;</span>
+      <span class="n">saleRatio</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">agentID</span> <span class="o">=</span> <span class="n">agentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">agentID</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">agentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">showVIPInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="nf">showCustomerInfo</span><span class="o">()+</span><span class="s">". The agentID is "</span><span class="o">+</span><span class="n">agentID</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span> <span class="c1">//컴파일러에게 메소드 오버라이딩임을 알려줌</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcPrice</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">bonusPoint</span> <span class="o">+=</span> <span class="n">price</span><span class="o">*</span><span class="n">bonusRatio</span><span class="o">;</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">-(</span><span class="kt">int</span><span class="o">)(</span><span class="n">price</span><span class="o">*</span><span class="n">saleRatio</span><span class="o">);</span> <span class="c1">//할인율 적용</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>VIPCustomer 클래스에서는 calcPrice() 메소드를 재정의 하였다. 메소드의 반환형과 이름, 매개변수의 갯수와 자료형이 일치한다. 그러나 반환해주는 가격의 계산식 할인율을 적용하여 다시 정의하였다.</p>
+
+<p>메소드 위에 @Override는 컴파일러에게 이 메소드가 상위 클래스의 메소드를 오버라이딩했음을 알려준다. 적어주지 않아도 상관은 없는데 메소드 오버라이딩을 의도함을 알려줌으로써 오버라이딩 규칙에 어긋나는 문법을 발견하면 에러를 발생시켜 프로그래머에게 알려주어 코드 오류를 방지해주므로 해주는 것이 좋다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-가상-메소드">2. 가상 메소드</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="n">Customer</span> <span class="n">customerKim</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VIPCustomer</span><span class="o">(</span><span class="mi">10020</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">,</span> <span class="mi">12345</span><span class="o">);</span> <span class="c1">//Customer형의 참조변수에 VIPCustomer의 객체주소 저장</span>
+      <span class="n">customerKim</span><span class="o">.</span><span class="na">bonusPoint</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">;</span>
+      
+      <span class="c1">//Customer의 calcPrice()가 실행될까 VIPCustomer의 calcPrice()가 실행될까?</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">customerKim</span><span class="o">.</span><span class="na">calcPrice</span><span class="o">(</span><span class="mi">10000</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위에서는 VIPCustomer() 객체를 가르키는 customerKim의 참조변수가 Customer 자료형으로 형변환 되었다.</p>
+
+<p>이 때 Customer클래스의 메소드가 실행될까 아니면 VIPCustomer클래스의 메소드가 실행될까?</p>
+
+<p>결과를 알기 위해서는 가상 메소드라는 개념에 대해 알아야한다.</p>
+
+<p>클래스로 객체를 생성할 때 마다 멤버변수를 힙 메모리에 저장한다. 그러나 메소드는 실행해야 할 명령어이기 때문에 메모리의 코드영역에 저장된다. 인스턴스를 여러개 생성해도 하나의 같은 메소드를 참조한다. 즉, 같은 클래스의 객체를 참조하는 참조변수는 여러개라도 모두 같은 메소드의 주소를 저장하고있다. 이를 가상메소드 방식이라고 한다.</p>
+
+<p>그런데 하위 클래스에서 상위 클래스의 메소드를 오버라이드하면 가상 메소드 영역에 새로운 공간이 할당되고 거기에 재정의 된 메소드가 새로 만들어진다. 따라서 하위 클래스의 객체를 참조하는 참조변수는 메소드가 호출되었을 때 이 메소드를 참조한다.</p>
+
+<p>따라서 customerKim 참조변수는 VIPCustomer 클래스의 재정의 된 메소드를 참조한다. 실행시켜서 정말 그런지 확인해봐야겠다.</p>
+
+<p>실행결과</p>
+
+<p>9000</p>
+
+<p> 정말로 할인 된 가격정보를 출력한다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10989,254 +11468,6 @@ JavaDoc에서 ArrayList에 관한 설명을 한 번 읽어보는 것이 도움�
 <p>1003, Paul</p>
 
 <p>stus2 인스턴스도 따로 만들고 stus1의 get() 메소드로 정보만 출력해서 저장하였다. 이 경우는 stus1과 stus2의 각 요소가 서로 다른 인스턴스를 가르키기 때문에 stus1을 통해 객체 정보를 변경한다고 해서 stus2가 참조하는 객체는 영향을 받지 않는다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/16/object-array/">
-        객체 배열
-      </a>
-    </h1>
-
-    <span class="post-date">16 Dec 2018</span>
-
-    <h1 id="1-객체-배열">1. 객체 배열</h1>
-
-<hr />
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">studentID</span><span class="o">;</span>
-    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-    
-    <span class="kd">public</span> <span class="nf">Student</span><span class="o">()</span> <span class="o">{};</span>
-   
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getStudentID</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">studentID</span><span class="o">;</span>
-   <span class="o">}</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStudentID</span><span class="o">(</span><span class="kt">int</span> <span class="n">studentID</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">studentID</span> <span class="o">=</span> <span class="n">studentID</span><span class="o">;</span>
-   <span class="o">}</span>
-   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
-   <span class="o">}</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-   <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="o">()</span> <span class="o">{</span>
-       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">studentID</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">name</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>위와 같이 Student 클래스를 생성했다.</p>
-
-<p>멤버 변수로는 이름과 학번이 있고 각각에 대해 get(), set() 메소드를 지원한다. 또한 학생 정보를 출력해주는 showInfo()메소드를 만들었다.</p>
-
-<p>이제 Student를 하나의 참조 자료형으로 사용한 Student 자료형 배열을 만들어보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-       <span class="n">Student</span><span class="o">[]</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span> <span class="c1">//Student형의 인스턴스를 저장할 배열공간만 확보했을 뿐 아직 인스턴스가 만들어지지 않았다.</span>
-       
-       <span class="c1">//배열 요소마다 인스턴스 생성</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
-       
-       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1001</span><span class="o">);</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1002</span><span class="o">);</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Faul"</span><span class="o">);</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1003</span><span class="o">);</span>
-       
-       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-          <span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
-       <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>가장 처음에 Student[] stus = new Student[3]; 를 써서 Student 타입의 길이가 3인 배열 stus를 만들었다.</p>
-
-<p>주의해야 할 건 아직 인스턴스가 만들어지지 않았단 것이다. stus배열의 각각의 요소는 아직 아무런 객체의 주소값도 가지고 있지 않다. 출력해보면 null이 나온다.</p>
-
-<p>따라서 이후에 각각의 요소마다 인스턴스를 생성해주고 이후의 코드를 진행해야한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-       <span class="n">Student</span><span class="o">[]</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span> <span class="c1">//Student형의 인스턴스를 저장할 배열 공간만 확보했을 뿐 아직 인스턴스가 만들어지지 않았다.</span>
-       
-       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
-       <span class="o">}</span>
-       <span class="c1">//배열 요소마다 인스턴스 생성</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
-       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
-       
-       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
-       <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>null</p>
-
-<p>null</p>
-
-<p>null</p>
-
-<p>classpart.Student@15db9742</p>
-
-<p>classpart.Student@6d06d69c</p>
-
-<p>classpart.Student@7852e922</p>
-
-<p>결과를 보면 각각의 배열요소마다 인스턴스를 생성하여 저장하기 전 아무런 객체도 참조하지 않는 null 상태이다. 혹시나 실수로 인스턴스 생성을 까먹으면 NullPointException 컴파일 오류가 난다.</p>
-
-<p> </p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/16/array/">
-        배열
-      </a>
-    </h1>
-
-    <span class="post-date">16 Dec 2018</span>
-
-    <p>배열은 같은 자료형을 여러 개 묶어서 관리할 수 있는 자료구조이다.</p>
-
-<p> </p>
-
-<h1 id="1-선언-초기화">1. 선언, 초기화</h1>
-
-<hr />
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
-<span class="c1">//자료형[] 이름 = new 자료형[길이];</span>
-</code></pre></div></div>
-
-<p>위와 같이 선언하면 배열이 생성된다. 아무런 초기화가 없는 경우 정수는 0, 실수는 0.0, 객체는 null로 초기화 된다.</p>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span> <span class="c1">//길이가 5인 배열 선언과 동시에 초기화</span>
-<span class="c1">//int[] myNums = new int[5]{1,2,3,4,5}; //오류 발생</span>
-</code></pre></div></div>
-
-<p>선언과 동시에 초기화 시킬 수 있다. 이 경우는 배열의 길이정보를 빼 주어야 한다.</p>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span> <span class="c1">//new int[] 생략 가능</span>
-</code></pre></div></div>
-
-<p>new int[]를 생략하여도 배열을 선언하는 데에는 충분한 모든 정보가 포함되어 있다.</p>
-
-<p> </p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span> <span class="c1">//배열 선언</span>
-<span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span> <span class="c1">//초기화</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-배열-자료-사용">2. 배열 자료 사용</h1>
-
-<hr />
-
-<p>배열에 저장된 자료에 접근할 때에는 index 연산자 []를 사용한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="o">{</span>  
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span>
-      <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
-      
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]);</span>
-      
-      <span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
-      <span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
-      <span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
-      <span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
-      <span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
-      
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]);</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>1</p>
-
-<p>2</p>
-
-<p>3</p>
-
-<p>4</p>
-
-<p>5</p>
-
-<p>11</p>
-
-<p>12</p>
-
-<p>13</p>
-
-<p>14</p>
-
-<p>15</p>
-
-<p>주의해야 할 건 <strong>배열의 index는 0부터 시작</strong>한다는 것이다.</p>
-
-<p>배열 객체는 length라는 변수를 가지고 있다. length는 배열의 길이 정보를 반환해준다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="o">{</span>  
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span>
-      <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
-      
-      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">myNums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
-      <span class="o">}</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>myNums.length는 myNums배열의 길이인 5를 반환한다. length속성을 사용해서 for문으로 myNums의 모든 요소를 한 번에 출력할 수 있다.</p>
 
   </div>
   

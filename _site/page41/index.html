@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,610 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/19/12-function/">
+        12. 함수
+      </a>
+    </h1>
+
+    <span class="post-date">19 Sep 2018</span>
+
+    <p>함수란 것은 쉽게 설명하면 어떠한 ‘입력’이 들어오면 요리조리 만져 어떠한 ‘출력’을 내어놓는 마법상자이다.</p>
+
+<p>가령<img src="https://latex.codecogs.com/gif.latex?y=x+10" alt="y=x+10" align="absmiddle" />  이라는 함수가 있다면, 이 함수는 ‘입력’ x에 10을 더한 다음 ‘출력’y 로 내어놓는다.</p>
+
+<p>함수를 사용하는 이유는 반복적으로 사용하는 기능을 하나의 모듈로 만들어 정의해놓으면 쉽게 가져다가 쓸 수 있기 때문이다. 게다가 가독성도 좋아진다. 가령 계산기 프로그램에서는 더하기, 빼기, 곱하기, 나누기 같은 기능마다 하나의 함수로 만들어놓을 수 있다.</p>
+
+<p> </p>
+
+<h1 id="1-함수의-구조">1. 함수의 구조</h1>
+
+<hr />
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c"># 리턴값을 c에 대입</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c"># 3을 출력</span>
+
+
+</code></pre></div></div>
+
+<p>위의 코드는 더하기 기능을 하나의 함수로 정의해놓은 것이다.</p>
+
+<ul>
+  <li>입력 인수 : 위 함수는 입력 인수가 2개이다. 입력 인수는 마음대로 정할 수 있다.</li>
+  <li>함수 이름 : 위 함수의 이름은 sum 이다.</li>
+  <li>리턴값 : 위 함수는 인수 2개를 더한 결과를 return 한다. 물론 return값이 없는 함수도 있다.</li>
+</ul>
+
+<p> </p>
+
+<p>입력인수와 리턴값을 기준으로 총 4가지 형태의 함수로 나눌 수 있다.</p>
+
+<p>1) 입력인수 o / 리턴값 o</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c"># 리턴값을 c에 대입</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c"># 3을 출력</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>2) 입력인수 o / 리턴값 x</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="n">math</span><span class="p">,</span><span class="n">english</span><span class="p">,</span><span class="n">science</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">math</span><span class="o">+</span><span class="n">english</span><span class="o">+</span><span class="n">science</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"pass"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No pass"</span><span class="p">)</span>
+
+<span class="n">result</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">65</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">result</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">65</span><span class="p">)</span> <span class="c"># 반환값 없지만 c에 대입. 대입하는 중 "pass" 출력</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c"># None</span>
+</code></pre></div></div>
+
+<p>위 함수는 수학,영어,과학 점수를 입력 인수로 넣어주면 합을 계산해 200이 넘으면 “pass”를, 이하면 “No pass”를 출력해준다. result(90,70,65)는 “pass”를 출력해준다. 하지만 return값은 없다. 하지만 혼란스러울 수 있는 부분은 c에 result의 결과값을 담으려고 시도하는 문장에서 일어난다. result 함수 자체가 출력 명령을 하기때문에 “pass”가 한 번 출력이 된다. 하지만 return값은 없기 때문에 c에 대입은 되지 않는다. 따라서 c를 출력하면 “None”이 출력된다.</p>
+
+<p> </p>
+
+<p>3) 입력인수 x / 리턴값 o</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sing</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"Yesterday, all my problems seem so far away~"</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">sing</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 함수는 입력인수로는 아무것도 받지 않지만 실행을 하면 노래의 한 소절을 리턴한다. 따라서 이 함수의 리턴값은 변수에 대응이 가능하다.</p>
+
+<p> </p>
+
+<p>4) 입력인수 x, 리턴값 x</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sing</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Yesterday, all my problems seem so far away~"</span><span class="p">)</span>
+
+<span class="n">sing</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>위 함수는 입력인수도 없고 리턴값도 없다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-함수-입력-인수의-갯수가-정해지지-않았을-때">2. 함수 입력 인수의 갯수가 정해지지 않았을 때</h1>
+
+<hr />
+
+<p>일반적인 계산기를 생각해 보면 몇 개의 입력에 대해서도 더하기를 해준다. 이처럼 입력 인수가 미리 정해지지 않은 경우 입력 인수 앞에 * 를 붙여서 해결할 수 있다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="o">*</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span><span class="n">i</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c"># 15</span>
+</code></pre></div></div>
+
+<p>위의 코드에서는 sum 함수에 몇 개의 인자를 넣어도 계산을 해준다.</p>
+
+<p>입력 인수앞에 *를 붙이면 우리가 입력해주는 모든 인수들을 모아서 튜플로 만들어준다. 따라서 위처럼 for문을 사용할 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="o">*</span><span class="n">nums</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s">"sum"</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+
+    <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s">"mul"</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">*=</span> <span class="n">i</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="s">"No!"</span>
+
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="s">'sum'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c"># 15</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="s">'mul'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c"># 120</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="s">'div'</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c"># 'No!'</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<p>위는 조금 응용된 코드이다. 더하기를 할 지, 곱하기를 할 지를 입력 인수로 받고 이후에 들어오는 임의의 갯수에 대해 계산을 하여 return 시켜준다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-함수-리턴값의-갯수">3. 함수 리턴값의 갯수</h1>
+
+<hr />
+
+<p>함수는 항상 1개의 값만 return해 줄 수 있다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="n">mul</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">mul</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드의 결과는 어떻게 나올까? 2개의 리턴을 시켜주려 했기 때문에 에러가 날까, 아니면 처음의 리턴값만 리턴해줄까? 아무튼간에 함수는 항상 하나의 리턴값만 가질 수 있다는 것은 확실하다.</p>
+
+<p>결과는 다음과 같다.</p>
+
+<p>(3, 2)</p>
+
+<p>두 개의 리턴값을 하나의 튜플로 묶어서 리턴한다. 아무튼간에 한 개의 튜플만 리턴해 준 것이다.</p>
+
+<p>한 가지의 트릭을 이용하면 sum과 mul을 나누어 받을 수 있다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="n">mul</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">mul</span>
+
+<span class="p">(</span><span class="nb">sum</span><span class="p">,</span><span class="n">mul</span><span class="p">)</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c"># (sum, mul) = (3,2)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"sum is </span><span class="si">%</span><span class="s">d"</span><span class="o">%</span><span class="nb">sum</span><span class="p">)</span> <span class="c"># "sum is 3"</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"mul is </span><span class="si">%</span><span class="s">d"</span><span class="o">%</span><span class="n">mul</span><span class="p">)</span> <span class="c"># "mul is 2"</span>
+</code></pre></div></div>
+
+<p>다만 변수를 튜플로 두어 결과를 나누어 받은 트릭일 뿐이다. 함수가 두 개의 리턴값을 하나로 묶어서 돌려주는 데에는 변함이 없다.</p>
+
+<p>또 한 가지 확인해 볼 것이 있다. return문을 두 번 사용하면 결과를 두 번 받을 수 있을까?</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c"># 3</span>
+</code></pre></div></div>
+
+<p>위의 코드를 실행하면 결과가 3이 나온다. 즉 첫 번째 리턴문만 실행이 된 것이다. 여기에 함수에 대한 한 가지 사실을 확인할 수 있다. 함수는 return문을 만나면 값을 리턴시켜주면서 ‘함수를 빠져나간다!’. 따라서 a+b를 리턴해주면서 함수는 종료가 되고 두 번째 리턴문이 실행이 될 수 없었던 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-return의-또-다른-쓰임새">4. return의 또 다른 쓰임새</h1>
+
+<hr />
+
+<p>return은 함수가 값을 반환시키도록 할 때 사용할 수도 있지만, 함수를 빠져나가는 목적으로도 사용가능하다. return문 뒤에 아무런 반환값도 입력하지 않고 return문을 단독으로 쓰면 함수를 빠져나가게 된다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c"># 30</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c"># None</span>
+</code></pre></div></div>
+
+<p>위 코드에서 a+b가 100보다 크면 return문을 써서 아무런 값도 리턴하지 않고 함수를 빠져나가도록하고 아니면 결과를 리턴해 주도록 했다. 실행결과를 보면 알겠지만 a,b가 (10,20)인 경우는 30이라는 값을 리턴해준다. 하지만 (50,60)이 입력되어 합이 100보다 커지면 그냥 return문을 만나 아무런 값도 리턴하지 않기 때문에 변수에 대입되는 값이 없어 “None”이라는 문장이 출력된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="5-함수-내부-변수의-수명">5. 함수 내부 변수의 수명</h1>
+
+<hr />
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">def</span> <span class="nf">increase</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span><span class="o">+</span><span class="mi">10</span>
+
+<span class="n">increase</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드를 실행하면 a의 출력값으로 몇이 나올까? a=1이었고, increase 함수에 집어넣어 10을 더해줬으니 11이 나오지 않을까? 라고 일반적으로 생각할 수도 있다. 하지만 출력값은 1이 나온다.</p>
+
+<p>결과에 관한 힌트는 함수 내부 변수의 수명에 있다. 함수 내부의 변수는 함수 외부와는 상관이 없다. 함수에 입력 인수로 a를 넣어주는 행위는 실제로 a 자체를 넣어준다기 보다는 a가 가진 값과 똑같은 값을 넣어주는 것이다. 단지 1이 들어갈 뿐이고 거기에 10이 더해져 11이 나온다. 하지만 이는 함수가 종료되면서 사라진다. a = increase(a) 와 같은 코드로 return을 해주어 사라지기 전에 a에 저장해 주었다면 우리가 의도했던대로 a를 11로 증가시킬 수 있지만 말이다.</p>
+
+<p>확실히 하기위해 코드 하나를 더 보자.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">increase</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span><span class="o">+</span><span class="mi">10</span>
+
+<span class="n">increase</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드의 실행결과는 어떻게 될까? 다음과 같은 오류가 나온다.</p>
+
+<p>NameError: name ‘num’ is not defined</p>
+
+<p>num이 정의되지 않았다는 것이다. 일반적인 사고로는 increase 함수에 10을 넣어주었으니 num값은 20을 가지고 print(num) 명령어를 사용해 출력을 하면 20이 나올거라 생각할 수도 있다. 하지만 함수 호출이 종료되면서 num이라는 변수는 더 이상 존재하지 않게 되고 NameError를 일으키는 것이다.</p>
+
+<p>뭐, 딱히 함수 내부의 변수로 만들어진 결과를 외부에서 사용하는 방법이 없는 것은 아니다. 두 가지가 있다.</p>
+
+<ul>
+  <li>return 이용하기</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">def</span> <span class="nf">increase</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span><span class="o">+</span><span class="mi">10</span>
+    <span class="k">return</span> <span class="n">num</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">increase</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c"># 11</span>
+</code></pre></div></div>
+
+<p>위와 같이 코드를 작성하면 increase 함수에 1이 들어가고 의도한 값인 11을 리턴해주게 되어 변수에 담을 수 있다. 그리고 그 변수를 출력하면 11이 나온다.</p>
+
+<ul>
+  <li>global 선언</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">def</span> <span class="nf">increase</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">a</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="n">increase</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">increase</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드에서 global a 선언의 뜻은 ‘밖에 있는 변수 a를 사용하겠다’ 이다. 하지만 일반적인 프로그래밍에서 함수가 외부 변수에 종속되는 것은 썩 좋지 않다. 독립 적인 함수야말로 언제든지 재사용성이 높기 때문이다. 되도록이면 첫 번째 방법인 return을 사용하는 것을 추천한다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/19/11-for/">
+        11. 제어문(3) - for
+      </a>
+    </h1>
+
+    <span class="post-date">19 Sep 2018</span>
+
+    <p>while문 처럼 for문 역시 반복문이다. 하지만 쓰임새는 다르다. while문은 조건을 넣어주고 조건이 ‘거짓’이 될 때 까지 끊임없이 실행했다면, for문은 우리가 정한 몇 가지 case에 대해 반복을 해주고 반복문을 빠져나온다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="1-for문-구조">1. for문 구조</h1>
+
+<hr />
+
+<p>파이썬에서 for문은 보통 리스트, 튜플, 문자열 등의 모든 요소가 변수에 차례대로 대입되면서 어떤 명령을 실행한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Kelly'</span><span class="p">,</span> <span class="s">'John'</span><span class="p">,</span> <span class="s">'Julia'</span><span class="p">,</span> <span class="s">'Charlie'</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">people</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"hey, {}!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">person</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>hey, Kelly</p>
+
+<p>hey, John</p>
+
+<p>hey, Julia</p>
+
+<p>hey, Charlie</p>
+
+<p> </p>
+
+<p>people이라는 이름의 list가 있고, person이라는 변수에 각 list의 요소가 하나씩 대입되면서 명령이 실행된다. 명령은 person을 한 번씩 부르는 것이므로 실행결과는 위와 같다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="s">"one"</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">'two'</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s">'three'</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">'four'</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">read</span><span class="p">)</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">d is </span><span class="si">%</span><span class="s">s"</span><span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">read</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>위와 같이 리스트 내의 각 요소가 튜플로 되어있는 경우이다. 이 경우에 for문에서 반복을 위해 대입되는 변수도 튜플 자료형을 사용하면 된다.</p>
+
+<p>예제 한 개만 더 해보자.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Julia'</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span> <span class="s">'Kelly'</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="s">'Emma'</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s">'Chuck'</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s">'Paul'</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">scores</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">scores</span><span class="p">[</span><span class="n">person</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s is passed"</span><span class="o">%</span><span class="n">person</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s is not passed"</span><span class="o">%</span><span class="n">person</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>scores는 각각의 학생과 시험점수 딕셔너리 쌍이다. for문에서 변수 person에 각각의 키를 대입하고 조건문을 사용해서 서 각 key의 value 즉, 점수가 60점 이상이면 통과, 미만이면 불통과 문장을 출력한다.</p>
+
+<p>Julia is not passed</p>
+
+<p>Kelly is passed</p>
+
+<p>Emma is not passed</p>
+
+<p>Chuck is passed</p>
+
+<p>Paul is passed</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-for문과-continue-break">2. for문과 continue, break</h1>
+
+<hr />
+
+<p>어떤 시험에서 합격한 사람들에게 축하 메시지를 보내고 불합격한 사람에게는 아무 메시지도 보내지 않는 프로그램을 만들어보자.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">people</span> <span class="o">=</span> <span class="p">{</span><span class="s">'HangBae'</span><span class="p">:</span> <span class="s">'pass'</span><span class="p">,</span> <span class="s">'Panho'</span><span class="p">:</span> <span class="s">'nonpass'</span><span class="p">,</span> <span class="s">'DongSuk'</span><span class="p">:</span> <span class="s">'pass'</span><span class="p">,</span> <span class="s">'IkHeyon'</span><span class="p">:</span> <span class="s">'nonpass'</span><span class="p">,</span> <span class="s">'YeoSaJang'</span><span class="p">:</span><span class="s">'pass'</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">people</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">people</span><span class="p">[</span><span class="n">person</span><span class="p">]</span><span class="o">==</span><span class="s">'pass'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Congratulations, </span><span class="si">%</span><span class="s">s!"</span><span class="o">%</span><span class="n">person</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">continue</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>위 코드는 person 변수에 딕셔너리 people의 key를 대입해가면서 그 key의 value가 ‘pass’인지 아닌지 판단한다. ‘pass’면 축하 메시지를 출력하고 아니면 다시 for문의 처음으로 돌아가서 다음 요소가 person에 대입된다. 사실 위 코드는 else부분을 없애도 같은 결과를 만든다. 하지만 프로그래머들은 if문만 있는것을 좋아하지 않고 가독성 측면을 위해서 굳이 else를 집어넣고 continue를 넣어주는 것을 좋아하는 사람들도 많다.</p>
+
+<p>Congratulations, HangBae!</p>
+
+<p>Congratulations, DongSuk!</p>
+
+<p>Congratulations, YeoSaJang!</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"find!"</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>위의 코드에서는 변수 i에 리스트 a의 요소가 처음부터 차례대로 대입된다. 6을 찾으면 “찾았다!”라는 문장을 출력하고  break을 사용해서 for문을 탈출하고, 그렇지 않으면 “아니야!”라는 문장을 출력하고 for문은 계속된다.</p>
+
+<p>No!</p>
+
+<p>No!</p>
+
+<p>No!</p>
+
+<p>find!</p>
+
+<p>결과를 보면 3번의 실패 끝에 4번째로 6을 찾고 더 이상 아무 결과가 없다. 실제로 리스트 a는 8개의 요소를 가지고 있지만 4번째 요소에서 6을 찾고 break를 사용해 for문을 끝낸 것을 알 수 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-range-함수">3. range 함수</h1>
+
+<hr />
+
+<p>C, JAVA 등의 다른 프로그래밍 언어를 공부해 본 사람들은 알겠지만, for문의 유용한 쓰임새 중에는 일일이 손으로 치기 버거운(가령 1000번의) 반복등이 있다. 위에서 소개한 for문은 list의 요소에 관한 반복이었다. 하지만 리스트로 정의되어있지 않은 많은 횟수의 반복에 관해서는 어떻게 할까?</p>
+
+<p>파이썬에는 range라는 내장함수가 있다. range 함수는 자동으로 숫자 리스트를 만들어주는 함수이다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>1</p>
+
+<p>2</p>
+
+<p>3</p>
+
+<p>4</p>
+
+<p>위의 코드에서는 변수 i에 range(5)의 요소를 하나씩 대입하면서 출력한다. 결과를 보면 0에서 4까지가 출력되었다. 즉, range(k)는 0부터 k미만(k-1)의 숫자 리스트를 만들어준다.</p>
+
+<p>우리가 range 함수의 범위를 지정해 줄 수도 있다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위에서 range 함수가 만들어낸 숫자의 범위는 5에서 10미만이다.</p>
+
+<p>5</p>
+
+<p>6</p>
+
+<p>7</p>
+
+<p>8</p>
+
+<p>9</p>
+
+<p>range함수를 사용한다면 아주 많은 횟수에 대해서도 편하게 코드를 작성할 수 있다.</p>
+
+<p>range함수를 사용해서 1에서 10까지 모든 숫자를 더한 합계를 계산해보자.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">+</span><span class="n">i</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span> <span class="c"># 55</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>대부분의 프로그래밍 언어에서 반복문의 가장 대표적인 예들 중 하나는 구구단 출력이다. 파이썬에서 역시 마찬가지다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"=====</span><span class="si">%</span><span class="s">d DAN===="</span><span class="o">%</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">d x </span><span class="si">%</span><span class="s">d = </span><span class="si">%</span><span class="s">d"</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>출력해보면 깔끔하게 2단부터 9단까지의 구구단이 출력된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-리스트-내포">4. 리스트 내포</h1>
+
+<hr />
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위의 코드는 a의 각 요소에 2를 곱한 값을 하나씩 리스트 b에 담는 내용이다. 결과는 다음과 같다.</p>
+
+<p>[2, 4, 6, 8, 10]</p>
+
+<p> </p>
+
+<p>위의 작업을 더 편하게, 간결한 코드로 하는 방법이 있다.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>리스트 안에 for문을 집어넣었다. 딱히 설명하지 않아도 코드가 이해가 될 거라 생각한다. 파이썬의 강력한 직관성을 확인할 수 있다. 결과는 물론 이전의 코드와 동일하게 나온다. 하나 더 보자.</p>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드는 리스트 a의 요소인데, 모든 요소가 아닌 2로 나누어 나머지가 1인, 즉 홀수에 대해서만 2*i의 작업을 하여 리스트 b에 포함시킨다. 결과는 다음과 같다.</p>
+
+<p>[2, 6, 10]</p>
+
+<p> </p>
+
+<p>이처럼 리스트 내포를 사용하면 코드가 아주 간결해진다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11152,198 +11826,6 @@
 </code></pre></div></div>
 
 <p>is 함수를 사용하여 두 변수가 서로 같은 객체를 참조하는지 알 수 있다. 같은 객체를 참조하면 True, 아니면 False 리턴</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/17/7-true-false/">
-        7. 자료형(7) - 참과 거짓(True False)
-      </a>
-    </h1>
-
-    <span class="post-date">17 Sep 2018</span>
-
-    <p> </p>
-
-<ul>
-  <li>a == b 라는 조건이 맞으면 ‘a==b’라는 문장 자체가 1(True)을 반환하고 틀리면 0(False)를 반환한다.</li>
-  <li>1, 5, ‘hello’, [1,2], (3,4) 등 비어있지 않은 자료는 참(True)이다.</li>
-  <li>[], {}, (), 0 등 비어있는 공백 자료는 거짓(False)이다.</li>
-</ul>
-
-<h1 id="1-자료형의-참거짓">1. 자료형의 참/거짓</h1>
-
-<hr />
-
-<p>각 자료형 별로 참과 거짓의 구분 기준은 조건문에 들어갔을 때 참(True)를 리턴하느냐, 거짓(False)를 리턴하느냐이다.</p>
-
-<p><strong>1) 숫자</strong><br />
-참 : 1, 10, 3.14, 1/10, -4 등 0이 아닌 숫자<br />
-거짓 : 0</p>
-
-<p><strong>2) 문자열</strong><br />
-참 : “abc”, “a”, “10” 등 비어있지 않은 문자열<br />
-거짓 : “” 비어있는 문자열</p>
-
-<p><strong>3) 리스트</strong><br />
-참 : [1],[1,3],[‘a’,1] 등 비어있지 않은 리스트<br />
-거짓 : [] 비어있는 리스트</p>
-
-<p><strong>4) 튜플</strong><br />
-참 : (1,’a’), (3,) 등 비어있지 않은 튜플<br />
-거짓 : () 비어있는 튜플</p>
-
-<p><strong>5) 딕셔너리</strong><br />
-참 : {1:’a’, 2:’b’} 등 비어있지 않은 딕셔너리<br />
-거짓 : {} 비어있는 딕셔너리</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-자료형과-제어문">2. 자료형과 제어문</h1>
-
-<hr />
-
-<p>제어문 강의에서 자세히 다루겠지만 if, while, for 등의 제어문은 조건이 참이면 내부함수를 실행하는 구조이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
-<span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"a is 1"</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"a is not 1"</span><span class="p">)</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>위의 a==1 은 ‘참’이므로 위의 조건문은 “a is 1”이라는 문장을 출력한다.</li>
-  <li>만약 위의 조건이 ‘거짓’이었다면 else 아래의 “a is not 1”이라는 문장이 출력된다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">]</span>
-<span class="k">while</span> <span class="n">a</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>while문은 조건이 참인 동안 계속해서 내부 함수인 a.pop()을 실행하면서 그 리턴값을 출력한다. pop() 함수는 리스트의 마지막 요소를 리턴하고 삭제시키는 함수이다. [‘a’,’b’,’c’]는 참이므로 ‘c’를 뱉어낸다. 다음 실행에서 [‘a’,’b’]는 참이므로 ‘b’를 뱉어낸다. 다음 실행에서 [‘a’]는 참이므로 ‘a’를 뱉어낸다. 다음 실행에서 []는 거짓이므로 while문을 빠져나간다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/17/6-set/">
-        6. 자료형(6) - 집합(Set)
-      </a>
-    </h1>
-
-    <span class="post-date">17 Sep 2018</span>
-
-    <p> </p>
-
-<h1 id="1-집합-표현방식">1. 집합 표현방식</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {1,2,3}</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'python'</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="c"># {'t','o','y','n','p','h'}   집합의 특징1 : 순서가 없다.</span>
-<span class="n">s3</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'apple'</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span> <span class="c"># {'e','l','a','p'}   집합의 특징2 : 중복이 안된다.</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<ul>
-  <li>순서가 없다는 것은 index가 없다는 말이다. 따라서 인덱싱이나 슬라이싱을 통해서 값을 얻을 수 없다.</li>
-  <li>리스트, 튜플 자료형은 순서가 있어 인덱싱,슬라이싱이 되었다. 딕셔너리, 집합 자료형은 순서가 없으므로 인덱싱, 슬라이싱이 되지 않는다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># 집합 s1을 리스트형으로 변환</span>
-<span class="k">print</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="c"># [1,2,3]</span>
-<span class="n">t1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># 집합 s1을 튜플형으로 변환</span>
-<span class="k">print</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="c"># (1,2,3)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-집합-활용방법">2. 집합 활용방법</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>1) 교집합</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">&amp;</span><span class="n">s2</span><span class="p">)</span> <span class="c"># {4,5}</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c"># {4,5}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>2) 합집합</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">|</span><span class="n">s2</span><span class="p">)</span> <span class="c"># {1,2,3,4,5,6,7,8}</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c"># {1,2,3,4,5,6,7,8}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>3) 차집합</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">-</span><span class="n">s2</span><span class="p">)</span> <span class="c"># {1,2,3}</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="o">-</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {6,7,8}</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c"># {1,2,3}</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span> <span class="c"># {6,7,8}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-집합-관련-함수">3. 집합 관련 함수</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>1) 값 1개 추가</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c"># 4 추가</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {1,2,3,4}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>2) 값 여러개 추가</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span> <span class="c"># {5,6,7} 집합 추가</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {1,2,3,4,5,6,7}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>3) 값 제거</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c"># 3 제거</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {1,2,4,5,6,7}</span>
-</code></pre></div></div>
-
 
   </div>
   

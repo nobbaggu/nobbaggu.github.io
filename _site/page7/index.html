@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,363 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/04/28/button/">
+        12. 기본 위젯(2) - 버튼(Button)
+      </a>
+    </h1>
+
+    <span class="post-date">28 Apr 2019</span>
+
+    <p>버튼은 텍스트뷰를 상속하였다. 따라서 확장성이 뛰어난 버튼을 구성할 수 있다. 버튼은 onClickListener라는 콜백함수를 통해 이벤트가 발생했을 때(버튼이 눌렸을 때) 특정 기능을 처리하는 코드를 구성할 수 있다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/dog"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"개"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/cat"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"고양이"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>버튼을 두 개 추가하였다. 하나는 눌렀을 때 개가 짖는 행동을, 나머지 하나는 고양이가 우는 행동을 표현하기 위한 것이다. 이제 이벤트 처리를 위해 자바 코드를 작성해야 한다.</p>
+
+<p> </p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplewidget</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+		<span class="cm">/* XML 레이아웃에 정의 된 버튼 객체 참조 */</span>
+        <span class="n">Button</span> <span class="n">dogButton</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dog</span><span class="o">);</span>
+        <span class="n">Button</span> <span class="n">catButton</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">cat</span><span class="o">);</span>
+
+		<span class="cm">/* dogButton에 클릭이벤트 발생 시 "멍멍! 멍멍!" 문자열 토스트 메시지 출력 */</span>
+        <span class="n">dogButton</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"멍멍! 멍멍!"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+		<span class="cm">/* catButton에 클릭이벤트 발생 시 "야옹~ 야옹~" 문자열 토스트 메시지 출력 */</span>
+        <span class="n">catButton</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"야옹~ 야옹~"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>XML 코드에서 버튼의 속성 중 onClick의 값으로 실행시킬 메소드의 이름을 설정하는 방법도 있지만, 지금처럼 버튼의 setOnClickListener 메소드를 통해 리스너 객체를 전달해줄 수도 있다. 이 때 리스너 객체는 익명 클래스로 만들어서 전달해주었다. 앱을 실행시켜서 버튼을 눌러보면 다음과 같은 결과가 나온다.</p>
+
+<p><img src="/images/android/12/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/12/2.jpg" alt="2" width="30%" height="30%" /></p>
+
+<p><br /></p>
+
+<p>버튼을 확장한 기능인 체크박스(CheckBox)와 라디오버튼(RadioButton)에 대해서도 알아보자. 이 두 버튼의 경우 클릭 이벤트 이외에도 선택/해제 상태를 저장할 수 있다. 이는 CompoundButton이라는 클래스를 상속하기 때문이다.</p>
+
+<p>컴파운드버튼(CompoundButton) 클래스의 주요 메소드로는 다음의 것들이 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isChecked</span><span class="o">()</span> <span class="c1">// 선택/해제 상태를 return</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setChecked</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">checked</span><span class="o">)</span> <span class="c1">// true 혹은 false 값을 전달받아 선택/해제 상태값 지정</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">toggle</span><span class="o">()</span> <span class="c1">// 선택/해제 상태를 변경</span>
+<span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="c1">//상태가 바뀔경우 항상 호출되는 메소드</span>
+</code></pre></div></div>
+
+<p>라디오 버튼은 하나를 선택하면 나머지 것들이 해제되어야 하므로 라디오 그룹(RadioGroup)을 사용해서 하나로 묶어준다. 이를 응용해서 간단한 앱을 하나 만들어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;RadioGroup</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;RadioButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/radio1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"개"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;RadioButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/radio2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"고양이"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;RadioButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/radio3"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"돼지"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/RadioGroup&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:textColor=</span><span class="s">"#ffff00ff"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"20dp"</span>
+        <span class="na">android:background=</span><span class="s">"#ffaaffff"</span>
+        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;CheckBox</span>
+            <span class="na">android:id=</span><span class="s">"@+id/checkBox"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"체크박스"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:layout_marginLeft=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView2"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:textColor=</span><span class="s">"#ffff00ff"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"20dp"</span>
+        <span class="na">android:background=</span><span class="s">"#ffaaffff"</span>
+        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>개, 고양이, 돼지 중 하나를 선택할 수 있는 라디오 버튼들을 라디오 그룹으로 묶어주었다. 또한 체크박스도 하나 만들어보았다. 각각의 버튼들 아래에는 텍스트뷰를 하나씩 만들어 어떠한 문자열을 표시하려 한다. 이제 기능을 구현하기 위한 자바코드를 만들어보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplewidget</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.CheckBox</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.CompoundButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.RadioButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span>
+    <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span>
+    <span class="n">RadioButton</span> <span class="n">radio3</span><span class="o">;</span>
+
+    <span class="n">TextView</span> <span class="n">textView1</span><span class="o">;</span>
+    <span class="n">TextView</span> <span class="n">textView2</span><span class="o">;</span>
+
+    <span class="n">CheckBox</span> <span class="n">checkBox</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+		<span class="cm">/* XML 레이아웃에 정의 된 라디오버튼, 텍스트뷰, 체크박스 객체 참조 */</span> 
+        <span class="n">radio1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">radio1</span><span class="o">);</span>
+        <span class="n">radio2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">radio2</span><span class="o">);</span>
+        <span class="n">radio3</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">radio3</span><span class="o">);</span>
+
+        <span class="n">textView1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView1</span><span class="o">);</span>
+        <span class="n">textView2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView2</span><span class="o">);</span>
+
+        <span class="n">checkBox</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">checkBox</span><span class="o">);</span>
+
+		<span class="cm">/* radio1 상태 변경 이벤트 발생 처리부 코드 */</span>
+        <span class="n">radio1</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">isChecked</span><span class="o">){</span>
+                    <span class="n">textView1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"개 입니다."</span><span class="o">);</span> <span class="c1">//textView1의 문자열 "개 입니다."로 설정</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+		<span class="cm">/* radio2 상태 변경 이벤트 발생 처리부 코드 */</span>
+        <span class="n">radio2</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">isChecked</span><span class="o">){</span>
+                    <span class="n">textView1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"고양이 입니다."</span><span class="o">);</span> <span class="c1">//textView1의 문자열 "고양이 입니다."로 설정</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+		<span class="cm">/* radio3 상태 변경 이벤트 발생 처리부 코드 */</span>
+        <span class="n">radio3</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">isChecked</span><span class="o">){</span>
+                    <span class="n">textView1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"돼지 입니다."</span><span class="o">);</span> <span class="c1">//textView1의 문자열 "돼지 입니다."로 설정</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+		<span class="cm">/* checkBox 상태 변경 이벤트 발생 처리부 코드 */</span>
+        <span class="n">checkBox</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">isChecked</span><span class="o">){</span>
+                    <span class="n">textView2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"체크되었습니다."</span><span class="o">);</span> <span class="c1">//textView2의 문자열 "체크되었습니다."로 설정</span>
+                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                    <span class="n">textView2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"체크가 해제되었습니다."</span><span class="o">);</span> <span class="c1">//textView2의 문자열 "체크가 해제되었습니다."로 설정</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>각각의 버튼마다 OnCheckedChangeLister를 달아주었다. 선택/해제 상태가 변경되면 OnCheckedChanged 메소드가 호출된다. 각각의 OnCheckedChanged 메소드로는 isChecked 변수가 전달되는데, 선택된 것이면 true가, 반대면은 false가 들어온다. 따라서 체크 되었을 때와 아닌 경우마다 textView에 표시되는 문자열을 다르게 설정하는 코드를 넣어준다. 그리고 앱을 실행하면 아래와 같은 화면이 나온다.</p>
+
+<p><img src="/images/android/12/3.jpg" alt="3" width="30%" height="30%" />
+<img src="/images/android/12/4.jpg" alt="4" width="30%" height="30%" />
+<img src="/images/android/12/5.jpg" alt="5" width="30%" height="30%" /></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/04/28/textview/">
+        11. 기본 위젯(1) - 텍스트뷰(TextView)
+      </a>
+    </h1>
+
+    <span class="post-date">28 Apr 2019</span>
+
+    <p>텍스트뷰(TextView)는 화면에 텍스트를 보여주는 역할을 한다. 아래는 텍스트뷰의 주요 속성들에 대한 내용이다.</p>
+
+<p> 
+*text</p>
+
+<p>텍스트뷰의 문자열을 설정한다.직접 문자열을 넣어줄수도 있고, /res/values/strings.xml 파일에 있는 문자열을 지정할 수도 있다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"app_name"</span><span class="nt">&gt;</span>SampleWidget<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"hello"</span><span class="nt">&gt;</span>안녕, 안드로이드!<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></div></div>
+
+<p>app_name은 이 프로젝트의 이름으로 원래부터 있던 것이고, hello는 방금 추가한 것이다. 아무튼 <string> 태그에 있는 문자열은 다른 곳에서 name 속성값을 통해 참조할 수 있다. @string/hello 이런 식으로 말이다. 아래 코드를 참고하면 된다.</string></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;TextView</span>
+	<span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+	<span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+	<span class="na">android:text=</span><span class="s">"@string/hello"</span>
+	<span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p> 
+*textColor</p>
+
+<p>“#AARRGGBB” 포맷으로 텍스트의 색상을 지정할 수 있다. 여기서 A는 Alphacode(투명도), R은 Red(빨강), G는 Green(초록), B는 Black(검정)을 의미한다. AA는 00~FF 사이의 값을 가지며 00에 가까울수록 투명해지다가 00이 되면 아예 보이지 않게 된다. RR, GG, BB 값은 00~FF 사이의 값을 가지며 클수록 해당 색의 농도가 짙어진다.</p>
+
+<p> 
+*textSize</p>
+
+<p>폰트 크기를 지정한다. 크기 단위는 dp, sp, px 등으로 다양하다.</p>
+
+<p> 
+*textStyle</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>문자열의 스타일을 지정한다. “normal”, “bold”, “italic” 등의 값을 가질 수 있다. ‘</td>
+      <td>’ 기호를 사용하여 여러개의 값을 동시에 적용시킬 수도 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p> 
+*typeface</p>
+
+<p>폰트(글꼴)를 지정한다. “normal”, “sans”, “serif”, “monospace” 등의 값을 가질 수 있다.</p>
+
+<p> 
+*maxLines
+문자열의 최대 줄 수를 지정한다. 예를 들면 값을 2로 설정하면 두 줄을 넘어가는 부분은 표시되지 않는다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"@string/hello"</span>
+        <span class="na">android:textColor=</span><span class="s">"#50ff0000"</span>
+        <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold|italic"</span>
+        <span class="na">android:typeface=</span><span class="s">"serif"</span>
+        <span class="na">android:maxLines=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/11/1.jpg" alt="1" width="30%" height="30%" /></p>
+
+<p>RRGGBB 에서 ff0000은 빨간색인데, AA 값을 50으로 설정해서 투명도가 생겼다. 또한 text 속성의 값으로 @string/hello를 넣어주었는데, maxLines 값이 1이라 뒷부분이 잘려나갔다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10891,380 +11318,6 @@
 <p>화면을 실행하면 다음과 같이 된다.</p>
 
 <p><img src="/images/android/8/3.jpg" alt="3" width="30%" height="30%" /></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/04/28/relative-layout/">
-        7. 상대 레이아웃(RelativeLayout)
-      </a>
-    </h1>
-
-    <span class="post-date">28 Apr 2019</span>
-
-    <p> 
-상대 레이아웃은 부모 컨테이너, 그리고 뷰 사이의 상대적 위치관계를 정의하여 화면을 배치하는 레이아웃이다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;RelativeLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
-    
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button1"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-        <span class="na">android:text=</span><span class="s">"Button1"</span>
-        <span class="na">android:layout_below=</span><span class="s">"@+id/button3"</span>
-        <span class="na">android:layout_above=</span><span class="s">"@+id/button2"</span>
-        <span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"Button2"</span>
-        <span class="na">android:layout_alignParentBottom=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button3"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"Button3"</span><span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/RelativeLayout&gt;</span>
-</code></pre></div></div>
-
-<p>layout_width와 layout_height 속성이 모두 match_parent인 button1은 layout_below 속성과 layout_above 속성값으로 각각 button3과 button2의 id를 넣어주어 두 버튼의 사이에 위치하게 된다. 다만, 뷰를 만들면 default로 화면의 윗쪽에 자리잡으므로 button2는 layout_alignParentBottom 속성의 값을 true로 해주어 부모 컨테이너의 아랫쪽에 붙여야 한다.</p>
-
-<p>앱의 화면은 아래와 같이 나타난다.</p>
-
-<p><img src="/images/android/7/1.jpg" alt="1" width="30%" height="30%" /></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/04/27/linear-layout/">
-        6. 리니어 레이아웃(LinearLayout)
-      </a>
-    </h1>
-
-    <span class="post-date">27 Apr 2019</span>
-
-    <p> </p>
-<h3 id="1-리니어-레이아웃">1. 리니어 레이아웃</h3>
-
-<p>리니어 레이아웃은 대표적인 레이아웃들 중에서도 가장 중요한 레이아웃이다. 개념은 간단하지만, 여러 개의 리니어 레이아웃을 중첩시켜 사용하면 왠만한 복잡한 화면도 다 만들 수 있다.</p>
-
-<p>리니어 레이아웃은 orientation 속성을 필수로 가지는데, vertical과 horizontal을 값으로 가질 수 있다. vertical은 세로 방향의 뷰 배치를, horizontal은 가로 방향의 뷰 배치를 한다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"Button"</span> <span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"Button"</span> <span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button3"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"Button"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p>위 xml 코드에서는 리니어 레이아웃의 방향(orientation) 속성 값으로 vertical을 설정하였다. 그리고 버튼을 3개 배치하였다. 앱을 실행하면 다음과 같은 화면을 볼 수 있다.</p>
-
-<p><img src="/images/android/6/1.jpg" alt="1" width="30%" height="30%" /></p>
-
-<p>우리가 만든 레이아웃은 자바 코드를 통해 액티비티의 화면으로 설정된 것이다. MainActivity.java 소스코드를 보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplelinearlayout</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span> <span class="c1">//activity_main.xml을 액티비티 화면으로 설정</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>위 코드에서 setContentView 메소드의 전달인자로 R.layout.activity_main과 같이 XML로 정의된 레이아웃 리소스 파일을 전달함으로써 아까 만든 레이아웃이 액티비티 화면으로 설정된 것이었다.</p>
-
-<p> 
- </p>
-<h3 id="2-자바-코드로-화면-구성하기">2. 자바 코드로 화면 구성하기</h3>
-<p>XML로 정의된 레이아웃 리소스를 사용하지 않고 자바 소스코드에서 직접 화면을 구성할 수 있다. 동적으로 화면 구성이 달라져야 하는 경우는 이렇게 하는것이 더욱 효과적이므로 알아두는 것이 좋다.</p>
-
-<p>새로운 LayoutCodeActivity.java 파일을 만들어서 다음과 같이 소스코드를 입력하였다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplelinearlayout</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.LinearLayout</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LayoutCodeActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-
-        <span class="n">LinearLayout</span> <span class="n">mainLayout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinearLayout</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">// 리니어 레이아웃 객체 생성</span>
-        <span class="n">mainLayout</span><span class="o">.</span><span class="na">setOrientation</span><span class="o">(</span><span class="n">LinearLayout</span><span class="o">.</span><span class="na">VERTICAL</span><span class="o">);</span> <span class="c1">// 방향 속성을 세로로 설정</span>
-
-        <span class="c1">//버튼을 위한 속성 미리 설정하기</span>
-        <span class="n">LinearLayout</span><span class="o">.</span><span class="na">LayoutParams</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinearLayout</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">(</span>
-                        <span class="n">LinearLayout</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">.</span><span class="na">MATCH_PARENT</span><span class="o">,</span> <span class="c1">//Layout_width</span>
-                        <span class="n">LinearLayout</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">.</span><span class="na">WRAP_CONTENT</span><span class="o">);</span> <span class="c1">//Layout_height</span>
-
-        <span class="n">Button</span> <span class="n">button1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">//버튼 객체 생성</span>
-        <span class="n">button1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Button1"</span><span class="o">);</span> <span class="c1">//버튼 Text 설정</span>
-        <span class="n">button1</span><span class="o">.</span><span class="na">setLayoutParams</span><span class="o">(</span><span class="n">params</span><span class="o">);</span> <span class="c1">//버튼 속성 설정</span>
-
-        <span class="n">Button</span> <span class="n">button2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">//버튼 객체 생성</span>
-        <span class="n">button2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Button2"</span><span class="o">);</span> <span class="c1">//버튼 Text 설정</span>
-        <span class="n">button2</span><span class="o">.</span><span class="na">setLayoutParams</span><span class="o">(</span><span class="n">params</span><span class="o">);</span> <span class="c1">//버튼 속성 설정</span>
-
-        <span class="n">Button</span> <span class="n">button3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">//버튼 객체 생성</span>
-        <span class="n">button3</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Button3"</span><span class="o">);</span> <span class="c1">//버튼 Text 설정</span>
-        <span class="n">button3</span><span class="o">.</span><span class="na">setLayoutParams</span><span class="o">(</span><span class="n">params</span><span class="o">);</span> <span class="c1">//버튼 속성 설정</span>
-
-        <span class="n">mainLayout</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">button1</span><span class="o">);</span>
-		<span class="n">mainLayout</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">button2</span><span class="o">);</span>
-        <span class="n">mainLayout</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">button3</span><span class="o">);</span>
-
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">mainLayout</span><span class="o">);</span> <span class="c1">//액티비티 화면으로 mainLayout 설정</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>그리고 AndroidManifest.xml 파일에서 첫 화면을 LayoutCodeActivity로 변경해준다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	...
-<span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">".LayoutCodeActivity"</span><span class="nt">&gt;</span>
-	...
-</code></pre></div></div>
-
-<p>그리고 앱을 실행하면 다음과 같은 화면이 만들어진다.</p>
-
-<p><img src="/images/android/6/2.jpg" alt="2" width="30%" height="30%" /></p>
-
-<p>여기에서는 자바 소스 코드상으로 뷰그룹 객체인 mainLayout을 만들고 거기에 3개의 뷰(버튼)을 추가하였다. 마지막으로 setContentView 메소드로 뷰그룹 객체를 전달함으로써 액티비티 화면으로 뷰그룹 객체를 띄울 수 있었다.</p>
-
-<p> 
-<strong>※Context 객체란?</strong></p>
-
-<p>안드로이드에서는 뷰 객체를 만들 때 생성자에 항상 Context 객체가 전달되어야 한다. AppCompatActivity 클래스는 Context 클래스를 상속하므로 this로 Context 객체를 전달할 수 있다.</p>
-
-<p> 
- </p>
-<h3 id="3-뷰-정렬하기">3. 뷰 정렬하기</h3>
-
-<p>뷰를 정렬하기 위한 속성에는 다음의 두 가지가 있다.</p>
-
-<p><strong>1)layout_gravity</strong></p>
-
-<p>부모 컨테이너의 여유 공간에서 포함하는 뷰들을 정렬한다. 뷰의 layout_width나 layout_height 속성이 wrap_content인 경우 사용할 수 있다.</p>
-
-<p><strong>2)gravity</strong></p>
-
-<p>뷰에 담긴 내용물을 정렬한다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"left"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"left"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"center"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"center"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button3"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"Button"</span>
-        <span class="na">android:gravity=</span><span class="s">"right"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"right"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button4"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"Button"</span>
-        <span class="na">android:gravity=</span><span class="s">"right"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p><img src="/images/android/6/3.jpg" alt="3" width="30%" height="30%" /></p>
-
-<p>vertical 속성의 리니어 레이아웃에 버튼을 4개 추가하였다. 처음 3개의 버튼은 각각 layout_gravity 속성이 left, center, right 이므로 레이아웃 안에서 뷰의 위치가 각각 왼쪽, 중간, 오른쪽으로 설정되었다. 그리고 4번째 버튼은 layout_width 속성값이 match_parent라서 가로방향으로 공간이 많이 남는다. 이 버튼의 gravity 속성값으로 right를 주었으므로 버튼 안의 내용물, 즉 텍스트가 오른쪽으로 정렬된다.</p>
-
-<p> 
- </p>
-<h3 id="4-여백-설정마진--패딩">4. 여백 설정(마진 &amp; 패딩)</h3>
-
-<p>마진(Margin)은 뷰의 테두리 바깥 부분의 여백의 크기를 결정하며 패딩(Padding)은 뷰의 테두리 안쪽의 여백을 설정한다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"텍스트"</span>
-        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-        <span class="na">android:padding=</span><span class="s">"20dp"</span>
-        <span class="na">android:background=</span><span class="s">"#ffff0000"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:id=</span><span class="s">"@+id/textView2"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"텍스트"</span>
-        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-        <span class="na">android:layout_margin=</span><span class="s">"30dp"</span>
-        <span class="na">android:background=</span><span class="s">"#ff00ff00"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"텍스트"</span>
-        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-        <span class="na">android:background=</span><span class="s">"#ff0000ff"</span>
-        <span class="na">android:paddingBottom=</span><span class="s">"200dp"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p>마진과 패딩은 위 코드처럼 4 방향을 한꺼번에 설정할 수도 있고 특정 방향만 설정할 수도 있다.</p>
-
-<p><img src="/images/android/6/4.jpg" alt="4" width="30%" height="30%" /></p>
-
-<p> </p>
-<h3 id="5-여유공간-분할">5. 여유공간 분할</h3>
-
-<p>부모 컨테이너에 뷰들을 추가했을 때, 여유공간이 남았다면 이들을 기존에 추가한 뷰에 layout_weight 속성을 이용하여 나누어 할당할 수 있다. 예를들어 여유공간을 두 개의 뷰에 1:2로 나누어 할당했을 때, 여유 공간의 1/3과 2/3이 각각의 뷰의 크기에 추가된다. 주의해야 할 것은 뷰 자체의 크기가 1:2가 되는 것이 아니라, 여유 공간만 1:2로 할당하여 추가로 더해준다는 것이다. 또한 여유공간을 할당할 때에는 뷰의 그 방향 크기 속성이 wrap_content일 때에만 가능하다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;LinearLayout</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:background=</span><span class="s">"#ffffff00"</span>
-            <span class="na">android:text=</span><span class="s">"텍스트"</span>
-            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-            <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:background=</span><span class="s">"#ff00ffff"</span>
-            <span class="na">android:text=</span><span class="s">"텍스트"</span>
-            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-            <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/LinearLayout&gt;</span>
-
-    <span class="nt">&lt;LinearLayout</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:background=</span><span class="s">"#ffffff00"</span>
-            <span class="na">android:text=</span><span class="s">"텍스트"</span>
-            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-            <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:background=</span><span class="s">"#ff00ffff"</span>
-            <span class="na">android:text=</span><span class="s">"텍스트"</span>
-            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-            <span class="na">android:layout_weight=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/LinearLayout&gt;</span>
-
-    <span class="nt">&lt;LinearLayout</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:background=</span><span class="s">"#ffffff00"</span>
-            <span class="na">android:text=</span><span class="s">"텍스트"</span>
-            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-            <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:background=</span><span class="s">"#ff00ffff"</span>
-            <span class="na">android:text=</span><span class="s">"텍스트"</span>
-            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
-            <span class="na">android:layout_weight=</span><span class="s">"3"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/LinearLayout&gt;</span>
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p>수직방향 리니어 레이아웃 안에 수평방향 리니어 레이아웃을 3개 추가하였다. 그리고 각각의 수평방향 레이아웃에는 두 개의 텍스트뷰(TextView)를 추가하고 layout_weight 속성을 각각 1:1, 1:2, 1:3으로 주었다.</p>
-
-<p><img src="/images/android/6/5.jpg" alt="5" width="30%" height="30%" /></p>
-
 
   </div>
   

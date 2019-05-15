@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,439 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/05/01/extra-data/">
+        17. 부가 데이터
+      </a>
+    </h1>
+
+    <span class="post-date">01 May 2019</span>
+
+    <p>액티비티를 띄울 때 사용하는 인텐트에는 액션과 데이터 이외에도 부가적인 데이터를 넣어서 전달할 수도 있다. 인텐트 안에는 번들(Bundle) 객체가 들어 있는데, 이 객체는 해시 테이블과 유사하여 key-value 쌍으로 데이터를 입력, 출력할 수 있다.</p>
+
+<p><img src="/images/android/17/1.png" alt="1" width="60%" height="60%" /></p>
+
+<p>번들 객체에는 기본 자료형 뿐만 아니라 문자열이나 배열등도 넣어서 전달할 수 있다. 그러나 객체(Object) 자료형은 그냥 전달할 수 없고 바이트 배열로 변환하거나 직렬화(serialization) 한 후 전달할 수 있다. 안드로이드에서는 Serializable 인터페이스와 유사하지만 직렬화한 이후 크기가 작은 Parcelable 인터페이스를 권장한다.</p>
+
+<p>Parcelable 인터페이스를 구현하는 클래스는 다음 두 가지의 메소드를 구현(implement)해야 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">int</span> <span class="nf">describeContents</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">wrtieToParcel</span><span class="o">(</span><span class="n">Parcel</span> <span class="n">dest</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>writeToParcel() : 객체가 가지는 데이터를 Parcel 객체로 만들어주는 역할</p>
+
+<p> 
+Parcelable 인터페이스를 구현하는 클래스를 하나 만들어보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleparcelable</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.os.Parcel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Parcelable</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleData</span> <span class="kd">implements</span> <span class="n">Parcelable</span> <span class="o">{</span>
+
+    <span class="kt">int</span> <span class="n">number</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">message</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">SimpleData</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">,</span> <span class="n">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">number</span> <span class="o">=</span> <span class="n">number</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">SimpleData</span><span class="o">(</span><span class="n">Parcel</span> <span class="n">src</span><span class="o">){</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="na">readString</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">//Parcelable 인터페이스를 구현하는 클래스는 필수로 CREATOR 상수를 정의해야 한다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Parcelable</span><span class="o">.</span><span class="na">Creator</span> <span class="n">CREATOR</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Parcelable</span><span class="o">.</span><span class="na">Creator</span><span class="o">(){</span>
+        <span class="kd">public</span> <span class="n">SimpleData</span> <span class="nf">createFromParcel</span><span class="o">(</span><span class="n">Parcel</span> <span class="n">in</span><span class="o">){</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleData</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">SimpleData</span><span class="o">[]</span> <span class="nf">newArray</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">){</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="n">SimpleData</span><span class="o">[</span><span class="n">size</span><span class="o">];</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="c1">// Parcelable 인터페이스 구현에서 필수로 정의해야하는 메소드</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">describeContents</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 객체가 가진 데이터를 Parcel 객체로 만들어주는 메소드</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeToParcel</span><span class="o">(</span><span class="n">Parcel</span> <span class="n">dest</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">dest</span><span class="o">.</span><span class="na">writeInt</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+        <span class="n">dest</span><span class="o">.</span><span class="na">writeString</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="cm">/* ******************************************************** */</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>SimpleData 클래스는 Parcelable 클래스를 구현하므로 생성자를 통해 객체를 만들면 자동으로 Parcel 객체 형태로 만들어진다.</p>
+
+<p>이제 SimpleData를 인텐트에 부가데이터로 담아서 다른 액티비티로 전달해보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/numberInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:background=</span><span class="s">"#aaffffff"</span>
+        <span class="na">android:hint=</span><span class="s">"숫자를 입력하세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/stringInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:background=</span><span class="s">"#aaffffff"</span>
+        <span class="na">android:hint=</span><span class="s">"문자열을 입력하세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"메뉴 액티비티 띄우기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"200dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>두 개의 입력상자에 하나는 숫자, 하나는 문자열을 입력받아서 버튼을 눌러서 다른 액티비티로 전달하는 Java 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleparcelable</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">KEY_SIMPLE_DATA</span> <span class="o">=</span> <span class="s">"data"</span><span class="o">;</span>
+
+    <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+    <span class="n">EditText</span> <span class="n">numberInput</span><span class="o">;</span>
+    <span class="n">EditText</span> <span class="n">stringInput</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">numberInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">numberInput</span><span class="o">);</span>
+        <span class="n">stringInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">stringInput</span><span class="o">);</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">MenuActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+                <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">numberInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+                <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">stringInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+
+                <span class="n">SimpleData</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleData</span><span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="n">str</span><span class="o">);</span> <span class="c1">//SimpleData 객체 생성</span>
+                <span class="c1">// SimpleData 클래스는 Parcelable 인터페이스를 구현하므로 객체가 Parcel 객체 형태로 만들어진다.</span>
+
+                <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="n">KEY_SIMPLE_DATA</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span> <span class="c1">//인텐트에 부가데이터로 SimpleData 객체 넣기</span>
+                <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span> <span class="c1">//액티비티 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>버튼을 클릭하면 두 개의 입력상자로부터 숫자와 문자열을 얻어와서 SimpleData 생성자의 전달인자로 넣어 객체를 생성하는데, Parcelable 인터페이스를 구현했으므로 Parcel 객체로 만들어진다. 그리고 인텐트에 부가데이터로 담아서 MenuActivity로 전달한다.</p>
+
+<p>메뉴 액티비티는 아래와 같은 코드로 구성되어있다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"300dp"</span>
+        <span class="na">android:text=</span><span class="s">"전달받은 데이터"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>레이아웃에는 전달받은 데이터를 보여줄 텍스트뷰 하나만 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleparcelable</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MenuActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">KEY_SIMPLE_DATA</span> <span class="o">=</span> <span class="s">"data"</span><span class="o">;</span>
+
+    <span class="n">TextView</span> <span class="n">textView</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_menu</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">getIntent</span><span class="o">();</span> <span class="c1">//인텐트 받기</span>
+
+        <span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getExtras</span><span class="o">();</span> <span class="c1">//인텐트에서 부가 데이터 빼서 bundle 객체로 저장</span>
+        <span class="n">SimpleData</span> <span class="n">data</span> <span class="o">=</span> <span class="o">(</span><span class="n">SimpleData</span><span class="o">)</span> <span class="n">bundle</span><span class="o">.</span><span class="na">getParcelable</span><span class="o">(</span><span class="n">KEY_SIMPLE_DATA</span><span class="o">);</span> <span class="c1">//Parcel 객체 빼내서 SimpleData 타입으로 변환</span>
+
+        <span class="c1">//텍스트뷰에 전달받은 부가 데이터 표시</span>
+        <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"전달받은 데이터\n"</span><span class="o">+</span><span class="s">"숫자: "</span><span class="o">+</span><span class="n">data</span><span class="o">.</span><span class="na">number</span><span class="o">+</span><span class="s">"\n"</span><span class="o">+</span><span class="s">"문자열: "</span><span class="o">+</span><span class="n">data</span><span class="o">.</span><span class="na">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>getIntent() 메소드를 통해 인텐트를 받는다. 그리고 번들 객체로 부가 데이터를 받는다. 그리고 SimpleData 자료형으로 형변환을 하고 텍스트뷰에 데이터가 보이도록 설정한다.</p>
+
+<p><img src="/images/android/17/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/17/3.jpg" alt="3" width="30%" height="30%" />
+<img src="/images/android/17/4.jpg" alt="4" width="30%" height="30%" /></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/04/30/intent/">
+        16. 인텐트(Intent)
+      </a>
+    </h1>
+
+    <span class="post-date">30 Apr 2019</span>
+
+    <p> </p>
+<h3 id="1-인텐트intent란">1. 인텐트(Intent)란?</h3>
+
+<p>인텐트(Intent)는 간단히 말하면 <strong>명령 또는 데이터 전달수단</strong> 이다. 정확히는 애플리케이션 구성요소 간에 작업 수행을 위한 정보를 전달하는 역할을 한다. 그러면 시스템이 인텐트의 내용을 확인하고 실행한다. 인텐트를 사용하면 다른 애플리케이션의 액티비티를 띄우거나 기능을 호출할 수도 있다.</p>
+
+<p>인텐트를 전달하는 대표적인 메소드들에는 다음의 것들이 있다.</p>
+
+<ul>
+  <li>startActivity() , startActivityForResult()</li>
+  <li>startService() , bindService()</li>
+  <li>broadcastIntent()</li>
+</ul>
+
+<p> </p>
+<h4 id="인텐트의-기본-구성요소">인텐트의 기본 구성요소</h4>
+
+<ul>
+  <li>
+    <p>액션(Action) : 수행할 기능</p>
+  </li>
+  <li>
+    <p>데이터(Data) : 액션이 수행 될 대상 데이터</p>
+  </li>
+</ul>
+
+<p>액션과 데이터 쌍의 예시로는 전화걸기 화면 띄우기(ACTION_DIAL)와 전화번호(tel:01012344885)가 있다. 전화번호 화면을 띄우는 기능이 액션이고 전화걸기 액션이 수행 될 대상 데이터가 전화번호이다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">tools:context=</span><span class="s">".MainActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"010-1234-1234로 전화걸기"</span>
+        <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintLeft_toLeftOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintRight_toRightOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
+</code></pre></div></div>
+
+<p>버튼을 하나 만들었다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleintent</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.net.Uri</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                                    <span class="c1">//액션 : Intent.ACTION_DIAL,    데이터 : tel:01012341234</span>
+                <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_DIAL</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"tel:01012341234"</span><span class="o">));</span>
+                <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span> <span class="c1">//인텐트를 전달하여 액티비티 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>버튼을 누르면 인텐트 객체를 생성하는데, 액션으로는 전화걸기 화면을, 데이터로는 전화번호를 넣어주었다. 단, Uri.parse() 메소드를 사용해서 파싱을 해주어야 시스템이 데이터가 전화번호 타입이라는 것을 인지할 수 있다.</p>
+
+<p><img src="/images/android/16/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/16/2.jpg" alt="2" width="30%" height="30%" /></p>
+
+<p>대충 랜덤으로 정한 전화번호인데 대출권유로 신고가 많은 전화번호다;;</p>
+
+<p>이외에도 ACTION_VIEW 액션에 데이터로 인터넷 url을 넣어주어 웹 프라우저를 띄우거나 pdf 확장자명의 파일 경로를 넣어주어 pdf뷰어를 띄울수가 있다.</p>
+
+<p> </p>
+<h3 id="2-명시적-인텐트-vs-암시적-인텐트">2. 명시적 인텐트 vs. 암시적 인텐트</h3>
+
+<p><strong>명시적 인텐트</strong>는 특정 액티비티의 클래스 객체나 컴포넌트 이름을 지정하여 호출할 대상이 정확히 명시된 경우에 사용한다. 주로 하나의 애플리케이션 내부에서 사용한다. 예를 들어 하나의 애플리케이션 내에서 특정 액티비티가 다른 액티비티 클래스를 띄우는 경우가 될 수 있다.</p>
+
+<p><strong>암시적 인텐트</strong>는 액션과 데이터를 지정했지만 데이터를 실행할 컴포넌트가 달라질 수가 있는 경우이다. 예를 들면 ACTION_VIEW를 통해 데이터로 “http://”로 시작하는 문자열을 전달하였는데, 이를 실행할 컴포넌트(웹 브라우저)가 여러 개 있는 경우이다. 시스템이 암시적 인텐트를 받으면 데이터의 포맷을 확인한 후 적절한 컴포넌트를 찾아 실행해준다.</p>
+
+<p>암시적 인텐트를 사용할 때 데이터의 포맷에 따라 안드로이드가 적절한 컴포넌트를 찾는다는 것을 알았다. 안드로이드에서는 등록된 MIME 타입에 따라 적절한 컴포넌트가 설정되어 있다. 예를 들어 “http://”로 시작되는 문자열이 들어오면 인터넷 URL로 인식을 하여 인터넷 웹브라우저를 띄우고, “tel:”로 시작하는 문자열이 들어오면 전화번호로 인식하여 전화걸기 화면 등을 띄우도록 되어있는 것이다.</p>
+
+<p>암시적 인텐트를 사용할 때, 액션을 실행할 특정 컴포넌트를 직접 지정할 수도 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ComponentName</span> <span class="n">name</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComponentName</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Data</span> <span class="n">data</span><span class="o">);</span> <span class="c1">//context라는 컴포넌트를 사용하여 data를 실행       </span>
+<span class="n">intent</span><span class="o">.</span><span class="na">setComponent</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>위와 같이 하면 액션을 실행할 특정 컴포넌트를 인텐트에 직접 지정할 수 있다.</p>
+
+<p>그렇다면 어떻게 시스템은 특정 컴포넌트가 지정되지 않은 암시적 인텐트를 전달해줄 특정 컴포넌트를 찾을 수 있는 것일까?</p>
+
+<p> </p>
+<h4 id="시스템이-암시적-인텐트를-실행할-컴포넌트를-찾는-메커니즘">※시스템이 암시적 인텐트를 실행할 컴포넌트를 찾는 메커니즘</h4>
+
+<p>시스템이 암시적 인텐트를 받으면 디바이스에 설치된 모든 컴포넌트(애플리케이션)들의 인텐트 필터(intent-filter)를 살펴본다. 인텐트 필터는 앱의 AndroidManifest.xml 파일에 정의되어 있으며, 어떠한 종류의 인텐트를 받을 것인지를 명시해놓은 것이다. 안드로이드가 모든 앱의 인텐트 필터를 살피면서 암시적 인텐트를 받아들일 수 있도록 되어있는 앱이 있으면 이 앱을 통해 인텐트의 액션을 실행하는 것이다. 여러개의 앱이 암시적 인텐트를 받아들이는 경우 사용자에게 결과를 보여주면서 사용할 앱을 고를 수 있도록 띄워준다.</p>
+
+<p><img src="/images/android/16/3.png" alt="3" width="70%" height="70%" /></p>
+
+<p>인텐트 필터는 &lt;category&gt;, &lt;action&gt;, &lt;data&gt;를 기준으로 받아들일 인텐트를 결정한다. 인텐트 필터의 예시를 한 번 보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">"ShareActivity"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;intent-filter&gt;</span>
+        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.SEND"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.DEFAULT"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">android:mimeType=</span><span class="s">"text/plain"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/intent-filter&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</code></pre></div></div>
+
+<p>안드로이드 개발자 공식 커뮤니티의 가이드에 다음과 같은 설명이 나와있다.</p>
+
+<p><img src="/images/android/16/4.png" alt="4" width="70%" height="70%" /></p>
+
+<p>자세한 내용은 필요할 때 찾아서 쓰면 된다. 지금은 모든 앱은 인텐트 필터라는 것이 있고, 이를 근거로 인텐트를 받아들일지 말지 결정한다는 것이다. 또한 시스템은 AndroidManifest.xml 파일을 통해 모든 앱의 정보에 관해 알고있으며, 여기서 &lt;intent-filter&gt; 태그를 통해서 인텐트를 실행할 컴포넌트를 추린다는 것이 중요하다.</p>
+
+<p>예제를 통해서 시스템이 암시적 인텐트를 받았을 때 어떻게 행동하는지 보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/editText"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:hint=</span><span class="s">"URL을 입력하세요."</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"열기"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>입력상자와 버튼을 하나 만든다. 입력상자에 URL을 입력하고 버튼을 누르면 URL을 데이터로 가지는 인텐트를 시스템으로 보낼 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">sampleintent</span><span class="o">;</span>
+
+        <span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+        <span class="kn">import</span> <span class="nn">android.net.Uri</span><span class="o">;</span>
+        <span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+        <span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+        <span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+        <span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+        <span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">EditText</span> <span class="n">editText</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText</span><span class="o">);</span>
+                <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="n">editText</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span> <span class="c1">// 입력상자의 url 읽어와서 문자열로 만들기</span>
+                <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">url</span><span class="o">));</span> <span class="c1">// 액션: ACTION_VIEW,  데이터: url</span>
+                <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span> <span class="c1">// 액티비티 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/16/5.jpg" alt="5" width="30%" height="30%" />
+<img src="/images/android/16/6.jpg" alt="6" width="30%" height="30%" />
+<img src="/images/android/16/7.jpg" alt="7" width="30%" height="30%" /></p>
+
+<p>시스템이 암시적 인텐트를 받아들일 수 있는 앱을 찾아서 사용자에게 고를 수 있도록 결과를 보여준다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11099,363 +11602,6 @@ Java에서는 객체로 메모리에 존재하지 않는 것을 참조할 수 �
 <img src="/images/android/13/3.jpg" alt="3" width="30%" height="30%" /></p>
 
 <p>실제로 두 입력상자의 inputType 속성을 어떻게 설정했느냐에 따라 다른 모양의 키패드를 띄워주는 것을 확인할 수 있다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/04/28/button/">
-        12. 기본 위젯(2) - 버튼(Button)
-      </a>
-    </h1>
-
-    <span class="post-date">28 Apr 2019</span>
-
-    <p>버튼은 텍스트뷰를 상속하였다. 따라서 확장성이 뛰어난 버튼을 구성할 수 있다. 버튼은 onClickListener라는 콜백함수를 통해 이벤트가 발생했을 때(버튼이 눌렸을 때) 특정 기능을 처리하는 코드를 구성할 수 있다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/dog"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"개"</span>
-        <span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;Button</span>
-        <span class="na">android:id=</span><span class="s">"@+id/cat"</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"고양이"</span>
-        <span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p>버튼을 두 개 추가하였다. 하나는 눌렀을 때 개가 짖는 행동을, 나머지 하나는 고양이가 우는 행동을 표현하기 위한 것이다. 이제 이벤트 처리를 위해 자바 코드를 작성해야 한다.</p>
-
-<p> </p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplewidget</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
-
-		<span class="cm">/* XML 레이아웃에 정의 된 버튼 객체 참조 */</span>
-        <span class="n">Button</span> <span class="n">dogButton</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dog</span><span class="o">);</span>
-        <span class="n">Button</span> <span class="n">catButton</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">cat</span><span class="o">);</span>
-
-		<span class="cm">/* dogButton에 클릭이벤트 발생 시 "멍멍! 멍멍!" 문자열 토스트 메시지 출력 */</span>
-        <span class="n">dogButton</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"멍멍! 멍멍!"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-		<span class="cm">/* catButton에 클릭이벤트 발생 시 "야옹~ 야옹~" 문자열 토스트 메시지 출력 */</span>
-        <span class="n">catButton</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"야옹~ 야옹~"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>XML 코드에서 버튼의 속성 중 onClick의 값으로 실행시킬 메소드의 이름을 설정하는 방법도 있지만, 지금처럼 버튼의 setOnClickListener 메소드를 통해 리스너 객체를 전달해줄 수도 있다. 이 때 리스너 객체는 익명 클래스로 만들어서 전달해주었다. 앱을 실행시켜서 버튼을 눌러보면 다음과 같은 결과가 나온다.</p>
-
-<p><img src="/images/android/12/1.jpg" alt="1" width="30%" height="30%" />
-<img src="/images/android/12/2.jpg" alt="2" width="30%" height="30%" /></p>
-
-<p><br /></p>
-
-<p>버튼을 확장한 기능인 체크박스(CheckBox)와 라디오버튼(RadioButton)에 대해서도 알아보자. 이 두 버튼의 경우 클릭 이벤트 이외에도 선택/해제 상태를 저장할 수 있다. 이는 CompoundButton이라는 클래스를 상속하기 때문이다.</p>
-
-<p>컴파운드버튼(CompoundButton) 클래스의 주요 메소드로는 다음의 것들이 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isChecked</span><span class="o">()</span> <span class="c1">// 선택/해제 상태를 return</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setChecked</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">checked</span><span class="o">)</span> <span class="c1">// true 혹은 false 값을 전달받아 선택/해제 상태값 지정</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">toggle</span><span class="o">()</span> <span class="c1">// 선택/해제 상태를 변경</span>
-<span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="c1">//상태가 바뀔경우 항상 호출되는 메소드</span>
-</code></pre></div></div>
-
-<p>라디오 버튼은 하나를 선택하면 나머지 것들이 해제되어야 하므로 라디오 그룹(RadioGroup)을 사용해서 하나로 묶어준다. 이를 응용해서 간단한 앱을 하나 만들어보자.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;RadioGroup</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
-        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">&gt;</span>
-
-        <span class="nt">&lt;RadioButton</span>
-            <span class="na">android:id=</span><span class="s">"@+id/radio1"</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:text=</span><span class="s">"개"</span>
-            <span class="na">android:textSize=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;RadioButton</span>
-            <span class="na">android:id=</span><span class="s">"@+id/radio2"</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:text=</span><span class="s">"고양이"</span>
-            <span class="na">android:textSize=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;RadioButton</span>
-            <span class="na">android:id=</span><span class="s">"@+id/radio3"</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:text=</span><span class="s">"돼지"</span>
-            <span class="na">android:textSize=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/RadioGroup&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:id=</span><span class="s">"@+id/textView1"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
-        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
-        <span class="na">android:textColor=</span><span class="s">"#ffff00ff"</span>
-        <span class="na">android:layout_marginBottom=</span><span class="s">"20dp"</span>
-        <span class="na">android:background=</span><span class="s">"#ffaaffff"</span>
-        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;LinearLayout</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
-        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">&gt;</span>
-
-        <span class="nt">&lt;CheckBox</span>
-            <span class="na">android:id=</span><span class="s">"@+id/checkBox"</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;TextView</span>
-            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-            <span class="na">android:text=</span><span class="s">"체크박스"</span>
-            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
-            <span class="na">android:layout_marginLeft=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;/LinearLayout&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:id=</span><span class="s">"@+id/textView2"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
-        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
-        <span class="na">android:textColor=</span><span class="s">"#ffff00ff"</span>
-        <span class="na">android:layout_marginBottom=</span><span class="s">"20dp"</span>
-        <span class="na">android:background=</span><span class="s">"#ffaaffff"</span>
-        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p>개, 고양이, 돼지 중 하나를 선택할 수 있는 라디오 버튼들을 라디오 그룹으로 묶어주었다. 또한 체크박스도 하나 만들어보았다. 각각의 버튼들 아래에는 텍스트뷰를 하나씩 만들어 어떠한 문자열을 표시하려 한다. 이제 기능을 구현하기 위한 자바코드를 만들어보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">swnomad</span><span class="o">.</span><span class="na">samplewidget</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.CheckBox</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.CompoundButton</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.RadioButton</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
-
-    <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span>
-    <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span>
-    <span class="n">RadioButton</span> <span class="n">radio3</span><span class="o">;</span>
-
-    <span class="n">TextView</span> <span class="n">textView1</span><span class="o">;</span>
-    <span class="n">TextView</span> <span class="n">textView2</span><span class="o">;</span>
-
-    <span class="n">CheckBox</span> <span class="n">checkBox</span><span class="o">;</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
-
-		<span class="cm">/* XML 레이아웃에 정의 된 라디오버튼, 텍스트뷰, 체크박스 객체 참조 */</span> 
-        <span class="n">radio1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">radio1</span><span class="o">);</span>
-        <span class="n">radio2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">radio2</span><span class="o">);</span>
-        <span class="n">radio3</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">radio3</span><span class="o">);</span>
-
-        <span class="n">textView1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView1</span><span class="o">);</span>
-        <span class="n">textView2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView2</span><span class="o">);</span>
-
-        <span class="n">checkBox</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">checkBox</span><span class="o">);</span>
-
-		<span class="cm">/* radio1 상태 변경 이벤트 발생 처리부 코드 */</span>
-        <span class="n">radio1</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">isChecked</span><span class="o">){</span>
-                    <span class="n">textView1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"개 입니다."</span><span class="o">);</span> <span class="c1">//textView1의 문자열 "개 입니다."로 설정</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-		<span class="cm">/* radio2 상태 변경 이벤트 발생 처리부 코드 */</span>
-        <span class="n">radio2</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">isChecked</span><span class="o">){</span>
-                    <span class="n">textView1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"고양이 입니다."</span><span class="o">);</span> <span class="c1">//textView1의 문자열 "고양이 입니다."로 설정</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-		<span class="cm">/* radio3 상태 변경 이벤트 발생 처리부 코드 */</span>
-        <span class="n">radio3</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">isChecked</span><span class="o">){</span>
-                    <span class="n">textView1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"돼지 입니다."</span><span class="o">);</span> <span class="c1">//textView1의 문자열 "돼지 입니다."로 설정</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-		<span class="cm">/* checkBox 상태 변경 이벤트 발생 처리부 코드 */</span>
-        <span class="n">checkBox</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">isChecked</span><span class="o">){</span>
-                    <span class="n">textView2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"체크되었습니다."</span><span class="o">);</span> <span class="c1">//textView2의 문자열 "체크되었습니다."로 설정</span>
-                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
-                    <span class="n">textView2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"체크가 해제되었습니다."</span><span class="o">);</span> <span class="c1">//textView2의 문자열 "체크가 해제되었습니다."로 설정</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>각각의 버튼마다 OnCheckedChangeLister를 달아주었다. 선택/해제 상태가 변경되면 OnCheckedChanged 메소드가 호출된다. 각각의 OnCheckedChanged 메소드로는 isChecked 변수가 전달되는데, 선택된 것이면 true가, 반대면은 false가 들어온다. 따라서 체크 되었을 때와 아닌 경우마다 textView에 표시되는 문자열을 다르게 설정하는 코드를 넣어준다. 그리고 앱을 실행하면 아래와 같은 화면이 나온다.</p>
-
-<p><img src="/images/android/12/3.jpg" alt="3" width="30%" height="30%" />
-<img src="/images/android/12/4.jpg" alt="4" width="30%" height="30%" />
-<img src="/images/android/12/5.jpg" alt="5" width="30%" height="30%" /></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/04/28/textview/">
-        11. 기본 위젯(1) - 텍스트뷰(TextView)
-      </a>
-    </h1>
-
-    <span class="post-date">28 Apr 2019</span>
-
-    <p>텍스트뷰(TextView)는 화면에 텍스트를 보여주는 역할을 한다. 아래는 텍스트뷰의 주요 속성들에 대한 내용이다.</p>
-
-<p> 
-*text</p>
-
-<p>텍스트뷰의 문자열을 설정한다.직접 문자열을 넣어줄수도 있고, /res/values/strings.xml 파일에 있는 문자열을 지정할 수도 있다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resources&gt;</span>
-    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"app_name"</span><span class="nt">&gt;</span>SampleWidget<span class="nt">&lt;/string&gt;</span>
-    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"hello"</span><span class="nt">&gt;</span>안녕, 안드로이드!<span class="nt">&lt;/string&gt;</span>
-<span class="nt">&lt;/resources&gt;</span>
-</code></pre></div></div>
-
-<p>app_name은 이 프로젝트의 이름으로 원래부터 있던 것이고, hello는 방금 추가한 것이다. 아무튼 <string> 태그에 있는 문자열은 다른 곳에서 name 속성값을 통해 참조할 수 있다. @string/hello 이런 식으로 말이다. 아래 코드를 참고하면 된다.</string></p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;TextView</span>
-	<span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-	<span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-	<span class="na">android:text=</span><span class="s">"@string/hello"</span>
-	<span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<p> 
-*textColor</p>
-
-<p>“#AARRGGBB” 포맷으로 텍스트의 색상을 지정할 수 있다. 여기서 A는 Alphacode(투명도), R은 Red(빨강), G는 Green(초록), B는 Black(검정)을 의미한다. AA는 00~FF 사이의 값을 가지며 00에 가까울수록 투명해지다가 00이 되면 아예 보이지 않게 된다. RR, GG, BB 값은 00~FF 사이의 값을 가지며 클수록 해당 색의 농도가 짙어진다.</p>
-
-<p> 
-*textSize</p>
-
-<p>폰트 크기를 지정한다. 크기 단위는 dp, sp, px 등으로 다양하다.</p>
-
-<p> 
-*textStyle</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>문자열의 스타일을 지정한다. “normal”, “bold”, “italic” 등의 값을 가질 수 있다. ‘</td>
-      <td>’ 기호를 사용하여 여러개의 값을 동시에 적용시킬 수도 있다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p> 
-*typeface</p>
-
-<p>폰트(글꼴)를 지정한다. “normal”, “sans”, “serif”, “monospace” 등의 값을 가질 수 있다.</p>
-
-<p> 
-*maxLines
-문자열의 최대 줄 수를 지정한다. 예를 들면 값을 2로 설정하면 두 줄을 넘어가는 부분은 표시되지 않는다.</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span>
-    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:text=</span><span class="s">"@string/hello"</span>
-        <span class="na">android:textColor=</span><span class="s">"#50ff0000"</span>
-        <span class="na">android:textSize=</span><span class="s">"30dp"</span>
-        <span class="na">android:textStyle=</span><span class="s">"bold|italic"</span>
-        <span class="na">android:typeface=</span><span class="s">"serif"</span>
-        <span class="na">android:maxLines=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</code></pre></div></div>
-
-<p><img src="/images/android/11/1.jpg" alt="1" width="30%" height="30%" /></p>
-
-<p>RRGGBB 에서 ff0000은 빨간색인데, AA 값을 50으로 설정해서 투명도가 생겼다. 또한 text 속성의 값으로 @string/hello를 넣어주었는데, maxLines 값이 1이라 뒷부분이 잘려나갔다.</p>
 
   </div>
   

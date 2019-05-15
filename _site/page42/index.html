@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,198 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/17/7-true-false/">
+        7. 자료형(7) - 참과 거짓(True False)
+      </a>
+    </h1>
+
+    <span class="post-date">17 Sep 2018</span>
+
+    <p> </p>
+
+<ul>
+  <li>a == b 라는 조건이 맞으면 ‘a==b’라는 문장 자체가 1(True)을 반환하고 틀리면 0(False)를 반환한다.</li>
+  <li>1, 5, ‘hello’, [1,2], (3,4) 등 비어있지 않은 자료는 참(True)이다.</li>
+  <li>[], {}, (), 0 등 비어있는 공백 자료는 거짓(False)이다.</li>
+</ul>
+
+<h1 id="1-자료형의-참거짓">1. 자료형의 참/거짓</h1>
+
+<hr />
+
+<p>각 자료형 별로 참과 거짓의 구분 기준은 조건문에 들어갔을 때 참(True)를 리턴하느냐, 거짓(False)를 리턴하느냐이다.</p>
+
+<p><strong>1) 숫자</strong><br />
+참 : 1, 10, 3.14, 1/10, -4 등 0이 아닌 숫자<br />
+거짓 : 0</p>
+
+<p><strong>2) 문자열</strong><br />
+참 : “abc”, “a”, “10” 등 비어있지 않은 문자열<br />
+거짓 : “” 비어있는 문자열</p>
+
+<p><strong>3) 리스트</strong><br />
+참 : [1],[1,3],[‘a’,1] 등 비어있지 않은 리스트<br />
+거짓 : [] 비어있는 리스트</p>
+
+<p><strong>4) 튜플</strong><br />
+참 : (1,’a’), (3,) 등 비어있지 않은 튜플<br />
+거짓 : () 비어있는 튜플</p>
+
+<p><strong>5) 딕셔너리</strong><br />
+참 : {1:’a’, 2:’b’} 등 비어있지 않은 딕셔너리<br />
+거짓 : {} 비어있는 딕셔너리</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-자료형과-제어문">2. 자료형과 제어문</h1>
+
+<hr />
+
+<p>제어문 강의에서 자세히 다루겠지만 if, while, for 등의 제어문은 조건이 참이면 내부함수를 실행하는 구조이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"a is 1"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"a is not 1"</span><span class="p">)</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위의 a==1 은 ‘참’이므로 위의 조건문은 “a is 1”이라는 문장을 출력한다.</li>
+  <li>만약 위의 조건이 ‘거짓’이었다면 else 아래의 “a is not 1”이라는 문장이 출력된다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">]</span>
+<span class="k">while</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>while문은 조건이 참인 동안 계속해서 내부 함수인 a.pop()을 실행하면서 그 리턴값을 출력한다. pop() 함수는 리스트의 마지막 요소를 리턴하고 삭제시키는 함수이다. [‘a’,’b’,’c’]는 참이므로 ‘c’를 뱉어낸다. 다음 실행에서 [‘a’,’b’]는 참이므로 ‘b’를 뱉어낸다. 다음 실행에서 [‘a’]는 참이므로 ‘a’를 뱉어낸다. 다음 실행에서 []는 거짓이므로 while문을 빠져나간다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/09/17/6-set/">
+        6. 자료형(6) - 집합(Set)
+      </a>
+    </h1>
+
+    <span class="post-date">17 Sep 2018</span>
+
+    <p> </p>
+
+<h1 id="1-집합-표현방식">1. 집합 표현방식</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {1,2,3}</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'python'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="c"># {'t','o','y','n','p','h'}   집합의 특징1 : 순서가 없다.</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'apple'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span> <span class="c"># {'e','l','a','p'}   집합의 특징2 : 중복이 안된다.</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>순서가 없다는 것은 index가 없다는 말이다. 따라서 인덱싱이나 슬라이싱을 통해서 값을 얻을 수 없다.</li>
+  <li>리스트, 튜플 자료형은 순서가 있어 인덱싱,슬라이싱이 되었다. 딕셔너리, 집합 자료형은 순서가 없으므로 인덱싱, 슬라이싱이 되지 않는다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># 집합 s1을 리스트형으로 변환</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="c"># [1,2,3]</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># 집합 s1을 튜플형으로 변환</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="c"># (1,2,3)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-집합-활용방법">2. 집합 활용방법</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>1) 교집합</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">&amp;</span><span class="n">s2</span><span class="p">)</span> <span class="c"># {4,5}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c"># {4,5}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>2) 합집합</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">|</span><span class="n">s2</span><span class="p">)</span> <span class="c"># {1,2,3,4,5,6,7,8}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c"># {1,2,3,4,5,6,7,8}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>3) 차집합</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">-</span><span class="n">s2</span><span class="p">)</span> <span class="c"># {1,2,3}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="o">-</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {6,7,8}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c"># {1,2,3}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span> <span class="c"># {6,7,8}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-집합-관련-함수">3. 집합 관련 함수</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>1) 값 1개 추가</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c"># 4 추가</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {1,2,3,4}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>2) 값 여러개 추가</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span> <span class="c"># {5,6,7} 집합 추가</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {1,2,3,4,5,6,7}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>3) 값 제거</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c"># 3 제거</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c"># {1,2,4,5,6,7}</span>
+</code></pre></div></div>
+
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11124,726 +11386,6 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">a</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c"># 리스트 a에 리스트 [4,5,6] 덧붙이며 확장</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c"># [1,2,3,4,5,6]</span>
-</code></pre></div></div>
-
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/16/2-string/">
-        2. 자료형(2) - 문자열(String)
-      </a>
-    </h1>
-
-    <span class="post-date">16 Sep 2018</span>
-
-    <p>문자열 자료형은 우리가 알고 있는 문자들을 열거한 자료형이다.</p>
-
-<p>#</p>
-
-<h1 id="1-문자열-표현방식">1. 문자열 표현방식</h1>
-
-<hr />
-
-<p><strong>1)  큰 따음표(“ “)로 둘러싸기</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">"Hello, world 1"</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>2) 작은 따음표(‘ ‘)로 둘러싸기</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">'Hello, world 2'</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>3) 큰 따음표 연속 3개(“”” “”“)로 둘러싸기</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">"""Hello, world 3"""</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>4) 작은 따음표 연속 3개(‘’’ ‘’‘)로 둘러싸기</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">'''Hello, world 4'''</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>문법적 간결함이 자랑인 파이썬이 문자열을 표현하는 방법을 4개나 가지고 있는 이유가 있다.</p>
-
-<p> </p>
-
-<ul>
-  <li><span style="text-decoration: underline;"><strong>문자열 내부에 큰 따음표 혹은 작은 따음표를 포함시키고 싶을 때</strong></span></li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Python's funny!"</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>큰 따음표 안에 있는 작은 따음표는 문자열기호로 인식되지 않고 하나의 문자로 인식이 된다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'he said "Oh, Python is very funny!"'</span> 
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>작은 따움표 안에 있는 큰 따움표는 문자열기호로 인식되지 않고 하나의 문자로 인식이 된다.</p>
-
-<p>한 번 큰 따움표 안에 큰따움표, 작은따움표 안에 작은 따움표를 넣고 실행해 보면 Syntax Error가 발생할 것이다. 확인해보기 바란다.</p>
-
-<p>위의 방법 말고도 이스케이프 코드(escape code)를 사용하면 큰 따움표 안에 큰 따움표, 작은 다움표 안에 작은 따움표를 사용할 수 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'Python</span><span class="se">\'</span><span class="s">s funny!'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>\뒤에 오는 작은따움표 ‘는 문자열기호가 아닌 하나의 문자 자체로 인식이 된다.</p>
-
-<p> </p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"he said </span><span class="se">\"</span><span class="s">Oh, Python is very funny!</span><span class="se">\"</span><span class="s">"</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>\뒤에 오는 큰 따움표 “는 문자열기호가 아닌 하나의 문자 자체로 인식이 된다.</p>
-
-<p> </p>
-
-<ul>
-  <li><span style="text-decoration: underline;"><strong>여러 줄로 된 문장을 변수에 저장하고 싶을 때</strong></span></li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"""
-Life is too short
-You need Python
-"""</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>큰 따움표 세 개를 사용하면 여러줄의 문자열을 변수에 저장할 수 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'''
-Life is too short
-You need Python
-'''</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>작은 따움표 세 개를 사용하면 여러줄의 문자열을 변수에 저장할 수 있다.</p>
-
-<p> </p>
-
-<p>사실 이스케이프 코드(escape code)를 사용해서 여러줄의 문자열을 표현할 수 있기도 하다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Life is too short</span><span class="se">\n</span><span class="s"> You need Python"</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
-
-<span class="n">pyfun</span> <span class="o">=</span> <span class="s">'Life is too short</span><span class="se">\n</span><span class="s"> You need Python'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>Q. 이스케이프 코드란?</strong></p>
-
-<table style="border-collapse: collapse; width: 62.1818%; height: 239px;" border="1">
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\n</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      줄 바꿈
-    </td>
-  </tr>
-  
-  <tr style="height: 23px;">
-    <td style="width: 15.5758%; height: 23px;">
-      <strong>\t</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 23px;">
-      탭 간격
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\\</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      \를 하나의 문자로 인식
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\'</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      '를 하나의 문자로 인식
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\"</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      "를 하나의 문자로 인식
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\r</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      캐리지 리턴(줄바꿈, 현재 커서 가장 앞으로 이동)
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\f</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      캐리지 리턴(줄바꿈, 현재 커서 다음 줄로 이동)
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\a</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      벨 소리(출력을 하면 컴퓨터에서 '삑!' 소리)
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\b</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      백 스페이스
-    </td>
-  </tr>
-  
-  <tr style="height: 24px;">
-    <td style="width: 15.5758%; height: 24px;">
-      <strong>\000</strong>
-    </td>
-    
-    <td style="width: 46.606%; height: 24px;">
-      널(NULL) 문자
-    </td>
-  </tr>
-</table>
-
-<p>굳이 외우기 보다는 활용 빈도가 높은 것들을 위주로 이후 코드를 공부하다보면 알아서 익숙해질 것이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p>#</p>
-
-<h1 id="2-문자열-연산">2. 문자열 연산</h1>
-
-<hr />
-
-<p> </p>
-
-<p>파이썬은 다른 프로그래밍 언어와 다르게 문자열 간의 연산이 가능하다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first</span> <span class="o">=</span> <span class="s">"Python"</span>
-<span class="n">second</span> <span class="o">=</span> <span class="s">" is fun"</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>1) 문자열 더하기(연결)</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="n">second</span><span class="p">)</span> <span class="c">#두 문자열이 이어서 나오게 된다.</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>2) 문자열 곱하기</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span> <span class="c">#문자열이 5번 연속으로 출력된다.</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>#</p>
-
-<h1 id="3-문자열-인덱싱indexing">3. 문자열 인덱싱(indexing)</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Life is too short, You need Python"</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>첫 번째 문자부터 변수 pyfun의 index 0, index 1, index 2, … 이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c"># python에서 숫자는 1이 아닌 0부터 시작한다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c"># space bar ' ' 역시 하나의 문자이다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c"># 뒤에서 부터 index를 읽으려면 -를 붙인 음수를 사용하면 된다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="4-문자열-슬라이싱slicing">4. 문자열 슬라이싱(slicing)</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c"># 'Life'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span> <span class="c"># 'is'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">12</span><span class="p">])</span> <span class="c"># 'too'</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>파이썬에서 가장 혼동하기 쉬운 부분이 문자열 슬라이싱에서 index이다. [a:b]는 a에서 b-1 까지이다. 슬라이싱에서 마지막 index는 포함하지 않는 것이다. 즉, pyfun[a:b]는 a &lt;= pyfun &lt; b 이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">19</span><span class="p">:])</span> <span class="c"># 'You need Python'  pyfun[시작:끝] 에서 끝을 비워두면 문자열의 마지막 index까지를 의미한다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[:</span><span class="mi">17</span><span class="p">])</span> <span class="c"># 'Life is too short'  pyfun[시작:끝] 에서 시작을 비워두면 문자열의 처음 index부터를 의미한다.</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="o">-</span><span class="mi">7</span><span class="p">])</span> <span class="c"># 'You need'  음수도 사용 가능하다. -8은 d 이다. 역시나 index -7은 포함되지 않는다는 것을 잊지 말자.</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="5-문자열-포매팅formatting">5. 문자열 포매팅(formatting)</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">man</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">d"</span> <span class="c"># %d 는 정수를 표현하는 포맷 코드이다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="mi">3</span><span class="p">)</span> <span class="c"># %d 에 3이 대입된다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="mi">5</span><span class="p">)</span> <span class="c"># %d 에 5가 대입된다.</span>
-
-<span class="n">man</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">d and I live in </span><span class="si">%</span><span class="s">s"</span> <span class="c"># %s 는 문자열을 표현하는 포맷 코드이다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">'Seoul'</span><span class="p">))</span> <span class="c"># 문자열 포맷 코드가 2개인 문장에는 괄호와 쉼표를 사용하여 구분해주면 된다.</span>
-
-<span class="n">num</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">home</span> <span class="o">=</span> <span class="s">'Busan'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">home</span><span class="p">))</span> <span class="c"># 문자열 포맷 코드에는 숫자나 문자열 자체가 아닌 변수 형태로도 대입이 된다.</span>
-
-<span class="n">woman</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">s"</span>
-<span class="k">print</span><span class="p">(</span><span class="n">woman</span> <span class="o">%</span><span class="mi">5</span><span class="p">)</span> <span class="c"># 한 가지 Tip은 사실 %s 포맷 코드는 % 뒤에 있는 자료형을 모두 문자열로 변환시키기 때문에 어떤 자료형이든 대입이 된다.</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>문자열 포매팅은 상황에 따라 특정 정보가 달라져야 하는 코드를 작성할 경우에 사용한다.</p>
-
-<h2 id="q-문자열-포맷-코드란"><strong>Q. 문자열 포맷 코드란?</strong></h2>
-
-<table style="border-collapse: collapse; width: 57.3333%;" border="1">
-  <tr>
-    <td style="width: 20.4242%;">
-      %s
-    </td>
-    
-    <td style="width: 36.9091%;">
-      문자열
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 20.4242%;">
-      %c
-    </td>
-    
-    <td style="width: 36.9091%;">
-      문자
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 20.4242%;">
-      %d
-    </td>
-    
-    <td style="width: 36.9091%;">
-      정수
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 20.4242%;">
-      %f
-    </td>
-    
-    <td style="width: 36.9091%;">
-      실수
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 20.4242%;">
-      %0
-    </td>
-    
-    <td style="width: 36.9091%;">
-      8진수
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 20.4242%;">
-      %x
-    </td>
-    
-    <td style="width: 36.9091%;">
-      16진수
-    </td>
-  </tr>
-  
-  <tr>
-    <td style="width: 20.4242%;">
-      %%
-    </td>
-    
-    <td style="width: 36.9091%;">
-      '%' (% 문자 자체)
-    </td>
-  </tr>
-</table>
-
-<p> </p>
-
-<p>문자열 내부에 포맷 코드가 있을 경우 기호 %를 나타내기 위해서는 무조건 %% 로 2개를 사용해야 한다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sale</span> <span class="o">=</span> <span class="s">"The ratio is </span><span class="si">%</span><span class="s">d</span><span class="si">%%</span><span class="s">"</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sale</span> <span class="o">%</span><span class="mi">50</span><span class="p">)</span> <span class="c"># The ratio is 50% 라는 문자열이 출력된다.</span>
-
-<span class="n">sale</span> <span class="o">=</span> <span class="s">"The ratio is 50</span><span class="si">%</span><span class="s">"</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sale</span><span class="p">)</span> <span class="c"># 물론 문자열 안에 전혀 포맷 코드가 없는 경우에는 %기호 하나로 %캐릭터 자체가 출력된다.</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<h2 id="-숫자가-포함된-포맷코드"><strong># 숫자가 포함된 포맷코드</strong></h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">say</span> <span class="o">=</span> <span class="s">"she answered</span><span class="si">%10</span><span class="s">s"</span> <span class="c"># %10s는 문자열 저장을 위해 총 10칸의 문자열 길이를 할당하고 오른쪽 정렬을 한다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">say</span> <span class="o">%</span><span class="s">'yes'</span><span class="p">)</span> <span class="c"># 'she answered       yes' 를 출력한다. 총 10개의 문자열에서 3개의 yes가 오른쪽 정렬되어 왼쪽에 7개의 공백이 생긴다.</span>
-
-<span class="n">say</span> <span class="o">=</span> <span class="s">"</span><span class="si">%-10</span><span class="s">ssaid yes"</span> <span class="c"># 문자열 칸을 총 10개 할당하고 왼쪽 정렬 하였으므로 오른쪽에 8개의 공백이 생긴다.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">say</span> <span class="o">%</span><span class="s">'he'</span><span class="p">)</span> <span class="c"># 'he        said yes'</span>
-
-<span class="n">pi_1</span> <span class="o">=</span> <span class="s">"pi is </span><span class="si">%0.2</span><span class="s">f"</span> <span class="c"># 소수점 아래 2자리까지 표현</span>
-<span class="n">pi_2</span> <span class="o">=</span> <span class="s">"pi is </span><span class="si">%0.4</span><span class="s">f"</span> <span class="c"># 소수점 아래 4자리까지 표현</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pi_1</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c"># 'pi is 3.14'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pi_2</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c"># 'pi is 3.1416' (3.1415가 아닌 이유는 소수점아래 5 번째 자리에서 반올림 되어서 그렇다.)</span>
-
-<span class="n">pi_3</span> <span class="o">=</span> <span class="s">"pi is</span><span class="si">%10.2</span><span class="s">f"</span> <span class="c">#10칸의 문자열에서 오른쪽 정렬하여 숫자를 소수점 아래 2 자리까지 표현</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pi_3</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c"># 'pi is      3.14' 10칸의 문자열에서 3,.,1,4 총 4개의 문자열이 오른쪽 정렬되어 왼쪽에 6칸의 공백 형성</span>
-</code></pre></div></div>
-
-<p>#</p>
-
-<p> </p>
-
-<h1 id="6-문자열-관련함수">6. 문자열 관련함수</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">py</span> <span class="o">=</span> <span class="s">"Python is funny"</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>1) 문자 갯수 세기</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>2) 위치 반환1</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span> <span class="c"># n이 처음 나온 index인 5 반환</span>
-<span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'z'</span><span class="p">))</span> <span class="c"># 찾는 문자가 없으면 -1 반환</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>3) 위치 반환2</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span> <span class="c"># n이 처음 나온 index인 5 반환</span>
-<span class="c">#print(py.index('z')) # 찾는 문자가 없으면 오류 발생 ## 오류 때문에 뒤의 코드 실행 안되어 주석 처리</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>4) 문자열 삽입</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'123'</span><span class="p">)</span> <span class="c"># 각각의 문자열 사이에 py("Python is funny") 를 삽입</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c">#'1Python is funny2Python is funny3'</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>5) 대문자로 변환</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span> <span class="c"># 모든 문자를 대문자로 변환</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>6) 소문자로 변환</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="c"># 모든 문자를 소문자로 변환</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">py2</span> <span class="o">=</span> <span class="s">"   Python is funny      "</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p><strong>7) 왼쪽 공백 삭제</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">lstrip</span><span class="p">())</span> <span class="c"># 문자열 가장 왼쪽의 모든 공백 삭제</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>8) 오른쪽 공백 삭제</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span> <span class="c"># 문자열 가장 오른쪽의 모든 공백 삭제</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>9) 양쪽 공백 삭제</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="c"># 문자열 가장 왼쪽, 오른쪽의 모든 공백 삭제</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>10) 문자열 바꾸기</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"funny"</span><span class="p">,</span><span class="s">"GaeNoJam"</span><span class="p">))</span> <span class="c"># ("바뀔 문자열", "대체할 문자열")  'funny'를 'GaeNoJam' 으로 변환</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p><strong>11) 문자열 나누기</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="c"># 공백(space bar, tab, enter)을 기준으로 문자열을 나눈다. ['Python', 'is', 'funny']</span>
-<span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'is'</span><span class="p">))</span> <span class="c"># 'is' 를 기준으로 문자열을 나눈다. ['Python ', ' funny'] Python 뒤 공백 1칸, funny 앞 공백 1칸은 물론 포함된다.</span>
-</code></pre></div></div>
-
-<p>위와 같이 문자열을 나누면 각각의 요소가 리스트(list)로 들어가게 된다. 리스트는 다음 시간에 공부한다.<br />
-위에서 소개한 문자열 관련 함수들은 사용 빈도나 꽤나 높기때문에 숙지해두면 도움이 된다.</p>
-
-<p> </p>
-
-<p>#</p>
-
-<h1 id="bonus-문자열-포맷-함수">Bonus) 문자열 포맷 함수</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">man</span> <span class="o">=</span> <span class="s">"My name is {0} and age is {1}. I live in {2}"</span>
-</code></pre></div></div>
-
-<p>문자열 포맷함수로 지정할 항목들을 {0}, {1}, {2}, … 와 같이 indexing 해준다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">'John'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">'Seoul'</span><span class="p">))</span> <span class="c"># .format() 함수를 사용하여 index 항목에 값 저장</span>
-
-<span class="n">name</span> <span class="o">=</span> <span class="s">'John'</span>
-<span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">home</span> <span class="o">=</span> <span class="s">'Seoul'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">home</span><span class="p">))</span> <span class="c"># 값을 직접 입력하는 대신 변수로도 대입이 가능하다.</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"hello, my name is {name} and age is {age} and I live in {home}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">'John'</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">home</span><span class="o">=</span> <span class="s">'Seoul'</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>{0}, {1}, … 형태의 index 대신 {name} 형태로 사용할 수도 있다. 이 경우에는 반드시 name=value 처럼 값을 지정해주어야한다.</p>
-
-<p> </p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"{name:&gt;10}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c"># :&gt;10 은 문자열의 크기를 10으로 지정하고 오른쪽 정렬 시키라는 의미이다. 10칸의 {name}에 'John'이 오른쪽 정렬된다.</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"{name:^20}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c"># ^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키라는 의미이다. 20칸의 {name}에 'John'이 가운데 정렬된다.</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"{name:=^20}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c"># =^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키는데, 공백을 '='로 채운다.</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"{name:@^20}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c"># @^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키는데, 공백을 '@'로 채운다.</span>
-</code></pre></div></div>
-
-<p>정렬 시 공백을 지정한 문자로 채워주려면 정렬 문자인 &lt;,&gt;,^ 앞에 채워넣을 문자를 넣어주면 된다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"my age is {age:0.4f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">age</span> <span class="o">=</span> <span class="mf">3.141592</span><span class="p">))</span> <span class="c"># :0.4f는 age를 소수점 아래 4 자리까지만 지정한다.</span>
-<span class="k">print</span><span class="p">(</span><span class="s">""</span><span class="o">.</span><span class="n">format</span><span class="p">())</span> <span class="c"># format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문자 자체로 나타내고 싶은 경우 1개가 아닌 2개를 사용한다.</span>
-</code></pre></div></div>
-
-<p>format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문자 자체로 나타내고 싶은 경우 1개가 아닌 2개를 사용한다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/09/15/1-number/">
-        1. 자료형(1) - 숫자형(Number)
-      </a>
-    </h1>
-
-    <span class="post-date">15 Sep 2018</span>
-
-    <p>#</p>
-
-<h1 id="1-정수형integer">1. 정수형(Integer)</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">0</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="n">a</span><span class="o">=</span><span class="mi">10</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="n">a</span><span class="o">=-</span><span class="mi">10</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<h1 id="2-실수형floating-point">2. 실수형(Floating-point)</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mf">1.2</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="n">a</span><span class="o">=-</span><span class="mf">3.45</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="n">a</span><span class="o">=</span><span class="mf">1.2e10</span> <span class="c">#컴퓨터식 지수 표현 방식 1.2e10 = 1.2*10^10</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="n">a</span><span class="o">=</span><span class="mf">1.2e-10</span> <span class="c">#1.2e-10 = 1.2*10^-10</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-8진수octal--16진수hexadecimal">3. 8진수(octal) / 16진수(hexadecimal)</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="n">o123</span> <span class="c">#10진수로 8^2*1 + 8^1*2 + 8^0*3 = 64 + 16 + 3 = 83</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mh">0x1ff</span> <span class="c">#10진수로 16^2*1 + 16^1*15 + 16^0*15 = 256 + 240 + 15 = 511</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>#</p>
-
-<h1 id="4-복소수complex-number">4. 복소수(Complex Number)</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="n">j</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="o">-</span><span class="mi">5</span><span class="n">j</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<ul>
-  <li>복소수와 관련한 파이썬 내장함수</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="c">#실수부 return</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="c">#허수부 return</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span> <span class="c">#복소수의 켤레 return</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c"># 복소수의 크기 return</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<p>#</p>
-
-<h1 id="5-사칙연산">5. 사칙연산</h1>
-
-<hr />
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">b</span><span class="o">=</span><span class="mi">10</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="c"># 더하기</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span> <span class="c"># 빼기</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="c"># 곱하기</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">)</span> <span class="c"># 나누기</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span> <span class="c"># 나머지</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="n">b</span><span class="p">)</span> <span class="c"># 승수 a^b</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">//</span><span class="n">b</span><span class="p">)</span> <span class="c"># 소수점 아래자리 버림</span>
 </code></pre></div></div>
 
 

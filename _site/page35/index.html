@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,287 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/10/06/20-global-variable/">
+        20. 함수(3) - 전역변수
+      </a>
+    </h1>
+
+    <span class="post-date">06 Oct 2018</span>
+
+    <h1 id="1-전역변수">1. 전역변수</h1>
+
+<hr />
+
+<p>전역변수 (global variable)는 지역변수(local variable)과 반대(?)되는 개념입니다. 지역변수의 선언과 초기화는 중괄호 { } 안에서만 유효했다면, <strong>전역변수는 프로그램이 실행 되자마자 메모리에 할당되어 프로그램이 종료될때까지 존재합니다.</strong> <strong>따라서 언제 어떤 함수에서든 접근이 가능합니다.</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">num</span><span class="o">+=</span><span class="n">val</span><span class="p">;</span> <span class="c1">//num에 전달인자로 받은 val값을 더함
+</span><span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">num</span><span class="o">*=</span><span class="n">val</span><span class="p">;</span> <span class="c1">//num에 전달인자로 받은 val값을 곱함
+</span><span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+    
+    <span class="n">Add</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+    
+    <span class="n">Mul</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>num is 0</p>
+
+<p>num is 7</p>
+
+<p>num is 28</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p>변수 num은 어떤 중괄호에도 둘러쌓여있지 않습니다. 따라서 Add, Mul 두 함수에서 접근이 가능합니다.</p>
+
+<p>전역변수 num이 있고 func라는 함수도 num이라는 이름의 변수를 가지고 있다고 해봅시다. 이 경우에 func함수를 실행시켜 num 변수에 접근하면 전역변수 num과 지역변수 num 중 어떤 변수에 접근이 될까요? 정답은 func함수 내에 있는 num이 조작이 됩니다. <strong>전역변수가 있고, 같은 이름의 지역변수가 있을 때 지역변수가 포함된 지역내서는 지역변수가 같은 이름의 전역변수를 덮어씁니다.</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="n">num</span><span class="o">+=</span><span class="n">val</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">Mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="c1">//num값에 전달인자 val값을 곱하여 반환
+</span><span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="n">num</span><span class="o">*=</span><span class="n">val</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">add_result</span><span class="p">,</span> <span class="n">mul_result</span><span class="p">;</span>
+    
+    <span class="n">add_result</span> <span class="o">=</span> <span class="n">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//num에 2를 더하여 반환
+</span>    <span class="n">mul_result</span> <span class="o">=</span> <span class="n">Mul</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//num에 2를 곱하여 반환
+</span>    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Add function num : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">add_result</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Mul function num : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">mul_result</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>Add(2)의 결과는 Add함수 내의 num이 10이기 때문에 10+2 = 12가 될 것이고, Mul(2)의 결과는 Mul함수 내의 num이 3이기 때문에 3*2 = 6이 될겁니다.</p>
+
+<p>실행결과</p>
+
+<p>Add function num : 12</p>
+
+<p>Mul function num : 6</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p>사실 지역변수와 전역변수의 이름을 같지 않게 하는것이 관례입니다. 굳이 그럴 필요 없기 때문입니다.</p>
+
+<p> </p>
+
+<h1 id="2-전역변수-사용에-관한-주의사항">2. 전역변수 사용에 관한 주의사항</h1>
+
+<hr />
+
+<p>프로그램 시작부터 끝까지 소멸되지 않고 유지되는 전역변수는 대충 생각하면 참 편리해 보입니다. 하지만 전역변수를 남용하는 것은 올바른 습관이 아닙니다.</p>
+
+<p>전역변수를 남용하는 경우에는 다음의 위험이 있습니다.</p>
+
+<p><strong>1) 전역변수는 더 이상 필요가 없어져도 프로그램 종료 때 까지 메모리공간을 차지하여 낭비를 초래한다.</strong></p>
+
+<p><strong>2) 전역변수는 모든 지역(모든 함수)에서 접근이 가능하기 때문에 실수로 접근하여 의도치 않은 결과를 나게 하기 쉽다.</strong></p>
+
+<p><strong>3) 전역변수가 수정되면 이에 관련된 모든 함수의 코드를 바꿔야 한다. 즉, 디버깅이 어려워진다.</strong></p>
+
+<p>전역변수는 꼭 필요한 경우에만 사용해야 합니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-static-변수">3. static 변수</h1>
+
+<hr />
+
+<p>static변수라는 것이 있습니다. static 변수는 지역변수처럼 변수가 선언된 함수에서만 접근이 가능하지만, 일단 이 함수 내에서 선언이 되어 메모리공간을 차지하고 나면 프로그램이 종료될때까지 소멸되지 않고 존재합니다. 어떻게 사용하는건지 한 번 보시죠.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">var</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">stvar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="n">var</span><span class="o">++</span><span class="p">,</span> <span class="n">stvar</span><span class="o">++</span><span class="p">;</span> <span class="c1">//var, stvar 1씩 증가
+</span>    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"var: %d, stvar: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">stvar</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Add</span><span class="p">();</span>
+    <span class="n">Add</span><span class="p">();</span>
+    <span class="n">Add</span><span class="p">();</span>
+    <span class="n">Add</span><span class="p">();</span>
+    <span class="n">Add</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>var: 1, stvar: 1</p>
+
+<p>var: 1, stvar: 2</p>
+
+<p>var: 1, stvar: 3</p>
+
+<p>var: 1, stvar: 4</p>
+
+<p>var: 1, stvar: 5</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p>Add()함수를 실행할 때 마다 var는 새로 선언되고 0으로 초기화 됩니다. 한 번 실행하고 끝날 때 마다 소멸되기 때문입니다. 반면에 stvar는 그 이전 실행의 증가된 값을 유지하며 계속 1씩 커지고 있습니다. 이처럼 변수를 선언할 때 자료형 앞에 static 을 붙여 프로그램 종료까지 소멸되지않고 값을 저장할 수 있는 static 변수를 선언할 수 있습니다.</p>
+
+<p><strong>static변수는 지역변수처럼 해당 함수 내에서만 접근이 가능하지만, 전역변수처럼 프로그램이 종료될 때 까지 메모리공간에 할당이 됩니다.</strong></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/10/06/19-local-variable/">
+        19. 함수(2) - 지역변수
+      </a>
+    </h1>
+
+    <span class="post-date">06 Oct 2018</span>
+
+    <p><img class="aligncenter size-full wp-image-958" src="/images/2018/09/1-7.jpg" alt="" width="657" height="324" srcset="/images/2018/09/1-7.jpg 657w, /images/2018/09/1-7-300x148.jpg 300w" sizes="(max-width: 657px) 100vw, 657px" /></p>
+
+<p>우리는 GetNum이라는 함수를 정의하고 그 안에서 num = 10;으로 num을 선언하고 10으로 초기화 했습니다. 그리고 num을 1 증가시켰어요. 그 이후에 main함수에서 GetNum을 호출하여 실행하고 printf함수를 통해 num을 출력해보려 했습니다. 11이 나오길 기대하면서 말입니다. 그런데, 위에서 보이듯이 변수 num이 식별이 되지 않는 일이 일어납니다.  이것을 이해하기 위해 오늘은 지역변수에 관해 말씀드리겠습니다.</p>
+
+<p> </p>
+
+<h1 id="1-지역변수-수명">1. 지역변수 수명</h1>
+
+<hr />
+
+<p><strong>{ } 안에서 선언된 변수를 지역변수라고 합니다. 그리고 그 지역변수의 수명은 중괄호 { }를 벗어나는 순간 끝이납니다. 소멸이 되어버립니다.</strong> 위 코드에서는 GetNum함수가 호출되면서 메모리공간에 변수 num이 할당됩니다. 그리고 GetNum함수의 호출이 끝이 나며 변수 num은 메모리 공간에서 소멸됩니다. 따라서 컴파일러는 num이 무엇인지 더 이상 모르게되고 오류가 납니다. 굳이 num을 사용하려면 GetNum함수를 return값을 가지는 형태의 함수로 만든 이후 최종 num값을 반환시키고 main함수에서 그 return값을 다른 변수에 저장해두는 방법이 있습니다. for나 if 같은 반복문과 조건문의 중괄호 내에서 선언된 변수도 당연히 지역변수입니다.</p>
+
+<p><img class="aligncenter size-full wp-image-962" src="/images/2018/09/2-1.jpg" alt="" width="535" height="313" srcset="/images/2018/09/2-1.jpg 535w, /images/2018/09/2-1-300x176.jpg 300w" sizes="(max-width: 535px) 100vw, 535px" /></p>
+
+<p>위의 코드를 보시면 지역변수는 { } 안에서만 존재하기 때문에 서로 다른 지역에서는 이름이 같아도 상관이 없습니다.</p>
+
+<p>정확하게 정리를 하자면, <strong>지역변수는 선언이 되는 동시에 메모리공간에 할당이 되었다가 자신이 속한 중괄호를 빠져나가면서 메모리공간에서 소멸됩니다.</strong></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-지역변수와-메모리공간">2. 지역변수와 메모리공간</h1>
+
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">Mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span><span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span><span class="err"> </span>
+    <span class="kt">int</span> <span class="n">add_result</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mul_result</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="n">add_result</span> <span class="o">=</span> <span class="n">Add</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    <span class="n">mul_result</span> <span class="o">=</span> <span class="n">Mul</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The results of two functions are %d and %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">add_result</span><span class="p">,</span> <span class="n">mul_result</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>먼저 프로그램이 실행이 되면 main 함수가 실행이 됩니다. main함수의 1행과 2행을 거치며 메모리공간에 네 개의 변수가 다음 그림과 같이 할당됩니다.</p>
+
+<p><img class="aligncenter wp-image-963" src="/images/2018/09/3-1.jpg" alt="" width="589" height="268" srcset="/images/2018/09/3-1.jpg 900w, /images/2018/09/3-1-300x136.jpg 300w, /images/2018/09/3-1-768x349.jpg 768w" sizes="(max-width: 589px) 100vw, 589px" /></p>
+
+<p>그리고 add_result = Add(num1, num2);가 실행이 되며 a,b,c가 메모리에 할당이 돼요.</p>
+
+<p><img class="aligncenter wp-image-964" src="/images/2018/09/4-1.jpg" alt="" width="580" height="325" srcset="/images/2018/09/4-1.jpg 900w, /images/2018/09/4-1-300x168.jpg 300w, /images/2018/09/4-1-768x430.jpg 768w, /images/2018/09/4-1-678x381.jpg 678w" sizes="(max-width: 580px) 100vw, 580px" /></p>
+
+<p>Add 함수는 num1의 값인 10과, num2의 값인 20을 넘겨받으며 a에는 10이, b에는 20이 대입되는겁니다. 한가지 짚고 넘어가야할건, <strong>어떤 변수를 인자로 전달받을 때 실제로 전달받는 것은 그 변수가 가지고 있는 값의 복사본입니다.</strong></p>
+
+<p>그리고 add_result = Add(num1, num2);의 코드가 끝이 나면서 메모리공간에 할당되었던 a,b,c는 소멸이 됩니다. 그리고 mul_result = Mul(num1, num2);의 코드가 실행되면서 또다시 a,b,c라는 변수가 메모리공간에 할당이 됩니다. 물론 이 때의 <strong>a, b, c는 이전에 가지고 있던 a,b,c가 아닌 전혀 새로운 변수</strong>입니다. 그리고, mul_result = Mul(num1, num2); 코드가 끝이 나면 a, b, c는 다시 메모리공간에서 소멸이 됩니다.</p>
+
+<p>마지막으로, main함수가 끝이 나면서 나머지 4개의 변수도 소멸됩니다.</p>
+
+<p>한 가지 추가적으로, 함수의 전달인자는 지역변수일까요? 함수의 전달인자는 해당 함수에서만 사용이 되고 해당 함수를 벗어나면 소멸됩니다. 이러한 특징이 말해주듯, 함수의 전달인자 역시 지역변수 입니다.</p>
+
+<p> </p>
+
+<p>정리</p>
+
+<table class="txc-table" style="border-style: solid; width: 864px; border-color: #000000; background-color: #f2eded;" border="1" width="864" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      1) 지역변수는 <strong>중괄호{ } 내에서 선언된 변수</strong>이다.&lt;/p&gt; 
+      
+      <p>
+        2) 지역변수는 해당 함수나 조건문, 반복문의 <strong>중괄호{ }를 빠져나가면 메모리 공간에서 소멸</strong>되어 더 이상 유효하지 않다.
+      </p>
+      
+      <p>
+        3) 지역 변수는 같은 이름을 가져도 된다. 메모리 공간에 동시에 할당이 되는 일이 없기 때문이다.&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt;
+</p></td></tr></table>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -11112,465 +11463,6 @@ The number is 3</p>
 <p>먼저 num1과 num2를 비교해서 반환되는 더 큰 값과 num3를 또 한 번 비교하여 더 큰 값을 반환시켜 max에 담습니다.</p>
 
 <p>중첩이 한 번이 아니라 여러번도 가능합니다. 사람에 따라서 if / else 문이 더 잘 읽히시는 분도 있을 것이기 때문에 상황에 따라 어떤것을 사용할지를 판단하시면 됩니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/06/iris-flower-classification/">
-        Iris-flower Classification
-      </a>
-    </h1>
-
-    <span class="post-date">06 Oct 2018</span>
-
-    <pre><span style="color: #0000ff;"><span style="color: #000000;">################### Iris Flower Classification ####################
-</span>
-from</span> pandas <span style="color: #0000ff;">import</span> read_csv
-<span style="color: #0000ff;">from</span> pandas <span style="color: #0000ff;">import</span> set_option
-<span style="color: #0000ff;">from</span> numpy <span style="color: #0000ff;">import</span> set_printoptions
-<span style="color: #0000ff;">from</span> matplotlib <span style="color: #0000ff;">import</span> pyplot
-<span style="color: #0000ff;">from</span> pandas.plotting <span style="color: #0000ff;">import</span> scatter_matrix
-<span style="color: #0000ff;">from</span> sklearn.feature_selection <span style="color: #0000ff;">import</span> SelectKBest
-<span style="color: #0000ff;">from</span> sklearn.feature_selection <span style="color: #0000ff;">import</span> chi2
-<span style="color: #0000ff;">from</span> sklearn.model_selection <span style="color: #0000ff;">import</span> train_test_split
-<span style="color: #0000ff;">from</span> sklearn.linear_model <span style="color: #0000ff;">import</span> LogisticRegression as LR
-<span style="color: #0000ff;">from</span> sklearn.discriminant_analysis <span style="color: #0000ff;">import</span> LinearDiscriminantAnalysis as LDA
-<span style="color: #0000ff;">from</span> sklearn.neighbors <span style="color: #0000ff;">import</span> KNeighborsClassifier as KNC
-<span style="color: #0000ff;">from</span> sklearn.pipeline <span style="color: #0000ff;">import</span> FeatureUnion
-<span style="color: #0000ff;">from</span> sklearn.pipeline <span style="color: #0000ff;">import</span> Pipeline
-<span style="color: #0000ff;">from</span> sklearn.model_selection <span style="color: #0000ff;">import</span> KFold
-<span style="color: #0000ff;">from</span> sklearn.model_selection <span style="color: #0000ff;">import</span> cross_val_score
-<span style="color: #0000ff;">from</span> sklearn.ensemble <span style="color: #0000ff;">import</span> RandomForestClassifier as RFC
-<span style="color: #0000ff;">from</span> sklearn.ensemble <span style="color: #0000ff;">import</span> BaggingClassifier
-<span style="color: #0000ff;">from</span> sklearn.externals.joblib <span style="color: #0000ff;">import</span> dump
-
-<span style="color: #999999;">#### data load ####</span>
-url = <span style="color: #14d917;">'https://goo.gl/mLmoIz'</span> <span style="color: #999999;">## Iris-flower classification dataset</span>
-names = [<span style="color: #14d917;">'sep_len'</span>, <span style="color: #14d917;">'sep_wid'</span>, <span style="color: #14d917;">'pet_len'</span>, <span style="color: #14d917;">'pet_wid'</span>, <span style="color: #14d917;">'class'</span>]
-data = read_csv(url, names = names)                
-array = data.values
-X = array[:,0:4]
-Y = array[:,4]
-
-<span style="color: #999999;">#### data statistics ####</span>
-set_option(<span style="color: #14d917;">'display.width'</span>, 100)
-set_option(<span style="color: #14d917;">'precision'</span>, 3)
-print(data.describe())
-print(data.skew())
-print(data.corr(method=<span style="color: #14d917;">'pearson'</span>))
-
-
-<span style="color: #999999;">#### visualization of data ####</span>
-data.plot(kind=<span style="color: #14d917;">'density'</span>, subplots=True, layout=(2,3), sharex=False)
-pyplot.show()
-data.plot(kind=<span style="color: #14d917;">'box'</span>, subplots=True, layout=(2,3), sharex=False, sharey=False)
-pyplot.show()
-scatter_matrix(data)
-pyplot.show()
-
-
-<span style="color: #999999;">#### feature selection ####</span>
-test = SelectKBest(score_func=chi2, k=2)
-fit = test.fit(X,Y)
-features = fit.transform(X)
-set_printoptions(precision=3)
-print(X[0:5,:])
-print(features[0:5,:])
-X = features <span style="color: #999999;">##pet_len, pet_width 선택</span>
-
-<span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
-<span style="color: #14d917;">#### feature scaling ####</span>
-<span style="color: #14d917;"># scaler = MinMaxScaler(feature_range=(0,1))</span>
-<span style="color: #14d917;"># rescaledX = scaler.fit_transform(X)</span>
-<span style="color: #14d917;"># set_printoptions(precision=3)</span>
-<span style="color: #14d917;"># print(rescaledX)</span>
-<span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
-<span style="color: #999999;">### feature scailing은 모델의 성능을 향상시키지 못했다.</span>
-
-<span style="color: #999999;">#### data split to training &amp; validation test set ####</span>
-X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, test_size=0.2, random_state=7)
-
-<span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
-<span style="color: #14d917;">########pipeline을 통한 feature selection &amp; model selection###########</span>
-<span style="color: #14d917;">features = []</span>
-<span style="color: #14d917;">features.append(('KBest', SelectKBest(score_func=chi2, k=2))) #KBest 알고리즘과 LDA 알고리즘 비교</span>
-<span style="color: #14d917;">features.append(('lda', LDA()))</span>
-<span style="color: #14d917;">feature_union = FeatureUnion(features) #더 좋은 점수를 얻은 feature selection 알고리즘 선택</span>
-<span style="color: #14d917;">models = [('LR', LR()), ('Kneighbors', KNC()), ('LDA', LDA())]#Linear Regression, K-Nearest Neighbors, LDA 알고리즘 비교</span>
-<span style="color: #14d917;">kfold = KFold(n_splits=10, random_state=7) # 10개의 fold dataset</span>
-<span style="color: #14d917;">for name, model in models:</span>
-<span style="color: #14d917;">   estimators=[]</span>
-<span style="color: #14d917;">   estimators.append(('feature_union', feature_union))</span>
-<span style="color: #14d917;">   estimators.append((name, model))</span>
-<span style="color: #14d917;">   model_set = Pipeline(estimators) #pipeline을 통한 가장 좋은 모델 선택</span>
-<span style="color: #14d917;">   result = cross_val_score(model_set, X_train, Y_train, cv=kfold)</span>
-<span style="color: #14d917;">   print('%s: %.3f%% (%.3f%%)' %(name, result.mean()*100, result.std()*100)) #accuracy score</span>
-<span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
-model = LDA() <span style="color: #999999;">## LDA가 가장 좋은 모델</span>
-<span style="color: #999999;">### 위 pipeline 코드의 주석을 풀고 실행시키면 LDA가 가장 좋은 점수를 받는 것을 볼 수 있다.</span>
-
-<span style="color: #999999;">#### model evaluation ####</span>
-kfold = KFold(n_splits=10, random_state=7) # 10개의 fold dataset
-results = cross_val_score(model, X_train, Y_train, cv=kfold)
-print(<span style="color: #14d917;">'LDA Accuracy: %.3f%% (%.3f%%)'</span> %(result.mean()*100, result.std()*100))
-LDA_result = results
-
-
-<span style="color: #999999;">#### improve model performance ####</span>
-X = array[:,0:4]
-Y = array[:,4]
-X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, test_size=0.2, random_state=7)
-<span style="color: #999999;">### 이 전 번의 LDA model의 feature selection에서 fit을 하여 feature가 2개뿐이므로 원래 데이터 다시 복구</span>
-
-
-model = BaggingClassifier(base_estimator=LDA(), n_estimators=100, random_state=7)
-results = cross_val_score(model, X_train, Y_train, cv=kfold)
-Bagging_result = results
-
-num_trees = 100
-max_features = 3
-model = RFC(n_estimators = num_trees, max_features = max_features)
-results = cross_val_score(model, X_train, Y_train, cv=kfold)
-RandomForest_result = results
-
-print(<span style="color: #14d917;">'LDA Accuracy: %.3f'</span> %(LDA_result.mean()*100))
-print(<span style="color: #14d917;">'LDA Bagging Accuracy: %.3f'</span> %(Bagging_result.mean()*100))
-print(<span style="color: #14d917;">'RandomForest Accuracy: %.3f'</span> %(RandomForest_result.mean()*100))        
-
-<span style="color: #999999;">#### Save model ####</span>
-<span style="color: #999999;"># model.fit(X,Y)</span>
-<span style="color: #999999;"># filename = 'Iris_classification_model.sav'</span>
-<span style="color: #999999;"># dump(model, filename)</span></pre>
-
-<p> </p>
-
-<p><img class="aligncenter size-full wp-image-1187" src="/images/2018/10/no-name.jpg" alt="" width="395" height="250" srcset="/images/2018/10/no-name.jpg 395w, /images/2018/10/no-name-300x190.jpg 300w" sizes="(max-width: 395px) 100vw, 395px" /></p>
-
-<p>위 그림은 Iris flower 꽃잎의 정보를 담고있는 각 feature의 density plot이다. sep len과 sep wid는 normal distribution을 따른다는 것을 알 수 있다. pet len과 pet wid는 feature의 local optimum이 3개로 나뉜다. 우리 data의 class가 3가지의 꽃의 종류이므로 아무래도 pet len과 pet wid 두 feature가 분류를 하는 데 결정적인 역할을 하는 feature로 보인다. 실제로 KBest feature selection 알고리즘의 결과도 pet len과 pet feature를 뽑는다.</p>
-
-<p><img class="aligncenter size-full wp-image-1188" src="/images/2018/10/no-name-1.jpg" alt="" width="244" height="55" /></p>
-
-<p>결과는 위와 같다. 가장 처음으로 구한 LDA model을 사용한 Ensemble(Bagging) 기법과 Random Forest Ensemble 기법 보다도 가장 먼저 구했던 LDA model의 분류 정확도가 가장 높다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/05/15-if/">
-        15. 조건문(1) - if
-      </a>
-    </h1>
-
-    <span class="post-date">05 Oct 2018</span>
-
-    <p>조건문이란 어떠한 조건이 ‘참’인 경우 코드를 실행시킬 때 사용합니다. if 는 가장 대표적인 조건문입니다.</p>
-
-<p> </p>
-
-<h1 id="1-if문-구조">1. if문 구조</h1>
-
-<hr />
-
-<p> </p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="err">조건</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>if문이 실행되면 ( ) 안의 조건식을 판단합니다. 결과가 ‘참’이면 {. . .}을 실행하고 ‘거짓’이면 아무것도 실행하지 않고 다음 코드로 넘어갑니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
-    
-    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>  
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>num이라는 변수를 선언하고 user로부터 하나의 정수를 입력받아 num에 저장합니다. 이후 조건문에서 num 변수에 담긴 값이 0보다 큰지 판단한 후 ‘참’이면 “The numebr is larger than 0\n”을 모니터로 출력해줍니다. 만약 0보다 작은수를 입력하면 아무것도 수행하지 않고 return 0; 에 의해 운영체제로 0이 반환된 이후 프로그램이 종료됩니다.</p>
-
-<p>실행결과 1</p>
-
-<p>Inser a integer number : 3</p>
-
-<p>The number is larger than 0</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p>실행결과 2</p>
-
-<p>Inser a integer number : -2</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p> </p>
-
-<h1 id="2-ifelse">2. if~else</h1>
-
-<hr />
-
-<p>else문은 if문의 조건이 ‘거짓’인 경우 실행됩니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
-    
-    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is not larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>Inser a integer number : -5</p>
-
-<p>The number is not larger than 0</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-ifelse-if">3. if~else if</h1>
-
-<hr />
-
-<p>여러 개의 조건을 판단하여 실행을 분기시키고 싶은 경우에는 else if문을 사용합니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
-    
-    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is smaller than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>실행결과</p>
-
-<p>Inser a integer number : 0</p>
-
-<p>The number is 0</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="4-항상-참--항상-거짓">4. 항상 참 / 항상 거짓</h1>
-
-<hr />
-
-<p>만약 if나 else if의 조건문 안에 ‘참(true)’와 ‘거짓(false)’ 를 넣으면 어떻게 될까요?</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
-    
-    <span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"1 is always true</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>    
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"1 is not true</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">if</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"0 is always false</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>    
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"0 is not false</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>실행결과</p>
-
-<p>Inser a integer number : 1231</p>
-
-<p>1 is always true</p>
-
-<p>0 is not false</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>if문에 1을 넣으면 항상 if문의 코드가 실행이 되고 0을 넣으면 if가 실행이 되지 않아 else가 있다면 바로 else가 실행 됩니다. 참고로 0이 아닌 모든 수는 ‘참’으로 인식됩니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="5-else-if의-정체">5. else if의 정체</h1>
-
-<hr />
-
-<p>짚고 넘어가야 할 부분이 있습니다. 프로그램은 조건문이 끝날 때 까지 if/else if/else 순서대로 코드를 실행합니다. 그러다가 하나가 만족이 되면 그것을 실행하고 나머지 남은 조건문들은 실행시키지 않아요. 따라서 else if가 2개 있을 때, 첫 번째 else if가 만족이 되면 두 번째 else if는 실행하지 않습니다. 코드가 이런 식으로 실행이 되는것은 if/else if/else 의 근본적인 구조를 알면 쉽게 이해됩니다.</p>
-
-<p>else if라는 것은 사실 else 내부에서 또다시 if와 else로 나뉘는 것일 뿐입니다. if와 else문을 <strong>‘중첩’</strong> 시킨것일 뿐인겁니다. 다음의 코드는 if와 else가 중첩된 경우입니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-
-<span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="k">else</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 2</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 3</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">else</span>
-        <span class="p">{</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">"num is same or smaller than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>실행결과</p>
-
-<p>num is larger than 0</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="6-break">6. break</h1>
-
-<hr />
-
-<p>break를 씀으로써 우리는 <span style="text-decoration: underline;"><strong>반복문</strong></span>을 강제로 탈출할 수 있습니다. break를 쓰면 break가 포함되어있는 가장 하위단의 반복문을 벗어나게 됩니다. 조건문이 아니라 반복문이라는 점을 명심하셔야합니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Insert a number to sum : "</span><span class="p">);</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// 0을 입력하면 while문 탈출
-</span>    <span class="p">{</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">sum</span><span class="o">+=</span><span class="n">num</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">printf</span><span class="p">(</span><span class="s">"The sum is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
-
-<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>Insert a number to sum : 102</p>
-
-<p>Insert a number to sum : 392</p>
-
-<p>Insert a number to sum : -32</p>
-
-<p>Insert a number to sum : 31</p>
-
-<p>Insert a number to sum : -129</p>
-
-<p>Insert a number to sum : 93</p>
-
-<p>Insert a number to sum : 60</p>
-
-<p>Insert a number to sum : 0</p>
-
-<p>The sum is 517</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p>0을 입력하는 순간 if(num==0)의 조건이 만족되어 break; 구문이 실행되어 while문을 빠져나오게 됩니다. 위의 코드에서 break문이 if문 안에 들어있다고 해서 헷갈리시면 안됩니다. break에 의해서 탈출하는 것은 while문입니다. 다시 한 번 강조드리자면 <strong>break은 break을 포함하는 가장 하위단의 반복문을 탈출하게 해줍니다.</strong></p>
 
   </div>
   

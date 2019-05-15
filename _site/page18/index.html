@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,348 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/15/oop-example/">
+        객체 지향 예제 - 학생, 버스, 지하철 프로그램
+      </a>
+    </h1>
+
+    <span class="post-date">15 Dec 2018</span>
+
+    <p>객체 지향 프로그래밍에 대해 배운 것들을 사용해 학생, 버스, 지하철 세 가지의 객체가 서로 상호작용하는 것을 프로그래밍 한 예제다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">money</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">money</span> <span class="o">=</span> <span class="n">money</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">takeBus</span><span class="o">(</span><span class="n">Bus</span> <span class="n">bus</span><span class="o">)</span> <span class="o">{</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">money</span> <span class="o">-=</span> <span class="mi">1000</span><span class="o">;</span>
+       <span class="n">bus</span><span class="o">.</span><span class="na">take</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">takeSubway</span><span class="o">(</span><span class="n">Subway</span> <span class="n">subway</span><span class="o">)</span> <span class="o">{</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">money</span> <span class="o">-=</span> <span class="mi">1500</span><span class="o">;</span>
+       <span class="n">subway</span><span class="o">.</span><span class="na">take</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMoney</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">money</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getName</span><span class="o">()+</span><span class="s">" has "</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">getMoney</span><span class="o">());</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Bus</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">busNum</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">intake</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">passenger</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Bus</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">busNum</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">take</span><span class="o">(</span><span class="kt">int</span> <span class="n">passenger</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">passenger</span><span class="o">++;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">intake</span><span class="o">+=</span><span class="mi">1000</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getBusNum</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">busNum</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getIntake</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">intake</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPassenger</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">passenger</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Bus "</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">getBusNum</span><span class="o">()+</span><span class="s">" got "</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">getPassenger</span><span class="o">()+</span><span class="s">" passengers and earned "</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">getIntake</span><span class="o">()+</span><span class="s">" won"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Subway</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">subwayNum</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">intake</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">passenger</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Subway</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">subwayNum</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">take</span><span class="o">(</span><span class="kt">int</span> <span class="n">passenger</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">passenger</span><span class="o">++;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">intake</span><span class="o">+=</span><span class="mi">1500</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getsubwayNum</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">subwayNum</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getIntake</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">intake</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPassenger</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">passenger</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Subway "</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">getsubwayNum</span><span class="o">()+</span><span class="s">" got "</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">getPassenger</span><span class="o">()+</span><span class="s">" passengers and earned "</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">getIntake</span><span class="o">()+</span><span class="s">" won"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>학생 클래스에서 학생이 버스나 지하철을 타는 메소드를 실행하면 다음과 같은 일이 일어난다.</p>
+
+<p>학생 객체가 takeBus나 takeSubway 메소드를 실행하면 학생의 돈이 1000원 혹은 1500원 빠져나가고 Bus나 Subway타입의 객체의 take()메소드가 한 번 실행된다.</p>
+
+<p>버스나 지하철 클래스 입장에서는 다른 객체에서 호출되어 실행되면 승객수가 1 증가하고 돈이 1000원이나 1500원이 올라간다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       
+       <span class="n">Student</span> <span class="n">stu1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="mi">10000</span><span class="o">);</span>
+       <span class="n">Student</span> <span class="n">stu2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">,</span> <span class="mi">20000</span><span class="o">);</span>
+       <span class="n">Student</span> <span class="n">stu3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">(</span><span class="s">"Harry"</span><span class="o">,</span> <span class="mi">14000</span><span class="o">);</span>
+       
+       <span class="n">Bus</span> <span class="n">bus100</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bus</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+       <span class="n">Subway</span> <span class="n">subway2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Subway</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+       <span class="n">Subway</span> <span class="n">subway7</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Subway</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
+       
+       <span class="n">stu1</span><span class="o">.</span><span class="na">takeBus</span><span class="o">(</span><span class="n">bus100</span><span class="o">);</span>
+       <span class="n">stu2</span><span class="o">.</span><span class="na">takeSubway</span><span class="o">(</span><span class="n">subway2</span><span class="o">);</span>
+       <span class="n">stu1</span><span class="o">.</span><span class="na">takeSubway</span><span class="o">(</span><span class="n">subway7</span><span class="o">);</span>
+       <span class="n">stu3</span><span class="o">.</span><span class="na">takeSubway</span><span class="o">(</span><span class="n">subway7</span><span class="o">);</span>
+       
+       <span class="n">stu1</span><span class="o">.</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="n">stu2</span><span class="o">.</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="n">stu3</span><span class="o">.</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="n">bus100</span><span class="o">.</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="n">subway2</span><span class="o">.</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="n">subway7</span><span class="o">.</span><span class="na">showInfo</span><span class="o">();</span>    
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>John has 7500</p>
+
+<p>Kelly has 18500</p>
+
+<p>Harry has 12500</p>
+
+<p>Bus 100 got 1 passengers and earned 1000 won</p>
+
+<p>Subway 2 got 1 passengers and earned 1500 won</p>
+
+<p>Subway 7 got 2 passengers and earned 3000 won</p>
+
+<p>지금까지 배운 객체와 클래스, 인스턴스, 생성자, 참조변수의 모든 개념을 사용하여 간단한 예제를 하나 구현해 보았다. 예제 코드에서는 서로 다른 세 개의 객체가 서로 영향을 주며 유기적인 작용을 한다. 이러한 프로그램을 구현해 봄으로써 객체지향 프로그래밍이 어떤 것인지 감을 잡을 수 있었다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/12/15/this/">
+        this
+      </a>
+    </h1>
+
+    <span class="post-date">15 Dec 2018</span>
+
+    <p>this는 인스턴스 자신을 가리키는 예약어이다. 즉, this는 인스턴스가 저장된 힙 메모리의 주소값을 가지고 있는 변수이며 스택 메모리에 저장된다.</p>
+
+<p>위의 단 하나의 원리를 기억하면서 this가 사용되는 예제를 몇 개 보자.</p>
+
+<p> </p>
+
+<h1 id="1-인스턴스가-저장된-메모리의-주소">1. 인스턴스가 저장된 메모리의 주소</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">char</span> <span class="n">gender</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span> <span class="c1">// this.name은 클래스의 멤버변수이고 name은 메소드의 매개변수를 의미한다.</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">;</span> <span class="c1">// 클래스의 멤버변수 name을 반환</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printThis</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">// this자체를 반환</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>매개변수로 이름을 전달해 줄 때에도 그 의미를 파악할 수 있게 name이라고 넣어준다. 그리고 메소드의 코드 구현부에서는 로컬변수인 매개변수 name이 우선이다. 이 때 매개변수 name의 값을 클래스 멤버변수 name에 저장하기 위해 this를 쓴다. this.name은 클래스의 멤버변수 name을 지칭한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="n">Student</span> <span class="n">stu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
+       <span class="n">stu</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stu</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stu</span><span class="o">);</span>
+       <span class="n">stu</span><span class="o">.</span><span class="na">printThis</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>John</p>
+
+<p>classpart.Student@15db9742</p>
+
+<p>classpart.Student@15db9742</p>
+
+<p>setName의 매개변수로 전달 된 “John”이 전달되었다. 이 때 setName 메소드의 코드 구현부의 this는 인스턴스가 대입되는 것이다. 따라서 코드 구현부는 stu.name = “John”이 되는 것이다.</p>
+
+<p>한 번더 확인하기 위해 stu를 출력하고 this를 출력하는 printThis() 메소드를 호출한 결과가 같다. 둘 모두 인스턴스가 저장된 힙 메모리의 주소값을 가진다.</p>
+
+<p> </p>
+
+<h1 id="2-생성자에서-다른-생성자를-호출할-때">2. 생성자에서 다른 생성자를 호출할 때</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">char</span> <span class="n">gender</span><span class="o">;</span>
+
+    <span class="n">Student</span><span class="o">(){</span>
+       <span class="k">this</span><span class="o">(</span><span class="s">"NoName"</span><span class="o">,</span> <span class="sc">'?'</span><span class="o">);</span> <span class="c1">//아래에 정의된 생성자 호출</span>
+    <span class="o">}</span>
+
+    <span class="n">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">char</span> <span class="n">gender</span><span class="o">){</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">gender</span> <span class="o">=</span> <span class="n">gender</span><span class="o">;</span>
+    <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">char</span> <span class="nf">getGender</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">gender</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGender</span><span class="o">(</span><span class="kt">char</span> <span class="n">gender</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">gender</span> <span class="o">=</span> <span class="n">gender</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드는 인스턴스를 생성하면서 아무런 정보도 입력하지 않았을 때의 default값을 설정하기 위해 이미 정의 된 다른 생성자를 사용하는 경우이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="n">Student</span> <span class="n">stu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
+       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stu</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stu</span><span class="o">.</span><span class="na">getGender</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>NoName</p>
+
+<p>?</p>
+
+<p> </p>
+
+<h1 id="3-자신의-주소-반환">3. 자신의 주소 반환</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">char</span> <span class="n">gender</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="n">Student</span> <span class="nf">returnItSelf</span><span class="o">()</span> <span class="o">{</span>
+       <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Student 타입의 자료를 반환하는 함수라 반환형이 Student인 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="n">Student</span> <span class="n">stu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
+       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stu</span><span class="o">);</span>
+       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stu</span><span class="o">.</span><span class="na">returnItSelf</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>classpart.Student@15db9742</p>
+
+<p>classpart.Student@15db9742</p>
+
+<p>같은 결과를 반환하는 것을 볼 수 있다.</p>
+
+<p>이 경우처럼 this가 쓰이는 경우는 흔치 않다.</p>
+
+<p> </p>
+
+<p>하지만 세 가지 방법에 통용되는 원리는 단 하나다. <strong>this라는 것은 인스턴스가 만들어졌을 때 생겼을 주소값을 저장하여 자신을 가르키는 역할을 한다는 것만 기억하면 된다.</strong></p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10835,291 +11247,6 @@
 <p>매개변수가 프로그램 사용자에게 노출되면 안되는 경우 매개변수에 직접 접근하는 것을 제한시키고 인스턴스를 만들 때 정보를 입력받아 초기화 해야하는 경우 등에 매개변수가 있는 생성자를 사용한다.</p>
 
 <p>또한 홈페이지등에 회원가입을 할 때 필수 입력사항같은 항목도 미리 생성자의 매개변수로 지정해두면 편리하다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/15/instance/">
-        인스턴스
-      </a>
-    </h1>
-
-    <span class="post-date">15 Dec 2018</span>
-
-    <p>클래스와 클래스 내부의 멤버변수, 메소드에 대해 알면 이제 만들어서 사용해볼 차례다.</p>
-
-<p>실제 사용은 main()함수 내부에서 하는데 main함수는 보통 가장 먼저 시작 될 클래스에 포함시킨다.</p>
-
-<p>지금은 사용할 클래스와 같은 패키지 내부에 Test.java 클래스를 만들어서 main()함수를 포함시킨다.</p>
-
-<p> </p>
-
-<h1 id="1-클래스-생성하기">1. 클래스 생성하기</h1>
-
-<hr />
-
-<p>클래스를 생성하는 방법은 다음과 같다.</p>
-
-<p>(클래스형) (변수명) = new 생성자;</p>
-
-<p>클래스를 생성하기 전에 다음과 같은 클래스를 정의해보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
-    <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
-    <span class="kt">char</span> <span class="n">gender</span><span class="o">;</span>
-    
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">str</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>위 클래스를 사용해서 하나 생성을 해보겠다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span> <span class="c1">// Person 클래스 객체를 하나 생성</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이렇게 클래스가 하나 생성된 것이다.</p>
-
-<p>클래스를 생성한다는 것은 사용할 수 있도록 힙 메모리에 저장하는 행위이며 <strong>생성자를 호출함으로써 생성</strong>할 수 있다. 이렇게 생성된 클래스를 <strong>인스턴스</strong>라고 한다. 인스턴스를 가리키는 클래스형 변수를 <strong>참조변수</strong>라고 한다.</p>
-
-<p>즉, 위의 클래스 객체 생성 코드가 의미하는 바는 Person() 생성자앞에 new를 붙여 Person 클래스의 인스턴스를 하나 만들고 per1변수가 그 인스턴스를 참조하도록 한 것이다. 일반 변수 선언과 크게 다르지 않다. 물론 클래스 타입의 인스턴스는 몇 개든 상관없이 찍어낼 수 있다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-인스턴스-사용">2. 인스턴스 사용</h1>
-
-<hr />
-
-<p>클래스형 변수인 참조변수는 생성자로 만들어진 인스턴스에 접근할 수 있는 수단이다. 어렵게 생각하지 않아도 int num = 10; 이라고 선언하면 num을 사용해 10에 접근할 수 있는것과 완전히 같은 것이다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
-        <span class="n">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>위 처럼 2개의 인스턴스를 생성하면 각각의 인스턴스에 참조변수 per1, per2를 사용해서 접근할 수 있는 것이다. 참조변수를 사용하면 인스턴스의 멤버변수와 메소드를 사용할 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
-        <span class="n">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
-
-        <span class="n">per1</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="o">;</span> <span class="c1">//참조변수.멤버변수 형태로 name에 접근하여 "John" 저장</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">name</span><span class="o">);</span> <span class="c1">// 참조변수.멤버변수 형태로 name에 접근하여 출력</span>
-
-        <span class="n">per1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span> <span class="c1">//참조변수.메소드 형태로 name에 접근하여 "Kelly" 저장</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">// 참조변수.메소드 형태로 name에 접근하여 출력</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>위 코드에서 확인했지만 인스턴스를 이용한다는 것은 멤버변수와 메소드를 활용하는 것이고 방법은 아래와 같이 정리가 된다.</p>
-
-<p><span style="font-family: arial, helvetica, sans-serif;"><strong><em><span style="text-decoration: underline;">참조변수.멤버변수</span></em></strong></span></p>
-
-<p><span style="font-family: arial, helvetica, sans-serif;"><strong><em><span style="text-decoration: underline;">참조변수.메소</span></em></strong></span></p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-참조변수와-인스턴스">3. 참조변수와 인스턴스</h1>
-
-<hr />
-
-<p>참고로 참조변수는 지역변수이므로 스택 메모리에 생성되고 <strong>인스턴스는 객체이므로 힙 메모리에 생성</strong>된다.</p>
-
-<p>힙 메모리는 동적 메모리로 C나 C++에서 프로그래머가 수동으로 관리해야하는 것과는 다르게 Java에서는 가비지 컬렉터가 자동으로 관리해준다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
-        <span class="n">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
-
-        <span class="n">per1</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="o">;</span> <span class="c1">//참조변수.멤버변수 형태로 name에 접근하여 "John" 저장</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">name</span><span class="o">);</span> <span class="c1">// 참조변수.멤버변수 형태로 name에 접근하여 출력</span>
-
-        <span class="n">per1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span> <span class="c1">//참조변수.메소드 형태로 name에 접근하여 "Kelly" 저장</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">// 참조변수.메소드 형태로 name에 접근하여 출력</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">);</span> <span class="c1">//classpart.Person@15db9742</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per2</span><span class="o">);</span> <span class="c1">//classpart.Person@6d06d69c</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>참조변수에 저장된 값은 인스턴스가 저장된 메모리의 주소값이다. 참조변수에 저장된 인스턴스의 메모리 주소값을 참조하여 메모리공간에서 멤버변수와 메소드에 관한 데이터를 쓰고 읽고 할 수 있었던 것이다.</p>
-
-<p>이 주소는 JVM에서 객체가 생성될 때 할당하는 가상 주소값이다.</p>
-
-<p>정리하자면 <strong>인스턴스가 저장된 힙 메모리의 주소를 참조값, 그것이 저장된 것이 참조변수이다.</strong></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/12/14/method/">
-        메소드
-      </a>
-    </h1>
-
-    <span class="post-date">14 Dec 2018</span>
-
-    <p>클래스 내부에서 특정 기능을 수행하는 부분인 메소드는 다른 말로 멤버 함수 라고도 한다. 함수는 많은 프로그래밍 언어에서 지원하는 중요한 기능이다. 자바에서는 클래스에 기능을 불어넣기 위해 함수를 사용한다. 이처럼 클래스 내부에서 정의되어 객체지향의 개념이 포함된 개념의 함수를 메소드라고 한다.</p>
-
-<p> </p>
-
-<h1 id="1-함수의-구성-요소">1. 함수의 구성 요소</h1>
-
-<hr />
-
-<h3 id="1-반환형">1) 반환형</h3>
-
-<p><strong>반환형(return type)</strong>은 함수가 뱉어내는 결과값의 자료형이다. <strong>반환은</strong> <strong>자기자신을 호출(call)한 대상에게 한다. </strong>함수의 반환은 return 예약어를 써서 수행한다. 반환형이 없다고 함수의 이름앞을 비워두면 안된다. 이 때에는 ‘비어있다’는 뜻을 가지는 void를 써주면 된다.</p>
-
-<p>##</p>
-
-<h3 id="2-이름">2) 이름</h3>
-
-<p>함수의 이름은 우리가 임의로 짓는다. 다만 자바 프로그램이 실행되면 가장 먼저 실행되는 함수인 main함수만큼은 항상 정해져 있다.</p>
-
-<p>통상적으로 함수의 이름은 함수의 기능을 유추할 수 있도록 짓는다.</p>
-
-<p>##</p>
-
-<h3 id="3-매개변수">3) 매개변수</h3>
-
-<p>함수 이름 옆의 ( ) 안에는 매개변수가 들어간다. 매개변수가 없다면 비워두면 된다.</p>
-
-<p>함수를 호출할 때 함수를 정의할 때 선언된 매개변수의 자료형에 맞는 변수를 전달해야한다.</p>
-
-<p>주의해야 할 것은 <strong>매개변수에 어떤 변수명을 넣었을 때 실제로 전달되는 것은 그 변수의 복사값이다. 다시 말해 함수를 통해서 외부에 있는 변수의 데이터를 직접 조작할 수 없다.</strong></p>
-
-<p> </p>
-
-<h3 id="4-몸체">4) 몸체</h3>
-
-<p>{ }에는 실행할 코드가 들어간다.</p>
-
-<p> </p>
-
-<p>무슨 말인지는 직접 함수를 만들어보면 바로 파악될 것이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-함수의-종류">2. 함수의 종류</h1>
-
-<hr />
-
-<p>함수는 위에서 말한 요소들에 따라 크게 4가지로 분류 가능하다.</p>
-
-<p>1) 반환형 o, 전달인자 o</p>
-
-<p>2) 반환형 o, 전달인자 x</p>
-
-<p>3) 반환형 x, 전달인자 o</p>
-
-<p>4) 반환형 x, 전달인자 x</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-   <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//반환형 o, 매개변수 o</span>
-       <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">;</span>
-       <span class="k">return</span> <span class="n">c</span><span class="o">;</span>
-   <span class="o">}</span><span class="c1">//두 매개변수를 곱하여 반환</span>
-
-   <span class="kt">int</span> <span class="nf">getNum</span><span class="o">()</span> <span class="o">{</span><span class="c1">//반환형 o, 전달인자 x</span>
-       <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>        
-       <span class="k">return</span> <span class="n">num</span><span class="o">;</span>
-   <span class="o">}</span> <span class="c1">//숫자 10을 반환</span>
-
-   <span class="kt">void</span> <span class="nf">showResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span><span class="c1">//반환형 x, 매개변수 o</span>
-       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The result is "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
-   <span class="o">}</span> <span class="c1">//매개변수를 출력</span>
-
-   <span class="kt">void</span> <span class="nf">sayHello</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//반환형 x, 매개변수 x</span>
-       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
-   <span class="o">}</span> <span class="c1">//"hello" 문자열 출력</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>우리가 어떤 기능이 필요하여 함수를 어떻게 만들지 구상하면 반환형과 전달인자는 자동으로 정해진다.</p>
-
-<p>참고로, 반환형이 void인 함수에서도 return을 사용할 수 있다. return은 어떠한 값을 반환한다는 의미도 있지만, <strong>‘함수를 종료한다’</strong>는 의미도 같이 가지고 있기 때문이다. 함수 내부의 코드가 수행되다가 return을 만나면 함수가 종료된다.</p>
-
-<p>직접 함수를 호출해보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">classpart</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
-        
-        <span class="kt">int</span> <span class="n">mulResult</span> <span class="o">=</span> <span class="n">mul</span><span class="o">(</span><span class="n">num1</span><span class="o">,</span> <span class="n">num2</span><span class="o">);</span> <span class="c1">// mul함수 호출</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">mulResult</span><span class="o">);</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="c1">// 반환형 o, 매개변수 o</span>
-        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="o">;</span>
-        <span class="k">return</span> <span class="n">c</span><span class="o">;</span>
-    <span class="o">}</span> <span class="c1">// 두 매개변수를 곱하여 반환</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>실행결과</p>
-
-<p>200</p>
-
-<h1 id="3-함수의-호출과-스택-메모리">3. 함수의 호출과 스택 메모리</h1>
-
-<hr />
-
-<p>함수가 호출되면 함수의 매개변수와 지역변수 등을 저장하기 위해 메모리 공간이 할당되어야 한다. 이 메모리 공간을 스택 메모리(stack memory)라고 부른다. 스택 메모리는 가장 나중에 들어온 데이터가 가장 먼저 소멸되는 Last In First Out(LIFO) 구조이다.</p>
-
-<p>위에서 코드에서 main함수가 mul함수를 호출(call)하는 과정의 메모리 공간의 차지와 할당을 살펴보자.</p>
-
-<p><a href="https://SWnomad.com/%eb%a9%94%ec%86%8c%eb%93%9c/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-192/" rel="attachment wp-att-1574"><img class="aligncenter size-full wp-image-1574" src="/images/2018/12/no-name-37.jpg" alt="" width="269" height="183" /></a></p>
-
-<p>먼저 main함수가 호출되므로 main함수의 변수인 num1과 num2 mulResult가 메모리공간에 할당된다. mulResult에 mul함의 결과를 대입하는 과정에서 mul함수가 호출되면서 스택메모리에 a,b와 c가 할당된다. 함수의 호출이 끝나면서 mul함수와 관련된 데이터가 먼저 메모리공간에서 해제되고 프로그램이 끝나면서 main함수와 관련된 데이터가 스택 메모리에서 소멸한다.</p>
-
-<p> </p>
-
-<p>함수를 사용하는 이유는 기능을 한 번 구현해놓으면 같은 상황에서 얼마든지 가져다 쓰기만 하면 되기 때문에 재사용성이 높아서이다.</p>
-
-<p>또한 기능별로 나누어 함수로 정의하면 코드의 가독성이 높아진다. 모든 기능을 main함수안에 때려넣으면 코드가 복잡해질 것이다.</p>
 
   </div>
   

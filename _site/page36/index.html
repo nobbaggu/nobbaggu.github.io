@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,465 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/10/06/iris-flower-classification/">
+        Iris-flower Classification
+      </a>
+    </h1>
+
+    <span class="post-date">06 Oct 2018</span>
+
+    <pre><span style="color: #0000ff;"><span style="color: #000000;">################### Iris Flower Classification ####################
+</span>
+from</span> pandas <span style="color: #0000ff;">import</span> read_csv
+<span style="color: #0000ff;">from</span> pandas <span style="color: #0000ff;">import</span> set_option
+<span style="color: #0000ff;">from</span> numpy <span style="color: #0000ff;">import</span> set_printoptions
+<span style="color: #0000ff;">from</span> matplotlib <span style="color: #0000ff;">import</span> pyplot
+<span style="color: #0000ff;">from</span> pandas.plotting <span style="color: #0000ff;">import</span> scatter_matrix
+<span style="color: #0000ff;">from</span> sklearn.feature_selection <span style="color: #0000ff;">import</span> SelectKBest
+<span style="color: #0000ff;">from</span> sklearn.feature_selection <span style="color: #0000ff;">import</span> chi2
+<span style="color: #0000ff;">from</span> sklearn.model_selection <span style="color: #0000ff;">import</span> train_test_split
+<span style="color: #0000ff;">from</span> sklearn.linear_model <span style="color: #0000ff;">import</span> LogisticRegression as LR
+<span style="color: #0000ff;">from</span> sklearn.discriminant_analysis <span style="color: #0000ff;">import</span> LinearDiscriminantAnalysis as LDA
+<span style="color: #0000ff;">from</span> sklearn.neighbors <span style="color: #0000ff;">import</span> KNeighborsClassifier as KNC
+<span style="color: #0000ff;">from</span> sklearn.pipeline <span style="color: #0000ff;">import</span> FeatureUnion
+<span style="color: #0000ff;">from</span> sklearn.pipeline <span style="color: #0000ff;">import</span> Pipeline
+<span style="color: #0000ff;">from</span> sklearn.model_selection <span style="color: #0000ff;">import</span> KFold
+<span style="color: #0000ff;">from</span> sklearn.model_selection <span style="color: #0000ff;">import</span> cross_val_score
+<span style="color: #0000ff;">from</span> sklearn.ensemble <span style="color: #0000ff;">import</span> RandomForestClassifier as RFC
+<span style="color: #0000ff;">from</span> sklearn.ensemble <span style="color: #0000ff;">import</span> BaggingClassifier
+<span style="color: #0000ff;">from</span> sklearn.externals.joblib <span style="color: #0000ff;">import</span> dump
+
+<span style="color: #999999;">#### data load ####</span>
+url = <span style="color: #14d917;">'https://goo.gl/mLmoIz'</span> <span style="color: #999999;">## Iris-flower classification dataset</span>
+names = [<span style="color: #14d917;">'sep_len'</span>, <span style="color: #14d917;">'sep_wid'</span>, <span style="color: #14d917;">'pet_len'</span>, <span style="color: #14d917;">'pet_wid'</span>, <span style="color: #14d917;">'class'</span>]
+data = read_csv(url, names = names)                
+array = data.values
+X = array[:,0:4]
+Y = array[:,4]
+
+<span style="color: #999999;">#### data statistics ####</span>
+set_option(<span style="color: #14d917;">'display.width'</span>, 100)
+set_option(<span style="color: #14d917;">'precision'</span>, 3)
+print(data.describe())
+print(data.skew())
+print(data.corr(method=<span style="color: #14d917;">'pearson'</span>))
+
+
+<span style="color: #999999;">#### visualization of data ####</span>
+data.plot(kind=<span style="color: #14d917;">'density'</span>, subplots=True, layout=(2,3), sharex=False)
+pyplot.show()
+data.plot(kind=<span style="color: #14d917;">'box'</span>, subplots=True, layout=(2,3), sharex=False, sharey=False)
+pyplot.show()
+scatter_matrix(data)
+pyplot.show()
+
+
+<span style="color: #999999;">#### feature selection ####</span>
+test = SelectKBest(score_func=chi2, k=2)
+fit = test.fit(X,Y)
+features = fit.transform(X)
+set_printoptions(precision=3)
+print(X[0:5,:])
+print(features[0:5,:])
+X = features <span style="color: #999999;">##pet_len, pet_width 선택</span>
+
+<span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span style="color: #14d917;">#### feature scaling ####</span>
+<span style="color: #14d917;"># scaler = MinMaxScaler(feature_range=(0,1))</span>
+<span style="color: #14d917;"># rescaledX = scaler.fit_transform(X)</span>
+<span style="color: #14d917;"># set_printoptions(precision=3)</span>
+<span style="color: #14d917;"># print(rescaledX)</span>
+<span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span style="color: #999999;">### feature scailing은 모델의 성능을 향상시키지 못했다.</span>
+
+<span style="color: #999999;">#### data split to training &amp; validation test set ####</span>
+X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, test_size=0.2, random_state=7)
+
+<span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span style="color: #14d917;">########pipeline을 통한 feature selection &amp; model selection###########</span>
+<span style="color: #14d917;">features = []</span>
+<span style="color: #14d917;">features.append(('KBest', SelectKBest(score_func=chi2, k=2))) #KBest 알고리즘과 LDA 알고리즘 비교</span>
+<span style="color: #14d917;">features.append(('lda', LDA()))</span>
+<span style="color: #14d917;">feature_union = FeatureUnion(features) #더 좋은 점수를 얻은 feature selection 알고리즘 선택</span>
+<span style="color: #14d917;">models = [('LR', LR()), ('Kneighbors', KNC()), ('LDA', LDA())]#Linear Regression, K-Nearest Neighbors, LDA 알고리즘 비교</span>
+<span style="color: #14d917;">kfold = KFold(n_splits=10, random_state=7) # 10개의 fold dataset</span>
+<span style="color: #14d917;">for name, model in models:</span>
+<span style="color: #14d917;">   estimators=[]</span>
+<span style="color: #14d917;">   estimators.append(('feature_union', feature_union))</span>
+<span style="color: #14d917;">   estimators.append((name, model))</span>
+<span style="color: #14d917;">   model_set = Pipeline(estimators) #pipeline을 통한 가장 좋은 모델 선택</span>
+<span style="color: #14d917;">   result = cross_val_score(model_set, X_train, Y_train, cv=kfold)</span>
+<span style="color: #14d917;">   print('%s: %.3f%% (%.3f%%)' %(name, result.mean()*100, result.std()*100)) #accuracy score</span>
+<span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+model = LDA() <span style="color: #999999;">## LDA가 가장 좋은 모델</span>
+<span style="color: #999999;">### 위 pipeline 코드의 주석을 풀고 실행시키면 LDA가 가장 좋은 점수를 받는 것을 볼 수 있다.</span>
+
+<span style="color: #999999;">#### model evaluation ####</span>
+kfold = KFold(n_splits=10, random_state=7) # 10개의 fold dataset
+results = cross_val_score(model, X_train, Y_train, cv=kfold)
+print(<span style="color: #14d917;">'LDA Accuracy: %.3f%% (%.3f%%)'</span> %(result.mean()*100, result.std()*100))
+LDA_result = results
+
+
+<span style="color: #999999;">#### improve model performance ####</span>
+X = array[:,0:4]
+Y = array[:,4]
+X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, test_size=0.2, random_state=7)
+<span style="color: #999999;">### 이 전 번의 LDA model의 feature selection에서 fit을 하여 feature가 2개뿐이므로 원래 데이터 다시 복구</span>
+
+
+model = BaggingClassifier(base_estimator=LDA(), n_estimators=100, random_state=7)
+results = cross_val_score(model, X_train, Y_train, cv=kfold)
+Bagging_result = results
+
+num_trees = 100
+max_features = 3
+model = RFC(n_estimators = num_trees, max_features = max_features)
+results = cross_val_score(model, X_train, Y_train, cv=kfold)
+RandomForest_result = results
+
+print(<span style="color: #14d917;">'LDA Accuracy: %.3f'</span> %(LDA_result.mean()*100))
+print(<span style="color: #14d917;">'LDA Bagging Accuracy: %.3f'</span> %(Bagging_result.mean()*100))
+print(<span style="color: #14d917;">'RandomForest Accuracy: %.3f'</span> %(RandomForest_result.mean()*100))        
+
+<span style="color: #999999;">#### Save model ####</span>
+<span style="color: #999999;"># model.fit(X,Y)</span>
+<span style="color: #999999;"># filename = 'Iris_classification_model.sav'</span>
+<span style="color: #999999;"># dump(model, filename)</span></pre>
+
+<p> </p>
+
+<p><img class="aligncenter size-full wp-image-1187" src="/images/2018/10/no-name.jpg" alt="" width="395" height="250" srcset="/images/2018/10/no-name.jpg 395w, /images/2018/10/no-name-300x190.jpg 300w" sizes="(max-width: 395px) 100vw, 395px" /></p>
+
+<p>위 그림은 Iris flower 꽃잎의 정보를 담고있는 각 feature의 density plot이다. sep len과 sep wid는 normal distribution을 따른다는 것을 알 수 있다. pet len과 pet wid는 feature의 local optimum이 3개로 나뉜다. 우리 data의 class가 3가지의 꽃의 종류이므로 아무래도 pet len과 pet wid 두 feature가 분류를 하는 데 결정적인 역할을 하는 feature로 보인다. 실제로 KBest feature selection 알고리즘의 결과도 pet len과 pet feature를 뽑는다.</p>
+
+<p><img class="aligncenter size-full wp-image-1188" src="/images/2018/10/no-name-1.jpg" alt="" width="244" height="55" /></p>
+
+<p>결과는 위와 같다. 가장 처음으로 구한 LDA model을 사용한 Ensemble(Bagging) 기법과 Random Forest Ensemble 기법 보다도 가장 먼저 구했던 LDA model의 분류 정확도가 가장 높다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/10/05/15-if/">
+        15. 조건문(1) - if
+      </a>
+    </h1>
+
+    <span class="post-date">05 Oct 2018</span>
+
+    <p>조건문이란 어떠한 조건이 ‘참’인 경우 코드를 실행시킬 때 사용합니다. if 는 가장 대표적인 조건문입니다.</p>
+
+<p> </p>
+
+<h1 id="1-if문-구조">1. if문 구조</h1>
+
+<hr />
+
+<p> </p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="err">조건</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>if문이 실행되면 ( ) 안의 조건식을 판단합니다. 결과가 ‘참’이면 {. . .}을 실행하고 ‘거짓’이면 아무것도 실행하지 않고 다음 코드로 넘어갑니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>  
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>num이라는 변수를 선언하고 user로부터 하나의 정수를 입력받아 num에 저장합니다. 이후 조건문에서 num 변수에 담긴 값이 0보다 큰지 판단한 후 ‘참’이면 “The numebr is larger than 0\n”을 모니터로 출력해줍니다. 만약 0보다 작은수를 입력하면 아무것도 수행하지 않고 return 0; 에 의해 운영체제로 0이 반환된 이후 프로그램이 종료됩니다.</p>
+
+<p>실행결과 1</p>
+
+<p>Inser a integer number : 3</p>
+
+<p>The number is larger than 0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p>실행결과 2</p>
+
+<p>Inser a integer number : -2</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p> </p>
+
+<h1 id="2-ifelse">2. if~else</h1>
+
+<hr />
+
+<p>else문은 if문의 조건이 ‘거짓’인 경우 실행됩니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is not larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Inser a integer number : -5</p>
+
+<p>The number is not larger than 0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-ifelse-if">3. if~else if</h1>
+
+<hr />
+
+<p>여러 개의 조건을 판단하여 실행을 분기시키고 싶은 경우에는 else if문을 사용합니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is smaller than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>Inser a integer number : 0</p>
+
+<p>The number is 0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-항상-참--항상-거짓">4. 항상 참 / 항상 거짓</h1>
+
+<hr />
+
+<p>만약 if나 else if의 조건문 안에 ‘참(true)’와 ‘거짓(false)’ 를 넣으면 어떻게 될까요?</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"1 is always true</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"1 is not true</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"0 is always false</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"0 is not false</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>Inser a integer number : 1231</p>
+
+<p>1 is always true</p>
+
+<p>0 is not false</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>if문에 1을 넣으면 항상 if문의 코드가 실행이 되고 0을 넣으면 if가 실행이 되지 않아 else가 있다면 바로 else가 실행 됩니다. 참고로 0이 아닌 모든 수는 ‘참’으로 인식됩니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="5-else-if의-정체">5. else if의 정체</h1>
+
+<hr />
+
+<p>짚고 넘어가야 할 부분이 있습니다. 프로그램은 조건문이 끝날 때 까지 if/else if/else 순서대로 코드를 실행합니다. 그러다가 하나가 만족이 되면 그것을 실행하고 나머지 남은 조건문들은 실행시키지 않아요. 따라서 else if가 2개 있을 때, 첫 번째 else if가 만족이 되면 두 번째 else if는 실행하지 않습니다. 코드가 이런 식으로 실행이 되는것은 if/else if/else 의 근본적인 구조를 알면 쉽게 이해됩니다.</p>
+
+<p>else if라는 것은 사실 else 내부에서 또다시 if와 else로 나뉘는 것일 뿐입니다. if와 else문을 <strong>‘중첩’</strong> 시킨것일 뿐인겁니다. 다음의 코드는 if와 else가 중첩된 경우입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 2</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 3</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"num is same or smaller than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>num is larger than 0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="6-break">6. break</h1>
+
+<hr />
+
+<p>break를 씀으로써 우리는 <span style="text-decoration: underline;"><strong>반복문</strong></span>을 강제로 탈출할 수 있습니다. break를 쓰면 break가 포함되어있는 가장 하위단의 반복문을 벗어나게 됩니다. 조건문이 아니라 반복문이라는 점을 명심하셔야합니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Insert a number to sum : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// 0을 입력하면 while문 탈출
+</span>    <span class="p">{</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">sum</span><span class="o">+=</span><span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"The sum is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
+
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Insert a number to sum : 102</p>
+
+<p>Insert a number to sum : 392</p>
+
+<p>Insert a number to sum : -32</p>
+
+<p>Insert a number to sum : 31</p>
+
+<p>Insert a number to sum : -129</p>
+
+<p>Insert a number to sum : 93</p>
+
+<p>Insert a number to sum : 60</p>
+
+<p>Insert a number to sum : 0</p>
+
+<p>The sum is 517</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p>0을 입력하는 순간 if(num==0)의 조건이 만족되어 break; 구문이 실행되어 while문을 빠져나오게 됩니다. 위의 코드에서 break문이 if문 안에 들어있다고 해서 헷갈리시면 안됩니다. break에 의해서 탈출하는 것은 while문입니다. 다시 한 번 강조드리자면 <strong>break은 break을 포함하는 가장 하위단의 반복문을 탈출하게 해줍니다.</strong></p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10944,530 +11473,6 @@ while loop end</p>
 <p>계속하려면 아무 키나 누르십시오 . . . </p>
 
 <p>별표가 1개부터 5개까지 쌓이는 별표탑이 그려집니다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/03/11-scanf/">
-        11. scanf 함수
-      </a>
-    </h1>
-
-    <span class="post-date">03 Oct 2018</span>
-
-    <h1 id="1-scanf-함수의-사용법">1. scanf 함수의 사용법</h1>
-
-<hr />
-
-<p>printf함수만큼은 아니지만 못지않게 자주 쓰는 함수가 scanf함수입니다. printf함수가 모니터를 통한 출력이었다면 scanf함수는 키보드를 통한 입력을 수행합니다. 사용하는 방법은 printf함수와 유사합니다.</p>
-
-<p><strong>printf()함수 : 서식문자와 쉼표(,)를 이용해 출력</strong></p>
-
-<p><strong>scanf()함수 : 서식문자와 쉼표(,)를 이용해 입력</strong></p>
-
-<p> </p>
-
-<p>scanf() 함수는 입력받을 데이터의 형태를 서식문자로 지정해주고, 입력받은 내용을 저장할 변수를 지정해줍니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-    
-    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="n">address</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
-    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Your name : "</span><span class="p">);</span> <span class="c1">//이름을 입력하라는 안내문 출력
-</span>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">name</span><span class="p">);</span> <span class="c1">// %s 형태의 문자열을 입력받아서 name에 저장
-</span>    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Your age: "</span><span class="p">);</span> <span class="c1">//나이를 입력하라는 안내문 출력
-</span>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">age</span><span class="p">);</span> <span class="c1">// %d 형태의 숫자를 입력받아서 age에 저장
-</span>    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Your address: "</span><span class="p">);</span><span class="c1">//주소를 입력하라는 안내문 출력
-</span>    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">address</span><span class="p">);</span> <span class="c1">//%s 형태의 문자열을 입력받아서 address에 저장
-</span>    
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Your name is %s, age is %d, address is %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>출력결과</p>
-
-<p>Your name : Jack</p>
-
-<p>Your age: 20</p>
-
-<p>Your address: Seoul</p>
-
-<p>Your name is Jack, age is 20, address is Seoul</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-scanf-함수-사용시-주의사항">2. scanf 함수 사용시 주의사항</h1>
-
-<hr />
-
-<h2 id="1-저장할-변수앞--연산자">1) 저장할 변수앞 &amp; 연산자</h2>
-
-<p>&amp;연산자는 변수의 주소값을 반환시키는 연산자입니다. 예컨데 scanf(“%s”, &amp;name) 이라 하면 “%s 형태의 문자열을 입력받아서 변수 name의 주소값의 메모리공간에 저장해라” 정도로 해석하시면 됩니다. &amp; 연산자는 포인터 부분에서 다룹니다.</p>
-
-<p> </p>
-
-<h2 id="2-띄어쓰기-금지">2) 띄어쓰기 금지</h2>
-
-<p>scanf함수를 쓸 때 띄어쓰기를 하면 안됩니다. 예컨데 특히 위의 예제코드 같은 경우에는 Seoul GangNam 같은 형태로 쓰면 안됩니다.</p>
-
-<p>띄어쓰기를 한 번 넣어보겠습니다.</p>
-
-<p>출력결과</p>
-
-<p>Your name : John Smith</p>
-
-<p>Your age: Your address: Your name is John, age is -858993460, address is Smith</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>위와 같이 age, address는 입력할 기회조차도 받지못하고 출력결과도 이상하게 나와버립니다. 이 부분은 이후에 스트림과 버퍼를 배워야 이해가 갈겁니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-서식문자">3. 서식문자</h1>
-
-<hr />
-
-<p>서식 문자에 대해서 한 번 정리를 하겠습니다.</p>
-
-<div id="synapClipboard" data-json="%7B%22items%22%3A%5B%7B%22%24type%22%3A%22table%22%2C%22%24firstRow%22%3A0%2C%22%24zindex%22%3A0%2C%22tr%22%3A%5B%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uC11C%uC2DD%uBB38%uC790%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uC790%uB8CC%uD615%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uC124%uBA85%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25d%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22char%2C%20short%2C%20int%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uBD80%uD638%uB97C%20%uAC00%uC9C0%uB294%2010%uC9C4%uC218%20%uC815%uC218%20%uD615%uD0DC%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25ld%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22long%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uBD80%uD638%uB97C%20%uAC00%uC9C0%uB294%2010%uC9C4%uC218%20%uC815%uC218%20%uD615%uD0DC%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25lld%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22long%20long%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uBD80%uD638%uB97C%20%uAC00%uC9C0%uB294%2010%uC9C4%uC218%20%uC815%uC218%20%uD615%uD0DC%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25u%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22unsigned%20int%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uBD80%uD638%uAC00%20%uC5C6%uB294%2010%uC9C4%uC218%20%uC815%uC218%20%uD615%uD0DC%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25o%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22unsigned%20int%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uBD80%uD638%uAC00%20%uC5C6%uB294%2010%uC9C4%uC218%20%uC815%uC218%20%uD615%uD0DC%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25x%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22unsigned%20int%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uBD80%uD638%uAC00%20%uC5C6%uB294%2010%uC9C4%uC218%20%uC815%uC218%20%uD615%uD0DC%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25f%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22float%2C%20double%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uC18C%uC218%uC810%20%uBC29%uC2DD%uC758%20%uC2E4%uC218%20%uD615%uD0DC%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25Lf%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22long%20double%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uC18C%uC218%uC810%20%uBC29%uC2DD%uC758%20%uC2E4%uC218%20%uD615%uD0DC%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25e%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22float%2C%20double%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uC9C0%uC218%20%uBC29%uC2DD%uC758%20%uC2E4%uC218%20%uD615%uD0DC%20ex%29%203e-3%20%3D%203%D710%5E-3%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25g%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22float%2C%20double%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uAC12%uC5D0%20%uB530%uB77C%20%uC801%uC808%uD788%20%25f%2C%20%25g%20%uC0AC%uC774%uC5D0%uC11C%20%uC790%uB3D9%20%uC120%uD0DD%uD558%uC5EC%20%uCD9C%uB825%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25c%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22char%2C%20short%2C%20int%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uC815%uC218%uC5D0%20%uD574%uB2F9%uD558%uB294%20ASCII%20%uBB38%uC790%20%uCD9C%uB825%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25s%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22char%20*%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uBB38%uC790%uB4E4%uC758%20%uC5F4%uAC70%uD615%uD0DC%uC778%20%uBB38%uC790%uC5F4%20%uCD9C%uB825%22%7D%5D%7D%5D%7D%7D%5D%7D%2C%7B%22td%22%3A%5B%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%25p%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22void%20*%22%7D%5D%7D%5D%7D%7D%2C%7B%22%24type%22%3A%22tableData%22%2C%22%24rowspan%22%3A0%2C%22%24colspan%22%3A0%2C%22%24hMerge%22%3A0%2C%22%24vMerge%22%3A0%2C%22textBody%22%3A%7B%22%24type%22%3A%22textBody%22%2C%22%24valign%22%3A%22topCenter%22%2C%22%24textDirection%22%3A%22h%22%2C%22%24leftWrap%22%3A90000%2C%22%24rightWrap%22%3A90000%2C%22%24topWrap%22%3A45000%2C%22%24bottomWrap%22%3A45000%2C%22p%22%3A%5B%7B%22pPr%22%3A%7B%22%24pType%22%3A%22Normal%22%2C%22%24algn%22%3A%22l%22%7D%2C%22r%22%3A%5B%7B%22rPr%22%3A%7B%22%24face%22%3A%22%uB098%uB214%uACE0%uB515%22%2C%22%24sz%22%3A228600%7D%2C%22t%22%3A%22%uD3EC%uC778%uD130%20%uBCC0%uC218%uC758%20%uC8FC%uC18C%uAC12%20%uCD9C%uB825%22%7D%5D%7D%5D%7D%7D%5D%7D%5D%7D%5D%7D" data-from="%7B%22app%22%3A%22cell%22%2C%22docId%22%3A%22YzczOTZkNzMtODdkZi00ZmI0LWE1N2EtYjEzYjg4ODBjODJk%22%2C%22clientId%22%3A%2290BA4342-D342-4BC3-94FE-9961D2A17B4C%22%2C%22host%22%3A%22https%3A//cell.office.naver.com/cell%22%2C%22sheetId%22%3A1%2C%22action%22%3A%22copy%22%2C%22sqref%22%3A%22D3%3AF16%22%2C%22selections%22%3A%5B%7B%22s%22%3A%7B%22c%22%3A4%2C%22r%22%3A3%7D%2C%22e%22%3A%7B%22c%22%3A6%2C%22r%22%3A16%7D%2C%22selectR%22%3Afalse%2C%22selectC%22%3Afalse%7D%5D%7D">
-  <table style="border-style: solid; width: 576px; border-color: #000000; background-color: #e8e3e3;" border="1" width="576">
-    <tr>
-      <td>
-        서식문자
-      </td>
-      
-      <td>
-        자료형
-      </td>
-      
-      <td>
-        설명
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %d
-      </td>
-      
-      <td>
-        char, short, int
-      </td>
-      
-      <td>
-        부호를 가지는 10진수 정수 형태
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %ld
-      </td>
-      
-      <td>
-        long
-      </td>
-      
-      <td>
-        부호를 가지는 10진수 정수 형태
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %lld
-      </td>
-      
-      <td>
-        long long
-      </td>
-      
-      <td>
-        부호를 가지는 10진수 정수 형태
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %u
-      </td>
-      
-      <td>
-        unsigned int
-      </td>
-      
-      <td>
-        부호가 없는 10진수 정수 형태
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %o
-      </td>
-      
-      <td>
-        unsigned int
-      </td>
-      
-      <td>
-        부호가 없는 10진수 정수 형태
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %x
-      </td>
-      
-      <td>
-        unsigned int
-      </td>
-      
-      <td>
-        부호가 없는 10진수 정수 형태
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %f
-      </td>
-      
-      <td>
-        float, double
-      </td>
-      
-      <td>
-        소수점 방식의 실수 형태
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %Lf
-      </td>
-      
-      <td>
-        long double
-      </td>
-      
-      <td>
-        소수점 방식의 실수 형태
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %e
-      </td>
-      
-      <td>
-        float, double
-      </td>
-      
-      <td>
-        지수 방식의 실수 형태 ex) 3e-3 = 3×10^-3
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %g
-      </td>
-      
-      <td>
-        float, double
-      </td>
-      
-      <td>
-        값에 따라 적절히 %f, %g 사이에서 자동 선택하여 출력
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %c
-      </td>
-      
-      <td>
-        char, short, int
-      </td>
-      
-      <td>
-        정수에 해당하는 ASCII 문자 출력
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %s
-      </td>
-      
-      <td>
-        char *
-      </td>
-      
-      <td>
-        문자들의 열거형태인 문자열 출력
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        %p
-      </td>
-      
-      <td>
-        void *
-      </td>
-      
-      <td>
-        포인터 변수의 주소값 출력
-      </td>
-    </tr>
-  </table>
-</div>
-
-<p><strong>printf함수에서는 %f, %e, %g가 위와 같이 다른 형태의 출력을 의미합니다. 하지만 scanf함수에서는 셋 모두 float형태의 데이터를 입력받을 때 쓰입니다. 그리고 %lf는 double형 데이터, %Lf는 long double형 데이터를 입력받는데 쓰입니다. 따라서 scanf 함수를 쓸 때, double형 데이터를 원한다면 %f를 쓰면 안되고 꼭 %lf의 형태로 입력을 받아야합니다.</strong></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/10/01/10-operator/">
-        10. 연산자
-      </a>
-    </h1>
-
-    <span class="post-date">01 Oct 2018</span>
-
-    <p>우리가 흔히 알고있는 ＋－×÷의 사칙연산 이외에도 C언어에서 사용할 수 있는 다양한 <strong>연산자</strong> 가 많습니다. 오늘은 C언어에서 활용빈도가 엄청 높은  필수적인 연산자들을 소개드리겠습니다.</p>
-
-<h1 id="1-대입-연산자">1. 대입 연산자</h1>
-
-<hr />
-
-<p>대입 연산자(=)는 변수에 값을 대입시킬 때 사용합니다. 사실 = 연산자는 수학에서 ‘같다’는 의미로 사용됩니다. 하지만 C언어와 대부분의 프로그래밍 언어에서 = 기호는 대입 연산자를 뜻하고 ==연산자가 ‘같다’는 의미의 논리연산자로 사용됩니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">14</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-산술-연산자">2. 산술 연산자</h1>
-
-<hr />
-
-<p>산술 연산자는 4칙연산과 관련된 연사자입니다.</p>
-
-<p><strong>+ : 더하기</strong> ex) int add = 3 + 4;</p>
-
-<p><strong>- : 빼기</strong> ex) double sub = 7.14 - 5.25;</p>
-
-<p><strong>* : 곱하기</strong> ex) int mul = 3*4;</p>
-
-<p><strong>/ : 나누기</strong> ex) double div = 7.0/4.2;</p>
-
-<p><strong>% : 나머지</strong> ex) int rem = 14/3; // 14를 3으로 나누면 몫이 4이고 나머지가 2이기 때문에 변수 rem은 2를 가진다.</p>
-
-<p> </p>
-
-<p>산술연산자들은 대입연산자(=)와 같이 쓰면 수식이 간결해집니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span><span class="o">+=</span><span class="mi">3</span><span class="p">;</span> <span class="c1">// 이 코드는 a=a+3;과 동일
-</span><span class="kt">int</span> <span class="n">a</span><span class="o">-=</span><span class="mi">3</span><span class="p">;</span> <span class="c1">// 이 코드는 a=a-3;과 동일
-</span><span class="kt">int</span> <span class="n">a</span><span class="o">*=</span><span class="mi">3</span><span class="p">;</span> <span class="c1">// 이 코드는 a=a*3;과 동일
-</span><span class="kt">int</span> <span class="n">a</span><span class="o">/=</span><span class="mi">3</span><span class="p">;</span> <span class="c1">// 이 코드는 a=a/3;과 동일
-</span><span class="kt">int</span> <span class="n">a</span><span class="o">%=</span><span class="mi">3</span><span class="p">;</span> <span class="c1">// 이 코드는 a=a%3;과 동일
-</span></code></pre></div></div>
-
-<p> </p>
-
-<p>#</p>
-
-<h1 id="3-증가-감소-연산자">3. 증가, 감소 연산자</h1>
-
-<hr />
-
-<p>증가, 감소 연산자에는 ++, –가 있습니다. ex) num++, ++num, num-, -num</p>
-
-<p>변수의 값을 1 증가시키거나 감소하라는 의미인데, ++과 -의 위치에 주의해야 합니다. ++이나 -이 뒤에오면 위의 증감 명령이 속한 문장을 먼저 다 실행시키고 ++,-을 수행하라는 의미입니다. ++,-이 앞에 오면 먼저 값을 증가, 감소 시킨 후에 문장을 실행하라는 의미입니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">num</span><span class="o">++</span><span class="p">;</span>
-
-    <span class="n">printf</span><span class="p">(</span><span class="s">"result is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"num is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
-
-    <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="o">++</span><span class="n">num</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"result is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"num is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
-
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>실행결과</p>
-
-<p>result is 10</p>
-
-<p>num is 11</p>
-
-<p>result is 11</p>
-
-<p>num is 11</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>num++을 사용했을때는 result에 먼저 num의 값이 담기고 난 다음 num++이 실행되어 num이 1 증가했습니다. 하지만, ++num을 사용했을때는 num이 먼저 10에서 11로 1 증가 후 result에 대입이 되었어요. -연산도 동일한 결과를 만들어 냅니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p>#</p>
-
-<h1 id="4-비교-연산자">4. 비교 연산자</h1>
-
-<hr />
-
-<p>비교 연산자에는 &lt;, &gt;, &lt;=, &gt;=, ==, !=이 있습니다. 두 항을 비교하여 논리판단을 할 때 사용합니다.</p>
-
-<p>&lt; : if(a&lt;b){a++;} // a가 b보다 작으면 a의 값을 1 올려라</p>
-
-<p>&gt; : if(a&gt;b){a-;} // a가 b보다 크면 a의 값을 1 줄여라</p>
-
-<p>&lt;= : if(a&lt;=b){a++;} // a가 b보다 작거나 같으면 a의 값을 1 올려라</p>
-
-<p>&gt;= : if(a&gt;=b){a-;} // a가 b보다 크거나 같으면 a의 값을 1 줄여라</p>
-
-<p>== : if(a==5){printf(“a is 5”); // a가 5와 같으면 “a is 5”;의 문장을 출력해라</p>
-
-<p>!= : if(a!=5){printf(“a is not 5”); // a가 5와 같지 않다면 “a is not 5”;의 문장을 출력해라</p>
-
-<p>if문은 조건문인데, 우리가 제시한 조건을 판단하여 ‘참(1)’이면 { } 안의 문장을 실행하고 ‘거짓(0)’이면 { } 안의 문장을 실행하지 않습니다. 반복문과 조건문 강의에서 다룰겁니다.</p>
-
-<p>우리가 위와 같은 비교연산자를 이용해서 논리연산을 수행하면 수식 자체가 0이나 1을 반환합니다. 예컨데 a&lt;b가 사실이면 a&lt;b 라는 문장이 정수 1과 동일하단 것입니다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// 참이므로 1
-</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// 거짓이므로 0
-</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// 거짓이므로 0
-</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">//if(1) 과 완전히 동일
-</span>    <span class="p">{</span>
-        <span class="n">num</span><span class="o">++</span><span class="p">;</span>
-        <span class="n">num</span><span class="o">++</span><span class="p">;</span>
-    <span class="p">}</span> <span class="c1">// ( ) 안의 문장이 참이므로 { } 안의 문장 수행 num이 10에서 12로 증가
-</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">num</span><span class="p">);</span> <span class="c1">// num = 12
-</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>실행결과</p>
-
-<p>1</p>
-
-<p>0</p>
-
-<p>0</p>
-
-<p>12</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . .</p>
-
-<p>이처럼 비교연산자는 논리를 판단하고 결과에 따라 다른 실행이 필요할 때 사용합니다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="5논리-연산자">5. 논리 연산자</h1>
-
-<hr />
-
-<p>&amp;&amp; : AND 연산자 → 두 조건이 ‘모두 참’ 일 때 참이면 1 반환</p>
-
-<p>|| : OR 연산자 → 두 조건 중 ‘하나라도 참’ 일 때 참이면 1 반환</p>
-
-<p>! : NOT 연산자 → 논리 역전 (‘참’→’거짓’,  ’거짓’→’참’)</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-
-   <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// 참이므로 1
-</span>   <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// 거짓이므로 0
-</span>   <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// 거짓이므로 0
-</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">//if(1) 과 완전히 동일
-</span>    <span class="p">{</span>
-        <span class="n">num</span><span class="o">++</span><span class="p">;</span>
-        <span class="n">num</span><span class="o">++</span><span class="p">;</span>
-    <span class="p">}</span> <span class="c1">// ( ) 안의 문장이 참이므로 { } 안의 문장 수행 num이 10에서 12로 증가
-</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">num</span><span class="p">);</span> <span class="c1">// num = 12
-</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>실행결과</p>
-
-<p>&amp;&amp; This is true</p>
-
-<p>|| This is true</p>
-
-<p>! This is false</p>
-
-<p>계속하려면 아무 키나 누르십시오 . . . </p>
 
   </div>
   

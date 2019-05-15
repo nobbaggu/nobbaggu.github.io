@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,205 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/17/18-find-overlap-2/">
+        18. 중복 찾기 2
+      </a>
+    </h1>
+
+    <span class="post-date">17 Nov 2018</span>
+
+    <h1 id="1-문제-정의">1. 문제 정의</h1>
+
+<hr />
+
+<p>탐색 알고리즘을 사용해서 모든 요소를 탐색하는 중복 값을 찾기 알고리즘에 대해 포스팅 했었다.</p>
+
+<p>오늘은 같은 알고리즘을 파이썬의 딕셔너리(dictionary) 자료형을 사용해서 구현해 보겠다.</p>
+
+<p><img class="aligncenter  wp-image-1377" src="/images/2018/11/no-name-13.jpg" alt="" width="559" height="140" srcset="/images/2018/11/no-name-13.jpg 783w, /images/2018/11/no-name-13-300x75.jpg 300w, /images/2018/11/no-name-13-768x192.jpg 768w" sizes="(max-width: 559px) 100vw, 559px" /></p>
+
+<p>혹시 파이썬의 딕셔너리 자료형이 무엇인지 잘 모른다면 아래 링크를 따라가 간단한 딕셔너리에 대한 소개를 읽으면 충분하다.</p>
+
+<blockquote class="wp-embedded-content" data-secret="Dt33cuh6Ji">
+  <p>
+    <a href="https://SWnomad.com/5-%ec%9e%90%eb%a3%8c%ed%98%955-%eb%94%95%ec%85%94%eb%84%88%eb%a6%acdictionary/">5. 자료형(5) &#8211; 딕셔너리(Dictionary)</a>
+  </p>
+</blockquote>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-알고리즘">2. 알고리즘</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Boltmann'</span><span class="p">,</span> <span class="s">'Dirac'</span><span class="p">,</span> <span class="s">'Newton'</span><span class="p">,</span> <span class="s">'Fourier'</span><span class="p">,</span> <span class="s">'Bohr'</span><span class="p">,</span><span class="s">'Maxwell'</span><span class="p">,</span> <span class="s">'Tesla'</span><span class="p">,</span> <span class="s">'Newton'</span><span class="p">,</span> <span class="s">'Schrodinger'</span><span class="p">,</span> <span class="s">'Bohr'</span><span class="p">,</span> <span class="s">'Dirac'</span><span class="p">,</span> <span class="s">'Laplace'</span><span class="p">,</span> <span class="s">'Bohr'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>위 리스트에서 중복된 요소를 찾는 알고리즘은 다음과 같다.</p>
+
+<ol>
+  <li>
+    <p>요소를 처음부터 끝까지 훑으면서</p>
+  </li>
+  <li>
+    <p>요소를 딕셔너리 자료형에 (‘이름’ : 추가 횟수) 의 형태로 집어넣는데,</p>
+  </li>
+</ol>
+
+<ol style="list-style-type: lower-alpha;">
+  <li>
+    딕셔너리 자료형에 이미 있으면 추가 횟수 +1
+  </li>
+  <li>
+    없으면 추가 횟수 1로 초기화 하며 추가
+  </li>
+</ol>
+
+<p>위 과정을 파이썬 코드로 표현하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Boltmann'</span><span class="p">,</span> <span class="s">'Dirac'</span><span class="p">,</span> <span class="s">'Newton'</span><span class="p">,</span> <span class="s">'Fourier'</span><span class="p">,</span> <span class="s">'Bohr'</span><span class="p">,</span><span class="s">'Maxwell'</span><span class="p">,</span> <span class="s">'Tesla'</span><span class="p">,</span> <span class="s">'Newton'</span><span class="p">,</span> <span class="s">'Schrodinger'</span><span class="p">,</span> <span class="s">'Bohr'</span><span class="p">,</span> <span class="s">'Dirac'</span><span class="p">,</span> <span class="s">'Laplace'</span><span class="p">,</span> <span class="s">'Bohr'</span><span class="p">]</span>
+<span class="n">dic</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">:</span> <span class="c"># 이름이 이미 dic에 있으면</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span><span class="mi">1</span> <span class="c"># 그 value값 1 증가</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c"># 없으면</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># value값 1로 해서 추가</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dic</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c"># 이름을 훑으면서</span>
+    <span class="k">if</span> <span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span> <span class="c"># 그 value값이 1보다 크면</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s">':'</span><span class="p">,</span> <span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="c"># 이름과 value값 출력</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c"># 아니면</span>
+        <span class="k">pass</span> <span class="c"># 패스</span>
+
+<span class="c">### 실행결과</span>
+<span class="c"># Dirac : 2</span>
+<span class="c"># Newton : 2</span>
+<span class="c"># Bohr : 3</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-알고리즘-효율">3. 알고리즘 효율</h1>
+
+<hr />
+
+<p>위 알고리즘에서 가장 중요한 연산은 비교 연산이다.</p>
+
+<p>리스트가 n개의 자료를 가지고 있다고 가정한다.</p>
+
+<p>먼저, 딕셔너리 자료형에 이름과 추가 횟수를 집어넣는 비교 연산은 리스트의 요소의 갯수 n번이다.</p>
+
+<p>두 번째 반복문에서 다시 한 번 비교하는데, 이 때에는 중복 된 것을 합친 딕셔너리이므로 n번 이하이다.</p>
+
+<p>대략적으로  2n 번 정도의 연산이 필요하기 때문에 계산 복잡도는 O(n)이다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/17/17-palindrome/">
+        17. 회문 찾기
+      </a>
+    </h1>
+
+    <span class="post-date">17 Nov 2018</span>
+
+    <h1 id="1-문제-정의">1. 문제 정의</h1>
+
+<hr />
+
+<p>‘회문’ 이란 것은 앞으로 읽으나 뒤로 읽으나 같은 단어, 문장 등을 말한다. 예시로는 wow, level, randar, 심지어 문장으로는 Madam, I’m Adam 등이 있다.</p>
+
+<p>이번에는 큐와 스택의 성질을 사용해서 회문 찾기 알고리즘을 작성해 볼 것이다.</p>
+
+<p><img class="aligncenter  wp-image-1373" src="/images/2018/11/no-name-12.jpg" alt="" width="591" height="148" srcset="/images/2018/11/no-name-12.jpg 783w, /images/2018/11/no-name-12-300x75.jpg 300w, /images/2018/11/no-name-12-768x192.jpg 768w" sizes="(max-width: 591px) 100vw, 591px" /></p>
+
+<p>낱말, 문장을 input으로 넣었을 때, 회문이면 True, 아니면 False를 반환한다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-알고리즘">2. 알고리즘</h1>
+
+<hr />
+
+<p>먼저 이 알고리즘을 보기 이전에 간단하게 ‘큐’와 ‘스택’이 무엇인지 잘 모른다면 아래 링크를 따라가 큐와 스택의 개념에 대해 간략한 포스팅을 먼저 보기 바란다.</p>
+
+<blockquote class="wp-embedded-content" data-secret="TsdvnCTAHi">
+  <p>
+    <a href="https://SWnomad.com/16-%ed%81%90%ec%99%80-%ec%8a%a4%ed%83%9d/">16. 큐와 스택</a>
+  </p>
+</blockquote>
+
+<p>어떠한 단어, 문장이 회문이라면 큐에서 꺼내는 단어(앞에서 읽기)와 스택에서 꺼내는 단어(거꾸로 읽기)가 같아야 한다.</p>
+
+<ol>
+  <li>
+    <p>dequeue와 pop이 같은지 확인하여 같다면 다음으로, 다르다면 False를 return하며 함수 종료</p>
+  </li>
+  <li>
+    <p>1번 과정을 모든 알파벳을 읽어들일 때 까지 실행해서 False를 return하는 조건을 충족하지 않고 함수를 마친다면 True를 반환</p>
+  </li>
+</ol>
+
+<p>단, 알파벳이 아닌 공백(‘ ‘), 쉼표와 마침표(, .)등은 무시하고, 대문자와 소문자는 같은 것으로 취급한다.</p>
+
+<p>이 과정을 파이썬 코드로 표현하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">que</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stk</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c"># 단어를 큐와 스택에 각각 저장</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span> <span class="c"># 알파벳인지 확인하는 함수</span>
+            <span class="n">que</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="c"># 소문자로 변환하여 저장</span>
+            <span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="c"># 소문자로 변환하여 저장</span>
+
+    <span class="k">while</span> <span class="n">que</span><span class="p">:</span> <span class="c"># 다 읽어들일 때 까지 while stk을 해도 상관없다.</span>
+        <span class="k">if</span> <span class="n">que</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="n">stk</span><span class="o">.</span><span class="n">pop</span><span class="p">():</span> <span class="c"># 다른 알파벳 발견하면</span>
+            <span class="k">return</span> <span class="bp">False</span> <span class="c"># False 반환하며 함수 종료</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c"># 아니면</span>
+            <span class="k">continue</span> <span class="c"># 계속</span>
+
+    <span class="k">return</span> <span class="bp">True</span> <span class="c"># 반복문 무사히 마치면 회문이므로 True 반환</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">palindrome</span><span class="p">(</span><span class="s">"Madam, I'm Adam"</span><span class="p">))</span> <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="n">palindrome</span><span class="p">(</span><span class="s">"Hello, Wolrd"</span><span class="p">))</span> <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="n">palindrome</span><span class="p">(</span><span class="s">"kayak"</span><span class="p">))</span> <span class="c"># True</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-알고리즘-효율">3. 알고리즘 효율</h1>
+
+<hr />
+
+<p>회문 찾기 알고리즘의 가장 중요한 연산은 비교 연산이다. 단어에 포함된 알파벳 갯수만큼 비교를 해야한다.</p>
+
+<p>단어, 문장의 길이와 연산의 횟수가 정비례하므로 위 알고리즘의 계산 복잡도는 O(n)이다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10788,206 +11057,6 @@
 <hr />
 
 <p>버블 정렬의 알고리즘 효율은 평균적으로 O(n^2)이며, 평균적으로 O(nlog(n))인 퀵 정렬과 비교해서 효율이 더 좋지 않다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/15/13-quick-sort/">
-        13. 퀵 정렬
-      </a>
-    </h1>
-
-    <span class="post-date">15 Nov 2018</span>
-
-    <h1 id="1-문제-정의">1. 문제 정의</h1>
-
-<hr />
-
-<p>퀵 정렬 알고리즘은 리스트를 넣어주면 리스트의 요소들을 크기 순으로 정렬 시킨다.</p>
-
-<p><img class="aligncenter wp-image-1341" src="/images/2018/11/no-name-10.jpg" alt="" width="595" height="149" srcset="/images/2018/11/no-name-10.jpg 783w, /images/2018/11/no-name-10-300x75.jpg 300w, /images/2018/11/no-name-10-768x192.jpg 768w" sizes="(max-width: 595px) 100vw, 595px" /></p>
-
-<p>퀵 정렬 알고리즘은 병합 정렬 알고리즘과 마찬가지로 재귀호출을 사용한다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-알고리즘">2. 알고리즘</h1>
-
-<hr />
-
-<p>어떠한 원소를 기준으로 잡는다. 리스트의 왼쪽 끝, 오른 쪽 끝 두 곳을 시작으로 탐색해 나가며 크기 비교를 하여 위치를 바꾸는 식으로 리스트를 정렬한다.</p>
-
-<p>여기서는 리스트의 마지막 원소를 기준(pivot)으로 잡는다.</p>
-
-<ol>
-  <li>
-    <p>첫 번째 원소의 index를 low, 마지막 두 번째 원소 index를 high라고 한다.</p>
-  </li>
-  <li>
-    <p>low가 pivot보다 큰 값을 가르킬 때 까지 low를 오른쪽으로 +1 씩 이동</p>
-  </li>
-  <li>
-    <p>high가 pivot보다 작은 값을 가르킬 때 까지 high를 왼쪽으로 -1씩 이동</p>
-  </li>
-  <li>
-    <p>low&lt;high면 두 곳의 위치 교환</p>
-  </li>
-  <li>
-    <p>위 과정을 low와 high가 만날 때 까지 반복</p>
-  </li>
-  <li>
-    <p>low, high가 만나면 그 곳의 숫자와 pivot의 값 교환</p>
-  </li>
-  <li>
-    <p>pivot의 값이 옮겨진 위치 즉, 현재의 low를 기준으로 리스트를 나누어 각각에 대해 퀵 정렬 재실행(재퀴호출)</p>
-  </li>
-</ol>
-
-<p><img class="wp-image-1348 aligncenter" src="/images/2018/11/4123.jpg" alt="" width="546" height="356" srcset="/images/2018/11/4123.jpg 752w, /images/2018/11/4123-300x195.jpg 300w" sizes="(max-width: 546px) 100vw, 546px" /></p>
-
-<p><img class="wp-image-1350 aligncenter" src="/images/2018/11/4123-2.jpg" alt="" width="517" height="305" srcset="/images/2018/11/4123-2.jpg 731w, /images/2018/11/4123-2-300x177.jpg 300w" sizes="(max-width: 517px) 100vw, 517px" /></p>
-
-<p><img class="wp-image-1351 aligncenter" src="/images/2018/11/4123-3.jpg" alt="" width="344" height="180" srcset="/images/2018/11/4123-3.jpg 500w, /images/2018/11/4123-3-300x157.jpg 300w" sizes="(max-width: 344px) 100vw, 344px" /></p>
-
-<p> </p>
-
-<p>위 과정을 파이썬 코드로 표현하면 다음과 같다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span> <span class="c"># 원소가 한 개면</span>
-        <span class="k">return</span> <span class="c"># 종료</span>
-
-    <span class="n">low</span> <span class="o">=</span> <span class="n">start</span> <span class="c"># 왼쪽 탐색 막대</span>
-    <span class="n">high</span> <span class="o">=</span> <span class="n">end</span> <span class="c"># 오른쪽 탐색 막대</span>
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="c"># 마지막 원소를 기준으로</span>
-
-    <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽 막대보다 작은 동안 실행</span>
-        <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">pivot</span><span class="p">:</span>
-            <span class="n">low</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">pivot</span><span class="p">:</span>
-            <span class="n">high</span><span class="o">-=</span><span class="mi">1</span>
-        <span class="k">if</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽 막대보다 작으면</span>
-            <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="c"># 위치 교환</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c"># 왼쪽 막대가 오른쪽으로 넘어가면</span>
-            <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="c"># 기준과 a[low] 교환하고</span>
-            <span class="k">break</span> <span class="c"># 반복문 탈출</span>
-
-    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">low</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># 새로운 기준을 중심으로 왼쪽 리스트 부분 정렬</span>
-    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">low</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="c"># 새로운 기준을 중심으로 오른쪽 리스트 부분 정렬</span>
-
-<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">quick_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">quick_sort</span><span class="p">(</span><span class="n">arr2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="c"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span> <span class="c"># [1, 1, 2, 2, 3, 3, 4, 4]</span>
-</code></pre></div></div>
-
-<p> </p>
-
-<p>#</p>
-
-<h1 id="3-알고리즘-효율">3. 알고리즘 효율</h1>
-
-<hr />
-
-<p>퀵 정렬의 계산 복잡도는 최악의 경우 O(n^2), 평균적으로 O(nlog(n))을 따른다. 즉, 기준을 얼마나 잘 잡느냐에 따라 계산 복잡도가 달라진다.</p>
-
-<p>따라서 퀵 정렬을 효율적으로 사용하려면 기준을 잡는 방법에 대해 따로 공부할 필요가 있다. 퀵 정렬의 기준을 잡는 방법에 대한 연구된 좋은 방법들은 많으므로 궁금하면 자료를 찾아보자.</p>
-
-<p> </p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/11/12/12-merge-sort/">
-        12. 병합 정렬
-      </a>
-    </h1>
-
-    <span class="post-date">12 Nov 2018</span>
-
-    <h1 id="1-문제-정의">1. 문제 정의</h1>
-
-<hr />
-
-<p>병합 알고리즘은 다른 정렬 알고리즘과 마찬가지로 in/out이 리스트/정렬된 리스트 이다.</p>
-
-<p><img class="aligncenter wp-image-1341" src="/images/2018/11/no-name-10.jpg" alt="" width="615" height="154" srcset="/images/2018/11/no-name-10.jpg 783w, /images/2018/11/no-name-10-300x75.jpg 300w, /images/2018/11/no-name-10-768x192.jpg 768w" sizes="(max-width: 615px) 100vw, 615px" /></p>
-
-<p>병합 정렬 알고리즘의 특별한 점은 재귀호출을 사용한다는 것이다.</p>
-
-<p>재귀호출은 헷갈리면서 어느정도의 사고를 필요로 하는 알고리즘이므로 그림을 그려가며 따라가는 것이 이해가 쉽다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="2-알고리즘">2. 알고리즘</h1>
-
-<hr />
-
-<p>병합 정렬은 리스트를 반으로 나누어 각각 정렬하여 합하는 것이다. 합하는 과정에서도 순서를 생각한다.</p>
-
-<p><img class="aligncenter wp-image-1342" src="/images/2018/11/33.jpg" alt="" width="364" height="239" srcset="/images/2018/11/33.jpg 504w, /images/2018/11/33-300x197.jpg 300w" sizes="(max-width: 364px) 100vw, 364px" /></p>
-
-<p>반으로 나뉜 리스트가 또 반으로 나뉘고 마지막 하나만 남을 때 까지 반으로 나뉜다. 이 부분에서 재귀 호출을 사용하는 것이다.</p>
-
-<p>코드를 살펴보자.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">a</span>
-    <span class="c">### 일단 마지막까지 쪼개져서 1개가 남은 이후에는 그 값을 리턴안 이후 이 부분의 코드로는 다시 돌아오지 않는다.</span>
-
-    <span class="n">a1</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">])</span> <span class="c"># 리스트를 반으로</span>
-    <span class="n">a2</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">:])</span> <span class="c"># 리스트를 반으로</span>
-
-    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># 정렬된 리스트를 담을 그릇</span>
-    <span class="k">while</span> <span class="n">a1</span> <span class="ow">and</span> <span class="n">a2</span><span class="p">:</span> <span class="c"># a1과 a2 중 하나가 빌 때 까지</span>
-        <span class="k">if</span> <span class="n">a1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span> <span class="n">a2</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="c"># a1[0]과 a2[0]을 계속 비교하여 정렬</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a2</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-
-    <span class="c">### a1이나 a2 중 하나가 남았으면 차례대로 result의 뒤에 추가</span>
-    <span class="k">while</span> <span class="n">a1</span><span class="p">:</span>
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-    <span class="k">while</span> <span class="n">a2</span><span class="p">:</span>
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a2</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">result</span>
-
-<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
-<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">merge_sort</span><span class="p">(</span><span class="n">list1</span><span class="p">))</span> <span class="c"># [1,4,9,11,14,20,23]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">merge_sort</span><span class="p">(</span><span class="n">list2</span><span class="p">))</span> <span class="c"># [1,2,3,4,5]</span>
-</code></pre></div></div>
-
-<p>헷갈리면 보고 또 보자. 결국은 이해하게 될 것이다.</p>
-
-<p> </p>
-
-<p> </p>
-
-<h1 id="3-알고리즘-효율">3. 알고리즘 효율</h1>
-
-<hr />
-
-<p>병합 정렬 알고리즘의 핵심은 데이터를 계속해서 잘게 나누어 재귀호출을 이용한다는 것이다. 분할한다 하여 분할 정복 이라고도 부르는데, 이런 방법은 알고리즘의 효율을 높이는 데에도 크게 기여한다.</p>
-
-<p>병합 정렬 알고리즘의 계산 복잡도는 O(nlog(n))이며 이는 O(n^2)의 계산복잡도를 가졌던 앞선 정렬 알고리즘들 보다 계산복잡도가 낮은 더욱 효율적인 알고리즘이다.</p>
-
-<p>즉, 데이터의 수가 많을수록 병합 정렬은 그 힘을 발휘한다.</p>
 
   </div>
   

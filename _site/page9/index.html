@@ -334,12 +334,12 @@
         <span class="badge">58</span>
       </a>
       
-      <a href="/category/#SW면접질문"
+      <a href="/category/#SW/IT지식"
          class="sidebar-nav-item pl-3rem">
                             <span class="name">
-                                SW면접질문
+                                SW/IT지식
                             </span>
-        <span class="badge">7</span>
+        <span class="badge">8</span>
       </a>
       
       <a href="/category/#안드로이드"
@@ -347,7 +347,7 @@
                             <span class="name">
                                 안드로이드
                             </span>
-        <span class="badge">40</span>
+        <span class="badge">41</span>
       </a>
       
     </nav>
@@ -10495,6 +10495,76 @@
         
         <a href="/tag/#customview" style="font-size: 9pt; color: #555;">customview</a>
         
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#캘린더" style="font-size: 9pt; color: #555;">캘린더</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#Calendar" style="font-size: 9pt; color: #555;">Calendar</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#cyclic redundancy check" style="font-size: 9pt; color: #555;">cyclic redundancy check</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc" style="font-size: 9pt; color: #555;">crc</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#checksum" style="font-size: 9pt; color: #555;">checksum</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#crc8" style="font-size: 9pt; color: #555;">crc8</a>
+        
+        
+        
+        
+        
+        
+
+        
+        
+        <a href="/tag/#xor" style="font-size: 9pt; color: #555;">xor</a>
+        
       </div>
     </div>
 	-->
@@ -10527,6 +10597,203 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/04/24/hello_app/">
+        2. 간단한 앱 만들어보기
+      </a>
+    </h1>
+
+    <span class="post-date">24 Apr 2019</span>
+
+    <p><img src="/images/android/2/a.png" alt="a" width="70%" height="70%" /></p>
+
+<p>처음 프로젝트를 만들면 액티비티가 하나 존재한다. 참고로 <strong>액티비티</strong>는 하나의 화면이라고 생각하면 된다. MainActivity.java와 activity_main.xml 두 개의 파일이 있는데, 하나의 액티비티는 보통 하나의 java 코드와 하나의 xml 파일로 구성되어있다.</p>
+
+<p>먼저 activity_main.xml 파일은 안드로이드의 화면에 보여질 화면을 구성하는 파일이다.</p>
+
+<p><img src="/images/android/2/b.png" alt="b" width="70%" height="70%" /></p>
+
+<p>Design/Text 두 개의 탭이 있는데, Design 탭에서는 조금 더 편리하게 아이콘을 끌어다가 버튼 등을 만듦으로써 화면을 구성할 수 있다. Text 탭을 누르면 화면을 구성하는 XML 코드들이 보인다.</p>
+
+<p><img src="/images/android/2/c.png" alt="c" width="70%" height="70%" /></p>
+
+<p>일단 먼저, android:text의 내용을 바꾸어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:text="Hello Android!"
+</code></pre></div></div>
+
+<p>그리고 다시 Design 탭을 가서 확인해보면 텍스트가 바뀐 것을 알 수 있다.</p>
+
+<p>즉, android:text 코드는 화면에 글자를 표시하게 해준다는 것을 알 수 있다.</p>
+
+<p>이제 <TextView> 태그의 TextView를 Button으로 바꾸어보자.</TextView></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Button</span>
+<span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+<span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+<span class="na">android:text=</span><span class="s">"Hello World!"</span>
+<span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+<span class="na">app:layout_constraintLeft_toLeftOf=</span><span class="s">"parent"</span>
+<span class="na">app:layout_constraintRight_toRightOf=</span><span class="s">"parent"</span>
+<span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Design 탭을 가보면 단순한 글자가 아닌 버튼이 생겼고, 글자가 그 버튼 안에 표시되는 걸 볼 수 있다.</p>
+
+<p><img src="/images/android/2/d.png" alt="d" width="70%" height="70%" /></p>
+
+<p>지금은 이유는 그냥 무시하고 넘어간다.</p>
+
+<p> </p>
+<h3 id="1-toast-메시지-띄우기">1. Toast 메시지 띄우기</h3>
+
+<p>이제 버튼을 클릭했을 때 메세지를 띄우는 기능을 한 번 넣어보자.</p>
+
+<p>먼저, Button 태그의 속성에 아래의 문장을 추가해준다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:onClick="buttonClicked"
+</code></pre></div></div>
+
+<p>그리고 MainActivity.java에 buttonClicked 라는 이름의 메소드를 하나 추가해준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonClicked</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
+	<span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"버튼이 눌렸습니다."</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">);</span>
+    <span class="c1">//안드로이드 화면에 Toast 메세지를 띄우는 코드</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Shift+F10을 눌러 앱이 휴대폰에 설치되고 실행될 때 까지 기다린다. 실행이 되고 버튼을 터치하면 아래처럼 토스트 메세지가 뜬다.</p>
+
+<p><img src="/images/android/2/toast_message.jpg" alt="toast_message" width="30%" height="30%" /></p>
+
+<p> </p>
+<h3 id="2-intent-사용해보기">2. Intent 사용해보기</h3>
+
+<p>buttonClicked 메소드를 아래와 같이 변경해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonClicked</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
+    <span class="n">Intent</span> <span class="n">intent1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"https://www.google.com"</span><span class="o">));</span>
+    <span class="n">startActivity</span><span class="o">(</span><span class="n">intent1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행을 시켜서 버튼을 누르면 웹 브라우저가 자동으로 실행되고 구글 홈페이지를 띄워준다.</p>
+
+<p><strong>인텐트</strong>는 간단히 생각해 데이터나 요청, 명령 등을 전달하는 객체라고 생각하면 된다. 인텐트를 사용하면 단 몇 줄의 코드만으로 우리가 원하는 기능을 실행해준다.</p>
+
+<p> </p>
+<h3 id="3-화면-추가하고-띄워보기">3. 화면 추가하고 띄워보기</h3>
+
+<p>File - New - Activity - Empty Activity 순서로 따라가서 새로운 액티비티를 하나 만든다. 액티비티 이름은 MenuActivity로 한다.
+그러면 MenuActivity.java와 activity_menu.xml 두 개의 파일이 만들어졌을 것이다.</p>
+
+<p>먼저 MenuActivity.java에 다음의 메소드를 하나 추가한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">backButtonClicked</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
+    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"돌아가기"</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">finish</span><span class="o">();</span> <span class="c1">//액티비티 종료</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>activity_menu.xml에는 버튼을 하나 추가하고 onClick 속성을 다음과 같이 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public void backButtonClicked(View v){
+    Toast.makeText(getApplicationContext(), "돌아가기", Toast.LENGTH_LONG).show();
+    finish(); //액티비티 종료
+}
+</code></pre></div></div>
+
+<p>이렇게 하면 버튼이 눌렸을 때 backButtonClicked 메소드가 호출이 된다.</p>
+
+<p>그리고 MainActivity의 buttonClicked 메소드의 내용을 아래와 같이 수정한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonClicked</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
+    <span class="n">Intent</span> <span class="n">intent1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">MenuActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span><span class="c1">//새로 만든 액티비티를 인텐트로 만들기</span>
+    <span class="n">startActivity</span><span class="o">(</span><span class="n">intent1</span><span class="o">);</span><span class="c1">//인텐트 전달</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제 실행을 해보면 아래와 같이 된다.</p>
+
+<p><img src="/images/android/2/aa.jpg" alt="d" width="30%" height="30%" />
+<img src="/images/android/2/bb.jpg" alt="d" width="30%" height="30%" />
+<img src="/images/android/2/cc.jpg" alt="d" width="30%" height="30%" /></p>
+
+<p>첫 번째 화면에서 버튼을 누르면 두 번째 액티비티 화면으로 넘어간다. 다시 두 번째 화면에서 버튼을 누르면 finish()가 호출되면서 액티비티가 종료되고 Toast 메세지가 하나 뜨면서 이전의 액티비티로 돌아온다.</p>
+
+<p>오늘은 안드로이드 앱의 기본 구조, 액티비티, 인텐트, 토스트 메시지 띄우기 등을 해보면서 안드로이드 앱 개발이 어떻게 시작되는지에 대한 감을 잡을 수 있었다. 여기에 이제부터 살을 붙여가며 실력을 늘릴 것이다.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/04/24/hello_android/">
+        1. 준비
+      </a>
+    </h1>
+
+    <span class="post-date">24 Apr 2019</span>
+
+    <p>안드로이드는 자바를 기반으로 개발한다. 따라서 안드로이드 개발을 위해서는 JDK(Java Development Kit)와 JRE(Java Runtime Environment)가 필요하다. 마지막으로 Android Studio를 설치하면 된다.</p>
+
+<p>설치가 끝났다면 첫 프로젝트를 만들어보자.</p>
+
+<p> </p>
+<h3 id="1-start-a-new-project-클릭">1. Start a new Project 클릭</h3>
+
+<p><img src="/images/android/1/start_new_project.png" alt="start_new_project" width="70%" height="70%" /></p>
+
+<p> </p>
+<h3 id="2-empty_activity-선택">2. empty_activity 선택</h3>
+
+<p><img src="/images/android/1/empty_activity.png" alt="empty_activity" width="70%" height="70%" /></p>
+
+<p> </p>
+<h3 id="3-앱-이름-설정">3. 앱 이름 설정</h3>
+
+<p><img src="/images/android/1/app_name.png" alt="application_name" width="70%" height="70%" /></p>
+
+<p>프로젝트 이름은 앱의 이름이 된다. 패키지 명은 다른 앱과 구분되는 고유한 값으로 유일해야 한다. 보통 도메인 이름 형식을 사용한다.</p>
+
+<p> </p>
+<h3 id="4-프로젝트-sync">4. 프로젝트 sync</h3>
+
+<p><img src="/images/android/1/syncing.png" alt="syncing" width="70%" height="70%" /></p>
+
+<p>프로젝트를 생성하면 구성하는데 몇초 가량의 시간이 걸린다.</p>
+
+<p> </p>
+<h3 id="5-프로젝트-생성">5. 프로젝트 생성</h3>
+
+<p><img src="/images/android/1/hello_android.png" alt="hello_android" width="70%" height="70%" /></p>
+
+<p>프로젝트가 완성된 화면이다.</p>
+
+<p>앱을 실행해볼 수 있는 방법은 2가지가 있는데, 하나는 에뮬레이터(Emulator)이다. 에뮬레이터는 컴퓨터에 가상의 안드로이드 OS 단말을 설치하는 것이다. 그러나 에뮬레이터는 너무 심하게 느리고 무거워 개인적으로는 사용하지 않는다.</p>
+
+<p>두 번째 방법은 내가 가지고 있는 안드로이드 단말기를 USB를 통해 연결하여 테스트하는 방법이다. 실제 단말에서 테스트 하는것이 더 정확하고 빠르게 테스트 할 수 있어 이 방법을 추천한다.</p>
+
+<p>먼저 Shift + 10을 누르거나 오른쪽 상단의 ▶을 누르면 앱이 실행된다. 아직 아무 기기도 등록되어있지 않을 것이다.</p>
+
+<p>먼저 컴퓨터와 단말기의 연결을 위한 드라이버를 설치해야 한다.</p>
+
+<p>http://local.sec.samsung.com/comLocal/support/down/kies_main.do?kind=usb</p>
+
+<p>위 링크를 타고 들어가면 삼성 갤럭시 S 시리즈 단말기 연결을 위한 드라이버를 설치할 수 있다.</p>
+
+<p>이제 자신의 단말기를 <strong>개발자 모드</strong>로 바꾸어야 하는데, 설정 - 디바이스 정보(휴대전화 정보) - 소프트웨어 정보 - 빌드 번호가 나올 것이다. 이 때 빌드 번호를 터치하다보면 ‘[개발자 모드]를 실행하였습니다.’ 라는 메세지가 나올 때 까지 터치하면 된다. 단말기마다 조금씩 다르므로 이 부분은 구글에서 개발자 모드 실행에 관해서 검색하면 된다.</p>
+
+<p>이제 컴퓨터에 단말기를 연결하면 ‘USB 디버깅을 허용하시겠습니까?’ 라는 메세지가 나오는데, 확인을 하면 된다.</p>
+
+<p>다시 Shift+F10을 눌러 실행하면 다음과 같이 내 디바이스가 등록이 된 것을 볼 수 있다.</p>
+
+<p><img src="/images/android/1/device_connect.png" alt="hello_android" width="60%" height="60%" /></p>
+
+<p>OK를 누르면 단말기에 앱이 자동으로 설치되고 실행된다.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -10696,67 +10963,6 @@
     <p>포인터를 사용하면 메모리에 직접 접근이 가능하다고 했다. 가령 함수 외부에서 특정 변수에 접근을 하기 위해 포인터를 사용하면 복사본을 만들 필요가 없어 <strong><u>메모리 용량 및 처리시간 면에서 이득</u></strong>을 볼 수 있다.</p>
   </li>
 </ul>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/04/20/what-is-compile/">
-        4. 컴파일(Compile)이란?
-      </a>
-    </h1>
-
-    <span class="post-date">20 Apr 2019</span>
-
-    <p>컴퓨터는 0과 1밖에 모른다. 0과 1의 갯수, 나열된 순서에 따라 다른 동작을 한다. 이 0과 1의 집합을 기계어라고 한다.</p>
-
-<p>C나 C++과 같은 고급 언어(high level language)로 쓰여진 소스코드를 컴퓨터, 즉 CPU가 이해할 수 있는 기계어로 바꾸어주는 작업을 컴파일이라고 한다.
-(다만 Java의 경우에는 JVM이라는 가상 머신을 사용하며 ‘바이트 코드’라는 것이 JVM 위에서 실행이 되기 때문에 자바 컴파일러는 ‘바이트 코드’를 만든다. 장점은 한 번 컴파일 하면 운영체제에 상관없이 실행이 가능하다는 것이지만, 그만큼 JVM에서 번역하는 시간이 추가되므로 컴파일 속도가 늦다는 단점이 있다.)</p>
-
-<p><img class="aligncenter size-full wp-image-894" src="images/2018/09/1-4.jpg" alt="" width="460" height="150" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w" sizes="(max-width: 460px) 100vw, 460px" /></p>
-
-<p>일단 컴파일러가 컴파일을 하여 나온 기계어가 저장된 목적파일(.obj)이 생성된다.</p>
-
-<p>이 목적파일을 링크(link)과정을 거쳐 실행파일(.exe)로 만든다.</p>
-
-<p>컴파일 + 링크를 합쳐서 빌드(build)라고 한다. 대체로 요즘의 개발환경(IDE) 툴들은 빌드까지 한 번에 실행해주어 컴파일과 빌드의 차이를 잘 느끼지 못한다.</p>
-
-<p>굳이 목적파일의 과정을 거치는 이유는 여러 개의 목적파일을 링크하여 하나의 실행파일, 즉 프로그램을 만드는 경우가 있기 때문이다.</p>
-
-<p> </p>
-
-<p><strong>※ 크로스 컴파일(cross compile)이란?</strong></p>
-
-<p>다른 시스템 혹은 운영체제에 맞게 컴파일 하는 경우이다. 가령 임베디드 시스템에서 돌아가는 프로그램을 개발하기 위해서는 임베디드 시스템 자체에서는 할 수가 없고, 윈도우나 리눅스 등의 환경이 필요하다. 이렇게 다른 플랫폼에서 개발을 한 다음 적용될 시스템에 맞도록 컴파일 하는 것을 크로스 컴파일이라고 한다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/04/20/object-oriented-programming/">
-        3. 객체지향 개념
-      </a>
-    </h1>
-
-    <span class="post-date">20 Apr 2019</span>
-
-    <p>객체지향 프로그래밍(Object Oriented Programming)은 전체적인 프로그램을 객체 단위로 나누어 모듈화하여 설계하는 방식을 말한다.</p>
-
-<p>서로 연관된 데이터(변수), 동작부(메소드)를 하나의 클래스를 사용하여 하나의 객체로 만들 수 있다. 따라서 각각의 설계 파트를 나누어 협업하기 편리하다는 장점이 있다.</p>
-
-<p>다만, 클래스를 사용하여 모듈화 시키는 ‘클래스 단위 프로그래밍’이 객체지향을 의미하는 것이 아니다.</p>
-
-<ol>
-  <li>캡슐화</li>
-  <li>상속</li>
-  <li>다형성</li>
-</ol>
-
-<p>클래스 단위 프로그래밍은 이미 위 특징들 중 캡슐화를 포함한다. 클래스 단위 프로그래밍은 객체지향 프로그래밍의 기초가 되므로 이에 익숙해지는 것이 객체지향 프로그래밍을 잘 할 수 있는 기초가 된다.</p>
-
-<p>여기서 객체란 프로그래밍적인 의미로는 메모리에 로딩 된 클래스의 인스턴스를 의미한다. 넓은 범위로는 실존하는 사물, 추상적인 대상 전부를 의미한다. 하나의 사물의 속성 및 동작을 하나의 클래스로 표현할 수 있다. 객체지향 프로그래밍이란 이러한 객체간의 상관관계를 프로그래밍에 그대로 구현해 문제를 풀어내는 것이다.</p>
-
-<p>예를 들어 버스 클래스와 승객 클래스가 있다. 버스 클래스는 ‘비용’이라는 데이터, 그리고 ‘출발’ 기능을 가지며 승객은 ‘가진 돈’, ‘나이’ 라는 데이터와 ‘요금 내기’라는 기능을 가질 수 있다. 이 때, 승객 클래스 안에 버스를 골라서 타는 기능을 추가하고 버스에는 타고 있는 승객을 저장할 수 있는 배열을 추가한다면 이 두 클래스가 서로 상관관계를 가지면서 특정한 일을 할 수 있다. 이처럼 현실 세계는 객체와 객체간의 상호작용으로 볼 수 있으며 이를 가장 적절히 표현해낼 수 있는 것이 객체지향 프로그래밍인 것이다.</p>
 
   </div>
   
