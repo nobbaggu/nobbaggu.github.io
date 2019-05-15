@@ -3,7 +3,7 @@ title: 6. 연결 리스트가 무엇인가?
 date: 2019-04-20T18:00:00+09:00
 author: SWnomad
 layout: post
-categories: SW면접질문
+categories: SW/IT지식
 tags:
   - 연결 리스트
   - 연결

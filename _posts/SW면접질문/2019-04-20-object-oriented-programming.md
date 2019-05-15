@@ -3,7 +3,7 @@ title: 3. 객체지향 개념
 date: 2019-04-20T13:00:00+09:00
 author: SWnomad
 layout: post
-categories: SW면접질문
+categories: SW/IT지식
 tags:
   - object oriented
   - oop
