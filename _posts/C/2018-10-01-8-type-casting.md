@@ -1,5 +1,5 @@
 ---
-title: 8.자료형(3) - 형 변환
+title: (C언어) 8.자료형(3) - 형 변환
 date: 2018-10-01T01:30:12+09:00
 author: SWnomad
 layout: post

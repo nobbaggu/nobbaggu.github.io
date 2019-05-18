@@ -1,5 +1,5 @@
 ---
-title: 6. 자료형 (1) - 숫자, 문자
+title: (C언어) 6. 자료형 (1) - 숫자, 문자
 date: 2018-09-29T22:00:31+09:00
 author: SWnomad
 layout: post

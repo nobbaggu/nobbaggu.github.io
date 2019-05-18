@@ -1,5 +1,5 @@
 ---
-title: 19. Anomaly Detection
+title: (머신러닝) 19. Anomaly Detection
 date: 2018-09-04T22:04:26+09:00
 author: SWnomad
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: 30. 2차원 배열과 포인터
+title: (C언어) 30. 2차원 배열과 포인터
 date: 2018-10-25T23:28:42+09:00
 author: SWnomad
 layout: post

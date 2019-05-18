@@ -1,5 +1,5 @@
 ---
-title: 다형성
+title: (Java) 다형성
 date: 2018-12-18T00:44:31+09:00
 author: SWnomad
 layout: post

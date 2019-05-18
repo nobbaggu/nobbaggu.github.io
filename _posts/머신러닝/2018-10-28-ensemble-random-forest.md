@@ -1,5 +1,5 @@
 ---
-title: Ensemble - Random Forest
+title: (머신러닝) Ensemble - Random Forest
 date: 2018-10-28T21:41:45+09:00
 author: SWnomad
 layout: post

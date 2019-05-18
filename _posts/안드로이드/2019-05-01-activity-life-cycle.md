@@ -1,5 +1,5 @@
 ---
-title: 18. 액티비티의 수명주기(LifeCycle)
+title: (안드로이드) 18. 액티비티의 수명주기(LifeCycle)
 date: 2019-05-01T11:00:00+09:00
 author: SWnomad
 layout: post

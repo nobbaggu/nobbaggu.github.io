@@ -1,5 +1,5 @@
 ---
-title: 인터페이스
+title: (Java) 인터페이스
 date: 2018-12-19T21:32:44+09:00
 author: SWnomad
 layout: post

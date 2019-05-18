@@ -1,5 +1,5 @@
 ---
-title: Decision Tree
+title: (머신러닝) Decision Tree
 date: 2018-10-28T15:11:30+09:00
 author: SWnomad
 layout: post

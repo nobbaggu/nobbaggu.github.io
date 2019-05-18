@@ -1,5 +1,5 @@
 ---
-title: 14-2. Bias vs Variance
+title: (머신러닝) 14-2. Bias vs Variance
 date: 2018-08-19T01:08:37+09:00
 author: SWnomad
 layout: post

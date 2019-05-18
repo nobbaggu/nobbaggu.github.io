@@ -1,5 +1,5 @@
 ---
-title: Java 입출력
+title: (Java) Java 입출력
 date: 2018-12-31T14:16:26+09:00
 author: SWnomad
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: 15-2. Machine Learning System Design - Handling Skewed Data
+title: (머신러닝) 15-2. Machine Learning System Design - Handling Skewed Data
 date: 2018-08-20T18:40:53+09:00
 author: SWnomad
 layout: post

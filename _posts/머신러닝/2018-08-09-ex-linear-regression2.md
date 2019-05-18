@@ -1,5 +1,5 @@
 ---
-title: (ex) linear regression2
+title: (머신러닝) (ex) linear regression2
 date: 2018-08-09T14:00:58+09:00
 author: SWnomad
 layout: post

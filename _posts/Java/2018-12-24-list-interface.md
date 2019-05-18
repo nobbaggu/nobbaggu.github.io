@@ -1,5 +1,5 @@
 ---
-title: List 인터페이스
+title: (Java) List 인터페이스
 date: 2018-12-24T18:13:01+09:00
 author: SWnomad
 layout: post
@@ -26,8 +26,6 @@ List 인터페이스는 Collection 인터페이스의 하위 인터페이스이�
 * * *
 
 ~~~ java
-package collection;
-
 public class Member {
    
    private int memberId;

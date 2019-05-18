@@ -1,5 +1,5 @@
 ---
-title: 9. Octave Optimization Function
+title: (머신러닝) 9. Octave Optimization Function
 date: 2018-08-09T23:32:39+09:00
 author: SWnomad
 layout: post

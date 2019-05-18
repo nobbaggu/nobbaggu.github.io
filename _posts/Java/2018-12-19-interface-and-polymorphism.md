@@ -1,5 +1,5 @@
 ---
-title: 인터페이스와 다형성
+title: (Java) 인터페이스와 다형성
 date: 2018-12-19T22:53:51+09:00
 author: SWnomad
 layout: post

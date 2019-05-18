@@ -1,5 +1,5 @@
 ---
-title: 예외처리
+title: (Java) 예외처리
 date: 2018-12-30T16:16:20+09:00
 author: SWnomad
 layout: post

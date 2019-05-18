@@ -1,5 +1,5 @@
 ---
-title: 16. SVM(Support Vector Machine)
+title: (머신러닝) 16. SVM(Support Vector Machine)
 date: 2018-08-24T20:24:11+09:00
 author: SWnomad
 layout: post

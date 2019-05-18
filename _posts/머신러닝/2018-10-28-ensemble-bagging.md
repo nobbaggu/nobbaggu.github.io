@@ -1,5 +1,5 @@
 ---
-title: Ensemble - Bagging
+title: (머신러닝) Ensemble - Bagging
 date: 2018-10-28T17:01:32+09:00
 author: SWnomad
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: 4. Nonlinear Model with Linear Regression
+title: (머신러닝) 4. Nonlinear Model with Linear Regression
 date: 2018-08-09T03:17:32+09:00
 author: SWnomad
 layout: post

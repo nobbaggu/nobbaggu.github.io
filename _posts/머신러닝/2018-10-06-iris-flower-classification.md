@@ -1,5 +1,5 @@
 ---
-title: Iris-flower Classification
+title: (머신러닝) Iris-flower Classification
 date: 2018-10-06T10:43:37+09:00
 author: SWnomad
 layout: post

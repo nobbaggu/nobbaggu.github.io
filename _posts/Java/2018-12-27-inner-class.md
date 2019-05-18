@@ -1,5 +1,5 @@
 ---
-title: 내부 클래스
+title: (Java) 내부 클래스
 date: 2018-12-27T21:28:08+09:00
 author: SWnomad
 layout: post

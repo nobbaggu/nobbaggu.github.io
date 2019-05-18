@@ -1,5 +1,5 @@
 ---
-title: (ex)신경망을 활용한 숫자인식 모델 만들기
+title: (머신러닝) (ex)신경망을 활용한 숫자인식 모델 만들기
 date: 2018-08-18T00:53:54+09:00
 author: SWnomad
 layout: post

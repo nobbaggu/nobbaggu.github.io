@@ -1,5 +1,5 @@
 ---
-title: 7. Logistic Regression
+title: (머신러닝) 7. Logistic Regression
 date: 2018-08-09T17:11:03+09:00
 author: SWnomad
 layout: post

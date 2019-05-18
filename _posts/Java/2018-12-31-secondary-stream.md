@@ -1,5 +1,5 @@
 ---
-title: 보조 스트림
+title: (Java) 보조 스트림
 date: 2018-12-31T19:14:46+09:00
 author: SWnomad
 layout: post

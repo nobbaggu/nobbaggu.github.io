@@ -1,5 +1,5 @@
 ---
-title: Scanner 클래스
+title: (Java) Scanner 클래스
 date: 2018-12-31T14:41:34+09:00
 author: SWnomad
 layout: post

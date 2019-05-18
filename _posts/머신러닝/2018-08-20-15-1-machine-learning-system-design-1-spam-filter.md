@@ -1,5 +1,5 @@
 ---
-title: 15-1. Machine Learning System Design - Spam Filter
+title: (머신러닝) 15-1. Machine Learning System Design - Spam Filter
 date: 2018-08-20T16:41:59+09:00
 author: SWnomad
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: 17. 부가 데이터
+title: (안드로이드) 17. 부가 데이터
 date: 2019-05-01T10:00:00+09:00
 author: SWnomad
 layout: post

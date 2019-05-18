@@ -1,5 +1,5 @@
 ---
-title: 7. 상대 레이아웃(RelativeLayout)
+title: (안드로이드) 7. 상대 레이아웃(RelativeLayout)
 date: 2019-04-28T09:00:00+09:00
 author: SWnomad
 layout: post

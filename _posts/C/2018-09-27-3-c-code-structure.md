@@ -1,5 +1,5 @@
 ---
-title: 3. C 코드 구조
+title: (C언어) 3. C 코드 구조
 date: 2018-09-27T23:26:41+09:00
 author: SWnomad
 layout: post

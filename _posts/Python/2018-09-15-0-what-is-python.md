@@ -1,5 +1,5 @@
 ---
-title: 0. 파이썬(Python) 개요
+title: (Python) 0. 파이썬(Python) 개요
 date: 2018-09-15T01:29:54+09:00
 author: SWnomad
 layout: post

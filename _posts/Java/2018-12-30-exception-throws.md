@@ -1,5 +1,5 @@
 ---
-title: 예외 throws
+title: (Java) 예외 throws
 date: 2018-12-30T17:26:45+09:00
 author: SWnomad
 layout: post

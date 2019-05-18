@@ -1,5 +1,5 @@
 ---
-title: 26. 포인터와 함수
+title: (C언어) 26. 포인터와 함수
 date: 2018-10-11T22:14:12+09:00
 author: SWnomad
 layout: post

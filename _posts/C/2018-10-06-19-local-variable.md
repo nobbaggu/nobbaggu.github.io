@@ -1,5 +1,5 @@
 ---
-title: 19. 함수(2) - 지역변수
+title: (C언어) 19. 함수(2) - 지역변수
 date: 2018-10-06T19:53:02+09:00
 author: SWnomad
 layout: post

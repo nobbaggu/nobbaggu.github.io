@@ -1,5 +1,5 @@
 ---
-title: 싱글톤 패턴
+title: (Java) 싱글톤 패턴
 date: 2018-12-15T19:43:36+09:00
 author: SWnomad
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: 4. 제약 레이아웃(Constraint Layout)
+title: (안드로이드) 4. 제약 레이아웃(Constraint Layout)
 date: 2019-04-26T15:00:00+09:00
 author: SWnomad
 layout: post

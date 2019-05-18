@@ -1,5 +1,5 @@
 ---
-title: 18. Dimensionality Reduction - PCA
+title: (머신러닝) 18. Dimensionality Reduction - PCA
 date: 2018-09-01T14:32:22+09:00
 author: SWnomad
 layout: post

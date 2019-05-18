@@ -1,5 +1,5 @@
 ---
-title: 22. 배열(2) - 배열과 문자열
+title: (C언어) 22. 배열(2) - 배열과 문자열
 date: 2018-10-07T15:21:48+09:00
 author: SWnomad
 layout: post

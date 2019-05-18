@@ -1,5 +1,5 @@
 ---
-title: 객체 배열
+title: (Java) 객체 배열
 date: 2018-12-16T17:56:17+09:00
 author: SWnomad
 layout: post

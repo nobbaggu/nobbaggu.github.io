@@ -1,5 +1,5 @@
 ---
-title: 5. Normal Equation
+title: (머신러닝) 5. Normal Equation
 date: 2018-08-09T06:00:19+09:00
 author: SWnomad
 layout: post

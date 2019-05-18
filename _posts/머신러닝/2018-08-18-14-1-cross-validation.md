@@ -1,5 +1,5 @@
 ---
-title: 14-1. Cross Validation
+title: (머신러닝) 14-1. Cross Validation
 date: 2018-08-18T21:06:53+09:00
 author: SWnomad
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: 11. 신경망 (Neural Network)
+title: (머신러닝) 11. 신경망 (Neural Network)
 date: 2018-08-10T08:36:24+09:00
 author: SWnomad
 layout: post

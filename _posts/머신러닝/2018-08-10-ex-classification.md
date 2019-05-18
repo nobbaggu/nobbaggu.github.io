@@ -1,5 +1,5 @@
 ---
-title: (ex) classification
+title: (머신러닝) (ex) classification
 date: 2018-08-10T05:35:01+09:00
 author: SWnomad
 layout: post

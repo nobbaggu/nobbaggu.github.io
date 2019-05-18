@@ -1,5 +1,5 @@
 ---
-title: 36. 비트맵(Bitmap) 버튼
+title: (안드로이드) 36. 비트맵(Bitmap) 버튼
 date: 2019-05-12T16:00:00+09:00
 author: SWnomad
 layout: post

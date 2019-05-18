@@ -1,5 +1,5 @@
 ---
-title: Set 인터페이스
+title: (Java) Set 인터페이스
 date: 2018-12-24T21:03:32+09:00
 author: SWnomad
 layout: post

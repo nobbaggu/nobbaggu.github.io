@@ -1,5 +1,5 @@
 ---
-title: Titanic Survival Prediction
+title: (머신러닝) Titanic Survival Prediction
 date: 2018-10-07T14:03:36+09:00
 author: SWnomad
 layout: post

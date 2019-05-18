@@ -1,5 +1,5 @@
 ---
-title: Ensemble - Boosting
+title: (머신러닝) Ensemble - Boosting
 date: 2018-10-28T20:06:00+09:00
 author: SWnomad
 layout: post

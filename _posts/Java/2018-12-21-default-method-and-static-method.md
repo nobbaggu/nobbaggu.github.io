@@ -1,5 +1,5 @@
 ---
-title: default메소드와 static메소드
+title: (Java) default메소드와 static메소드
 date: 2018-12-21T15:50:13+09:00
 author: SWnomad
 layout: post

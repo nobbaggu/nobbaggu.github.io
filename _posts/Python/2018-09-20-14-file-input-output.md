@@ -1,5 +1,5 @@
 ---
-title: 14. 파일 입출력
+title: (Python) 14. 파일 입출력
 date: 2018-09-20T21:52:22+09:00
 author: SWnomad
 layout: post

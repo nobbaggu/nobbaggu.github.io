@@ -1,5 +1,5 @@
 ---
-title: 25. 포인터와 문자열
+title: (C언어) 25. 포인터와 문자열
 date: 2018-10-09T19:41:20+09:00
 author: SWnomad
 layout: post

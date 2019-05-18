@@ -1,5 +1,5 @@
 ---
-title: 1. 준비
+title: (안드로이드) 1. 준비
 date: 2019-04-24T13:00:00+09:00
 author: SWnomad
 layout: post

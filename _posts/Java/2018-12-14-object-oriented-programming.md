@@ -1,5 +1,5 @@
 ---
-title: 객체 지향 프로그래밍이란?
+title: (Java) 객체 지향 프로그래밍이란?
 date: 2018-12-14T21:00:30+09:00
 author: SWnomad
 layout: post

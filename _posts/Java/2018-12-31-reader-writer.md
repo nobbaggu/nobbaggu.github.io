@@ -1,5 +1,5 @@
 ---
-title: Reader와 Writer
+title: (Java) Reader와 Writer
 date: 2018-12-31T16:40:56+09:00
 author: SWnomad
 layout: post
