@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
 안드로이드 정책상 데드락(메모리 자원을 여러곳에서 동시에 참조하는 것)을 피하기 위해 애플리케이션의 UI 구성요소에는 메인 스레드만 접근할 수 있다. 그런데 메인 스레드가 아닌 하나의 서브스레드에서 UI 구성요소를 변경해야 하는 경우가 있을 수 있다. 이런 경우에 사용하는 것이 핸들러이다. 핸들러를 사용하면 서브스레드에서 메인 스레드로 UI 처리작업을 요청하는 메시지를 보낼 수 있다.
 
-![2](/images/android/46/2.png){: width="70%" height="70%"}
+![2](/images/android/46/2.png){: width="100%" height="100%"}
 
 <br>
 
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
 아래 사진은 안드로이드 개발 공식 API 문서의 Handler 페이지 앞부분의 설명이다.
 
-![1](/images/android/46/1.png){: width="70%" height="70%"}
+![1](/images/android/46/1.png){: width="100%" height="100%"}
 
 <br>
 
