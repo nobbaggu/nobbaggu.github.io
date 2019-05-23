@@ -294,9 +294,9 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하면 "고양이 입니다." 문자열과 "개 입니다." 문자열이 3초마다 번갈아가면서 출력된다.
 
-![3](/images/android/46/3.png){: width="30%" height="30%"}
-![4](/images/android/46/4.png){: width="30%" height="30%"}
-![5](/images/android/46/5.png){: width="30%" height="30%"}
+![3](/images/android/46/3.jpg){: width="30%" height="30%"}
+![4](/images/android/46/4.jpg){: width="30%" height="30%"}
+![5](/images/android/46/5.jpg){: width="30%" height="30%"}
 
 이 코드에서는 UI 요소에 접근하지 못하도록 되어있는 서브 스레드를 통해 UI를 변경하는 것을 확인해보았다.
 
