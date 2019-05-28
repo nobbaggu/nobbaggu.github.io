@@ -36,7 +36,6 @@ plugins: [jekyll-paginate]
 #    values:
 #      layout: tag
 
-
 category_dir: category/
 tag_dir: tag/
 
