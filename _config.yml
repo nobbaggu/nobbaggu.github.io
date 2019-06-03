@@ -5,9 +5,8 @@ permalink: /:year/:month/:day/:title/
 #relative_permalinks: true
 
 # Setup
-title:               SW NOMAD의 공부 기록소
-tagline:             '자유를 꿈꾸는 소프트웨어 엔지니어'
-#description:         예비 프로그래머 노마드입니다.
+title:               SW NOMAD의 공부 기록 블로그
+tagline:             '취미로 개발하자'
 url:                 https://swnomad.github.io
 baseurl:             ''
 paginate:            5
@@ -16,7 +15,6 @@ paginate:            5
 author:
   name:              SW NOMAD
   url:               https://swnomad.github.io
-  #email:             hoisharka@gmail.com
 
 # Custom vars
 version:             1.0.0
