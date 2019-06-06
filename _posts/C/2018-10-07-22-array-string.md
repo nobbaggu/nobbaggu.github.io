@@ -5,16 +5,12 @@ author: SWnomad
 layout: post
 categories: C
 tags:
-  - '%s'
   - array
   - C언어
   - pointer
-  - scanf
   - string
   - 문자열
   - 배열
-  - 서식문자
-  - 연산자
   - 포인터
 ---
 
