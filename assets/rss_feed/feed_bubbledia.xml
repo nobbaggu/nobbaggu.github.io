@@ -23,6 +23,7 @@
 			<videoId>SGWohw86Xk8</videoId>
 			<published>2018-03-09</published>
 			<thumbnail>https://i.ytimg.com/an_webp/SGWohw86Xk8/mqdefault_6s.webp?du=3000&amp;sqp=CJm9gekF&amp;rs=AOn4CLBX6LeQmnir-wOsxB0mnQHIMSJvhA</thumbnail>
+<<<<<<< HEAD
 		</item>
 		
 		<item>
@@ -65,6 +66,8 @@
 			<videoId>Q8oobK7avpM</videoId>
 			<published>2018-05-22</published>
 			<thumbnail>https://i.ytimg.com/vi/Q8oobK7avpM/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLDz5RrLtFMpdmQDa8LfDe42jwiXGw</thumbnail>
+=======
+>>>>>>> 91fff10b3bd3c0be287c5e661db337f9a1aad09b
 		</item>
 		
 	</channel>
