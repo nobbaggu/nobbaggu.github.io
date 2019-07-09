@@ -1,336 +1,777 @@
-<?xml version="1.0" encoding="UTF-8"?>
+	<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
 	<channel>
 		<link href="https://swnomad.github.io/feed_bts.xml" rel="self" type="application/rss+xml"/>
 		<title>BTS RSS 피드</title>
 		
 		<item>
-		<title>BTS (방탄소년단) 'Save ME' Official MV</title>
-		<link>https://www.youtube.com/watch?v=GZjt_sA2eso</link>
+		<title>[BANGTAN BOMB] '작은 것들을 위한 시 (Boy With Luv)' Stage CAM (BTS focus) @190418 M COUNTDOWN - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=8clfdAILyJA</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/GZjt_sA2eso" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/8clfdAILyJA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:55:09 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/GZjt_sA2eso/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=GZjt_sA2eso</guid>
+		<pubDate>Tue, 09 Jul 2019 14:28:20 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/8clfdAILyJA/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=8clfdAILyJA</guid>
 		</item>
 		<item>
-		<title>Agust D 'Agust D' MV</title>
-		<link>https://www.youtube.com/watch?v=3Y_Eiyg4bfk</link>
+		<title>[BANGTAN BOMB] 'FAKE LOVE' Special Stage (BTS focus) @2018 MAMA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=KpJJMtK1C1c</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/3Y_Eiyg4bfk" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/KpJJMtK1C1c" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:55:05 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/3Y_Eiyg4bfk/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=3Y_Eiyg4bfk</guid>
+		<pubDate>Tue, 09 Jul 2019 14:28:17 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/KpJJMtK1C1c/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=KpJJMtK1C1c</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) WINGS 'Boy Meets Evil' Comeback Trailer
-		</title>
-		<link>https://www.youtube.com/watch?v=iJJSh-eEdRk</link>
+		<title>[BANGTAN BOMB] ‘No More Dream’ stage @COMEBACK SHOW ‘BTS DNA’ - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=ywTIg9nlqBs</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/iJJSh-eEdRk" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/ywTIg9nlqBs" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:55:02 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/iJJSh-eEdRk/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=iJJSh-eEdRk</guid>
+		<pubDate>Tue, 09 Jul 2019 14:28:13 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/ywTIg9nlqBs/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=ywTIg9nlqBs</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) '피 땀 눈물 (Blood Sweat & Tears)' Official Teaser
-		</title>
-		<link>https://www.youtube.com/watch?v=iEjqStYLyVQ</link>
+		<title>[BANGTAN BOMB] 'Dionysus' Stage CAM (BTS focus) @190418 M COUNTDOWN - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=zMx-En_wLDA</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/iEjqStYLyVQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/zMx-En_wLDA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:58 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/iEjqStYLyVQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=iEjqStYLyVQ</guid>
+		<pubDate>Tue, 09 Jul 2019 14:28:11 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/zMx-En_wLDA/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=zMx-En_wLDA</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) '피 땀 눈물 (Blood Sweat & Tears)' Official MV
-		</title>
-		<link>https://www.youtube.com/watch?v=hmE9f-TEutc</link>
+		<title>BTS (방탄소년단) - FAKE LOVE @BTS COMEBACK SHOW</title>
+		<link>https://www.youtube.com/watch?v=Hoz5OQjXEA8</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/hmE9f-TEutc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Hoz5OQjXEA8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:54 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/hmE9f-TEutc/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=hmE9f-TEutc</guid>
+		<pubDate>Tue, 09 Jul 2019 14:28:07 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/Hoz5OQjXEA8/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=Hoz5OQjXEA8</guid>
 		</item>
 		<item>
-		<title>화랑[official] OST M/V 죽어도 너야 by 뷔, 진_방탄소년단</title>
-		<link>https://www.youtube.com/watch?v=TOP1B-xzZJ4</link>
+		<title>[BANGTAN BOMB] 'MIC Drop' Special Stage (BTS focus) @2017 MBC 가요대제전 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=po5QloRlOsM</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/TOP1B-xzZJ4" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/po5QloRlOsM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:51 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/TOP1B-xzZJ4/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=TOP1B-xzZJ4</guid>
+		<pubDate>Tue, 09 Jul 2019 14:28:03 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/po5QloRlOsM/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=po5QloRlOsM</guid>
 		</item>
 		<item>
-		<title>BTS (방탄소년단) '봄날 (Spring Day)' Official Teaser</title>
-		<link>https://www.youtube.com/watch?v=fUZlQGxsnJY</link>
+		<title>[BANGTAN BOMB] 'IDOL' Special Stage (BTS focus) @2018 AAA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=Gjebo7ubcuU</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/fUZlQGxsnJY" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Gjebo7ubcuU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:45 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/fUZlQGxsnJY/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=fUZlQGxsnJY</guid>
+		<pubDate>Tue, 09 Jul 2019 14:28:00 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/Gjebo7ubcuU/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=Gjebo7ubcuU</guid>
 		</item>
 		<item>
-		<title>BTS (방탄소년단) '봄날 (Spring Day)' Official MV</title>
-		<link>https://www.youtube.com/watch?v=xEeFrLSkMm8</link>
+		<title>[BANGTAN BOMB] 'FAKE LOVE' Special Stage (BTS focus) @2019 GDA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=emwlgC0te1U</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/xEeFrLSkMm8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/emwlgC0te1U" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:41 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/xEeFrLSkMm8/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=xEeFrLSkMm8</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:56 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/emwlgC0te1U/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=emwlgC0te1U</guid>
 		</item>
 		<item>
-		<title>BTS (방탄소년단) 'Not Today' Official MV</title>
-		<link>https://www.youtube.com/watch?v=9DwzBICPhdM</link>
+		<title>[BANGTAN BOMB] ‘고민보다GO’ stage @COMEBACK SHOW ‘BTS DNA’ - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=tucl5RQG-lI</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/9DwzBICPhdM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/tucl5RQG-lI" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:37 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/9DwzBICPhdM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=9DwzBICPhdM</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:53 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/tucl5RQG-lI/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=tucl5RQG-lI</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) 'Not Today' Official MV (Choreography Version)
-		</title>
-		<link>https://www.youtube.com/watch?v=nKDppUjuvdM</link>
+		<title>[BANGTAN BOMB] BTS ‘DNA’ 2x Dance Time @BTS COUNTDOWN - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=o36fxLf8n1w</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/nKDppUjuvdM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/o36fxLf8n1w" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:34 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/nKDppUjuvdM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=nKDppUjuvdM</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:49 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/o36fxLf8n1w/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=o36fxLf8n1w</guid>
 		</item>
 		<item>
-		<title>RM, Wale ‘Change’</title>
-		<link>https://www.youtube.com/watch?v=9rAyprZdo7o</link>
+		<title>[BANGTAN BOMB] 'IDOL' Special Stage (BTS focus) @​2018 SOBA Awards - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=eqPMQc7Mq4Q</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/9rAyprZdo7o" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/eqPMQc7Mq4Q" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:29 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/9rAyprZdo7o/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=9rAyprZdo7o</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:45 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/eqPMQc7Mq4Q/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=eqPMQc7Mq4Q</guid>
 		</item>
 		<item>
-		<title>
-		BTS (防弾少年団) '血、汗、涙 -Japanese Ver.-' Official Teaser
-		</title>
-		<link>https://www.youtube.com/watch?v=Bbq-XZOoSYw</link>
+		<title>[BANGTAN BOMB] BTS PROM PARTY : UNIT STAGE - 죽어도 너야 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=tt9nIyzN79Y</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Bbq-XZOoSYw" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/tt9nIyzN79Y" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:24 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/Bbq-XZOoSYw/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=Bbq-XZOoSYw</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:41 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/tt9nIyzN79Y/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=tt9nIyzN79Y</guid>
 		</item>
 		<item>
-		<title>
-		[FESTA 2017] BTS (방탄소년단) EXCLUSIVE STAGE 'Wings' (BTS Focus.)
-		</title>
-		<link>https://www.youtube.com/watch?v=E4vqtUCqLsM</link>
+		<title>[Episode] BTS Debut day 130613</title>
+		<link>https://www.youtube.com/watch?v=UPJX6QK6etg</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/E4vqtUCqLsM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/UPJX6QK6etg" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:20 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/E4vqtUCqLsM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=E4vqtUCqLsM</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:37 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/UPJX6QK6etg/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=UPJX6QK6etg</guid>
 		</item>
 		<item>
-		<title>
-		[CHOREOGRAPHY] BTS (방탄소년단) '좋아요 Part 2' Dance Practice
-		</title>
-		<link>https://www.youtube.com/watch?v=u2XBh23upio</link>
+		<title>[BANGTAN BOMB] ‘FAKE LOVE’ Live Performance @2018 BBMAs - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=60Ks0ybPuac</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/u2XBh23upio" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/60Ks0ybPuac" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:16 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/u2XBh23upio/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=u2XBh23upio</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:34 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/60Ks0ybPuac/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=60Ks0ybPuac</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) LOVE YOURSELF 承 Her 'Serendipity' Comeback Trailer
-		</title>
-		<link>https://www.youtube.com/watch?v=BEMaH9Sm3lQ</link>
+		<title>[BANGTAN BOMB] Arirang arirang~Arariyo~~ - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=FIboLdbZMEA</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/BEMaH9Sm3lQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/FIboLdbZMEA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:12 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/BEMaH9Sm3lQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=BEMaH9Sm3lQ</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:31 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/FIboLdbZMEA/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=FIboLdbZMEA</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) 'MIC Drop (Steve Aoki Remix)' Official MV
-		</title>
-		<link>https://www.youtube.com/watch?v=kTlv5_Bs8aw</link>
+		<title>BTS (방탄소년단) Rehearsal Stage CAM 'Best of Me' @4th MUSTER #2018BTSFESTA</title>
+		<link>https://www.youtube.com/watch?v=RIJtfWu0b_w</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/kTlv5_Bs8aw" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/RIJtfWu0b_w" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:06 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/kTlv5_Bs8aw/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=kTlv5_Bs8aw</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:27 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/RIJtfWu0b_w/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=RIJtfWu0b_w</guid>
 		</item>
 		<item>
-		<title>BTS (방탄소년단) 'DNA' Official MV</title>
-		<link>https://www.youtube.com/watch?v=MBdVXkSdhwU</link>
+		<title>[BANGTAN BOMB] 'IDOL' Special Stage (BTS focus) @2018 MMA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=ayGl-igrwy8</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/MBdVXkSdhwU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/ayGl-igrwy8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:54:03 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/MBdVXkSdhwU/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=MBdVXkSdhwU</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:24 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/ayGl-igrwy8/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=ayGl-igrwy8</guid>
 		</item>
 		<item>
-		<title>BTS (방탄소년단) 'FAKE LOVE' Official MV</title>
-		<link>https://www.youtube.com/watch?v=7C2z4GqqS5E</link>
+		<title>​[BANGTAN BOMB] ​'​Fire' Special Stage (BTS focus) @​BTS COMEBACK SHOW - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=lYC67_STvLI</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/7C2z4GqqS5E" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/lYC67_STvLI" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:53:53 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/7C2z4GqqS5E/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=7C2z4GqqS5E</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:20 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/lYC67_STvLI/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=lYC67_STvLI</guid>
 		</item>
 		<item>
-		<title>j-hope 'Daydream (백일몽)' MV</title>
-		<link>https://www.youtube.com/watch?v=OK3GJ0WIQ8s</link>
+		<title>BTS (방탄소년단) - IDOL @M COUNTDOWN</title>
+		<link>https://www.youtube.com/watch?v=CfZEph5TsVk</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/OK3GJ0WIQ8s" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/CfZEph5TsVk" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:53:36 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/OK3GJ0WIQ8s/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=OK3GJ0WIQ8s</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:16 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/CfZEph5TsVk/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=CfZEph5TsVk</guid>
 		</item>
 		<item>
-		<title>j-hope 'Airplane' MV</title>
-		<link>https://www.youtube.com/watch?v=8O_MwlZ2dEg</link>
+		<title>​[BANGTAN BOMB] ​'​Tomorrow' Special Stage (BTS focus) @​BTS COUNTDOWN - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=dih52x7wqVU</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/8O_MwlZ2dEg" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/dih52x7wqVU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:53:31 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/8O_MwlZ2dEg/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=8O_MwlZ2dEg</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:12 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/dih52x7wqVU/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=dih52x7wqVU</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) 'Euphoria : Theme of LOVE YOURSELF 起 Wonder'
-		</title>
-		<link>https://www.youtube.com/watch?v=kX0vO4vlJuU</link>
+		<title>[PREVIEW] BTS (방탄소년단) 2016 BTS LIVE '화양연화 on stage : epilogue' DVD</title>
+		<link>https://www.youtube.com/watch?v=kQBO87j5vnc</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/kX0vO4vlJuU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/kQBO87j5vnc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:53:27 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/kX0vO4vlJuU/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=kX0vO4vlJuU</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:08 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/kQBO87j5vnc/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=kQBO87j5vnc</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) LOVE YOURSELF 轉 Tear 'Singularity' Comeback Trailer
-		</title>
-		<link>https://www.youtube.com/watch?v=p8npDG2ulKQ</link>
+		<title>[BANGTAN BOMB] 'MIC Drop' Special Stage (BTS focus) @MAMA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=floMqK_yHf8</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/p8npDG2ulKQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/floMqK_yHf8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:53:22 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/p8npDG2ulKQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=p8npDG2ulKQ</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:04 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/floMqK_yHf8/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=floMqK_yHf8</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) 'FAKE LOVE' Official MV (Extended ver.)
-		</title>
-		<link>https://www.youtube.com/watch?v=D_6QmL6rExk</link>
+		<title>[BANGTAN BOMB] '봄날' Special Stage (BTS focus) @MMA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=Rbv8x3j72Ss</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/D_6QmL6rExk" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Rbv8x3j72Ss" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:53:05 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/D_6QmL6rExk/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=D_6QmL6rExk</guid>
+		<pubDate>Tue, 09 Jul 2019 14:27:00 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/Rbv8x3j72Ss/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=Rbv8x3j72Ss</guid>
 		</item>
 		<item>
-		<title>
-		BTS (방탄소년단) LOVE YOURSELF 結 Answer 'Epiphany' Comeback Trailer
-		</title>
-		<link>https://www.youtube.com/watch?v=fIkZOLsnoqY</link>
+		<title>[BANGTAN BOMB] BTS PROM PARTY : UNIT STAGE - 땡 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=JuZwvYDQ92E</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/fIkZOLsnoqY" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/JuZwvYDQ92E" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:53:02 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/fIkZOLsnoqY/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=fIkZOLsnoqY</guid>
+		<pubDate>Tue, 09 Jul 2019 14:26:56 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/JuZwvYDQ92E/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=JuZwvYDQ92E</guid>
 		</item>
 		<item>
-		<title>BTS (방탄소년단) 'IDOL' Official MV</title>
-		<link>https://www.youtube.com/watch?v=pBuZEGYXA6E</link>
+		<title>[BANGTAN BOMB] '작은 것들을 위한 시 (Boy With Luv)' Stage CAM @ BBMAs 2019 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=W0u1R2H1iHQ</link>
 		<description>
 		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/pBuZEGYXA6E" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/W0u1R2H1iHQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
 		]]>
 		</description>
-		<pubDate>Tue, 09 Jul 2019 03:52:55 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/pBuZEGYXA6E/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=pBuZEGYXA6E</guid>
+		<pubDate>Tue, 09 Jul 2019 14:26:51 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/W0u1R2H1iHQ/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=W0u1R2H1iHQ</guid>
 		</item>
-
+		<item>
+		<title>[CHOREOGRAPHY] BTS (방탄소년단) 'Dionysus' Dance Practice</title>
+		<link>https://www.youtube.com/watch?v=QmgcyLozkbQ</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/QmgcyLozkbQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:33:20 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/QmgcyLozkbQ/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=QmgcyLozkbQ</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] '작은 것들을 위한 시 (Boy With Luv)' Dance Practice (Eye contact ver.) - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=o03lR8ErvL0</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/o03lR8ErvL0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:33:17 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/o03lR8ErvL0/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=o03lR8ErvL0</guid>
+		</item>
+		<item>
+		<title>방탄소년단 We Are Bulletproof Pt.2 dance practice</title>
+		<link>https://www.youtube.com/watch?v=bV9Svms-LYY</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/bV9Svms-LYY" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:33:14 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/bV9Svms-LYY/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=bV9Svms-LYY</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] ‘MIC Drop’ stage @COMEBACK SHOW ‘BTS DNA’ - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=8umu4kqe9ek</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/8umu4kqe9ek" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:33:11 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/8umu4kqe9ek/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=8umu4kqe9ek</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'FAKE LOVE' Special Stage (BTS focus) @2018 MMA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=e4LSXCZOupE</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/e4LSXCZOupE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:33:07 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/e4LSXCZOupE/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=e4LSXCZOupE</guid>
+		</item>
+		<item>
+		<title>안아줘 (Hug me) performed by V, j-hope</title>
+		<link>https://www.youtube.com/watch?v=tv_HQ-0upns</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/tv_HQ-0upns" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:33:03 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/tv_HQ-0upns/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=tv_HQ-0upns</guid>
+		</item>
+		<item>
+		<title>BTS (방탄소년단) - Airplane pt.2 @BTS COMEBACK SHOW</title>
+		<link>https://www.youtube.com/watch?v=Fj3euSYAtnc</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Fj3euSYAtnc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:33:00 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/Fj3euSYAtnc/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=Fj3euSYAtnc</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'IDOL' Stage CAM @2019 슈퍼콘서트 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=uNSlfn66HB8</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/uNSlfn66HB8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:58 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/uNSlfn66HB8/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=uNSlfn66HB8</guid>
+		</item>
+		<item>
+		<title>BTS (방탄소년단) - Anpanman @BTS COMEBACK SHOW</title>
+		<link>https://www.youtube.com/watch?v=lOf16ZQDDdE</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/lOf16ZQDDdE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:54 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/lOf16ZQDDdE/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=lOf16ZQDDdE</guid>
+		</item>
+		<item>
+		<title>​[BANGTAN BOMB] ​'​IDOL' Comeback Stage (BTS focus) @​MCOUNTDOWN - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=pi6N8vAg19A</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/pi6N8vAg19A" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:50 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/pi6N8vAg19A/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=pi6N8vAg19A</guid>
+		</item>
+		<item>
+		<title>​[BANGTAN BOMB] ​'​Anpanman' Special Stage (BTS focus) @​BTS COMEBACK SHOW - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=Js-iYNkddcA</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Js-iYNkddcA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:47 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/Js-iYNkddcA/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=Js-iYNkddcA</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'Make It Right' Stage CAM @2019 슈퍼콘서트 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=XEJwXh1423M</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/XEJwXh1423M" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:43 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/XEJwXh1423M/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=XEJwXh1423M</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] ​'​Save ME + I'm Fine' Comeback Stage (BTS focus) @​MCOUNTDOWN - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=i2nRmxIQxSo</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/i2nRmxIQxSo" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:39 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/i2nRmxIQxSo/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=i2nRmxIQxSo</guid>
+		</item>
+		<item>
+		<title>[CHOREOGRAPHY] BTS (방탄소년단) '작은 것들을 위한 시 (Boy With Luv)' Dance Practice</title>
+		<link>https://www.youtube.com/watch?v=CzvfbRbEjww</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/CzvfbRbEjww" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:36 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/CzvfbRbEjww/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=CzvfbRbEjww</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] BTS' Vocal Duet 'SOPE-ME' Stage behind the scene - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=nac1hoha570</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/nac1hoha570" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:33 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/nac1hoha570/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=nac1hoha570</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'IDOL' Special Stage (BTS focus) @2019 서울가요대상 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=3QeSV-U4hWc</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/3QeSV-U4hWc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:29 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/3QeSV-U4hWc/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=3QeSV-U4hWc</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'DNA' Special Stage (BTS focus.) @COMEBACK SHOW - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=QBYbEU0vvwM</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/QBYbEU0vvwM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:26 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/QBYbEU0vvwM/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=QBYbEU0vvwM</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'FAKE LOVE' Special Stage (BTS focus) @2018 AAA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=G6vWKceFSs0</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/G6vWKceFSs0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:23 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/G6vWKceFSs0/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=G6vWKceFSs0</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] '고민보다 Go' Special Stage (BTS focus) @2017 MBC 가요대제전 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=T-iAqeqwGKU</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/T-iAqeqwGKU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:16 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/T-iAqeqwGKU/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=T-iAqeqwGKU</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'Dionysus' Stage CAM (BTS focus) @190420 Show Music Core - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=mod-9ln_bmE</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/mod-9ln_bmE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:13 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/mod-9ln_bmE/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=mod-9ln_bmE</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'IDOL' Intro Performance (3J focus) @2018 MMA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=w2hn8OJbJSo</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/w2hn8OJbJSo" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:10 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/w2hn8OJbJSo/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=w2hn8OJbJSo</guid>
+		</item>
+		<item>
+		<title>​[BANGTAN BOMB] ​'Best Of Me' Special Stage (BTS focus) @​BTS COMEBACK SHOW - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=2Mppta4RgDs</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/2Mppta4RgDs" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:06 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/2Mppta4RgDs/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=2Mppta4RgDs</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'MIC Drop' Special Stage (BTS focus.) @COMEBACK SHOW - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=EV-NPIGjlMw</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/EV-NPIGjlMw" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:32:02 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/EV-NPIGjlMw/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=EV-NPIGjlMw</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'Dionysus' Stage CAM (BTS focus) @190421 INGIGAYO - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=vAS8D2sqVuo</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/vAS8D2sqVuo" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:31:58 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/vAS8D2sqVuo/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=vAS8D2sqVuo</guid>
+		</item>
+		<item>
+		<title>[2019 FESTA] BTS STAGE SELF CAM '앙팡맨 by BTS' @190518 New York</title>
+		<link>https://www.youtube.com/watch?v=n0klpf4PnTc</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/n0klpf4PnTc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:31:55 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/n0klpf4PnTc/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=n0klpf4PnTc</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] Behind the stage of ‘MIC Drop’ @BTS DNA COMEBACK SHOW - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=xtqyE06wGPM</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/xtqyE06wGPM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:43:17 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/xtqyE06wGPM/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=xtqyE06wGPM</guid>
+		</item>
+		<item>
+		<title>Born Singer by 방탄소년단</title>
+		<link>https://www.youtube.com/watch?v=2XsP4I9ds4c</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/2XsP4I9ds4c" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:43:08 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/2XsP4I9ds4c/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=2XsP4I9ds4c</guid>
+		</item>
+		<item>
+		<title>방탄소년단 STAGE #TOMORROW @ THE RED BULLET IN SEOUL Dress Rehearsal</title>
+		<link>https://www.youtube.com/watch?v=neOdZM9WqI0</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/neOdZM9WqI0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:42:20 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/neOdZM9WqI0/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=neOdZM9WqI0</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'Title Medley' Special Stage (BTS focus) @2018 가요대전 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=LjqvwHrhhjo</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/LjqvwHrhhjo" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:39:28 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/LjqvwHrhhjo/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=LjqvwHrhhjo</guid>
+		</item>
+		<item>
+		<title>BTS (방탄소년단) - Save Me + I'm Fine @M COUNTDOWN</title>
+		<link>https://www.youtube.com/watch?v=t3ot5h9c8MI</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/t3ot5h9c8MI" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:59 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/t3ot5h9c8MI/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=t3ot5h9c8MI</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'IDOL' Special Stage (BTS focus) @2018 가요대전 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=vV2lPiAyb7Q</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/vV2lPiAyb7Q" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:51 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/vV2lPiAyb7Q/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=vV2lPiAyb7Q</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'DNA' Special Stage (BTS focus) @MMA - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=TBxS2oIUUqc</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/TBxS2oIUUqc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:33 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/TBxS2oIUUqc/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=TBxS2oIUUqc</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] '작은 것들을 위한 시(Boy With Luv)' Stage CAM @2019 슈퍼콘서트 - BTS(방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=72_lZIS_Eo8</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/72_lZIS_Eo8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:30 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/72_lZIS_Eo8/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=72_lZIS_Eo8</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'FAKE LOVE' Special Stage (BTS focus) @2019 서울가요대상 - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=QkzTpW6z6Kg</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/QkzTpW6z6Kg" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:27 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/QkzTpW6z6Kg/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=QkzTpW6z6Kg</guid>
+		</item>
+		<item>
+		<title>[PREVIEW] BTS (방탄소년단) 2017 BTS Live Trilogy EPISODE III THE WINGS TOUR in Seoul</title>
+		<link>https://www.youtube.com/watch?v=Nsy1cpJDfBg</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Nsy1cpJDfBg" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:23 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/Nsy1cpJDfBg/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=Nsy1cpJDfBg</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] BTS (방탄소년단) Perfect boys 2015</title>
+		<link>https://www.youtube.com/watch?v=SgVDQGbnxiM</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/SgVDQGbnxiM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:19 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/SgVDQGbnxiM/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=SgVDQGbnxiM</guid>
+		</item>
+		<item>
+		<title>[EPISODE] BTS won 1st place at Music Bank with 'RUN'</title>
+		<link>https://www.youtube.com/watch?v=KyHwPDzDq5E</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/KyHwPDzDq5E" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:15 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/KyHwPDzDq5E/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=KyHwPDzDq5E</guid>
+		</item>
+		<item>
+		<title>[Episode] Like (Showcase sketch)</title>
+		<link>https://www.youtube.com/watch?v=-wLNpg5IX_g</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/-wLNpg5IX_g" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:08 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/-wLNpg5IX_g/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=-wLNpg5IX_g</guid>
+		</item>
+		<item>
+		<title>[BANGTAN BOMB] 'I NEED U' Stage @COMEBACK SHOW 'BTS DNA' - BTS (방탄소년단)</title>
+		<link>https://www.youtube.com/watch?v=v8fnFZBOnZc</link>
+		<description>
+		<![CDATA[
+		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/v8fnFZBOnZc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
+		]]>
+		</description>
+		<pubDate>Tue, 09 Jul 2019 14:38:04 +0000</pubDate>
+		<media:content url="https://i.ytimg.com/vi/v8fnFZBOnZc/mqdefault.jpg" medium="image" width="320" height="180"/>
+		<guid>https://www.youtube.com/watch?v=v8fnFZBOnZc</guid>
+		</item>
 		
 	</channel>
 </feed>
