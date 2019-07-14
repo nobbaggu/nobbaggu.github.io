@@ -1,1209 +1,155 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
-	<channel>
-		<link href="https://swnomad.github.io/feed_bts.xml" rel="self" type="application/rss+xml"/>
-		<title>BTS RSS 피드</title>
-		
-		<item>
-		<title>150512 제이홉</title>
-		<videoId>jXagHUcMpu4</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/jXagHUcMpu4" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:58 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/jXagHUcMpu4/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=jXagHUcMpu4</guid>
-		</item>
-		<item>
-		<title>150513 김남준</title>
-		<videoId>JwG39hWB8Xs</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/JwG39hWB8Xs" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:55 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/JwG39hWB8Xs/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=JwG39hWB8Xs</guid>
-		</item>
-		<item>
-		<title>150901 정국</title>
-		<videoId>fjUnay5U5q4</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/fjUnay5U5q4" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:52 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/fjUnay5U5q4/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=fjUnay5U5q4</guid>
-		</item>
-		<item>
-		<title>151105 뷔</title>
-		<videoId>pmFY0fQ-eXs</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/pmFY0fQ-eXs" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:49 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/pmFY0fQ-eXs/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=pmFY0fQ-eXs</guid>
-		</item>
-		<item>
-		<title>160107 지민</title>
-		<videoId>C_CWm5cYX_s</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/C_CWm5cYX_s" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:46 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/C_CWm5cYX_s/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=C_CWm5cYX_s</guid>
-		</item>
-		<item>
-		<title>2016년 2월 10일</title>
-		<videoId>OcwLZNDu8Eg</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/OcwLZNDu8Eg" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:43 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/OcwLZNDu8Eg/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=OcwLZNDu8Eg</guid>
-		</item>
-		<item>
-		<title>160424 JIMIN</title>
-		<videoId>oJMcSKH7bpY</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/oJMcSKH7bpY" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:40 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/oJMcSKH7bpY/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=oJMcSKH7bpY</guid>
-		</item>
-		<item>
-		<title>160925 j-hope</title>
-		<videoId>c6Dd6NbdhhU</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/c6Dd6NbdhhU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:36 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/c6Dd6NbdhhU/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=c6Dd6NbdhhU</guid>
-		</item>
-		<item>
-		<title>161005 RAP MONSTER</title>
-		<videoId>6e5bHHn0bwA</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/6e5bHHn0bwA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:34 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/6e5bHHn0bwA/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=6e5bHHn0bwA</guid>
-		</item>
-		<item>
-		<title>161113 JIMIN</title>
-		<videoId>oIeqRRh47BM</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/oIeqRRh47BM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:31 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/oIeqRRh47BM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=oIeqRRh47BM</guid>
-		</item>
-		<item>
-		<title>161120 SUGA</title>
-		<videoId>zYrBKY3bQ7g</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/zYrBKY3bQ7g" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:27 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/zYrBKY3bQ7g/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=zYrBKY3bQ7g</guid>
-		</item>
-		<item>
-		<title>161120 JIMIN</title>
-		<videoId>nv6Vi6X6LcE</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/nv6Vi6X6LcE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:24 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/nv6Vi6X6LcE/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=nv6Vi6X6LcE</guid>
-		</item>
-		<item>
-		<title>161206 정국</title>
-		<videoId>L-VBNFTh1I4</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/L-VBNFTh1I4" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:22 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/L-VBNFTh1I4/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=L-VBNFTh1I4</guid>
-		</item>
-		<item>
-		<title>170416 제이홉</title>
-		<videoId>EcNuZqMR2vU</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/EcNuZqMR2vU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:18 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/EcNuZqMR2vU/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=EcNuZqMR2vU</guid>
-		</item>
-		<item>
-		<title>170419 랩몬스터</title>
-		<videoId>sWQpRvUePpU</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/sWQpRvUePpU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:15 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/sWQpRvUePpU/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=sWQpRvUePpU</guid>
-		</item>
-		<item>
-		<title>170521 V</title>
-		<videoId>CSljMbAOcsg</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/CSljMbAOcsg" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:12 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/CSljMbAOcsg/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=CSljMbAOcsg</guid>
-		</item>
-		<item>
-		<title>170902 JIMIN</title>
-		<videoId>qGyX3jbVI4Y</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/qGyX3jbVI4Y" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:09 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/qGyX3jbVI4Y/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=qGyX3jbVI4Y</guid>
-		</item>
-		<item>
-		<title>170918 SUGA</title>
-		<videoId>uZRlC5V6bXI</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/uZRlC5V6bXI" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:05 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/uZRlC5V6bXI/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=uZRlC5V6bXI</guid>
-		</item>
-		<item>
-		<title>171119 제이홉</title>
-		<videoId>L-e0JW0Vd38</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/L-e0JW0Vd38" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:20:02 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/L-e0JW0Vd38/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=L-e0JW0Vd38</guid>
-		</item>
-		<item>
-		<title>180111 Jin</title>
-		<videoId>mGUe7pyraO8</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/mGUe7pyraO8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:19:59 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/mGUe7pyraO8/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=mGUe7pyraO8</guid>
-		</item>
-		<item>
-		<title>180413 JIMIN</title>
-		<videoId>X2kfDA_jqw0</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/X2kfDA_jqw0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:19:56 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/X2kfDA_jqw0/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=X2kfDA_jqw0</guid>
-		</item>
-		<item>
-		<title>180426 j-hope</title>
-		<videoId>c0tC03kaS-E</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/c0tC03kaS-E" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:19:52 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/c0tC03kaS-E/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=c0tC03kaS-E</guid>
-		</item>
-		<item>
-		<title>180511 RM</title>
-		<videoId>XZkfFD08zio</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/XZkfFD08zio" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:19:49 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/XZkfFD08zio/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=XZkfFD08zio</guid>
-		</item>
-		<item>
-		<title>180923 RM</title>
-		<videoId>UOSRIuSenI4</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/UOSRIuSenI4" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:19:46 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/UOSRIuSenI4/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=UOSRIuSenI4</guid>
-		</item>
-		<item>
-		<title>181004 V</title>
-		<videoId>eSEhXYNa54c</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/eSEhXYNa54c" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:19:42 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/eSEhXYNa54c/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=eSEhXYNa54c</guid>
-		</item>
-		<item>
-		<title>140714 지민</title>
-		<videoId>bRIQGaAcLgw</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/bRIQGaAcLgw" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:25:05 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/bRIQGaAcLgw/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=bRIQGaAcLgw</guid>
-		</item>
-		<item>
-		<title>140715 랩몬스터</title>
-		<videoId>Ryq6n3W0grE</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Ryq6n3W0grE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:25:02 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/Ryq6n3W0grE/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=Ryq6n3W0grE</guid>
-		</item>
-		<item>
-		<title>140910 지민&amp;정국</title>
-		<videoId>AMAaYcaVI58</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/AMAaYcaVI58" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:59 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/AMAaYcaVI58/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=AMAaYcaVI58</guid>
-		</item>
-		<item>
-		<title>140913 진&amp;랩몬스터</title>
-		<videoId>9YO_R4ugDyQ</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/9YO_R4ugDyQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:56 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/9YO_R4ugDyQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=9YO_R4ugDyQ</guid>
-		</item>
-		<item>
-		<title>140927 V</title>
-		<videoId>i8E0mMB9VZM</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/i8E0mMB9VZM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:52 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/i8E0mMB9VZM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=i8E0mMB9VZM</guid>
-		</item>
-		<item>
-		<title>141020 지민</title>
-		<videoId>IiHejyY-qdQ</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/IiHejyY-qdQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:50 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/IiHejyY-qdQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=IiHejyY-qdQ</guid>
-		</item>
-		<item>
-		<title>141021 정국</title>
-		<videoId>MEbEZY43-fo</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/MEbEZY43-fo" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:46 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/MEbEZY43-fo/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=MEbEZY43-fo</guid>
-		</item>
-		<item>
-		<title>141021 랩몬스터</title>
-		<videoId>r3Ep34QSDeU</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/r3Ep34QSDeU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:43 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/r3Ep34QSDeU/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=r3Ep34QSDeU</guid>
-		</item>
-		<item>
-		<title>141022 뷔</title>
-		<videoId>hnHLfaOdEGo</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/hnHLfaOdEGo" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:40 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/hnHLfaOdEGo/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=hnHLfaOdEGo</guid>
-		</item>
-		<item>
-		<title>141021 진</title>
-		<videoId>ryfhbVHwpqA</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/ryfhbVHwpqA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:36 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/ryfhbVHwpqA/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=ryfhbVHwpqA</guid>
-		</item>
-		<item>
-		<title>141128 SUGA</title>
-		<videoId>jEBv32qDQ30</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/jEBv32qDQ30" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:34 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/jEBv32qDQ30/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=jEBv32qDQ30</guid>
-		</item>
-		<item>
-		<title>141210 정국</title>
-		<videoId>s1LKH4yFad0</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/s1LKH4yFad0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:31 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/s1LKH4yFad0/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=s1LKH4yFad0</guid>
-		</item>
-		<item>
-		<title>141218 지민</title>
-		<videoId>na_DKyr84ok</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/na_DKyr84ok" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:26 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/na_DKyr84ok/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=na_DKyr84ok</guid>
-		</item>
-		<item>
-		<title>141219 진</title>
-		<videoId>z2nqRq96b4A</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/z2nqRq96b4A" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:23 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/z2nqRq96b4A/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=z2nqRq96b4A</guid>
-		</item>
-		<item>
-		<title>141219 제이홉</title>
-		<videoId>dJzrZHdwi5I</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/dJzrZHdwi5I" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:20 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/dJzrZHdwi5I/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=dJzrZHdwi5I</guid>
-		</item>
-		<item>
-		<title>150107 지민</title>
-		<videoId>Bbn-R7xGx8I</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Bbn-R7xGx8I" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:17 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/Bbn-R7xGx8I/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=Bbn-R7xGx8I</guid>
-		</item>
-		<item>
-		<title>150105 뷔</title>
-		<videoId>1mxAVP6BT-4</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/1mxAVP6BT-4" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:13 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/1mxAVP6BT-4/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=1mxAVP6BT-4</guid>
-		</item>
-		<item>
-		<title>150218 제이홉</title>
-		<videoId>_qB3WnYkg7I</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/_qB3WnYkg7I" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:10 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/_qB3WnYkg7I/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=_qB3WnYkg7I</guid>
-		</item>
-		<item>
-		<title>150224 랩몬스터</title>
-		<videoId>2ubAHL4DewA</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/2ubAHL4DewA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:06 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/2ubAHL4DewA/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=2ubAHL4DewA</guid>
-		</item>
-		<item>
-		<title>140708 j-hope</title>
-		<videoId>LwJ8lPtPUnI</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/LwJ8lPtPUnI" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:04 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/LwJ8lPtPUnI/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=LwJ8lPtPUnI</guid>
-		</item>
-		<item>
-		<title>150309 SUGA</title>
-		<videoId>e3yjMP_ipkM</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/e3yjMP_ipkM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:24:01 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/e3yjMP_ipkM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=e3yjMP_ipkM</guid>
-		</item>
-		<item>
-		<title>150331 랩몬스터</title>
-		<videoId>Vj8Dso7UXyg</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Vj8Dso7UXyg" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:23:58 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/Vj8Dso7UXyg/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=Vj8Dso7UXyg</guid>
-		</item>
-		<item>
-		<title>150403 정국</title>
-		<videoId>rv7ydfbDCzY</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/rv7ydfbDCzY" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:23:54 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/rv7ydfbDCzY/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=rv7ydfbDCzY</guid>
-		</item>
-		<item>
-		<title>150403 지민</title>
-		<videoId>T5BLdoPClR0</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/T5BLdoPClR0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:23:51 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/T5BLdoPClR0/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=T5BLdoPClR0</guid>
-		</item>
-		<item>
-		<title>150513 지민&amp;정국</title>
-		<videoId>Ln6Cx0B62oM</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Ln6Cx0B62oM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Tue, 09 Jul 2019 15:23:45 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/Ln6Cx0B62oM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=Ln6Cx0B62oM</guid>
-		</item>
-		<item>
-		<title>140105 랩몬스터</title>
-		<videoId>j-zLeB9d7kU</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/j-zLeB9d7kU" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:50 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/j-zLeB9d7kU/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=j-zLeB9d7kU</guid>
-		</item>
-		<item>
-		<title>140218 V</title>
-		<videoId>wpS471F7GJY</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/wpS471F7GJY" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:46 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/wpS471F7GJY/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=wpS471F7GJY</guid>
-		</item>
-		<item>
-		<title>140219 제이홉</title>
-		<videoId>7IZgy1kOXuE</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/7IZgy1kOXuE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:43 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/7IZgy1kOXuE/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=7IZgy1kOXuE</guid>
-		</item>
-		<item>
-		<title>140224 지민&정국</title>
-		<videoId>I0Zuur3mrCI</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/I0Zuur3mrCI" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:41 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/I0Zuur3mrCI/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=I0Zuur3mrCI</guid>
-		</item>
-		<item>
-		<title>140302 슈가</title>
-		<videoId>me91IS5xk90</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/me91IS5xk90" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:37 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/me91IS5xk90/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=me91IS5xk90</guid>
-		</item>
-		<item>
-		<title>140327 슈가&지민, 제이홉&뷔&정국, 랩몬&진</title>
-		<videoId>huZHd6tEgpE</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/huZHd6tEgpE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:34 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/huZHd6tEgpE/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=huZHd6tEgpE</guid>
-		</item>
-		<item>
-		<title>140404 진&제이홉</title>
-		<videoId>dlSnSM7uYBo</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/dlSnSM7uYBo" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:30 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/dlSnSM7uYBo/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=dlSnSM7uYBo</guid>
-		</item>
-		<item>
-		<title>140401 랩몬스터</title>
-		<videoId>qIXFXafYjks</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/qIXFXafYjks" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:26 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/qIXFXafYjks/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=qIXFXafYjks</guid>
-		</item>
-		<item>
-		<title>140405 정국</title>
-		<videoId>ujfshdK9Xhw</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/ujfshdK9Xhw" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:20 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/ujfshdK9Xhw/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=ujfshdK9Xhw</guid>
-		</item>
-		<item>
-		<title>140406 지민</title>
-		<videoId>ZbsI4kLoo7g</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/ZbsI4kLoo7g" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:17 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/ZbsI4kLoo7g/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=ZbsI4kLoo7g</guid>
-		</item>
-		<item>
-		<title>140410 SUGA</title>
-		<videoId>CC3nfHGFvC8</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/CC3nfHGFvC8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:14 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/CC3nfHGFvC8/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=CC3nfHGFvC8</guid>
-		</item>
-		<item>
-		<title>140513 랩몬스터</title>
-		<videoId>4CLI5AYEBPE</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/4CLI5AYEBPE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:11 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/4CLI5AYEBPE/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=4CLI5AYEBPE</guid>
-		</item>
-		<item>
-		<title>140421 제이홉&지민</title>
-		<videoId>PSdyNP3Ji3g</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/PSdyNP3Ji3g" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:06 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/PSdyNP3Ji3g/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=PSdyNP3Ji3g</guid>
-		</item>
-		<item>
-		<title>140515 지민&정국</title>
-		<videoId>nYBEZUXuJKE</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/nYBEZUXuJKE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:49:03 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/nYBEZUXuJKE/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=nYBEZUXuJKE</guid>
-		</item>
-		<item>
-		<title>140516 제이홉</title>
-		<videoId>tiVnV7CjglA</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/tiVnV7CjglA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:59 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/tiVnV7CjglA/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=tiVnV7CjglA</guid>
-		</item>
-		<item>
-		<title>140519 V</title>
-		<videoId>Vt9lCXQS-P0</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Vt9lCXQS-P0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:55 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/Vt9lCXQS-P0/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=Vt9lCXQS-P0</guid>
-		</item>
-		<item>
-		<title>140602 V</title>
-		<videoId>qCQ_pi2IzYQ</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/qCQ_pi2IzYQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:53 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/qCQ_pi2IzYQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=qCQ_pi2IzYQ</guid>
-		</item>
-		<item>
-		<title>140611 방탄소년단</title>
-		<videoId>e2vbEAAC8r0</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/e2vbEAAC8r0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:48 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/e2vbEAAC8r0/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=e2vbEAAC8r0</guid>
-		</item>
-		<item>
-		<title>140602 슈가&지민&정국</title>
-		<videoId>c1761HgCaVM</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/c1761HgCaVM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:44 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/c1761HgCaVM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=c1761HgCaVM</guid>
-		</item>
-		<item>
-		<title>140115 SUGA</title>
-		<videoId>KCM0jjMpEKk</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/KCM0jjMpEKk" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:40 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/KCM0jjMpEKk/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=KCM0jjMpEKk</guid>
-		</item>
-		<item>
-		<title>140118 제이홉 & 정국</title>
-		<videoId>rEMEc_LvMQc</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/rEMEc_LvMQc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:37 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/rEMEc_LvMQc/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=rEMEc_LvMQc</guid>
-		</item>
-		<item>
-		<title>140705 정국</title>
-		<videoId>Xuw9UgtO07o</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Xuw9UgtO07o" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:33 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/Xuw9UgtO07o/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=Xuw9UgtO07o</guid>
-		</item>
-		<item>
-		<title>140708 진</title>
-		<videoId>UNJPVTkgNMw</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/UNJPVTkgNMw" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:29 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/UNJPVTkgNMw/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=UNJPVTkgNMw</guid>
-		</item>
-		<item>
-		<title>140712 V</title>
-		<videoId>tcbxLw9AWNg</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/tcbxLw9AWNg" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:26 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/tcbxLw9AWNg/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=tcbxLw9AWNg</guid>
-		</item>
-		<item>
-		<title>140710 SUGA</title>
-		<videoId>jKYger3v5YM</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/jKYger3v5YM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:48:21 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/jKYger3v5YM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=jKYger3v5YM</guid>
-		</item>
-		<item>
-		<title>130822 V</title>
-		<videoId>VxEzf8Lw-mY</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/VxEzf8Lw-mY" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:54:25 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/VxEzf8Lw-mY/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=VxEzf8Lw-mY</guid>
-		</item>
-		<item>
-		<title>130823 지민</title>
-		<videoId>C5hu2XaWlzQ</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/C5hu2XaWlzQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:54:21 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/C5hu2XaWlzQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=C5hu2XaWlzQ</guid>
-		</item>
-		<item>
-		<title>130829 제이홉</title>
-		<videoId>6axIdOnSrBI</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/6axIdOnSrBI" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:54:17 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/6axIdOnSrBI/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=6axIdOnSrBI</guid>
-		</item>
-		<item>
-		<title>130904 진</title>
-		<videoId>SL90Pe2VZ4M</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/SL90Pe2VZ4M" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:54:14 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/SL90Pe2VZ4M/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=SL90Pe2VZ4M</guid>
-		</item>
-		<item>
-		<title>130907 랩몬스터 & 정국</title>
-		<videoId>jF2o_8mkhm8</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/jF2o_8mkhm8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:54:12 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/jF2o_8mkhm8/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=jF2o_8mkhm8</guid>
-		</item>
-		<item>
-		<title>130908 제이홉 & V</title>
-		<videoId>CqFMELmj9Do</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/CqFMELmj9Do" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:54:08 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/CqFMELmj9Do/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=CqFMELmj9Do</guid>
-		</item>
-		<item>
-		<title>130909 지민</title>
-		<videoId>2J4nMh_kAUk</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/2J4nMh_kAUk" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:54:05 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/2J4nMh_kAUk/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=2J4nMh_kAUk</guid>
-		</item>
-		<item>
-		<title>131013 제이홉&지민</title>
-		<videoId>zPOt5onsppM</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/zPOt5onsppM" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:54:02 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/zPOt5onsppM/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=zPOt5onsppM</guid>
-		</item>
-		<item>
-		<title>131012 진</title>
-		<videoId>OXYCdUo4o9k</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/OXYCdUo4o9k" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:59 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/OXYCdUo4o9k/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=OXYCdUo4o9k</guid>
-		</item>
-		<item>
-		<title>131016 SUGA</title>
-		<videoId>SUUpU_c9Os4</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/SUUpU_c9Os4" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:55 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/SUUpU_c9Os4/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=SUUpU_c9Os4</guid>
-		</item>
-		<item>
-		<title>131017 랩몬스터</title>
-		<videoId>zXII5svk9KE</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/zXII5svk9KE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:52 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/zXII5svk9KE/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=zXII5svk9KE</guid>
-		</item>
-		<item>
-		<title>131021 V</title>
-		<videoId>1IuJKvxtEbQ</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/1IuJKvxtEbQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:48 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/1IuJKvxtEbQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=1IuJKvxtEbQ</guid>
-		</item>
-		<item>
-		<title>131020 정국</title>
-		<videoId>f5dCjbbuLy0</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/f5dCjbbuLy0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:43 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/f5dCjbbuLy0/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=f5dCjbbuLy0</guid>
-		</item>
-		<item>
-		<title>131102 제이홉</title>
-		<videoId>JFaIOxvPOEY</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/JFaIOxvPOEY" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:40 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/JFaIOxvPOEY/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=JFaIOxvPOEY</guid>
-		</item>
-		<item>
-		<title>131101 지민</title>
-		<videoId>CIlbFt3NkBw</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/CIlbFt3NkBw" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:37 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/CIlbFt3NkBw/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=CIlbFt3NkBw</guid>
-		</item>
-		<item>
-		<title>131103 진 & 정국</title>
-		<videoId>KSCHc9TODwo</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/KSCHc9TODwo" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:35 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/KSCHc9TODwo/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=KSCHc9TODwo</guid>
-		</item>
-		<item>
-		<title>131116 랩몬스터&제이홉</title>
-		<videoId>ZX2JUuk2h3g</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/ZX2JUuk2h3g" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:31 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/ZX2JUuk2h3g/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=ZX2JUuk2h3g</guid>
-		</item>
-		<item>
-		<title>131119 슈가&지민</title>
-		<videoId>Qhy5lLseWEc</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Qhy5lLseWEc" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:26 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/Qhy5lLseWEc/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=Qhy5lLseWEc</guid>
-		</item>
-		<item>
-		<title>131122 진&V</title>
-		<videoId>sOEEzKZjUxA</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/sOEEzKZjUxA" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:23 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/sOEEzKZjUxA/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=sOEEzKZjUxA</guid>
-		</item>
-		<item>
-		<title>131123 정국</title>
-		<videoId>e6WHejv_UtQ</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/e6WHejv_UtQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:20 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/e6WHejv_UtQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=e6WHejv_UtQ</guid>
-		</item>
-		<item>
-		<title>131204 진</title>
-		<videoId>KEg4md8I6X4</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/KEg4md8I6X4" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:18 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/KEg4md8I6X4/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=KEg4md8I6X4</guid>
-		</item>
-		<item>
-		<title>140101 V</title>
-		<videoId>P20MzLszlzE</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/P20MzLszlzE" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:13 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/P20MzLszlzE/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=P20MzLszlzE</guid>
-		</item>
-		<item>
-		<title>140103 지민</title>
-		<videoId>js7sCcKYDk8</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/js7sCcKYDk8" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:10 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/js7sCcKYDk8/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=js7sCcKYDk8</guid>
-		</item>
-		<item>
-		<title>140104 진</title>
-		<videoId>KnKnel67cI0</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/KnKnel67cI0" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:06 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/KnKnel67cI0/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=KnKnel67cI0</guid>
-		</item>
-		<item>
-		<title>140126 방탄소년단</title>
-		<videoId>hIdYAQNX4zQ</videoId>
-		<description>
-		<![CDATA[
-		<iframe id="player" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/hIdYAQNX4zQ" frameborder="0" allowFullScreen="allowfullscreen"></iframe>
-		]]>
-		</description>
-		<pubDate>Wed, 10 Jul 2019 13:53:03 +0000</pubDate>
-		<media:content url="https://i.ytimg.com/vi/hIdYAQNX4zQ/mqdefault.jpg" medium="image" width="320" height="180"/>
-		<guid>https://www.youtube.com/watch?v=hIdYAQNX4zQ</guid>
-		</item>
-		
-	</channel>
-</feed>
+<?xml version="1.0"?>
+<playlist><item><videoId>Pt8S21m4hUs</videoId><title>[Eng Sub] 181004 V</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>Vq6jzkX9pOE</videoId><title>[Eng Sub] 180923 RM Vlog before UN speech (BTS 방탄소년단)</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>FqxQn6drt6M</videoId><title>[ENG] 180511 RM's Log</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>TwxG67kOcIk</videoId><title>[ENG SUB] 180426 j-hope LOG</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>OEafxnKaBns</videoId><title>[ENGSUB] BTS JIMIN Log 180413 - Jimin Felt Lonely For Months</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>55GHR0OaRkg</videoId><title>[ENG SUB] 180111 Jin</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>ZbvTM6LlGfw</videoId><title>[ENG SUB] 171119 제이홉</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>WQ01BxR9KT8</videoId><title>[ENG SUB] 170918 SUGA</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>sgoubAwJkJk</videoId><title>[ENG SUB] 170902 JIMIN</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>7YZL8EiPVMg</videoId><title>[ENG SUB] 170521 V</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>sWQpRvUePpU</videoId><title>170419 랩몬스터</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>EcNuZqMR2vU</videoId><title>170416 제이홉</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>L-VBNFTh1I4</videoId><title>161206 정국</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>xkiY_1TOFn8</videoId><title>[ENG SUB] 161120 JIMIN</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>SjaJU6wCGQ4</videoId><title>[ENG SUB] 161120 SUGA</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>q6IueOcytQ8</videoId><title>[ENG] 161113 Jimin's Log</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>-5uJWAA-Bno</videoId><title>[ENG SUB] 161005 RAP MONSTER</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>FxEWuLxK3R0</videoId><title>[ENG] 160925 J-Hope's Log</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>E7DUE_zlRBA</videoId><title>[ENG] 160424 Jimin's Log</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>ZAcW9bhnZ-0</videoId><title>[롤러코스터 타이쿤2][3] 슈퍼 명작게임 과거의 느낌을 다시 2016년 2월 10일</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>C_CWm5cYX_s</videoId><title>160107 지민</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>pmFY0fQ-eXs</videoId><title>151105 뷔</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>fjUnay5U5q4</videoId><title>150901 정국</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>JwG39hWB8Xs</videoId><title>150513 김남준</title><pubDate>2019-07-14 11:48</pubDate></item>
+<item><videoId>jXagHUcMpu4</videoId><title>150512 제이홉</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>Ln6Cx0B62oM</videoId><title>150513 지민&정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>T5BLdoPClR0</videoId><title>150403 지민</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>rv7ydfbDCzY</videoId><title>150403 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>oNYnN6shn0Q</videoId><title>[ENG] 150331 Rap Monster's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>obPcCDQWyWw</videoId><title>[ENG] 150309 Suga's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>VNoSbUnSy74</videoId><title>[ENG] 140708 J-Hope's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>2ubAHL4DewA</videoId><title>150224 랩몬스터</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>_qB3WnYkg7I</videoId><title>150218 제이홉</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>1mxAVP6BT-4</videoId><title>150105 뷔</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>Bbn-R7xGx8I</videoId><title>150107 지민</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>pB3_vCgKQCc</videoId><title>[ENG] 141219 J-Hope's Log Reaction ㅣ제이홉 로그 리액션</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>z2nqRq96b4A</videoId><title>141219 진</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>na_DKyr84ok</videoId><title>141218 지민</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>s1LKH4yFad0</videoId><title>141210 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>E9s0xVnvfrM</videoId><title>[ENG] 141128 Suga's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>ryfhbVHwpqA</videoId><title>141021 진</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>hnHLfaOdEGo</videoId><title>141022 뷔</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>iOrrSxgET0k</videoId><title>[ENG] 141021 Rap Monster's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>MEbEZY43-fo</videoId><title>141021 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>IiHejyY-qdQ</videoId><title>141020 지민</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>A3ql1aImAGI</videoId><title>[ENG] 140927 V's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>9YO_R4ugDyQ</videoId><title>140913 진&랩몬스터</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>AMAaYcaVI58</videoId><title>140910 지민&정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>ZfUZmk-2uGE</videoId><title>[ENG] 140715 Rap Monster's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>bRIQGaAcLgw</videoId><title>140714  지민</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>h6zPSZSKsXE</videoId><title>[ENG] 140710 Suga's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>tcbxLw9AWNg</videoId><title>140712 V</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>LwJ8lPtPUnI</videoId><title>140708 j-hope</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>Xuw9UgtO07o</videoId><title>140705 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>rEMEc_LvMQc</videoId><title>140118 제이홉 & 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>HGAa0ZWc5TQ</videoId><title>[ENG] 140115 Suga's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>c1761HgCaVM</videoId><title>140602 슈가&지민&정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>e2vbEAAC8r0</videoId><title>140611 방탄소년단</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>t2YEA8pIK0c</videoId><title>[ENG] 140602 V's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>432PcQxMPbs</videoId><title>[ENG] 140519 V's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>xT_fpmXLqLw</videoId><title>[ENG] 140516 J-Hope's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>nYBEZUXuJKE</videoId><title>140515 지민&정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>PSdyNP3Ji3g</videoId><title>140421 제이홉&지민</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>KSkKli0n4Do</videoId><title>[ENG] 140513 Rap Monster's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>X0j8f3aZJF8</videoId><title>[ENG] 140410 Suga's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>dU-9gLrxZsk</videoId><title>[ENG] 140406 Jimin's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>ujfshdK9Xhw</videoId><title>140405 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>9qrQn2RGgqA</videoId><title>[ENG] 140401 Rap Monster's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>dlSnSM7uYBo</videoId><title>140404 진&제이홉</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>huZHd6tEgpE</videoId><title>140327 슈가&지민, 제이홉&뷔&정국, 랩몬&진</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>me91IS5xk90</videoId><title>140302 슈가</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>BUtnGKz52FA</videoId><title>[ENG] 140224 Jimin & Jungkook's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>7IZgy1kOXuE</videoId><title>140219 제이홉</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>xCNYWPA0OAU</videoId><title>[ENG] 140218 V's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>JQuosHB-pQU</videoId><title>[ENG]  140105 Rap Monster’s Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>-SnFY9Hd5rY</videoId><title>[ENG SUB] 140126 방탄소년단</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>_q-P1Ep1nDo</videoId><title>[ENG] 140104 Jin's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>JKyuyfL_0EQ</videoId><title>[ENG] 140103 Jimin's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>1QMBtmk_Y_g</videoId><title>[ENG] 140101 V’s Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>KEg4md8I6X4</videoId><title>131204 진</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>e6WHejv_UtQ</videoId><title>131123 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>sOEEzKZjUxA</videoId><title>131122 진&V</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>Qhy5lLseWEc</videoId><title>131119 슈가&지민</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>ZX2JUuk2h3g</videoId><title>131116 랩몬스터&제이홉</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>KSCHc9TODwo</videoId><title>131103 진 & 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>qM1LDfq_I2g</videoId><title>[ENG SUB] 131101 Jimin Vlog</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>JFaIOxvPOEY</videoId><title>131102 제이홉</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>f5dCjbbuLy0</videoId><title>131020 정국</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>Whu4LiDnars</videoId><title>[ENG] 131021 V's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>Qv9cdbhe308</videoId><title>[ENG] 131017 Rap Monster's Log</title><pubDate>2019-07-14 11:49</pubDate></item>
+<item><videoId>jQUwj-DLp6Q</videoId><title>[ENG] 131016 Suga's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>fSI6NQ_6hug</videoId><title>[ENG] 131012 Jin's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>zPOt5onsppM</videoId><title>131013 제이홉&지민</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>2J4nMh_kAUk</videoId><title>130909 지민</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>CqFMELmj9Do</videoId><title>130908 제이홉 & V</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>bSGBvLU-za4</videoId><title>[ENG] 130907 Rap Monster & Jungkook's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>Zq3-ahCfdyc</videoId><title>[ENG] 130904 Jin's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>x9xn1vPrl5A</videoId><title>[ENG] 130829 J-Hope's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>kaGvqN5MQjI</videoId><title>[ENG] 130823 Jimin's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>qfpIG_1Bv4U</videoId><title>[ENG] 130822 V's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>SUrCF7k7ogs</videoId><title>130816 정국</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>h6CAdqmOwyg</videoId><title>[ENG] 130807 Suga's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>DK2g4qx8EMU</videoId><title>[ENG] 130728 J-Hope's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>MXiKfqg6cKA</videoId><title>[ENG] 130726 Jin & Jimin's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>fU6nRv6tB9g</videoId><title>[ENG] 130724 Rap Monster's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>Sn4oOetDn4k</videoId><title>[ENG] 130723 Jimin's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>HTa7kCBE8Ck</videoId><title>[ENG] 130722 V's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>V71OY0uWyMY</videoId><title>130718 정국</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>kIwJ2H8Ncbg</videoId><title>130713 진</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>lNGS0zKfIFw</videoId><title>[ENG] 130710 V's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>CI-7aVNAtr8</videoId><title>[ENG] 130704 J-Hope's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>ip6CN0rrHkg</videoId><title>[ENG] 130628 Jin's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>8aGA0xKMjKc</videoId><title>[ENG] 130621 Rap Monster's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>bA2UPoXvfQo</videoId><title>[ENG] 130620 Jimin & Jungkook's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>A-dSzEabV0c</videoId><title>[ENG] 130619 Jimin & V's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>oSCDWDyWcPI</videoId><title>130618 SUGA</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>7CLjhDRdGlw</videoId><title>[ENG] 130616 BTS' LOG</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>2ywP_Ncamsc</videoId><title>[ENG] 130514 Rap Monster & Jungkook's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>5Udtqp7-Xn8</videoId><title>[ENG] 130514 Suga & Jimin's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>GWm9FcFODhY</videoId><title>[ENG] 130508 J-Hope & Jungkook's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>EUtOww21bRo</videoId><title>[ENG] 130430 Suga's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>z9u1WWQRuGo</videoId><title>[ENG SUB] 130502 J HOPE</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>sF-RrYxvhqg</videoId><title>[ENG SUB] 130426 JIMIN (SANY0313)</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>SRaXIjfD4CA</videoId><title>[ENG] 130503 Rap Monster's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>QKk9BtkOlrY</videoId><title>[ENG SUB] 130406 JIMIN (SANY0296)</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>ajK3Qfkb6zg</videoId><title>[ENG SUB] 130411 J HOPE</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>Lz8Kc89AXRU</videoId><title>[ENG SUB] 130410 SUGA</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>ZLUWF7KxCGg</videoId><title>[ENG SUB] 130425 정국 (Jungkook Log)</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>5qqcwSn4OhQ</videoId><title>[ENG SUB] 130224 지민&정국 Jimin and Jungkook</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>QxvkpDnf-hc</videoId><title>[ENG] 130219 J-Hope’s Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>oVHL_wtHHlM</videoId><title>[ENG] 130308 J-Hope’s Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>o5Ye00NYUiQ</videoId><title>[ENG SUB] 130306 정국 (Jungkook Log)</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>7m3AGDiMX_w</videoId><title>[ENG] 130309 SUGA</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>u9bd5O_4GJU</videoId><title>[ENG] 130304 SUGA</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>kuBRUyOlWKk</videoId><title>130304 J HOPE & RAP MONSTER [ENG]</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>GgHAXtWPMjY</videoId><title>130228 RAP MONSTER [Sub español]</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>8olINWxJ7vo</videoId><title>130225 지민 Jimin Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>ejqCtOgcQzg</videoId><title>[ENG] 130225 Rap Monster's Log (Feat. Suga)</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>jV3xvdI8gfU</videoId><title>130214 지민&정국</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>Y-9ldLEPz9s</videoId><title>[ENG] 130214 J-Hope's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>0vIi3H9__OM</videoId><title>130212 정국 & 지민</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>3mZDU4adxGA</videoId><title>[ENG SUB] 130212 RAP MONSTER</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>NURcgbN4DGA</videoId><title>130208 정국</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>LzHJIdZSWaI</videoId><title>[ENG] 130208 Jimin's Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>6z3dr6JRv7s</videoId><title>130125 지민</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>MBjYgL4fHHA</videoId><title>[ENG SUB] 130123 Rap Monster</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>lu7MpIxaneQ</videoId><title>[ENG] 130122 Jin’s Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>saghatb_TCQ</videoId><title>[ENG SUB] 130124 진 JIN</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>QlzCBYj6ikg</videoId><title>130115 진</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>uuS0G6rwy24</videoId><title>[ENG SUB] 130113 RAP MONSTER</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>0tnyr3FVFoU</videoId><title>[ENG] 130112 Jin’s Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>Y3HCDXOwIhg</videoId><title>[ENG SUB] 130108 RAP MONSTER</title><pubDate>2019-07-14 11:50</pubDate></item>
+<item><videoId>xoWTjHPmDXo</videoId><title>[ENG] 130107 Rap Monster’s Log</title><pubDate>2019-07-14 11:50</pubDate></item>
+</playlist>
