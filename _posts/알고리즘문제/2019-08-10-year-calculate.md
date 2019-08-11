@@ -13,6 +13,8 @@ tags:
   - 1476
 ---
 
+[백준 1476 - 날짜 계산](https://www.acmicpc.net/problem/1476){: target="_blank" }
+
 ### 1. 풀이 전략
 * * *
 

@@ -13,7 +13,7 @@ tags:
   - 2309
 ---
 
-
+[백준 2309 - 일곱 난쟁이](https://www.acmicpc.net/problem/2309){: target="_blank" }
 
 ### 1. 풀이 전략
 * * *
