@@ -1,9 +1,9 @@
 ---
-title: \[백준 1476\]-날짜 계산
+title: (백준 1476)-날짜 계산
 date: 2019-08-10T15:28:34+09:00
 author: SWnomad
 layout: post
-categories: AlgorithmSolve
+categories: 알고리즘문제
 tags:
   - 브루트포스
   - brute force

@@ -1,9 +1,9 @@
 ---
-title: \[백준 14500\]-테트로미노
+title: (백준 14500)-테트로미노
 date: 2019-08-10T16:28:34+09:00
 author: SWnomad
 layout: post
-categories: AlgorithmSolve
+categories: 알고리즘문제
 tags:
   - 브루트포스
   - brute force

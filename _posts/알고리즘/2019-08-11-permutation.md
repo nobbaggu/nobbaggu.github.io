@@ -3,7 +3,7 @@ title: 순열
 date: 2019-08-11T15:28:34+09:00
 author: SWnomad
 layout: post
-categories: Algorithm
+categories: 알고리즘
 tags:
   - 순열
   - permutation
