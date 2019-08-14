@@ -136,3 +136,147 @@ class Main{
 	}
 }
 ~~~
+
+<br>
+
+위 알고리즘의 시간 복잡도를 계산해보자. 단, 복잡도에 영향을 미칠만 한 중요한 연산에 대해서만 따져보겠다. do-while문을 보면, next_permutation을 계산하는데 O(N)이고 경로에 대한 비용을 계산하는 부분의 시간 복잡도 역시 O(N)이다. 이 두 개를 더해도 O(N)이다. 그런데, 다음 순열이 존재하는 한 계속해서 이 연산을 한다. 자료가 N개이기 때문에 next_permutation을 총 N!번 계산한다. 따라서 총 시간복잡도는 O(N!*N)이다.
+
+그런데, 이 알고리즘을 더욱 간단하게 하는 방법이 있다.
+
+N이 4인 경우를 생각해보자. 아래의 경로들은 모두 비용이 같다.
+
+0->1->2->3->0
+
+1->2->3->0->1
+
+2->3->0->1->2
+
+3->0->1->2->3
+
+<br>
+
+즉, 출발지가 0인 것만 계산하고 나머지는 하지 않아도 된다. 나머지 경우들에 대해서도 마찬가지이다. 출발지점이 0인 경우만 생각하면 된다. 결론적으로, 출발점은 항상 0으로 고정할 수 있는 것이다. 이렇게 바꾸기 위해서는 코드에 단 1줄만 추가하면 된다.
+
+do-while문 첫 부분에 아래의 코드를 추가한다.
+
+~~~ java
+//출발지로 도시 0으로 고정하기
+if(city[0]!=0)
+	continue;
+~~~
+
+<br>
+
+전체 코드는 아래와 같다.
+
+~~~ java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+class Main{
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int N = Integer.parseInt(br.readLine()); //N 입력
+	
+		//도시간의 이동비용을 저장하기 위한 2차원 배열 생성 및 입력 저장
+		int[][] w = new int[N][N];
+		for(int i=0; i<N; i++) {
+			StringTokenizer tk = new StringTokenizer(br.readLine());
+			for(int j=0; j<N; j++) {
+				w[i][j] = Integer.parseInt(tk.nextToken());
+			}
+		}
+		
+		//순열을 위한 배열 생성 및 오름차순으로 초기화
+		int[] city = new int[N];
+		for(int i=0; i<N; i++) {
+			city[i] = i;
+		}
+		
+		int minCost = Integer.MAX_VALUE; //최소 비용 저장을 위한 변수
+		
+		//다음 순열이 있는 한 경로에 대한 비용 계산
+		do {
+			//출발지로 도시 0으로 고정하기
+			if(city[0]!=0)
+				continue;
+			
+			boolean check = true;//올바른 경로인지 판단하기 위한 변수
+			int sum = 0;
+			
+			//경로를 이동하는 데 드는 총 비용 계산
+			for(int i=0; i<N-1; i++) {
+				int cost = w[city[i]][city[i+1]]; 
+				if(cost==0) {
+					check = false;
+					break;
+				}else {
+					sum += cost;
+				}
+			}
+			
+			//출발지로 돌아오기 위한 비용 추가
+			int cost = w[city[N-1]][city[0]];
+			if(cost==0) {
+				check = false;
+			}else {
+				sum += cost;
+			}
+				
+			if(check && sum < minCost)
+				minCost = sum;
+				
+		}while(next_permutation(city));
+		
+		System.out.print(minCost);
+	}
+	
+	//다음 순열을 계산하는 메소드
+	public static boolean next_permutation(int[] a) {
+		
+		//길이가 2보다 작으면 다음 순열 없으므로 false 리턴
+		if(a.length<2)
+			return false;
+		
+		//1. A[i-1]<A[i]인 가장 큰 i를 찾는다.
+		int i = a.length-1;
+		while(i>0 && a[i-1]>=a[i]) {
+			i--;
+		}
+		
+		//이미 모든 순열이 내림차순일 경우 다음 순열이 없고 이 때 i는 0이 되어있을 것이므로 false 반환
+		if(i==0)
+			return false;
+		
+		//2. i<=j이면서 A[i-1]<A[j]를 만족하는 가장 작은 A[j], 즉 가장 큰 j를 찾는다.
+		int j=a.length-1;
+		while(a[i-1]>=a[j])
+			j--;
+		
+		//3. A[i-1]과 A[j]를 swap한다.
+		int temp = a[i-1];
+		a[i-1] = a[j];
+		a[j] = temp;
+		
+		//4. A[i]부터 뒤로 있는 순열을 뒤집는다.
+		j=a.length-1;
+		while(i<j) {
+			temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;
+			
+			i++;
+			j--;
+		}
+		
+		return true;
+	}
+}
+~~~
+
+<br>
+
+도시의 총 갯수가 N개인 경우라면, N개는 비용이 겹치므로 제외하는 것이다. 이렇게 되면 총 연산횟수가 (기존 연산 횟수/N)이 된다. 원래 코드의 시간 복잡도가 O(N!*N)이었으므로, 위 알고리즘의 시간 복잡도는 더욱 N으로 나누면 더 간단한 O(N!)이 된다.
