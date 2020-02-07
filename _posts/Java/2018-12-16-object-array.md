@@ -1,7 +1,7 @@
 ---
 title: (Java) 객체 배열
 date: 2018-12-16T17:56:17+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

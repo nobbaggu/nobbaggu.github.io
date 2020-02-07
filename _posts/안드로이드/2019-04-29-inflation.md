@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 14. 인플레이션(Inflation)
 date: 2019-04-29T19:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

@@ -1,7 +1,7 @@
 ---
 title: (Java) 자료형(1) - 정수와 실수
 date: 2018-12-14T15:41:01+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

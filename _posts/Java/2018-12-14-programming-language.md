@@ -1,7 +1,7 @@
 ---
 title: (Java) 프로그래밍 언어란?
 date: 2018-12-14T12:43:10+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

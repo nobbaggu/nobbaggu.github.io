@@ -2,7 +2,7 @@
 id: 649
 title: (머신러닝) 17. Unsupervised Learning - K-Means Algorithm
 date: 2018-08-29T21:59:44+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

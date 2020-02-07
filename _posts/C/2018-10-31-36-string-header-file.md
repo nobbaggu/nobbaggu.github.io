@@ -1,7 +1,7 @@
 ---
 title: (C언어) 36. <string.h> 헤더파일이 제공하는 문자열 관련 함수들
 date: 2018-10-31T02:01:44+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 image: /images/2018/09/C-썸네일.jpg

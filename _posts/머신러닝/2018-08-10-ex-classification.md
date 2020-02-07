@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) (ex) classification
 date: 2018-08-10T05:35:01+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

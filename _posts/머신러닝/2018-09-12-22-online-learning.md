@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 22. Online Learning
 date: 2018-09-12T21:08:12+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

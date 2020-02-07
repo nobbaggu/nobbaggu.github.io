@@ -1,7 +1,7 @@
 ---
 title: (Java) 추상 클래스
 date: 2018-12-18T21:10:27+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

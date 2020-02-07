@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 10. Multiclass Classfication
 date: 2018-08-10T02:00:10+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

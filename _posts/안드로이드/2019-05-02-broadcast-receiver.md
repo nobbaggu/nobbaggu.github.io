@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 20. 브로드캐스트 수신자(Broadcast Receiver)
 date: 2019-05-02T19:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

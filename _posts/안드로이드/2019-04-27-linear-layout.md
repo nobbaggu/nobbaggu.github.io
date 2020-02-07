@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 6. 리니어 레이아웃(LinearLayout)
 date: 2019-04-27T12:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

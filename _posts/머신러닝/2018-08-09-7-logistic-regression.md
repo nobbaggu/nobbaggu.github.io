@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 7. Logistic Regression
 date: 2018-08-09T17:11:03+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

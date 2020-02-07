@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 9. 스크롤 뷰(ScrollView)
 date: 2019-04-28T11:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

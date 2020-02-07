@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 45. 서피스뷰(Surface View)
 date: 2019-05-21T18:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

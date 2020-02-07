@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 11. 신경망 (Neural Network)
 date: 2018-08-10T08:36:24+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 29. 페이지 슬라이딩(Page Sliding)
 date: 2019-05-08T21:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

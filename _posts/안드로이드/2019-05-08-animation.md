@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 28. 애니메이션(Animation)
 date: 2019-05-08T20:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

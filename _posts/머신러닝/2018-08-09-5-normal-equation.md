@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 5. Normal Equation
 date: 2018-08-09T06:00:19+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

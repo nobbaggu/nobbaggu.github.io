@@ -1,7 +1,7 @@
 ---
 title: (Java) 예외 throws
 date: 2018-12-30T17:26:45+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

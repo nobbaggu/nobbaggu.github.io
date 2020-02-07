@@ -1,7 +1,7 @@
 ---
 title: (Java) File 입출력
 date: 2018-12-31T16:16:54+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

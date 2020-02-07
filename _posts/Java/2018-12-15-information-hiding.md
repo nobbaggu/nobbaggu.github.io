@@ -1,7 +1,7 @@
 ---
 title: (Java) 정보 은닉
 date: 2018-12-15T12:18:42+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

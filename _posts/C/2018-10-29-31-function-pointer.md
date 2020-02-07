@@ -1,7 +1,7 @@
 ---
 title: (C언어) 31. 함수 포인터
 date: 2018-10-29T22:21:38+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 image: /images/2018/09/C-썸네일.jpg

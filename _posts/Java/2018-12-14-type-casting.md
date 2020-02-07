@@ -1,7 +1,7 @@
 ---
 title: (Java) 자료형(3) - 형 변환
 date: 2018-12-14T16:56:59+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

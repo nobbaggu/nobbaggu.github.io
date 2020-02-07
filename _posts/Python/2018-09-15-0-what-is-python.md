@@ -1,7 +1,7 @@
 ---
 title: (Python) 0. 파이썬(Python) 개요
 date: 2018-09-15T01:29:54+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Python
 image: /images/2018/09/파이썬-썸네일.jpg

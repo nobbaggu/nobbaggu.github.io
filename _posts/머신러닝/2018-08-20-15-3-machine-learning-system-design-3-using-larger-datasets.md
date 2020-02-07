@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 15-3. Machine Learning System Design - Using Larger Datasets
 date: 2018-08-20T19:58:07+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

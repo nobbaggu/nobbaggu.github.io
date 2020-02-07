@@ -1,7 +1,7 @@
 ---
 title: (Java) 배열 복사
 date: 2018-12-16T18:54:18+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

@@ -1,7 +1,7 @@
 ---
 title: (C언어) 27. 포인터와 함수(2)
 date: 2018-10-12T02:13:52+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 image: /images/2018/09/C-썸네일.jpg

@@ -1,7 +1,7 @@
 ---
 title: (Python) 13. 사용자 입출력
 date: 2018-09-20T20:37:26+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Python
 image: /images/2018/09/파이썬-썸네일.jpg

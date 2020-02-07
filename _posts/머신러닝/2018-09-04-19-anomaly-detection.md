@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 19. Anomaly Detection
 date: 2018-09-04T22:04:26+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

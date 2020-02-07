@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 44. 페인트보드 만들기
 date: 2019-05-19T18:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 14-2. Bias vs Variance
 date: 2018-08-19T01:08:37+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) Ensemble - Boosting
 date: 2018-10-28T20:06:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

@@ -1,7 +1,7 @@
 ---
 title: (Java) 보조 스트림
 date: 2018-12-31T19:14:46+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

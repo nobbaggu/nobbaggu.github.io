@@ -1,7 +1,7 @@
 ---
 title: (Java) 객체 지향 프로그래밍이란?
 date: 2018-12-14T21:00:30+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

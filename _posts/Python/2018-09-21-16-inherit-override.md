@@ -1,7 +1,7 @@
 ---
 title: (Python) 16. 클래스 상속과 메소드 오버라이딩
 date: 2018-09-21T19:48:43+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Python
 image: /images/2018/09/파이썬-썸네일.jpg

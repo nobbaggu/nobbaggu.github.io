@@ -1,7 +1,7 @@
 ---
 title: (C언어) 24. 포인터와 배열
 date: 2018-10-09T17:32:05+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 tags:

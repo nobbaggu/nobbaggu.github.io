@@ -1,7 +1,7 @@
 ---
 title: (C언어) 6. 자료형 (1) - 숫자, 문자
 date: 2018-09-29T22:00:31+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 image: /images/2018/09/C-썸네일.jpg

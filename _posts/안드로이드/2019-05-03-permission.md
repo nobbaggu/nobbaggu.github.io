@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 21. 위험권한 부여
 date: 2019-05-03T19:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

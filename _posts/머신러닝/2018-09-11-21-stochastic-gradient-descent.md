@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 21. Stochastic Gradient Descent
 date: 2018-09-11T22:43:27+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

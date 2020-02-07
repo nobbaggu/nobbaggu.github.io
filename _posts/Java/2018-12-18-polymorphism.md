@@ -1,7 +1,7 @@
 ---
 title: (Java) 다형성
 date: 2018-12-18T00:44:31+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) Decision Tree
 date: 2018-10-28T15:11:30+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

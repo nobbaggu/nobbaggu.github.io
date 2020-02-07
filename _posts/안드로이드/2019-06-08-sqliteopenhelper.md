@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 54. SQLiteOpenHelper 클래스
 date: 2019-06-08T15:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

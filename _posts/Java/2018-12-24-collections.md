@@ -1,7 +1,7 @@
 ---
 title: (Java) 컬렉션 프레임워크
 date: 2018-12-24T15:58:14+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

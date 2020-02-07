@@ -1,7 +1,7 @@
 ---
 title: (C언어) 2. 컴퓨터와 2진수
 date: 2018-09-27T20:26:02+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 tags:

@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 8. Regularization
 date: 2018-08-09T20:00:14+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

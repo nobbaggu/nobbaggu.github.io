@@ -1,7 +1,7 @@
 ---
 title: (Java) 조건문(2) - 조건 연산자
 date: 2018-12-14T19:38:17+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) Titanic Survival Prediction
 date: 2018-10-07T14:03:36+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

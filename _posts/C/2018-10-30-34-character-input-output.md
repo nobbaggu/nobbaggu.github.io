@@ -1,7 +1,7 @@
 ---
 title: (C언어) 34. 문자 입출력 함수들
 date: 2018-10-30T22:41:16+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 image: /images/2018/09/C-썸네일.jpg

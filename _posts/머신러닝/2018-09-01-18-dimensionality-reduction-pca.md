@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 18. Dimensionality Reduction - PCA
 date: 2018-09-01T14:32:22+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

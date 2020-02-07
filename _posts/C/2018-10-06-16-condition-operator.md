@@ -1,7 +1,7 @@
 ---
 title: (C언어) 16. 조건문(2) - 조건 연산자(삼항 연산자)
 date: 2018-10-06T11:33:29+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 tags:

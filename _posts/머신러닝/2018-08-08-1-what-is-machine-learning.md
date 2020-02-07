@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 1. 머신러닝이란?
 date: 2018-08-08T20:12:22+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

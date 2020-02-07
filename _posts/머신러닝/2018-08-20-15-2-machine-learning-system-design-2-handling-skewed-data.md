@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 15-2. Machine Learning System Design - Handling Skewed Data
 date: 2018-08-20T18:40:53+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

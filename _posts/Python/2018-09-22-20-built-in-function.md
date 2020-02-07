@@ -1,7 +1,7 @@
 ---
 title: (Python) 20. 파이썬의 유용한 내장함수들
 date: 2018-09-22T15:13:42+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Python
 image: /images/2018/09/파이썬-썸네일.jpg

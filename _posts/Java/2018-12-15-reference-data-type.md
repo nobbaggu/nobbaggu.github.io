@@ -1,7 +1,7 @@
 ---
 title: (Java) 참조 자료형
 date: 2018-12-15T11:48:46+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

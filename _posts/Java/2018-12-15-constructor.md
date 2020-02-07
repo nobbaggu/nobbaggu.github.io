@@ -1,7 +1,7 @@
 ---
 title: (Java) 생성자
 date: 2018-12-15T11:26:27+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

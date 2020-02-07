@@ -1,7 +1,7 @@
 ---
 title: (Java) 변수 수명과 유효범위
 date: 2018-12-15T17:46:25+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

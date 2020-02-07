@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) Iris-flower Classification
 date: 2018-10-06T10:43:37+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

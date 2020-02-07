@@ -1,7 +1,7 @@
 ---
 title: (Python) 5. 자료형(5) -딕셔너리(Dictionary)
 date: 2018-09-16T18:20:36+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Python
 image: /images/2018/09/파이썬-썸네일.jpg

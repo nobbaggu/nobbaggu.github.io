@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 10. 프레임 레이아웃(FrameLayout)
 date: 2019-04-28T12:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

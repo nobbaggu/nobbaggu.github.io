@@ -1,7 +1,7 @@
 ---
 title: (Java) 메소드 오버라이딩
 date: 2018-12-17T22:15:22+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

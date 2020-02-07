@@ -1,7 +1,7 @@
 ---
 title: (Java) 상속
 date: 2018-12-17T20:55:13+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

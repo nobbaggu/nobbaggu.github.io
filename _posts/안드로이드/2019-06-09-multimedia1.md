@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 55. 멀티미디어1 - 오디오와 동영상 재생
 date: 2019-06-09T13:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

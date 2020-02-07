@@ -1,7 +1,7 @@
 ---
 title: (Java) List 인터페이스
 date: 2018-12-24T18:13:01+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

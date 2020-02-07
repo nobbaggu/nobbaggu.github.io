@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) (ex) linear regression1
 date: 2018-08-09T11:00:58+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

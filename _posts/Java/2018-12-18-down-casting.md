@@ -1,7 +1,7 @@
 ---
 title: (Java) 다운캐스팅
 date: 2018-12-18T20:06:09+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

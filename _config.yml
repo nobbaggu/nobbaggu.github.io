@@ -5,16 +5,16 @@ permalink: /:year/:month/:day/:title/
 #relative_permalinks: true
 
 # Setup
-title:               SW NOMAD의 공부 기록 블로그
+title:               공부 기록 블로그
 tagline:             '취미로 개발하자'
-url:                 https://swnomad.github.io
+url:                 https://nobbaggu.github.io
 baseurl:             ''
 paginate:            5
 
 # About/contact
 author:
-  name:              SW NOMAD
-  url:               https://swnomad.github.io
+  name:              nobbaggu
+  url:               https://nobbaggu.github.io
 
 # Custom vars
 version:             1.0.0

@@ -1,7 +1,7 @@
 ---
 title: (C언어) 25. 포인터와 문자열
 date: 2018-10-09T19:41:20+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 image: /images/2018/09/C-썸네일.jpg

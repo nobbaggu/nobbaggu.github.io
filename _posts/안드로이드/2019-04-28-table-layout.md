@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 8. 테이블 레이아웃(TableLayout)
 date: 2019-04-28T10:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

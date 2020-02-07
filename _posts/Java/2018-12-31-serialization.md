@@ -1,7 +1,7 @@
 ---
 title: (Java) 객체 직렬화
 date: 2018-12-31T20:28:32+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: Java
 image: /images/2018/12/Java-thumbnail.jpg

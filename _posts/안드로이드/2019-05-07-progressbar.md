@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 26. 프로그레스바(ProgressBar)
 date: 2019-05-07T20:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

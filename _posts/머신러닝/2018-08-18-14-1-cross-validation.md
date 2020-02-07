@@ -1,7 +1,7 @@
 ---
 title: (머신러닝) 14-1. Cross Validation
 date: 2018-08-18T21:06:53+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 머신러닝
 image: /images/2018/08/machine-learning.jpg

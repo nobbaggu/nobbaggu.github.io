@@ -1,7 +1,7 @@
 ---
 title: (C언어) 9. 2진수와 16진수
 date: 2018-10-01T06:00:21+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 tags:

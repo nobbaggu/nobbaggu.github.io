@@ -1,7 +1,7 @@
 ---
 title: (안드로이드) 40. 복합 위젯(Composite Widget)
 date: 2019-05-13T21:00:00+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: 안드로이드
 tags:

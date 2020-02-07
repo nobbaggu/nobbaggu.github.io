@@ -1,7 +1,7 @@
 ---
 title: (C언어) 20. 함수(3) - 전역변수
 date: 2018-10-06T21:23:07+09:00
-author: SWnomad
+author: nobbaggu
 layout: post
 categories: C
 tags:
