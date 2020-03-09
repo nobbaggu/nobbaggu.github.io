@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,210 +10682,195 @@
 
     <span class="post-date">27 Dec 2018</span>
 
-    자바는 어떤 기능을 구현하기 위해 메소드를 정의하여 사용한다. 그런데 이를 위해서는 클래스가 먼저 있어야하고 클래스를 기반으로 객체를 만들어서 메소드를 호출해야만한다. C언어처럼 함수의 구현과 호출만으로는 기능을 구현할 수 없다.
+    <p>자바는 어떤 기능을 구현하기 위해 메소드를 정의하여 사용한다. 그런데 이를 위해서는 클래스가 먼저 있어야하고 클래스를 기반으로 객체를 만들어서 메소드를 호출해야만한다. C언어처럼 함수의 구현과 호출만으로는 기능을 구현할 수 없다.</p>
 
-그런데 자바8부터는 함수형 프로그래밍 방식인 '람다식'을 지원한다.
+<p>그런데 자바8부터는 함수형 프로그래밍 방식인 ‘람다식’을 지원한다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 람다식 표현방법
+<h1 id="1-람다식-표현방법">1. 람다식 표현방법</h1>
 
-* * *
+<hr />
 
-일반적인 함수의 정의를 람다식으로 바꾸면 다음과 같이 쓸 수 있다.
+<p>일반적인 함수의 정의를 람다식으로 바꾸면 다음과 같이 쓸 수 있다.</p>
 
-~~~ java
-//C언어에서의 함수 선언
-int add(int x, int y) {                            //자바 람다식 표현
-   return x+y;                            →       (int x, int y) -> {return x+y};
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//C언어에서의 함수 선언</span>
+<span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>                            <span class="c1">//자바 람다식 표현</span>
+   <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>                            <span class="err">→</span>       <span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">};</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-람다식은 (매개변수) ->{실행문}; 의 형태로 정의하여 사용한다.
+<p>람다식은 (매개변수) -&gt;{실행문}; 의 형태로 정의하여 사용한다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 문법
+<h1 id="2-문법">2. 문법</h1>
 
-* * *
+<hr />
 
-### 1) 매개변수 자료형 생략 가능
+<h3 id="1-매개변수-자료형-생략-가능">1) 매개변수 자료형 생략 가능</h3>
 
-~~~ java
-(int x, int y) -> {return x+y};      →      (x, y) -> {return x+y};
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">};</span>      <span class="err">→</span>      <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">};</span>
+</code></pre></div></div>
 
-위와 같이 매개변수의 자료형을 생략할 수 있다.
+<p>위와 같이 매개변수의 자료형을 생략할 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-### 2) 매개변수 하나인 경우 괄호 생략 가능
+<h3 id="2-매개변수-하나인-경우-괄호-생략-가능">2) 매개변수 하나인 경우 괄호 생략 가능</h3>
 
-~~~ java
-(x) -> {return 2*x};         →       x -> {return 2*x};
-(str) -> {System.out.println(str)}    →    str -> {System.out.println};
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">};</span>         <span class="err">→</span>       <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">};</span>
+<span class="o">(</span><span class="n">str</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">)}</span>    <span class="err">→</span>    <span class="n">str</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">};</span>
+</code></pre></div></div>
 
-매개변수가 둘 이상인 경우는 괄호 생략 불가능하다.
+<p>매개변수가 둘 이상인 경우는 괄호 생략 불가능하다.</p>
 
-&nbsp;
+<p> </p>
 
-### 3) 실행문이 하나인 경우 중괄호 생략 가능
+<h3 id="3-실행문이-하나인-경우-중괄호-생략-가능">3) 실행문이 하나인 경우 중괄호 생략 가능</h3>
 
-~~~ java
-str -> {System.out.println};      →     str -> System.out.println;
-<del>x -> {return 2*x};       →     x -> return 2*x;</del> //return문은 중괄호 생략 불가
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">};</span>      <span class="err">→</span>     <span class="n">str</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">;</span>
+<span class="o">&lt;</span><span class="n">del</span><span class="o">&gt;</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">};</span>       <span class="err">→</span>     <span class="n">x</span> <span class="o">-&gt;</span> <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">;&lt;/</span><span class="n">del</span><span class="o">&gt;</span> <span class="c1">//return문은 중괄호 생략 불가</span>
+</code></pre></div></div>
 
-실행문이 한 문장이면 중괄호가 생략 가능하다. 그러나 return으로 반환값을 반환해야 하는 경우는 안된다.
+<p>실행문이 한 문장이면 중괄호가 생략 가능하다. 그러나 return으로 반환값을 반환해야 하는 경우는 안된다.</p>
 
-&nbsp;
+<p> </p>
 
-### 4) 코드 구현부가 return문 한개라면 return 예약어 생략 가능
+<h3 id="4-코드-구현부가-return문-한개라면-return-예약어-생략-가능">4) 코드 구현부가 return문 한개라면 return 예약어 생략 가능</h3>
 
-~~~ java
-(x, y) -> {return x+y};    →     (x, y) -> x+y
-str -> return str.length();    →     str -> str.length()
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">};</span>    <span class="err">→</span>     <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+<span class="n">str</span> <span class="o">-&gt;</span> <span class="k">return</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>    <span class="err">→</span>     <span class="n">str</span> <span class="o">-&gt;</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()</span>
+</code></pre></div></div>
 
-코드 구현부가 return문 한개인 경우 return문을 생략하고 식만 쓸 수 있다.
+<p>코드 구현부가 return문 한개인 경우 return문을 생략하고 식만 쓸 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-# 3. 람다식 사용
+<h1 id="3-람다식-사용">3. 람다식 사용</h1>
 
-* * *
+<hr />
 
-~~~ java
-//람다식이 구현할 함수를 정의한 인터페이스 정의
-public interface MyNumber {
-   int sumCalc(int x, int y);
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//람다식이 구현할 함수를 정의한 인터페이스 정의</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyNumber</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="nf">sumCalc</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-public class Hello {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      MyNumber add = (x,y) -> x+y; //메소드를 구현할 람다식을 인터페이스형 참조변수에 저장
-      System.out.println(add.sumCalc(10,20)); //참조변수로 메소드 호출
-   }
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MyNumber</span> <span class="n">add</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span> <span class="c1">//메소드를 구현할 람다식을 인터페이스형 참조변수에 저장</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">add</span><span class="o">.</span><span class="na">sumCalc</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="mi">20</span><span class="o">));</span> <span class="c1">//참조변수로 메소드 호출</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-30
+<p>30</p>
 
+<p>람다식을 구현하기 위해서는 인터페이스를 만들고 추상메소드를 선언해야 한다. 이후 인터페이스형 참조변수에 추상메소드를 구현할 람다식을 저장하고 참조변수로 메소드를 호출하여 람다식을 사용할 수 있다.</p>
 
- 
+<p>람다식을 구현하기 위해서는 인터페이스 안에 메소드가 단 1개만 있어야한다. 2개이상의 메소드가 있으면 람다식이 구현할 메소드가 무엇인지 모호해진다.</p>
 
-람다식을 구현하기 위해서는 인터페이스를 만들고 추상메소드를 선언해야 한다. 이후 인터페이스형 참조변수에 추상메소드를 구현할 람다식을 저장하고 참조변수로 메소드를 호출하여 람다식을 사용할 수 있다.
+<p>람다식을 구현한 메소드에는 특별히 @FunctionalInterface라는 annotation을 사용할 수 있다. 이 애노테이션은 함수형 인터페이스라는 것을 알려주고 실수로 추가적인 메소드를 선언하면 컴파일 과정에서 오류를 잡아내어준다.</p>
 
-람다식을 구현하기 위해서는 인터페이스 안에 메소드가 단 1개만 있어야한다. 2개이상의 메소드가 있으면 람다식이 구현할 메소드가 무엇인지 모호해진다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nd">@FunctionalInterface</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyNumber</span> <span class="o">{</span> <span class="c1">//오류 발생</span>
+   <span class="kt">int</span> <span class="nf">sumCalc</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">);</span>
+   <span class="kt">int</span> <span class="nf">minusCalc</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-람다식을 구현한 메소드에는 특별히 @FunctionalInterface라는 annotation을 사용할 수 있다. 이 애노테이션은 함수형 인터페이스라는 것을 알려주고 실수로 추가적인 메소드를 선언하면 컴파일 과정에서 오류를 잡아내어준다.
+<p>필수는 아니지만 함수형 인터페이스에는 @FunctionalInterface 애노테이션을 사용하여 혹시모를 실수를 방지하는 것이 좋다.</p>
 
-~~~ java
-<strong>@FunctionalInterface</strong>
-public interface MyNumber { //오류 발생
-   int sumCalc(int x, int y);
-   int minusCalc(int x, int y);
-}
-~~~
+<p> </p>
 
-필수는 아니지만 함수형 인터페이스에는 @FunctionalInterface 애노테이션을 사용하여 혹시모를 실수를 방지하는 것이 좋다.
+<p> </p>
 
-&nbsp;
+<h1 id="4-객체지향-vs-람다식">4. 객체지향 vs 람다식</h1>
 
-&nbsp;
+<hr />
 
-# 4. 객체지향 vs 람다식
+<p>람다식을 사용하면 객체지향에서 사용되는 코드보다 적은 양의 코드로 같은 기능을 구현할 수 있는 경우가 있다.</p>
 
-* * *
+<p>다음 인터페이스를 구현하는 경우를 생각해보자.</p>
 
-람다식을 사용하면 객체지향에서 사용되는 코드보다 적은 양의 코드로 같은 기능을 구현할 수 있는 경우가 있다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@FunctionalInterface</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyNumber</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="nf">sumCalc</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-다음 인터페이스를 구현하는 경우를 생각해보자.
+<p> </p>
 
-~~~ java
-@FunctionalInterface
-public interface MyNumber {
-   int sumCalc(int x, int y);
-}
-~~~
+<h3 id="1-객체지향으로-구현">1) 객체지향으로 구현</h3>
 
-&nbsp;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//인터페이스 구현 클래스 생성</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyNumberImpl</span> <span class="kd">implements</span> <span class="nc">MyNumber</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">sumCalc</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-### 1) 객체지향으로 구현
+<p> </p>
 
-~~~ java
-//인터페이스 구현 클래스 생성
-public class MyNumberImpl implements MyNumber {
-   public int sumCalc(int x, int y) {
-      return x+y;
-   }
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMyNumber</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MyNumberImpl</span> <span class="n">calc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyNumberImpl</span><span class="o">();</span> <span class="c1">//객체 생성</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">calc</span><span class="o">.</span><span class="na">sumCalc</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span><span class="c1">// 메소드 호출</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-public class TestMyNumber {
-   public static void main(String[] args) {
-      MyNumberImpl calc = new MyNumberImpl(); //객체 생성
-      System.out.println(calc.sumCalc(10, 20));// 메소드 호출
-   }
-}
-~~~
+<h3 id="2-람다식으로-구현">2) 람다식으로 구현</h3>
 
-&nbsp;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyNumberLambda</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MyNumber</span> <span class="n">add</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">)-&gt;</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span> <span class="c1">//인터페이스형 참조변수에 메소드를 구현할 람다식 저장</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">add</span><span class="o">.</span><span class="na">sumCalc</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span> <span class="c1">//참조변수로 메소드 호출</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-### 2) 람다식으로 구현
+<p>위의 경우는 람다식으로 구현하는 것이 훨씬 간결해진다.</p>
 
-~~~ java
-public class MyNumberLambda {
-   public static void main(String[] args) {
-      MyNumber add = (x,y)->x+y; //인터페이스형 참조변수에 메소드를 구현할 람다식 저장
-      System.out.println(add.sumCalc(10, 20)); //참조변수로 메소드 호출
-   }
-}
-~~~
+<p>무조건 간결하게 되는 것이 가능한 경우라고해서 람다식을 사용하는 것이 옳은 것은 아니지만 람다식을 적재적소에 잘 사용하면 간결하고 가독성 높은 코드를 작성하는데 도움을 준다.</p>
 
-위의 경우는 람다식으로 구현하는 것이 훨씬 간결해진다.
+<p> </p>
 
-무조건 간결하게 되는 것이 가능한 경우라고해서 람다식을 사용하는 것이 옳은 것은 아니지만 람다식을 적재적소에 잘 사용하면 간결하고 가독성 높은 코드를 작성하는데 도움을 준다.
+<h1 id="5-람다식의-비밀">5. 람다식의 비밀</h1>
 
-&nbsp;
+<hr />
 
-# 5. 람다식의 비밀
+<p>객체지향 프로그래밍인 자바가 객체 생성 없이 메스드를 호출할 수 있었던 것 이유가 무엇일까?</p>
 
-* * *
+<p>사실 객체 생성 없이 호출했던 것이 아니다. 람다식으로 메소드를 구현하여 호출하면 컴퓨터가 알아서 익명 클래스를 만들고 객체를 생성해서 람다식을 실행시켰던 거다.</p>
 
-객체지향 프로그래밍인 자바가 객체 생성 없이 메스드를 호출할 수 있었던 것 이유가 무엇일까?
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//익명 클래스 객체 생성</span>
+<span class="nc">MyNumber</span> <span class="n">add</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyNumber</span><span class="o">(){</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">sumCalc</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span>
+      <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">};</span>
+</code></pre></div></div>
 
-사실 객체 생성 없이 호출했던 것이 아니다. 람다식으로 메소드를 구현하여 호출하면 컴퓨터가 알아서 익명 클래스를 만들고 객체를 생성해서 람다식을 실행시켰던 거다.
+<p> </p>
 
-~~~ java
-//익명 클래스 객체 생성
-MyNumber add = new MyNumber(){
-   @Override
-   public int sumCalc(int x, int y){
-      return x+y;
-   }
-};
-~~~
+<p><strong>람다식은 인터페이스형의 참조변수에 저장될 수 있는 걸 알았다. 그렇다면 이를 응용하면 참조변수 자료형으로 매개변수로 전달도 될 것이고 참조변수 자료형의 반환형을 가진 메소드의 반환값으로 사용될 수도 있다.</strong></p>
 
-&nbsp;
-
-**람다식은 인터페이스형의 참조변수에 저장될 수 있는 걸 알았다. 그렇다면 이를 응용하면 참조변수 자료형으로 매개변수로 전달도 될 것이고 참조변수 자료형의 반환형을 가진 메소드의 반환값으로 사용될 수도 있다.**
   </div>
   
   <div class="post">
@@ -10921,311 +10882,284 @@ MyNumber add = new MyNumber(){
 
     <span class="post-date">27 Dec 2018</span>
 
-    내부 클래스는 클래스 안에 있는 클래스이다. 중첩 클래스라고도 부른다.
+    <p>내부 클래스는 클래스 안에 있는 클래스이다. 중첩 클래스라고도 부른다.</p>
 
-변수에는 인스턴스 변수(멤버 변수), static 변수, 지역 변수(메소드 내부 변수)가 있다. 이와 같이 내부 클래스에도 인스턴스 내부 클래스, static 내부 클래스, 지역 내부 클래스 등이 있다. 여기에 추가적으로 익명 클래스도 있다.
+<p>변수에는 인스턴스 변수(멤버 변수), static 변수, 지역 변수(메소드 내부 변수)가 있다. 이와 같이 내부 클래스에도 인스턴스 내부 클래스, static 내부 클래스, 지역 내부 클래스 등이 있다. 여기에 추가적으로 익명 클래스도 있다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 인스턴스 내부클래스
+<h1 id="1-인스턴스-내부클래스">1. 인스턴스 내부클래스</h1>
 
-* * *
+<hr />
 
-인스턴스 변수의 선언 위치와 같은 곳에 선언한다.
+<p>인스턴스 변수의 선언 위치와 같은 곳에 선언한다.</p>
 
-인스턴스 내부 클래스는 이 클래스를 감싸고 있는 클래스에서만 사용하기 위해 만드는 것이 보통이다. 따라서 감싸고 있는 클래스 이외의 다른 클래스에서의 사용을 막기 위해서 내부 클래스를 private로 선언하는 것이 일반적이다.
+<p>인스턴스 내부 클래스는 이 클래스를 감싸고 있는 클래스에서만 사용하기 위해 만드는 것이 보통이다. 따라서 감싸고 있는 클래스 이외의 다른 클래스에서의 사용을 막기 위해서 내부 클래스를 private로 선언하는 것이 일반적이다.</p>
 
-또한 인스턴스 내부클래스는 외부클래스 생성 후 사용할 수 있다.
+<p>또한 인스턴스 내부클래스는 외부클래스 생성 후 사용할 수 있다.</p>
 
-~~~ java
-package innerclass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
 
-class OutClass {
-   private int num = 10;
-   private static int sNum = 20;
+<span class="kd">class</span> <span class="nc">OutClass</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
    
-   private InClass inClass; //내부 클래스 참조 변수 선언만 해놓은 후
+   <span class="kd">private</span> <span class="nc">InClass</span> <span class="n">inClass</span><span class="o">;</span> <span class="c1">//내부 클래스 참조 변수 선언만 해놓은 후</span>
    
-   public OutClass() {
-      inClass = new InClass(); //외부 클래스 생성자 만들어진 이후 생성
-   }
+   <span class="kd">public</span> <span class="nf">OutClass</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">inClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">InClass</span><span class="o">();</span> <span class="c1">//외부 클래스 생성자 만들어진 이후 생성</span>
+   <span class="o">}</span>
    
-   class InClass{
-      int inNum = 100;
-      //static int sInNum = 200; //외부클래스 객체가 먼저 만들어져야 InClass객체가 만들어질 수 있으므로 static변수는 불가능
+   <span class="kd">class</span> <span class="nc">InClass</span><span class="o">{</span>
+      <span class="kt">int</span> <span class="n">inNum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+      <span class="c1">//static int sInNum = 200; //외부클래스 객체가 먼저 만들어져야 InClass객체가 만들어질 수 있으므로 static변수는 불가능</span>
       
-      void inTest() {
-         System.out.println("OutClass num = "+num+ "(instance variable of outer class"); //외부 클래스 인스턴스 변수 사용 가능
-         System.out.println("OutClass sNum = "+sNum+ "(static variable of outer class"); //외부 클래스 static 변수 사용 가능
-      }
-   }
+      <span class="kt">void</span> <span class="nf">inTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass num = "</span><span class="o">+</span><span class="n">num</span><span class="o">+</span> <span class="s">"(instance variable of outer class"</span><span class="o">);</span> <span class="c1">//외부 클래스 인스턴스 변수 사용 가능</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span> <span class="s">"(static variable of outer class"</span><span class="o">);</span> <span class="c1">//외부 클래스 static 변수 사용 가능</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
    
-   //외부 클래스에서는 내부클래스의 메소드 호출 가능
-   public void usingClass() {
-      inClass.inTest();
-   }
+   <span class="c1">//외부 클래스에서는 내부클래스의 메소드 호출 가능</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">usingClass</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">inClass</span><span class="o">.</span><span class="na">inTest</span><span class="o">();</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package innerclass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
 
-public class InnerTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InnerTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      OutClass outClass = new OutClass();
-      System.out.println("Call inner class method using outter class");  
-      outClass.usingClass();
+      <span class="nc">OutClass</span> <span class="n">outClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OutClass</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Call inner class method using outter class"</span><span class="o">);</span>  
+      <span class="n">outClass</span><span class="o">.</span><span class="na">usingClass</span><span class="o">();</span>
       
-   }
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Call inner class method using outter class
+<p>Call inner class method using outter class</p>
 
+<p>OutClass num = 10(instance variable of outer class</p>
 
-OutClass num = 10(instance variable of outer class
+<p>OutClass sNum = 20(static variable of outer class</p>
 
+<p>실행결과를 보면 알 수 있듯 내부 클래스 내부에서는 외부 클래스의 인스턴스 변수와 정적 변수 모두 사용할 수 있다.</p>
 
-OutClass sNum = 20(static variable of outer class
+<p> </p>
 
+<p> </p>
 
- 
+<h1 id="2-static-내부클래스">2. static 내부클래스</h1>
 
-실행결과를 보면 알 수 있듯 내부 클래스 내부에서는 외부 클래스의 인스턴스 변수와 정적 변수 모두 사용할 수 있다.
+<hr />
 
-&nbsp;
+<p>인스턴스 내부클래스는 외부클래스 생성 이전에 사용할 수 없고 static변수의 선언도 불가능했다.</p>
 
-&nbsp;
+<p>외부클래스 생성 이전에도 사용이 필요한 경우 static 내부클래스를 사용하면 된다.</p>
 
-# 2. static 내부클래스
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
 
-* * *
-
-인스턴스 내부클래스는 외부클래스 생성 이전에 사용할 수 없고 static변수의 선언도 불가능했다.
-
-외부클래스 생성 이전에도 사용이 필요한 경우 static 내부클래스를 사용하면 된다.
-
-~~~ java
-package innerclass;
-
-class OutClass {
-   private int num = 10;
-   private static int sNum = 20;
+<span class="kd">class</span> <span class="nc">OutClass</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
    
-   static class InStaticClass{
-      int inNum = 100;
-      static int sInNum = 200;
+   <span class="kd">static</span> <span class="kd">class</span> <span class="nc">InStaticClass</span><span class="o">{</span>
+      <span class="kt">int</span> <span class="n">inNum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+      <span class="kd">static</span> <span class="kt">int</span> <span class="n">sInNum</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span>
       
-      void inTest() {
-         System.out.println("InStaticClass inNum = "+inNum+"(instance variable of inner class)");
-         System.out.println("InStaticClass sInNum = "+sInNum+"(static variable of inner class)");
-         System.out.println("OutClass sNum = "+sNum+"(static variable of outer class)");
+      <span class="kt">void</span> <span class="nf">inTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass inNum = "</span><span class="o">+</span><span class="n">inNum</span><span class="o">+</span><span class="s">"(instance variable of inner class)"</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass sInNum = "</span><span class="o">+</span><span class="n">sInNum</span><span class="o">+</span><span class="s">"(static variable of inner class)"</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span><span class="s">"(static variable of outer class)"</span><span class="o">);</span>
          
-         //내부클래스 객체가 외부클래스 객체와 num보다 빨리 생성 가능하므로 외부 인스턴스 변수 사용 불가능
-         //System.out.println("OutClass sNum = "+num+"(instance variable of outer class)");
-      }
+         <span class="c1">//내부클래스 객체가 외부클래스 객체와 num보다 빨리 생성 가능하므로 외부 인스턴스 변수 사용 불가능</span>
+         <span class="c1">//System.out.println("OutClass sNum = "+num+"(instance variable of outer class)");</span>
+      <span class="o">}</span>
       
-      static void sTest() {
-         //static 메소드 이므로 외부클래스, 내부클래스 static변수 사용 가능
-         System.out.println("InStaticClass sInNum = "+sInNum+"(static variable of inner class)");
-         System.out.println("OutClass sNum = "+sNum+"(static variable of outer class)");
-      }
+      <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="c1">//static 메소드 이므로 외부클래스, 내부클래스 static변수 사용 가능</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass sInNum = "</span><span class="o">+</span><span class="n">sInNum</span><span class="o">+</span><span class="s">"(static variable of inner class)"</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span><span class="s">"(static variable of outer class)"</span><span class="o">);</span>
+      <span class="o">}</span>
       
-   }
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package innerclass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
 
-public class InnerTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InnerTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      //외부클래스 객체 생성 없이 static 내부클래스 객체 생성
-      OutClass.InStaticClass sInClass = new OutClass.InStaticClass();
+      <span class="c1">//외부클래스 객체 생성 없이 static 내부클래스 객체 생성</span>
+      <span class="nc">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span> <span class="n">sInClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span><span class="o">();</span>
       
-      System.out.println("=====Call method of InStaticClass=====");
-      sInClass.inTest();
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=====Call method of InStaticClass====="</span><span class="o">);</span>
+      <span class="n">sInClass</span><span class="o">.</span><span class="na">inTest</span><span class="o">();</span>
       
-      System.out.println();
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
       
-      System.out.println("=====Call static method of InStaticClass=====");
-      //클래스 이름으로 static메소드 사용 가능
-      OutClass.InStaticClass.sTest();
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=====Call static method of InStaticClass====="</span><span class="o">);</span>
+      <span class="c1">//클래스 이름으로 static메소드 사용 가능</span>
+      <span class="nc">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span><span class="o">.</span><span class="na">sTest</span><span class="o">();</span>
       
-   }
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-=====Call method of InStaticClass=====
+<p>=====Call method of InStaticClass=====</p>
 
+<p>InStaticClass inNum = 100(instance variable of inner class)</p>
 
-InStaticClass inNum = 100(instance variable of inner class)
+<p>InStaticClass sInNum = 200(static variable of inner class)</p>
 
+<p>OutClass sNum = 20(static variable of outer class)</p>
 
-InStaticClass sInNum = 200(static variable of inner class)
+<p>=====Call static method of InStaticClass=====</p>
 
+<p>InStaticClass sInNum = 200(static variable of inner class)</p>
 
-OutClass sNum = 20(static variable of outer class)
+<p>OutClass sNum = 20(static variable of outer class)</p>
 
+<p>static 내부클래스의 일반 메소드는 외부 클래스의 일반 변수를 사용할 수 없다. 왜냐하면 static 내부클래스의 인스턴스가 만들어지면 일반 메소드를 사용할 수 있는데 이 시기가 외부클래스의 생성, 그에 따른 외부 클래스의 멤버변수의 생성 시기보다 빠를 수 있기 때문이다.</p>
 
+<p>당연히 static 내부클래스의 static메소드는 클래스 생성 이전부터 메모리에 로드되므로 외부, 내부클래스에 상관없이 오직 static변수만 사용할 수 있다.</p>
 
+<p> </p>
 
-=====Call static method of InStaticClass=====
+<p> </p>
 
+<h1 id="3-지역-내부클래스">3. 지역 내부클래스</h1>
 
-InStaticClass sInNum = 200(static variable of inner class)
+<hr />
 
+<p>지역변수는 함수(메소드)내에서만 정의하여 사용하는 변수이다. 지역 내부클래스는 이름대로 메소드 내부에 선언한다. 당연히 메소드 내부에서만 사용 가능하다.</p>
 
-OutClass sNum = 20(static variable of outer class)
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
 
-static 내부클래스의 일반 메소드는 외부 클래스의 일반 변수를 사용할 수 없다. 왜냐하면 static 내부클래스의 인스턴스가 만들어지면 일반 메소드를 사용할 수 있는데 이 시기가 외부클래스의 생성, 그에 따른 외부 클래스의 멤버변수의 생성 시기보다 빠를 수 있기 때문이다.
+<span class="kn">import</span> <span class="nn">java.lang.Runnable</span><span class="o">;</span>
 
-당연히 static 내부클래스의 static메소드는 클래스 생성 이전부터 메모리에 로드되므로 외부, 내부클래스에 상관없이 오직 static변수만 사용할 수 있다.
-
-&nbsp;
-
-&nbsp;
-
-# 3. 지역 내부클래스
-
-* * *
-
-지역변수는 함수(메소드)내에서만 정의하여 사용하는 변수이다. 지역 내부클래스는 이름대로 메소드 내부에 선언한다. 당연히 메소드 내부에서만 사용 가능하다.
-
-~~~ java
-package innerclass;
-
-import java.lang.Runnable;
-
-public class Outer {
-   int outNum = 10;
-   static int sNum = 20;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Outer</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">outNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+   <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
    
-   Runnable getRunnable(int i) {
-      int num = 100;
+   <span class="nc">Runnable</span> <span class="nf">getRunnable</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
       
-      //getRunnable 메소드 내부에 Runnable 인터페이스를 구현하는 MyRunnable 클래스 정의
-      class MyRunnable implements Runnable{
-         int localNum = 10;
+      <span class="c1">//getRunnable 메소드 내부에 Runnable 인터페이스를 구현하는 MyRunnable 클래스 정의</span>
+      <span class="kd">class</span> <span class="nc">MyRunnable</span> <span class="kd">implements</span> <span class="nc">Runnable</span><span class="o">{</span>
+         <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
          
-         @Override
-         public void run() {
-            //num = 200; //오류
-            //i = 20;  //오류
-            System.out.println("i = " +i);
-            System.out.println("num = "+num);
-            System.out.println("localNum = "+localNum);
-            System.out.println("outNum= "+outNum);
-            System.out.println("Outer.sNum ="+Outer.sNum);
-         }
-      }
+         <span class="nd">@Override</span>
+         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="c1">//num = 200; //오류</span>
+            <span class="c1">//i = 20;  //오류</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"i = "</span> <span class="o">+</span><span class="n">i</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="nc">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
       
-      return new MyRunnable(); //getRunnable 메소드의 반환값(객체)
-   }
-}
-~~~
+      <span class="k">return</span> <span class="k">new</span> <span class="nf">MyRunnable</span><span class="o">();</span> <span class="c1">//getRunnable 메소드의 반환값(객체)</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package innerclass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
 
-public class LocalInnerTest {
-   public static void main(String[] args) {
-      Outer out = new Outer(); //외부 클래스 객체 생성
-      Runnable runner = out.getRunnable(1); //getRunnable()호출이 끝
-      runner.run(); //여기서 getRunnable(1)의 매개변수 1이 사용(출력)됨
-   }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocalInnerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Outer</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Outer</span><span class="o">();</span> <span class="c1">//외부 클래스 객체 생성</span>
+      <span class="nc">Runnable</span> <span class="n">runner</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">getRunnable</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">//getRunnable()호출이 끝</span>
+      <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">();</span> <span class="c1">//여기서 getRunnable(1)의 매개변수 1이 사용(출력)됨</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-i = 1
+<p>i = 1</p>
 
+<p>num = 100</p>
 
-num = 100
+<p>localNum = 10</p>
 
+<p>outNum= 10</p>
 
-localNum = 10
+<p>Outer.sNum =20</p>
 
+<p>Runnable 인터페이스는 스레드를 구현하는 인터페이스이다. Runnable 인터페이스를 구현한 모든 클래스는 run() 추상메소드를 구현하여야 한다. 위 예제에서는 MyRunnable이라는 클래스를 getRunnable() 메소드 내부에 정의하고 이 메소드가 MyRunnable 클래스를 반환한다.</p>
 
-outNum= 10
+<p>위에서 눈여겨 볼 점은 getRunnable() 메소드는 MyRunnable() 객체를 반환하면서 호출이 끝난다. 그런데 원래대로라면 매개변수 i도 메모리에서 같이 사라져야한다. 그런데 출력이 된다는 것은 아직 메모리에 남아있단 것이다.</p>
 
+<p>그 이유는 i가 컴파일러에의해 상수로 변했기 때문이다. 하나 기억해 둘 것은 <strong>지역 내부클래스에서 사용되는 지역변수는 상수로 처리된다</strong>는 것이다.</p>
 
-Outer.sNum =20
+<p> </p>
 
+<p> </p>
 
- 
+<h1 id="4-익명-내부클래스">4. 익명 내부클래스</h1>
 
-Runnable 인터페이스는 스레드를 구현하는 인터페이스이다. Runnable 인터페이스를 구현한 모든 클래스는 run() 추상메소드를 구현하여야 한다. 위 예제에서는 MyRunnable이라는 클래스를 getRunnable() 메소드 내부에 정의하고 이 메소드가 MyRunnable 클래스를 반환한다.
+<hr />
 
-위에서 눈여겨 볼 점은 getRunnable() 메소드는 MyRunnable() 객체를 반환하면서 호출이 끝난다. 그런데 원래대로라면 매개변수 i도 메모리에서 같이 사라져야한다. 그런데 출력이 된다는 것은 아직 메모리에 남아있단 것이다.
+<p>지역 내부클래스를 다시보면 MyRunnable이라는 클래스 이름을 getRunnable() 메소드가 객체를 반환할 때 밖에 사용하지 않는다. 이럴 경우 이름을 생략하고 익명 클래스로 정의할 수 있는데, 2가지 방법이 있다.</p>
 
-그 이유는 i가 컴파일러에의해 상수로 변했기 때문이다. 하나 기억해 둘 것은 **지역 내부클래스에서 사용되는 지역변수는 상수로 처리된다**는 것이다.
+<h3 id="방법1--myrunnable-클래스-이름-생략하고-클래스-바로-생성">방법1) : MyRunnable 클래스 이름 생략하고 클래스 바로 생성</h3>
 
-&nbsp;
-
-&nbsp;
-
-# 4. 익명 내부클래스
-
-* * *
-
-지역 내부클래스를 다시보면 MyRunnable이라는 클래스 이름을 getRunnable() 메소드가 객체를 반환할 때 밖에 사용하지 않는다. 이럴 경우 이름을 생략하고 익명 클래스로 정의할 수 있는데, 2가지 방법이 있다.
-
-### 방법1) : MyRunnable 클래스 이름 생략하고 클래스 바로 생성
-
-~~~ java
-return new Runnable(){ //익명 내부클래스로 Runnable 인터페이스 구현
-         int localNum = 10;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="k">new</span> <span class="nc">Runnable</span><span class="o">(){</span> <span class="c1">//익명 내부클래스로 Runnable 인터페이스 구현</span>
+         <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
          
-         @Override
-         public void run() {
-            System.out.println("i = " +i);
-            System.out.println("num = "+num);
-            System.out.println("localNum = "+localNum);
-            System.out.println("outNum= "+outNum);
-            System.out.println("Outer.sNum ="+Outer.sNum);
-         }
-      };
-~~~
+         <span class="nd">@Override</span>
+         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"i = "</span> <span class="o">+</span><span class="n">i</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="nc">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">};</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-### 방법2) 인터페이스형 참조변수에 클래스 객체를 생성해 대입
+<h3 id="방법2-인터페이스형-참조변수에-클래스-객체를-생성해-대입">방법2) 인터페이스형 참조변수에 클래스 객체를 생성해 대입</h3>
 
-~~~ java
-Runnable runner = new Runnable(){ //익명 내부클래스로 Runnable 인터페이스 구현
-   int localNum = 10;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Runnable</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Runnable</span><span class="o">(){</span> <span class="c1">//익명 내부클래스로 Runnable 인터페이스 구현</span>
+   <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
    
-   @Override
-   public void run() {
-      System.out.println("num = "+num);
-      System.out.println("localNum = "+localNum);
-      System.out.println("outNum= "+outNum);
-      System.out.println("Outer.sNum ="+Outer.sNum);
-   }
-};
-~~~
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="nc">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">};</span>
+</code></pre></div></div>
 
-익명 내부클래스는 지역 내부클래스와 성질이 같으므로 비슷하게 사용할 수 있다. 지역변수 또한 지역 내부클래스에서 상수화 되었듯이 익명 내부클래스 내에서도 상수화 된다.
+<p>익명 내부클래스는 지역 내부클래스와 성질이 같으므로 비슷하게 사용할 수 있다. 지역변수 또한 지역 내부클래스에서 상수화 되었듯이 익명 내부클래스 내에서도 상수화 된다.</p>
+
   </div>
   
   <div class="post">
@@ -11237,295 +11171,275 @@ Runnable runner = new Runnable(){ //익명 내부클래스로 Runnable 인터페
 
     <span class="post-date">25 Dec 2018</span>
 
-    Map 인터페이스는 '자료 쌍'을 다루는 데 용이한 라이브러리이다. 흔히 key-value로 이루어진 자료를 다룬다. 이 자료구조에서 key값은 유일하고, value값은 중복이 허용된다.
+    <p>Map 인터페이스는 ‘자료 쌍’을 다루는 데 용이한 라이브러리이다. 흔히 key-value로 이루어진 자료를 다룬다. 이 자료구조에서 key값은 유일하고, value값은 중복이 허용된다.</p>
 
-자료 쌍의 예로는 학번-이름, 고객번호-이름 등이 있을 수 있다.
+<p>자료 쌍의 예로는 학번-이름, 고객번호-이름 등이 있을 수 있다.</p>
 
-Map인터페이스를 구현한 HashMap클래스와 TreeMap 클래스에 대해 알아본다.
+<p>Map인터페이스를 구현한 HashMap클래스와 TreeMap 클래스에 대해 알아본다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. HashMap 클래스
+<h1 id="1-hashmap-클래스">1. HashMap 클래스</h1>
 
-* * *
+<hr />
 
-HashMap 클래스를 활용하여 회원관리 프로그램을 만든다.
+<p>HashMap 클래스를 활용하여 회원관리 프로그램을 만든다.</p>
 
-~~~ java
-package collection;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection</span><span class="o">;</span>
 
-public class Member {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span>
    
-   private int memberId;
-   private String memberName;
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">;</span>
    
-   public Member(int memberId, String memberName) {
-      this.memberId = memberId;
-      this.memberName = memberName;
-   }
+   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public int getMemberId() {
-      return memberId;
-   }
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMemberId(int memberId) {
-      this.memberId = memberId;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public String getMemberName() {
-      return memberName;
-   }
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMemberName(String memberName) {
-      this.memberName = memberName;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   @Override
-   public String toString() {
-      return this.memberName + "'s ID is " + this.memberId;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   @Override
-   public int hashCode() {
-      // TODO Auto-generated method stub
-      return this.memberId;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">// TODO Auto-generated method stub</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   @Override
-   public boolean equals(Object obj) {
-      if(obj instanceof Member) {
-         Member member = (Member)obj;
-         if(this.memberId == member.memberId) {
-            return true;
-         }
-         else {
-            return false;
-         }
-      }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="nc">Member</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Member</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span>
+         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">==</span> <span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
       
-      return false;
-   }
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package collection.hashmap;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.hashmap</span><span class="o">;</span>
 
-import java.util.HashMap;
-import java.util.Iterator;
-import collection.Member;
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
 
-public class MemberHashMap {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashMap</span> <span class="o">{</span>
 
-   //HashMap은 key, value 각각을 위한 제네릭 자료형 2개를 사용
-   private HashMap<Integer, Member> hashMap; //key : 회원ID,  value : 회원
+   <span class="c1">//HashMap은 key, value 각각을 위한 제네릭 자료형 2개를 사용</span>
+   <span class="kd">private</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Member</span><span class="o">&gt;</span> <span class="n">hashMap</span><span class="o">;</span> <span class="c1">//key : 회원ID,  value : 회원</span>
    
-   public MemberHashMap() { //객체를 만드는 동시에 hashMap 저장소도 같이 생성
-      hashMap = new HashMap<Integer, Member>();
-   }
+   <span class="kd">public</span> <span class="nf">MemberHashMap</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//객체를 만드는 동시에 hashMap 저장소도 같이 생성</span>
+      <span class="n">hashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Member</span><span class="o">&gt;();</span>
+   <span class="o">}</span>
    
-   // 회원 추가 - put(key, value) 메소드 사용
-   public void addMember(Member member) {
-      hashMap.put(member.getMemberId(), member);
-   }
+   <span class="c1">// 회원 추가 - put(key, value) 메소드 사용</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">hashMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">(),</span> <span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   // 회원 삭제 - 회원탐색할 때 containsKey(key)메소드 사용
-   public boolean removeMember(int memberId) {
-      if(hashMap.containsKey(memberId)) {
-         hashMap.remove(memberId);
-         return true;
-      }
+   <span class="c1">// 회원 삭제 - 회원탐색할 때 containsKey(key)메소드 사용</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">hashMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">memberId</span><span class="o">))</span> <span class="o">{</span>
+         <span class="n">hashMap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+      <span class="o">}</span>
       
-      System.out.println(memberId + " does not exist");
-      return false;
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span> <span class="o">+</span> <span class="s">" does not exist"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   //모든 멤버 출력
-   public void showAllMember() {
-      Iterator<Integer> ir = hashMap.keySet().iterator(); //keySet() 메소드는 해쉬맵의 모든 key값들을 Set 객체로 반환
+   <span class="c1">//모든 멤버 출력</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span> <span class="c1">//keySet() 메소드는 해쉬맵의 모든 key값들을 Set 객체로 반환</span>
       
-      while(ir.hasNext()) {
-         int memberId = ir.next();
+      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+         <span class="kt">int</span> <span class="n">memberId</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
          
-         Member member = hashMap.get(memberId);
-         System.out.println(member);
-      }
-      System.out.println();
-   }
-}
-~~~
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-HashMap을 사용하여 자료를 관리하는 프로그램을 만들 때 key값으로는 중복이 안되는 자료를 해주어야 한다.
+<p>HashMap을 사용하여 자료를 관리하는 프로그램을 만들 때 key값으로는 중복이 안되는 자료를 해주어야 한다.</p>
 
-HashMap의 keySet() 메소드는 모든 key값들을 Set 자료로 반환해주어 중복이 안된다. 반면 values()메소드는 모든 value값들을 list 자료형으로 반환해주며 list 자료형은 중복을 허용한다.
+<p>HashMap의 keySet() 메소드는 모든 key값들을 Set 자료로 반환해주어 중복이 안된다. 반면 values()메소드는 모든 value값들을 list 자료형으로 반환해주며 list 자료형은 중복을 허용한다.</p>
 
-&nbsp;
+<p> </p>
 
-이제 테스트를 해볼 차례다.
+<p>이제 테스트를 해볼 차례다.</p>
 
-~~~ java
-package collection.hashmap;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.hashmap</span><span class="o">;</span>
 
-import collection.Member;
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
 
-public class MemberHashMapTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashMapTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      MemberHashMap memberHashMap = new MemberHashMap();
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MemberHashMap</span> <span class="n">memberHashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberHashMap</span><span class="o">();</span>
       
-      Member member1 = new Member(1001, "Kim");
-      Member member2 = new Member(1002, "Lee");
-      Member member3 = new Member(1003, "Son");
-      Member member4 = new Member(1004, "Choi");
+      <span class="nc">Member</span> <span class="n">member1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Son"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">);</span>
       
-      memberHashMap.addMember(member1);
-      memberHashMap.addMember(member2);
-      memberHashMap.addMember(member3);
-      memberHashMap.addMember(member4);
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member1</span><span class="o">);</span>
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member2</span><span class="o">);</span>
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member3</span><span class="o">);</span>
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member4</span><span class="o">);</span>
       
-      memberHashMap.showAllMember();
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
       
-      memberHashMap.removeMember(member2.getMemberId());
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">removeMember</span><span class="o">(</span><span class="n">member2</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">());</span>
       
-      memberHashMap.showAllMember();
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
       
       
-   }
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Kim's ID is 1001
+<p>Kim’s ID is 1001</p>
 
+<p>Lee’s ID is 1002</p>
 
-Lee's ID is 1002
+<p>Son’s ID is 1003</p>
 
+<p>Choi’s ID is 1004</p>
 
-Son's ID is 1003
+<p>Kim’s ID is 1001</p>
 
+<p>Son’s ID is 1003</p>
 
-Choi's ID is 1004
+<p>Choi’s ID is 1004</p>
 
+<p> </p>
 
+<p> </p>
 
+<h1 id="2-treemap클래스">2. TreeMap클래스</h1>
 
-Kim's ID is 1001
+<hr />
 
+<p>TreeMap은 TreeSet과 마찬가지로 이진 검색 트리 알고리즘이 구현되어있다. TreeMap은 key값으로 정렬을 한다. 따라서 key값에 해당하는 클래스는 Comparable이나 Comparator 인터페이스를 구현해야한다. 하지만 memberId의 자료형인 Integer 클래스는 이미 Comparable 인터페이스를 구현해놓아서 따로 여기서 할 필요는 없다.</p>
 
-Son's ID is 1003
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.treemap</span><span class="o">;</span>
 
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.TreeMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
 
-Choi's ID is 1004
-
-&nbsp;
-
-&nbsp;
-
-# 2. TreeMap클래스
-
-* * *
-
-TreeMap은 TreeSet과 마찬가지로 이진 검색 트리 알고리즘이 구현되어있다. TreeMap은 key값으로 정렬을 한다. 따라서 key값에 해당하는 클래스는 Comparable이나 Comparator 인터페이스를 구현해야한다. 하지만 memberId의 자료형인 Integer 클래스는 이미 Comparable 인터페이스를 구현해놓아서 따로 여기서 할 필요는 없다.
-
-~~~ java
-package collection.treemap;
-
-import collection.Member;
-import java.util.TreeMap;
-import java.util.Iterator;
-
-public class MemberTreeMap {
-   TreeMap<Integer, Member> memberTreeMap;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberTreeMap</span> <span class="o">{</span>
+   <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Member</span><span class="o">&gt;</span> <span class="n">memberTreeMap</span><span class="o">;</span>
    
-   public MemberTreeMap() {
-      memberTreeMap = new TreeMap<Integer, Member>();
-   }
+   <span class="kd">public</span> <span class="nf">MemberTreeMap</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">memberTreeMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Member</span><span class="o">&gt;();</span>
+   <span class="o">}</span>
    
-   public void addMember(Member member) {
-      memberTreeMap.put(member.getMemberId(), member);
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">(),</span> <span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   public boolean removeMember(int memberId) {
-      if(memberTreeMap.containsKey(memberId)) {
-         memberTreeMap.remove(memberId);
-         return true;
-      }
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">memberTreeMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">memberId</span><span class="o">))</span> <span class="o">{</span>
+         <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+      <span class="o">}</span>
       
-      System.out.println(memberId+" does not exist");
-      return false;
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span><span class="o">+</span><span class="s">" does not exist"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   public void showAllMember() {
-      Iterator<Integer> ir = memberTreeMap.keySet().iterator();
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
       
-      while(ir.hasNext()) {
-         int key = ir.next();
-         System.out.println(memberTreeMap.get(key));
-      }
-      System.out.println();
-   }
-}
-~~~
+      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+         <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberTreeMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package collection.treemap;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.treemap</span><span class="o">;</span>
 
-import collection.Member;
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
 
-public class MemberTreeMapTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberTreeMapTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      MemberTreeMap mems = new MemberTreeMap();
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MemberTreeMap</span> <span class="n">mems</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberTreeMap</span><span class="o">();</span>
       
-      Member member1 = new Member(1001, "Kim");
-      Member member2 = new Member(1002, "Lee");
-      Member member3 = new Member(1003, "Son");
-      Member member4 = new Member(1004, "Choi");
+      <span class="nc">Member</span> <span class="n">member1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Son"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">);</span>
       
-      mems.addMember(member1);
-      mems.addMember(member2);
-      mems.addMember(member3);
-      mems.addMember(member4);
-      mems.showAllMember();
+      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member1</span><span class="o">);</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member2</span><span class="o">);</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member3</span><span class="o">);</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member4</span><span class="o">);</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
       
-      mems.removeMember(member2.getMemberId());
-      mems.showAllMember();
-   }
-}
-~~~
+      <span class="n">mems</span><span class="o">.</span><span class="na">removeMember</span><span class="o">(</span><span class="n">member2</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">());</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Son's ID is 1001
+<p>Son’s ID is 1001</p>
 
+<p>Kim’s ID is 1002</p>
 
-Kim's ID is 1002
+<p>Choi’s ID is 1003</p>
 
+<p>Lee’s ID is 1004</p>
 
-Choi's ID is 1003
+<p>Son’s ID is 1001</p>
 
+<p>Kim’s ID is 1002</p>
 
-Lee's ID is 1004
+<p>Choi’s ID is 1003</p>
 
+<p>TreeMap클래스는 Key값에 대해 이진트리를 구현한다. Key에 해당하는 클래스인 Integer는 Comparable인터페이스를 이미 구현하고 있기에 따로 무언가를 할 필요는 없었다.</p>
 
-
-
-Son's ID is 1001
-
-
-Kim's ID is 1002
-
-
-Choi's ID is 1003
-
-TreeMap클래스는 Key값에 대해 이진트리를 구현한다. Key에 해당하는 클래스인 Integer는 Comparable인터페이스를 이미 구현하고 있기에 따로 무언가를 할 필요는 없었다.
   </div>
   
   <div class="post">
@@ -11537,290 +11451,286 @@ TreeMap클래스는 Key값에 대해 이진트리를 구현한다. Key에 해당
 
     <span class="post-date">24 Dec 2018</span>
 
-    Set 인터페이스는 Collection 인터페이스의 하위 인터페이스이다. 중고등학교 수학시간에 배운 집합을 생각하면 된다. 어떠한 요소가 있는지가 중요하고 순서는 중요하지 않다. 그리고 중복을 허용하지 않는다.
+    <p>Set 인터페이스는 Collection 인터페이스의 하위 인터페이스이다. 중고등학교 수학시간에 배운 집합을 생각하면 된다. 어떠한 요소가 있는지가 중요하고 순서는 중요하지 않다. 그리고 중복을 허용하지 않는다.</p>
 
-오늘은 Set 인터페이스를 구현한 클래스인 HashSet과 TreeSet 클래스에 대해 알아본다.
+<p>오늘은 Set 인터페이스를 구현한 클래스인 HashSet과 TreeSet 클래스에 대해 알아본다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 1. HashSet
+<h1 id="1-hashset">1. HashSet</h1>
 
-* * *
+<hr />
 
-~~~ java
-package collection;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection</span><span class="o">;</span>
 
-public class Member {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span>
    
-   private int memberId;
-   private String memberName;
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">;</span>
    
-   public Member(int memberId, String memberName) {
-      this.memberId = memberId;
-      this.memberName = memberName;
-   }
+   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public int getMemberId() {
-      return memberId;
-   }
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMemberId(int memberId) {
-      this.memberId = memberId;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public String getMemberName() {
-      return memberName;
-   }
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMemberName(String memberName) {
-      this.memberName = memberName;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   @Override
-   public String toString() {
-      return this.memberName + "'s ID is " + this.memberId;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   // 멤버ID가 같은 경우 같은 객체로 인식시키기 위해 hashCode() 재정의
-   @Override
-   public int hashCode() {
-      // TODO Auto-generated method stub
-      return this.memberId;
-   }
+   <span class="c1">// 멤버ID가 같은 경우 같은 객체로 인식시키기 위해 hashCode() 재정의</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">// TODO Auto-generated method stub</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   // 멤버 ID가 같은 경우 논리적으로 같은 객체라고 인식시키기 위한 equals() 재정의
-   @Override
-   public boolean equals(Object obj) {
-      if(obj instanceof Member) {
-         Member member = (Member)obj;
-         if(this.memberId == member.memberId) {
-            return true;
-         }
-         else {
-            return false;
-         }
-      }
+   <span class="c1">// 멤버 ID가 같은 경우 논리적으로 같은 객체라고 인식시키기 위한 equals() 재정의</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="nc">Member</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Member</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span>
+         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">==</span> <span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
       
-      return false;
-   }
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package collection.hashset;
-import collection.Member;
-import java.util.HashSet;
-import java.util.Iterator;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.hashset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
 
-public class MemberHashSet {
-   private HashSet<Member> hashSet;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashSet</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">hashSet</span><span class="o">;</span>
    
-   //MemberHashSet 객체가 생성되는 동시에 HashSet 저장소 생성
-   MemberHashSet(){
-      hashSet = new HashSet<>();
-   }
+   <span class="c1">//MemberHashSet 객체가 생성되는 동시에 HashSet 저장소 생성</span>
+   <span class="nc">MemberHashSet</span><span class="o">(){</span>
+      <span class="n">hashSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+   <span class="o">}</span>
    
-   //멤버 추가
-   public void addMember(Member member) {
-      hashSet.add(member);
-   }
+   <span class="c1">//멤버 추가</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">hashSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   //멤버 삭제
-   public boolean removeMember(int memberId) {
-      Iterator<Member> ir = hashSet.iterator(); //hashSet의 요소를 순회
+   <span class="c1">//멤버 삭제</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">hashSet</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="c1">//hashSet의 요소를 순회</span>
       
-      while(ir.hasNext()) { //hasNext()는 다음 요소가 있으면 true, 없으면 false 반환
-         Member member = ir.next(); //다음 요소 있으면 다음 용소를 member에 대입
-         int tempId = member.getMemberId();
-         if(tempId == memberId) {
-            hashSet.remove(member);
-            return true;
-         }
-      }
+      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span> <span class="c1">//hasNext()는 다음 요소가 있으면 true, 없으면 false 반환</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span> <span class="c1">//다음 요소 있으면 다음 용소를 member에 대입</span>
+         <span class="kt">int</span> <span class="n">tempId</span> <span class="o">=</span> <span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">();</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">tempId</span> <span class="o">==</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">hashSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
       
-      System.out.println(memberId+" does not exists");
-      return false;
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span><span class="o">+</span><span class="s">" does not exists"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   //모든 멤버 출력
-   public void showAllMember() {
-      for(Member member : hashSet) {
-         System.out.println(member);
-      }
-      System.out.println();
-   }
-}
-~~~
+   <span class="c1">//모든 멤버 출력</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span> <span class="o">:</span> <span class="n">hashSet</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-ArrayList, LinkedList 클래스와 메소드 사용법이 거의 일치한다. 다만 집합은 index가 없어서 Iterator 클래스를 활용해서 HashSet의 요소를 하나씩 순회탐색하여 비교한 이후 삭제하는 removeMember()메소드를 정의하였다.
+<p>ArrayList, LinkedList 클래스와 메소드 사용법이 거의 일치한다. 다만 집합은 index가 없어서 Iterator 클래스를 활용해서 HashSet의 요소를 하나씩 순회탐색하여 비교한 이후 삭제하는 removeMember()메소드를 정의하였다.</p>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package collection.hashset;
-import collection.Member;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.hashset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
 
-public class MemberHashSetTest {
-   public static void main(String[] args) {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashSetTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      MemberHashSet memberHashSet = new MemberHashSet();
+      <span class="nc">MemberHashSet</span> <span class="n">memberHashSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberHashSet</span><span class="o">();</span>
       
-      Member mem1 = new Member(1001, "Lim");
-      Member mem2 = new Member(2222, "KongKong");
-      Member mem3 = new Member(1003, "Choi");
-      Member mem4 = new Member(1004, "Kang");
-      Member mem5 = new Member(1004, "Jung"); //mem3와 같은 ID
+      <span class="nc">Member</span> <span class="n">mem1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Lim"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">2222</span><span class="o">,</span> <span class="s">"KongKong"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Kang"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem5</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Jung"</span><span class="o">);</span> <span class="c1">//mem3와 같은 ID</span>
       
-      memberHashSet.addMember(mem1);
-      memberHashSet.addMember(mem2);
-      memberHashSet.addMember(mem3);
-      memberHashSet.addMember(mem4);
-      memberHashSet.addMember(mem5);
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem1</span><span class="o">);</span>
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem2</span><span class="o">);</span>
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem3</span><span class="o">);</span>
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem4</span><span class="o">);</span>
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem5</span><span class="o">);</span>
       
-      memberHashSet.showAllMember();
-   }
-}
-~~~
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-실행결과
+<p>실행결과</p>
 
-Lim's ID is 1001  
-Choi's ID is 1003  
-Kang's ID is 1004  
-KongKong's ID is 2222
+<p>Lim’s ID is 1001<br />
+Choi’s ID is 1003<br />
+Kang’s ID is 1004<br />
+KongKong’s ID is 2222</p>
 
-Member 클래스에서 hashCode()메소드와 equals()메소드를 재정의 하여 ID가 같으면 같은 객체로 인식하도록 하였다. 따라서 mem5는 mem4와 같은 ID인 1004를 가지므로 추가되지 않았고 이는 Set인터페이스를 구현한 HashSet은 중복객체를 허용하지 않는다는 것을 보여준다.
+<p>Member 클래스에서 hashCode()메소드와 equals()메소드를 재정의 하여 ID가 같으면 같은 객체로 인식하도록 하였다. 따라서 mem5는 mem4와 같은 ID인 1004를 가지므로 추가되지 않았고 이는 Set인터페이스를 구현한 HashSet은 중복객체를 허용하지 않는다는 것을 보여준다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. TreeSet
+<h1 id="2-treeset">2. TreeSet</h1>
 
-* * *
+<hr />
 
-~~~ java
-package collection;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection</span><span class="o">;</span>
 
-public class Member implements Comparable<Member> {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="o">{</span>
    
-   private int memberId;
-   private String memberName;
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">;</span>
    
-   public Member(int memberId, String memberName) {
-      this.memberId = memberId;
-      this.memberName = memberName;
-   }
+   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public int getMemberId() {
-      return memberId;
-   }
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMemberId(int memberId) {
-      this.memberId = memberId;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public String getMemberName() {
-      return memberName;
-   }
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMemberName(String memberName) {
-      this.memberName = memberName;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   @Override
-   public String toString() {
-      return this.memberName + "'s ID is " + this.memberId;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   @Override
-   public int hashCode() {
-      // TODO Auto-generated method stub
-      return this.memberId;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">// TODO Auto-generated method stub</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   @Override
-   public boolean equals(Object obj) {
-      if(obj instanceof Member) {
-         Member member = (Member)obj;
-         if(this.memberId == member.memberId) {
-            return true;
-         }
-         else {
-            return false;
-         }
-      }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="nc">Member</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Member</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span>
+         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">==</span> <span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
       
-      return false;
-   }
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   //compareTo 메소드 재정의 하여 정렬방식 선택
-   @Override
-   public int compareTo(Member member) {
+   <span class="c1">//compareTo 메소드 재정의 하여 정렬방식 선택</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
       
-      return this.memberId-member.memberId; // 0보다 크므로 오름차순 정렬
-   }
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">-</span><span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span> <span class="c1">// 0보다 크므로 오름차순 정렬</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package collection.treeset;
-import collection.Member;
-import java.util.TreeSet;
-import java.util.Iterator;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.treeset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.TreeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
 
-public class MemberTreeSet {
-   TreeSet<Member> treeSet;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberTreeSet</span> <span class="o">{</span>
+   <span class="nc">TreeSet</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">treeSet</span><span class="o">;</span>
    
-   MemberTreeSet(){
-      treeSet = new TreeSet<>();
-   }
+   <span class="nc">MemberTreeSet</span><span class="o">(){</span>
+      <span class="n">treeSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeSet</span><span class="o">&lt;&gt;();</span>
+   <span class="o">}</span>
    
-   public void addMember(Member member) {
-      treeSet.add(member);
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">treeSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   public boolean removeMember(int memberId) {
-      Iterator<Member> ir = treeSet.iterator();
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">treeSet</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
       
-      while(ir.hasNext()) {
-         Member member = ir.next();
-         int tempId = member.getMemberId();
-         if(tempId == memberId) {
-            treeSet.remove(member);
-            return true;
-         }
-      }
+      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+         <span class="kt">int</span> <span class="n">tempId</span> <span class="o">=</span> <span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">();</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">tempId</span> <span class="o">==</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">treeSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
       
-      System.out.println(memberId+" does not exists");
-      return false;
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span><span class="o">+</span><span class="s">" does not exists"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   public void showAllMember() {
-      for(Member member : treeSet) {
-         System.out.println(member);
-      }
-      System.out.println();
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span> <span class="o">:</span> <span class="n">treeSet</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-TreeSet은 HashSet과 사용법은 같다. 그러나 주의해야 할 것은 TreeSet을 사용할 때에는 요소로 추가되는 참조 자료형 클래스가 Comparable 인터페이스를 구현해야 한다는 것이다. Comparable 인터페이스를 구현하면 compareTo() 메소드를 재정의 해야한다. 이 메소드는 TreeSet이 '오름차순' 혹은 '내림차순' 중 어떤 규칙으로 자료를 정리할 것인지 정해주는 것이며, 0보다 크면 오름차순, 작으면 내림차순, 0이면 자료를 추가하지 않는다.
+<p>TreeSet은 HashSet과 사용법은 같다. 그러나 주의해야 할 것은 TreeSet을 사용할 때에는 요소로 추가되는 참조 자료형 클래스가 Comparable 인터페이스를 구현해야 한다는 것이다. Comparable 인터페이스를 구현하면 compareTo() 메소드를 재정의 해야한다. 이 메소드는 TreeSet이 ‘오름차순’ 혹은 ‘내림차순’ 중 어떤 규칙으로 자료를 정리할 것인지 정해주는 것이며, 0보다 크면 오름차순, 작으면 내림차순, 0이면 자료를 추가하지 않는다.</p>
 
-위 코드에서 this.memberId는 새로 추가되는 멤버의 ID이다. 이것과 이미 TreeSet에 있는 자료의 memberId를 하나하나 탐색비교해가며 새로 추가되는 자료의 위치를 찾아 정렬시킨다. 이유는 기본적으로 TreeSet은 이진탐색 알고리즘을 사용하기 때문이다.
+<p>위 코드에서 this.memberId는 새로 추가되는 멤버의 ID이다. 이것과 이미 TreeSet에 있는 자료의 memberId를 하나하나 탐색비교해가며 새로 추가되는 자료의 위치를 찾아 정렬시킨다. 이유는 기본적으로 TreeSet은 이진탐색 알고리즘을 사용하기 때문이다.</p>
 
-&nbsp;
+<p> </p>
+
   </div>
   
   <div class="post">
@@ -11832,159 +11742,152 @@ TreeSet은 HashSet과 사용법은 같다. 그러나 주의해야 할 것은 Tre
 
     <span class="post-date">24 Dec 2018</span>
 
-    변수의 선언, 메소드의 반환형, 매개변수의 자료형 등 모든 것은 자료형을 가진다. 이미 한 번 정의 된 자료형은 상속 관계의 상위 자료형의 형 변환이 아니면 바꿀 수 없다. 하지만 제네릭이란 기술을 사용하면 여러 참조 자료형을 유연하게 대입할 수 있다.
+    <p>변수의 선언, 메소드의 반환형, 매개변수의 자료형 등 모든 것은 자료형을 가진다. 이미 한 번 정의 된 자료형은 상속 관계의 상위 자료형의 형 변환이 아니면 바꿀 수 없다. 하지만 제네릭이란 기술을 사용하면 여러 참조 자료형을 유연하게 대입할 수 있다.</p>
 
-제네릭은 객체가 생성되는 순간 자료형이 정해지게 한다.
+<p>제네릭은 객체가 생성되는 순간 자료형이 정해지게 한다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 제네릭
+<h1 id="1-제네릭">1. 제네릭</h1>
 
-* * *
+<hr />
 
-제네릭은 다이아몬드 연산자 <> 안에 자료형을 명시해주면서 객체를 생성한다. 3D 프린터 클래스와 프린팅 재료를 예로 들어 사용법을 보자.
+<p>제네릭은 다이아몬드 연산자 &lt;&gt; 안에 자료형을 명시해주면서 객체를 생성한다. 3D 프린터 클래스와 프린팅 재료를 예로 들어 사용법을 보자.</p>
 
-~~~ java
-package genericex;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
 
-//파우더 재료 클래스
-public class Powder {
+<span class="c1">//파우더 재료 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Powder</span> <span class="o">{</span>
    
-   public void doPrinting() {
-      System.out.println("use powder to print");
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doPrinting</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"use powder to print"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   @Override
-   public String toString() {
-      return "The material is powder";
-   }
-}
-~~~
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="s">"The material is powder"</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package genericex;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
 
-//플라스틱 재료 클래스
-public class Plastic {
+<span class="c1">//플라스틱 재료 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Plastic</span> <span class="o">{</span>
    
-   public void doPrinting() {
-      System.out.println("use plastic to print");
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doPrinting</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"use plastic to print"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   @Override
-   public String toString() {
-      return "The material is plastic";
-   }
-}
-~~~
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="s">"The material is plastic"</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-package genericex;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
 
-public class GenericPrinter<T> {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
 
-   private T material;
+   <span class="kd">private</span> <span class="no">T</span> <span class="n">material</span><span class="o">;</span>
 
-   public T getMaterial() {
-      return material;
-   }
+   <span class="kd">public</span> <span class="no">T</span> <span class="nf">getMaterial</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">material</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMaterial(T material) {
-      this.material = material;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMaterial</span><span class="o">(</span><span class="no">T</span> <span class="n">material</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">material</span> <span class="o">=</span> <span class="n">material</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   @Override
-   public String toString() {
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
 
-      return material.toString();
-   }
+      <span class="k">return</span> <span class="n">material</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-클래스를 선언하면서 오른쪽에 <T>라고 썼다. T를 자료형 매개변수라고 한다. 이제부터 클래스 안의 멤버변수, 메소드의 반환형, 혹은 메소드의 매개변수의 자료형으로 T를 사용할 수 있다. 그리고 나중에 객체를 생성할 때 정해준 자료형이 T를 대체하며 컴파일 된다.
+<p>클래스를 선언하면서 오른쪽에 <T>라고 썼다. T를 자료형 매개변수라고 한다. 이제부터 클래스 안의 멤버변수, 메소드의 반환형, 혹은 메소드의 매개변수의 자료형으로 T를 사용할 수 있다. 그리고 나중에 객체를 생성할 때 정해준 자료형이 T를 대체하며 컴파일 된다.</T></p>
 
-이로써 클래스를 선언할 때에는 어떠한 참조자료형이 들어갈 지 몰라 제네릭 프로그래밍을 해주어서 유연하게 자료형이 변환될 수 있다.
+<p>이로써 클래스를 선언할 때에는 어떠한 참조자료형이 들어갈 지 몰라 제네릭 프로그래밍을 해주어서 유연하게 자료형이 변환될 수 있다.</p>
 
-이제 실행을 시켜보자.
+<p>이제 실행을 시켜보자.</p>
 
-~~~ java
-package genericex;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
 
-public class GenericPrinterTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericPrinterTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      GenericPrinter<Powder> powderPrinter = new GenericPrinter<>();
-      powderPrinter.setMaterial(new Powder());
-      System.out.println(powderPrinter);
+      <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="nc">Powder</span><span class="o">&gt;</span> <span class="n">powderPrinter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericPrinter</span><span class="o">&lt;&gt;();</span>
+      <span class="n">powderPrinter</span><span class="o">.</span><span class="na">setMaterial</span><span class="o">(</span><span class="k">new</span> <span class="nc">Powder</span><span class="o">());</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">powderPrinter</span><span class="o">);</span>
       
       
-      GenericPrinter<Plastic> plasticPrinter = new GenericPrinter<>();
-      plasticPrinter.setMaterial(new Plastic());
-      System.out.println(plasticPrinter);
-   }
-}
-~~~
+      <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="nc">Plastic</span><span class="o">&gt;</span> <span class="n">plasticPrinter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericPrinter</span><span class="o">&lt;&gt;();</span>
+      <span class="n">plasticPrinter</span><span class="o">.</span><span class="na">setMaterial</span><span class="o">(</span><span class="k">new</span> <span class="nc">Plastic</span><span class="o">());</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">plasticPrinter</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-The material is powder
+<p>The material is powder</p>
 
+<p>The material is plastic</p>
 
-The material is plastic
+<p> </p>
 
-&nbsp;
+<h1 id="2-자료형-매개변수의-자료형-제한">2. 자료형 매개변수의 자료형 제한</h1>
 
-# 2. 자료형 매개변수의 자료형 제한
+<hr />
 
-* * *
+<p>예를 들어 프린터를 하려는데 누가 재료로 물을 넣어주려 한다고 해보자. 물로는 프린팅을 할 수 없다. 이런 경우처럼 자료형 매개변수를 특정 타입으로 재한하려 하는 경우 T를 extends 예약어로 상속받을 수 있다.</p>
 
-예를 들어 프린터를 하려는데 누가 재료로 물을 넣어주려 한다고 해보자. 물로는 프린팅을 할 수 없다. 이런 경우처럼 자료형 매개변수를 특정 타입으로 재한하려 하는 경우 T를 extends 예약어로 상속받을 수 있다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
 
-~~~ java
-package genericex;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">Material</span><span class="o">&gt;</span> <span class="o">{</span>
+   <span class="o">...</span>    
+<span class="o">}</span>
+</code></pre></div></div>
 
-public class GenericPrinter<T extends Material> {
-   ...    
-}
-~~~
+<p> </p>
 
-&nbsp;
+<p>여기서 Material이라는 추상 클래스를 상속 받았다. Material 추상클래스에는 Powder, Plastic 클래스에 구현된 메소드들이 있다.</p>
 
-여기서 Material이라는 추상 클래스를 상속 받았다. Material 추상클래스에는 Powder, Plastic 클래스에 구현된 메소드들이 있다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
 
-~~~ java
-package genericex;
-
-public abstract class Material {
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Material</span> <span class="o">{</span>
    
-   public abstract void doPrinting();
-}
-~~~
+   <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">doPrinting</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-이후 T에 Material을 상속받은 클래스가 들어오는 경우가 아니면 컴파일 오류가 난다.
+<p>이후 T에 Material을 상속받은 클래스가 들어오는 경우가 아니면 컴파일 오류가 난다.</p>
 
-그리고 T는 Material을 상속받았으므로 Material 추상클래스에 정의 된 모든 메소드를 사용할 수 있다.
+<p>그리고 T는 Material을 상속받았으므로 Material 추상클래스에 정의 된 모든 메소드를 사용할 수 있다.</p>
 
-~~~ java
-package genericex;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
 
-public class GenericPrinter<T extends Material> {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">Material</span><span class="o">&gt;</span> <span class="o">{</span>
       
-      ...
+      <span class="o">...</span>
    
-   public void printing() {
-      material.doPrinting(); //T 자료형인 material은 Material클래스의 doPrinting()메소드 사용 가능
-   }
-}
-~~~
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printing</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">material</span><span class="o">.</span><span class="na">doPrinting</span><span class="o">();</span> <span class="c1">//T 자료형인 material은 Material클래스의 doPrinting()메소드 사용 가능</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
+
   </div>
   
 </div>

@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,289 +10682,268 @@
 
     <span class="post-date">24 Dec 2018</span>
 
-    List 인터페이스는 Collection 인터페이스의 하위 인터페이스이다. 순차적인 자료를 관리할 때 사용하고 중복을 허용한다. List 인터페이스를 구현한 활용도 높은 클래스 몇 가지에 대해 알아본다.
+    <p>List 인터페이스는 Collection 인터페이스의 하위 인터페이스이다. 순차적인 자료를 관리할 때 사용하고 중복을 허용한다. List 인터페이스를 구현한 활용도 높은 클래스 몇 가지에 대해 알아본다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. ArrayList
+<h1 id="1-arraylist">1. ArrayList</h1>
 
-* * *
+<hr />
 
-~~~ java
-public class Member {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span>
    
-   private int memberId;
-   private String memberName;
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">;</span>
    
-   public Member(int memberId, String memberName) {
-      this.memberId = memberId;
-      this.memberName = memberName;
-   }
+   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public int getMemberId() {
-      return memberId;
-   }
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMemberId(int memberId) {
-      this.memberId = memberId;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public String getMemberName() {
-      return memberName;
-   }
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setMemberName(String memberName) {
-      this.memberName = memberName;
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   @Override
-   public String toString() {
-      return this.memberName + "'s ID is " + this.memberId;
-   }
-}
-~~~
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-먼저 Member 클래스를 정의하였다. 멤버변수는 Id와 이름 두 개 뿐이고 각각에 대한 getter와 setter 메소드를 지원한다.
+<p>먼저 Member 클래스를 정의하였다. 멤버변수는 Id와 이름 두 개 뿐이고 각각에 대한 getter와 setter 메소드를 지원한다.</p>
 
-&nbsp;
+<p> </p>
 
-이제 위에서 정의한 Member클래스로 회원을 생성하고 관리하기 위해서 ArrayList를 활용할 것이다.
+<p>이제 위에서 정의한 Member클래스로 회원을 생성하고 관리하기 위해서 ArrayList를 활용할 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package collection.arraylist;
-import java.util.ArrayList; //ArrayList 클래스 활용을 위한 import문
-import collection.Member; //Member 클래스를 다루기 위한 import문
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.arraylist</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span> <span class="c1">//ArrayList 클래스 활용을 위한 import문</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span> <span class="c1">//Member 클래스를 다루기 위한 import문</span>
 
-public class MemberArrayList {
-   private ArrayList<Member> arrayList; //ArrayList로 Member 배열 생성
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberArrayList</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">arrayList</span><span class="o">;</span> <span class="c1">//ArrayList로 Member 배열 생성</span>
    
-   //MemberArrayList 객체 생성과 동시에 arrayList 배열 생성
-   public MemberArrayList() {
-      arrayList = new ArrayList<>();
-   }
+   <span class="c1">//MemberArrayList 객체 생성과 동시에 arrayList 배열 생성</span>
+   <span class="kd">public</span> <span class="nf">MemberArrayList</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">arrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+   <span class="o">}</span>
    
-   //멤버 추가 메소드
-   public void addMember(Member member) {
-      arrayList.add(member);
-   }
+   <span class="c1">//멤버 추가 메소드</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">arrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
    
    
-   //멤버ID로 멤버 삭제 메소드
-   public boolean removeMember(int memberId) {
-      for(int i=0; i < arrayList.size(); i++) {
-         Member member = arrayList.get(i);
-         int tempId = member.getMemberId();
-         if(tempId == memberId) {
-            arrayList.remove(i);
-            return true;
-         }
-      }
+   <span class="c1">//멤버ID로 멤버 삭제 메소드</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arrayList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">arrayList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+         <span class="kt">int</span> <span class="n">tempId</span> <span class="o">=</span> <span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">();</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">tempId</span> <span class="o">==</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">arrayList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
       
-      System.out.println(memberId + " does not exist in list");
-      return false;
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span> <span class="o">+</span> <span class="s">" does not exist in list"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   //모든 멤버 정보 출력 메소드
-   public void showAllMember() {
-      for(Member member : arrayList) {
-         System.out.println(member);
-      }
-      System.out.println();
-   }
-}
-~~~
+   <span class="c1">//모든 멤버 정보 출력 메소드</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span> <span class="o">:</span> <span class="n">arrayList</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-arrayList는 명단을 저장하기 위한 ArrayList클래스의 객체 배열이다. 외부 프로그램에서 직접적인 접근을 막기위해 private로 선언하였다. 그러나 addMember(), removeMember(), showAllMember() 메소드로 회원을 추가/삭제 및 열람 기능을 제공하도록 한다.
+<p>arrayList는 명단을 저장하기 위한 ArrayList클래스의 객체 배열이다. 외부 프로그램에서 직접적인 접근을 막기위해 private로 선언하였다. 그러나 addMember(), removeMember(), showAllMember() 메소드로 회원을 추가/삭제 및 열람 기능을 제공하도록 한다.</p>
 
-이제 위에서 ArrayList로 구현한 회원관리 프로그램이 잘 작동하는지 테스트 해보아야한다.
+<p>이제 위에서 ArrayList로 구현한 회원관리 프로그램이 잘 작동하는지 테스트 해보아야한다.</p>
 
-~~~ java
-package collection.arraylist;
-import collection.Member;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.arraylist</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
 
-public class MemberArrayListTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberArrayListTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      MemberArrayList memberArrayList = new MemberArrayList();
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MemberArrayList</span> <span class="n">memberArrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberArrayList</span><span class="o">();</span>
       
       
-      Member mem1 = new Member(1001, "Kelly");
-      Member mem2 = new Member(1002, "John");
-      Member mem3 = new Member(1003, "Sam");
+      <span class="nc">Member</span> <span class="n">mem1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kelly"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Sam"</span><span class="o">);</span>
       
-      //멤버 3명 추가
-      memberArrayList.addMember(mem1);
-      memberArrayList.addMember(mem2);
-      memberArrayList.addMember(mem3);
+      <span class="c1">//멤버 3명 추가</span>
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem1</span><span class="o">);</span>
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem2</span><span class="o">);</span>
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem3</span><span class="o">);</span>
       
-      memberArrayList.showAllMember();
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
       
-      //멤버 1명 삭제
-      memberArrayList.removeMember(mem2.getMemberId());
+      <span class="c1">//멤버 1명 삭제</span>
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">removeMember</span><span class="o">(</span><span class="n">mem2</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">());</span>
       
-      memberArrayList.showAllMember();
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
       
-   }
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-멤버를 추가 및 삭제하고 열람하는 메소드를 호출해보았다.
+<p>멤버를 추가 및 삭제하고 열람하는 메소드를 호출해보았다.</p>
 
-실행결과
+<p>실행결과</p>
 
-Kelly's ID is 1001
+<p>Kelly’s ID is 1001</p>
 
+<p>John’s ID is 1002</p>
 
-John's ID is 1002
+<p>Sam’s ID is 1003</p>
 
+<p>Kelly’s ID is 1001</p>
 
-Sam's ID is 1003
+<p>Sam’s ID is 1003</p>
 
+<p>테스트 결과가 예상, 의도한 대로 나온걸로 보아 실제 회원관리 프로그램 클래스가 적절하게 작성되었음을 알 수 있다.</p>
 
+<p> </p>
 
+<p> </p>
 
-Kelly's ID is 1001
+<h1 id="2-linkedlist">2. LinkedList</h1>
 
+<hr />
 
-Sam's ID is 1003
+<p>LinkedList 클래스는 하나의 요소에 ‘<strong>자료 + 다음 요소의 주소</strong>’ 두 가지를 동시에 가진다. 따라서 메모리공간의 물리적인 자료 주소가 연결되어있지 않더라도 논리적으로 앞뒤 순서가 있을 수 있다.</p>
 
-테스트 결과가 예상, 의도한 대로 나온걸로 보아 실제 회원관리 프로그램 클래스가 적절하게 작성되었음을 알 수 있다.
+<p>ArrayList는 배열의 자료를 이동시켜서 빈 공간을 만들어 추가하고, 자료를 삭제하면 뒤 요소들을 한칸씩 당겨 빈 공간을 삭제한다. 그러나 LinkedList는 애초에 배열의 순서를 요소가 가진 ‘다음 요소의 주소’를 가지고 판단한다. 따라서 메모리 어딘가에 저장되어있는 요소를 추가할 때는 앞 index위치 요소의 ‘다음 요소의 주소’값만 바꿔주면 된다. 삭제할 때도 마찬가지다.</p>
 
-&nbsp;
+<p>그러나 배열은 요소의 index를 가지고 위치를 추적한다던가 하는 경우에는 ArrayList가 유리하다.</p>
 
-&nbsp;
+<p>자료의 삽입/삭제 같은 구조의 변경이 많은 자료는 LinkedList로, 그렇지 않은 경우는 ArrayList로 관리하는게 효율적이다.</p>
 
-# 2. LinkedList
+<p>이번에는 같은 Member 클래스를 LinkedList 클래스를 활용해서 관리하는 프로그램을 작성해본다. 미리 말하자면 ArrayList보다 몇 개의 메소드를 더 지원할 뿐 거의 ArrayList활용방법과 같다.</p>
 
-* * *
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.linkedlist</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
 
-LinkedList 클래스는 하나의 요소에 '**자료 + 다음 요소의 주소**' 두 가지를 동시에 가진다. 따라서 메모리공간의 물리적인 자료 주소가 연결되어있지 않더라도 논리적으로 앞뒤 순서가 있을 수 있다.
-
-ArrayList는 배열의 자료를 이동시켜서 빈 공간을 만들어 추가하고, 자료를 삭제하면 뒤 요소들을 한칸씩 당겨 빈 공간을 삭제한다. 그러나 LinkedList는 애초에 배열의 순서를 요소가 가진 '다음 요소의 주소'를 가지고 판단한다. 따라서 메모리 어딘가에 저장되어있는 요소를 추가할 때는 앞 index위치 요소의 '다음 요소의 주소'값만 바꿔주면 된다. 삭제할 때도 마찬가지다.
-
-그러나 배열은 요소의 index를 가지고 위치를 추적한다던가 하는 경우에는 ArrayList가 유리하다.
-
-자료의 삽입/삭제 같은 구조의 변경이 많은 자료는 LinkedList로, 그렇지 않은 경우는 ArrayList로 관리하는게 효율적이다.
-
-이번에는 같은 Member 클래스를 LinkedList 클래스를 활용해서 관리하는 프로그램을 작성해본다. 미리 말하자면 ArrayList보다 몇 개의 메소드를 더 지원할 뿐 거의 ArrayList활용방법과 같다.
-
-~~~ java
-package collection.linkedlist;
-import collection.Member;
-import java.util.LinkedList;
-
-public class MemberLinkedList {
-   private LinkedList<Member> linkedList;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberLinkedList</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">linkedList</span><span class="o">;</span>
    
-   MemberLinkedList(){
-      linkedList = new LinkedList<>();
-   }
+   <span class="nc">MemberLinkedList</span><span class="o">(){</span>
+      <span class="n">linkedList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+   <span class="o">}</span>
    
-   //멤버 추가
-   public void addMember(Member member) {
-      linkedList.add(member);
-   }
+   <span class="c1">//멤버 추가</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">linkedList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   //제일 앞에 멤버 추가
-   public void addMemberToFirst(Member member) {
-      linkedList.addFirst(member);
-   }
+   <span class="c1">//제일 앞에 멤버 추가</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMemberToFirst</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">linkedList</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   //멤버 ID로 멤버 삭제
-   public boolean removeMember(int memberId) {
-      for(int i=0; i < linkedList.size(); i++) {
-         Member member = linkedList.get(i);
-         int tempId = member.getMemberId();
-         if(tempId == memberId) {
-            linkedList.remove(i);
-            return true;
-         }
-      }
+   <span class="c1">//멤버 ID로 멤버 삭제</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">linkedList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">linkedList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+         <span class="kt">int</span> <span class="n">tempId</span> <span class="o">=</span> <span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">();</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">tempId</span> <span class="o">==</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">linkedList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
       
-      System.out.println(memberId + " does not exist");
-      return false;
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span> <span class="o">+</span> <span class="s">" does not exist"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   //가장 마지막 멤버 삭제
-   public void removeLastMember() {
-      linkedList.removeLast();
-   }
+   <span class="c1">//가장 마지막 멤버 삭제</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeLastMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">linkedList</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>
+   <span class="o">}</span>
    
-   //모든 멤버 정보 출력
-   public void showAllMember() {
-      for(Member member : linkedList) {
-         System.out.println(member);
-      }
-   }
-}
-~~~
+   <span class="c1">//모든 멤버 정보 출력</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span> <span class="o">:</span> <span class="n">linkedList</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package collection.linkedlist;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.linkedlist</span><span class="o">;</span>
 
-import collection.Member;
-import collection.arraylist.MemberArrayList;
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.arraylist.MemberArrayList</span><span class="o">;</span>
 
-public class MemberLinkedListTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberLinkedListTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      MemberLinkedList memberLinkedList = new MemberLinkedList();
+      <span class="nc">MemberLinkedList</span> <span class="n">memberLinkedList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberLinkedList</span><span class="o">();</span>
       
-      Member mem1 = new Member(1001, "Kelly");
-      Member mem2 = new Member(1002, "John");
-      Member mem3 = new Member(1003, "Sam");
+      <span class="nc">Member</span> <span class="n">mem1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kelly"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Sam"</span><span class="o">);</span>
       
-      memberLinkedList.addMember(mem1);
-      memberLinkedList.addMember(mem2);
-      memberLinkedList.addMember(mem3);  
-      memberLinkedList.showAllMember();
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem1</span><span class="o">);</span>
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem2</span><span class="o">);</span>
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem3</span><span class="o">);</span>  
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
       
-      memberLinkedList.removeLastMember();
-      memberLinkedList.showAllMember();
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">removeLastMember</span><span class="o">();</span>
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
       
-      memberLinkedList.addMemberToFirst(new Member(1004, "NewMan"));
-      memberLinkedList.showAllMember();
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">addMemberToFirst</span><span class="o">(</span><span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"NewMan"</span><span class="o">));</span>
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
       
       
-   }
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Kelly's ID is 1001
+<p>Kelly’s ID is 1001</p>
 
+<p>John’s ID is 1002</p>
 
-John's ID is 1002
+<p>Sam’s ID is 1003</p>
 
+<p>Kelly’s ID is 1001</p>
 
-Sam's ID is 1003
+<p>John’s ID is 1002</p>
 
+<p>NewMan’s ID is 1004</p>
 
+<p>Kelly’s ID is 1001</p>
 
+<p>John’s ID is 1002</p>
 
-Kelly's ID is 1001
-
-
-John's ID is 1002
-
-
-
-
-NewMan's ID is 1004
-
-
-Kelly's ID is 1001
-
-
-John's ID is 1002
   </div>
   
   <div class="post">
@@ -11000,51 +10955,52 @@ John's ID is 1002
 
     <span class="post-date">24 Dec 2018</span>
 
-    컬렉션 프레임워크(Collection Framework)란 자료를 효율적으로 생성,관리할 수 있도록 자바 JDK에서 제공하는 라이브러리이다.
+    <p>컬렉션 프레임워크(Collection Framework)란 자료를 효율적으로 생성,관리할 수 있도록 자바 JDK에서 제공하는 라이브러리이다.</p>
 
-컬렉션 프레임워크는 크게 2가지로 나뉜다. 1) 컬렉션 인터페이스 2) 맵 인터페이스
+<p>컬렉션 프레임워크는 크게 2가지로 나뉜다. 1) 컬렉션 인터페이스 2) 맵 인터페이스</p>
 
-&nbsp;
+<p> </p>
 
-<a href="https://SWnomad.com/%ec%bb%ac%eb%a0%89%ec%85%98-%ed%94%84%eb%a0%88%ec%9e%84%ec%9b%8c%ed%81%ac%eb%9e%80/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-194/" rel="attachment wp-att-1638"><img class="aligncenter size-full wp-image-1638" src="/images/2018/12/no-name-39.jpg" alt="" width="433" height="255" srcset="/images/2018/12/no-name-39.jpg 433w, /images/2018/12/no-name-39-300x177.jpg 300w" sizes="(max-width: 433px) 100vw, 433px" /></a>
+<p><a href="https://SWnomad.com/%ec%bb%ac%eb%a0%89%ec%85%98-%ed%94%84%eb%a0%88%ec%9e%84%ec%9b%8c%ed%81%ac%eb%9e%80/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-194/" rel="attachment wp-att-1638"><img class="aligncenter size-full wp-image-1638" src="/images/2018/12/no-name-39.jpg" alt="" width="433" height="255" srcset="/images/2018/12/no-name-39.jpg 433w, /images/2018/12/no-name-39-300x177.jpg 300w" sizes="(max-width: 433px) 100vw, 433px" /></a></p>
 
-&nbsp;
+<p> </p>
 
-# 1. Collection 인터페이스
+<h1 id="1-collection-인터페이스">1. Collection 인터페이스</h1>
 
-* * *
+<hr />
 
-컬렉션 인터페이스는 하위 인터페이스로 List, Set이 있다.
+<p>컬렉션 인터페이스는 하위 인터페이스로 List, Set이 있다.</p>
 
-## 1) List
+<h2 id="1-list">1) List</h2>
 
-리스트 인터페이스는 **순차적인 자료**를 관리하는 데 사용한다. 또한 **중복을 허용**한다.
+<p>리스트 인터페이스는 <strong>순차적인 자료</strong>를 관리하는 데 사용한다. 또한 <strong>중복을 허용</strong>한다.</p>
 
-List 인터페이스를 구현한 클래스로는 ArrayList, LinkedList, Vector 등이 있다.
+<p>List 인터페이스를 구현한 클래스로는 ArrayList, LinkedList, Vector 등이 있다.</p>
 
-&nbsp;
+<p> </p>
 
-## 2) Set
+<h2 id="2-set">2) Set</h2>
 
-셋 인터페이스는 중고등학교 교과시간에 배운 집합을 생각하면 된다. **순서가 정해져 있지 않고** **중복이 허용되지 않는다**.
+<p>셋 인터페이스는 중고등학교 교과시간에 배운 집합을 생각하면 된다. <strong>순서가 정해져 있지 않고</strong> <strong>중복이 허용되지 않는다</strong>.</p>
 
-&nbsp;
+<p> </p>
 
-Collection 인터페이스에는 다양한 추상 메소드가 정의되어 있는데, 자료를 추가/제거 하거나 자료의 길이를 반환하는 등의 기능을 클래스에서 구현한다.
+<p>Collection 인터페이스에는 다양한 추상 메소드가 정의되어 있는데, 자료를 추가/제거 하거나 자료의 길이를 반환하는 등의 기능을 클래스에서 구현한다.</p>
 
-&nbsp;
+<p> </p>
 
-# 2. Map 인터페이스
+<h1 id="2-map-인터페이스">2. Map 인터페이스</h1>
 
-* * *
+<hr />
 
-맵 인터페이스는 하나의 자료가 아닌 key-value쌍이라고 하는 '쌍 자료'를 관리하는 데 사용한다. 예를들면 백화점의 고객번호 - 이름 자료 쌍이 있을 수 있다. 여기서 key는 고객번호, value는 이름이다. 고객 번호는 중복될 수 없지만 동명이인의 고객이 있을 수 있으므로 value는 중복이 될 수 있을 것이라고 상식적으로 생각할 수 있다.
+<p>맵 인터페이스는 하나의 자료가 아닌 key-value쌍이라고 하는 ‘쌍 자료’를 관리하는 데 사용한다. 예를들면 백화점의 고객번호 - 이름 자료 쌍이 있을 수 있다. 여기서 key는 고객번호, value는 이름이다. 고객 번호는 중복될 수 없지만 동명이인의 고객이 있을 수 있으므로 value는 중복이 될 수 있을 것이라고 상식적으로 생각할 수 있다.</p>
 
-**key는 중복이 허용되지 않고, value는 중복이 허용된다**.
+<p><strong>key는 중복이 허용되지 않고, value는 중복이 허용된다</strong>.</p>
 
-&nbsp;
+<p> </p>
 
-Map 인터페이스에도 다양한 추상 메소드가 정의되어 있으며 key값을 이용하여 객체를 생성하고 value를 추가한다거나 모든 key집합, value집합 반환등의 기능이 구현되어 있다.
+<p>Map 인터페이스에도 다양한 추상 메소드가 정의되어 있으며 key값을 이용하여 객체를 생성하고 value를 추가한다거나 모든 key집합, value집합 반환등의 기능이 구현되어 있다.</p>
+
   </div>
   
   <div class="post">
@@ -11056,179 +11012,165 @@ Map 인터페이스에도 다양한 추상 메소드가 정의되어 있으며 k
 
     <span class="post-date">23 Dec 2018</span>
 
-    기본 자료형은 정수, 실수, 문자를 지원한다. 그런데 정수나 실수, 문자의 객체형이 필요한 경우가 있다. 정수 객체의 매개변수 전달이나 반환형이 필요한 경우등이 있다.
+    <p>기본 자료형은 정수, 실수, 문자를 지원한다. 그런데 정수나 실수, 문자의 객체형이 필요한 경우가 있다. 정수 객체의 매개변수 전달이나 반환형이 필요한 경우등이 있다.</p>
 
-자바는 이런 경우를 위해 기본 자료형과 같은 클래스를 지원하는데, 이러한 클래스들을 두고 Wrapper클래스라고 한다.
+<p>자바는 이런 경우를 위해 기본 자료형과 같은 클래스를 지원하는데, 이러한 클래스들을 두고 Wrapper클래스라고 한다.</p>
 
-<a href="https://SWnomad.com/wrapper-%ed%81%b4%eb%9e%98%ec%8a%a4/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-193/" rel="attachment wp-att-1631"><img class="aligncenter  wp-image-1631" src="/images/2018/12/no-name-38.jpg" alt="" width="365" height="361" srcset="/images/2018/12/no-name-38.jpg 655w, /images/2018/12/no-name-38-300x297.jpg 300w" sizes="(max-width: 365px) 100vw, 365px" /></a>
+<p><a href="https://SWnomad.com/wrapper-%ed%81%b4%eb%9e%98%ec%8a%a4/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-193/" rel="attachment wp-att-1631"><img class="aligncenter  wp-image-1631" src="/images/2018/12/no-name-38.jpg" alt="" width="365" height="361" srcset="/images/2018/12/no-name-38.jpg 655w, /images/2018/12/no-name-38-300x297.jpg 300w" sizes="(max-width: 365px) 100vw, 365px" /></a></p>
 
-&nbsp;
+<p> </p>
 
-대표적으로 Integer 클래스로 Wrapper클래스의 사용법을 파헤쳐 본다. 다른 Wrapper클래스의 사용법도 거의 같으며 궁금한 것은 JavaDoc을 찾아보면 된다.
+<p>대표적으로 Integer 클래스로 Wrapper클래스의 사용법을 파헤쳐 본다. 다른 Wrapper클래스의 사용법도 거의 같으며 궁금한 것은 JavaDoc을 찾아보면 된다.</p>
 
-# 
+<p>#</p>
 
-# 1. Wrapper 클래스 사용법
+<h1 id="1-wrapper-클래스-사용법">1. Wrapper 클래스 사용법</h1>
 
-* * *
+<hr />
 
-~~~ java
-package wrapperclass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
 
-public class WrapperTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      Integer intValue1 = new Integer(100);
-      Integer intValue2 = new Integer("200"); 
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Integer</span> <span class="n">intValue1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="nc">Integer</span> <span class="n">intValue2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="s">"200"</span><span class="o">);</span> 
       
-      System.out.println(intValue1);
-      System.out.println(intValue2);
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intValue1</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intValue2</span><span class="o">);</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-100
+<p>100</p>
 
+<p>200</p>
 
-200
+<p>Integer 클래스의 객체를 만들 때 생성자의 매개변수로는 정수형이나 문자열이 올 수 있다. <strong>JavaDoc</strong>에서 Integer.class 파일에서 클래스의 생성자를 찾아보면 어떤 식으로 객체를 생성해야할 지 알 수 있다.</p>
 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="kd">public</span> <span class="nf">Integer</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
- 
+<p>Integer 클래스에는 value가 final int 형으로 선언되어 있어서 한 번 선언되면 그 값을 바꿀 수 없다. 우리가 생성자의 매개변수로 정수를 넣어주면 value에 저 값이 저장된다. Integer클래스의 intValue() 메소드는 value 값을 반환해주는 메소드이다. 지금부터 Integer 클래스의 대표적인 메소드들에 대해 살펴본다.</p>
 
-Integer 클래스의 객체를 만들 때 생성자의 매개변수로는 정수형이나 문자열이 올 수 있다. **JavaDoc**에서 Integer.class 파일에서 클래스의 생성자를 찾아보면 어떤 식으로 객체를 생성해야할 지 알 수 있다.
+<p> </p>
 
-~~~ java
-private final int value;
-.
-.
-public Integer(int value) {
-   this.value = value;
-}
-~~~
+<p> </p>
 
-Integer 클래스에는 value가 final int 형으로 선언되어 있어서 한 번 선언되면 그 값을 바꿀 수 없다. 우리가 생성자의 매개변수로 정수를 넣어주면 value에 저 값이 저장된다. Integer클래스의 intValue() 메소드는 value 값을 반환해주는 메소드이다. 지금부터 Integer 클래스의 대표적인 메소드들에 대해 살펴본다.
+<h1 id="2-integer클래스의-주요-메소드">2. Integer클래스의 주요 메소드</h1>
 
-&nbsp;
+<hr />
 
-&nbsp;
+<h2 id="1-int-intvalue">1) int intValue()</h2>
 
-# 2. Integer클래스의 주요 메소드
+<p> </p>
 
-* * *
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
 
-## 1) int intValue()
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
 
-&nbsp;
-
-~~~ java
-package wrapperclass;
-
-public class WrapperTest {
-
-   public static void main(String[] args) {
-      Integer iValue = new Integer(100);
-      int theValue = iValue.intValue();
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Integer</span> <span class="n">iValue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">theValue</span> <span class="o">=</span> <span class="n">iValue</span><span class="o">.</span><span class="na">intValue</span><span class="o">();</span>
       
-      System.out.println(theValue);
-   }
-}
-~~~
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-100
+<p>100</p>
 
+<p>intValue 메소드로 클래스의 상수인 value 값을 불러왔다.</p>
 
- intValue 메소드로 클래스의 상수인 value 값을 불러왔다.
+<p> </p>
 
-&nbsp;
+<p>참고로 intValue() 메소드의 반환형은 기본 자료형 int이다.</p>
 
-참고로 intValue() 메소드의 반환형은 기본 자료형 int이다.
+<p> </p>
 
-&nbsp;
+<h2 id="2-integer-valueof">2) Integer valueOf()</h2>
 
-## 2) Integer valueOf()
+<p>valueOf() 메소드는 매개변수로 정수나 문자열이 들어오면 정수형으로 다시 되돌려주는 메소드이다. 이 메소드는 static으로 정의되어 있어 클래스 메소드이다. 따라서 객체를 생성하지 않고도 사용 가능하다. 그리고 메소드의 반환형은 Integer클래스 형이다.</p>
 
-valueOf() 메소드는 매개변수로 정수나 문자열이 들어오면 정수형으로 다시 되돌려주는 메소드이다. 이 메소드는 static으로 정의되어 있어 클래스 메소드이다. 따라서 객체를 생성하지 않고도 사용 가능하다. 그리고 메소드의 반환형은 Integer클래스 형이다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
 
-~~~ java
-package wrapperclass;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
 
-public class WrapperTest {
-
-   public static void main(String[] args) {
-      int theValue1 = Integer.valueOf(100);
-      int theValue2 = Integer.valueOf("200");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">theValue1</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">theValue2</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">"200"</span><span class="o">);</span>
       
-      System.out.println(theValue1);
-      System.out.println(theValue2);
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue1</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue2</span><span class="o">);</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-100
+<p>100</p>
 
+<p>200</p>
 
-200
+<p>정수를 문자열 형태로 넣어줘도 정수형으로 변환하여 돌려준다. 사실 이 메소드 안에서는 정수를 return해줄 때 parseInt라는 메소드를 사용한다. parseInt 메소드는 문자열을 정수로 돌려주는 메소드이다.</p>
 
-정수를 문자열 형태로 넣어줘도 정수형으로 변환하여 돌려준다. 사실 이 메소드 안에서는 정수를 return해줄 때 parseInt라는 메소드를 사용한다. parseInt 메소드는 문자열을 정수로 돌려주는 메소드이다.
+<p> </p>
 
-&nbsp;
+<h2 id="3-int-parseint">3) int parseInt()</h2>
 
-## 3) int parseInt()
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
 
-~~~ java
-package wrapperclass;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
 
-public class WrapperTest {
-
-   public static void main(String[] args) {
-      int theValue = Integer.parseInt("100");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">theValue</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
       
-      System.out.println(theValue);
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue</span><span class="o">);</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-100
+<p>100</p>
 
+<p> </p>
 
- 
+<h1 id="3-언박싱--오토박싱">3. 언박싱 / 오토박싱</h1>
 
-&nbsp;
+<hr />
 
-# 3. 언박싱 / 오토박싱
+<p>Integer와 int 자료형 사이의 연산이 일어날 때는 언박싱, 오토박싱이 일어난다.</p>
 
-* * *
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
 
-Integer와 int 자료형 사이의 연산이 일어날 때는 언박싱, 오토박싱이 일어난다.
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
 
-~~~ java
-package wrapperclass;
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Integer</span> <span class="n">num1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span>
 
-public class WrapperTest {
+      <span class="kt">int</span> <span class="n">sum1</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="o">;</span> <span class="c1">// int에 저장되어야 하므로 num1이 num1.intValue()메소드를 통하여 Integer -&gt; int (&lt;strong&gt;언박싱&lt;/strong&gt;)</span>
+      <span class="nc">Integer</span> <span class="n">sum2</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="o">;</span> <span class="c1">// Integer에 저장되어야 하므로 num2가 Integer.valueOf(num2)를 통하여 int -&gt; Integer (&lt;strong&gt;오토박싱&lt;/strong&gt;)</span>
+   <span class="o">}</span>
 
-   public static void main(String[] args) {
-      Integer num1 = new Integer(100);
-      int num2 = 200;
+<span class="o">}</span>
+</code></pre></div></div>
 
-      int sum1 = num1 + num2; // int에 저장되어야 하므로 num1이 num1.intValue()메소드를 통하여 Integer -> int (<strong>언박싱</strong>)
-      Integer sum2 = num1 + num2; // Integer에 저장되어야 하므로 num2가 Integer.valueOf(num2)를 통하여 int -> Integer (<strong>오토박싱</strong>)
-   }
+<p>Integer 자료형이 int 자료형으로 변환되는 것을 언박싱, 그 반대를 오토박싱이라고 한다. 이 과정은 컴파일러가 해주므로 사실 프로그래머는 Integer자료형과 int자료형을 구분 없이 편하게 사용할 수 있다.</p>
 
-}
-~~~
-
-Integer 자료형이 int 자료형으로 변환되는 것을 언박싱, 그 반대를 오토박싱이라고 한다. 이 과정은 컴파일러가 해주므로 사실 프로그래머는 Integer자료형과 int자료형을 구분 없이 편하게 사용할 수 있다.
   </div>
   
   <div class="post">
@@ -11240,162 +11182,146 @@ Integer 자료형이 int 자료형으로 변환되는 것을 언박싱, 그 반�
 
     <span class="post-date">23 Dec 2018</span>
 
-    # 1. String 클래스
+    <h1 id="1-string-클래스">1. String 클래스</h1>
 
-* * *
+<hr />
 
-~~~ java
-String str1 = new String("hello"); // str1은 힙 메모리에 생성 된 String클래스의 객체를 참조
-String str2 = "hello"; // str2는 상수pool에 저장되어있는 hello를 참조
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span> <span class="c1">// str1은 힙 메모리에 생성 된 String클래스의 객체를 참조</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="s">"hello"</span><span class="o">;</span> <span class="c1">// str2는 상수pool에 저장되어있는 hello를 참조</span>
+</code></pre></div></div>
 
-문자열을 생성하는 방법에는 두 가지가 있다. 첫 번째는 문자열을 String클래스의 생성자의 매개변수로 넣어서 생성하는 것이고, 두 번째는 프로그램이 시작되면서 상수pool에 할당되는 문자열을 가르키게 변수에 저장하는 방식이다.
+<p>문자열을 생성하는 방법에는 두 가지가 있다. 첫 번째는 문자열을 String클래스의 생성자의 매개변수로 넣어서 생성하는 것이고, 두 번째는 프로그램이 시작되면서 상수pool에 할당되는 문자열을 가르키게 변수에 저장하는 방식이다.</p>
 
-### 1) String클래스 생성자로 생성
+<h3 id="1-string클래스-생성자로-생성">1) String클래스 생성자로 생성</h3>
 
-~~~ java
-package stringClass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stringClass</span><span class="o">;</span>
 
-public class StringTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="o">{</span>
    
-   public static void main(String[] args) {
-      String str1 = new String("hello");
-      String str2 = new String("hello");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
       
-      System.out.println(str1.equals(str2)); // 같은 문자열인지 판단
-      System.out.println(str1==str2); // 같은 객체인지 판단
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span> <span class="c1">// 같은 문자열인지 판단</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">==</span><span class="n">str2</span><span class="o">);</span> <span class="c1">// 같은 객체인지 판단</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-true
+<p>true</p>
 
+<p>false</p>
 
-false
+<p>같은 문자열이더라도 객체를 생성할 때 마다 힙 메모리에 새로운 공간이 할당되어 서로 다른 객체가 된다.</p>
 
+<p> </p>
 
- 같은 문자열이더라도 객체를 생성할 때 마다 힙 메모리에 새로운 공간이 할당되어 서로 다른 객체가 된다.
+<h3 id="2-상수pool에-저장-된-문자열-리터럴-가르키도록-생성">2) 상수pool에 저장 된 문자열 리터럴 가르키도록 생성</h3>
 
-&nbsp;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stringClass</span><span class="o">;</span>
 
-### 2) 상수pool에 저장 된 문자열 리터럴 가르키도록 생성
-
-~~~ java
-package stringClass;
-
-public class StringTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="o">{</span>
    
-   public static void main(String[] args) {
-      String str1 = "hello";
-      String str2 = "hello";
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"hello"</span><span class="o">;</span>
+      <span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="s">"hello"</span><span class="o">;</span>
       
-      System.out.println(str1.equals(str2)); // 같은 문자열인지 판단
-      System.out.println(str1==str2); // 같은 객체인지 판단
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span> <span class="c1">// 같은 문자열인지 판단</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">==</span><span class="n">str2</span><span class="o">);</span> <span class="c1">// 같은 객체인지 판단</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-true
+<p>true</p>
 
+<p>true</p>
 
-true
+<p>이번에는 두 참조변수가 같은 메모리 공간을 가르킨다는 결과가 나왔다. “hello” 문자열이 프로그램이 시작되면서 상수pool에 저장이 되고 이제부터 이 문자열을 저장하는 모든 참조변수는 이 상수풀의 “hello”를 가르키도록 지정된다. 따라서 위와 같은 결과가 나온 것이다.</p>
 
+<p> </p>
 
- 이번에는 두 참조변수가 같은 메모리 공간을 가르킨다는 결과가 나왔다. "hello" 문자열이 프로그램이 시작되면서 상수pool에 저장이 되고 이제부터 이 문자열을 저장하는 모든 참조변수는 이 상수풀의 "hello"를 가르키도록 지정된다. 따라서 위와 같은 결과가 나온 것이다.
+<p> </p>
 
-&nbsp;
+<h1 id="2-stringbuild와-stringbuffer">2. StringBuild와 StringBuffer</h1>
 
-&nbsp;
+<hr />
 
-# 2. StringBuild와 StringBuffer
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stringClass</span><span class="o">;</span>
 
-* * *
-
-~~~ java
-package stringClass;
-
-public class StringTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="o">{</span>
    
-   public static void main(String[] args) {
-      String str1 = new String("Java");
-      String str2 = new String("Android");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Java"</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Android"</span><span class="o">);</span>
       
-      //str1의 주소값
-      System.out.println(System.identityHashCode(str1));
+      <span class="c1">//str1의 주소값</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">str1</span><span class="o">));</span>
       
-      //str1에 str2 이어붙이기
-      str1 = str1.concat(str2);
-      System.out.println(str1);
+      <span class="c1">//str1에 str2 이어붙이기</span>
+      <span class="n">str1</span> <span class="o">=</span> <span class="n">str1</span><span class="o">.</span><span class="na">concat</span><span class="o">(</span><span class="n">str2</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">);</span>
       
-      //str1의 주소값
-      System.out.println(System.identityHashCode(str1));
-   }
+      <span class="c1">//str1의 주소값</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">str1</span><span class="o">));</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-문자열을 이어붙였다. concat() 메소드는 문자열을 이어붙일 수 있게 해주는 String클래스의 메소드이다.
+<p>문자열을 이어붙였다. concat() 메소드는 문자열을 이어붙일 수 있게 해주는 String클래스의 메소드이다.</p>
 
-&nbsp;
+<p> </p>
 
-실행결과
+<p>실행결과</p>
 
-366712642
+<p>366712642</p>
 
+<p>str1</p>
 
-str1
+<p>1829164700</p>
 
+<p>결과를 보면 str1에 문자열을 이어붙이면서 새로 생성된 문자열은 다른 주소에 저장되어 있다. 여기서 알 수 있는것은 <strong>문자열이 변경될 때에는 새로운 메모리공간에 문자열이 생기고 변수가 그것을 가르키도록 갱신된다는 것이다.</strong> 이렇게 되면 메모리 낭비가 생겨버린다. 이렇게 되는 이유는 문자열은 한 번 선언이 되고나면 ‘불변’하기 때문이다.</p>
 
-1829164700
+<p>이 때 메모리 낭비를 해결할 수 있도록 StringBuild와 StringBuffer 클래스가 있다. 두 클래스는 문자열 변경의 안정성에 관련한 기능이 다른데, 문자열을 변경할 때에는 두 클래스 중 아무거나 사용해도 된다. 그럼 StringBuklder 클래스를 사용해서 문자열을 변경하는 코드를 한 번 보겠다.</p>
 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stringClass</span><span class="o">;</span>
 
- 
-
-결과를 보면 str1에 문자열을 이어붙이면서 새로 생성된 문자열은 다른 주소에 저장되어 있다. 여기서 알 수 있는것은 **문자열이 변경될 때에는 새로운 메모리공간에 문자열이 생기고 변수가 그것을 가르키도록 갱신된다는 것이다.** 이렇게 되면 메모리 낭비가 생겨버린다. 이렇게 되는 이유는 문자열은 한 번 선언이 되고나면 '불변'하기 때문이다.
-
-이 때 메모리 낭비를 해결할 수 있도록 StringBuild와 StringBuffer 클래스가 있다. 두 클래스는 문자열 변경의 안정성에 관련한 기능이 다른데, 문자열을 변경할 때에는 두 클래스 중 아무거나 사용해도 된다. 그럼 StringBuklder 클래스를 사용해서 문자열을 변경하는 코드를 한 번 보겠다.
-
-~~~ java
-package stringClass;
-
-public class StringTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="o">{</span>
    
-   public static void main(String[] args) {
-      String str1 = new String("Java");
-      String str2 = new String("Android");
-      String str3 = new String("IOS");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Java"</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Android"</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">str3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"IOS"</span><span class="o">);</span>
 
-      StringBuilder builder = new StringBuilder(str1);
-      System.out.println(System.identityHashCode(builder)); //이어붙이기 전 builder 주소
+      <span class="nc">StringBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(</span><span class="n">str1</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">builder</span><span class="o">));</span> <span class="c1">//이어붙이기 전 builder 주소</span>
       
-      builder.append(str2);
-      builder.append(str3);
-      System.out.println(builder);
+      <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">str2</span><span class="o">);</span>
+      <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">str3</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
       
-      System.out.println(System.identityHashCode(builder)); //이어붙인 후 builder 주소
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">builder</span><span class="o">));</span> <span class="c1">//이어붙인 후 builder 주소</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-366712642
+<p>366712642</p>
 
+<p>JavaAndroidIOS</p>
 
-JavaAndroidIOS
+<p>366712642</p>
 
+<p>문자열 변환작업을 하면서도 메모리 주소값이 변하지 않았다. 메모리 낭비를 해결한 것이다.</p>
 
-366712642
-
-
- 문자열 변환작업을 하면서도 메모리 주소값이 변하지 않았다. 메모리 낭비를 해결한 것이다.
   </div>
   
   <div class="post">
@@ -11407,320 +11333,288 @@ JavaAndroidIOS
 
     <span class="post-date">23 Dec 2018</span>
 
-    모든 클래스의 최상위 클래스는 Object 클래스이다. 컴파일러는 모든 클래스의 뒷부분에 'extends Object'를 자동으로 추가하여 컴파일한다. 따라서 우리는 Object 클래스의 모든 메소드를 호출하여 사용할 수 있었다.
+    <p>모든 클래스의 최상위 클래스는 Object 클래스이다. 컴파일러는 모든 클래스의 뒷부분에 ‘extends Object’를 자동으로 추가하여 컴파일한다. 따라서 우리는 Object 클래스의 모든 메소드를 호출하여 사용할 수 있었다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. Object 클래스란?
+<h1 id="1-object-클래스란">1. Object 클래스란?</h1>
 
-* * *
+<hr />
 
-java.lang 패키지의 클래스이며 자바의 모든 클래스들의 최상위 클래스이다. Object 클래스 뿐만 아니라 java.lang 패키지의 모든 클래스는 컴파일 과정에서 자동으로 import문으로 추가하게 되어있다. 그 유명한 String 클래스도 java.lang 패키지의 하위 클래스이다. 그래서 우리가 지금까지 String 클래스를 사용하여 문자열을 표현할 수 있었던 것이다.
+<p>java.lang 패키지의 클래스이며 자바의 모든 클래스들의 최상위 클래스이다. Object 클래스 뿐만 아니라 java.lang 패키지의 모든 클래스는 컴파일 과정에서 자동으로 import문으로 추가하게 되어있다. 그 유명한 String 클래스도 java.lang 패키지의 하위 클래스이다. 그래서 우리가 지금까지 String 클래스를 사용하여 문자열을 표현할 수 있었던 것이다.</p>
 
-~~~ java
-import java.lang.*; // 컴파일러가 java.lang 패키지의 모든 하위 클래스 import
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.lang.*</span><span class="o">;</span> <span class="c1">// 컴파일러가 java.lang 패키지의 모든 하위 클래스 import</span>
+</code></pre></div></div>
 
-~~~ java
-// 컴파일러가 자동으로 extends Object 구문 추가
-class Student{                       class Student extends Object {
-   int studentID;          ->           int studentID;
-   String studentName;                  String studentName;
-}                                    }
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 컴파일러가 자동으로 extends Object 구문 추가</span>
+<span class="kd">class</span> <span class="nc">Student</span><span class="o">{</span>                       <span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="nc">Object</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">studentID</span><span class="o">;</span>          <span class="o">-&gt;</span>           <span class="kt">int</span> <span class="n">studentID</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">studentName</span><span class="o">;</span>                  <span class="nc">String</span> <span class="n">studentName</span><span class="o">;</span>
+<span class="o">}</span>                                    <span class="o">}</span>
 
 
-~~~
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. Object 클래스 대표적인 메소드들
+<h1 id="2-object-클래스-대표적인-메소드들">2. Object 클래스 대표적인 메소드들</h1>
 
-* * *
+<hr />
 
-## 1) String toString()
+<h2 id="1-string-tostring">1) String toString()</h2>
 
-String타입의 toString() 메소드는 객체의 정보를 반환한다. 기본적으로 객체를 System.out.println함수 안에 집어넣으면 .toString()이 자동으로 붙는다.
+<p>String타입의 toString() 메소드는 객체의 정보를 반환한다. 기본적으로 객체를 System.out.println함수 안에 집어넣으면 .toString()이 자동으로 붙는다.</p>
 
-~~~ java
-package objectClass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-public class Book {
-   int bookNumber;
-   String bookTitle;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">bookNumber</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">bookTitle</span><span class="o">;</span>
    
-   Book(int bookNumber, String bookTitle){
-      this.bookNumber = bookNumber;
-      this.bookTitle = bookTitle;
-   }
-}
-~~~
+   <span class="nc">Book</span><span class="o">(</span><span class="kt">int</span> <span class="n">bookNumber</span><span class="o">,</span> <span class="nc">String</span> <span class="n">bookTitle</span><span class="o">){</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookNumber</span> <span class="o">=</span> <span class="n">bookNumber</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookTitle</span> <span class="o">=</span> <span class="n">bookTitle</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package objectClass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-public class ToStringEx {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      Book book1 = new Book(100, "Titanic");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"Titanic"</span><span class="o">);</span>
       
-      System.out.println(book1);
-      System.out.println(book1.toString());     
-   }
-}
-~~~
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>     
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-objectClass.Book@15db9742
+<p>objectClass.Book@15db9742</p>
 
+<p>objectClass.Book@15db9742</p>
 
-objectClass.Book@15db9742
+<p>Object.class 파일에 정의되어있는 toString() 메소드의 원형은 다음과 같다.</p>
 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getClass</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"@"</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hashCode</span><span class="o">());</span>
+    <span class="o">}</span>
+</code></pre></div></div>
 
- 
+<p>그래서 지금까지 객체의 정보를 출력하면  <em>클래스 이름@해쉬코드값</em>  이 출력된 것이었다.</p>
 
-Object.class 파일에 정의되어있는 toString() 메소드의 원형은 다음과 같다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-~~~ java
-public String toString() {
-        return getClass().getName() + "@" + Integer.toHexString(hashCode());
-    }
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
 
-그래서 지금까지 객체의 정보를 출력하면  _클래스 이름@해쉬코드값_  이 출력된 것이었다.
-
-~~~ java
-package objectClass;
-
-public class ToStringEx {
-
-   public static void main(String[] args) {
-      Book book1 = new Book(100, "Titanic");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"Titanic"</span><span class="o">);</span>
       
-      System.out.println(book1);
-      System.out.println(book1.toString());
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
       
-      String str = new String("test");
-      System.out.println(str);
-      Integer i1 = new Integer(100);
-      System.out.println(i1);
-   }
+      <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"test"</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+      <span class="nc">Integer</span> <span class="n">i1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i1</span><span class="o">);</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-그러나 str과 il은 클래스이름@해쉬코드 값이 출력되는게 아니라 문자열과 정수값이 출력된다. 모든 클래스는 Object클래스를 상속받는다고 했다. String과 Integer 클래스도 마찬가지다. 이 두 클래스들은 Object 클래스를 상속받고 toString() 메소드를 재정의한다.
+<p>그러나 str과 il은 클래스이름@해쉬코드 값이 출력되는게 아니라 문자열과 정수값이 출력된다. 모든 클래스는 Object클래스를 상속받는다고 했다. String과 Integer 클래스도 마찬가지다. 이 두 클래스들은 Object 클래스를 상속받고 toString() 메소드를 재정의한다.</p>
 
-~~~ java
-//String 클래스의 toString() 오버라이딩
-public String toString() {
-        return this;
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//String 클래스의 toString() 오버라이딩</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-//Integer 클래스의 toString() 오버라이딩
-public String toString() {
-        return toString(value);
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Integer 클래스의 toString() 오버라이딩</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">toString</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-그렇다면 우리가 직접 Book 클래스에서 toString()을 재정의 해보자.
+<p>그렇다면 우리가 직접 Book 클래스에서 toString()을 재정의 해보자.</p>
 
-~~~ java
-package objectClass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-public class Book {
-   int bookNumber;
-   String bookTitle;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">bookNumber</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">bookTitle</span><span class="o">;</span>
    
-   Book(int bookNumber, String bookTitle){
-      this.bookNumber = bookNumber;
-      this.bookTitle = bookTitle;
-   }
-}
-~~~
+   <span class="nc">Book</span><span class="o">(</span><span class="kt">int</span> <span class="n">bookNumber</span><span class="o">,</span> <span class="nc">String</span> <span class="n">bookTitle</span><span class="o">){</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookNumber</span> <span class="o">=</span> <span class="n">bookNumber</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookTitle</span> <span class="o">=</span> <span class="n">bookTitle</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-package objectClass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-public class ToStringEx {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      Book book1 = new Book(100, "Titanic");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"Titanic"</span><span class="o">);</span>
       
-      System.out.println(book1);
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">);</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-100,Titanic
+<p>100,Titanic</p>
 
+<h2 id="2-boolean-equalsobject-obj">2) boolean equals(Object obj)</h2>
 
- 
+<p>equals() 메소드는 두 객체를 비교하여 같은 객체면 true, 다른 객체면 false를 반환한다.</p>
 
-## 2) boolean equals(Object obj)
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-equals() 메소드는 두 객체를 비교하여 같은 객체면 true, 다른 객체면 false를 반환한다.
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
 
-~~~ java
-package objectClass;
-
-public class ToStringEx {
-
-   public static void main(String[] args) {
-      Book book1 = new Book(100, "Titanic");
-      Book book2 = new Book(200, "LionKing");
-      Book book3 = book1; //book3 참조변수에 book1을 대입
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"Titanic"</span><span class="o">);</span>
+      <span class="nc">Book</span> <span class="n">book2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Book</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="s">"LionKing"</span><span class="o">);</span>
+      <span class="nc">Book</span> <span class="n">book3</span> <span class="o">=</span> <span class="n">book1</span><span class="o">;</span> <span class="c1">//book3 참조변수에 book1을 대입</span>
       
-      System.out.println(book1);
-      System.out.println(book2);
-      System.out.println(book3);
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book2</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book3</span><span class="o">);</span>
       
-      System.out.println(book1.equals(book2));
-      System.out.println(book1.equals(book3));
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">book2</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">book3</span><span class="o">));</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-objectClass.Book@15db9742
+<p>objectClass.Book@15db9742</p>
 
+<p>objectClass.Book@6d06d69c</p>
 
-objectClass.Book@6d06d69c
+<p>objectClass.Book@15db9742</p>
 
+<p>false</p>
 
-objectClass.Book@15db9742
+<p>true</p>
 
+<p>book3 참조변수에 book1을 대입하였다. 따라서 이 두 참조변수는 같은 인스턴스를 가르킬 것이다. 그리고 book2에는 다른 인스턴스를 생성하여 저장하였다. 따라서 book1.equals(book2)는 false, book1.equals(book3)는 true를 반환한다.</p>
 
-false
+<p>String 클래스와 Integer 클래스에서는 equals()메소드가 이미 재정의 되어있다. 먼저 코드를 보고 결과를 보자.</p>
 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-true
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
 
-book3 참조변수에 book1을 대입하였다. 따라서 이 두 참조변수는 같은 인스턴스를 가르킬 것이다. 그리고 book2에는 다른 인스턴스를 생성하여 저장하였다. 따라서 book1.equals(book2)는 false, book1.equals(book3)는 true를 반환한다.
-
-String 클래스와 Integer 클래스에서는 equals()메소드가 이미 재정의 되어있다. 먼저 코드를 보고 결과를 보자.
-
-~~~ java
-package objectClass;
-
-public class ToStringEx {
-
-   public static void main(String[] args) {
-      String str1 = new String("hello");
-      String str2 = new String("hello");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
       
-      Integer int1 = new Integer(100);
-      Integer int2 = new Integer(100);
+      <span class="nc">Integer</span> <span class="n">int1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="nc">Integer</span> <span class="n">int2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
       
-      System.out.println(str1==str2);
-      System.out.println(str1.equals(str2));
-      System.out.println(int1==int2);
-      System.out.println(int1.equals(int2));
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">==</span><span class="n">str2</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">int1</span><span class="o">==</span><span class="n">int2</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">int1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">int2</span><span class="o">));</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-false
+<p>false</p>
 
+<p>true</p>
 
-true
+<p>false</p>
 
+<p>true</p>
 
-false
+<p>==은 말 그대로 두 객체의 주소값을 비교한다. 그러나 Integer와 String 클래스에서 equals() 메소드가 두 문자열 자체 혹은 정수 자체를 비교하여 같으면 true를 반환하도록 재정의 되어있다.</p>
 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-true
-
-
- 
-
-==은 말 그대로 두 객체의 주소값을 비교한다. 그러나 Integer와 String 클래스에서 equals() 메소드가 두 문자열 자체 혹은 정수 자체를 비교하여 같으면 true를 반환하도록 재정의 되어있다.
-
-~~~ java
-package objectClass;
-
-public class Book {
-   int bookNumber;
-   String bookTitle;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">bookNumber</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">bookTitle</span><span class="o">;</span>
    
-   Book(int bookNumber, String bookTitle){
-      this.bookNumber = bookNumber;
-      this.bookTitle = bookTitle;
-   }
+   <span class="nc">Book</span><span class="o">(</span><span class="kt">int</span> <span class="n">bookNumber</span><span class="o">,</span> <span class="nc">String</span> <span class="n">bookTitle</span><span class="o">){</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookNumber</span> <span class="o">=</span> <span class="n">bookNumber</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">bookTitle</span> <span class="o">=</span> <span class="n">bookTitle</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   @Override
-   public boolean equals(Object obj) {
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
       
-      if(obj instanceof Book) { //매개변수의 자료형이 같다면 비교 시작
-         Book book = (Book)obj; //obj객체를 Book타입으로 변환하여 book에 저장
-         if(this.bookNumber == book.bookNumber) { //bookNumber가 같으면 true, 다르면 false 반환
-            return true;
-         }
-         else {
-            return false;
-         }
-      }
-      else //매개변수의 자료형이 다르면 false 반환
-      {
-         return false;
-      }
-   }
+      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="nc">Book</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//매개변수의 자료형이 같다면 비교 시작</span>
+         <span class="nc">Book</span> <span class="n">book</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Book</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span> <span class="c1">//obj객체를 Book타입으로 변환하여 book에 저장</span>
+         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">bookNumber</span> <span class="o">==</span> <span class="n">book</span><span class="o">.</span><span class="na">bookNumber</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//bookNumber가 같으면 true, 다르면 false 반환</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="c1">//매개변수의 자료형이 다르면 false 반환</span>
+      <span class="o">{</span>
+         <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-Book 클래스에서 책 번호가 같으면 같은 것으로, 다르면 다른 것으로 인식되도록 직접 equals() 메소드를 재정의 하여보았다.
+<p>Book 클래스에서 책 번호가 같으면 같은 것으로, 다르면 다른 것으로 인식되도록 직접 equals() 메소드를 재정의 하여보았다.</p>
 
-&nbsp;
+<p> </p>
 
-## 3) int hashCode() 메소드
+<h2 id="3-int-hashcode-메소드">3) int hashCode() 메소드</h2>
 
-hashCode()는 객체가 저장된 힙 메모리의 주소를 반환한다.
+<p>hashCode()는 객체가 저장된 힙 메모리의 주소를 반환한다.</p>
 
-~~~ java
-package objectClass;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">objectClass</span><span class="o">;</span>
 
-public class ToStringEx {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToStringEx</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      Book book1 = new Book(100, "hello");
-      Book book2 = new Book(100, "hi");
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Book</span> <span class="n">book1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"hello"</span><span class="o">);</span>
+      <span class="nc">Book</span> <span class="n">book2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Book</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="s">"hi"</span><span class="o">);</span>
       
-      System.out.println(book1.hashCode());
-      System.out.println(book2.hashCode());
-   }
-}
-~~~
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book2</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-366712642
+<p>366712642</p>
 
+<p>1829164700</p>
 
-1829164700
+<p>두 객체는 서로 다른 객체이므로 hashCode값이 다르다. Object 클래스의 toString() 메소드는 클래스이름@메모리 주소 를 반환하였었다. 이 때 메모리 주소는 hashCode값을 16진수로 변환한 값이었다.</p>
 
+<p> </p>
 
- 두 객체는 서로 다른 객체이므로 hashCode값이 다르다. Object 클래스의 toString() 메소드는 클래스이름@메모리 주소 를 반환하였었다. 이 때 메모리 주소는 hashCode값을 16진수로 변환한 값이었다.
-
-&nbsp;
   </div>
   
 </div>

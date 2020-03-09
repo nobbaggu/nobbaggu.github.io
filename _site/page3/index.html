@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,121 +10682,132 @@
 
     <span class="post-date">09 Jun 2019</span>
 
-    일반적인 안드로이드 멀티미디어 패키지에 포함된 비디오뷰로는 유튜브 미디어 플레이어를 가져올 수 없다. 물론 웹뷰를 사용할 수도 있겠지만 구글 개발자 사이트에서는 유튜브 동영상 재생을 위한 성능 좋은 공식 API를 제공한다.
+    <p>일반적인 안드로이드 멀티미디어 패키지에 포함된 비디오뷰로는 유튜브 미디어 플레이어를 가져올 수 없다. 물론 웹뷰를 사용할 수도 있겠지만 구글 개발자 사이트에서는 유튜브 동영상 재생을 위한 성능 좋은 공식 API를 제공한다.</p>
 
-<br>
+<p><br /></p>
 
-↓↓↓ 구글 개발자 사이트 YouTubeAndroidPlayerApi 링크
+<p>↓↓↓ 구글 개발자 사이트 YouTubeAndroidPlayerApi 링크</p>
 
-[YouTubeAndroidPlayerApi](https://developers.google.com/youtube/android/player/){: target="_blank" }
+<p><a href="https://developers.google.com/youtube/android/player/" target="_blank">YouTubeAndroidPlayerApi</a></p>
 
-<br>
+<p><br /></p>
 
-API를 사용하는 간단한 앱을 만들어보려한다. 그 전에 위 링크를 따라가 Download 탭에서 API를 다운받는다.
+<p>API를 사용하는 간단한 앱을 만들어보려한다. 그 전에 위 링크를 따라가 Download 탭에서 API를 다운받는다.</p>
 
-이제 아래 절차대로 API를 프로젝트에 추가하고 API 키를 발급받으면 라이브러리를 사용할 수 있다.
-<br>
+<p>이제 아래 절차대로 API를 프로젝트에 추가하고 API 키를 발급받으면 라이브러리를 사용할 수 있다.
+<br /></p>
 
-+ 압축을 푼 이후 \YouTubeAndroidPlayerApi-1.2.2\libs 폴더에 있는 YouTubeAndroidPlayerApi.jar 파일을 안드로이드 스튜디오에서 프로젝트 파일의 /app/libs 폴더에 끌어다가 복사한다.
-![1](/images/android/58/1.png){: width="100%" height="100%"}
+<ul>
+  <li>압축을 푼 이후 \YouTubeAndroidPlayerApi-1.2.2\libs 폴더에 있는 YouTubeAndroidPlayerApi.jar 파일을 안드로이드 스튜디오에서 프로젝트 파일의 /app/libs 폴더에 끌어다가 복사한다.
+<img src="/images/android/58/1.png" alt="1" width="100%" height="100%" /></li>
+</ul>
 
-<br>
-+ 안드로이드 스튜디오 상단 메뉴의 \[File\] - \[Project Structure\] 을 클릭하여 Dependencies 탭의 App으로 가서 \+ 버튼을 클릭하여 Jar Dependency를 클릭한다.
-![2](/images/android/58/2.png){: width="100%" height="100%"}
+<p><br /></p>
+<ul>
+  <li>안드로이드 스튜디오 상단 메뉴의 [File] - [Project Structure] 을 클릭하여 Dependencies 탭의 App으로 가서 + 버튼을 클릭하여 Jar Dependency를 클릭한다.
+<img src="/images/android/58/2.png" alt="2" width="100%" height="100%" /></li>
+</ul>
 
-<br>
-+ libs/YouTubeAndroidPlayerApi.jar 을 입력하고 OK버튼을 누른다.
-![3](/images/android/58/3.png){: width="100%" height="100%"}
+<p><br /></p>
+<ul>
+  <li>libs/YouTubeAndroidPlayerApi.jar 을 입력하고 OK버튼을 누른다.
+<img src="/images/android/58/3.png" alt="3" width="100%" height="100%" /></li>
+</ul>
 
-<br>
-+ gradle 폴더가 아닌 app 폴더의 build.gradle 파일을 열어보면 아래와 같이 dependencies에 라이브러리가 추가된 것이 보인다.
-![4](/images/android/58/4.png){: width="100%" height="100%"}
+<p><br /></p>
+<ul>
+  <li>gradle 폴더가 아닌 app 폴더의 build.gradle 파일을 열어보면 아래와 같이 dependencies에 라이브러리가 추가된 것이 보인다.
+<img src="/images/android/58/4.png" alt="4" width="100%" height="100%" /></li>
+</ul>
 
-<br>
-+ [API키 발급 사이트](https://console.developers.google.com/apis/credentials?hl=ko){: target="_blank" } ← 링크를 타고 들어가서 API키 발급받기를 클릭한다. 그러면 API 키카 생성된다.
-![5](/images/android/58/5.png){: width="100%" height="100%"}
+<p><br /></p>
+<ul>
+  <li><a href="https://console.developers.google.com/apis/credentials?hl=ko" target="_blank">API키 발급 사이트</a> ← 링크를 타고 들어가서 API키 발급받기를 클릭한다. 그러면 API 키카 생성된다.
+<img src="/images/android/58/5.png" alt="5" width="100%" height="100%" /></li>
+</ul>
 
-<br>
-+ AndroidManifest.xml 파일에서 패키지 이름을 복사해서 패키지 이름 입력란에 붙여넣는다. 그리고 SHA-1키를 입력해야 하는데, 이 키는 안드로이드 스튜디오의 오른쪽 벽에 붙어있는 Gradle을 클릭하면 \[App\] - \[Tasks\] - \[android\] - \[signingReport\]를 더블클릭하면 실행이 되면서 안드로이드 스튜디오 아래부분에 나타난다. 이 키를 복사해서 붙여넣고 저장을 하면 된다.
-![6](/images/android/58/6.png){: width="100%" height="100%"}
-![7](/images/android/58/7.png){: width="100%" height="100%"}
+<p><br /></p>
+<ul>
+  <li>AndroidManifest.xml 파일에서 패키지 이름을 복사해서 패키지 이름 입력란에 붙여넣는다. 그리고 SHA-1키를 입력해야 하는데, 이 키는 안드로이드 스튜디오의 오른쪽 벽에 붙어있는 Gradle을 클릭하면 [App] - [Tasks] - [android] - [signingReport]를 더블클릭하면 실행이 되면서 안드로이드 스튜디오 아래부분에 나타난다. 이 키를 복사해서 붙여넣고 저장을 하면 된다.
+<img src="/images/android/58/6.png" alt="6" width="100%" height="100%" />
+<img src="/images/android/58/7.png" alt="7" width="100%" height="100%" /></li>
+</ul>
 
-<br>
+<p><br /></p>
 
-이제 API를 사용하기 위해 아래 코드를 입력한다.
+<p>이제 API를 사용하기 위해 아래 코드를 입력한다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/youtubeViewer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+    <span class="nt">&lt;com.google.android.youtube.player.YouTubePlayerView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/youtubeViewer"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
 
-    <Button
-        android:id="@+id/playBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="재생"
-        android:textSize="24dp"
-        android:layout_gravity="center_horizontal"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/playBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"재생"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
 
-</LinearLayout>
-~~~
-레이아웃에 동영상을 재생시킬 영역을 위해 YouTubePlayerView를 추가하고 재생을 위한 버튼을 추가한다.
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+<p>레이아웃에 동영상을 재생시킬 영역을 위해 YouTubePlayerView를 추가하고 재생을 위한 버튼을 추가한다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ java	
-public class MainActivity extends YouTubeBaseActivity {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">YouTubeBaseActivity</span> <span class="o">{</span>
 
-    private YouTubePlayerView youtubeViewer;
-    YouTubePlayer.OnInitializedListener listener;
+    <span class="kd">private</span> <span class="nc">YouTubePlayerView</span> <span class="n">youtubeViewer</span><span class="o">;</span>
+    <span class="nc">YouTubePlayer</span><span class="o">.</span><span class="na">OnInitializedListener</span> <span class="n">listener</span><span class="o">;</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        Button playBtn = findViewById((R.id.playBtn));
-        youtubeViewer = findViewById(R.id.youtubeViewer);
+        <span class="nc">Button</span> <span class="n">playBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">((</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">playBtn</span><span class="o">));</span>
+        <span class="n">youtubeViewer</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">youtubeViewer</span><span class="o">);</span>
 
-        listener = new YouTubePlayer.OnInitializedListener(){
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                /* 초기화 성공하면 유튜브 동영상 ID를 전달하여 동영상 재생*/
-                youTubePlayer.loadVideo("SGWohw86Xk8"); // 동영상 ID는 URL 상단의 마지막 부분이다.
-            }
+        <span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">YouTubePlayer</span><span class="o">.</span><span class="na">OnInitializedListener</span><span class="o">(){</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInitializationSuccess</span><span class="o">(</span><span class="nc">YouTubePlayer</span><span class="o">.</span><span class="na">Provider</span> <span class="n">provider</span><span class="o">,</span> <span class="nc">YouTubePlayer</span> <span class="n">youTubePlayer</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 초기화 성공하면 유튜브 동영상 ID를 전달하여 동영상 재생*/</span>
+                <span class="n">youTubePlayer</span><span class="o">.</span><span class="na">loadVideo</span><span class="o">(</span><span class="s">"SGWohw86Xk8"</span><span class="o">);</span> <span class="c1">// 동영상 ID는 URL 상단의 마지막 부분이다.</span>
+            <span class="o">}</span>
 
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Toast.makeText(MainActivity.this, "재생 실패", Toast.LENGTH_LONG).show();
-            }
-        };
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInitializationFailure</span><span class="o">(</span><span class="nc">YouTubePlayer</span><span class="o">.</span><span class="na">Provider</span> <span class="n">provider</span><span class="o">,</span> <span class="nc">YouTubeInitializationResult</span> <span class="n">youTubeInitializationResult</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"재생 실패"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
 
-        playBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /* 파라미터1: API키
-                 * 파라미터2: 리스너 객체 */
-                youtubeViewer.initialize("AIzaSyB2-ytj3SHdTEmUrf2LTUuA0J6gynwCXJs", listener);
-            }
-        });
-    }
+        <span class="n">playBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 파라미터1: API키
+                 * 파라미터2: 리스너 객체 */</span>
+                <span class="n">youtubeViewer</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="s">"AIzaSyB2-ytj3SHdTEmUrf2LTUuA0J6gynwCXJs"</span><span class="o">,</span> <span class="n">listener</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-아까 signingReport를 실행한 것 때문에 앱이 아닌 signingReport가 또다시 실행될 수 있으므로 Alt\+Shift\+F10을 눌러 액티비티를 실행한다. 그리고 앱을 실행하면 아래와 같이 유튜브 플레이어가 실행된다.
+<p>아까 signingReport를 실행한 것 때문에 앱이 아닌 signingReport가 또다시 실행될 수 있으므로 Alt+Shift+F10을 눌러 액티비티를 실행한다. 그리고 앱을 실행하면 아래와 같이 유튜브 플레이어가 실행된다.</p>
 
-![8](/images/android/58/8.jpg){: width="40%" height="40%"}
+<p><img src="/images/android/58/8.jpg" alt="8" width="40%" height="40%" /></p>
+
   </div>
   
   <div class="post">
@@ -10832,247 +10819,247 @@ public class MainActivity extends YouTubeBaseActivity {
 
     <span class="post-date">09 Jun 2019</span>
 
-    안드로이드에서는 오디오나 동영상 재생 및 녹음, 녹화를 위한 API인 android.media 패키지를 제공한다. 그 중 핵심은 MediaPlayer 클래스로 오디오와 동영상의 재생에 관련된 부분을 담당한다.
+    <p>안드로이드에서는 오디오나 동영상 재생 및 녹음, 녹화를 위한 API인 android.media 패키지를 제공한다. 그 중 핵심은 MediaPlayer 클래스로 오디오와 동영상의 재생에 관련된 부분을 담당한다.</p>
 
-<br>
-## 1. 오디오 재생
-* * *
+<p><br /></p>
+<h2 id="1-오디오-재생">1. 오디오 재생</h2>
+<hr />
 
-MediaPlayer를 사용한 오디오의 재생을 위해서는 크게 3가지 단계가 필요하다.
+<p>MediaPlayer를 사용한 오디오의 재생을 위해서는 크게 3가지 단계가 필요하다.</p>
 
-~~~java
-setDataSource() //재생 대상 설정
-prepare() // 재생 준비
-start(); // 재생 시작
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setDataSource</span><span class="o">()</span> <span class="c1">//재생 대상 설정</span>
+<span class="n">prepare</span><span class="o">()</span> <span class="c1">// 재생 준비</span>
+<span class="n">start</span><span class="o">();</span> <span class="c1">// 재생 시작</span>
+</code></pre></div></div>
 
-<br>
-재생 대상을 지정하는 방법에는 크게 3가지가 있다. 
+<p><br />
+재생 대상을 지정하는 방법에는 크게 3가지가 있다.</p>
 
-> 1. 온라인 URL 지정
-> 2. 프로젝트 assets 폴더에 저장 후 지정
-> 3. 디바이스 SD카드에 저장 후 지정
+<blockquote>
+  <ol>
+    <li>온라인 URL 지정</li>
+    <li>프로젝트 assets 폴더에 저장 후 지정</li>
+    <li>디바이스 SD카드에 저장 후 지정</li>
+  </ol>
+</blockquote>
 
-일반적으로는 단말에 있는 소스를 재생하는 일이 많으므로 3번째 방법이 자주 쓰인다. 그러나 여기에서는 온라인의 샘플 오디오 재생을 위한 URL을 지정할 것이다.
+<p>일반적으로는 단말에 있는 소스를 재생하는 일이 많으므로 3번째 방법이 자주 쓰인다. 그러나 여기에서는 온라인의 샘플 오디오 재생을 위한 URL을 지정할 것이다.</p>
 
-`prepare()` 메소드를 실행하면 지정된 소스의 몇 프레임을 미리 읽어들이고 정보를 확인한다. 마지막으로 `start()` 메소드를 호출하면 지정된 대상 오디오를 재생한다.
+<p><code class="highlighter-rouge">prepare()</code> 메소드를 실행하면 지정된 소스의 몇 프레임을 미리 읽어들이고 정보를 확인한다. 마지막으로 <code class="highlighter-rouge">start()</code> 메소드를 호출하면 지정된 대상 오디오를 재생한다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">&gt;</span>
 
-    <Button
-        android:id="@+id/playBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="재생"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:layout_margin="50dp"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/playBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"재생"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
 
-    <Button
-        android:id="@+id/pauseBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="중지"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:layout_margin="50dp"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/pauseBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"중지"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
 
-    <Button
-        android:id="@+id/restartBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="재시작"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:layout_margin="50dp"/>
-</LinearLayout>
-~~~
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/restartBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"재시작"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-재생, 중지, 재시작을 위한 3가지 버튼을 만들었다.
+<p>재생, 중지, 재시작을 위한 3가지 버튼을 만들었다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ java
-public class MainActivity extends AppCompatActivity {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    static final String AUDIO_URL = "https://sites.google.com/site/ubiaccessmobile/sample_audio.amr";
-    private MediaPlayer mediaPlayer;
-    private int playbackPosition = 0; //재생위치를 저장할 변수
+    <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">AUDIO_URL</span> <span class="o">=</span> <span class="s">"https://sites.google.com/site/ubiaccessmobile/sample_audio.amr"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">MediaPlayer</span> <span class="n">mediaPlayer</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">playbackPosition</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//재생위치를 저장할 변수</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        Button playBtn = findViewById(R.id.playBtn);
-        Button pauseBtn = findViewById(R.id.pauseBtn);
-        Button restartBtn = findViewById(R.id.restartBtn);
+        <span class="nc">Button</span> <span class="n">playBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">playBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">pauseBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">pauseBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">restartBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">restartBtn</span><span class="o">);</span>
 
-        playBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playAudio(AUDIO_URL);
-            }
-        });
+        <span class="n">playBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">playAudio</span><span class="o">(</span><span class="no">AUDIO_URL</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
 
-        pauseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pauseAudio();
-            }
-        });
+        <span class="n">pauseBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">pauseAudio</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
 
-        restartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                restartAudio();
-            }
-        });
+        <span class="n">restartBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">restartAudio</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
 
-    }
+    <span class="o">}</span>
 
-    private void playAudio(String url){
-        /* 애플리케이션 내에서 미디어플레이어는 하나만 사용가능하므로
-        이미 사용되고 있을 경우 미디어 플레이어 리소스를 해제해주어야한다. */
-        if(mediaPlayer != null){ // 미디어 플레이어가 사용되고 있을경우
-            try{
-                mediaPlayer.release(); //미디어 플레이어 리소스 해제
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">playAudio</span><span class="o">(</span><span class="nc">String</span> <span class="n">url</span><span class="o">){</span>
+        <span class="cm">/* 애플리케이션 내에서 미디어플레이어는 하나만 사용가능하므로
+        이미 사용되고 있을 경우 미디어 플레이어 리소스를 해제해주어야한다. */</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mediaPlayer</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span> <span class="c1">// 미디어 플레이어가 사용되고 있을경우</span>
+            <span class="k">try</span><span class="o">{</span>
+                <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">release</span><span class="o">();</span> <span class="c1">//미디어 플레이어 리소스 해제</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
 
-        try{
-            mediaPlayer = new MediaPlayer();//미디어 플레이어 객체 생성
-            mediaPlayer.setDataSource(url); //대상 재생파일 지정
-            mediaPlayer.prepare(); //재생 준비
-            mediaPlayer.start(); //재생 시작
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">mediaPlayer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MediaPlayer</span><span class="o">();</span><span class="c1">//미디어 플레이어 객체 생성</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setDataSource</span><span class="o">(</span><span class="n">url</span><span class="o">);</span> <span class="c1">//대상 재생파일 지정</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span> <span class="c1">//재생 준비</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//재생 시작</span>
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
 
 
-        Toast.makeText(this, "재생 시작", Toast.LENGTH_LONG).show();
-    }
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"재생 시작"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    private void pauseAudio(){
-        if(mediaPlayer!=null && mediaPlayer.isPlaying()){
-            playbackPosition = mediaPlayer.getCurrentPosition();
-            mediaPlayer.pause();
-            Toast.makeText(this, "일시중지", Toast.LENGTH_LONG).show();
-        }
-    }
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">pauseAudio</span><span class="o">(){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mediaPlayer</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">isPlaying</span><span class="o">()){</span>
+            <span class="n">playbackPosition</span> <span class="o">=</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">getCurrentPosition</span><span class="o">();</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"일시중지"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 
-    private void restartAudio(){
-        if(mediaPlayer != null && !mediaPlayer.isPlaying()){
-            mediaPlayer.start();
-            mediaPlayer.seekTo(playbackPosition);
-            Toast.makeText(this, "재시작", Toast.LENGTH_LONG).show();
-        }
-    }
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">restartAudio</span><span class="o">(){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mediaPlayer</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">mediaPlayer</span><span class="o">.</span><span class="na">isPlaying</span><span class="o">()){</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">seekTo</span><span class="o">(</span><span class="n">playbackPosition</span><span class="o">);</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"재시작"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 
-    @Override
-    protected void onDestroy() { // 액티비티 종료 시 미디어 플레이어 리소스 해제
-        super.onDestroy();
-        if(mediaPlayer != null){
-            try{
-                mediaPlayer.release();
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-    }
-}
-~~~
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span> <span class="c1">// 액티비티 종료 시 미디어 플레이어 리소스 해제</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mediaPlayer</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="k">try</span><span class="o">{</span>
+                <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-여기서 눈여겨 볼 점은 중지를 할 때 `getCurrentPosition()` 메소드를 사용해서 중지될 때의 재생 위치를 가져와서 저장한다는 것이다. 그리고 재시작 버튼을 눌렀을 때 `seekTo()` 메소드를 통해 이전에 재생 중지 했던 위치로 찾아가도록 하는 것을 볼 수 있다. 그리고 액티비티의 `onDestroy()` 메소드를 재정의하여 액티비티가 종료될 때 미디어 리소스를 해제해준다.
+<p>여기서 눈여겨 볼 점은 중지를 할 때 <code class="highlighter-rouge">getCurrentPosition()</code> 메소드를 사용해서 중지될 때의 재생 위치를 가져와서 저장한다는 것이다. 그리고 재시작 버튼을 눌렀을 때 <code class="highlighter-rouge">seekTo()</code> 메소드를 통해 이전에 재생 중지 했던 위치로 찾아가도록 하는 것을 볼 수 있다. 그리고 액티비티의 <code class="highlighter-rouge">onDestroy()</code> 메소드를 재정의하여 액티비티가 종료될 때 미디어 리소스를 해제해준다.</p>
 
-앱을 실행하고 재생버튼을 누르면 아래 화면을 확인할 수 있다.
+<p>앱을 실행하고 재생버튼을 누르면 아래 화면을 확인할 수 있다.</p>
 
-![1](/images/android/55/1.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/55/1.jpg" alt="1" width="30%" height="30%" /></p>
 
-<br>
-## 2. 동영상 재생
-* * *
+<p><br /></p>
+<h2 id="2-동영상-재생">2. 동영상 재생</h2>
+<hr />
 
-동영상 재생은 레이아웃에 VideoView 객체를 추가하는 것으로 매우 간단하게 구현할 수 있다.
+<p>동영상 재생은 레이아웃에 VideoView 객체를 추가하는 것으로 매우 간단하게 구현할 수 있다.</p>
 
-< br>
+<p>&lt; br&gt;</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <Button
-        android:id="@+id/startBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:width="180dp"
-        android:layout_gravity="center"
-        android:text="재생"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/startBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span>
+        <span class="na">android:width=</span><span class="s">"180dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:text=</span><span class="s">"재생"</span><span class="nt">/&gt;</span>
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"/>
+    <span class="nt">&lt;VideoView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/videoView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-재생버튼과 동영상 디스플레이 영역을 위한 VideoView 위젯 두 개만 있다.
+<p>재생버튼과 동영상 디스플레이 영역을 위한 VideoView 위젯 두 개만 있다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ java
-public class MainActivity extends AppCompatActivity {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    private VideoView videoView;
-    static final String VIDEO_URL = "https://sites.google.com/site/ubiaccessmobile/sample_video.mp4";
+    <span class="kd">private</span> <span class="nc">VideoView</span> <span class="n">videoView</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">VIDEO_URL</span> <span class="o">=</span> <span class="s">"https://sites.google.com/site/ubiaccessmobile/sample_video.mp4"</span><span class="o">;</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        videoView = findViewById(R.id.videoView);
-        MediaController mc = new MediaController(this); //미디어 컨트롤러 객체 생성
-        videoView.setMediaController(mc); //비디오뷰에 미디어 컨트롤러 설정
+        <span class="n">videoView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">videoView</span><span class="o">);</span>
+        <span class="nc">MediaController</span> <span class="n">mc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MediaController</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">//미디어 컨트롤러 객체 생성</span>
+        <span class="n">videoView</span><span class="o">.</span><span class="na">setMediaController</span><span class="o">(</span><span class="n">mc</span><span class="o">);</span> <span class="c1">//비디오뷰에 미디어 컨트롤러 설정</span>
 
-        videoView.setVideoURI(Uri.parse(VIDEO_URL)); //비디오 재생 대상 URI 설정
-        videoView.requestFocus();
+        <span class="n">videoView</span><span class="o">.</span><span class="na">setVideoURI</span><span class="o">(</span><span class="nc">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="no">VIDEO_URL</span><span class="o">));</span> <span class="c1">//비디오 재생 대상 URI 설정</span>
+        <span class="n">videoView</span><span class="o">.</span><span class="na">requestFocus</span><span class="o">();</span>
 
-        Button startBtn = findViewById(R.id.startBtn);
+        <span class="nc">Button</span> <span class="n">startBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">startBtn</span><span class="o">);</span>
 
-        startBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                videoView.seekTo(0); //재생 위치 처음으로
-                videoView.start(); //재생 시작
-            }
-        });
-    }
-}
-~~~
+        <span class="n">startBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">videoView</span><span class="o">.</span><span class="na">seekTo</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">//재생 위치 처음으로</span>
+                <span class="n">videoView</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//재생 시작</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-비디오뷰에 미디어 컨트롤러 객체를 설정하면 비디오뷰 영역을 터치했을 때 동영상 재생을 제어할 수 있는 위젯이 나타난다.
+<p>비디오뷰에 미디어 컨트롤러 객체를 설정하면 비디오뷰 영역을 터치했을 때 동영상 재생을 제어할 수 있는 위젯이 나타난다.</p>
 
-앱을 실행하고 재생버튼을 누르면 아래 화면을 확인할 수 있다.
+<p>앱을 실행하고 재생버튼을 누르면 아래 화면을 확인할 수 있다.</p>
 
-![2](/images/android/55/2.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/55/2.jpg" alt="2" width="30%" height="30%" /></p>
+
   </div>
   
   <div class="post">
@@ -11084,180 +11071,176 @@ public class MainActivity extends AppCompatActivity {
 
     <span class="post-date">08 Jun 2019</span>
 
-    [SQLite3 사용법](https://github.com/swnomad/rssfeeder){: target="_blank" }
+    <p><a href="https://github.com/swnomad/rssfeeder" target="_blank">SQLite3 사용법</a></p>
 
-이 포스팅은 위 링크에서 설명한 SQLite 데이터베이스의 기본 사용법을 알고나서 더욱 편리하게 데이터베이스 열기 및 수정을 위한 SQLiteOpenHelper 클래스의 사용 목적과 방법에 대한 글이다.
+<p>이 포스팅은 위 링크에서 설명한 SQLite 데이터베이스의 기본 사용법을 알고나서 더욱 편리하게 데이터베이스 열기 및 수정을 위한 SQLiteOpenHelper 클래스의 사용 목적과 방법에 대한 글이다.</p>
 
-<br>
-## SQLiteOpenHelper 클래스를 사용하는 이유
-* * *
+<p><br /></p>
+<h2 id="sqliteopenhelper-클래스를-사용하는-이유">SQLiteOpenHelper 클래스를 사용하는 이유</h2>
+<hr />
 
-구글 플레이스토어에 올린 앱이 SQLite를 사용할 경우 DB의 구조가 변경될 경우가 있다. 예를들면 사람들의 정보를 저장하기위해 '이름', '나이' column만 사용했었는데 이후에 '휴대폰 번호' column을 추가해야 하는 경우이다. 이 때 앱을 버전 업그레이드하면서 새로 배포할 때, 기존의 테이블을 drop하고 새로 만들도록하면 기존 사용자의 데이터가 모두 날아가버리는 불상사가 생겨버린다. 따라서 신규 사용자의 경우는 단순히 새로운 구조의 테이블을 생성하면 되지만, 기존 사용자의 경우 기존 데이터를 유지하면서 업그레이드 해주어야한다.
+<p>구글 플레이스토어에 올린 앱이 SQLite를 사용할 경우 DB의 구조가 변경될 경우가 있다. 예를들면 사람들의 정보를 저장하기위해 ‘이름’, ‘나이’ column만 사용했었는데 이후에 ‘휴대폰 번호’ column을 추가해야 하는 경우이다. 이 때 앱을 버전 업그레이드하면서 새로 배포할 때, 기존의 테이블을 drop하고 새로 만들도록하면 기존 사용자의 데이터가 모두 날아가버리는 불상사가 생겨버린다. 따라서 신규 사용자의 경우는 단순히 새로운 구조의 테이블을 생성하면 되지만, 기존 사용자의 경우 기존 데이터를 유지하면서 업그레이드 해주어야한다.</p>
 
-이러한 경우 사용할 수 있는것이 SQLiteOpenHelper이다.
+<p>이러한 경우 사용할 수 있는것이 SQLiteOpenHelper이다.</p>
 
-~~~ java
-public SQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">SQLiteOpenHelper</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">SQLiteDatabase</span><span class="o">.</span><span class="na">CursorFactory</span> <span class="n">factory</span><span class="o">,</span> <span class="kt">int</span> <span class="n">version</span><span class="o">)</span>
+</code></pre></div></div>
 
-SQLiteOpenHelper 객체를 만들 때 생성자의 파라미터로는 4개의 변수가 전달되는데, name은 데이터베이스의 이름이다. 그리고 마지막 파라미터인 정수 version으로 전달되는 버전정보를 기존의 버전정보와 다르게 지정하여 DB의 구조를 업그레이드 할 수 있다.
+<p>SQLiteOpenHelper 객체를 만들 때 생성자의 파라미터로는 4개의 변수가 전달되는데, name은 데이터베이스의 이름이다. 그리고 마지막 파라미터인 정수 version으로 전달되는 버전정보를 기존의 버전정보와 다르게 지정하여 DB의 구조를 업그레이드 할 수 있다.</p>
 
-SQLiteOpenHelper 클래스의 주 사용 목적은 데이터베이스의 생성 및 업그레이드가 필요할 시에 자동으로 콜백 메소드가 호출된다는 점에서 온다. 이 콜백 메소드를 재정의함으로서 DB의 생성, 업그레이드 등의 상태에 맞게 알맞은 처리가 가능하다.
+<p>SQLiteOpenHelper 클래스의 주 사용 목적은 데이터베이스의 생성 및 업그레이드가 필요할 시에 자동으로 콜백 메소드가 호출된다는 점에서 온다. 이 콜백 메소드를 재정의함으로서 DB의 생성, 업그레이드 등의 상태에 맞게 알맞은 처리가 가능하다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ java
-public abstract void onCreate(SQLiteDatabase db)
-public abstract void onOpen(SQLiteDatabase db)
-public abstract void opUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">onOpen</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">opUpgrade</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldVersion</span><span class="o">,</span> <span class="kt">int</span> <span class="n">newVersion</span><span class="o">)</span>
+</code></pre></div></div>
 
-<br>
+<p><br /></p>
 
-생성자의 파라미터로 전달된 DB의 이름이 없다면 `onCreate()` 메소드가 호출되고 이미 사용중인 DB라면 `onUpgrade()` 메소드가 호출된다.
+<p>생성자의 파라미터로 전달된 DB의 이름이 없다면 <code class="highlighter-rouge">onCreate()</code> 메소드가 호출되고 이미 사용중인 DB라면 <code class="highlighter-rouge">onUpgrade()</code> 메소드가 호출된다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
 
-        <EditText
-            android:id="@+id/dbNameInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="데이터베이스 이름"
-            android:textSize="16dp"
-            android:layout_weight="3"
-            android:layout_margin="5dp"/>
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/dbNameInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:hint=</span><span class="s">"데이터베이스 이름"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
 
-        <Button
-            android:id="@+id/createDbBtn"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="DB 생성"
-            android:layout_margin="5dp"/>
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/createDbBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:text=</span><span class="s">"DB 생성"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
 
-    </LinearLayout>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-~~~ java
-public class MainActivity extends AppCompatActivity {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    SQLiteDatabase database;
-    private static final int DB_VERSION = 1; // 데이터베이스 버전
+    <span class="nc">SQLiteDatabase</span> <span class="n">database</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">DB_VERSION</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// 데이터베이스 버전</span>
 
-    private DatabaseOpenHelper helper;
+    <span class="kd">private</span> <span class="nc">DatabaseOpenHelper</span> <span class="n">helper</span><span class="o">;</span>
 
-    EditText dbNameInput;
-    EditText tableNameInput;
+    <span class="nc">EditText</span> <span class="n">dbNameInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">tableNameInput</span><span class="o">;</span>
 
-    String dbName;
-    String tableName;
+    <span class="nc">String</span> <span class="n">dbName</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">tableName</span><span class="o">;</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        /* ********** XML에 정의된 UI객체 참조 ************ */
-        dbNameInput = findViewById(R.id.dbNameInput);
-        Button createDbBtn = findViewById(R.id.createDbBtn);
-        /* ************************************************* */
+        <span class="cm">/* ********** XML에 정의된 UI객체 참조 ************ */</span>
+        <span class="n">dbNameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dbNameInput</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">createDbBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">createDbBtn</span><span class="o">);</span>
+        <span class="cm">/* ************************************************* */</span>
 
-        /* 데이터베이스 생성 버튼 클릭 이벤트 */
-        createDbBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    /* 데이터베이스 생성 */
-                    dbName = dbNameInput.getText().toString();
-                    helper = new DatabaseOpenHelper(MainActivity.this, dbName, null, DB_VERSION);
+        <span class="cm">/* 데이터베이스 생성 버튼 클릭 이벤트 */</span>
+        <span class="n">createDbBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="cm">/* 데이터베이스 생성 */</span>
+                    <span class="n">dbName</span> <span class="o">=</span> <span class="n">dbNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                    <span class="n">helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DatabaseOpenHelper</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">dbName</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="no">DB_VERSION</span><span class="o">);</span>
 					
-					// helper 객체를 통해 db 불러오기
-                    /* 1. dbName과 같은 이름의 DB가 없으면 helper 클래스의 onCreate() 호출
-                     * 2. dbName과 같은 이름의 DB가 있으면 version 전달되면서 helper 클래스의 onUprgrade() 호출 */
-                    database = helper.getWritableDatabase();
+					<span class="c1">// helper 객체를 통해 db 불러오기</span>
+                    <span class="cm">/* 1. dbName과 같은 이름의 DB가 없으면 helper 클래스의 onCreate() 호출
+                     * 2. dbName과 같은 이름의 DB가 있으면 version 전달되면서 helper 클래스의 onUprgrade() 호출 */</span>
+                    <span class="n">database</span> <span class="o">=</span> <span class="n">helper</span><span class="o">.</span><span class="na">getWritableDatabase</span><span class="o">();</span>
 
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-        });
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
 
-    }
+    <span class="o">}</span>
 
-    class DatabaseOpenHelper extends SQLiteOpenHelper {
+    <span class="kd">class</span> <span class="nc">DatabaseOpenHelper</span> <span class="kd">extends</span> <span class="nc">SQLiteOpenHelper</span> <span class="o">{</span>
 
-        public DatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-            super(context, name, factory, version);
-        }
+        <span class="kd">public</span> <span class="nf">DatabaseOpenHelper</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">SQLiteDatabase</span><span class="o">.</span><span class="na">CursorFactory</span> <span class="n">factory</span><span class="o">,</span> <span class="kt">int</span> <span class="n">version</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">factory</span><span class="o">,</span> <span class="n">version</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            Toast.makeText(MainActivity.this, "Helper클래스 onCreate() 호출됨", Toast.LENGTH_SHORT).show();
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"Helper클래스 onCreate() 호출됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
 
-            /* DB가 처음 만들어졌으므로 테이블 생성 */
-            if(db!=null)
-            {
-                try{
-                    tableName = tableNameInput.getText().toString();
-                    /* 테이블 생성을 위한 SQL문 작성 */
-                    String sql = "create table if not exists " + tableName + "(_id integer PRIMARY KEY autoincrement, name text, age integer);";
-                    db.execSQL(sql); //sql문 실행
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
+            <span class="cm">/* DB가 처음 만들어졌으므로 테이블 생성 */</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">db</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="n">tableName</span> <span class="o">=</span> <span class="n">tableNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                    <span class="cm">/* 테이블 생성을 위한 SQL문 작성 */</span>
+                    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"create table if not exists "</span> <span class="o">+</span> <span class="n">tableName</span> <span class="o">+</span> <span class="s">"(_id integer PRIMARY KEY autoincrement, name text, age integer);"</span><span class="o">;</span>
+                    <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">//sql문 실행</span>
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
 
-            }
-        }
+            <span class="o">}</span>
+        <span class="o">}</span>
 
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Toast.makeText(MainActivity.this, "Helper클래스 onUpgrade() 호출됨: "
-                    + oldVersion +" -> " + newVersion, Toast.LENGTH_SHORT).show();
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onUpgrade</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldVersion</span><span class="o">,</span> <span class="kt">int</span> <span class="n">newVersion</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"Helper클래스 onUpgrade() 호출됨: "</span>
+                    <span class="o">+</span> <span class="n">oldVersion</span> <span class="o">+</span><span class="s">" -&gt; "</span> <span class="o">+</span> <span class="n">newVersion</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        @Override
-        public void onOpen(SQLiteDatabase db) {
-            //Toast.makeText(MainActivity.this, "Helper클래스 onOpen() 호출됨", Toast.LENGTH_SHORT).show();
-        }
-    }
-}
-~~~
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onOpen</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">//Toast.makeText(MainActivity.this, "Helper클래스 onOpen() 호출됨", Toast.LENGTH_SHORT).show();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-콜백 메소드를 확인하기 위해 토스트 메시지를 만들었다. 위 앱을 실행하면 아래와 같은 화면이 나타난다.
+<p>콜백 메소드를 확인하기 위해 토스트 메시지를 만들었다. 위 앱을 실행하면 아래와 같은 화면이 나타난다.</p>
 
-![1](/images/android/54/1.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/54/1.jpg" alt="1" width="30%" height="30%" /></p>
 
-<br>
+<p><br /></p>
 
-위 코드에서 버전을 아래와 같이 2로 바꾸고 다시 실행해보자.
-~~~ java
-private static final int DB_VERSION = 2; // 데이터베이스 버전
-~~~
+<p>위 코드에서 버전을 아래와 같이 2로 바꾸고 다시 실행해보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">DB_VERSION</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">// 데이터베이스 버전</span>
+</code></pre></div></div>
 
-그럼 아래와 같은 화면을 볼 수 있다.
+<p>그럼 아래와 같은 화면을 볼 수 있다.</p>
 
-![2](/images/android/54/2.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/54/2.jpg" alt="2" width="30%" height="30%" /></p>
 
-<br>
+<p><br /></p>
 
-사실 위 2가지 서로 다른 상태 메소드 이후에 곧바로 onOpen() 메소드가 호출된다. 여기에서는 DB 조회와 같이 사용 코드를 작성할 수 있다.
+<p>사실 위 2가지 서로 다른 상태 메소드 이후에 곧바로 onOpen() 메소드가 호출된다. 여기에서는 DB 조회와 같이 사용 코드를 작성할 수 있다.</p>
 
-이렇게 버전 정보를 넣어줌으로써 다른 메소드가 호출된다. 상황에 따라 각 메소드를 재정의 함으로써 신규 사용자와 기존 사용자 사이의 유연한 코드 처리가 가능하다. 이 부분이 SQLiteOpenHelper를 사용하는 주 목적이다. 나머지 데이터 조작에 관한 부분은 일반적인 SQLite3 사용법과 동일하다. `execSQL()` 메소드나 `rawQuery()` 메소드를 통해 데이터 추가/삭제 및 조회를 할 수 있다.
+<p>이렇게 버전 정보를 넣어줌으로써 다른 메소드가 호출된다. 상황에 따라 각 메소드를 재정의 함으로써 신규 사용자와 기존 사용자 사이의 유연한 코드 처리가 가능하다. 이 부분이 SQLiteOpenHelper를 사용하는 주 목적이다. 나머지 데이터 조작에 관한 부분은 일반적인 SQLite3 사용법과 동일하다. <code class="highlighter-rouge">execSQL()</code> 메소드나 <code class="highlighter-rouge">rawQuery()</code> 메소드를 통해 데이터 추가/삭제 및 조회를 할 수 있다.</p>
+
   </div>
   
   <div class="post">
@@ -11269,360 +11252,366 @@ private static final int DB_VERSION = 2; // 데이터베이스 버전
 
     <span class="post-date">08 Jun 2019</span>
 
-    <br>
+    <p><br /></p>
 
-SQLite는 MySQL과 같은 데이터베이스 관리 시스템으로 안드로이드 운영체제에서 기본적으로 제공한다. 그러나 DB를 위한 서버를 따로 두지않고 애플리케이션에 파일 구조로 넣어서 사용하며, 무게가 가벼워 간편하게 사용하기 좋다. 또한 SQLite API의 메소드 호출을 통해 비교적 간단하게 사용할 수 있다.
+<p>SQLite는 MySQL과 같은 데이터베이스 관리 시스템으로 안드로이드 운영체제에서 기본적으로 제공한다. 그러나 DB를 위한 서버를 따로 두지않고 애플리케이션에 파일 구조로 넣어서 사용하며, 무게가 가벼워 간편하게 사용하기 좋다. 또한 SQLite API의 메소드 호출을 통해 비교적 간단하게 사용할 수 있다.</p>
 
-<br>
-## 1. DB생성, Table생성 및 Data 추가, 제거
-* * *
+<p><br /></p>
+<h2 id="1-db생성-table생성-및-data-추가-제거">1. DB생성, Table생성 및 Data 추가, 제거</h2>
+<hr />
 
-+ DB 생성 및 삭제 메소드
-
-~~~ java
-public SQLiteDatabase openOrCreateDatabase(String name, int mode, CursorFactory factory)
-public boolean deleteDatabase(String name)
-~~~
+<ul>
+  <li>DB 생성 및 삭제 메소드</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">SQLiteDatabase</span> <span class="nf">openOrCreateDatabase</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">mode</span><span class="o">,</span> <span class="nc">CursorFactory</span> <span class="n">factory</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">deleteDatabase</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span>
+</code></pre></div></div>
 
-DB생성 메소드의 첫 번째 파라미터는 DB의 이름, 두 번째는 사용 모드이다. 사용 모드에 따라 앱에서 데이터베이스로의 접근 권한이나 읽기,쓰기 권한 등을 설정할 수 있다. 세 번째 파라미터는 데이터베이스 커서를 만들어낼 객체를 전달할 수 있는데, 일반적인 안드로이드 개발에서 커서 팩토리를 새로 작성해서 사용할 일은 거의 없으므로 대부분 null을 전달한다.
+<p>DB생성 메소드의 첫 번째 파라미터는 DB의 이름, 두 번째는 사용 모드이다. 사용 모드에 따라 앱에서 데이터베이스로의 접근 권한이나 읽기,쓰기 권한 등을 설정할 수 있다. 세 번째 파라미터는 데이터베이스 커서를 만들어낼 객체를 전달할 수 있는데, 일반적인 안드로이드 개발에서 커서 팩토리를 새로 작성해서 사용할 일은 거의 없으므로 대부분 null을 전달한다.</p>
+
+<p><br /></p>
 
-<br>
+<ul>
+  <li>Table 생성 query문 실행</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"create table employee(_id integer PRIMARY KEY autoincrement, name text, age integer);"</span><span class="o">;</span>
+<span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">//sql문 실행</span>
+</code></pre></div></div>
+
+<p>테이블을 생성하기 위한 SQL문을 문자열 형태로 작성하고 데이터베이스의 <code class="highlighter-rouge">execSQL()</code> 메소드에 전달해서 실행하면 된다. 위 예시에서는 employee라는 테이블을 만들었는데 이 테이블은 id, 이름, 나이 3개의 column을 가지고 있다. 또한 id값은 데이터가 추가될 때 마다 자동으로 1씩 증가하도록 한 것이다.</p>
+
+<p><br /></p>
+
+<ul>
+  <li>데이터 추가 및 삭제</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//데이터 추가</span>
+<span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into employee(name, age) values('John', 20);"</span><span class="o">;</span>
+<span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+<span class="c1">//데이터 삭제</span>
+<span class="nc">String</span><span class="o">[]</span> <span class="n">whereArgs</span> <span class="o">=</span> <span class="o">{</span><span class="s">"John"</span><span class="o">,</span> <span class="s">"Kelly"</span><span class="o">};</span>
+<span class="kt">int</span> <span class="n">rowAffected</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="s">"name = ?"</span><span class="o">,</span> <span class="n">whereArgs</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>데이터 추가는 일반 SQL문을 작성하고 데이터베이스의 <code class="highlighter-rouge">execSQL()</code> 메소드 호출을 통해 실행해주면 된다. 또한 데이터 삭제는 데이터베이스의 ‘delete()` 메소드 호출을 통해 실행하는데, 이 때 2번째 파라미터의 ?를 대체할 문자열로 3번째 파라미터인 whereArgs배열을 같이 전달해줄 수 있다. 마지막으로 영향을 받은, 즉 삭제된 데이터의 갯수를 return한다.</p>
+
+<p><br /></p>
+<h2 id="2-예제">2. 예제</h2>
+<hr />
+
+<p>먼저 앱의 전체적인 화면은 아래의 구조로 만들 것이다.</p>
+
+<p><img src="/images/android/53/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p><br /></p>
+
+<p>이를 위해 아래와 같이 XML 코드를 작성한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/dbNameInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:hint=</span><span class="s">"데이터베이스 이름"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/createDbBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:text=</span><span class="s">"DB 생성"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/tableNameInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:hint=</span><span class="s">"테이블 이름"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/createTableBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:text=</span><span class="s">"테이블 생성"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/nameToAddInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:textSize=</span><span class="s">"14dp"</span>
+            <span class="na">android:layout_marginHorizontal=</span><span class="s">"3dp"</span>
+            <span class="na">android:hint=</span><span class="s">"이름"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/ageToAddInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:textSize=</span><span class="s">"14dp"</span>
+            <span class="na">android:layout_marginHorizontal=</span><span class="s">"3dp"</span>
+            <span class="na">android:hint=</span><span class="s">"나이"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/addBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"14dp"</span>
+            <span class="na">android:text=</span><span class="s">"추가"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/nameToDelInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:hint=</span><span class="s">"삭제할 사람 이름"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/delBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:text=</span><span class="s">"삭제"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/dataViewBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"조회"</span>
+        <span class="na">android:textSize=</span><span class="s">"14dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/status"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:background=</span><span class="s">"#33000000"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/ScrollView&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/dataView"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:background=</span><span class="s">"#33000000"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/ScrollView&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>실행코드를 위한 코드를 아래와 같이 작성한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">;</span>
+
+    <span class="nc">EditText</span> <span class="n">dbNameInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">tableNameInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">nameToDelInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">nameToAddInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">ageToAddInput</span><span class="o">;</span>
+
+    <span class="nc">TextView</span> <span class="n">status</span><span class="o">;</span>
+    <span class="nc">TextView</span> <span class="n">dataView</span><span class="o">;</span>
+
+    <span class="nc">String</span> <span class="n">dbName</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">tableName</span><span class="o">;</span>
+
+    <span class="nc">StringBuilder</span> <span class="n">sb_status</span><span class="o">;</span>
+    <span class="nc">StringBuilder</span> <span class="n">sb_data</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="cm">/* ********** XML에 정의된 UI객체 참조 ************ */</span>
+        <span class="n">dbNameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dbNameInput</span><span class="o">);</span>
+        <span class="n">tableNameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tableNameInput</span><span class="o">);</span>
+
+        <span class="n">nameToAddInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">nameToAddInput</span><span class="o">);</span>
+        <span class="n">ageToAddInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">ageToAddInput</span><span class="o">);</span>
+        <span class="n">nameToDelInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">nameToDelInput</span><span class="o">);</span>
+
+        <span class="n">status</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">status</span><span class="o">);</span>
+        <span class="n">dataView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dataView</span><span class="o">);</span>
+
+        <span class="nc">Button</span> <span class="n">createDbBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">createDbBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">createTableBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">createTableBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">delBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">delBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">addBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">addBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">dataViewBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dataViewBtn</span><span class="o">);</span>
+        <span class="cm">/* ************************************************* */</span>
+
+        <span class="n">sb_status</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span> <span class="c1">// 상태 메시지를 나타내기 위한 스트링빌더 객체 생성</span>
+
+        <span class="cm">/* 데이터베이스 생성 버튼 클릭 이벤트 */</span>
+        <span class="n">createDbBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 데이터베이스 생성 */</span>
+                <span class="n">dbName</span> <span class="o">=</span> <span class="n">dbNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="n">db</span> <span class="o">=</span> <span class="n">openOrCreateDatabase</span><span class="o">(</span><span class="n">dbName</span><span class="o">,</span> <span class="no">MODE_ENABLE_WRITE_AHEAD_LOGGING</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+                <span class="n">sb_status</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"데이터베이스 "</span> <span class="o">+</span> <span class="n">dbName</span> <span class="o">+</span> <span class="s">"가 생성되었습니다.\n"</span><span class="o">);</span> <span class="c1">//상태 메세지 추가</span>
+                <span class="n">status</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_status</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 테이블 생성 버튼 클릭 이벤트 */</span>
+        <span class="n">createTableBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="n">tableName</span> <span class="o">=</span> <span class="n">tableNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                    <span class="cm">/* 테이블 생성을 위한 SQL문 작성 */</span>
+                    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"create table "</span> <span class="o">+</span> <span class="n">tableName</span> <span class="o">+</span> <span class="s">"(_id integer PRIMARY KEY autoincrement, name text, age integer);"</span><span class="o">;</span>
+                    <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">//sql문 실행</span>
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+
+                <span class="n">sb_status</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"테이블 "</span> <span class="o">+</span> <span class="n">tableName</span> <span class="o">+</span> <span class="s">"가 생성되었습니다.\n"</span><span class="o">);</span>
+                <span class="n">status</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_status</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 데이터 추가 버튼 클릭 이벤트 */</span>
+        <span class="n">addBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">nameToAddInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">ageToAddInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+                <span class="cm">/* 테이블에 데이터 추가하기를 위한 SQL문 작성 */</span>
+                <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into "</span> <span class="o">+</span> <span class="n">tableName</span> <span class="o">+</span> <span class="s">"(name, age) values("</span> <span class="o">+</span> <span class="s">"'"</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">"'"</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span> <span class="s">");"</span><span class="o">;</span>
+                <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">//sql문 실행</span>
+
+                <span class="n">sb_status</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"데이터가 추가되었습니다.(이름: "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">", 나이: "</span><span class="o">+</span><span class="n">age</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="n">status</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_status</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 데이터 삭제 버튼 클릭 이벤트 */</span>
+        <span class="n">delBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">nameToDelInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="nc">String</span><span class="o">[]</span> <span class="n">whereArgs</span> <span class="o">=</span> <span class="o">{</span><span class="n">name</span><span class="o">};</span>
+                <span class="kt">int</span> <span class="n">rowAffected</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="s">"name = ?"</span><span class="o">,</span> <span class="n">whereArgs</span><span class="o">);</span>
+
+                <span class="n">sb_status</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"이름이 "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">" 인 데이터가 모두 삭제되었습니다.(삭제된 데이터 수: "</span><span class="o">+</span><span class="n">rowAffected</span><span class="o">+</span><span class="s">")\n"</span><span class="o">);</span>
+                <span class="n">status</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_status</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 데이터 조회 버튼 클릭 이벤트 */</span>
+        <span class="n">dataViewBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 테이블의 이름과 나이 column을 가르키는 커서 객체 생성 */</span>
+                <span class="nc">Cursor</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">rawQuery</span><span class="o">(</span><span class="s">"SELECT name, age FROM "</span> <span class="o">+</span> <span class="n">tableName</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getCount</span><span class="o">();</span> <span class="c1">//데이터의 갯수</span>
+
+                <span class="n">sb_data</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+                <span class="n">sb_data</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"데이터 갯수 : "</span><span class="o">+</span> <span class="n">count</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+                    <span class="n">cursor</span><span class="o">.</span><span class="na">moveToNext</span><span class="o">();</span> <span class="c1">// 다음 데이터로 이동</span>
+                    <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">// 커서가 가르키는 column0(이름) 받기</span>
+                    <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// 커서가 가르키는 column1(나이) 받기</span>
+                    <span class="n">sb_data</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"data#"</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s">") 이름= "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">", 나이= "</span><span class="o">+</span><span class="n">age</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span> <span class="c1">// 스트링빌더에 출력문 추가</span>
+                <span class="o">}</span>
+                <span class="n">dataView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_data</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span> <span class="c1">// 텍스트뷰에 표시</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>아까 설명한 메소드를 사용하여 간단하게 DB 및 테이블을 생성했고 데이터를 추가 및 삭제했다. 이 때, 순수 SQL문을 <code class="highlighter-rouge">execSQL()</code> 메소드로 실행한 부분도 있고, 데이터 삭제처럼 파라미터를 전달하여 SQL문을 실행한 경우도 있다. 실무에서는 SQL문을 <code class="highlighter-rouge">execSQL()</code> 메소드를 통해 실행하는것이 관리가 편해서 대부분 이 방법을 사용한다고 한다. 데이터를 추가 및 삭제 할 때마다 상태 표시창에 결과가 조회된다. 또한 조회 버튼을 클릭하면 현재 테이블의 모든 데이터가 조회된다. 앱을 실행화면 아래와 같은 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/53/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/53/3.jpg" alt="3" width="30%" height="30%" /></p>
+
+<p><br /></p>
+
+<p>데이터베이스를 사용하기 위한 내용을 정리하면 아래와 같다.</p>
+
+<blockquote>
+  <ol>
+    <li>DB생성 : openOrCreateDatabase()</li>
+    <li>테이블 생성 : execSQL(“create table …”);</li>
+    <li>레코드 추가 : execSQL(“insert into … “);</li>
+    <li>데이터 조회 : Cursor cursor = rawQuery(“select … from …”);</li>
+  </ol>
+</blockquote>
 
-+ Table 생성 query문 실행
-
-~~~ java
-String sql = "create table employee(_id integer PRIMARY KEY autoincrement, name text, age integer);";
-db.execSQL(sql); //sql문 실행
-~~~
-
-테이블을 생성하기 위한 SQL문을 문자열 형태로 작성하고 데이터베이스의 `execSQL()` 메소드에 전달해서 실행하면 된다. 위 예시에서는 employee라는 테이블을 만들었는데 이 테이블은 id, 이름, 나이 3개의 column을 가지고 있다. 또한 id값은 데이터가 추가될 때 마다 자동으로 1씩 증가하도록 한 것이다.
-
-<br>
-
-+ 데이터 추가 및 삭제
-
-~~~ java
-//데이터 추가
-String sql = "insert into employee(name, age) values('John', 20);";
-db.execSQL(sql);
-
-//데이터 삭제
-String[] whereArgs = {"John", "Kelly"};
-int rowAffected = db.delete(tableName, "name = ?", whereArgs);
-~~~
-
-데이터 추가는 일반 SQL문을 작성하고 데이터베이스의 `execSQL()` 메소드 호출을 통해 실행해주면 된다. 또한 데이터 삭제는 데이터베이스의 'delete()` 메소드 호출을 통해 실행하는데, 이 때 2번째 파라미터의 ?를 대체할 문자열로 3번째 파라미터인 whereArgs배열을 같이 전달해줄 수 있다. 마지막으로 영향을 받은, 즉 삭제된 데이터의 갯수를 return한다.
-
-<br>
-## 2. 예제
-* * *
-
-먼저 앱의 전체적인 화면은 아래의 구조로 만들 것이다.
-
-![1](/images/android/53/1.png){: width="70%" height="70%"}
-
-<br>
-
-이를 위해 아래와 같이 XML 코드를 작성한다.
-
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/dbNameInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="데이터베이스 이름"
-            android:textSize="16dp"
-            android:layout_weight="3"
-            android:layout_margin="5dp"/>
-
-        <Button
-            android:id="@+id/createDbBtn"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="DB 생성"
-            android:layout_margin="5dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/tableNameInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="테이블 이름"
-            android:textSize="16dp"
-            android:layout_weight="3"
-            android:layout_margin="5dp"/>
-
-        <Button
-            android:id="@+id/createTableBtn"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="테이블 생성"
-            android:layout_margin="5dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/nameToAddInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="14dp"
-            android:layout_marginHorizontal="3dp"
-            android:hint="이름"/>
-
-        <EditText
-            android:id="@+id/ageToAddInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="14dp"
-            android:layout_marginHorizontal="3dp"
-            android:hint="나이"/>
-
-        <Button
-            android:id="@+id/addBtn"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:text="추가"
-            android:layout_margin="5dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/nameToDelInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="삭제할 사람 이름"
-            android:textSize="16dp"
-            android:layout_weight="3"
-            android:layout_margin="5dp"/>
-
-        <Button
-            android:id="@+id/delBtn"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="삭제"
-            android:layout_margin="5dp"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/dataViewBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="조회"
-        android:textSize="14dp"
-        android:layout_gravity="center_horizontal"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:textSize="16dp"
-            android:background="#33000000"/>
-
-    </ScrollView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/dataView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:textSize="16dp"
-            android:background="#33000000"/>
-
-    </ScrollView>
-
-</LinearLayout>
-~~~
-
-<br>
-
-실행코드를 위한 코드를 아래와 같이 작성한다.
-
-~~~ java
-public class MainActivity extends AppCompatActivity {
-
-    private SQLiteDatabase db;
-
-    EditText dbNameInput;
-    EditText tableNameInput;
-    EditText nameToDelInput;
-    EditText nameToAddInput;
-    EditText ageToAddInput;
-
-    TextView status;
-    TextView dataView;
-
-    String dbName;
-    String tableName;
-
-    StringBuilder sb_status;
-    StringBuilder sb_data;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        /* ********** XML에 정의된 UI객체 참조 ************ */
-        dbNameInput = findViewById(R.id.dbNameInput);
-        tableNameInput = findViewById(R.id.tableNameInput);
-
-        nameToAddInput = findViewById(R.id.nameToAddInput);
-        ageToAddInput = findViewById(R.id.ageToAddInput);
-        nameToDelInput = findViewById(R.id.nameToDelInput);
-
-        status = findViewById(R.id.status);
-        dataView = findViewById(R.id.dataView);
-
-        Button createDbBtn = findViewById(R.id.createDbBtn);
-        Button createTableBtn = findViewById(R.id.createTableBtn);
-        Button delBtn = findViewById(R.id.delBtn);
-        Button addBtn = findViewById(R.id.addBtn);
-        Button dataViewBtn = findViewById(R.id.dataViewBtn);
-        /* ************************************************* */
-
-        sb_status = new StringBuilder(); // 상태 메시지를 나타내기 위한 스트링빌더 객체 생성
-
-        /* 데이터베이스 생성 버튼 클릭 이벤트 */
-        createDbBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /* 데이터베이스 생성 */
-                dbName = dbNameInput.getText().toString();
-                db = openOrCreateDatabase(dbName, MODE_ENABLE_WRITE_AHEAD_LOGGING, null);
-
-                sb_status.append("데이터베이스 " + dbName + "가 생성되었습니다.\n"); //상태 메세지 추가
-                status.setText(sb_status.toString());
-            }
-        });
-
-        /* 테이블 생성 버튼 클릭 이벤트 */
-        createTableBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    tableName = tableNameInput.getText().toString();
-                    /* 테이블 생성을 위한 SQL문 작성 */
-                    String sql = "create table " + tableName + "(_id integer PRIMARY KEY autoincrement, name text, age integer);";
-                    db.execSQL(sql); //sql문 실행
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-
-                sb_status.append("테이블 " + tableName + "가 생성되었습니다.\n");
-                status.setText(sb_status.toString());
-            }
-        });
-
-        /* 데이터 추가 버튼 클릭 이벤트 */
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = nameToAddInput.getText().toString();
-                int age = Integer.parseInt(ageToAddInput.getText().toString());
-                /* 테이블에 데이터 추가하기를 위한 SQL문 작성 */
-                String sql = "insert into " + tableName + "(name, age) values(" + "'"+name+"'" + ", " + age + ");";
-                db.execSQL(sql); //sql문 실행
-
-                sb_status.append("데이터가 추가되었습니다.(이름: "+name+", 나이: "+age+"\n");
-                status.setText(sb_status.toString());
-            }
-        });
-
-        /* 데이터 삭제 버튼 클릭 이벤트 */
-        delBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = nameToDelInput.getText().toString();
-                String[] whereArgs = {name};
-                int rowAffected = db.delete(tableName, "name = ?", whereArgs);
-
-                sb_status.append("이름이 "+name+" 인 데이터가 모두 삭제되었습니다.(삭제된 데이터 수: "+rowAffected+")\n");
-                status.setText(sb_status.toString());
-            }
-        });
-
-        /* 데이터 조회 버튼 클릭 이벤트 */
-        dataViewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /* 테이블의 이름과 나이 column을 가르키는 커서 객체 생성 */
-                Cursor cursor = db.rawQuery("SELECT name, age FROM " + tableName, null);
-                int count = cursor.getCount(); //데이터의 갯수
-
-                sb_data = new StringBuilder();
-                sb_data.append("데이터 갯수 : "+ count+"\n");
-                for(int i=0; i<count; i++){
-                    cursor.moveToNext(); // 다음 데이터로 이동
-                    String name = cursor.getString(0); // 커서가 가르키는 column0(이름) 받기
-                    int age = cursor.getInt(1); // 커서가 가르키는 column1(나이) 받기
-                    sb_data.append("data#"+i+") 이름= "+name+", 나이= "+age+"\n"); // 스트링빌더에 출력문 추가
-                }
-                dataView.setText(sb_data.toString()); // 텍스트뷰에 표시
-            }
-        });
-    }
-
-}
-~~~
-
-아까 설명한 메소드를 사용하여 간단하게 DB 및 테이블을 생성했고 데이터를 추가 및 삭제했다. 이 때, 순수 SQL문을 `execSQL()` 메소드로 실행한 부분도 있고, 데이터 삭제처럼 파라미터를 전달하여 SQL문을 실행한 경우도 있다. 실무에서는 SQL문을 `execSQL()` 메소드를 통해 실행하는것이 관리가 편해서 대부분 이 방법을 사용한다고 한다. 데이터를 추가 및 삭제 할 때마다 상태 표시창에 결과가 조회된다. 또한 조회 버튼을 클릭하면 현재 테이블의 모든 데이터가 조회된다. 앱을 실행화면 아래와 같은 화면을 볼 수 있다.
-
-![2](/images/android/53/2.jpg){: width="30%" height="30%"}
-![3](/images/android/53/3.jpg){: width="30%" height="30%"}
-
-<br>
-
-데이터베이스를 사용하기 위한 내용을 정리하면 아래와 같다.
-
-> 1. DB생성 : openOrCreateDatabase()
-> 2. 테이블 생성 : execSQL("create table ...");
-> 3. 레코드 추가 : execSQL("insert into ... ");
-> 4. 데이터 조회 : Cursor cursor = rawQuery("select ... from ...");
   </div>
   
   <div class="post">
@@ -11634,80 +11623,108 @@ public class MainActivity extends AppCompatActivity {
 
     <span class="post-date">01 Jun 2019</span>
 
-    <br>
-## 1. RSS란?
-* * *
+    <p><br /></p>
+<h2 id="1-rss란">1. RSS란?</h2>
+<hr />
 
->  RSS(Really Simple Syndication)는 뉴스나 블로그 사이트에서 주로 사용하는 콘텐츠 표현 방식이다. 웹 사이트 관리자는 RSS 형식으로 웹 사이트 내용을 보여 준다. 이 정보를 받는 사람은 다른 형식으로 이용할 수 있다...(이하생략)
+<blockquote>
+  <p>RSS(Really Simple Syndication)는 뉴스나 블로그 사이트에서 주로 사용하는 콘텐츠 표현 방식이다. 웹 사이트 관리자는 RSS 형식으로 웹 사이트 내용을 보여 준다. 이 정보를 받는 사람은 다른 형식으로 이용할 수 있다…(이하생략)</p>
+</blockquote>
 
-<br>
+<p><br /></p>
 
-RSS란 간단하게 새로운 소식을 받아 보기 위해 사용한다. 특히 블로그나 뉴스처럼 자주 새로운 내용이 올라오는 사이트는 일일이 방문해서 보는 것은 번거로울 수 있다. 이 때, 해당 사이트에서 RSS 피드를 지원하다면 구독을 할 수 있다. 그러면 자동으로 업데이트 된 내용을 가져와서 볼 수 있다. 참고로 RSS의 내용은 XML 포맷으로 되어있다.
+<p>RSS란 간단하게 새로운 소식을 받아 보기 위해 사용한다. 특히 블로그나 뉴스처럼 자주 새로운 내용이 올라오는 사이트는 일일이 방문해서 보는 것은 번거로울 수 있다. 이 때, 해당 사이트에서 RSS 피드를 지원하다면 구독을 할 수 있다. 그러면 자동으로 업데이트 된 내용을 가져와서 볼 수 있다. 참고로 RSS의 내용은 XML 포맷으로 되어있다.</p>
 
-<br>
-## 2. XML 파싱(Parsing)
-* * *
+<p><br /></p>
+<h2 id="2-xml-파싱parsing">2. XML 파싱(Parsing)</h2>
+<hr />
 
-흔히 XML이나 JSON 파일을 파싱한다는 소리들을 한다. 파싱은 데이터의 변환, 해석, 구조결정, 가공 등등의 여러가지 의미를 가지고 있고 설명이 조금씩 다르지만 파싱을 한다고 함은 아래의 일을 하는 것이다.
+<p>흔히 XML이나 JSON 파일을 파싱한다는 소리들을 한다. 파싱은 데이터의 변환, 해석, 구조결정, 가공 등등의 여러가지 의미를 가지고 있고 설명이 조금씩 다르지만 파싱을 한다고 함은 아래의 일을 하는 것이다.</p>
 
-> 1. 데이터를 읽고 해석하여 구조를 파악한다.
-> 2. 내가 원하는 형태로 처리하여 보여준다.
+<blockquote>
+  <ol>
+    <li>데이터를 읽고 해석하여 구조를 파악한다.</li>
+    <li>내가 원하는 형태로 처리하여 보여준다.</li>
+  </ol>
+</blockquote>
 
-<br>
+<p><br /></p>
 
-XML(Extensive Markup Language)는 플랫폼에 독립적인 마크업 언어로서, 태그를 사용하여 문서의 구조를 파악하기 쉽도록 되어있다. RSS 문서는 XML 포맷으로 되어있기 때문에 흔히 DOM 파서나 SAX 파서를 사용해서 내용을 가져온다. 문서의 양이 방대하지 않은 경우 한 번에 모든 데이터를 읽어온 후 처리하는 DOM 파싱을 사용하고, 문서의 양이 상대적으로 방대하거나 내용이 순차적으로 구성된 경우 필요한만큼 부분적으로 동적 처리가 가능하고 빠른 SAX 파서를 사용한다. 오늘 RSS 피더를 만들기 위해서는 일반적인 방법인 DOM 파싱을 사용할 것이다.
+<p>XML(Extensive Markup Language)는 플랫폼에 독립적인 마크업 언어로서, 태그를 사용하여 문서의 구조를 파악하기 쉽도록 되어있다. RSS 문서는 XML 포맷으로 되어있기 때문에 흔히 DOM 파서나 SAX 파서를 사용해서 내용을 가져온다. 문서의 양이 방대하지 않은 경우 한 번에 모든 데이터를 읽어온 후 처리하는 DOM 파싱을 사용하고, 문서의 양이 상대적으로 방대하거나 내용이 순차적으로 구성된 경우 필요한만큼 부분적으로 동적 처리가 가능하고 빠른 SAX 파서를 사용한다. 오늘 RSS 피더를 만들기 위해서는 일반적인 방법인 DOM 파싱을 사용할 것이다.</p>
 
-<br>
+<p><br /></p>
 
-DOM(Document Object Model)파싱의 특징은 아래와 같다.
+<p>DOM(Document Object Model)파싱의 특징은 아래와 같다.</p>
 
-> 1. 문서 전체를 해석하여 문서의 태그 구조에 대응하는 트리 구조의 DOM 객체를 메모리에 로딩한다.
-> 2. 모든 데이터가 메모리에 로드 되어있기 때문에 노드들의 검색, 수정이 용이하다.
-> 3. 트리 구조를 이루므로 데이터의 양이 방대해질수록 메모리 부하가 크게 증가한다.
+<blockquote>
+  <ol>
+    <li>문서 전체를 해석하여 문서의 태그 구조에 대응하는 트리 구조의 DOM 객체를 메모리에 로딩한다.</li>
+    <li>모든 데이터가 메모리에 로드 되어있기 때문에 노드들의 검색, 수정이 용이하다.</li>
+    <li>트리 구조를 이루므로 데이터의 양이 방대해질수록 메모리 부하가 크게 증가한다.</li>
+  </ol>
+</blockquote>
 
-<br>
+<p><br /></p>
 
-![1](/images/android/52/1.png){: width="70%" height="70%"}
+<p><img src="/images/android/52/1.png" alt="1" width="70%" height="70%" /></p>
 
-<br>
+<p><br /></p>
 
-DOM 객체의 각 노드는 Document, Element, Attribute로 나눌 수 있다.
+<p>DOM 객체의 각 노드는 Document, Element, Attribute로 나눌 수 있다.</p>
 
-|노드|설명|
-|--|---|
-|Document|DOM객체의 최상위 노드|
-|Element|문서의 태그. 하나의 아이템|
-|Attritbute|각 태그의 속성값|
+<table>
+  <thead>
+    <tr>
+      <th>노드</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Document</td>
+      <td>DOM객체의 최상위 노드</td>
+    </tr>
+    <tr>
+      <td>Element</td>
+      <td>문서의 태그. 하나의 아이템</td>
+    </tr>
+    <tr>
+      <td>Attritbute</td>
+      <td>각 태그의 속성값</td>
+    </tr>
+  </tbody>
+</table>
 
-<br>
+<p><br /></p>
 
-예를들어 어떤 회사의 조직정보를 DOM 객체로 나타낼때 회사 자체가 Document가 되고, 각각의 팀을 Element라 한다면 Attribute에는 팀의 이름, 팀의 인원수, 팀의 역할 등이 Attribute가 될 수 있다.
+<p>예를들어 어떤 회사의 조직정보를 DOM 객체로 나타낼때 회사 자체가 Document가 되고, 각각의 팀을 Element라 한다면 Attribute에는 팀의 이름, 팀의 인원수, 팀의 역할 등이 Attribute가 될 수 있다.</p>
 
-<br>
+<p><br /></p>
 
-RSS와 XML문서 파싱에 대해 알았으니 안드로이드에서 XML문서로 된 뉴스정보를 파싱하여 가져와서 보여주는 RSS 피더(Feeder)를 만들어본다.
+<p>RSS와 XML문서 파싱에 대해 알았으니 안드로이드에서 XML문서로 된 뉴스정보를 파싱하여 가져와서 보여주는 RSS 피더(Feeder)를 만들어본다.</p>
 
-<br>
-## 3. RSS 피더 앱 만들기
-* * *
+<p><br /></p>
+<h2 id="3-rss-피더-앱-만들기">3. RSS 피더 앱 만들기</h2>
+<hr />
 
-가장 먼저 RSS서비스 URL을 입력할 입력상자와 내용을 가져오기 위한 버튼을 만든다. 그 아래에는 리스트뷰를 만들어 하나의 아이템으로 하나의 뉴스를 가져오고, 뉴스 내용을 띄우기 위해서 웹뷰를 사용할 것이다. XML문서로 된 뉴스 내용을 가져오기 위해서 HTTP 프로토콜을 사용해 통신하면서 스트림으로 오는 XML 문자열들을 받아서 화면에 띄우는 방식으로 앱을 만들면 된다.
+<p>가장 먼저 RSS서비스 URL을 입력할 입력상자와 내용을 가져오기 위한 버튼을 만든다. 그 아래에는 리스트뷰를 만들어 하나의 아이템으로 하나의 뉴스를 가져오고, 뉴스 내용을 띄우기 위해서 웹뷰를 사용할 것이다. XML문서로 된 뉴스 내용을 가져오기 위해서 HTTP 프로토콜을 사용해 통신하면서 스트림으로 오는 XML 문자열들을 받아서 화면에 띄우는 방식으로 앱을 만들면 된다.</p>
 
-<br>
+<p><br /></p>
 
-[RSS 피더 프로젝트 파일 깃허브 저장소 링크](https://github.com/swnomad/rssfeeder){: target="_blank" }
+<p><a href="https://github.com/swnomad/rssfeeder" target="_blank">RSS 피더 프로젝트 파일 깃허브 저장소 링크</a></p>
 
-<br>
+<p><br /></p>
 
-구글과 책을 참고해서 만들었는데, 앱을 실행하면 아래 사진과 같은 화면이 나온다.
+<p>구글과 책을 참고해서 만들었는데, 앱을 실행하면 아래 사진과 같은 화면이 나온다.</p>
 
-<br>
+<p><br /></p>
 
-![2](/images/android/52/2.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/52/2.jpg" alt="2" width="30%" height="30%" /></p>
 
-<br>
+<p><br /></p>
 
-다음 뉴스 연예 카테고리 RSS 주소를 입력하고 불러온 화면이다. 여기에 추가적으로 리스트뷰의 아이템을 클릭했을 때 새로운 인텐트를 띄워서 뉴스기사 페이지로 이동하도록 하면 조금 더 완성된 앱이 될 수 있겠다.
+<p>다음 뉴스 연예 카테고리 RSS 주소를 입력하고 불러온 화면이다. 여기에 추가적으로 리스트뷰의 아이템을 클릭했을 때 새로운 인텐트를 띄워서 뉴스기사 페이지로 이동하도록 하면 조금 더 완성된 앱이 될 수 있겠다.</p>
+
   </div>
   
 </div>

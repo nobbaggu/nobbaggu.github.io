@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,105 +10682,102 @@
 
     <span class="post-date">06 Oct 2018</span>
 
-    **조건 연산자 **는 코드를 더 간결하고 직관적으로 작성하는 데 도움을 줍니다.
+    <p>**조건 연산자 **는 코드를 더 간결하고 직관적으로 작성하는 데 도움을 줍니다.</p>
 
-두개의 정수형 변수 num1과 num2가 있습니다. 그리고 larger 라는 변수에 num1과 num2 중 더 큰 값을 가지는 변수의 값을 담고 싶다고 해봅시다. 먼저 if ~ else 조건문으로 작성해봅시다.
+<p>두개의 정수형 변수 num1과 num2가 있습니다. 그리고 larger 라는 변수에 num1과 num2 중 더 큰 값을 가지는 변수의 값을 담고 싶다고 해봅시다. 먼저 if ~ else 조건문으로 작성해봅시다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num1 = 10;
-    int num2 = 20;
-    int larger;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">larger</span><span class="p">;</span>
     
-    if(num1>=num2)
-    {
-        larger = num1;
-    }
-    else
-    {
-        larger = num2;
-    }
-    printf("The larger number is %d\n", larger);
+    <span class="k">if</span><span class="p">(</span><span class="n">num1</span><span class="o">&gt;=</span><span class="n">num2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">larger</span> <span class="o">=</span> <span class="n">num1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">larger</span> <span class="o">=</span> <span class="n">num2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The larger number is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">larger</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-The larger number is 20
+<p>The larger number is 20</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-위의 코드는 조건 연산자로 훨씬 간결하게 작성할 수 있습니다.
+<p>위의 코드는 조건 연산자로 훨씬 간결하게 작성할 수 있습니다.</p>
 
-조건 연산자는 **어떠한 조건을 판단하여 '참'이면 앞의 것, '거짓'이면 뒤의 것을 선택하는 연산자** 입니다. 구조는 다음과 같습니다.
+<p>조건 연산자는 <strong>어떠한 조건을 판단하여 ‘참’이면 앞의 것, ‘거짓’이면 뒤의 것을 선택하는 연산자</strong> 입니다. 구조는 다음과 같습니다.</p>
 
-~~~ c
-(조건) ? 변수1 : 변수2
-~~~
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="err">조건</span><span class="p">)</span> <span class="o">?</span> <span class="err">변수</span><span class="mi">1</span> <span class="o">:</span> <span class="err">변수</span><span class="mi">2</span>
+</code></pre></div></div>
 
-(조건) 을 판단하여 그것이 '참'이면 변수1을 반환(return)하고, '거짓'이면 변수2를 반환합니다.
+<p>(조건) 을 판단하여 그것이 ‘참’이면 변수1을 반환(return)하고, ‘거짓’이면 변수2를 반환합니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num1 = 10;
-    int num2 = 20;
-    int larger;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">larger</span><span class="p">;</span>
     
-    larger = (num1>num2) ? num1 : num2;
+    <span class="n">larger</span> <span class="o">=</span> <span class="p">(</span><span class="n">num1</span><span class="o">&gt;</span><span class="n">num2</span><span class="p">)</span> <span class="o">?</span> <span class="n">num1</span> <span class="o">:</span> <span class="n">num2</span><span class="p">;</span>
     
-    printf("The larger number is %d\n", larger);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The larger number is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">larger</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-The larger number is 20
+<p>The larger number is 20</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-if / else 문으로 작성했던 코드가 단 한 줄로 표현이 됩니다. 가독성 측면에서도 더 뛰어납니다.
+<p>if / else 문으로 작성했던 코드가 단 한 줄로 표현이 됩니다. 가독성 측면에서도 더 뛰어납니다.</p>
 
-조건 연산자 는 **중첩**이 됩니다.
+<p>조건 연산자 는 <strong>중첩</strong>이 됩니다.</p>
 
-~~~ c
-int main(void)
-{
-    int num1 = 10;
-    int num2 = 20;
-    int num3 = 30;
-    int max;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">max</span><span class="p">;</span>
 
-    max = ((num1 > num2 ) ? num1 : num2) > num3 ? ((num1 > num2 ) ? num1 : num2) : num3;
+    <span class="n">max</span> <span class="o">=</span> <span class="p">((</span><span class="n">num1</span> <span class="o">&gt;</span> <span class="n">num2</span> <span class="p">)</span> <span class="o">?</span> <span class="n">num1</span> <span class="o">:</span> <span class="n">num2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num3</span> <span class="o">?</span> <span class="p">((</span><span class="n">num1</span> <span class="o">&gt;</span> <span class="n">num2</span> <span class="p">)</span> <span class="o">?</span> <span class="n">num1</span> <span class="o">:</span> <span class="n">num2</span><span class="p">)</span> <span class="o">:</span> <span class="n">num3</span><span class="p">;</span>
 
-    printf("The maximum number is %d\n", max);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The maximum number is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">max</span><span class="p">);</span>
 
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-The maximum number is 30
+<p>The maximum number is 30</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-num1과 num2를 비교해서 반환되는 더 큰 값과 num3를 또 한 번 비교하여 더 큰 값을 반환시켜 max에 대입합니다. 삼항 연산자의 중첩은 몇 번이고 가능합니다.
+<p>num1과 num2를 비교해서 반환되는 더 큰 값과 num3를 또 한 번 비교하여 더 큰 값을 반환시켜 max에 대입합니다. 삼항 연산자의 중첩은 몇 번이고 가능합니다.</p>
+
   </div>
   
   <div class="post">
@@ -10880,11 +10853,11 @@ X = features <span style="color: #999999;">##pet_len, pet_width 선택</span>
 <span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
 <span style="color: #999999;">### feature scailing은 모델의 성능을 향상시키지 못했다.</span>
 
-<span style="color: #999999;">#### data split to training & validation test set ####</span>
+<span style="color: #999999;">#### data split to training &amp; validation test set ####</span>
 X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, test_size=0.2, random_state=7)
 
 <span style="color: #14d917;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
-<span style="color: #14d917;">########pipeline을 통한 feature selection & model selection###########</span>
+<span style="color: #14d917;">########pipeline을 통한 feature selection &amp; model selection###########</span>
 <span style="color: #14d917;">features = []</span>
 <span style="color: #14d917;">features.append(('KBest', SelectKBest(score_func=chi2, k=2))) #KBest 알고리즘과 LDA 알고리즘 비교</span>
 <span style="color: #14d917;">features.append(('lda', LDA()))</span>
@@ -10935,15 +10908,16 @@ print(<span style="color: #14d917;">'RandomForest Accuracy: %.3f'</span> %(Rando
 <span style="color: #999999;"># filename = 'Iris_classification_model.sav'</span>
 <span style="color: #999999;"># dump(model, filename)</span></pre>
 
-&nbsp;
+<p> </p>
 
-<img class="aligncenter size-full wp-image-1187" src="/images/2018/10/no-name.jpg" alt="" width="395" height="250" srcset="/images/2018/10/no-name.jpg 395w, /images/2018/10/no-name-300x190.jpg 300w" sizes="(max-width: 395px) 100vw, 395px" /> 
+<p><img class="aligncenter size-full wp-image-1187" src="/images/2018/10/no-name.jpg" alt="" width="395" height="250" srcset="/images/2018/10/no-name.jpg 395w, /images/2018/10/no-name-300x190.jpg 300w" sizes="(max-width: 395px) 100vw, 395px" /></p>
 
-위 그림은 Iris flower 꽃잎의 정보를 담고있는 각 feature의 density plot이다. sep len과 sep wid는 normal distribution을 따른다는 것을 알 수 있다. pet len과 pet wid는 feature의 local optimum이 3개로 나뉜다. 우리 data의 class가 3가지의 꽃의 종류이므로 아무래도 pet len과 pet wid 두 feature가 분류를 하는 데 결정적인 역할을 하는 feature로 보인다. 실제로 KBest feature selection 알고리즘의 결과도 pet len과 pet feature를 뽑는다.
+<p>위 그림은 Iris flower 꽃잎의 정보를 담고있는 각 feature의 density plot이다. sep len과 sep wid는 normal distribution을 따른다는 것을 알 수 있다. pet len과 pet wid는 feature의 local optimum이 3개로 나뉜다. 우리 data의 class가 3가지의 꽃의 종류이므로 아무래도 pet len과 pet wid 두 feature가 분류를 하는 데 결정적인 역할을 하는 feature로 보인다. 실제로 KBest feature selection 알고리즘의 결과도 pet len과 pet feature를 뽑는다.</p>
 
-<img class="aligncenter size-full wp-image-1188" src="/images/2018/10/no-name-1.jpg" alt="" width="244" height="55" /> 
+<p><img class="aligncenter size-full wp-image-1188" src="/images/2018/10/no-name-1.jpg" alt="" width="244" height="55" /></p>
 
-결과는 위와 같다. 가장 처음으로 구한 LDA model을 사용한 Ensemble(Bagging) 기법과 Random Forest Ensemble 기법 보다도 가장 먼저 구했던 LDA model의 분류 정확도가 가장 높다.
+<p>결과는 위와 같다. 가장 처음으로 구한 LDA model을 사용한 Ensemble(Bagging) 기법과 Random Forest Ensemble 기법 보다도 가장 먼저 구했던 LDA model의 분류 정확도가 가장 높다.</p>
+
   </div>
   
   <div class="post">
@@ -10955,299 +10929,293 @@ print(<span style="color: #14d917;">'RandomForest Accuracy: %.3f'</span> %(Rando
 
     <span class="post-date">05 Oct 2018</span>
 
-    조건문이란 어떠한 조건이 '참'인 경우 코드를 실행시킬 때 사용합니다. if 는 가장 대표적인 조건문입니다.
+    <p>조건문이란 어떠한 조건이 ‘참’인 경우 코드를 실행시킬 때 사용합니다. if 는 가장 대표적인 조건문입니다.</p>
 
-<br>
-## 1. if문 구조
-* * *
+<p><br /></p>
+<h2 id="1-if문-구조">1. if문 구조</h2>
+<hr />
 
-~~~ c
-if(조건)
-{
-	. . .
-}
-~~~
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="err">조건</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-if문이 실행되면 조건식을 판단합니다. 결과가 '참'이면 {. . .}을 실행하고 '거짓'이면 아무것도 실행하지 않고 다음 코드로 넘어갑니다.
+<p>if문이 실행되면 조건식을 판단합니다. 결과가 ‘참’이면 {. . .}을 실행하고 ‘거짓’이면 아무것도 실행하지 않고 다음 코드로 넘어갑니다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num;
-    printf("Inser a integer number : ");
-    scanf("%d", &num);
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
     
-    if(num > 0)  
-    {
-        printf("The number is larger than 0\n");
-    }
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>  
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과 1
+<p>실행결과 1</p>
 
-Inser a integer number : 3
+<p>Inser a integer number : 3</p>
 
-The number is larger than 0
+<p>The number is larger than 0</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-실행결과 2
+<p>실행결과 2</p>
 
-Inser a integer number : -2
+<p>Inser a integer number : -2</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-num이라는 변수를 선언하고 정수를 입력받아 num에 저장합니다. 이후 if문에서 num의 값이 0보다 큰지 판단한 후 '참'이면 "The numebr is larger than 0\n"을 모니터로 출력해줍니다. 만약 0보다 작은수를 입력하면 아무것도 수행하지 않고 프로그램이 종료됩니다.
+<p>num이라는 변수를 선언하고 정수를 입력받아 num에 저장합니다. 이후 if문에서 num의 값이 0보다 큰지 판단한 후 ‘참’이면 “The numebr is larger than 0\n”을 모니터로 출력해줍니다. 만약 0보다 작은수를 입력하면 아무것도 수행하지 않고 프로그램이 종료됩니다.</p>
 
-<br>
-## 2. if~else
-* * *
+<p><br /></p>
+<h2 id="2-ifelse">2. if~else</h2>
+<hr />
 
-else는 if의 조건이 '거짓'인 경우 실행됩니다.
+<p>else는 if의 조건이 ‘거짓’인 경우 실행됩니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num;
-    printf("Inser a integer number : ");
-    scanf("%d", &num);
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
     
-    if(num > 0)
-    {
-        printf("The number is larger than 0\n");
-    }
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    else
-    {
-        printf("The number is not larger than 0\n");
-    }
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is not larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Inser a integer number : -5
+<p>Inser a integer number : -5</p>
 
-The number is not larger than 0
+<p>The number is not larger than 0</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
-## 3. if~else if
-* * *
+<p><br /></p>
+<h2 id="3-ifelse-if">3. if~else if</h2>
+<hr />
 
-여러 개의 조건을 판단하여 실행을 분기시키고 싶은 경우에는 else if문을 사용합니다.
+<p>여러 개의 조건을 판단하여 실행을 분기시키고 싶은 경우에는 else if문을 사용합니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num;
-    printf("Inser a integer number : ");
-    scanf("%d", &num);
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
     
-    if(num > 0)
-    {
-        printf("The number is larger than 0\n");
-    }
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    else if(num<0)
-    {
-        printf("The number is smaller than 0\n");
-    }
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is smaller than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    else
-    {
-        printf("The number is 0\n");
-    }
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<br>
-실행결과
+<p><br />
+실행결과</p>
 
-Inser a integer number : 0
+<p>Inser a integer number : 0</p>
 
-The number is 0
+<p>The number is 0</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
-## 4. 항상 참 / 항상 거짓
-* * *
+<p><br /></p>
+<h2 id="4-항상-참--항상-거짓">4. 항상 참 / 항상 거짓</h2>
+<hr />
 
-만약 if나 else if의 조건문 안에 '참(true)'와 '거짓(false)' 를 넣으면 어떻게 될까요?
+<p>만약 if나 else if의 조건문 안에 ‘참(true)’와 ‘거짓(false)’ 를 넣으면 어떻게 될까요?</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num;
-    printf("Inser a integer number : ");
-    scanf("%d", &num);
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
     
-    if(1)
-    {
-        printf("1 is always true\n");
-    }    
-    else
-    {
-        printf("1 is not true\n");
-    }
+    <span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"1 is always true</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"1 is not true</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    if(0)
-    {
-        printf("0 is always false\n");
-    }    
-    else
-    {
-        printf("0 is not false\n");
-    }
+    <span class="k">if</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"0 is always false</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"0 is not false</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<br>
-실행결과
+<p><br />
+실행결과</p>
 
-Inser a integer number : 1231
+<p>Inser a integer number : 1231</p>
 
-1 is always true
+<p>1 is always true</p>
 
-0 is not false
+<p>0 is not false</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-if문에 1을 넣으면 항상 if문의 코드가 실행이 되고 0을 넣으면 if가 실행이 되지 않아 else가 있다면 바로 else가 실행 됩니다. 참고로 0이 아닌 모든 수는 '참'으로 인식됩니다.
+<p>if문에 1을 넣으면 항상 if문의 코드가 실행이 되고 0을 넣으면 if가 실행이 되지 않아 else가 있다면 바로 else가 실행 됩니다. 참고로 0이 아닌 모든 수는 ‘참’으로 인식됩니다.</p>
 
-<br>
-## 5. else if의 정체
-* * *
+<p><br /></p>
+<h2 id="5-else-if의-정체">5. else if의 정체</h2>
+<hr />
 
-짚고 넘어가야 할 부분이 있습니다. 조건문은 하나가 만족이 되면 그것을 실행하고 나머지 남은 조건문들은 실행시키지 않습니다. 말하자면 else if가 2개 있을 때, 첫 번째 else if가 만족이 되면 두 번째 else if는 실행하지 않습니다. 코드가 이런 식으로 실행이 되는것은 if~else문의 구조를 알면 쉽게 이해됩니다.
+<p>짚고 넘어가야 할 부분이 있습니다. 조건문은 하나가 만족이 되면 그것을 실행하고 나머지 남은 조건문들은 실행시키지 않습니다. 말하자면 else if가 2개 있을 때, 첫 번째 else if가 만족이 되면 두 번째 else if는 실행하지 않습니다. 코드가 이런 식으로 실행이 되는것은 if~else문의 구조를 알면 쉽게 이해됩니다.</p>
 
-else if라는 것은 사실 else 내부에서 또다시 if와 else로 나뉘는 것일 뿐입니다. if와 else문을 **중첩** 시킨것일 뿐인겁니다. 다음 코드는 if와 else가 중첩된 경우입니다.
+<p>else if라는 것은 사실 else 내부에서 또다시 if와 else로 나뉘는 것일 뿐입니다. if와 else문을 <strong>중첩</strong> 시킨것일 뿐인겁니다. 다음 코드는 if와 else가 중첩된 경우입니다.</p>
 
-~~~ c
-#include <stdio.h>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 
-int main(void)
-{
-int num = 5;
+<span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 2</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 3</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"num is same or smaller than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-if(num > 0)
-{
-    printf("num is larger than 0\n");
-}
-else
-{
-    if(num > 2)
-    {
-        printf("num is larger than 2\n");
-    }
-    else
-    {
-        if(num > 3)
-        {
-            printf("num is larger than 3\n");
-        }
-        else
-        {
-            printf("num is same or smaller than 0\n");
-        }
-    }
-}
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-return 0;
-}
-~~~
+<p><br />
+실행결과</p>
 
-<br>
-실행결과
+<p>num is larger than 0</p>
 
-num is larger than 0
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p><br /></p>
+<h2 id="6-break">6. break</h2>
+<hr />
 
-<br>
-## 6. break
-* * *
+<p>break를 씀으로써 우리는 반복문을 강제로 탈출할 수 있습니다. break를 쓰면 break이 포함된 가장 가까운 반복문을 탈출합니다. 조건문이 아니라 반복문이라는 점을 명심하셔야합니다.</p>
 
-break를 씀으로써 우리는 반복문을 강제로 탈출할 수 있습니다. break를 쓰면 break이 포함된 가장 가까운 반복문을 탈출합니다. 조건문이 아니라 반복문이라는 점을 명심하셔야합니다.
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-~~~ c
-#include <stdio.h>
+	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"Insert a number to sum : "</span><span class="p">);</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
 
-int main(void)
-{
-    int num;
-    int sum = 0;
+		<span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// 0을 입력하면 while문 탈출</span>
+		<span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">sum</span><span class="o">+=</span><span class="n">num</span><span class="p">;</span>
+	<span class="p">}</span>
 
-	while(1)
-	{
-		printf("Insert a number to sum : ");
-		scanf("%d", &num);
+	<span class="n">printf</span><span class="p">(</span><span class="s">"The sum is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
 
-		if(num==0) // 0을 입력하면 while문 탈출
-		{
-			break;
-		}
-		sum+=num;
-	}
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-	printf("The sum is %d\n", sum);
+<p>실행결과</p>
 
-	return 0;
-}
-~~~
+<p>Insert a number to sum : 102</p>
 
-실행결과
+<p>Insert a number to sum : 392</p>
 
-Insert a number to sum : 102
+<p>Insert a number to sum : -32</p>
 
-Insert a number to sum : 392
+<p>Insert a number to sum : 31</p>
 
-Insert a number to sum : -32
+<p>Insert a number to sum : -129</p>
 
-Insert a number to sum : 31
+<p>Insert a number to sum : 93</p>
 
-Insert a number to sum : -129
+<p>Insert a number to sum : 60</p>
 
-Insert a number to sum : 93
+<p>Insert a number to sum : 0</p>
 
-Insert a number to sum : 60
+<p>The sum is 517</p>
 
-Insert a number to sum : 0
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-The sum is 517
+<p><br /></p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>0을 입력하는 순간 if(num==0)의 조건이 만족되어 <code class="highlighter-rouge">break;</code> 구문이 실행되고 while문을 빠져나오게 됩니다. 위의 코드에서 break문이 if문 안에 들어있다고 해서 헷갈리시면 안됩니다. break에 의해서 탈출하는 것은 while문입니다. 다시 한 번 강조드리자면 <strong>break는 포함된 가장 내부의 반복문에서 탈출합니다.</strong></p>
 
-<br>
-
-0을 입력하는 순간 if(num==0)의 조건이 만족되어 `break;` 구문이 실행되고 while문을 빠져나오게 됩니다. 위의 코드에서 break문이 if문 안에 들어있다고 해서 헷갈리시면 안됩니다. break에 의해서 탈출하는 것은 while문입니다. 다시 한 번 강조드리자면 **break는 포함된 가장 내부의 반복문에서 탈출합니다.**
   </div>
   
   <div class="post">
@@ -11259,63 +11227,62 @@ The sum is 517
 
     <span class="post-date">04 Oct 2018</span>
 
-    while문과 for문은 조건을 만족하지 않으면 반복문 내의 코드가 한 번도 실행되지 않습니다. 최소 한 번은 반복문을 실행하고 그 이후에 조건에 따라 실행 여부를 결정하고 싶을 때 사용하는 것이 do while 반복문입니다.
+    <p>while문과 for문은 조건을 만족하지 않으면 반복문 내의 코드가 한 번도 실행되지 않습니다. 최소 한 번은 반복문을 실행하고 그 이후에 조건에 따라 실행 여부를 결정하고 싶을 때 사용하는 것이 do while 반복문입니다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ c
-do
-{
-	. . .
-}while(조건문);
-~~~
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span>
+<span class="p">{</span>
+	<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="err">조건문</span><span class="p">);</span>
+</code></pre></div></div>
 
-do- while 반복문이 실행되면 처음으로 do 블럭을 한 번 실행합니다. 그 이후 (. . .)의 조건식을 판단합니다. 이 조건식이 맞다면 다시 한 번 {. . .}를 실행하고 다시 (. . .)의 조건식을 판단합니다. while문과의 차이점은 최초 실행 여부입니다.
+<p>do- while 반복문이 실행되면 처음으로 do 블럭을 한 번 실행합니다. 그 이후 (. . .)의 조건식을 판단합니다. 이 조건식이 맞다면 다시 한 번 {. . .}를 실행하고 다시 (. . .)의 조건식을 판단합니다. while문과의 차이점은 최초 실행 여부입니다.</p>
 
-사실 do-while문은 while문에 비해서 활용빈도가 그리 높지 않습니다. 그리고 do-while문으로 구현가능한 코드는 while문이 100% 대체 가능할 수 있기도 합니다. 그럼에도 불구하고 do-while문이 while문보다 더 적절한 경우도 있습니다. 다음의 예시 코드를 봅시다.
+<p>사실 do-while문은 while문에 비해서 활용빈도가 그리 높지 않습니다. 그리고 do-while문으로 구현가능한 코드는 while문이 100% 대체 가능할 수 있기도 합니다. 그럼에도 불구하고 do-while문이 while문보다 더 적절한 경우도 있습니다. 다음의 예시 코드를 봅시다.</p>
 
-우리는 사용자에게 1개 이상의 정수를 입력받아 그 수들의 합을 계산해주고 0을 입력받으면 종료되는 프로그램을 만들려고 합니다.
+<p>우리는 사용자에게 1개 이상의 정수를 입력받아 그 수들의 합을 계산해주고 0을 입력받으면 종료되는 프로그램을 만들려고 합니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num;
-    int sum = 0;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     
-    do
-    {
-        printf("Type a number(type 0 to quit) : ");
-        scanf("%d", &num);
-        sum+=num; //sum = sum + num;
-    }while(num!=0);
+    <span class="k">do</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Type a number(type 0 to quit) : "</span><span class="p">);</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+        <span class="n">sum</span><span class="o">+=</span><span class="n">num</span><span class="p">;</span> <span class="c1">//sum = sum + num;</span>
+    <span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="n">num</span><span class="o">!=</span><span class="mi">0</span><span class="p">);</span>
     
-    printf("The sum is %d\n", sum);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The sum is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Type a number(type 0 to quit) : 231
+<p>Type a number(type 0 to quit) : 231</p>
 
-Type a number(type 0 to quit) : -19
+<p>Type a number(type 0 to quit) : -19</p>
 
-Type a number(type 0 to quit) : 84
+<p>Type a number(type 0 to quit) : 84</p>
 
-Type a number(type 0 to quit) : 194
+<p>Type a number(type 0 to quit) : 194</p>
 
-Type a number(type 0 to quit) : -230
+<p>Type a number(type 0 to quit) : -230</p>
 
-Type a number(type 0 to quit) : 0
+<p>Type a number(type 0 to quit) : 0</p>
 
-The sum is 260
+<p>The sum is 260</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-위와같은 경우에는 최소 한 번은 입력을 받아야 하기 때문에 do-while문을 사용하는 것이 더 적절합니다.
+<p>위와같은 경우에는 최소 한 번은 입력을 받아야 하기 때문에 do-while문을 사용하는 것이 더 적절합니다.</p>
+
   </div>
   
   <div class="post">
@@ -11327,178 +11294,188 @@ The sum is 260
 
     <span class="post-date">04 Oct 2018</span>
 
-    for문은 반복문 중 활용빈도가 가장 높습니다.
+    <p>for문은 반복문 중 활용빈도가 가장 높습니다.</p>
 
-<br>
-## 1. for 반복문 구조
-* * *
+<p><br /></p>
+<h2 id="1-for-반복문-구조">1. for 반복문 구조</h2>
+<hr />
 
-~~~ c
-for(초기식; 조건식; 증감식)
-{
-	. . .
-}
-~~~
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="err">초기식</span><span class="p">;</span> <span class="err">조건식</span><span class="p">;</span> <span class="err">증감식</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-* 초기식
-for문을 돌리기 위해 사용할 변수를 **초기화**를 시킵니다. 가령, num = 0; 같은 식으로 말입니다. 초기식은 for 반복문에 들어와서 딱 한 번 시행만 시행되고 더 이상 쓰이지 않습니다.
+<ul>
+  <li>
+    <p>초기식
+for문을 돌리기 위해 사용할 변수를 <strong>초기화</strong>를 시킵니다. 가령, num = 0; 같은 식으로 말입니다. 초기식은 for 반복문에 들어와서 딱 한 번 시행만 시행되고 더 이상 쓰이지 않습니다.</p>
+  </li>
+  <li>
+    <p>조건식
+조건식에 따라서 { } 구문을 실행할지 말지 결정을 합니다. 조건식이 ‘참(true)’ 이면 { }를 실행, ‘거짓(false)’ 이면 for 반복문을 탈출합니다.</p>
+  </li>
+  <li>
+    <p>증감식
+for문을 돌리기 위한 변수의 증가 혹은 감소를 담당하는 식입니다. 예를 들면, num++ 혹은 num- 혹은 num+=5 와 같이 증감식을 한 번 거치고나서 다시 조건식을 판단하여 { } 구문을 또 한 번 실행할지 말지 결정이 됩니다.</p>
+  </li>
+</ul>
 
-* 조건식
-조건식에 따라서 { } 구문을 실행할지 말지 결정을 합니다. 조건식이 '참(true)' 이면 { }를 실행, '거짓(false)' 이면 for 반복문을 탈출합니다.
+<p>정리하면 다음 그림과 같습니다.</p>
 
-* 증감식
-for문을 돌리기 위한 변수의 증가 혹은 감소를 담당하는 식입니다. 예를 들면, num++ 혹은 num- 혹은 num+=5 와 같이 증감식을 한 번 거치고나서 다시 조건식을 판단하여 { } 구문을 또 한 번 실행할지 말지 결정이 됩니다.
+<p><img src="/images/2018/09/1-6.jpg" alt="123" width="80%" height="80%" /></p>
 
-정리하면 다음 그림과 같습니다.
+<p>조건식이 ‘참’일 동안은 2 → 3 → 4 → 2 의 순서로 계속 실행이 되다가, 조건식이 거짓이 되면 for 반복문을 탈출합니다.</p>
 
-![123](/images/2018/09/1-6.jpg){: width="80%" height="80%"}
-
-조건식이 '참'일 동안은 2 → 3 → 4 → 2 의 순서로 계속 실행이 되다가, 조건식이 거짓이 되면 for 반복문을 탈출합니다.
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int cnt;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
     
-    for(cnt = 0; cnt<5; cnt++)
-    {
-        printf("The count is %d\n", cnt);
-    }
+    <span class="k">for</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cnt</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">cnt</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The count is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-The count is 0
+<p>The count is 0</p>
 
-The count is 1
+<p>The count is 1</p>
 
-The count is 2
+<p>The count is 2</p>
 
-The count is 3
+<p>The count is 3</p>
 
-The count is 4
+<p>The count is 4</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
-현재의 ANSI C 표준은 for 반복문의 초기식에서 변수를 선언하는 것을 허용합니다. 하지만 위의 코드에서는 cnt 변수를 for문 외부에서 선언했습니다. 왜냐하면 제가 사용하는 컴파일러는 for문의 초기식에서 변수를 선언하는 것이 지원이 안되기 때문입니다. Visual Studio를 업데이트를 안해서 그렇습니다.. 위의 코드를 int cnt;를 지우고 for의 초기식에서 cnt = 0; 을 int cnt = 0; 으로 바꿔서 실행을 해보세요. 잘 실행이 된다면 현재 사용중인 컴파일러가 for문의 초기식에서 변수의 선언을 지원하는 겁니다.
+<p><br />
+현재의 ANSI C 표준은 for 반복문의 초기식에서 변수를 선언하는 것을 허용합니다. 하지만 위의 코드에서는 cnt 변수를 for문 외부에서 선언했습니다. 왜냐하면 제가 사용하는 컴파일러는 for문의 초기식에서 변수를 선언하는 것이 지원이 안되기 때문입니다. Visual Studio를 업데이트를 안해서 그렇습니다.. 위의 코드를 int cnt;를 지우고 for의 초기식에서 cnt = 0; 을 int cnt = 0; 으로 바꿔서 실행을 해보세요. 잘 실행이 된다면 현재 사용중인 컴파일러가 for문의 초기식에서 변수의 선언을 지원하는 겁니다.</p>
 
-위의 코드를 while 반복문을 사용해서 짜려면 어떻게 해야할까요?
+<p>위의 코드를 while 반복문을 사용해서 짜려면 어떻게 해야할까요?</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int cnt = 0;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     
-    while(cnt<5)
-    {
-        printf("The count is %d\n", cnt);
-        cnt++;
-    }
+    <span class="k">while</span><span class="p">(</span><span class="n">cnt</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The count is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+        <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<br>
-실행결과는 for문을 사용했을때와 같습니다. 하지만 for문과는 다르게 변수를 밖에서 선언하고 초기화까지 시켜야하며 while문의 { } 안에서 cnt 변수를 증가시켜줘야 합니다.
+<p><br />
+실행결과는 for문을 사용했을때와 같습니다. 하지만 for문과는 다르게 변수를 밖에서 선언하고 초기화까지 시켜야하며 while문의 { } 안에서 cnt 변수를 증가시켜줘야 합니다.</p>
 
-for문과 while을 언제 사용해야 할지는 정해져 있지 않지만, 대체적으로는 아래의 경우로 나뉩니다.
+<p>for문과 while을 언제 사용해야 할지는 정해져 있지 않지만, 대체적으로는 아래의 경우로 나뉩니다.</p>
 
-> 1. for문은 정해진 반복횟수가 있는 경우에 사용하는 것이 좋습니다.
+<blockquote>
+  <ol>
+    <li>for문은 정해진 반복횟수가 있는 경우에 사용하는 것이 좋습니다.</li>
+  </ol>
+</blockquote>
 
-> 2. while 문은 어떤 변수의 값이 특정한 조건이 될 경우 특정 코드를 실행시킬 때 사용하기 좋습니다.
+<blockquote>
+  <ol>
+    <li>while 문은 어떤 변수의 값이 특정한 조건이 될 경우 특정 코드를 실행시킬 때 사용하기 좋습니다.</li>
+  </ol>
+</blockquote>
 
-<br>
-## 2. 조건식 / 증감식이 없는 for문
-* * *
+<p><br /></p>
+<h2 id="2-조건식--증감식이-없는-for문">2. 조건식 / 증감식이 없는 for문</h2>
+<hr />
 
-<br>
-### 1) 조건식이 없는 경우
+<p><br /></p>
+<h3 id="1-조건식이-없는-경우">1) 조건식이 없는 경우</h3>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int cnt = 0;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     
-    for(cnt = 0; ;cnt+=2)
-    {
-        printf("The count is %d\n", cnt);
-    }
+    <span class="k">for</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">;</span><span class="n">cnt</span><span class="o">+=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The count is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+    <span class="p">}</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-The count is 0
+<p>The count is 0</p>
 
-The count is 2
+<p>The count is 2</p>
 
-The count is 4
+<p>The count is 4</p>
 
-The count is 6
+<p>The count is 6</p>
 
-The count is 8
+<p>The count is 8</p>
 
-The count is 10
+<p>The count is 10</p>
 
-.
+<p>.</p>
 
-.
+<p>.</p>
 
-.
+<p>.</p>
 
-printf 함수의 출력이 멈추지 않습니다.
+<p>printf 함수의 출력이 멈추지 않습니다.</p>
 
-**조건식이 비어있는 경우는 항상 '참'으로 간주하여 무한루프가 되어버립니다.**
+<p><strong>조건식이 비어있는 경우는 항상 ‘참’으로 간주하여 무한루프가 되어버립니다.</strong></p>
 
-<br>
-### 2) 증감식이 없는 경우
+<p><br /></p>
+<h3 id="2-증감식이-없는-경우">2) 증감식이 없는 경우</h3>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int cnt;
-    int num;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
     
-    for(cnt = 0; cnt<5;)
-    {
-        printf("%d\n", cnt);
-        cnt++;
-    }
-    return 0;
-}
-~~~
+    <span class="k">for</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cnt</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+        <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-0
+<p>0</p>
 
-1
+<p>1</p>
 
-2
+<p>2</p>
 
-3
+<p>3</p>
 
-4
+<p>4</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br> 
-위와 같이 for문에서 초기식과 증감식을 비워두어도 됩니다. 하지만 이는 for 구문의 이점을 잘 활용한거라고 말할 수 없습니다. for문의 초기식, 조건식, 증감식을 비워 두는 일은 흔하지 않습니다.
+<p><br /> 
+위와 같이 for문에서 초기식과 증감식을 비워두어도 됩니다. 하지만 이는 for 구문의 이점을 잘 활용한거라고 말할 수 없습니다. for문의 초기식, 조건식, 증감식을 비워 두는 일은 흔하지 않습니다.</p>
+
   </div>
   
 </div>

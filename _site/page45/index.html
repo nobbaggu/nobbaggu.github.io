@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,163 +10682,164 @@
 
     <span class="post-date">09 Aug 2018</span>
 
-    # 1. Logistic Regression
+    <h1 id="1-logistic-regression">1. Logistic Regression</h1>
 
-* * *
+<hr />
 
-Logistic regression 은 discrete한 여러개의 값으로 분류를 하는 것이 목적일 때 사용한다.
+<p>Logistic regression 은 discrete한 여러개의 값으로 분류를 하는 것이 목적일 때 사용한다.</p>
 
-지금 이야기할 classification(분류) 문제는 데이터를 분류하는 것이 주 목적이다. 예를들어 사진이 입력되었을 때 사람이냐 아니냐의 문제, 혹은 이메일 스팸 필터링이 classfication 문제에 해당한다.
+<p>지금 이야기할 classification(분류) 문제는 데이터를 분류하는 것이 주 목적이다. 예를들어 사진이 입력되었을 때 사람이냐 아니냐의 문제, 혹은 이메일 스팸 필터링이 classfication 문제에 해당한다.</p>
 
-사진을 사람 or Not으로 분류하는 문제를 생각해보자. 이 문제를 linear regression을 통해서 사람인 사진은 0보다 큰 값을 내어놓도록 학습시키고 아닌 사진은 0보다 작은 값을 내어놓도록 학습시켜서 model을 사용할 수 있지 않을까 생각해볼 수도 있지다. 하지만 이런 경우에는 일반적으로 output이 feature의 값과 같이 linear하게 움직이지 않는다. 분류문제에 linear regression을 적용하는 예시를 한 번 보자.
+<p>사진을 사람 or Not으로 분류하는 문제를 생각해보자. 이 문제를 linear regression을 통해서 사람인 사진은 0보다 큰 값을 내어놓도록 학습시키고 아닌 사진은 0보다 작은 값을 내어놓도록 학습시켜서 model을 사용할 수 있지 않을까 생각해볼 수도 있지다. 하지만 이런 경우에는 일반적으로 output이 feature의 값과 같이 linear하게 움직이지 않는다. 분류문제에 linear regression을 적용하는 예시를 한 번 보자.</p>
 
-<img class="aligncenter wp-image-350" src="/images/2018/08/no-name-5.png" alt="" width="436" height="221" srcset="/images/2018/08/no-name-5.png 635w, /images/2018/08/no-name-5-300x152.png 300w" sizes="(max-width: 436px) 100vw, 436px" /> 
+<p><img class="aligncenter wp-image-350" src="/images/2018/08/no-name-5.png" alt="" width="436" height="221" srcset="/images/2018/08/no-name-5.png 635w, /images/2018/08/no-name-5-300x152.png 300w" sizes="(max-width: 436px) 100vw, 436px" /></p>
 
-위 프로그램은 종양의 크기에 따라 0(양성종양) 혹은 1(악성종양)으로 분류하는 알고리즘이다. 빨간색으로 표시된 데이터들로부터 만들어진 모델이 검은색 직선이다. 이 모델로 파란색 동그라미 데이터의 결과를 예측해보자. 저 크기라면 악성(1)로 분류되어야 할 것 같지만 모델에 따르면 양성에 더 가깝다. 그리고 더욱 큰 종양의 데이터들이 많이 들어갈수록 이러한 잘못된 분류는 더 많이 일어날 것이다. 따라서 위와같은 분류문제에 linear regression 알고리즘을 적용하는것은 적절치 않다.
+<p>위 프로그램은 종양의 크기에 따라 0(양성종양) 혹은 1(악성종양)으로 분류하는 알고리즘이다. 빨간색으로 표시된 데이터들로부터 만들어진 모델이 검은색 직선이다. 이 모델로 파란색 동그라미 데이터의 결과를 예측해보자. 저 크기라면 악성(1)로 분류되어야 할 것 같지만 모델에 따르면 양성에 더 가깝다. 그리고 더욱 큰 종양의 데이터들이 많이 들어갈수록 이러한 잘못된 분류는 더 많이 일어날 것이다. 따라서 위와같은 분류문제에 linear regression 알고리즘을 적용하는것은 적절치 않다.</p>
 
-일단 이러한 classification 문제를 학습시키는 방법에 대해서 가장 간단하게 &#8216;두 가지&#8217;로 분류하는 binary classification 문제에 대해 설명할것이다. 두 가지보다 많은 경우로 확장하는 것은 매우 간단하기 때문이다.
+<p>일단 이러한 classification 문제를 학습시키는 방법에 대해서 가장 간단하게 ‘두 가지’로 분류하는 binary classification 문제에 대해 설명할것이다. 두 가지보다 많은 경우로 확장하는 것은 매우 간단하기 때문이다.</p>
 
-먼저 binary classification 문제에서 training data의 output이나 model의 output은 &#8216;0&#8217;과 &#8216;1&#8217; 두 가지의 이산적인(discrete) 값 만을 가질 수 있다.
+<p>먼저 binary classification 문제에서 training data의 output이나 model의 output은 ‘0’과 ‘1’ 두 가지의 이산적인(discrete) 값 만을 가질 수 있다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?y\in&space;\left&space;\{&space;0,1&space;\right&space;\}" alt="y\in \left \{ 0,1 \right \}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?y\in&space;\left&space;\{&space;0,1&space;\right&space;\}" alt="y\in \left \{ 0,1 \right \}" align="absmiddle" /></p>
 
-여기서 두 개의 클래스를 각각 &#8216;class 0&#8217;과 &#8216;class 1&#8217;이라 부르겠다.
+<p>여기서 두 개의 클래스를 각각 ‘class 0’과 ‘class 1’이라 부르겠다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. hypothesis function
+<h1 id="2-hypothesis-function">2. hypothesis function</h1>
 
-* * *
+<hr />
 
-0과 1의 두 개의 값만을 가지는 모델을 수식적으로 어떻게 나타내야할지 생각해보아야한다. Logistic Regression 을 이용한  분류 문제에서는 모든 output을 (0,1)의 범위로 제한하기위해 sigmoid function을 사용한다.
+<p>0과 1의 두 개의 값만을 가지는 모델을 수식적으로 어떻게 나타내야할지 생각해보아야한다. Logistic Regression 을 이용한  분류 문제에서는 모든 output을 (0,1)의 범위로 제한하기위해 sigmoid function을 사용한다.</p>
 
-<img class="aligncenter wp-image-351" src="/images/2018/08/no-name-6.png" alt="" width="323" height="262" srcset="/images/2018/08/no-name-6.png 416w, /images/2018/08/no-name-6-300x243.png 300w" sizes="(max-width: 323px) 100vw, 323px" /> 
+<p><img class="aligncenter wp-image-351" src="/images/2018/08/no-name-6.png" alt="" width="323" height="262" srcset="/images/2018/08/no-name-6.png 416w, /images/2018/08/no-name-6-300x243.png 300w" sizes="(max-width: 323px) 100vw, 323px" /></p>
 
-sigmoid function은 0보다 작은 구간에서 (0, 0.5)의 범위를, 0보다 큰 구간에서는 (0.5, 1)의 범위를 가진다. 그렇다면 sigmoid function을 이용한 모델의 형태는 다음과 같다.
+<p>sigmoid function은 0보다 작은 구간에서 (0, 0.5)의 범위를, 0보다 큰 구간에서는 (0.5, 1)의 범위를 가진다. 그렇다면 sigmoid function을 이용한 모델의 형태는 다음과 같다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=g(\theta^{T}&space;x)=\frac&space;{&space;1&space;}{&space;1+{&space;e&space;}^{&space;-\theta&space;x&space;}&space;}" alt="{ h }_{ \theta }(x)=g(\theta^{T} x)=\frac { 1 }{ 1+{ e }^{ -\theta x } }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=g(\theta^{T}&space;x)=\frac&space;{&space;1&space;}{&space;1+{&space;e&space;}^{&space;-\theta&space;x&space;}&space;}" alt="{ h }_{ \theta }(x)=g(\theta^{T} x)=\frac { 1 }{ 1+{ e }^{ -\theta x } }" align="absmiddle" /></p>
 
-이 model은 분명 모든 output을 (0, 1)의 범위로 제한한다. 우리는 이 model의 output이 0.5보다 작으면 class 0으로 분류하고 0.5보다 크거나 같으면 class 1로 분류할 것이다. 그렇다는것은 θ&#8217;x 의 값이 0보다 크거나 같으면 class1, 0보다 작으면 class0으로 분류한다는 말과 같다.
+<p>이 model은 분명 모든 output을 (0, 1)의 범위로 제한한다. 우리는 이 model의 output이 0.5보다 작으면 class 0으로 분류하고 0.5보다 크거나 같으면 class 1로 분류할 것이다. 그렇다는것은 θ’x 의 값이 0보다 크거나 같으면 class1, 0보다 작으면 class0으로 분류한다는 말과 같다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;{&space;(h&space;}_{&space;\theta&space;}(x)\ge&space;0.5\Leftrightarrow&space;\theta&space;x\ge&space;0)\quad&space;\rightarrow&space;\quad&space;y=1" alt="\dpi{120} { (h }_{ \theta }(x)\ge 0.5\Leftrightarrow \theta x\ge 0)\quad \rightarrow \quad y=1" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;{&space;(h&space;}_{&space;\theta&space;}(x)\ge&space;0.5\Leftrightarrow&space;\theta&space;x\ge&space;0)\quad&space;\rightarrow&space;\quad&space;y=1" alt="\dpi{120} { (h }_{ \theta }(x)\ge 0.5\Leftrightarrow \theta x\ge 0)\quad \rightarrow \quad y=1" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;{&space;(h&space;}_{&space;\theta&space;}(x)<0.5\Leftrightarrow&space;\theta&space;x<0)\quad&space;\rightarrow&space;\quad&space;y=0" alt="\dpi{120} { (h }_{ \theta }(x)<0.5\Leftrightarrow \theta x<0)\quad \rightarrow \quad y=0" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;{&space;(h&space;}_{&space;\theta&space;}(x)&lt;0.5\Leftrightarrow&space;\theta&space;x&lt;0)\quad&space;\rightarrow&space;\quad&space;y=0" alt="\dpi{120} { (h }_{ \theta }(x)&lt;0.5\Leftrightarrow \theta x&lt;0)\quad \rightarrow \quad y=0" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-사실 sigmoid function이 &#8216;0&#8217; 혹은 &#8216;1&#8217;의 두 가지 값을 딱 내어놓는것은 아니다. 단지 출력의 범위를 (0,1)로 제한할 뿐이다. 그렇다면 모델의 output이 가지는 (0,1)사이의 값을 어떻게 해석해야 할까? 여기서 h_theta(x)의 값은 모델의 예측값이 1을 가질 &#8216;확률&#8217;이다. 만약 0.9를 내놓는다면 &#8216;class 1&#8217;일 확률이 90%이고 &#8216;class 0&#8217;일 확률은 1-0.9 = 10%이다.
+<p>사실 sigmoid function이 ‘0’ 혹은 ‘1’의 두 가지 값을 딱 내어놓는것은 아니다. 단지 출력의 범위를 (0,1)로 제한할 뿐이다. 그렇다면 모델의 output이 가지는 (0,1)사이의 값을 어떻게 해석해야 할까? 여기서 h_theta(x)의 값은 모델의 예측값이 1을 가질 ‘확률’이다. 만약 0.9를 내놓는다면 ‘class 1’일 확률이 90%이고 ‘class 0’일 확률은 1-0.9 = 10%이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=P(y=1|x,\theta&space;)=1-P(y=0|x,\theta&space;)" alt="{ h }_{ \theta }(x)=P(y=1|x,\theta )=1-P(y=0|x,\theta )" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=P(y=1|x,\theta&space;)=1-P(y=0|x,\theta&space;)" alt="{ h }_{ \theta }(x)=P(y=1|x,\theta )=1-P(y=0|x,\theta )" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 18pt;"><strong> </strong></span>
+<p><span style="font-size: 18pt;"><strong> </strong></span></p>
 
-&nbsp;
+<p> </p>
 
-# 3. cost function
+<h1 id="3-cost-function">3. cost function</h1>
 
-* * *
+<hr />
 
-cost function의 역할은 linear regression에 있어서나 classification에 있어서나 동일하다. 모델이 training dataset을 기준으로 얼마만큼의 error를 가지는지 나타내주는 지표이다. 하지만 linear regression의 training dataset들은 output이 연속적인 함수였다. 하지만 classification 문제에서는 model은 (0, 1)의 범위에 존재하는 값을, training dataset의 output은 0 혹은 1의 값만을 가진다. lineare regression과 같이 모든 dataset과 model사이의 squared error를 구하고 더한다면 이것은 theta에 대해서 매우 불규칙적이고 울룩불룩한 모양을 나타낼 가능성이 크다. 매우 많은 수의 local minimum을 가지고 있다는 뜻이다. 따라서 우리가 cost function의 크기를 줄이기 위해 사용했던 강력한 수학적 도구인 gradient descent도 무용지물이 되어버린다. 따라서 Logistic  Regression 의 cost function은 다음의 형태를 가진다.
+<p>cost function의 역할은 linear regression에 있어서나 classification에 있어서나 동일하다. 모델이 training dataset을 기준으로 얼마만큼의 error를 가지는지 나타내주는 지표이다. 하지만 linear regression의 training dataset들은 output이 연속적인 함수였다. 하지만 classification 문제에서는 model은 (0, 1)의 범위에 존재하는 값을, training dataset의 output은 0 혹은 1의 값만을 가진다. lineare regression과 같이 모든 dataset과 model사이의 squared error를 구하고 더한다면 이것은 theta에 대해서 매우 불규칙적이고 울룩불룩한 모양을 나타낼 가능성이 크다. 매우 많은 수의 local minimum을 가지고 있다는 뜻이다. 따라서 우리가 cost function의 크기를 줄이기 위해 사용했던 강력한 수학적 도구인 gradient descent도 무용지물이 되어버린다. 따라서 Logistic  Regression 의 cost function은 다음의 형태를 가진다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;Cost({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}),&space;}&space;{&space;y&space;}^{&space;(i)&space;})\\&space;Cost({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}),{&space;y&space;}^{&space;(i)&space;})=-\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)\quad&space;if\quad&space;y=1\\&space;Cost({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}),{&space;y&space;}^{&space;(i)&space;})=-\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)\quad&space;if\quad&space;y=0" alt="J(\theta )=\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ Cost({ h }_{ \theta }({ x }^{ (i) }), } { y }^{ (i) })\\ Cost({ h }_{ \theta }({ x }^{ (i) }),{ y }^{ (i) })=-\log { ({ h }_{ \theta }({ x }^{ (i) }) } )\quad if\quad y=1\\ Cost({ h }_{ \theta }({ x }^{ (i) }),{ y }^{ (i) })=-\log { (1-{ h }_{ \theta }({ x }^{ (i) }) } )\quad if\quad y=0" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;Cost({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}),&space;}&space;{&space;y&space;}^{&space;(i)&space;})\\&space;Cost({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}),{&space;y&space;}^{&space;(i)&space;})=-\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)\quad&space;if\quad&space;y=1\\&space;Cost({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}),{&space;y&space;}^{&space;(i)&space;})=-\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)\quad&space;if\quad&space;y=0" alt="J(\theta )=\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ Cost({ h }_{ \theta }({ x }^{ (i) }), } { y }^{ (i) })\\ Cost({ h }_{ \theta }({ x }^{ (i) }),{ y }^{ (i) })=-\log { ({ h }_{ \theta }({ x }^{ (i) }) } )\quad if\quad y=1\\ Cost({ h }_{ \theta }({ x }^{ (i) }),{ y }^{ (i) })=-\log { (1-{ h }_{ \theta }({ x }^{ (i) }) } )\quad if\quad y=0" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-위의 그래프에서 x 대신에 h_theta(x)가 들어갈 뿐이다. 그럼 위와 같은 형태의 cost function이 정말로 training dataset과 model의 error를 충분히 잘 나타내주는지 보자.
+<p>위의 그래프에서 x 대신에 h_theta(x)가 들어갈 뿐이다. 그럼 위와 같은 형태의 cost function이 정말로 training dataset과 model의 error를 충분히 잘 나타내주는지 보자.</p>
 
-<img class="aligncenter wp-image-352" src="/images/2018/08/no-name-7.png" alt="" width="746" height="326" srcset="/images/2018/08/no-name-7.png 1195w, /images/2018/08/no-name-7-300x131.png 300w, /images/2018/08/no-name-7-768x335.png 768w, /images/2018/08/no-name-7-1024x447.png 1024w" sizes="(max-width: 746px) 100vw, 746px" /> 
+<p><img class="aligncenter wp-image-352" src="/images/2018/08/no-name-7.png" alt="" width="746" height="326" srcset="/images/2018/08/no-name-7.png 1195w, /images/2018/08/no-name-7-300x131.png 300w, /images/2018/08/no-name-7-768x335.png 768w, /images/2018/08/no-name-7-1024x447.png 1024w" sizes="(max-width: 746px) 100vw, 746px" /></p>
 
-training data의 output이 1인 경우는 model의 예측값이 1로 갈수록 error는 0으로 수렴하고 예측값이 0에 가까워질수록 error는 무한히 커진다.
+<p>training data의 output이 1인 경우는 model의 예측값이 1로 갈수록 error는 0으로 수렴하고 예측값이 0에 가까워질수록 error는 무한히 커진다.</p>
 
-training data의 output이 0인 경우는 model의 예측값이 1로 갈수록 error는 무한히 커지고 예측값이 1에 가까워질수록 error는 0으로 수렴한다.
+<p>training data의 output이 0인 경우는 model의 예측값이 1로 갈수록 error는 무한히 커지고 예측값이 1에 가까워질수록 error는 0으로 수렴한다.</p>
 
-정리하자면, 위의 cost function에 따르면 예측값과 training data의 output의 차이가 작을수록 cost function이 작아지고 차이가 클수록 cost function이 커진다. cost function 원래의 역할을 충실히 잘 따르는 함수라는 결론이 나온다.
+<p>정리하자면, 위의 cost function에 따르면 예측값과 training data의 output의 차이가 작을수록 cost function이 작아지고 차이가 클수록 cost function이 커진다. cost function 원래의 역할을 충실히 잘 따르는 함수라는 결론이 나온다.</p>
 
-y=0인 경우와 y=1인 경우를 구분하기 위해서 위와 같이 cost function을 나누었지만 두 식을 하나로 합칠 수 있다.
+<p>y=0인 경우와 y=1인 경우를 구분하기 위해서 위와 같이 cost function을 나누었지만 두 식을 하나로 합칠 수 있다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;y&space;}^{&space;(i)&space;}\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)&space;}&space;+(1-{&space;y&space;}^{&space;(i)&space;})\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}" alt="J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{ (i) }\log { ({ h }_{ \theta }({ x }^{ (i) }) } ) } +(1-{ y }^{ (i) })\log { (1-{ h }_{ \theta }({ x }^{ (i) })) }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;y&space;}^{&space;(i)&space;}\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)&space;}&space;+(1-{&space;y&space;}^{&space;(i)&space;})\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}" alt="J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{ (i) }\log { ({ h }_{ \theta }({ x }^{ (i) }) } ) } +(1-{ y }^{ (i) })\log { (1-{ h }_{ \theta }({ x }^{ (i) })) }" align="absmiddle" /></p>
 
-이 경우 y=1인 경우는 두 번째 항이 삭제되고 y=0인 경우는 첫 번째 항이 삭제되어 결국은 이전에 세웠던 cost function식과 동일하게 된다.
+<p>이 경우 y=1인 경우는 두 번째 항이 삭제되고 y=0인 경우는 첫 번째 항이 삭제되어 결국은 이전에 세웠던 cost function식과 동일하게 된다.</p>
 
-그리고 이번 경우 역시 linear regression과 마찬가지로 선형대수학으로 더 간단한 연산이 가능하다.
+<p>그리고 이번 경우 역시 linear regression과 마찬가지로 선형대수학으로 더 간단한 연산이 가능하다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?h=g(X\theta&space;)" alt="h=g(X\theta )" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?h=g(X\theta&space;)" alt="h=g(X\theta )" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;{&space;(y&space;}^{&space;T&space;}log(h)+{&space;(1-y)&space;}^{&space;T&space;}log(1-h))" alt="J(\theta )=-\frac { 1 }{ m } { (y }^{ T }log(h)+{ (1-y) }^{ T }log(1-h))" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;{&space;(y&space;}^{&space;T&space;}log(h)+{&space;(1-y)&space;}^{&space;T&space;}log(1-h))" alt="J(\theta )=-\frac { 1 }{ m } { (y }^{ T }log(h)+{ (1-y) }^{ T }log(1-h))" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 18pt;"><strong> </strong></span>
+<p><span style="font-size: 18pt;"><strong> </strong></span></p>
 
-# 4. gradient descent
+<h1 id="4-gradient-descent">4. gradient descent</h1>
 
-* * *
+<hr />
 
-이 경우도 역시 cost function의 gradient vector를 구해서 cost function이 감소하는 방향으로 learning rate만큼의 step씩 theta를 변화시키는 gradient descent의 방법을 사용해서 training dataset에 가장 fit하는 model함수를 구할 수 있다.
+<p>이 경우도 역시 cost function의 gradient vector를 구해서 cost function이 감소하는 방향으로 learning rate만큼의 step씩 theta를 변화시키는 gradient descent의 방법을 사용해서 training dataset에 가장 fit하는 model함수를 구할 수 있다.</p>
 
-먼저 cost function의 미분을 구해야 한다. cost function을 미분하는 과정은 지루하고 긴 풀이과정인데 반해 결과는 의외로 아주 간단하게 나온다. j-th parameter에 대한 cost function의 미분은 다음과 같다.
+<p>먼저 cost function의 미분을 구해야 한다. cost function을 미분하는 과정은 지루하고 긴 풀이과정인데 반해 결과는 의외로 아주 간단하게 나온다. j-th parameter에 대한 cost function의 미분은 다음과 같다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\frac&space;{&space;\partial&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;J(\theta&space;)=\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;[h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}]{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;}" alt="\frac { \partial }{ \partial { \theta }_{ j } } J(\theta )=\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { [h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }]{ x }_{ j }^{ (i) } }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\frac&space;{&space;\partial&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;J(\theta&space;)=\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;[h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}]{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;}" alt="\frac { \partial }{ \partial { \theta }_{ j } } J(\theta )=\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { [h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }]{ x }_{ j }^{ (i) } }" align="absmiddle" /></p>
 
-이 역시 선형대수학을 사용하여 연산하기 위해 수식을 matrix-vector형태로 간결하게 나타내보겠다.
+<p>이 역시 선형대수학을 사용하여 연산하기 위해 수식을 matrix-vector형태로 간결하게 나타내보겠다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\nabla&space;J(\theta&space;)=\frac&space;{&space;1&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="\nabla J(\theta )=\frac { 1 }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\nabla&space;J(\theta&space;)=\frac&space;{&space;1&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="\nabla J(\theta )=\frac { 1 }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /></p>
 
-직접 행렬에 원소를 채워넣고 계산해보면 위의 두 식이 같다는 것을 알 수 있다. 이제 얼마만큼의 learning rate로 학습을 시킨지만 결정하면 gradient descent를 사용해서 theta값들을 update해가며 최적의 theta를 찾아 모델을 설정할 수 있다.
+<p>직접 행렬에 원소를 채워넣고 계산해보면 위의 두 식이 같다는 것을 알 수 있다. 이제 얼마만큼의 learning rate로 학습을 시킨지만 결정하면 gradient descent를 사용해서 theta값들을 update해가며 최적의 theta를 찾아 모델을 설정할 수 있다.</p>
 
-gradient descent의 일반적인 형식은 linear regression이나 classification에서나 동일하다.
+<p>gradient descent의 일반적인 형식은 linear regression이나 classification에서나 동일하다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;J(\theta&space;)={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;[h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}]{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;}" alt="{ \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial }{ \partial { \theta }_{ j } } J(\theta )={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { [h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }]{ x }_{ j }^{ (i) } }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;J(\theta&space;)={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;[h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}]{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;}" alt="{ \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial }{ \partial { \theta }_{ j } } J(\theta )={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { [h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }]{ x }_{ j }^{ (i) } }" align="absmiddle" /></p>
 
-vectorized form으로 나타내면 다음과 같다.
+<p>vectorized form으로 나타내면 다음과 같다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\theta&space;:=\theta&space;-\alpha&space;\nabla&space;J(\theta&space;)=\theta&space;-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="\theta :=\theta -\alpha \nabla J(\theta )=\theta -\frac { \alpha }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\theta&space;:=\theta&space;-\alpha&space;\nabla&space;J(\theta&space;)=\theta&space;-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="\theta :=\theta -\alpha \nabla J(\theta )=\theta -\frac { \alpha }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /></p>
 
-결국 classification은 문제의 특성상 linear regression과 다른형태의 hypothesis function을 사용한다는 것, 그리고 training data와 model간의 오차가 얼마나 큰지 정량적으로 나타내기 위해 다른 형태의 cost function을 사용한다는 사실 이외에 linear regression과 다를것이 없다.
+<p>결국 classification은 문제의 특성상 linear regression과 다른형태의 hypothesis function을 사용한다는 것, 그리고 training data와 model간의 오차가 얼마나 큰지 정량적으로 나타내기 위해 다른 형태의 cost function을 사용한다는 사실 이외에 linear regression과 다를것이 없다.</p>
 
-마지막으로 이러한 classfication의 model에 대해 좀 더 직관적으로 파악하기 위해 그림을 그려서 어떻게 알고리즘이 동작하는지를 보아야겠다.
+<p>마지막으로 이러한 classfication의 model에 대해 좀 더 직관적으로 파악하기 위해 그림을 그려서 어떻게 알고리즘이 동작하는지를 보아야겠다.</p>
 
-gradient descent로 얻은 어떠한 binary classification 알고리즘이 다음과 같은 모델을 가진다고 해보자.
+<p>gradient descent로 얻은 어떠한 binary classification 알고리즘이 다음과 같은 모델을 가진다고 해보자.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\theta=\begin{bmatrix}&space;\theta_{0}&space;\\&space;\theta_{1}&space;\\&space;\theta_{2}&space;\end{bmatrix}&space;=&space;\begin{bmatrix}&space;-12&space;\\&space;4&space;\\&space;3&space;\end{bmatrix}&space;\Rightarrow&space;\quad&space;{&space;h&space;}_{&space;\theta&space;}(x)=g(-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;})\quad&space;(\because&space;g(z)=\frac&space;{&space;1&space;}{&space;1+{&space;e&space;}^{&space;-z&space;}&space;}&space;)" alt="\theta=\begin{bmatrix} \theta_{0} \\ \theta_{1} \\ \theta_{2} \end{bmatrix} = \begin{bmatrix} -12 \\ 4 \\ 3 \end{bmatrix} \Rightarrow \quad { h }_{ \theta }(x)=g(-12+4{ x }_{ 1 }+3{ x }_{ 2 })\quad (\because g(z)=\frac { 1 }{ 1+{ e }^{ -z } } )" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\theta=\begin{bmatrix}&space;\theta_{0}&space;\\&space;\theta_{1}&space;\\&space;\theta_{2}&space;\end{bmatrix}&space;=&space;\begin{bmatrix}&space;-12&space;\\&space;4&space;\\&space;3&space;\end{bmatrix}&space;\Rightarrow&space;\quad&space;{&space;h&space;}_{&space;\theta&space;}(x)=g(-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;})\quad&space;(\because&space;g(z)=\frac&space;{&space;1&space;}{&space;1+{&space;e&space;}^{&space;-z&space;}&space;}&space;)" alt="\theta=\begin{bmatrix} \theta_{0} \\ \theta_{1} \\ \theta_{2} \end{bmatrix} = \begin{bmatrix} -12 \\ 4 \\ 3 \end{bmatrix} \Rightarrow \quad { h }_{ \theta }(x)=g(-12+4{ x }_{ 1 }+3{ x }_{ 2 })\quad (\because g(z)=\frac { 1 }{ 1+{ e }^{ -z } } )" align="absmiddle" /></p>
 
-위 모델의 output이 0.5보다크거나 같으면 class 1, 0.5보다 작으면 class 0으로 분류된다.
+<p>위 모델의 output이 0.5보다크거나 같으면 class 1, 0.5보다 작으면 class 0으로 분류된다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=g(-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;})\ge&space;0.5\Leftrightarrow&space;-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;}\ge&space;0:\quad&space;class1" alt="{ h }_{ \theta }(x)=g(-12+4{ x }_{ 1 }+3{ x }_{ 2 })\ge 0.5\Leftrightarrow -12+4{ x }_{ 1 }+3{ x }_{ 2 }\ge 0:\quad class1" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=g(-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;})\ge&space;0.5\Leftrightarrow&space;-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;}\ge&space;0:\quad&space;class1" alt="{ h }_{ \theta }(x)=g(-12+4{ x }_{ 1 }+3{ x }_{ 2 })\ge 0.5\Leftrightarrow -12+4{ x }_{ 1 }+3{ x }_{ 2 }\ge 0:\quad class1" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=g(-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;})<0.5\Leftrightarrow&space;-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;}<0:\quad&space;class0" alt="{ h }_{ \theta }(x)=g(-12+4{ x }_{ 1 }+3{ x }_{ 2 })<0.5\Leftrightarrow -12+4{ x }_{ 1 }+3{ x }_{ 2 }<0:\quad class0" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=g(-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;})&lt;0.5\Leftrightarrow&space;-12+4{&space;x&space;}_{&space;1&space;}+3{&space;x&space;}_{&space;2&space;}&lt;0:\quad&space;class0" alt="{ h }_{ \theta }(x)=g(-12+4{ x }_{ 1 }+3{ x }_{ 2 })&lt;0.5\Leftrightarrow -12+4{ x }_{ 1 }+3{ x }_{ 2 }&lt;0:\quad class0" align="absmiddle" /></p>
 
-각 식의 마지막 부분에있는 부등식을 풀어보면 x1, x2평면에서 어떠한 직선을 기준으로 class0과 class1로 나뉜다는것을 알 수 있다. 이를 그림으로 나타내면 다음과 같다.
+<p>각 식의 마지막 부분에있는 부등식을 풀어보면 x1, x2평면에서 어떠한 직선을 기준으로 class0과 class1로 나뉜다는것을 알 수 있다. 이를 그림으로 나타내면 다음과 같다.</p>
 
-<img class="aligncenter wp-image-354" src="/images/2018/08/no-name-8.png" alt="" width="274" height="246" srcset="/images/2018/08/no-name-8.png 517w, /images/2018/08/no-name-8-300x270.png 300w" sizes="(max-width: 274px) 100vw, 274px" /> 
+<p><img class="aligncenter wp-image-354" src="/images/2018/08/no-name-8.png" alt="" width="274" height="246" srcset="/images/2018/08/no-name-8.png 517w, /images/2018/08/no-name-8-300x270.png 300w" sizes="(max-width: 274px) 100vw, 274px" /></p>
 
-또 한 가지 예를 보자. 아래 그림과 같은 training dataset이 있다.
+<p>또 한 가지 예를 보자. 아래 그림과 같은 training dataset이 있다.</p>
 
-<img class="aligncenter wp-image-355" src="/images/2018/08/no-name-9.png" alt="" width="296" height="234" srcset="/images/2018/08/no-name-9.png 523w, /images/2018/08/no-name-9-300x237.png 300w" sizes="(max-width: 296px) 100vw, 296px" /> 
+<p><img class="aligncenter wp-image-355" src="/images/2018/08/no-name-9.png" alt="" width="296" height="234" srcset="/images/2018/08/no-name-9.png 523w, /images/2018/08/no-name-9-300x237.png 300w" sizes="(max-width: 296px) 100vw, 296px" /></p>
 
-이러한 data들에 fit하는 model을 구하기위해 hypothesis function의 형태를 세울려고 하는데 단순한 선형식으로는 되지 않을 것 같다. 이 때에는 더 높은 차원의 polynomial term을 추가하는 것이 좋겠다.
+<p>이러한 data들에 fit하는 model을 구하기위해 hypothesis function의 형태를 세울려고 하는데 단순한 선형식으로는 되지 않을 것 같다. 이 때에는 더 높은 차원의 polynomial term을 추가하는 것이 좋겠다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=g({&space;\theta&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}{&space;x&space;}_{&space;1&space;}+{&space;\theta&space;}_{&space;2&space;}{&space;x&space;}_{&space;2&space;}+{&space;\theta&space;}_{&space;3&space;}{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;\theta&space;}_{&space;4&space;}{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;})\quad&space;(\because&space;{&space;x&space;}_{&space;3&space;}={&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;},\quad&space;{&space;x&space;}_{&space;4&space;}={&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;})" alt="{ h }_{ \theta }(x)=g({ \theta }_{ 0 }+{ \theta }_{ 1 }{ x }_{ 1 }+{ \theta }_{ 2 }{ x }_{ 2 }+{ \theta }_{ 3 }{ { x }_{ 1 } }^{ 2 }+{ \theta }_{ 4 }{ { x }_{ 2 } }^{ 2 })\quad (\because { x }_{ 3 }={ { x }_{ 1 } }^{ 2 },\quad { x }_{ 4 }={ { x }_{ 2 } }^{ 2 })" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=g({&space;\theta&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}{&space;x&space;}_{&space;1&space;}+{&space;\theta&space;}_{&space;2&space;}{&space;x&space;}_{&space;2&space;}+{&space;\theta&space;}_{&space;3&space;}{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;\theta&space;}_{&space;4&space;}{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;})\quad&space;(\because&space;{&space;x&space;}_{&space;3&space;}={&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;},\quad&space;{&space;x&space;}_{&space;4&space;}={&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;})" alt="{ h }_{ \theta }(x)=g({ \theta }_{ 0 }+{ \theta }_{ 1 }{ x }_{ 1 }+{ \theta }_{ 2 }{ x }_{ 2 }+{ \theta }_{ 3 }{ { x }_{ 1 } }^{ 2 }+{ \theta }_{ 4 }{ { x }_{ 2 } }^{ 2 })\quad (\because { x }_{ 3 }={ { x }_{ 1 } }^{ 2 },\quad { x }_{ 4 }={ { x }_{ 2 } }^{ 2 })" align="absmiddle" /></p>
 
-gradient descent를 통해서 다음과 같은 parameter를 구했다.
+<p>gradient descent를 통해서 다음과 같은 parameter를 구했다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\theta&space;=&space;\begin{bmatrix}-4&space;\\&space;0&space;\\&space;0&space;\\&space;1&space;\\&space;1&space;\end{bmatrix}" alt="\theta = \begin{bmatrix}-4 \\ 0 \\ 0 \\ 1 \\ 1 \end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\theta&space;=&space;\begin{bmatrix}-4&space;\\&space;0&space;\\&space;0&space;\\&space;1&space;\\&space;1&space;\end{bmatrix}" alt="\theta = \begin{bmatrix}-4 \\ 0 \\ 0 \\ 1 \\ 1 \end{bmatrix}" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?g(-4+{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;})\ge&space;0.5\quad&space;\Leftrightarrow&space;\quad&space;-4+{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;}\ge&space;0\quad&space;:\quad&space;class1" alt="g(-4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 })\ge 0.5\quad \Leftrightarrow \quad -4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 }\ge 0\quad :\quad class1" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?g(-4+{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;})\ge&space;0.5\quad&space;\Leftrightarrow&space;\quad&space;-4+{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;}\ge&space;0\quad&space;:\quad&space;class1" alt="g(-4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 })\ge 0.5\quad \Leftrightarrow \quad -4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 }\ge 0\quad :\quad class1" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?g(-4+{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;})<0.5\quad&space;\Leftrightarrow&space;\quad&space;-4+{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;}<0\quad&space;:\quad&space;class0" alt="g(-4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 })<0.5\quad \Leftrightarrow \quad -4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 }<0\quad :\quad class0" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?g(-4+{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;})&lt;0.5\quad&space;\Leftrightarrow&space;\quad&space;-4+{&space;{&space;x&space;}_{&space;1&space;}&space;}^{&space;2&space;}+{&space;{&space;x&space;}_{&space;2&space;}&space;}^{&space;2&space;}&lt;0\quad&space;:\quad&space;class0" alt="g(-4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 })&lt;0.5\quad \Leftrightarrow \quad -4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 }&lt;0\quad :\quad class0" align="absmiddle" /></p>
 
-위의 parameter를 hypothesis function에 적용시키고 결과가 0.5보다 크거나 같으면 class1, 0.5보다 작으면 class0이 된다. 이 때 class0과 class1의 경계는 위의 부등식을 풀어서 구할 수 있다. 위의 부등식을 보았을 때 경계선은 중심이 0이고 반지름이 2인 원이 된다는 것을 고등학교 수학시간에 배운 원의 방정식만 알고있다면 쉽게 알 수 있다. 이를 그림으로 표현하면 다음과 같다.
+<p>위의 parameter를 hypothesis function에 적용시키고 결과가 0.5보다 크거나 같으면 class1, 0.5보다 작으면 class0이 된다. 이 때 class0과 class1의 경계는 위의 부등식을 풀어서 구할 수 있다. 위의 부등식을 보았을 때 경계선은 중심이 0이고 반지름이 2인 원이 된다는 것을 고등학교 수학시간에 배운 원의 방정식만 알고있다면 쉽게 알 수 있다. 이를 그림으로 표현하면 다음과 같다.</p>
 
-<img class="aligncenter wp-image-356" src="/images/2018/08/no-name-10.png" alt="" width="290" height="229" srcset="/images/2018/08/no-name-10.png 523w, /images/2018/08/no-name-10-300x237.png 300w" sizes="(max-width: 290px) 100vw, 290px" />
+<p><img class="aligncenter wp-image-356" src="/images/2018/08/no-name-10.png" alt="" width="290" height="229" srcset="/images/2018/08/no-name-10.png 523w, /images/2018/08/no-name-10-300x237.png 300w" sizes="(max-width: 290px) 100vw, 290px" /></p>
+
   </div>
   
   <div class="post">
@@ -10874,51 +10851,52 @@ gradient descent를 통해서 다음과 같은 parameter를 구했다.
 
     <span class="post-date">09 Aug 2018</span>
 
-    feature 1 : 인구
+    <p>feature 1 : 인구</p>
 
-feature 2 : 수입이 $5000 밑인 비율
+<p>feature 2 : 수입이 $5000 밑인 비율</p>
 
-feature 3 : 실업 비율
+<p>feature 3 : 실업 비율</p>
 
-output : 100만명 당 연간 살인자 수
+<p>output : 100만명 당 연간 살인자 수</p>
 
-<img class="aligncenter size-full wp-image-279" src="/images/2018/08/1-2.png" alt="" width="900" height="460" srcset="/images/2018/08/1-2.png 900w, /images/2018/08/1-2-300x153.png 300w, /images/2018/08/1-2-768x393.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-279" src="/images/2018/08/1-2.png" alt="" width="900" height="460" srcset="/images/2018/08/1-2.png 900w, /images/2018/08/1-2-300x153.png 300w, /images/2018/08/1-2-768x393.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-일단 feature별로 절대적 수치의 scale의 차이가 커서 feature normalization을 해야한다. 그렇지 않으면 gradient descent의 속도가 너무 느릴 것이다.
+<p>일단 feature별로 절대적 수치의 scale의 차이가 커서 feature normalization을 해야한다. 그렇지 않으면 gradient descent의 속도가 너무 느릴 것이다.</p>
 
-<img class="aligncenter size-full wp-image-280" src="/images/2018/08/1-3.png" alt="" width="900" height="476" srcset="/images/2018/08/1-3.png 900w, /images/2018/08/1-3-300x159.png 300w, /images/2018/08/1-3-768x406.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-280" src="/images/2018/08/1-3.png" alt="" width="900" height="476" srcset="/images/2018/08/1-3.png 900w, /images/2018/08/1-3-300x159.png 300w, /images/2018/08/1-3-768x406.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-평균을 구하는 mean함수와 표준편차를 구하는 std함수는 각 column별로 연산해준다. 이렇게 normalize를 하고 나니 각 feature matrix의 각 column의 평균이 거의 0에 가깝고 표준편차는 1이 되었다. 이제 마지막으로 모든 element가 1인 column을 추가해주어 x\_0라는 theta\_0에 해당하는 feature를 만들어야한다. 이는 우리가 고등학교때 보았던 정규분포이다. 이제 마지막으로 모든 element가 1인 column을 추가해주어 x\_0라는 theta\_0에 해당하는 feature를 만들어야한다.
+<p>평균을 구하는 mean함수와 표준편차를 구하는 std함수는 각 column별로 연산해준다. 이렇게 normalize를 하고 나니 각 feature matrix의 각 column의 평균이 거의 0에 가깝고 표준편차는 1이 되었다. 이제 마지막으로 모든 element가 1인 column을 추가해주어 x_0라는 theta_0에 해당하는 feature를 만들어야한다. 이는 우리가 고등학교때 보았던 정규분포이다. 이제 마지막으로 모든 element가 1인 column을 추가해주어 x_0라는 theta_0에 해당하는 feature를 만들어야한다.</p>
 
-<img class="aligncenter size-full wp-image-281" src="/images/2018/08/1-4.png" alt="" width="900" height="479" srcset="/images/2018/08/1-4.png 900w, /images/2018/08/1-4-300x160.png 300w, /images/2018/08/1-4-768x409.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-281" src="/images/2018/08/1-4.png" alt="" width="900" height="479" srcset="/images/2018/08/1-4.png 900w, /images/2018/08/1-4-300x160.png 300w, /images/2018/08/1-4-768x409.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-이제 gradient descent를 해도 된다. 이전 글에서 implementation 할 때 썼던 cost 하수와 graD 함수를 그대로 쓰겠다. 두 함수의 내용은 다음과 같다.
+<p>이제 gradient descent를 해도 된다. 이전 글에서 implementation 할 때 썼던 cost 하수와 graD 함수를 그대로 쓰겠다. 두 함수의 내용은 다음과 같다.</p>
 
-<img class="aligncenter size-full wp-image-282" src="/images/2018/08/1-5.png" alt="" width="900" height="228" srcset="/images/2018/08/1-5.png 900w, /images/2018/08/1-5-300x76.png 300w, /images/2018/08/1-5-768x195.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-282" src="/images/2018/08/1-5.png" alt="" width="900" height="228" srcset="/images/2018/08/1-5.png 900w, /images/2018/08/1-5-300x76.png 300w, /images/2018/08/1-5-768x195.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-graD 함수는 theta와 J를 반환시켜주는 함수이다. gradient descent는 200번의 iteration을 거치고 마지막에는 iteration의 횟수에 따른 cost function J의 변화를 그래프로 보여주도록 했다.
+<p>graD 함수는 theta와 J를 반환시켜주는 함수이다. gradient descent는 200번의 iteration을 거치고 마지막에는 iteration의 횟수에 따른 cost function J의 변화를 그래프로 보여주도록 했다.</p>
 
-<img class="aligncenter size-full wp-image-283" src="/images/2018/08/1-6.png" alt="" width="900" height="479" srcset="/images/2018/08/1-6.png 900w, /images/2018/08/1-6-300x160.png 300w, /images/2018/08/1-6-768x409.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-283" src="/images/2018/08/1-6.png" alt="" width="900" height="479" srcset="/images/2018/08/1-6.png 900w, /images/2018/08/1-6-300x160.png 300w, /images/2018/08/1-6-768x409.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-cost는 3370으로 수렴하였다. 이제 위에 계산된 theta를 최종 parameter로 정하겠다. 이제 model이 만들어졌다. 위의 model로 인구가 100만명, 수입이 $5000밑인 비율이 30%, 실업 비율이 10%인 도시의 100만명 당 연간 살인사건의 수를 예측해보겠다.
+<p>cost는 3370으로 수렴하였다. 이제 위에 계산된 theta를 최종 parameter로 정하겠다. 이제 model이 만들어졌다. 위의 model로 인구가 100만명, 수입이 $5000밑인 비율이 30%, 실업 비율이 10%인 도시의 100만명 당 연간 살인사건의 수를 예측해보겠다.</p>
 
-<img class="aligncenter size-full wp-image-284" src="/images/2018/08/1-4.jpg" alt="" width="862" height="267" srcset="/images/2018/08/1-4.jpg 862w, /images/2018/08/1-4-300x93.jpg 300w, /images/2018/08/1-4-768x238.jpg 768w" sizes="(max-width: 862px) 100vw, 862px" /> 
+<p><img class="aligncenter size-full wp-image-284" src="/images/2018/08/1-4.jpg" alt="" width="862" height="267" srcset="/images/2018/08/1-4.jpg 862w, /images/2018/08/1-4-300x93.jpg 300w, /images/2018/08/1-4-768x238.jpg 768w" sizes="(max-width: 862px) 100vw, 862px" /></p>
 
-연간 46명의 살인사건이 일어날 것으로 예상된다.
+<p>연간 46명의 살인사건이 일어날 것으로 예상된다.</p>
 
-애석한 것은 위의 데이터들을 그림으로 나타낼 수 없다는 것이다. 우리가 그림으로 그릴 수 있는 것은 3차원 공간까지인데, feature2개와 output 1개 까지이다. feature가 3개 이상인 경우에는 feature와 output의 상간관계를 그림으로 파악하는것이 되지 않는다.
+<p>애석한 것은 위의 데이터들을 그림으로 나타낼 수 없다는 것이다. 우리가 그림으로 그릴 수 있는 것은 3차원 공간까지인데, feature2개와 output 1개 까지이다. feature가 3개 이상인 경우에는 feature와 output의 상간관계를 그림으로 파악하는것이 되지 않는다.</p>
 
-아무튼 개인적으로 linear regression으로 풀 수 있는 머신러닝 문제를 implementation 해보면서 이론으로 배웠던 내용들에대한 이해가 한층 더 높아진 것 같은 기분이 든다.
+<p>아무튼 개인적으로 linear regression으로 풀 수 있는 머신러닝 문제를 implementation 해보면서 이론으로 배웠던 내용들에대한 이해가 한층 더 높아진 것 같은 기분이 든다.</p>
 
-정리를 한 번 해보겠다.
+<p>정리를 한 번 해보겠다.</p>
 
-<span style="color: #ff0000;"><strong>(0. training dataset을 통해 feature matrix X, output y 만들기. 필요하다면 feature normalization 실행)</strong></span>
+<p><span style="color: #ff0000;"><strong>(0. training dataset을 통해 feature matrix X, output y 만들기. 필요하다면 feature normalization 실행)</strong></span></p>
 
-<span style="color: #ff0000;"><strong>1. feature 갯수에 따른 hypothesis function 생성 = theta의 갯수 정하기</strong></span>
+<p><span style="color: #ff0000;"><strong>1. feature 갯수에 따른 hypothesis function 생성 = theta의 갯수 정하기</strong></span></p>
 
-<span style="color: #ff0000;"><strong>2. gradient descent를 통해서 cost function J가 수렴할 때 까지 theta를 update해서 최종 theta 정하기( = model 정하기)</strong></span>
+<p><span style="color: #ff0000;"><strong>2. gradient descent를 통해서 cost function J가 수렴할 때 까지 theta를 update해서 최종 theta 정하기( = model 정하기)</strong></span></p>
 
-<span style="color: #ff0000;"><strong>3. model로 특정한 case의 결과 예측 해보기</strong></span>
+<p><span style="color: #ff0000;"><strong>3. model로 특정한 case의 결과 예측 해보기</strong></span></p>
+
   </div>
   
   <div class="post">
@@ -10930,67 +10908,68 @@ cost는 3370으로 수렴하였다. 이제 위에 계산된 theta를 최종 para
 
     <span class="post-date">09 Aug 2018</span>
 
-    예측 문제를  지도학습의 linear regression 를 사용해 풀어보고자 한다.
+    <p>예측 문제를  지도학습의 linear regression 를 사용해 풀어보고자 한다.</p>
 
-&nbsp;
+<p> </p>
 
-<http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html>  <<  dataset은 이 링크를 따라가서 구할 수 있ㅆ다.
+<p><a href="http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html">http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html</a>  «  dataset은 이 링크를 따라가서 구할 수 있ㅆ다.</p>
 
-&nbsp;
+<p> </p>
 
-x01.txt 파일은 포유동물의 뇌와 몸무게 데이터를 담고있다. dataset을 복사하여 .txt파일의 형태로 저장한다.
+<p>x01.txt 파일은 포유동물의 뇌와 몸무게 데이터를 담고있다. dataset을 복사하여 .txt파일의 형태로 저장한다.</p>
 
-<img class="aligncenter size-full wp-image-268" src="/images/2018/08/1-1.png" alt="" width="900" height="478" srcset="/images/2018/08/1-1.png 900w, /images/2018/08/1-1-300x159.png 300w, /images/2018/08/1-1-768x408.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-268" src="/images/2018/08/1-1.png" alt="" width="900" height="478" srcset="/images/2018/08/1-1.png 900w, /images/2018/08/1-1-300x159.png 300w, /images/2018/08/1-1-768x408.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-가장 앞의 column은 index일 뿐이다. 두 번째 줄은 뇌의 무게, 세 번째 줄은 몸무게인데 뇌의 무게에 따른 몸무게를 예측하는 프로그램이므로 뇌의 무게를 feature로, 몸무게를 output으로 설정하자. 그렇다면 feature 가 1개이므로 모델의 식의 형태는 다음과 같이 될 것이다.
+<p>가장 앞의 column은 index일 뿐이다. 두 번째 줄은 뇌의 무게, 세 번째 줄은 몸무게인데 뇌의 무게에 따른 몸무게를 예측하는 프로그램이므로 뇌의 무게를 feature로, 몸무게를 output으로 설정하자. 그렇다면 feature 가 1개이므로 모델의 식의 형태는 다음과 같이 될 것이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)={&space;\theta&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}x_{&space;1&space;}={&space;\theta&space;}_{&space;0&space;}{&space;x&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}x_{&space;1&space;}\quad&space;(x_{&space;0&space;}=1\quad&space;for\quad&space;all\quad&space;datasets)" alt="{ h }_{ \theta }(x)={ \theta }_{ 0 }+{ \theta }_{ 1 }x_{ 1 }={ \theta }_{ 0 }{ x }_{ 0 }+{ \theta }_{ 1 }x_{ 1 }\quad (x_{ 0 }=1\quad for\quad all\quad datasets)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)={&space;\theta&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}x_{&space;1&space;}={&space;\theta&space;}_{&space;0&space;}{&space;x&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}x_{&space;1&space;}\quad&space;(x_{&space;0&space;}=1\quad&space;for\quad&space;all\quad&space;datasets)" alt="{ h }_{ \theta }(x)={ \theta }_{ 0 }+{ \theta }_{ 1 }x_{ 1 }={ \theta }_{ 0 }{ x }_{ 0 }+{ \theta }_{ 1 }x_{ 1 }\quad (x_{ 0 }=1\quad for\quad all\quad datasets)" align="absmiddle" /></p>
 
-물론 이는 linear regression one variable이지만 이는 일반적인 linear regression with multiple variables에서 variable이 1개인 경우일 뿐이다. 따라서 이 때에도 선형대수학을 사용해서 다룰 수 있다. 사실 octave같은 계산 툴에서는 선형대수학을 사용하는것이 훨씬 간결하게 식이 표현되기때문에 그렇게 할 것이다. 일단 cost function과 gradient descent를 통한 theta의 update식을 다시 한 번 상기해보자.
+<p>물론 이는 linear regression one variable이지만 이는 일반적인 linear regression with multiple variables에서 variable이 1개인 경우일 뿐이다. 따라서 이 때에도 선형대수학을 사용해서 다룰 수 있다. 사실 octave같은 계산 툴에서는 선형대수학을 사용하는것이 훨씬 간결하게 식이 표현되기때문에 그렇게 할 것이다. 일단 cost function과 gradient descent를 통한 theta의 update식을 다시 한 번 상기해보자.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?X&space;=&space;\begin{bmatrix}&space;{&space;x&space;}_{&space;0&space;}^{&space;(1)&space;}&space;&&space;{&space;x&space;}_{&space;1&space;}^{&space;(1)&space;}&&space;{&space;x&space;}_{&space;2&space;}^{&space;(1)&space;}&&space;{&space;x&space;}_{&space;3&space;}^{&space;(1)&space;}&&space;\cdot&space;&&space;\cdot&space;&&space;\cdot&space;&&space;{&space;x&space;}_{&space;n&space;}^{&space;(1)&space;}&space;\\&space;{&space;x&space;}_{&space;0&space;}^{&space;(2)&space;}&&space;{&space;x&space;}_{&space;1&space;}^{&space;(2)&space;}&&space;{&space;x&space;}_{&space;2&space;}^{&space;(2)&space;}&&space;{&space;x&space;}_{&space;3&space;}^{&space;(2)&space;}&&space;\cdot&space;&&space;\cdot&space;&&space;\cdot&space;&&space;{&space;x&space;}_{&space;n&space;}^{&space;(2)&space;}&space;\\&space;{&space;x&space;}_{&space;0&space;}^{&space;(3)&space;}&&space;{&space;x&space;}_{&space;1&space;}^{&space;(3)&space;}&&space;{&space;x&space;}_{&space;2&space;}^{&space;(3)&space;}&&space;{&space;x&space;}_{&space;3&space;}^{&space;(3)&space;}&&space;\cdot&space;&&space;\cdot&space;&&space;\cdot&space;&&space;{&space;x&space;}_{&space;n&space;}^{&space;(3)&space;}&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;{&space;x&space;}_{&space;0&space;}^{&space;(m)&space;}&space;&&space;{&space;x&space;}_{&space;1&space;}^{&space;(m)&space;}&space;&&space;{&space;x&space;}_{&space;2&space;}^{&space;(m)&space;}&space;&&space;{&space;x&space;}_{&space;3&space;}^{&space;(m)&space;}&space;&&space;\cdot&space;&&space;\cdot&space;&&space;\cdot&space;&&space;{&space;x&space;}_{&space;n&space;}^{&space;(m)&space;}&space;\end{bmatrix}" alt="X = \begin{bmatrix} { x }_{ 0 }^{ (1) } & { x }_{ 1 }^{ (1) }& { x }_{ 2 }^{ (1) }& { x }_{ 3 }^{ (1) }& \cdot & \cdot & \cdot & { x }_{ n }^{ (1) } \\ { x }_{ 0 }^{ (2) }& { x }_{ 1 }^{ (2) }& { x }_{ 2 }^{ (2) }& { x }_{ 3 }^{ (2) }& \cdot & \cdot & \cdot & { x }_{ n }^{ (2) } \\ { x }_{ 0 }^{ (3) }& { x }_{ 1 }^{ (3) }& { x }_{ 2 }^{ (3) }& { x }_{ 3 }^{ (3) }& \cdot & \cdot & \cdot & { x }_{ n }^{ (3) } \\ \cdot \\ \cdot \\ { x }_{ 0 }^{ (m) } & { x }_{ 1 }^{ (m) } & { x }_{ 2 }^{ (m) } & { x }_{ 3 }^{ (m) } & \cdot & \cdot & \cdot & { x }_{ n }^{ (m) } \end{bmatrix}" align="absmiddle" /><img src="https://latex.codecogs.com/gif.latex?=\begin{bmatrix}&space;1&space;&&space;{&space;x&space;}_{&space;1&space;}^{&space;(1)&space;}&&space;{&space;x&space;}_{&space;2&space;}^{&space;(1)&space;}&&space;{&space;x&space;}_{&space;3&space;}^{&space;(1)&space;}&&space;\cdot&space;&&space;\cdot&space;&&space;\cdot&space;&&space;{&space;x&space;}_{&space;n&space;}^{&space;(1)&space;}&space;\\&space;1&&space;{&space;x&space;}_{&space;1&space;}^{&space;(2)&space;}&&space;{&space;x&space;}_{&space;2&space;}^{&space;(2)&space;}&&space;{&space;x&space;}_{&space;3&space;}^{&space;(2)&space;}&&space;\cdot&space;&&space;\cdot&space;&&space;\cdot&space;&&space;{&space;x&space;}_{&space;n&space;}^{&space;(2)&space;}&space;\\&space;1&&space;{&space;x&space;}_{&space;1&space;}^{&space;(3)&space;}&&space;{&space;x&space;}_{&space;2&space;}^{&space;(3)&space;}&&space;{&space;x&space;}_{&space;3&space;}^{&space;(3)&space;}&&space;\cdot&space;&&space;\cdot&space;&&space;\cdot&space;&&space;{&space;x&space;}_{&space;n&space;}^{&space;(3)&space;}&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;1&space;&&space;{&space;x&space;}_{&space;1&space;}^{&space;(m)&space;}&space;&&space;{&space;x&space;}_{&space;2&space;}^{&space;(m)&space;}&space;&&space;{&space;x&space;}_{&space;3&space;}^{&space;(m)&space;}&space;&&space;\cdot&space;&&space;\cdot&space;&&space;\cdot&space;&&space;{&space;x&space;}_{&space;n&space;}^{&space;(m)&space;}&space;\end{bmatrix}" alt="=\begin{bmatrix} 1 & { x }_{ 1 }^{ (1) }& { x }_{ 2 }^{ (1) }& { x }_{ 3 }^{ (1) }& \cdot & \cdot & \cdot & { x }_{ n }^{ (1) } \\ 1& { x }_{ 1 }^{ (2) }& { x }_{ 2 }^{ (2) }& { x }_{ 3 }^{ (2) }& \cdot & \cdot & \cdot & { x }_{ n }^{ (2) } \\ 1& { x }_{ 1 }^{ (3) }& { x }_{ 2 }^{ (3) }& { x }_{ 3 }^{ (3) }& \cdot & \cdot & \cdot & { x }_{ n }^{ (3) } \\ \cdot \\ \cdot \\ 1 & { x }_{ 1 }^{ (m) } & { x }_{ 2 }^{ (m) } & { x }_{ 3 }^{ (m) } & \cdot & \cdot & \cdot & { x }_{ n }^{ (m) } \end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?X&space;=&space;\begin{bmatrix}&space;{&space;x&space;}_{&space;0&space;}^{&space;(1)&space;}&space;&amp;&space;{&space;x&space;}_{&space;1&space;}^{&space;(1)&space;}&amp;&space;{&space;x&space;}_{&space;2&space;}^{&space;(1)&space;}&amp;&space;{&space;x&space;}_{&space;3&space;}^{&space;(1)&space;}&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;{&space;x&space;}_{&space;n&space;}^{&space;(1)&space;}&space;\\&space;{&space;x&space;}_{&space;0&space;}^{&space;(2)&space;}&amp;&space;{&space;x&space;}_{&space;1&space;}^{&space;(2)&space;}&amp;&space;{&space;x&space;}_{&space;2&space;}^{&space;(2)&space;}&amp;&space;{&space;x&space;}_{&space;3&space;}^{&space;(2)&space;}&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;{&space;x&space;}_{&space;n&space;}^{&space;(2)&space;}&space;\\&space;{&space;x&space;}_{&space;0&space;}^{&space;(3)&space;}&amp;&space;{&space;x&space;}_{&space;1&space;}^{&space;(3)&space;}&amp;&space;{&space;x&space;}_{&space;2&space;}^{&space;(3)&space;}&amp;&space;{&space;x&space;}_{&space;3&space;}^{&space;(3)&space;}&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;{&space;x&space;}_{&space;n&space;}^{&space;(3)&space;}&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;{&space;x&space;}_{&space;0&space;}^{&space;(m)&space;}&space;&amp;&space;{&space;x&space;}_{&space;1&space;}^{&space;(m)&space;}&space;&amp;&space;{&space;x&space;}_{&space;2&space;}^{&space;(m)&space;}&space;&amp;&space;{&space;x&space;}_{&space;3&space;}^{&space;(m)&space;}&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;{&space;x&space;}_{&space;n&space;}^{&space;(m)&space;}&space;\end{bmatrix}" alt="X = \begin{bmatrix} { x }_{ 0 }^{ (1) } &amp; { x }_{ 1 }^{ (1) }&amp; { x }_{ 2 }^{ (1) }&amp; { x }_{ 3 }^{ (1) }&amp; \cdot &amp; \cdot &amp; \cdot &amp; { x }_{ n }^{ (1) } \\ { x }_{ 0 }^{ (2) }&amp; { x }_{ 1 }^{ (2) }&amp; { x }_{ 2 }^{ (2) }&amp; { x }_{ 3 }^{ (2) }&amp; \cdot &amp; \cdot &amp; \cdot &amp; { x }_{ n }^{ (2) } \\ { x }_{ 0 }^{ (3) }&amp; { x }_{ 1 }^{ (3) }&amp; { x }_{ 2 }^{ (3) }&amp; { x }_{ 3 }^{ (3) }&amp; \cdot &amp; \cdot &amp; \cdot &amp; { x }_{ n }^{ (3) } \\ \cdot \\ \cdot \\ { x }_{ 0 }^{ (m) } &amp; { x }_{ 1 }^{ (m) } &amp; { x }_{ 2 }^{ (m) } &amp; { x }_{ 3 }^{ (m) } &amp; \cdot &amp; \cdot &amp; \cdot &amp; { x }_{ n }^{ (m) } \end{bmatrix}" align="absmiddle" /><img src="https://latex.codecogs.com/gif.latex?=\begin{bmatrix}&space;1&space;&amp;&space;{&space;x&space;}_{&space;1&space;}^{&space;(1)&space;}&amp;&space;{&space;x&space;}_{&space;2&space;}^{&space;(1)&space;}&amp;&space;{&space;x&space;}_{&space;3&space;}^{&space;(1)&space;}&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;{&space;x&space;}_{&space;n&space;}^{&space;(1)&space;}&space;\\&space;1&amp;&space;{&space;x&space;}_{&space;1&space;}^{&space;(2)&space;}&amp;&space;{&space;x&space;}_{&space;2&space;}^{&space;(2)&space;}&amp;&space;{&space;x&space;}_{&space;3&space;}^{&space;(2)&space;}&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;{&space;x&space;}_{&space;n&space;}^{&space;(2)&space;}&space;\\&space;1&amp;&space;{&space;x&space;}_{&space;1&space;}^{&space;(3)&space;}&amp;&space;{&space;x&space;}_{&space;2&space;}^{&space;(3)&space;}&amp;&space;{&space;x&space;}_{&space;3&space;}^{&space;(3)&space;}&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;{&space;x&space;}_{&space;n&space;}^{&space;(3)&space;}&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;1&space;&amp;&space;{&space;x&space;}_{&space;1&space;}^{&space;(m)&space;}&space;&amp;&space;{&space;x&space;}_{&space;2&space;}^{&space;(m)&space;}&space;&amp;&space;{&space;x&space;}_{&space;3&space;}^{&space;(m)&space;}&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;\cdot&space;&amp;&space;{&space;x&space;}_{&space;n&space;}^{&space;(m)&space;}&space;\end{bmatrix}" alt="=\begin{bmatrix} 1 &amp; { x }_{ 1 }^{ (1) }&amp; { x }_{ 2 }^{ (1) }&amp; { x }_{ 3 }^{ (1) }&amp; \cdot &amp; \cdot &amp; \cdot &amp; { x }_{ n }^{ (1) } \\ 1&amp; { x }_{ 1 }^{ (2) }&amp; { x }_{ 2 }^{ (2) }&amp; { x }_{ 3 }^{ (2) }&amp; \cdot &amp; \cdot &amp; \cdot &amp; { x }_{ n }^{ (2) } \\ 1&amp; { x }_{ 1 }^{ (3) }&amp; { x }_{ 2 }^{ (3) }&amp; { x }_{ 3 }^{ (3) }&amp; \cdot &amp; \cdot &amp; \cdot &amp; { x }_{ n }^{ (3) } \\ \cdot \\ \cdot \\ 1 &amp; { x }_{ 1 }^{ (m) } &amp; { x }_{ 2 }^{ (m) } &amp; { x }_{ 3 }^{ (m) } &amp; \cdot &amp; \cdot &amp; \cdot &amp; { x }_{ n }^{ (m) } \end{bmatrix}" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\theta&space;=&space;\begin{bmatrix}&space;{&space;\theta&space;}_{&space;0&space;}\\&space;{&space;\theta&space;}_{&space;1&space;}\\&space;{&space;\theta&space;}_{&space;2&space;}\\&space;\cdot&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;{&space;\theta&space;}_{&space;n&space;}&space;\end{bmatrix}&space;\quad&space;y=&space;\begin{bmatrix}&space;y^{(1)}&space;\\&space;y^{(2)}&space;\\&space;y^{(3)}&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;y^{(m)}&space;\end{bmatrix}" alt="\theta = \begin{bmatrix} { \theta }_{ 0 }\\ { \theta }_{ 1 }\\ { \theta }_{ 2 }\\ \cdot \\ \cdot \\ \cdot \\ { \theta }_{ n } \end{bmatrix} \quad y= \begin{bmatrix} y^{(1)} \\ y^{(2)} \\ y^{(3)} \\ \cdot \\ \cdot \\ \cdot \\ y^{(m)} \end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\theta&space;=&space;\begin{bmatrix}&space;{&space;\theta&space;}_{&space;0&space;}\\&space;{&space;\theta&space;}_{&space;1&space;}\\&space;{&space;\theta&space;}_{&space;2&space;}\\&space;\cdot&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;{&space;\theta&space;}_{&space;n&space;}&space;\end{bmatrix}&space;\quad&space;y=&space;\begin{bmatrix}&space;y^{(1)}&space;\\&space;y^{(2)}&space;\\&space;y^{(3)}&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;\cdot&space;\\&space;y^{(m)}&space;\end{bmatrix}" alt="\theta = \begin{bmatrix} { \theta }_{ 0 }\\ { \theta }_{ 1 }\\ { \theta }_{ 2 }\\ \cdot \\ \cdot \\ \cdot \\ { \theta }_{ n } \end{bmatrix} \quad y= \begin{bmatrix} y^{(1)} \\ y^{(2)} \\ y^{(3)} \\ \cdot \\ \cdot \\ \cdot \\ y^{(m)} \end{bmatrix}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=X\theta&space;\\&space;J(\theta&space;)&space;=&space;\frac&space;{&space;1&space;}{&space;2m&space;}&space;{&space;(X\theta&space;-&space;y)&space;}^{&space;T&space;}(X\theta&space;-&space;y)&space;\\&space;\theta&space;:=&space;\theta&space;-&space;\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;{&space;X&space;}^{&space;T&space;}(X\theta-y)" alt="{ h }_{ \theta }(x)=X\theta \\ J(\theta ) = \frac { 1 }{ 2m } { (X\theta - y) }^{ T }(X\theta - y) \\ \theta := \theta - \frac { \alpha }{ m } { X }^{ T }(X\theta-y)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=X\theta&space;\\&space;J(\theta&space;)&space;=&space;\frac&space;{&space;1&space;}{&space;2m&space;}&space;{&space;(X\theta&space;-&space;y)&space;}^{&space;T&space;}(X\theta&space;-&space;y)&space;\\&space;\theta&space;:=&space;\theta&space;-&space;\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;{&space;X&space;}^{&space;T&space;}(X\theta-y)" alt="{ h }_{ \theta }(x)=X\theta \\ J(\theta ) = \frac { 1 }{ 2m } { (X\theta - y) }^{ T }(X\theta - y) \\ \theta := \theta - \frac { \alpha }{ m } { X }^{ T }(X\theta-y)" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-<img class="aligncenter size-full wp-image-269" src="/images/2018/08/2.png" alt="" width="900" height="479" srcset="/images/2018/08/2.png 900w, /images/2018/08/2-300x160.png 300w, /images/2018/08/2-768x409.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-269" src="/images/2018/08/2.png" alt="" width="900" height="479" srcset="/images/2018/08/2.png 900w, /images/2018/08/2-300x160.png 300w, /images/2018/08/2-768x409.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-2열이 feature고 3열이 output이다. m = length(y) 는 데이터의 갯수이다. theta_0에 match되는 1로 구성된 벡터를 한 줄 추가해서 feature matrix X를 만들었다. parameter 초기값은 (0,0)으로 설정했다. 그리고나서 공식에 따라 cost function을 구해보았는데 엄청 크다.
+<p>2열이 feature고 3열이 output이다. m = length(y) 는 데이터의 갯수이다. theta_0에 match되는 1로 구성된 벡터를 한 줄 추가해서 feature matrix X를 만들었다. parameter 초기값은 (0,0)으로 설정했다. 그리고나서 공식에 따라 cost function을 구해보았는데 엄청 크다.</p>
 
-<img class="aligncenter size-full wp-image-271" src="/images/2018/08/s.png" alt="" width="900" height="390" srcset="/images/2018/08/s.png 900w, /images/2018/08/s-300x130.png 300w, /images/2018/08/s-768x333.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-271" src="/images/2018/08/s.png" alt="" width="900" height="390" srcset="/images/2018/08/s.png 900w, /images/2018/08/s-300x130.png 300w, /images/2018/08/s-768x333.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-learning rate인 alpha를 0.00001로 set을하고 theta를 update시키면서 gradient descent를 두 번 해보았는데. 오히려 cost function이 커진다. alpha가 너무 큰것이다. 계속 이렇게 하려니 귀찮다. 아예 함수를 외부에서 따로 정의하고 계속 불러들이면서 사용해야겠다.
+<p>learning rate인 alpha를 0.00001로 set을하고 theta를 update시키면서 gradient descent를 두 번 해보았는데. 오히려 cost function이 커진다. alpha가 너무 큰것이다. 계속 이렇게 하려니 귀찮다. 아예 함수를 외부에서 따로 정의하고 계속 불러들이면서 사용해야겠다.</p>
 
-<img class="aligncenter size-full wp-image-272" src="/images/2018/08/3-2.png" alt="" width="900" height="318" srcset="/images/2018/08/3-2.png 900w, /images/2018/08/3-2-300x106.png 300w, /images/2018/08/3-2-768x271.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-272" src="/images/2018/08/3-2.png" alt="" width="900" height="318" srcset="/images/2018/08/3-2.png 900w, /images/2018/08/3-2-300x106.png 300w, /images/2018/08/3-2-768x271.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-위의 두 함수를 불러서 실행해보자.
+<p>위의 두 함수를 불러서 실행해보자.</p>
 
-<img class="aligncenter size-full wp-image-273" src="/images/2018/08/4.png" alt="" width="900" height="452" srcset="/images/2018/08/4.png 900w, /images/2018/08/4-300x151.png 300w, /images/2018/08/4-768x386.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-273" src="/images/2018/08/4.png" alt="" width="900" height="452" srcset="/images/2018/08/4.png 900w, /images/2018/08/4-300x151.png 300w, /images/2018/08/4-768x386.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-처음에 theta를 [0; 0]으로 set하고 cost를 계산해보니 엄청 크다. 그 다음 alpha를 0.000001로 설정하고 graD함수를 이용해서 gradient descent를 해보았다. 함수를 보면 gradient descent를 총 100번 하게 되어있다. 그리고 마지막에는 그 100번동안 어떻게 cost function J가 변하는지 그래프로 띄우도록 하였다. 수렴한다. 그것도 아주 빠르게 10번도 안되는 iteration동안 다 수렴해버린다. 그런데도 cost function이 아주 크다는 생각이 든다. 실제 training data들과 현재 수렴한 parameter로 세워진 model을 비교해보겠다.
+<p>처음에 theta를 [0; 0]으로 set하고 cost를 계산해보니 엄청 크다. 그 다음 alpha를 0.000001로 설정하고 graD함수를 이용해서 gradient descent를 해보았다. 함수를 보면 gradient descent를 총 100번 하게 되어있다. 그리고 마지막에는 그 100번동안 어떻게 cost function J가 변하는지 그래프로 띄우도록 하였다. 수렴한다. 그것도 아주 빠르게 10번도 안되는 iteration동안 다 수렴해버린다. 그런데도 cost function이 아주 크다는 생각이 든다. 실제 training data들과 현재 수렴한 parameter로 세워진 model을 비교해보겠다.</p>
 
-<img class="aligncenter size-full wp-image-274" src="/images/2018/08/5.png" alt="" width="900" height="464" srcset="/images/2018/08/5.png 900w, /images/2018/08/5-300x155.png 300w, /images/2018/08/5-768x396.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-274" src="/images/2018/08/5.png" alt="" width="900" height="464" srcset="/images/2018/08/5.png 900w, /images/2018/08/5-300x155.png 300w, /images/2018/08/5-768x396.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-figure1에서 보면 다른 training sample들에서 아주 크게 벗어나는 양상을 띄는 2개의 outlier가 있다. 저놈들이 범인인 것 같다. 하여간 쟤들은 여기에서 좋지 않은 data인 것 같다. 사실 대부분의 sample들은 작은 포유동물인 것을 알 수 있는데 거기에 한 두놈 저런애들이 껴있는 것이다. 쟤들을 없애고 작은 포유동물들의 뇌의 크기에 따른 실제 몸무게를 예측하는 프로그램으로 만들어야겠다.
+<p>figure1에서 보면 다른 training sample들에서 아주 크게 벗어나는 양상을 띄는 2개의 outlier가 있다. 저놈들이 범인인 것 같다. 하여간 쟤들은 여기에서 좋지 않은 data인 것 같다. 사실 대부분의 sample들은 작은 포유동물인 것을 알 수 있는데 거기에 한 두놈 저런애들이 껴있는 것이다. 쟤들을 없애고 작은 포유동물들의 뇌의 크기에 따른 실제 몸무게를 예측하는 프로그램으로 만들어야겠다.</p>
 
-19번과 32, 33번 sample data를 빼고 다시 해보겠다.
+<p>19번과 32, 33번 sample data를 빼고 다시 해보겠다.</p>
 
-<img class="aligncenter size-full wp-image-275" src="/images/2018/08/6.png" alt="" width="900" height="464" srcset="/images/2018/08/6.png 900w, /images/2018/08/6-300x155.png 300w, /images/2018/08/6-768x396.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-275" src="/images/2018/08/6.png" alt="" width="900" height="464" srcset="/images/2018/08/6.png 900w, /images/2018/08/6-300x155.png 300w, /images/2018/08/6-768x396.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-아까보단 scale이 10^1만큼이나 cost function이 작아졌지만 아직도 차이가 많이 나는 것 같다. sample data들을 더 쳐내보자. 아예 뇌의 무게가 20 이하인 것들만 남겨둬보겠다.
+<p>아까보단 scale이 10^1만큼이나 cost function이 작아졌지만 아직도 차이가 많이 나는 것 같다. sample data들을 더 쳐내보자. 아예 뇌의 무게가 20 이하인 것들만 남겨둬보겠다.</p>
 
-<img class="aligncenter size-full wp-image-276" src="/images/2018/08/7.png" alt="" width="900" height="466" srcset="/images/2018/08/7.png 900w, /images/2018/08/7-300x155.png 300w, /images/2018/08/7-768x398.png 768w" sizes="(max-width: 900px) 100vw, 900px" /> 
+<p><img class="aligncenter size-full wp-image-276" src="/images/2018/08/7.png" alt="" width="900" height="466" srcset="/images/2018/08/7.png 900w, /images/2018/08/7-300x155.png 300w, /images/2018/08/7-768x398.png 768w" sizes="(max-width: 900px) 100vw, 900px" /></p>
 
-이번엔 alpha를 0.005로 해보았다. 스크린 샷 찍기전에 시행착오 거치면서 정한 것이다. 이번에는 cost가 좀 더 작아졌다. 사실 무게가 g 단위라서 절대숫자가 10, 100 단위씩이나 돼서 cost가 저렇게 큰 것이다. 아무튼 이렇게 linear regression을 한 번 해보았다. gradient descent를 하면서 cost function이 줄어드는것도 직접 관찰해보면서 최종 theta를 정하였다. 그리고 그렇게 정해진 model과 training dataset을 같은 그래프상에 올려놓고 잘 맞아떨어지는지도 보았다.
+<p>이번엔 alpha를 0.005로 해보았다. 스크린 샷 찍기전에 시행착오 거치면서 정한 것이다. 이번에는 cost가 좀 더 작아졌다. 사실 무게가 g 단위라서 절대숫자가 10, 100 단위씩이나 돼서 cost가 저렇게 큰 것이다. 아무튼 이렇게 linear regression을 한 번 해보았다. gradient descent를 하면서 cost function이 줄어드는것도 직접 관찰해보면서 최종 theta를 정하였다. 그리고 그렇게 정해진 model과 training dataset을 같은 그래프상에 올려놓고 잘 맞아떨어지는지도 보았다.</p>
 
-사실 오늘 한 예제의 dataset이 그다지 좋은 것인지 잘 모르겠다. 애초에 이런 data를 가지고 위의 model을 만드는 것이 합당한 것인가 싶다.
+<p>사실 오늘 한 예제의 dataset이 그다지 좋은 것인지 잘 모르겠다. 애초에 이런 data를 가지고 위의 model을 만드는 것이 합당한 것인가 싶다.</p>
 
-이번 예제는 feature가 한 개 였지만 feature가 여러 개 있는것도 동일하다.
+<p>이번 예제는 feature가 한 개 였지만 feature가 여러 개 있는것도 동일하다.</p>
+
   </div>
   
   <div class="post">
@@ -11002,353 +10981,370 @@ figure1에서 보면 다른 training sample들에서 아주 크게 벗어나는 
 
     <span class="post-date">09 Aug 2018</span>
 
-    octave 는 MATLAB의 무료버전이라고 보면 되는데, 행렬연산에 좋은 성능을 보인다. 행렬과 관련된 대부분의 연산이 단 한 줄의 함수호출로 이루어진다. 머신러닝의 알고리즘을 구현하는 데 있어서 Python이나 R은 기본적인 변수선언이나 라이브러리 사용법을 익히고 디버깅도 어느정도 할 줄 알아야한다. 하지만 octave는 매우 직관적이고 쉬워 초보자들도 구현을 하면서 배우는것이 가능할 정도이다. 따라서 octave를 사용하면 프로그래밍 언어 자체에 신경쓰지않고 머신러닝의 개념과 구현 알고리즘 자체를 이해하는데에 집중할 수 있다.
+    <p>octave 는 MATLAB의 무료버전이라고 보면 되는데, 행렬연산에 좋은 성능을 보인다. 행렬과 관련된 대부분의 연산이 단 한 줄의 함수호출로 이루어진다. 머신러닝의 알고리즘을 구현하는 데 있어서 Python이나 R은 기본적인 변수선언이나 라이브러리 사용법을 익히고 디버깅도 어느정도 할 줄 알아야한다. 하지만 octave는 매우 직관적이고 쉬워 초보자들도 구현을 하면서 배우는것이 가능할 정도이다. 따라서 octave를 사용하면 프로그래밍 언어 자체에 신경쓰지않고 머신러닝의 개념과 구현 알고리즘 자체를 이해하는데에 집중할 수 있다.</p>
 
-아래의 링크를 따라가면 자신에게 맞는 운영체제별로 octave를 설치할 수 있다.
+<p>아래의 링크를 따라가면 자신에게 맞는 운영체제별로 octave를 설치할 수 있다.</p>
 
-<span style="text-decoration: underline;"><span style="color: #3366ff;"><a style="color: #3366ff; text-decoration: underline;" href="https://www.gnu.org/software/octave/download">https://www.gnu.org/software/octave/download</a></span></span>
+<p><span style="text-decoration: underline;"><span style="color: #3366ff;"><a style="color: #3366ff; text-decoration: underline;" href="https://www.gnu.org/software/octave/download">https://www.gnu.org/software/octave/download</a></span></span></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-지금부터 octave의 기본적인 명령어들을 소개하겠다.
+<p>지금부터 octave의 기본적인 명령어들을 소개하겠다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. Basic Operations
+<h1 id="1-basic-operations">1. Basic Operations</h1>
 
-* * *
+<hr />
 
-PS1(&#8216;>> &#8216;); %% octave 프롬프트 변경
+<p>PS1(‘» ‘); %% octave 프롬프트 변경</p>
 
-cd &#8216;c:/path/to/desired/directory name&#8217; %% 작업 디렉토리 변경
+<p>cd ‘c:/path/to/desired/directory name’ %% 작업 디렉토리 변경</p>
 
-3+2 %%더하기
+<p>3+2 %%더하기</p>
 
-1-4 %%빼기
+<p>1-4 %%빼기</p>
 
-3*9 %%곱하기
+<p>3*9 %%곱하기</p>
 
-2/5 %%나누기
+<p>2/5 %%나누기</p>
 
-2^9 %%거듭제곱
+<p>2^9 %%거듭제곱</p>
 
-1 == 2 %% 같으면 1, 다르면 0 반환
+<p>1 == 2 %% 같으면 1, 다르면 0 반환</p>
 
-1 ~= 2 %% 다르면 1, 같으면 0 반환
+<p>1 ~= 2 %% 다르면 1, 같으면 0 반환</p>
 
-1 && 0 %%bitwise AND 논리
+<p>1 &amp;&amp; 0 %%bitwise AND 논리</p>
 
-1 || 0 %%bitwise OR 논리
+<table>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td> </td>
+      <td>0 %%bitwise OR 논리</td>
+    </tr>
+  </tbody>
+</table>
 
-xor(1,0) %%XOR 논리
+<p>xor(1,0) %%XOR 논리</p>
 
-%% 변수
+<p>%% 변수</p>
 
-a = 3; %% a라는 변수에 3 저장. 세미콜론은 실행결과를 나타내고싶지 않을 때 사용
+<p>a = 3; %% a라는 변수에 3 저장. 세미콜론은 실행결과를 나타내고싶지 않을 때 사용</p>
 
-b = &#8216;hi&#8217;; %%b라는 변수에 문자열 저장
+<p>b = ‘hi’; %%b라는 변수에 문자열 저장</p>
 
-c = 3>=1; %%c라는 변수에 논리연산의 결과 저장
+<p>c = 3&gt;=1; %%c라는 변수에 논리연산의 결과 저장</p>
 
-% Displaying them:
+<p>% Displaying them:</p>
 
-a = pi %% a에 pi 저장 // 원주율 pi가 정의되어있음
+<p>a = pi %% a에 pi 저장 // 원주율 pi가 정의되어있음</p>
 
-disp(a) %% a의 값 반환
+<p>disp(a) %% a의 값 반환</p>
 
-disp(sprintf(&#8216;2 decimals: %0.2f&#8217;, a)) %% %f는 서식문자로서 실수를 나타낼 때 사용하고 0.x의 형태로 x자리수까지 표현 가능
+<p>disp(sprintf(‘2 decimals: %0.2f’, a)) %% %f는 서식문자로서 실수를 나타낼 때 사용하고 0.x의 형태로 x자리수까지 표현 가능</p>
 
-disp(sprintf(&#8216;6 decimals: %0.6f&#8217;, a))
+<p>disp(sprintf(‘6 decimals: %0.6f’, a))</p>
 
-format long %%실수 표현범위 long타입(소숫점 8자리)
+<p>format long %%실수 표현범위 long타입(소숫점 8자리)</p>
 
-a
+<p>a</p>
 
-format short %%실수 표현범위 short타입(소숫점 2자리)
+<p>format short %%실수 표현범위 short타입(소숫점 2자리)</p>
 
-a
+<p>a</p>
 
-%% vectors and matrices
+<p>%% vectors and matrices</p>
 
-A = [1 2; 3 4; 5 6] %% 세미콜론(;)로 행 구분
+<p>A = [1 2; 3 4; 5 6] %% 세미콜론(;)로 행 구분</p>
 
-v = [1 2 3] %% 행벡터
+<p>v = [1 2 3] %% 행벡터</p>
 
-v = [1; 2; 3] %%열벡터
+<p>v = [1; 2; 3] %%열벡터</p>
 
-v = 1:0.1:2 % 1에서 2까지 0.1단위로 커지는 element를 가지는 행벡터
+<p>v = 1:0.1:2 % 1에서 2까지 0.1단위로 커지는 element를 가지는 행벡터</p>
 
-v = 1:6 % stepsize가 없으면 1씩 커짐. 1~6까지의 정수가 원소인 행벡터
+<p>v = 1:6 % stepsize가 없으면 1씩 커짐. 1~6까지의 정수가 원소인 행벡터</p>
 
-C = ones(2,3) %% 2행, 3열의 원소가 모두 1인 행렬. C = [1 1 1; 1 1 1]과 같음
+<p>C = ones(2,3) %% 2행, 3열의 원소가 모두 1인 행렬. C = [1 1 1; 1 1 1]과 같음</p>
 
-w = ones(1,3)
+<p>w = ones(1,3)</p>
 
-w = zeros(1,3) %% 1행, 3열의 원소가 모두 0인 행렬 = 행벡터
+<p>w = zeros(1,3) %% 1행, 3열의 원소가 모두 0인 행렬 = 행벡터</p>
 
-w = rand(1,3) % 균등분포에 따라 숫자를 추출해서 1&#215;3 행렬 정의
+<p>w = rand(1,3) % 균등분포에 따라 숫자를 추출해서 1×3 행렬 정의</p>
 
-w = randn(1,3)% 정규분포에 따라 숫자를 추출해서 1&#215;3 행렬 정의
+<p>w = randn(1,3)% 정규분포에 따라 숫자를 추출해서 1×3 행렬 정의</p>
 
-hist(w) % w를 히스토그램으로 그려줌. default 막대 10개
+<p>hist(w) % w를 히스토그램으로 그려줌. default 막대 10개</p>
 
-hist(w,50) % w를 히스토그램으로 그려줌. 막대 50개로 설정
+<p>hist(w,50) % w를 히스토그램으로 그려줌. 막대 50개로 설정</p>
 
-I = eye(4) % 4&#215;4 단위행렬
+<p>I = eye(4) % 4×4 단위행렬</p>
 
-% help + 함수이름 : 함수에 대한 도움말 보기
+<p>% help + 함수이름 : 함수에 대한 도움말 보기</p>
 
-help eye
+<p>help eye</p>
 
-help rand
+<p>help rand</p>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **2. Moving Data Around**
+<h1 id="2-moving-data-around"><strong>2. Moving Data Around</strong></h1>
 
-* * *
+<hr />
 
-%% Dimension 계산
+<p>%% Dimension 계산</p>
 
-sz = size(A) % 행렬 A의 dimension을 반환(행의 수, 열의 수 모두 반환)
+<p>sz = size(A) % 행렬 A의 dimension을 반환(행의 수, 열의 수 모두 반환)</p>
 
-size(A,1) % 행의 수 반환
+<p>size(A,1) % 행의 수 반환</p>
 
-size(A,2) % 열의 수 반환
+<p>size(A,2) % 열의 수 반환</p>
 
-length(v) % 벡터의 길이 반환
+<p>length(v) % 벡터의 길이 반환</p>
 
-%% 데이터 불러오기
+<p>%% 데이터 불러오기</p>
 
-pwd % 현재 디렉토리
+<p>pwd % 현재 디렉토리</p>
 
-cd &#8216;C:\Users\ang\Octave files&#8217; % 디렉토리 변경
+<p>cd ‘C:\Users\ang\Octave files’ % 디렉토리 변경</p>
 
-ls % 현재 디렉토리에 있는 파일 확인
+<p>ls % 현재 디렉토리에 있는 파일 확인</p>
 
-load q1y.dat % q1y.dat 파일 불러오기
+<p>load q1y.dat % q1y.dat 파일 불러오기</p>
 
-load (&#8220;q1y.dat&#8221;) % q1y.dat파일 불러오기
+<p>load (“q1y.dat”) % q1y.dat파일 불러오기</p>
 
-clear % 모든 변수 clear
+<p>clear % 모든 변수 clear</p>
 
-v = q1x(1:10); % 벡터 v는 q1x 데이터들 중 처음 10개로 이루어짐
+<p>v = q1x(1:10); % 벡터 v는 q1x 데이터들 중 처음 10개로 이루어짐</p>
 
-%% 행렬을 index를 사용하여 다루기
+<p>%% 행렬을 index를 사용하여 다루기</p>
 
-A(3,2) % 행렬A의 3행2열의 원소 반환
+<p>A(3,2) % 행렬A의 3행2열의 원소 반환</p>
 
-A(2,:) % :는 &#8220;모든&#8221; 이라는 뜻을 가짐. 이 코드는 2행의 모든 원소 = 2행 자체 반환
+<p>A(2,:) % :는 “모든” 이라는 뜻을 가짐. 이 코드는 2행의 모든 원소 = 2행 자체 반환</p>
 
-A(:,2) % 2열의 모든 원소 = 2열 자체 반환
+<p>A(:,2) % 2열의 모든 원소 = 2열 자체 반환</p>
 
-A(:,2) = [10; 11; 12] % A의 2열을 10, 11, 12로 바꿈
+<p>A(:,2) = [10; 11; 12] % A의 2열을 10, 11, 12로 바꿈</p>
 
-A = [A, [100; 101; 102]]; % A의 끝 열에 [100; 101; 102] 추가
+<p>A = [A, [100; 101; 102]]; % A의 끝 열에 [100; 101; 102] 추가</p>
 
-%% 행렬 추가하기
+<p>%% 행렬 추가하기</p>
 
-A = [1 2; 3 4; 5 6]
+<p>A = [1 2; 3 4; 5 6]</p>
 
-B = [11 12; 13 14; 15 16]
+<p>B = [11 12; 13 14; 15 16]</p>
 
-C = [A B] % A와 B를 옆으로 이어붙여 새로운 행렬 C 생성
+<p>C = [A B] % A와 B를 옆으로 이어붙여 새로운 행렬 C 생성</p>
 
-C = [A; B] % A와 B를 위아래로 이어붙여 새로운 행렬 생성
+<p>C = [A; B] % A와 B를 위아래로 이어붙여 새로운 행렬 생성</p>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **3. Computing on Data**
+<h1 id="3-computing-on-data"><strong>3. Computing on Data</strong></h1>
 
-* * *
+<hr />
 
-A = [1 2;3 4;5 6]
+<p>A = [1 2;3 4;5 6]</p>
 
-B = [11 12;13 14;15 16]
+<p>B = [11 12;13 14;15 16]</p>
 
-C = [1 1;2 2]
+<p>C = [1 1;2 2]</p>
 
-v = [1;2;3]
+<p>v = [1;2;3]</p>
 
-%% matrix operations
+<p>%% matrix operations</p>
 
-A * C % 행렬 곱
+<p>A * C % 행렬 곱</p>
 
-A .* B % element-wise 행렬곱
+<p>A .* B % element-wise 행렬곱</p>
 
-% A .\* C or A \* B %% 정의하지 못함. dimension이 맞지 않음
+<p>% A .* C or A * B %% 정의하지 못함. dimension이 맞지 않음</p>
 
-A .^ 2 % element-wise 제곱
+<p>A .^ 2 % element-wise 제곱</p>
 
-1./v % element-wise 역수
+<p>1./v % element-wise 역수</p>
 
-log(v) % element-wise 로그취하기
+<p>log(v) % element-wise 로그취하기</p>
 
-exp(v) % element-wise 지수취하기
+<p>exp(v) % element-wise 지수취하기</p>
 
-abs(v) % element-wise 절대값
+<p>abs(v) % element-wise 절대값</p>
 
-v + 1 % 모든 원소 +1
+<p>v + 1 % 모든 원소 +1</p>
 
-A&#8217; % A의 transpose(전치행렬)
+<p>A’ % A의 transpose(전치행렬)</p>
 
-%% misc useful functions
+<p>%% misc useful functions</p>
 
-a = [1 15 2 0.5]
+<p>a = [1 15 2 0.5]</p>
 
-val = max(a) % a의 최대값 반환
+<p>val = max(a) % a의 최대값 반환</p>
 
-[val,ind] = max(a) %a의 최대값과 그 index 반환
+<p>[val,ind] = max(a) %a의 최대값과 그 index 반환</p>
 
-val = max(A) % 각 열의 최대값 반환
+<p>val = max(A) % 각 열의 최대값 반환</p>
 
-% sum, prod
+<p>% sum, prod</p>
 
-sum(a) % a의 모든 원소의 합
+<p>sum(a) % a의 모든 원소의 합</p>
 
-prod(a) % a의 모든 원소의 곱
+<p>prod(a) % a의 모든 원소의 곱</p>
 
-sum(A,1) %각 열의 원소의 합
+<p>sum(A,1) %각 열의 원소의 합</p>
 
-sum(A,2) %각 행의 원소의 합
+<p>sum(A,2) %각 행의 원소의 합</p>
 
-sum(sum( A .* eye(9) )) %A의 오른쪽아래 대각선방향의 원소의 합 계산
+<p>sum(sum( A .* eye(9) )) %A의 오른쪽아래 대각선방향의 원소의 합 계산</p>
 
-sum(sum( A .* flipud(eye(9)) )) %A의 오른쪽 위 대각선방향의 원소의 합 계산 . flipud : 행렬 위아래 뒤집기
+<p>sum(sum( A .* flipud(eye(9)) )) %A의 오른쪽 위 대각선방향의 원소의 합 계산 . flipud : 행렬 위아래 뒤집기</p>
 
-% Matrix inverse (pseudo-inverse)
+<p>% Matrix inverse (pseudo-inverse)</p>
 
-pinv(A) % inv(A&#8217;_A)_A&#8217; %pseudo 역행렬. 그냥 역행렬이라고 생각해도 무방
+<p>pinv(A) % inv(A’_A)_A’ %pseudo 역행렬. 그냥 역행렬이라고 생각해도 무방</p>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **4. Plotting Data**
+<h1 id="4-plotting-data"><strong>4. Plotting Data</strong></h1>
 
-* * *
+<hr />
 
-%% plotting
+<p>%% plotting</p>
 
-t = [0:0.01:0.98];
+<p>t = [0:0.01:0.98];</p>
 
-y1 = sin(2_pi_4*t);
+<p>y1 = sin(2_pi_4*t);</p>
 
-plot(t,y1);
+<p>plot(t,y1);</p>
 
-y2 = cos(2_pi_4*t);
+<p>y2 = cos(2_pi_4*t);</p>
 
-hold on; % hold on 하면 기존의 그래프 없어지지 않고 그 위에 다른 그래프 추가하여 비교 가능
+<p>hold on; % hold on 하면 기존의 그래프 없어지지 않고 그 위에 다른 그래프 추가하여 비교 가능</p>
 
-plot(t,y2,&#8217;r&#8217;);
+<p>plot(t,y2,’r’);</p>
 
-xlabel(&#8216;time&#8217;); %x축 이름
+<p>xlabel(‘time’); %x축 이름</p>
 
-ylabel(&#8216;value&#8217;); %y축 이름
+<p>ylabel(‘value’); %y축 이름</p>
 
-legend(&#8216;sin&#8217;,&#8217;cos&#8217;); % 순서대로 그려진 그래프의 이름
+<p>legend(‘sin’,’cos’); % 순서대로 그려진 그래프의 이름</p>
 
-title(&#8216;my plot&#8217;); %그래프 제목
+<p>title(‘my plot’); %그래프 제목</p>
 
-print -dpng &#8216;myPlot.png&#8217; %그래프 현재 디렉토리에 저장
+<p>print -dpng ‘myPlot.png’ %그래프 현재 디렉토리에 저장</p>
 
-close; % 모든 plot 끄기
+<p>close; % 모든 plot 끄기</p>
 
-figure(1); plot(t, y1); %figure1 창에 plot(t,y1)
+<p>figure(1); plot(t, y1); %figure1 창에 plot(t,y1)</p>
 
-figure(2); plot(t, y2); %figure2 창에 plot(t,y2)
+<p>figure(2); plot(t, y2); %figure2 창에 plot(t,y2)</p>
 
-subplot(1,2,1); %1&#215;2 규격으로 그래프 칸을 나누고(1,2) // 1번째 그래프에 access
+<p>subplot(1,2,1); %1×2 규격으로 그래프 칸을 나누고(1,2) // 1번째 그래프에 access</p>
 
-plot(t,y1);
+<p>plot(t,y1);</p>
 
-subplot(1,2,2); %1&#215;2 규격으로 그래프 칸을 나누고(1,2) // 2번째 그래프에 access
+<p>subplot(1,2,2); %1×2 규격으로 그래프 칸을 나누고(1,2) // 2번째 그래프에 access</p>
 
-plot(t,y2);
+<p>plot(t,y2);</p>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **5. Control Loops**
+<h1 id="5-control-loops"><strong>5. Control Loops</strong></h1>
 
-* * *
+<hr />
 
-v = zeros(10,1); % v = [0; 0; 0; 0; 0; 0; 0; 0; 0; 0]  
-for i=1:10,  
-v(i) = 2^i;  
-end;
+<p>v = zeros(10,1); % v = [0; 0; 0; 0; 0; 0; 0; 0; 0; 0]<br />
+for i=1:10,<br />
+v(i) = 2^i;<br />
+end;</p>
 
-i = 1;  
-while i <= 5,  
-v(i) = 100;  
-i = i+1;  
-end
+<p>i = 1;<br />
+while i &lt;= 5,<br />
+v(i) = 100;<br />
+i = i+1;<br />
+end</p>
 
-i = 1;  
-while true,  
-v(i) = 999;  
-i = i+1;  
-if i == 6,  
-break;  
-end;  
-end
+<p>i = 1;<br />
+while true,<br />
+v(i) = 999;<br />
+i = i+1;<br />
+if i == 6,<br />
+break;<br />
+end;<br />
+end</p>
 
-if v(1)==1,  
-disp(&#8216;The value is one!&#8217;);  
-elseif v(1)==2,  
-disp(&#8216;The value is two!&#8217;);  
-else  
-disp(&#8216;The value is not one or two!&#8217;);  
-end
+<p>if v(1)==1,<br />
+disp(‘The value is one!’);<br />
+elseif v(1)==2,<br />
+disp(‘The value is two!’);<br />
+else<br />
+disp(‘The value is not one or two!’);<br />
+end</p>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **6. Function**
+<h1 id="6-function"><strong>6. Function</strong></h1>
 
-* * *
+<hr />
 
-.m 확장자의 파일에 우리가 함수를 정의하여놓고 사용 가능. 단 파일이 현재 디렉토리에 있어야한다.
+<p>.m 확장자의 파일에 우리가 함수를 정의하여놓고 사용 가능. 단 파일이 현재 디렉토리에 있어야한다.</p>
 
-ex1)
+<p>ex1)</p>
 
-Function y = squareNum(x); %x를 매개변수로 받아 y를 반환하는 함수
+<p>Function y = squareNum(x); %x를 매개변수로 받아 y를 반환하는 함수</p>
 
-y = x^2; %y와 x의 관계식
+<p>y = x^2; %y와 x의 관계식</p>
 
-> >octave커맨드창에서 squareNum(5)를 입력하면 5^2 = 25 반환
+<blockquote>
+  <blockquote>
+    <p>octave커맨드창에서 squareNum(5)를 입력하면 5^2 = 25 반환</p>
+  </blockquote>
+</blockquote>
 
-ex2)
+<p>ex2)</p>
 
-Function [y z] = squareAndCubicNum(x); %x를 매개변수로 받아 y와 z를 반환하는 함수
+<p>Function [y z] = squareAndCubicNum(x); %x를 매개변수로 받아 y와 z를 반환하는 함수</p>
 
-y = x^2;
+<p>y = x^2;</p>
 
-z = x^3;
+<p>z = x^3;</p>
 
-> >커맨드창에서 [a b] = squareAndCubicNum(3)을 입력하면 9와 27 반환
+<blockquote>
+  <blockquote>
+    <p>커맨드창에서 [a b] = squareAndCubicNum(3)을 입력하면 9와 27 반환</p>
+  </blockquote>
+</blockquote>
 
-* * *
+<hr />
 
-위의 명령어들을 다 외울 필요는 없다. 그저 한 번씩 쳐보고 실행해보면서 어떠한 기능을 하는지 가볍게 파악하면 충분하다. 조만간 이 기능들을 토대로하여 실제로 Linear Regression의 기능을 구현하는 예제를 한 번 보여줄 것이다.
+<p>위의 명령어들을 다 외울 필요는 없다. 그저 한 번씩 쳐보고 실행해보면서 어떠한 기능을 하는지 가볍게 파악하면 충분하다. 조만간 이 기능들을 토대로하여 실제로 Linear Regression의 기능을 구현하는 예제를 한 번 보여줄 것이다.</p>
+
   </div>
   
   <div class="post">
@@ -11360,43 +11356,44 @@ z = x^3;
 
     <span class="post-date">09 Aug 2018</span>
 
-    오늘은 Normal Equation 이라는 tiral and error 보다는 analytic한 방법을 통해서 hypothesis function을 구하는 법을 알아보겠다.
+    <p>오늘은 Normal Equation 이라는 tiral and error 보다는 analytic한 방법을 통해서 hypothesis function을 구하는 법을 알아보겠다.</p>
 
-먼저, 기본적인 idea는 고등 미적분의 local minimum에서의 미분계수가 0이라는 사실에 근거한다.
+<p>먼저, 기본적인 idea는 고등 미적분의 local minimum에서의 미분계수가 0이라는 사실에 근거한다.</p>
 
-<img class="aligncenter  wp-image-259" src="/images/2018/08/1-3.jpg" alt="" width="613" height="250" srcset="/images/2018/08/1-3.jpg 900w, /images/2018/08/1-3-300x122.jpg 300w, /images/2018/08/1-3-768x313.jpg 768w" sizes="(max-width: 613px) 100vw, 613px" /> 
+<p><img class="aligncenter  wp-image-259" src="/images/2018/08/1-3.jpg" alt="" width="613" height="250" srcset="/images/2018/08/1-3.jpg 900w, /images/2018/08/1-3-300x122.jpg 300w, /images/2018/08/1-3-768x313.jpg 768w" sizes="(max-width: 613px) 100vw, 613px" /></p>
 
-&nbsp;
+<p> </p>
 
-포물선의 최소값에서는 함수 f의 theta에 대한 미분계수가 0이다. 이 사실을 cost function에 적용하여 cost function의 최소값에서의 <img src="https://latex.codecogs.com/gif.latex?\theta" alt="\theta" align="absmiddle" />를 구하는 것이다. 하지만 보통 cost function은 2개 이상의 feature와 parameter가 있기때문에 vector와 matrix 형태의 선형대수학으로 풀어야한다.
+<p>포물선의 최소값에서는 함수 f의 theta에 대한 미분계수가 0이다. 이 사실을 cost function에 적용하여 cost function의 최소값에서의 <img src="https://latex.codecogs.com/gif.latex?\theta" alt="\theta" align="absmiddle" />를 구하는 것이다. 하지만 보통 cost function은 2개 이상의 feature와 parameter가 있기때문에 vector와 matrix 형태의 선형대수학으로 풀어야한다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\triangledown&space;J({&space;\theta&space;})=(\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;0&space;}&space;}&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;1&space;}&space;}&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;2&space;}&space;}&space;,&space;\cdot&space;\cdot&space;\cdot&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;n&space;}&space;}&space;)=(0,&space;0,&space;0,&space;\cdot&space;\cdot&space;\cdot&space;,&space;0)" alt="\triangledown J({ \theta })=(\frac { \partial J }{ \partial { \theta }_{ 0 } } , \frac { \partial J }{ \partial { \theta }_{ 1 } } , \frac { \partial J }{ \partial { \theta }_{ 2 } } , \cdot \cdot \cdot , \frac { \partial J }{ \partial { \theta }_{ n } } )=(0, 0, 0, \cdot \cdot \cdot , 0)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\triangledown&space;J({&space;\theta&space;})=(\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;0&space;}&space;}&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;1&space;}&space;}&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;2&space;}&space;}&space;,&space;\cdot&space;\cdot&space;\cdot&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;n&space;}&space;}&space;)=(0,&space;0,&space;0,&space;\cdot&space;\cdot&space;\cdot&space;,&space;0)" alt="\triangledown J({ \theta })=(\frac { \partial J }{ \partial { \theta }_{ 0 } } , \frac { \partial J }{ \partial { \theta }_{ 1 } } , \frac { \partial J }{ \partial { \theta }_{ 2 } } , \cdot \cdot \cdot , \frac { \partial J }{ \partial { \theta }_{ n } } )=(0, 0, 0, \cdot \cdot \cdot , 0)" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=\frac&space;{&space;1&space;}{&space;2m&space;}&space;{&space;(X\theta&space;-y)&space;}^{&space;T&space;}(X\theta&space;-y)" alt="J(\theta )=\frac { 1 }{ 2m } { (X\theta -y) }^{ T }(X\theta -y)" align="absmiddle" />  공식을 위의 방정식에 넣고 정리하면 다음과 같은 결과가 나온다.
+<p><img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=\frac&space;{&space;1&space;}{&space;2m&space;}&space;{&space;(X\theta&space;-y)&space;}^{&space;T&space;}(X\theta&space;-y)" alt="J(\theta )=\frac { 1 }{ 2m } { (X\theta -y) }^{ T }(X\theta -y)" align="absmiddle" />  공식을 위의 방정식에 넣고 정리하면 다음과 같은 결과가 나온다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\theta&space;={&space;{&space;(X&space;}^{&space;T&space;}X)&space;}^{&space;-1&space;}{&space;X&space;}^{&space;T&space;}y" alt="\theta ={ { (X }^{ T }X) }^{ -1 }{ X }^{ T }y" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\theta&space;={&space;{&space;(X&space;}^{&space;T&space;}X)&space;}^{&space;-1&space;}{&space;X&space;}^{&space;T&space;}y" alt="\theta ={ { (X }^{ T }X) }^{ -1 }{ X }^{ T }y" align="absmiddle" /></p>
 
-이 θ는 정확히 기울기가 0이 되게하는, 즉 J(θ)가 최소일 때의 θ이다.
+<p>이 θ는 정확히 기울기가 0이 되게하는, 즉 J(θ)가 최소일 때의 θ이다.</p>
 
-&nbsp;
+<p> </p>
 
-normal equation을 사용하면 귀찮게 learning rate를 찾아가며 결정해야 할 필요도 없고 gradient descent의 반복적인 iteration도 할 필요가 없다. 하지만 normal equation은 단점도 가지고 있다. X는 m×n(m = #training data set, n = #feature) 행렬이기때문에 위의 식에서 (XTX)는 n × n 행렬이 된다. 따라서 <span style="color: #ff0000;"><strong>n이 매우 크다면 이 행렬을 계산하기에는 컴퓨터에도 벅차기에 느린 작업이 될 것이다.</strong></span> 요즘 컴퓨터로는 10,000 × 10,000 행렬 정도는 충분히 수월하게 계산이 된다. 하지만 n이 100,000 혹은 1,000,000이나 그 이상이라면 이야기는 달라진다.
+<p>normal equation을 사용하면 귀찮게 learning rate를 찾아가며 결정해야 할 필요도 없고 gradient descent의 반복적인 iteration도 할 필요가 없다. 하지만 normal equation은 단점도 가지고 있다. X는 m×n(m = #training data set, n = #feature) 행렬이기때문에 위의 식에서 (XTX)는 n × n 행렬이 된다. 따라서 <span style="color: #ff0000;"><strong>n이 매우 크다면 이 행렬을 계산하기에는 컴퓨터에도 벅차기에 느린 작업이 될 것이다.</strong></span> 요즘 컴퓨터로는 10,000 × 10,000 행렬 정도는 충분히 수월하게 계산이 된다. 하지만 n이 100,000 혹은 1,000,000이나 그 이상이라면 이야기는 달라진다.</p>
 
-얼핏 들으면 gradient descent는 잘 쓸 일이 없어보이지만 그렇지 않다. feature나 parameter가 매우 많은경우 Normal Equation은 매우 높은 계산비용이 들기 때문에 잘 맞지 않는다.
+<p>얼핏 들으면 gradient descent는 잘 쓸 일이 없어보이지만 그렇지 않다. feature나 parameter가 매우 많은경우 Normal Equation은 매우 높은 계산비용이 들기 때문에 잘 맞지 않는다.</p>
 
-&nbsp;
+<p> </p>
 
-**※<img src="https://latex.codecogs.com/gif.latex?\mathbf{(X^{T}X)^{-1}}" alt="\mathbf{(X^{T}X)^{-1}}" align="absmiddle" /> 가 존재하지 않는다면?**
+<p><strong>※<img src="https://latex.codecogs.com/gif.latex?\mathbf{(X^{T}X)^{-1}}" alt="\mathbf{(X^{T}X)^{-1}}" align="absmiddle" /> 가 존재하지 않는다면?</strong></p>
 
-만약 X'(X transpose이다.)와 X의 곱인 X&#8217;X가 역행렬을 가지지 않는다면? 선형대수학에서 배웠다면 알겠지만 역행렬을 가지지 않는(non-invertible) 행렬이 있고 이를 degenerate 혹은 singular 하다고 한다. 모든 행렬에 역행렬이 있는 것은 아니다. 가장 대표적인 case로 <span style="color: #ff0000;"><strong>두 개 이상의 row 나 column이 linearly dependent하다면 이 행렬은 역행렬이 존재하지 않는다.</strong></span> 가령 집값을 예측해주는 프로그램에서 x\_1 = feet단위로 표현된 집의 크기이고 x\_2는 m단위의 집의 크기라면 모든 training set 행렬 X에서 x\_2 column은 x\_1 column의 값에 단순히 3.28을 곱한 값이기 때문이다.(1m = 3.28feet)
+<p>만약 X’(X transpose이다.)와 X의 곱인 X’X가 역행렬을 가지지 않는다면? 선형대수학에서 배웠다면 알겠지만 역행렬을 가지지 않는(non-invertible) 행렬이 있고 이를 degenerate 혹은 singular 하다고 한다. 모든 행렬에 역행렬이 있는 것은 아니다. 가장 대표적인 case로 <span style="color: #ff0000;"><strong>두 개 이상의 row 나 column이 linearly dependent하다면 이 행렬은 역행렬이 존재하지 않는다.</strong></span> 가령 집값을 예측해주는 프로그램에서 x_1 = feet단위로 표현된 집의 크기이고 x_2는 m단위의 집의 크기라면 모든 training set 행렬 X에서 x_2 column은 x_1 column의 값에 단순히 3.28을 곱한 값이기 때문이다.(1m = 3.28feet)</p>
 
-&nbsp;
+<p> </p>
 
-X&#8217;X가 non-invertible하여 feature의 수를 줄이고 싶은 경우에는 여러가지 dimensionality reduction 방법이 있다. 대표적으로 PCA와 LDA 등이 있는데, 이후에 다룰 것이다.
+<p>X’X가 non-invertible하여 feature의 수를 줄이고 싶은 경우에는 여러가지 dimensionality reduction 방법이 있다. 대표적으로 PCA와 LDA 등이 있는데, 이후에 다룰 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-사실 cost function의 minimum을 구하는 상황에서 X&#8217;X의 역행렬이 존재하지 않는 경우는 거의 없다. 그리고 있다고 하더라도 거의 오차가 0에 가깝게 근사적으로 계산할 수 있다. octave의 pinv 함수를 이용한다면 말이다. octave에는 inv 함수와 pinv 함수가 있는데 inv는 기술적으로 일반적인 역행렬(inverse) 계산이고 pinv는 pseudo inverse를 계산해준다.
+<p>사실 cost function의 minimum을 구하는 상황에서 X’X의 역행렬이 존재하지 않는 경우는 거의 없다. 그리고 있다고 하더라도 거의 오차가 0에 가깝게 근사적으로 계산할 수 있다. octave의 pinv 함수를 이용한다면 말이다. octave에는 inv 함수와 pinv 함수가 있는데 inv는 기술적으로 일반적인 역행렬(inverse) 계산이고 pinv는 pseudo inverse를 계산해준다.</p>
+
   </div>
   
 </div>

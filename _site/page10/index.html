@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,83 +10682,82 @@
 
     <span class="post-date">03 May 2019</span>
 
-    안드로이드 API 23 이전에는 앱 설치 시 매니페스트 파일에 등록된 권한이 한 번에 부여되었다. 그런데 API 23 버전부터는 권한이 일반권한과 위험권한으로 분류되고 일반 권한은 앱 설치시에 부여되고 위험 권한은 앱이 처음 실행될 시점에 사용자로부터 부여받도록 되어있다.
+    <p>안드로이드 API 23 이전에는 앱 설치 시 매니페스트 파일에 등록된 권한이 한 번에 부여되었다. 그런데 API 23 버전부터는 권한이 일반권한과 위험권한으로 분류되고 일반 권한은 앱 설치시에 부여되고 위험 권한은 앱이 처음 실행될 시점에 사용자로부터 부여받도록 되어있다.</p>
 
-위험 권한에는 다음과 같은 것들이 있다.
+<p>위험 권한에는 다음과 같은 것들이 있다.</p>
 
-![1](/images/android/21/1.png){: width="50%" height="50%"}
+<p><img src="/images/android/21/1.png" alt="1" width="50%" height="50%" /></p>
 
-위험권한을 부여받기 위해서는 매니페스트 파일에 다음 코드를 등록해야 한다.
+<p>위험권한을 부여받기 위해서는 매니페스트 파일에 다음 코드를 등록해야 한다.</p>
 
-~~~ xml
-<uses-permission android:name="android.permission.RECEIVE_SMS" />
-~~~
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.RECEIVE_SMS"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
 
-이제 자바 소스코드로 위험권한을 부여받기 위한 처리부분을 작성해보자.
+<p>이제 자바 소스코드로 위험권한을 부여받기 위한 처리부분을 작성해보자.</p>
 
-~~~ java
-package io.swnomad.samplereceiver;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplereceiver</span><span class="o">;</span>
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.Toast;
+<span class="kn">import</span> <span class="nn">android.Manifest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.pm.PackageManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.annotation.NonNull</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.app.ActivityCompat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.content.ContextCompat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
 
-public class MainActivity extends AppCompatActivity {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        //RECEIVE_SMS 권한 있는지 체크
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
+        <span class="c1">//RECEIVE_SMS 권한 있는지 체크</span>
+        <span class="kt">int</span> <span class="n">permissionCheck</span> <span class="o">=</span> <span class="nc">ContextCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="nc">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECEIVE_SMS</span><span class="o">);</span>
 
-        if(permissionCheck==PackageManager.PERMISSION_GRANTED){//권한 있으면 토스트 메시지 띄우기
-            Toast.makeText(this, "SMS 수신 권한 있음", Toast.LENGTH_LONG).show();
-        }else{//권한 없으면 권한 요청 대화상자 띄우기
-            Toast.makeText(this, "SMS 수신 권한 없음", Toast.LENGTH_LONG).show();
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECEIVE_SMS)){
-                Toast.makeText(this, "SMS 권한 설명 필요함", Toast.LENGTH_LONG).show();
-            }else{
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS}, 1);
-            }
-        }
+        <span class="k">if</span><span class="o">(</span><span class="n">permissionCheck</span><span class="o">==</span><span class="nc">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">){</span><span class="c1">//권한 있으면 토스트 메시지 띄우기</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"SMS 수신 권한 있음"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span><span class="c1">//권한 없으면 권한 요청 대화상자 띄우기</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"SMS 수신 권한 없음"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="nc">ActivityCompat</span><span class="o">.</span><span class="na">shouldShowRequestPermissionRationale</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="nc">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECEIVE_SMS</span><span class="o">)){</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"SMS 권한 설명 필요함"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                <span class="nc">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="nc">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECEIVE_SMS</span><span class="o">},</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
 
-    }
+    <span class="o">}</span>
 
-    // 권한요청에 대한 사용자의 허용 여부 결과를 받아 처리하는 메소드
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    <span class="c1">// 권한요청에 대한 사용자의 허용 여부 결과를 받아 처리하는 메소드</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRequestPermissionsResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span> <span class="nd">@NonNull</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">permissions</span><span class="o">,</span> <span class="nd">@NonNull</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">grantResults</span><span class="o">)</span> <span class="o">{</span>
 
-        switch(requestCode){
-            case 1:{
+        <span class="k">switch</span><span class="o">(</span><span class="n">requestCode</span><span class="o">){</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:{</span>
 
-                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(this, "권한 승인됨", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(this, "권한 거부됨", Toast.LENGTH_LONG).show();
-                }
-            }
-        }
-    }
+                <span class="k">if</span><span class="o">(</span><span class="n">grantResults</span><span class="o">.</span><span class="na">length</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">grantResults</span><span class="o">[</span><span class="mi">0</span><span class="o">]==</span><span class="nc">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">){</span>
+                    <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"권한 승인됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                    <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"권한 거부됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-이 메소드는 권한을 부여받을 때마다 수정해서 재사용할 수 있다.
+<p>이 메소드는 권한을 부여받을 때마다 수정해서 재사용할 수 있다.</p>
 
-앱을 실행하면 다음과 같은 화면이 뜬다.
+<p>앱을 실행하면 다음과 같은 화면이 뜬다.</p>
 
-![2](/images/android/21/2.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/21/2.jpg" alt="2" width="30%" height="30%" /></p>
 
-사용자가 허용하거나 거부하면 onRequestPermissionsResult() 메소드에서 결과를 받아서 처리하고 토스트 메시지를 띄운다.
+<p>사용자가 허용하거나 거부하면 onRequestPermissionsResult() 메소드에서 결과를 받아서 처리하고 토스트 메시지를 띄운다.</p>
 
-위험 권한은 한 번 허용하면 앱에 부여된 권한 정보를 안드로이드 시스템이 기억하므로 대화상자가 다시 뜨는일은 없다.
+<p>위험 권한은 한 번 허용하면 앱에 부여된 권한 정보를 안드로이드 시스템이 기억하므로 대화상자가 다시 뜨는일은 없다.</p>
+
   </div>
   
   <div class="post">
@@ -10794,196 +10769,194 @@ public class MainActivity extends AppCompatActivity {
 
     <span class="post-date">02 May 2019</span>
 
-    브로드캐스트 수신자(Broadcast Receiver)는 안드로이드의 4대 컴포넌트 중 하나이다. 서비스(Service)처럼 UI가 없고 백그라운드에서 동작한다. 브로드캐스트(Broadcast)가 '방송'이란 뜻이니만큼, 브로드캐스트 수신자는 안드로이드 전체에 한번에 뿌려지는 글로벌 이벤트(Global Event)를 받는 애플리케이션의 컴포넌트이다. 글로벌 이벤트로는 전화 수신이나 문자 수신등이 있다.
+    <p>브로드캐스트 수신자(Broadcast Receiver)는 안드로이드의 4대 컴포넌트 중 하나이다. 서비스(Service)처럼 UI가 없고 백그라운드에서 동작한다. 브로드캐스트(Broadcast)가 ‘방송’이란 뜻이니만큼, 브로드캐스트 수신자는 안드로이드 전체에 한번에 뿌려지는 글로벌 이벤트(Global Event)를 받는 애플리케이션의 컴포넌트이다. 글로벌 이벤트로는 전화 수신이나 문자 수신등이 있다.</p>
 
-매니페스트 파일에 브로드캐스트 수신자를 추가하고, 인텐트필터를 통해 받고싶은 인텐트를 설정하면 등록해둔 인텐트가 안드로이드 전체에 뿌려졌을 때 애플리케이션의 브로드캐스트 수신자가 그 인텐트를 가져온다.
+<p>매니페스트 파일에 브로드캐스트 수신자를 추가하고, 인텐트필터를 통해 받고싶은 인텐트를 설정하면 등록해둔 인텐트가 안드로이드 전체에 뿌려졌을 때 애플리케이션의 브로드캐스트 수신자가 그 인텐트를 가져온다.</p>
 
-브로드캐스트 수신자는 onReceiver() 메소드를 재정의하여야 한다. 이 메소드는 브로드캐스트 수신자의 인텐트에 등록된 인텐트가 도착하면 자동으로 호출된다.
+<p>브로드캐스트 수신자는 onReceiver() 메소드를 재정의하여야 한다. 이 메소드는 브로드캐스트 수신자의 인텐트에 등록된 인텐트가 도착하면 자동으로 호출된다.</p>
 
-그러면 브로드캐스트 수신자에서 문자 메시지를 받도록 설정을 한 후 메시지가 오면 내용을 가져와 액티비티의 텍스트뷰에 설정하는 애플리케이션을 만들어보자.
+<p>그러면 브로드캐스트 수신자에서 문자 메시지를 받도록 설정을 한 후 메시지가 오면 내용을 가져와 액티비티의 텍스트뷰에 설정하는 애플리케이션을 만들어보자.</p>
 
-~~~ java
-package io.swnomad.samplereceiver;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplereceiver</span><span class="o">;</span>
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.telephony.SmsMessage;
-import android.widget.Toast;
+<span class="kn">import</span> <span class="nn">android.content.BroadcastReceiver</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Build</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.telephony.SmsMessage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
 
-import java.util.Date;
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
 
-public class SmsReceiver extends BroadcastReceiver {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmsReceiver</span> <span class="kd">extends</span> <span class="nc">BroadcastReceiver</span> <span class="o">{</span>
 
-    @Override
-    public void onReceive(Context context, Intent intent) {
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
 
-        Bundle bundle = intent.getExtras(); //인텐트에서 부가데이터 가져오기
+        <span class="nc">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getExtras</span><span class="o">();</span> <span class="c1">//인텐트에서 부가데이터 가져오기</span>
 
-        //bundle에 들어있는 SMS 메시지를 parsing
-        SmsMessage[] messages = parseSmsMessage(bundle);
+        <span class="c1">//bundle에 들어있는 SMS 메시지를 parsing</span>
+        <span class="nc">SmsMessage</span><span class="o">[]</span> <span class="n">messages</span> <span class="o">=</span> <span class="n">parseSmsMessage</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span>
 
-        if(messages != null && messages.length >0){
-            String sender = messages[0].getOriginatingAddress(); // 메시지 송신자
-            String contents = messages[0].getMessageBody(); // 메시지 내용
-            Date receivedDate = new Date(messages[0].getTimestampMillis()); // 수신 날짜
-            String date = receivedDate.toString();
+        <span class="k">if</span><span class="o">(</span><span class="n">messages</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">messages</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="nc">String</span> <span class="n">sender</span> <span class="o">=</span> <span class="n">messages</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">getOriginatingAddress</span><span class="o">();</span> <span class="c1">// 메시지 송신자</span>
+            <span class="nc">String</span> <span class="n">contents</span> <span class="o">=</span> <span class="n">messages</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">getMessageBody</span><span class="o">();</span> <span class="c1">// 메시지 내용</span>
+            <span class="nc">Date</span> <span class="n">receivedDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="n">messages</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">getTimestampMillis</span><span class="o">());</span> <span class="c1">// 수신 날짜</span>
+            <span class="nc">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">receivedDate</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
 
-            //MainActivity로 보낼 인텐트 만들고 메시지 정보 부가데이터로 넣기
-            Intent mIntent = new Intent(context.getApplicationContext(), MainActivity.class);
-            mIntent.putExtra("sender", sender);
-            mIntent.putExtra("contents", contents);
-            mIntent.putExtra("date", date);
+            <span class="c1">//MainActivity로 보낼 인텐트 만들고 메시지 정보 부가데이터로 넣기</span>
+            <span class="nc">Intent</span> <span class="n">mIntent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">(),</span> <span class="nc">MainActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+            <span class="n">mIntent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"sender"</span><span class="o">,</span> <span class="n">sender</span><span class="o">);</span>
+            <span class="n">mIntent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"contents"</span><span class="o">,</span> <span class="n">contents</span><span class="o">);</span>
+            <span class="n">mIntent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"date"</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>
 
-            //브로드캐스트 수신자는 화면이 없으므로 새로운 액티비티 화면 새로 띄우려면 인텐트에 FLAG_ACTIVITY_NEW_TASK 추가해야함
-            mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // -> onCreate() 메소드에서 처리
+            <span class="c1">//브로드캐스트 수신자는 화면이 없으므로 새로운 액티비티 화면 새로 띄우려면 인텐트에 FLAG_ACTIVITY_NEW_TASK 추가해야함</span>
+            <span class="n">mIntent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="nc">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span> <span class="c1">// -&gt; onCreate() 메소드에서 처리</span>
 
-            //이미 액티비티가 메모리에 존재하면 새로 만들지 말고 사용 -> onNewIntent() 메소드에서 처리
-            mIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            <span class="c1">//이미 액티비티가 메모리에 존재하면 새로 만들지 말고 사용 -&gt; onNewIntent() 메소드에서 처리</span>
+            <span class="n">mIntent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="nc">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_SINGLE_TOP</span> <span class="o">|</span> <span class="nc">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_CLEAR_TOP</span><span class="o">);</span>
 
-            /*
+            <span class="cm">/*
             1. 만들어진 액티비티가 없으면 onCreate() 메소드에서 인텐트를 처리
             2. 이미 만들어진 액티비티가 있으면 onNewIntent() 메소드에서 인텐트를 처리
-             */
+             */</span>
 
-            //액티비티 띄우기
-            context.getApplicationContext().startActivity(mIntent);
-        }
-    }
+            <span class="c1">//액티비티 띄우기</span>
+            <span class="n">context</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">().</span><span class="na">startActivity</span><span class="o">(</span><span class="n">mIntent</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 
-    /* 1. Bundle 객체에서 PDU 포맷의 메시지 객체 가져오기
+    <span class="cm">/* 1. Bundle 객체에서 PDU 포맷의 메시지 객체 가져오기
            2. 메시지 객체 갯수만큼 SmsMessage 배열 만들기
-           3. createFromPdu() 메소드 사용해서 PDU 포맷의 메시지 SmsMessage 객체로 변환하여 SmsMessage 배열에 저장 */
-    private SmsMessage[] parseSmsMessage(Bundle bundle){
-        Object[] objs = (Object[]) bundle.get("pdus"); //PDU 포맷의 메시지 복원
-        SmsMessage[] messages = new SmsMessage[objs.length];
+           3. createFromPdu() 메소드 사용해서 PDU 포맷의 메시지 SmsMessage 객체로 변환하여 SmsMessage 배열에 저장 */</span>
+    <span class="kd">private</span> <span class="nc">SmsMessage</span><span class="o">[]</span> <span class="nf">parseSmsMessage</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">bundle</span><span class="o">){</span>
+        <span class="nc">Object</span><span class="o">[]</span> <span class="n">objs</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Object</span><span class="o">[])</span> <span class="n">bundle</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"pdus"</span><span class="o">);</span> <span class="c1">//PDU 포맷의 메시지 복원</span>
+        <span class="nc">SmsMessage</span><span class="o">[]</span> <span class="n">messages</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SmsMessage</span><span class="o">[</span><span class="n">objs</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
 
-        int smsCount = objs.length;
-        for(int i=0; i<smsCount; i++){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){ // API 23 이상
-                String format = bundle.getString("format");
-                messages[i] = SmsMessage.createFromPdu((byte[])objs[i], format);
-            }else{
-                messages[i] = SmsMessage.createFromPdu((byte[])objs[i]);
-            }
-        }
+        <span class="kt">int</span> <span class="n">smsCount</span> <span class="o">=</span> <span class="n">objs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">smsCount</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="nc">Build</span><span class="o">.</span><span class="na">VERSION</span><span class="o">.</span><span class="na">SDK_INT</span> <span class="o">&gt;=</span> <span class="nc">Build</span><span class="o">.</span><span class="na">VERSION_CODES</span><span class="o">.</span><span class="na">M</span><span class="o">){</span> <span class="c1">// API 23 이상</span>
+                <span class="nc">String</span> <span class="n">format</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"format"</span><span class="o">);</span>
+                <span class="n">messages</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">SmsMessage</span><span class="o">.</span><span class="na">createFromPdu</span><span class="o">((</span><span class="kt">byte</span><span class="o">[])</span><span class="n">objs</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">format</span><span class="o">);</span>
+            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                <span class="n">messages</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">SmsMessage</span><span class="o">.</span><span class="na">createFromPdu</span><span class="o">((</span><span class="kt">byte</span><span class="o">[])</span><span class="n">objs</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
 
-        return messages;
-    }
-}
-~~~
+        <span class="k">return</span> <span class="n">messages</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-브로드캐스트 수신자는 백그라운드에서 동작하다가 인텐트 필터에 등록해놓은 인텐트가 도착하면 onReceive() 메소드가 호출도므로 이 메소드안에 인텐트를 처리하는 코드를 추가하였다. 먼저 위험권한에 대한 부분은 무시하자. 먼저 인텐트로부터 번들 객체를 받는다. 그리고 번들 객체의 내용을 SmsMessage 자료형으로 고쳐야하는데, 이 코드는 parseSmsMessage(Bundle bundle) 메소드로 따로 만들었다.
+<p>브로드캐스트 수신자는 백그라운드에서 동작하다가 인텐트 필터에 등록해놓은 인텐트가 도착하면 onReceive() 메소드가 호출도므로 이 메소드안에 인텐트를 처리하는 코드를 추가하였다. 먼저 위험권한에 대한 부분은 무시하자. 먼저 인텐트로부터 번들 객체를 받는다. 그리고 번들 객체의 내용을 SmsMessage 자료형으로 고쳐야하는데, 이 코드는 parseSmsMessage(Bundle bundle) 메소드로 따로 만들었다.</p>
 
-parseSmsMessage() 메소드에 있는 코드는 안드로이드에서 API에서 정해둔 SMS를 확인하는 일반적인 코드이므로 한 번 만들어두면 나중에 필요할 때 마다 복사해서 사용할 수 있다. 딱히 외울 필요는 없고 createFromPdu 메소드로 Object 객체 형태에서 SmsMessage 객체로 포맷을 변환한다는 핵심내용만 알면 될 것 같다.
+<p>parseSmsMessage() 메소드에 있는 코드는 안드로이드에서 API에서 정해둔 SMS를 확인하는 일반적인 코드이므로 한 번 만들어두면 나중에 필요할 때 마다 복사해서 사용할 수 있다. 딱히 외울 필요는 없고 createFromPdu 메소드로 Object 객체 형태에서 SmsMessage 객체로 포맷을 변환한다는 핵심내용만 알면 될 것 같다.</p>
 
-아무튼 문자 메시지를 파싱하여 발신자, 내용, 날짜를 읽어와서 이를 또 인텐트에 부가 데이터로 추가하여 MainActivity로 보낸다. 이 때 중요한 것이 있다. 브로드캐스트 수신자는 화면이 없는 컴포넌트이므로 액티비티 화면을 새로 띄우기 위해서는 FLAG_ACTIVITY_NEW_TASK 플래그를 추가해주어야한다. FLAG_ACTIVITY_SINGLE_TOP 플래그도 추가했으므로 이미 떠있는 액티비티가 있으면 이를 다시 사용해야한다. 그러나 이 때는 onCreate() 메소드가 호출되지 않으므로 onNewIntent() 메소드를 재정의하여 인텐트 처리부 코드를 넣어주어야한다.
+<p>아무튼 문자 메시지를 파싱하여 발신자, 내용, 날짜를 읽어와서 이를 또 인텐트에 부가 데이터로 추가하여 MainActivity로 보낸다. 이 때 중요한 것이 있다. 브로드캐스트 수신자는 화면이 없는 컴포넌트이므로 액티비티 화면을 새로 띄우기 위해서는 FLAG_ACTIVITY_NEW_TASK 플래그를 추가해주어야한다. FLAG_ACTIVITY_SINGLE_TOP 플래그도 추가했으므로 이미 떠있는 액티비티가 있으면 이를 다시 사용해야한다. 그러나 이 때는 onCreate() 메소드가 호출되지 않으므로 onNewIntent() 메소드를 재정의하여 인텐트 처리부 코드를 넣어주어야한다.</p>
 
-이제 액티비티에서 이를 처리하는 코드를 보자.
+<p>이제 액티비티에서 이를 처리하는 코드를 보자.</p>
 
-~~~ java
-package io.swnomad.samplereceiver;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplereceiver</span><span class="o">;</span>
 
-import android.Manifest;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.telephony.SmsMessage;
-import android.widget.TextView;
-import android.widget.Toast;
+<span class="kn">import</span> <span class="nn">android.Manifest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.app.Activity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.SharedPreferences</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.pm.PackageManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Build</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.app.ActivityCompat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.content.ContextCompat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.telephony.SmsMessage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
 
-import java.util.Date;
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
 
-public class MainActivity extends AppCompatActivity {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    TextView textView; //메시지를 표시하기 위한 텍스트뷰
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span> <span class="c1">//메시지를 표시하기 위한 텍스트뷰</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        //RECEIVE_SMS는 위험권한이므로 사용자에게 권한 요청을 하기위한 코드
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
-        if(permissionCheck == PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(this, "SMS 수신권한 있음", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "SMS 수신권한 없음", Toast.LENGTH_SHORT).show();
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.RECEIVE_SMS)){
-                Toast.makeText(this, "SMS 권한 설정이 필요함", Toast.LENGTH_SHORT).show();
-            } else {
-                // 권한이 할당되지 않았으면 해당 권한을 요청
-                ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.RECEIVE_SMS},1);
-            }
-        }
+        <span class="c1">//RECEIVE_SMS는 위험권한이므로 사용자에게 권한 요청을 하기위한 코드</span>
+        <span class="kt">int</span> <span class="n">permissionCheck</span> <span class="o">=</span> <span class="nc">ContextCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="nc">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECEIVE_SMS</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">permissionCheck</span> <span class="o">==</span> <span class="nc">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">){</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"SMS 수신권한 있음"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"SMS 수신권한 없음"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="nc">ActivityCompat</span><span class="o">.</span><span class="na">shouldShowRequestPermissionRationale</span><span class="o">(</span><span class="k">this</span><span class="o">,</span><span class="nc">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECEIVE_SMS</span><span class="o">)){</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"SMS 권한 설정이 필요함"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 권한이 할당되지 않았으면 해당 권한을 요청</span>
+                <span class="nc">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="k">this</span><span class="o">,</span><span class="k">new</span> <span class="nc">String</span><span class="o">[]</span> <span class="o">{</span><span class="nc">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECEIVE_SMS</span><span class="o">},</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
 
-        //텍스트뷰 객체 참조하기
-        textView = findViewById(R.id.textView);
+        <span class="c1">//텍스트뷰 객체 참조하기</span>
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
 
-        Intent intent = getIntent();
+        <span class="nc">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">getIntent</span><span class="o">();</span>
 
-        // 인텐트로부터 발신자, 내용, 날짜 정보 받아와서 저장
-        String sender = intent.getStringExtra("sender");
-        String contents = intent.getStringExtra("contents");
-        String date = intent.getStringExtra("date");
+        <span class="c1">// 인텐트로부터 발신자, 내용, 날짜 정보 받아와서 저장</span>
+        <span class="nc">String</span> <span class="n">sender</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"sender"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">contents</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"contents"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"date"</span><span class="o">);</span>
 
-        //텍스트뷰에 메시지 정보 설정
-        Toast.makeText(getApplicationContext(), sender+ "으로부터 문자 도착", Toast.LENGTH_LONG).show();
-        textView.setText("보낸사람: "+sender+"\n내용: "+contents+"\n날짜: "+date);
-    }
+        <span class="c1">//텍스트뷰에 메시지 정보 설정</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">sender</span><span class="o">+</span> <span class="s">"으로부터 문자 도착"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"보낸사람: "</span><span class="o">+</span><span class="n">sender</span><span class="o">+</span><span class="s">"\n내용: "</span><span class="o">+</span><span class="n">contents</span><span class="o">+</span><span class="s">"\n날짜: "</span><span class="o">+</span><span class="n">date</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    // 새로운 인텐트가 도착하면 호출되는 콜백 메소드
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
+    <span class="c1">// 새로운 인텐트가 도착하면 호출되는 콜백 메소드</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onNewIntent</span><span class="o">(</span><span class="nc">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onNewIntent</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
 
-        // 인텐트로부터 발신자, 내용, 날짜 정보 받아와서 저장
-        String sender = intent.getStringExtra("sender");
-        String contents = intent.getStringExtra("contents");
-        String date = intent.getStringExtra("date");
+        <span class="c1">// 인텐트로부터 발신자, 내용, 날짜 정보 받아와서 저장</span>
+        <span class="nc">String</span> <span class="n">sender</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"sender"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">contents</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"contents"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"date"</span><span class="o">);</span>
 
-        //텍스트뷰에 메시지 정보 설정
-        Toast.makeText(getApplicationContext(), sender+ "으로부터 문자 도착", Toast.LENGTH_LONG).show();
-        textView.setText("보낸사람: "+sender+"\n내용: "+contents+"\n날짜: "+date);
-    }
-}
-~~~
+        <span class="c1">//텍스트뷰에 메시지 정보 설정</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">sender</span><span class="o">+</span> <span class="s">"으로부터 문자 도착"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"보낸사람: "</span><span class="o">+</span><span class="n">sender</span><span class="o">+</span><span class="s">"\n내용: "</span><span class="o">+</span><span class="n">contents</span><span class="o">+</span><span class="s">"\n날짜: "</span><span class="o">+</span><span class="n">date</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-액티비티는 인텐트에서 메시지 정보를 가져와 텍스트뷰에 내용을 표시한다. 액티비티의 레이아웃 구성은 다음과 같다.
+<p>액티비티는 인텐트에서 메시지 정보를 가져와 텍스트뷰에 내용을 표시한다. 액티비티의 레이아웃 구성은 다음과 같다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="수신받은 메시지가 표시됩니다."
-        android:textSize="20dp"
-        android:maxLines="40"
-        android:layout_marginTop="350dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"수신받은 메시지가 표시됩니다."</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:maxLines=</span><span class="s">"40"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"350dp"</span>
+        <span class="na">android:layout_marginLeft=</span><span class="s">"10dp"</span>
+        <span class="na">android:layout_marginRight=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-앱을 실행하고 문자메시지를 받아보면 다음과 같이 내용이 텍스트뷰에 표시된다. 그리고 백그라운드에서도 실행되므로 다른 작업을 하다가 문자가 오면 액티비티가 뜬다.
+<p>앱을 실행하고 문자메시지를 받아보면 다음과 같이 내용이 텍스트뷰에 표시된다. 그리고 백그라운드에서도 실행되므로 다른 작업을 하다가 문자가 오면 액티비티가 뜬다.</p>
 
-![1](/images/android/20/1.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/20/1.jpg" alt="1" width="30%" height="30%" /></p>
+
   </div>
   
   <div class="post">
@@ -10995,127 +10968,125 @@ public class MainActivity extends AppCompatActivity {
 
     <span class="post-date">01 May 2019</span>
 
-    서비스는 백그라운드에서 실행되는 프로세스를 의미한다. 액티비티처럼 화면이 존재하지는 않지만 중요한 애플리케이션 4대 컴포넌트 중 하나이다. 카카오톡이나 문자앱 처럼 화면에 떠있지 않아도 메시지가 도착하면 알림을 받을 수 있는것도 서비스 덕분이다.
+    <p>서비스는 백그라운드에서 실행되는 프로세스를 의미한다. 액티비티처럼 화면이 존재하지는 않지만 중요한 애플리케이션 4대 컴포넌트 중 하나이다. 카카오톡이나 문자앱 처럼 화면에 떠있지 않아도 메시지가 도착하면 알림을 받을 수 있는것도 서비스 덕분이다.</p>
 
-서비스 역시 액티비티와 똑같이 시스템에서 관리하므로 AndroidManifest.xml 파일에 등록된다. 서비스는 앱이 종료되어 있는 상태에서도 동작하면서 다른 구성요소와 데이터를 주고받거나 특정 이벤트를 항상 모니터링 하는 중요한 역할을 한다. 따라서 서비스가 실행되어있는 상태에서는 안드로이드 시스템이 왠만하면 서비스 프로세스가 죽지 않도록 계속 관리한다. 만약 서비스가 비정상적으로 종료되면 시스템이 자동으로 재시작한다.
+<p>서비스 역시 액티비티와 똑같이 시스템에서 관리하므로 AndroidManifest.xml 파일에 등록된다. 서비스는 앱이 종료되어 있는 상태에서도 동작하면서 다른 구성요소와 데이터를 주고받거나 특정 이벤트를 항상 모니터링 하는 중요한 역할을 한다. 따라서 서비스가 실행되어있는 상태에서는 안드로이드 시스템이 왠만하면 서비스 프로세스가 죽지 않도록 계속 관리한다. 만약 서비스가 비정상적으로 종료되면 시스템이 자동으로 재시작한다.</p>
 
-서비스는 startService() 메소드를 통해 실행할 수 있다. startActivity() 메소드처럼 인텐트를 통해 부가데이터를 전달할 수도 있다. 그런데 서비스는 실행중인 상태라면 startService() 메소드를 여러 번 호출하더라도 상태변화가 없다. 따라서 startService() 메소드는 서비스의 시작보다는 인텐트의 전달을 목적으로 자주 사용한다.
+<p>서비스는 startService() 메소드를 통해 실행할 수 있다. startActivity() 메소드처럼 인텐트를 통해 부가데이터를 전달할 수도 있다. 그런데 서비스는 실행중인 상태라면 startService() 메소드를 여러 번 호출하더라도 상태변화가 없다. 따라서 startService() 메소드는 서비스의 시작보다는 인텐트의 전달을 목적으로 자주 사용한다.</p>
 
-서비스가 실행되어 있는 상태에서는 startService()를 실행하여도 서비스의 onCreate() 메소드가 호출되지 않는다. 따라서 인텐트를 처리하려면 onStartCommand() 메소드를 통해서 해야한다. 서비스의 수명주기는 onCreate()-생성과 onDestroy()-해제 뿐이다.
+<p>서비스가 실행되어 있는 상태에서는 startService()를 실행하여도 서비스의 onCreate() 메소드가 호출되지 않는다. 따라서 인텐트를 처리하려면 onStartCommand() 메소드를 통해서 해야한다. 서비스의 수명주기는 onCreate()-생성과 onDestroy()-해제 뿐이다.</p>
 
-액티비티에서 서비스를 시작하면서 인텐트를 통해 부가데이터를 보내면 서비스에서 이를 토스트 메시지로 출력하도록 하여 서비스의 실행을 눈으로 확인해보자.
+<p>액티비티에서 서비스를 시작하면서 인텐트를 통해 부가데이터를 보내면 서비스에서 이를 토스트 메시지로 출력하도록 하여 서비스의 실행을 눈으로 확인해보자.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"/>
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="서비스로 보내기"
-        android:textSize="24dp"
-        android:layout_gravity="center_horizontal"/>
-</LinearLayout>
-~~~
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/editText"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"200dp"</span>
+        <span class="na">android:layout_marginLeft=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_marginRight=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"30dp"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"서비스로 보내기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-입력상자와 버튼을 하나 추가하였다. 버튼을 누르면 입력상자의 텍스트를 가져와 서비스로 보내는 인텐트의 부가 데이터에 추가해보자.
+<p>입력상자와 버튼을 하나 추가하였다. 버튼을 누르면 입력상자의 텍스트를 가져와 서비스로 보내는 인텐트의 부가 데이터에 추가해보자.</p>
 
-~~~ java
-package io.swnomad.sampleservice;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleservice</span><span class="o">;</span>
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
 
-public class MainActivity extends AppCompatActivity {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    EditText editText;
+    <span class="nc">EditText</span> <span class="n">editText</span><span class="o">;</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        editText = findViewById(R.id.editText);
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = editText.getText().toString(); //입력상자 텍스트 읽어서 저장
+        <span class="n">editText</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">editText</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span> <span class="c1">//입력상자 텍스트 읽어서 저장</span>
 
-                Intent intent = new Intent(getApplicationContext(), MyService.class); //서비스를 띄우기 위한 인텐트 객체 생성
-                intent.putExtra("command", "show"); //서비스에 부가데이터 추가
-                intent.putExtra("name", name); //서비스에 부가데이터 추가
-                startService(intent); // 서비스 시작하기
-            }
-        });
-    }
-}
-~~~
+                <span class="nc">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="nc">MyService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">//서비스를 띄우기 위한 인텐트 객체 생성</span>
+                <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"command"</span><span class="o">,</span> <span class="s">"show"</span><span class="o">);</span> <span class="c1">//서비스에 부가데이터 추가</span>
+                <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span> <span class="c1">//서비스에 부가데이터 추가</span>
+                <span class="n">startService</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span> <span class="c1">// 서비스 시작하기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-인텐트를 통해 서비스를 띄우면서 부가데이터를 2개 보냈다. 서비스 클래스를 만들어 이를 처리해보도록 하자.
+<p>인텐트를 통해 서비스를 띄우면서 부가데이터를 2개 보냈다. 서비스 클래스를 만들어 이를 처리해보도록 하자.</p>
 
-~~~ java
-package io.swnomad.sampleservice;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleservice</span><span class="o">;</span>
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-import android.widget.Toast;
+<span class="kn">import</span> <span class="nn">android.app.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.IBinder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
 
-public class MyService extends Service {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyService</span> <span class="kd">extends</span> <span class="nc">Service</span> <span class="o">{</span>
 
-    public MyService() {
-    }
+    <span class="kd">public</span> <span class="nf">MyService</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">IBinder</span> <span class="nf">onBind</span><span class="o">(</span><span class="nc">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// TODO: Return the communication channel to the service.</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">(</span><span class="s">"Not yet implemented"</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        if(intent == null){
-            return Service.START_STICKY; // START_STICKY 값을 반환받은 서비스는 비정상 종료 되면 자동으로 재시작되도록 설정
-        }else{
-            String command = intent.getStringExtra("command"); //"coomand" key의 value 가져오기
-            String name = intent.getStringExtra("name"); //"name" key의 value 가져오기
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">onStartCommand</span><span class="o">(</span><span class="nc">Intent</span> <span class="n">intent</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">intent</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="k">return</span> <span class="nc">Service</span><span class="o">.</span><span class="na">START_STICKY</span><span class="o">;</span> <span class="c1">// START_STICKY 값을 반환받은 서비스는 비정상 종료 되면 자동으로 재시작되도록 설정</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            <span class="nc">String</span> <span class="n">command</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"command"</span><span class="o">);</span> <span class="c1">//"coomand" key의 value 가져오기</span>
+            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span> <span class="c1">//"name" key의 value 가져오기</span>
 
-            Toast.makeText(this, "command: "+command+" name: "+name, Toast.LENGTH_LONG).show();
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"command: "</span><span class="o">+</span><span class="n">command</span><span class="o">+</span><span class="s">" name: "</span><span class="o">+</span><span class="n">name</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
 
-        }
-        return super.onStartCommand(intent, flags, startId);
-    }
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onStartCommand</span><span class="o">(</span><span class="n">intent</span><span class="o">,</span> <span class="n">flags</span><span class="o">,</span> <span class="n">startId</span><span class="o">);</span>
+    <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-서비스에서는 onStartCommand() 메소드를 통해 인텐트를 전달받는다. 전달받은 인텐트에 들어있는 부가 데이터를 토스트 메시지로 출력하게 되어있다.
+<p>서비스에서는 onStartCommand() 메소드를 통해 인텐트를 전달받는다. 전달받은 인텐트에 들어있는 부가 데이터를 토스트 메시지로 출력하게 되어있다.</p>
 
-![1](/images/android/19/1.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/19/1.jpg" alt="1" width="30%" height="30%" /></p>
+
   </div>
   
   <div class="post">
@@ -11127,260 +11098,285 @@ public class MyService extends Service {
 
     <span class="post-date">01 May 2019</span>
 
-    액티비티는 액티비티 스택(Activity Stack)이라는 것으로 관리된다. 새로운 액티비티를 띄우면 이전의 액티비티는 액티비티 스택에 저장된다. 그리고 가장 상위의 액티비티가 없어지면 액티비티 스택에서 가장 상위의 액티비티가 다시 나타나는 구조이다.
+    <p>액티비티는 액티비티 스택(Activity Stack)이라는 것으로 관리된다. 새로운 액티비티를 띄우면 이전의 액티비티는 액티비티 스택에 저장된다. 그리고 가장 상위의 액티비티가 없어지면 액티비티 스택에서 가장 상위의 액티비티가 다시 나타나는 구조이다.</p>
 
-![1](/images/android/18/1.jpg){: width="40%" height="40%"}
+<p><img src="/images/android/18/1.jpg" alt="1" width="40%" height="40%" /></p>
 
-결과적으로 액티비티의 생성, 실행, 중지, 그리고 해제되는 과정까지의 상태정보는 시스템이 관리한다. 지금까지 보았던 onCreate() 메소드는 액티비티가 생성될 때 자동으로 호출되는 메소드이다. 그런데 생성 뿐만이 아니라 실행, 중지, 해제등의 상태로 들어서면 자동으로 호출되는 메소드들이 있다.
+<p>결과적으로 액티비티의 생성, 실행, 중지, 그리고 해제되는 과정까지의 상태정보는 시스템이 관리한다. 지금까지 보았던 onCreate() 메소드는 액티비티가 생성될 때 자동으로 호출되는 메소드이다. 그런데 생성 뿐만이 아니라 실행, 중지, 해제등의 상태로 들어서면 자동으로 호출되는 메소드들이 있다.</p>
 
+<table>
+  <thead>
+    <tr>
+      <th>메소드</th>
+      <th>호출</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>onCreate()</strong></td>
+      <td>액티비티 생성 시 호출</td>
+    </tr>
+    <tr>
+      <td><strong>onStart()</strong></td>
+      <td>액티비티가 화면에 보이기 바로 전에 호출</td>
+    </tr>
+    <tr>
+      <td><strong>onResume()</strong></td>
+      <td>액티비티가 사용자와 상호작용하기 바로 전에 호출</td>
+    </tr>
+    <tr>
+      <td><strong>onRestart()</strong></td>
+      <td>액티비티가 중지 되었다가 재시작 되기 직전에 호출. 다음에는 항상 onStart()가 호출됨</td>
+    </tr>
+    <tr>
+      <td><strong>onPause()</strong></td>
+      <td>다른 액티비티 시작할 때 호출. 화면에 보이나 상위 액티비티 때문에 포커스는 받지못함. 상태 정보가 저장됨</td>
+    </tr>
+    <tr>
+      <td><strong>onStop()</strong></td>
+      <td>액티비티를 중지시키고 화면에서 내릴 때 호출</td>
+    </tr>
+    <tr>
+      <td><strong>onDestroy()</strong></td>
+      <td>액티비티 메모리에서 해제 시 호출. finish()메소드를 호출할 때</td>
+    </tr>
+  </tbody>
+</table>
 
-|메소드|호출|
-|---|---|
-|**onCreate()**|액티비티 생성 시 호출|
-|**onStart()**|액티비티가 화면에 보이기 바로 전에 호출|
-|**onResume()**|액티비티가 사용자와 상호작용하기 바로 전에 호출|
-|**onRestart()**|액티비티가 중지 되었다가 재시작 되기 직전에 호출. 다음에는 항상 onStart()가 호출됨|
-|**onPause()**|다른 액티비티 시작할 때 호출. 화면에 보이나 상위 액티비티 때문에 포커스는 받지못함. 상태 정보가 저장됨|
-|**onStop()**|액티비티를 중지시키고 화면에서 내릴 때 호출|
-|**onDestroy()**|액티비티 메모리에서 해제 시 호출. finish()메소드를 호출할 때|
+<p><img src="/images/android/18/2.png" alt="2" width="60%" height="60%" /></p>
 
-![2](/images/android/18/2.png){: width="60%" height="60%"}
+<p>위의 생명주기 메소드들은 액티비티의 상태변경에 따라 시스템에 의해 자동으로 호출되는데, 이러한 메소드를 콜백 메소드(Callback method)라고 한다.</p>
 
-위의 생명주기 메소드들은 액티비티의 상태변경에 따라 시스템에 의해 자동으로 호출되는데, 이러한 메소드를 콜백 메소드(Callback method)라고 한다.
+<p>앱을 키면 onCreate() - onStart() - onResume() 순서대로 메소드가 호출된다. 그리고 다른 액티비티를 띄울때는 onPause() - onStop() 순서로 메소드가 호출된다. 액티비티가 종료될 때는 onDestroy() 메소드가 호출된다.</p>
 
-앱을 키면 onCreate() - onStart() - onResume() 순서대로 메소드가 호출된다. 그리고 다른 액티비티를 띄울때는 onPause() - onStop() 순서로 메소드가 호출된다. 액티비티가 종료될 때는 onDestroy() 메소드가 호출된다.
+<p>액티비티의 생명주기를 확인하기 위한 액티비티를 만들어본다.</p>
 
-액티비티의 생명주기를 확인하기 위한 액티비티를 만들어본다.
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"메뉴화면 띄우기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"300dp"</span><span class="nt">/&gt;</span>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="메뉴화면 띄우기"
-        android:textSize="24dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="300dp"/>
-
-    <Button
-        android:id="@+id/buttonFinish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="종료하기"
-        android:textSize="24dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
-
-
-</LinearLayout>
-~~~
-
-~~~ java
-package io.swnomad.samplelifecycle;
-
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Toast.makeText(this, "onCreate() 호출", Toast.LENGTH_LONG).show();
-
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MenuActivity.class); //메뉴 액티비티를 띄우기 위한 인텐트 생성
-                startActivity(intent);//액티비티 띄우기
-            }
-        });
-
-        Button buttonFinish = findViewById(R.id.buttonFinish);
-        buttonFinish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish(); //액티비티 종료
-            }
-        });
-    }
-
-    // 생명주기 메소드가 호출되었는지 알아보기 위해 토스트 메시지 띄우도록 재정의 하기
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Toast.makeText(this, "onStart() 호출", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Toast.makeText(this, "onRestart() 호출", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "onStop() 호출", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "onDestroy() 호출", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "onPause() 호출", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "onResume() 호출", Toast.LENGTH_LONG).show();
-    }
-}
-~~~
-
-MenuActivity 액티비티를 하나 만들고, 첫 번째 버튼을 누르면 MenuActivity 액티비티를 띄운다. 두 번째 버튼을 클릭하면 액티비티를 종료한다. 앱을 실행하여 실행해보면 생명주기 메소드가 호출될 때 띄우는 토스트 메시지를 확인할 수 있다.
-
-특히 onResume() 메소드와 onPause() 메소드는 화면이 보일 때와 보이지 않을 때 항상 호출된다. 따라서 데이터의 저장과 복원을 위해서도 아주 중요한 메소드가 된다. 예를 들어 게임을 하다가 전화가 오면 onPause() 메소드가 항상 먼저 호출된다. onPause() 메소드 안에서 데이터를 저장하면, 전화를 끊고 다시 게임 화면으로 돌아올 때 호출되는 onResume() 메소드 안에서 데이터를 복원하는 코드를 구현하면 된다.
-
-입력상자에 입력 된 내용이 앱을 껐다 켜도 다시 복원되도록 하는 앱을 만들어보자.
-
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/nameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="내용을 입력하세요"
-        android:textSize="24dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="300dp"/>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="종료하기"
-        android:textSize="24dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/buttonFinish"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"종료하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
 
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-버튼을 누르면 애플리케이션이 종료된다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplelifecycle</span><span class="o">;</span>
 
-~~~ java
-package io.swnomad.samplelifecycle;
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-public class MainActivity extends AppCompatActivity {
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-    EditText nameInput;
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onCreate() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="nc">MenuActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">//메뉴 액티비티를 띄우기 위한 인텐트 생성</span>
+                <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span><span class="c1">//액티비티 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
 
-        nameInput = findViewById(R.id.nameInput);
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish(); // 버튼을 누르면 액티비티 종료
-            }
-        });
-    }
+        <span class="nc">Button</span> <span class="n">buttonFinish</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">buttonFinish</span><span class="o">);</span>
+        <span class="n">buttonFinish</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">finish</span><span class="o">();</span> <span class="c1">//액티비티 종료</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "onPause() 호출됨", Toast.LENGTH_LONG).show();
-        saveState(); // 액티비티 중지 전 상태 저장
-    }
+    <span class="c1">// 생명주기 메소드가 호출되었는지 알아보기 위해 토스트 메시지 띄우도록 재정의 하기</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onStart</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onStart</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onStart() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "onResume() 호출됨", Toast.LENGTH_LONG).show();
-        restoreState(); // 액티비티 재시작 전 상태 복원
-    }
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onRestart</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onRestart</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onRestart() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    protected void saveState(){
-        /* 1. "pref"라는 이름의 저장소 생성
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onStop</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onStop</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onStop() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onDestroy() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onPause() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onResume() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>MenuActivity 액티비티를 하나 만들고, 첫 번째 버튼을 누르면 MenuActivity 액티비티를 띄운다. 두 번째 버튼을 클릭하면 액티비티를 종료한다. 앱을 실행하여 실행해보면 생명주기 메소드가 호출될 때 띄우는 토스트 메시지를 확인할 수 있다.</p>
+
+<p>특히 onResume() 메소드와 onPause() 메소드는 화면이 보일 때와 보이지 않을 때 항상 호출된다. 따라서 데이터의 저장과 복원을 위해서도 아주 중요한 메소드가 된다. 예를 들어 게임을 하다가 전화가 오면 onPause() 메소드가 항상 먼저 호출된다. onPause() 메소드 안에서 데이터를 저장하면, 전화를 끊고 다시 게임 화면으로 돌아올 때 호출되는 onResume() 메소드 안에서 데이터를 복원하는 코드를 구현하면 된다.</p>
+
+<p>입력상자에 입력 된 내용이 앱을 껐다 켜도 다시 복원되도록 하는 앱을 만들어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/nameInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:hint=</span><span class="s">"내용을 입력하세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"300dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"종료하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>버튼을 누르면 애플리케이션이 종료된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplelifecycle</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.app.Activity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.SharedPreferences</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">EditText</span> <span class="n">nameInput</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">nameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">nameInput</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">finish</span><span class="o">();</span> <span class="c1">// 버튼을 누르면 액티비티 종료</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onPause() 호출됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="n">saveState</span><span class="o">();</span> <span class="c1">// 액티비티 중지 전 상태 저장</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onResume() 호출됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="n">restoreState</span><span class="o">();</span> <span class="c1">// 액티비티 재시작 전 상태 복원</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">saveState</span><span class="o">(){</span>
+        <span class="cm">/* 1. "pref"라는 이름의 저장소 생성
            2. "pref" 저장소의 에디터 생성
            3. 에디터를 통해 key:"name", value: 입력상자의 문자열 데이터 저장
-           4. 에디터 제출*/
-        SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("name", nameInput.getText().toString());
-        editor.commit();
-    }
-    protected void restoreState(){
-        /* 1. "pref" 저장소 참조
+           4. 에디터 제출*/</span>
+        <span class="nc">SharedPreferences</span> <span class="n">pref</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="o">(</span><span class="s">"pref"</span><span class="o">,</span> <span class="nc">Activity</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">);</span>
+        <span class="nc">SharedPreferences</span><span class="o">.</span><span class="na">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">pref</span><span class="o">.</span><span class="na">edit</span><span class="o">();</span>
+        <span class="n">editor</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">nameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">editor</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">restoreState</span><span class="o">(){</span>
+        <span class="cm">/* 1. "pref" 저장소 참조
            2. 저장소가 비어있지 않고 key가 "name"인 데이터가 있으면
            3. "name" key로 문자열 데이터 얻어와 저장
-           4. 얻어온 데이터를 입력상자의 텍스트로 지정 */
-        SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-        if(pref!=null && pref.contains("name")){
-            String name = pref.getString("name", "");
-            nameInput.setText(name);
-        }
-    }
+           4. 얻어온 데이터를 입력상자의 텍스트로 지정 */</span>
+        <span class="nc">SharedPreferences</span> <span class="n">pref</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="o">(</span><span class="s">"pref"</span><span class="o">,</span> <span class="nc">Activity</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">pref</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">pref</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"name"</span><span class="o">)){</span>
+            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">pref</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+            <span class="n">nameInput</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 
-    // 저장소 비우기
-    protected void ClearMyPrefs(){
-        SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.clear();
-        editor.commit();
-    }
-}
-~~~
+    <span class="c1">// 저장소 비우기</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">ClearMyPrefs</span><span class="o">(){</span>
+        <span class="nc">SharedPreferences</span> <span class="n">pref</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="o">(</span><span class="s">"pref"</span><span class="o">,</span> <span class="nc">Activity</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">);</span>
+        <span class="nc">SharedPreferences</span><span class="o">.</span><span class="na">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">pref</span><span class="o">.</span><span class="na">edit</span><span class="o">();</span>
+        <span class="n">editor</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">editor</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-앱에서 간단한 데이터를 저장 및 복원할 때는 SharedPreferences 클래스를 사용하면 된다. SharedPreferences는 앱 내부에 파일을 하나 만들어 읽고 쓴다.
+<p>앱에서 간단한 데이터를 저장 및 복원할 때는 SharedPreferences 클래스를 사용하면 된다. SharedPreferences는 앱 내부에 파일을 하나 만들어 읽고 쓴다.</p>
 
-![3](/images/android/18/3.jpg){: width="30%" height="30%"}
-![4](/images/android/18/4.jpg){: width="30%" height="30%"}
-![5](/images/android/18/5.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/18/3.jpg" alt="3" width="30%" height="30%" />
+<img src="/images/android/18/4.jpg" alt="4" width="30%" height="30%" />
+<img src="/images/android/18/5.jpg" alt="5" width="30%" height="30%" /></p>
 
-버튼을 눌러 앱을 종료했다가 다시 실행했을 때 입력상자의 내용이 복원되어 있는것을 확인할 수 있다.
+<p>버튼을 눌러 앱을 종료했다가 다시 실행했을 때 입력상자의 내용이 복원되어 있는것을 확인할 수 있다.</p>
+
   </div>
   
   <div class="post">
@@ -11392,224 +11388,219 @@ public class MainActivity extends AppCompatActivity {
 
     <span class="post-date">01 May 2019</span>
 
-    액티비티를 띄울 때 사용하는 인텐트에는 액션과 데이터 이외에도 부가적인 데이터를 넣어서 전달할 수도 있다. 인텐트 안에는 번들(Bundle) 객체가 들어 있는데, 이 객체는 해시 테이블과 유사하여 key-value 쌍으로 데이터를 입력, 출력할 수 있다.
+    <p>액티비티를 띄울 때 사용하는 인텐트에는 액션과 데이터 이외에도 부가적인 데이터를 넣어서 전달할 수도 있다. 인텐트 안에는 번들(Bundle) 객체가 들어 있는데, 이 객체는 해시 테이블과 유사하여 key-value 쌍으로 데이터를 입력, 출력할 수 있다.</p>
 
-![1](/images/android/17/1.png){: width="60%" height="60%"}
+<p><img src="/images/android/17/1.png" alt="1" width="60%" height="60%" /></p>
 
-번들 객체에는 기본 자료형 뿐만 아니라 문자열이나 배열등도 넣어서 전달할 수 있다. 그러나 객체(Object) 자료형은 그냥 전달할 수 없고 바이트 배열로 변환하거나 직렬화(serialization) 한 후 전달할 수 있다. 안드로이드에서는 Serializable 인터페이스와 유사하지만 직렬화한 이후 크기가 작은 Parcelable 인터페이스를 권장한다.
+<p>번들 객체에는 기본 자료형 뿐만 아니라 문자열이나 배열등도 넣어서 전달할 수 있다. 그러나 객체(Object) 자료형은 그냥 전달할 수 없고 바이트 배열로 변환하거나 직렬화(serialization) 한 후 전달할 수 있다. 안드로이드에서는 Serializable 인터페이스와 유사하지만 직렬화한 이후 크기가 작은 Parcelable 인터페이스를 권장한다.</p>
 
-Parcelable 인터페이스를 구현하는 클래스는 다음 두 가지의 메소드를 구현(implement)해야 한다.
+<p>Parcelable 인터페이스를 구현하는 클래스는 다음 두 가지의 메소드를 구현(implement)해야 한다.</p>
 
-~~~ java
-public abstract int describeContents()
-public abstract void wrtieToParcel(Parcel dest, int flags)
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">int</span> <span class="nf">describeContents</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">wrtieToParcel</span><span class="o">(</span><span class="nc">Parcel</span> <span class="n">dest</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">)</span>
+</code></pre></div></div>
 
-writeToParcel() : 객체가 가지는 데이터를 Parcel 객체로 만들어주는 역할
+<p>writeToParcel() : 객체가 가지는 데이터를 Parcel 객체로 만들어주는 역할</p>
 
-&nbsp;
-Parcelable 인터페이스를 구현하는 클래스를 하나 만들어보자.
-~~~ java
-package io.swnomad.sampleparcelable;
+<p> 
+Parcelable 인터페이스를 구현하는 클래스를 하나 만들어보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleparcelable</span><span class="o">;</span>
 
-import android.os.Parcel;
-import android.os.Parcelable;
+<span class="kn">import</span> <span class="nn">android.os.Parcel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Parcelable</span><span class="o">;</span>
 
-public class SimpleData implements Parcelable {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleData</span> <span class="kd">implements</span> <span class="nc">Parcelable</span> <span class="o">{</span>
 
-    int number;
-    String message;
+    <span class="kt">int</span> <span class="n">number</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">message</span><span class="o">;</span>
 
-    public SimpleData(int number, String message){
-        this.number = number;
-        this.message = message;
-    }
+    <span class="kd">public</span> <span class="nf">SimpleData</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">,</span> <span class="nc">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">number</span> <span class="o">=</span> <span class="n">number</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    public SimpleData(Parcel src){
-        number = src.readInt();
-        message = src.readString();
-    }
+    <span class="kd">public</span> <span class="nf">SimpleData</span><span class="o">(</span><span class="nc">Parcel</span> <span class="n">src</span><span class="o">){</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="na">readString</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    //Parcelable 인터페이스를 구현하는 클래스는 필수로 CREATOR 상수를 정의해야 한다.
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator(){
-        public SimpleData createFromParcel(Parcel in){
-            return new SimpleData(in);
-        }
+    <span class="c1">//Parcelable 인터페이스를 구현하는 클래스는 필수로 CREATOR 상수를 정의해야 한다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Parcelable</span><span class="o">.</span><span class="na">Creator</span> <span class="no">CREATOR</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Parcelable</span><span class="o">.</span><span class="na">Creator</span><span class="o">(){</span>
+        <span class="kd">public</span> <span class="nc">SimpleData</span> <span class="nf">createFromParcel</span><span class="o">(</span><span class="nc">Parcel</span> <span class="n">in</span><span class="o">){</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleData</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        public SimpleData[] newArray(int size){
-            return new SimpleData[size];
-        }
-    };
+        <span class="kd">public</span> <span class="nc">SimpleData</span><span class="o">[]</span> <span class="nf">newArray</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">){</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nc">SimpleData</span><span class="o">[</span><span class="n">size</span><span class="o">];</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
 
-    // Parcelable 인터페이스 구현에서 필수로 정의해야하는 메소드
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+    <span class="c1">// Parcelable 인터페이스 구현에서 필수로 정의해야하는 메소드</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">describeContents</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    // 객체가 가진 데이터를 Parcel 객체로 만들어주는 메소드
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(number);
-        dest.writeString(message);
-    }
-    /* ******************************************************** */
+    <span class="c1">// 객체가 가진 데이터를 Parcel 객체로 만들어주는 메소드</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeToParcel</span><span class="o">(</span><span class="nc">Parcel</span> <span class="n">dest</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">dest</span><span class="o">.</span><span class="na">writeInt</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+        <span class="n">dest</span><span class="o">.</span><span class="na">writeString</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="cm">/* ******************************************************** */</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-SimpleData 클래스는 Parcelable 클래스를 구현하므로 생성자를 통해 객체를 만들면 자동으로 Parcel 객체 형태로 만들어진다.
+<p>SimpleData 클래스는 Parcelable 클래스를 구현하므로 생성자를 통해 객체를 만들면 자동으로 Parcel 객체 형태로 만들어진다.</p>
 
-이제 SimpleData를 인텐트에 부가데이터로 담아서 다른 액티비티로 전달해보자.
+<p>이제 SimpleData를 인텐트에 부가데이터로 담아서 다른 액티비티로 전달해보자.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <EditText
-        android:id="@+id/numberInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#aaffffff"
-        android:hint="숫자를 입력하세요"
-        android:textSize="24dp"
-        android:layout_margin="10dp"/>
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/numberInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:background=</span><span class="s">"#aaffffff"</span>
+        <span class="na">android:hint=</span><span class="s">"숫자를 입력하세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
 
-    <EditText
-        android:id="@+id/stringInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#aaffffff"
-        android:hint="문자열을 입력하세요"
-        android:textSize="24dp"
-        android:layout_margin="10dp"/>
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/stringInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:background=</span><span class="s">"#aaffffff"</span>
+        <span class="na">android:hint=</span><span class="s">"문자열을 입력하세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="메뉴 액티비티 띄우기"
-        android:textSize="24dp"
-        android:layout_marginTop="200dp"
-        android:layout_gravity="center_horizontal"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"메뉴 액티비티 띄우기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"200dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-두 개의 입력상자에 하나는 숫자, 하나는 문자열을 입력받아서 버튼을 눌러서 다른 액티비티로 전달하는 Java 코드를 작성해보자.
+<p>두 개의 입력상자에 하나는 숫자, 하나는 문자열을 입력받아서 버튼을 눌러서 다른 액티비티로 전달하는 Java 코드를 작성해보자.</p>
 
-~~~ java
-package io.swnomad.sampleparcelable;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleparcelable</span><span class="o">;</span>
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
 
-public class MainActivity extends AppCompatActivity {
-    public static final String KEY_SIMPLE_DATA = "data";
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">KEY_SIMPLE_DATA</span> <span class="o">=</span> <span class="s">"data"</span><span class="o">;</span>
 
-    Button button;
-    EditText numberInput;
-    EditText stringInput;
+    <span class="nc">Button</span> <span class="n">button</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">numberInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">stringInput</span><span class="o">;</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        numberInput = findViewById(R.id.numberInput);
-        stringInput = findViewById(R.id.stringInput);
-        button = findViewById(R.id.button);
+        <span class="n">numberInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">numberInput</span><span class="o">);</span>
+        <span class="n">stringInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">stringInput</span><span class="o">);</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="nc">MenuActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
-                int num = Integer.parseInt(numberInput.getText().toString());
-                String str = stringInput.getText().toString();
+                <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">numberInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+                <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">stringInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
 
-                SimpleData data = new SimpleData(num, str); //SimpleData 객체 생성
-                // SimpleData 클래스는 Parcelable 인터페이스를 구현하므로 객체가 Parcel 객체 형태로 만들어진다.
+                <span class="nc">SimpleData</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleData</span><span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="n">str</span><span class="o">);</span> <span class="c1">//SimpleData 객체 생성</span>
+                <span class="c1">// SimpleData 클래스는 Parcelable 인터페이스를 구현하므로 객체가 Parcel 객체 형태로 만들어진다.</span>
 
-                intent.putExtra(KEY_SIMPLE_DATA, data); //인텐트에 부가데이터로 SimpleData 객체 넣기
-                startActivity(intent); //액티비티 띄우기
-            }
-        });
+                <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="no">KEY_SIMPLE_DATA</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span> <span class="c1">//인텐트에 부가데이터로 SimpleData 객체 넣기</span>
+                <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span> <span class="c1">//액티비티 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
 
-    }
-}
-~~~
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-버튼을 클릭하면 두 개의 입력상자로부터 숫자와 문자열을 얻어와서 SimpleData 생성자의 전달인자로 넣어 객체를 생성하는데, Parcelable 인터페이스를 구현했으므로 Parcel 객체로 만들어진다. 그리고 인텐트에 부가데이터로 담아서 MenuActivity로 전달한다.
+<p>버튼을 클릭하면 두 개의 입력상자로부터 숫자와 문자열을 얻어와서 SimpleData 생성자의 전달인자로 넣어 객체를 생성하는데, Parcelable 인터페이스를 구현했으므로 Parcel 객체로 만들어진다. 그리고 인텐트에 부가데이터로 담아서 MenuActivity로 전달한다.</p>
 
-메뉴 액티비티는 아래와 같은 코드로 구성되어있다.
+<p>메뉴 액티비티는 아래와 같은 코드로 구성되어있다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
     
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="300dp"
-        android:text="전달받은 데이터"
-        android:textSize="24dp"/>
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"300dp"</span>
+        <span class="na">android:text=</span><span class="s">"전달받은 데이터"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-레이아웃에는 전달받은 데이터를 보여줄 텍스트뷰 하나만 있다.
+<p>레이아웃에는 전달받은 데이터를 보여줄 텍스트뷰 하나만 있다.</p>
 
-~~~ java
-package io.swnomad.sampleparcelable;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleparcelable</span><span class="o">;</span>
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
 
-public class MenuActivity extends AppCompatActivity {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MenuActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    public static final String KEY_SIMPLE_DATA = "data";
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">KEY_SIMPLE_DATA</span> <span class="o">=</span> <span class="s">"data"</span><span class="o">;</span>
 
-    TextView textView;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_menu</span><span class="o">);</span>
 
-        textView = findViewById(R.id.textView);
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
 
-        Intent intent = getIntent(); //인텐트 받기
+        <span class="nc">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">getIntent</span><span class="o">();</span> <span class="c1">//인텐트 받기</span>
 
-        Bundle bundle = intent.getExtras(); //인텐트에서 부가 데이터 빼서 bundle 객체로 저장
-        SimpleData data = (SimpleData) bundle.getParcelable(KEY_SIMPLE_DATA); //Parcel 객체 빼내서 SimpleData 타입으로 변환
+        <span class="nc">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getExtras</span><span class="o">();</span> <span class="c1">//인텐트에서 부가 데이터 빼서 bundle 객체로 저장</span>
+        <span class="nc">SimpleData</span> <span class="n">data</span> <span class="o">=</span> <span class="o">(</span><span class="nc">SimpleData</span><span class="o">)</span> <span class="n">bundle</span><span class="o">.</span><span class="na">getParcelable</span><span class="o">(</span><span class="no">KEY_SIMPLE_DATA</span><span class="o">);</span> <span class="c1">//Parcel 객체 빼내서 SimpleData 타입으로 변환</span>
 
-        //텍스트뷰에 전달받은 부가 데이터 표시
-        textView.setText("전달받은 데이터\n"+"숫자: "+data.number+"\n"+"문자열: "+data.message);
-    }
-}
-~~~
+        <span class="c1">//텍스트뷰에 전달받은 부가 데이터 표시</span>
+        <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"전달받은 데이터\n"</span><span class="o">+</span><span class="s">"숫자: "</span><span class="o">+</span><span class="n">data</span><span class="o">.</span><span class="na">number</span><span class="o">+</span><span class="s">"\n"</span><span class="o">+</span><span class="s">"문자열: "</span><span class="o">+</span><span class="n">data</span><span class="o">.</span><span class="na">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-getIntent() 메소드를 통해 인텐트를 받는다. 그리고 번들 객체로 부가 데이터를 받는다. 그리고 SimpleData 자료형으로 형변환을 하고 텍스트뷰에 데이터가 보이도록 설정한다.
+<p>getIntent() 메소드를 통해 인텐트를 받는다. 그리고 번들 객체로 부가 데이터를 받는다. 그리고 SimpleData 자료형으로 형변환을 하고 텍스트뷰에 데이터가 보이도록 설정한다.</p>
 
-![2](/images/android/17/2.jpg){: width="30%" height="30%"}
-![3](/images/android/17/3.jpg){: width="30%" height="30%"}
-![4](/images/android/17/4.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/17/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/17/3.jpg" alt="3" width="30%" height="30%" />
+<img src="/images/android/17/4.jpg" alt="4" width="30%" height="30%" /></p>
+
   </div>
   
 </div>

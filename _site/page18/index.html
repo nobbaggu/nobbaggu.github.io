@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,193 +10682,180 @@
 
     <span class="post-date">21 Dec 2018</span>
 
-    # 1. 여러 인터페이스를 구현한 클래스
+    <h1 id="1-여러-인터페이스를-구현한-클래스">1. 여러 인터페이스를 구현한 클래스</h1>
 
-* * *
+<hr />
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public interface Buy {
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Buy</span> <span class="o">{</span>
    
-   public void buy();
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buy</span><span class="o">();</span>
    
-   default void order() {
-      System.out.println("buy order");
-   }
-}
-~~~
+   <span class="k">default</span> <span class="kt">void</span> <span class="nf">order</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"buy order"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public interface Sell {
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Sell</span> <span class="o">{</span>
    
-   public void sell();
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sell</span><span class="o">();</span>
    
-   default void order() {
-      System.out.print("sell order");
-   }
+   <span class="k">default</span> <span class="kt">void</span> <span class="nf">order</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"sell order"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public class Customer implements Buy, Sell{
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="kd">implements</span> <span class="nc">Buy</span><span class="o">,</span> <span class="nc">Sell</span><span class="o">{</span>
 
-   @Override //Sell인터페이스의 sell()메소드 구현
-   public void sell() {
-      System.out.println("I sell!");
+   <span class="nd">@Override</span> <span class="c1">//Sell인터페이스의 sell()메소드 구현</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sell</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I sell!"</span><span class="o">);</span>
       
-   }
+   <span class="o">}</span>
 
-   @Override //Buy인터페이스의 buy()메소드 구현
-   public void buy() {
-      System.out.println("I buy!");
-   }
+   <span class="nd">@Override</span> <span class="c1">//Buy인터페이스의 buy()메소드 구현</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buy</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I buy!"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   @Override //Buy, Sell 인터페이스에 있는 order()메소드 오버라이딩
-   public void order() {
-      System.out.println("customer order");
-   }
+   <span class="nd">@Override</span> <span class="c1">//Buy, Sell 인터페이스에 있는 order()메소드 오버라이딩</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">order</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"customer order"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-그럼 이제 위의 인터페이스, 클래스로 프로그램을 만들어 실행시켜보자.
+<p>그럼 이제 위의 인터페이스, 클래스로 프로그램을 만들어 실행시켜보자.</p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public class CustomerTest {
-   public static void main(String[] args) {
-      Customer customer = new Customer(); //customer타입 객체 생성
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Customer</span> <span class="n">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Customer</span><span class="o">();</span> <span class="c1">//customer타입 객체 생성</span>
       
-      Buy buyer = customer; //객체를 Buy형으로 변환
-      Sell seller = customer; //객체를 Sell형으로 변환
+      <span class="nc">Buy</span> <span class="n">buyer</span> <span class="o">=</span> <span class="n">customer</span><span class="o">;</span> <span class="c1">//객체를 Buy형으로 변환</span>
+      <span class="nc">Sell</span> <span class="n">seller</span> <span class="o">=</span> <span class="n">customer</span><span class="o">;</span> <span class="c1">//객체를 Sell형으로 변환</span>
       
-      buyer.buy(); //Customer에서 구현한 buy()메소드
-      buyer.order(); //Buy의 default메소드 order() ????
+      <span class="n">buyer</span><span class="o">.</span><span class="na">buy</span><span class="o">();</span> <span class="c1">//Customer에서 구현한 buy()메소드</span>
+      <span class="n">buyer</span><span class="o">.</span><span class="na">order</span><span class="o">();</span> <span class="c1">//Buy의 default메소드 order() ????</span>
       
-      seller.sell(); //Customer에서 구현한 sell()메소드
-      seller.order(); //Sell의 default메소드 order() ????
+      <span class="n">seller</span><span class="o">.</span><span class="na">sell</span><span class="o">();</span> <span class="c1">//Customer에서 구현한 sell()메소드</span>
+      <span class="n">seller</span><span class="o">.</span><span class="na">order</span><span class="o">();</span> <span class="c1">//Sell의 default메소드 order() ????</span>
       
-      customer.order(); //Customer에서 재정의한 order() 메소드
-   }
-}
-~~~
+      <span class="n">customer</span><span class="o">.</span><span class="na">order</span><span class="o">();</span> <span class="c1">//Customer에서 재정의한 order() 메소드</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-I buy!
+<p>I buy!</p>
 
+<p>customer order</p>
 
-customer order
+<p>I sell!</p>
 
+<p>customer order</p>
 
-I sell!
+<p>customer order</p>
 
+<p>buy.order(), sell.order(), customer.order() 모두 같은 실행결과가 나온다. 모든 메소드가 Customer 클래스에서 재정의한 order() 메소드를 호출한다.</p>
 
-customer order
+<p>가상 메소드 원리를 생각하면 이는 당연한 결과이다. buyer, seller 참조변수의 자료형이 Buy, Sell형이라고 해도 두 참조변수는 customer 참조변수를 형 변환한 것일 뿐이다. 따라서 buyer, seller, customer 세 참조변수 모두 customer가 참조하는 객체를 참조하며, 그 객체는 new Customer()이다. 따라서 세 참조변수를 통해서 order() 메소드를 호출하면 모두 Customer의 order() 메소드가 실행되는 것이다.</p>
 
+<p> </p>
 
-customer order
+<p> </p>
 
+<h1 id="2-인터페이스-상속">2. 인터페이스 상속</h1>
 
- buy.order(), sell.order(), customer.order() 모두 같은 실행결과가 나온다. 모든 메소드가 Customer 클래스에서 재정의한 order() 메소드를 호출한다.
+<hr />
 
-가상 메소드 원리를 생각하면 이는 당연한 결과이다. buyer, seller 참조변수의 자료형이 Buy, Sell형이라고 해도 두 참조변수는 customer 참조변수를 형 변환한 것일 뿐이다. 따라서 buyer, seller, customer 세 참조변수 모두 customer가 참조하는 객체를 참조하며, 그 객체는 new Customer()이다. 따라서 세 참조변수를 통해서 order() 메소드를 호출하면 모두 Customer의 order() 메소드가 실행되는 것이다.
+<p>클래스가 다른 클래스를 상속하는 것 처럼 인터페이스도 인터페이스를 상속할 수 있다.</p>
 
-&nbsp;
+<p>클래스의 상속과는 다르게 인터페이스에서 상속받는 것은 메소드의 기능이 아닌 형태일 뿐이다. 따라서 인터페이스는 여러개의 인터페이스를 상속받을 수 있다.</p>
 
-&nbsp;
+<p>이 때 두 인터페이스를 상속받은 하위 인터페이스도 자신만의 가상메소드를 가진다고 해보자. 이 인터페이스를 구현한 클래스는 상위 인터페이스 2개, 하위1터페이스 1개에 있는 모든 추상 메소드를 구현해야한다.</p>
 
-# 2. 인터페이스 상속
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-* * *
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Tiger</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tigerAttack</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-클래스가 다른 클래스를 상속하는 것 처럼 인터페이스도 인터페이스를 상속할 수 있다.
+<p> </p>
 
-클래스의 상속과는 다르게 인터페이스에서 상속받는 것은 메소드의 기능이 아닌 형태일 뿐이다. 따라서 인터페이스는 여러개의 인터페이스를 상속받을 수 있다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-이 때 두 인터페이스를 상속받은 하위 인터페이스도 자신만의 가상메소드를 가진다고 해보자. 이 인터페이스를 구현한 클래스는 상위 인터페이스 2개, 하위1터페이스 1개에 있는 모든 추상 메소드를 구현해야한다.
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Lion</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lionAttack</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-package interfaceprac;
+<p> </p>
 
-public interface Tiger {
-   public void tigerAttack();
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-&nbsp;
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Liger</span> <span class="kd">extends</span> <span class="nc">Tiger</span><span class="o">,</span> <span class="nc">Lion</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">superAttack</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-package interfaceprac;
+<p> </p>
 
-public interface Lion {
-   public void lionAttack();
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-&nbsp;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pocketmon</span> <span class="kd">implements</span> <span class="nc">Liger</span> <span class="o">{</span>
 
-~~~ java
-package interfaceprac;
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tigerAttack</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"tiger attack~!"</span><span class="o">);</span>
+   <span class="o">}</span>
 
-public interface Liger extends Tiger, Lion {
-   public void superAttack();
-}
-~~~
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lionAttack</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"lion attack~!"</span><span class="o">);</span>
+   <span class="o">}</span>
 
-&nbsp;
-
-~~~ java
-package interfaceprac;
-
-public class Pocketmon implements Liger {
-
-   @Override
-   public void tigerAttack() {
-      System.out.println("tiger attack~!");
-   }
-
-   @Override
-   public void lionAttack() {
-      System.out.println("lion attack~!");
-   }
-
-   @Override
-   public void superAttack() {
-      System.out.println("super attack!~!~~!");
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">superAttack</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"super attack!~!~~!"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-Pocketmon클래스는 Liger인터페이스를 구현하였고 총 세 개의 추상메소드를 구현해야 한다.
+<p>Pocketmon클래스는 Liger인터페이스를 구현하였고 총 세 개의 추상메소드를 구현해야 한다.</p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public class PocketmonTest {
-   public static void main(String[] args) {
-      Pocketmon pokemon = new Pocketmon();
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PocketmonTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Pocketmon</span> <span class="n">pokemon</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pocketmon</span><span class="o">();</span>
       
-      pokemon.tigerAttack();
-      pokemon.lionAttack();
-      pokemon.superAttack();
-   }
-}
-~~~
+      <span class="n">pokemon</span><span class="o">.</span><span class="na">tigerAttack</span><span class="o">();</span>
+      <span class="n">pokemon</span><span class="o">.</span><span class="na">lionAttack</span><span class="o">();</span>
+      <span class="n">pokemon</span><span class="o">.</span><span class="na">superAttack</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
+
   </div>
   
   <div class="post">
@@ -10904,116 +10867,112 @@ public class PocketmonTest {
 
     <span class="post-date">21 Dec 2018</span>
 
-    자바8 이전에는 인터페이스는 상수와 추상메소드 이외의 요소는 가질 수 없었다. 그러나 인터페이스를 구현한 클래스들에 공통적으로 사용할 수 있는 메소드가 필요한 경우 혹은 객체를 만들지 않고도 호출 간으한 메소드가 필요한 경우가 있다.
+    <p>자바8 이전에는 인터페이스는 상수와 추상메소드 이외의 요소는 가질 수 없었다. 그러나 인터페이스를 구현한 클래스들에 공통적으로 사용할 수 있는 메소드가 필요한 경우 혹은 객체를 만들지 않고도 호출 간으한 메소드가 필요한 경우가 있다.</p>
 
-이러한 경우 편의성을 제공하기 위해 Java8부터는 디폴트 메소드와 정적 메소드 기능을 추가하게 된다.
+<p>이러한 경우 편의성을 제공하기 위해 Java8부터는 디폴트 메소드와 정적 메소드 기능을 추가하게 된다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. default 메소드
+<h1 id="1-default-메소드">1. default 메소드</h1>
 
-* * *
+<hr />
 
-디폴트 메소드는 인터페이스에서 코드를 구현한 메소드이다. 추상 메소드만 가질 수 있던 자바8 이전에는 인터페이스를 구현한 여러 클래스에서 공통된 기능의 메소드가 필요하면 각 클래스마다 같은 코드를 여러 번 구현해야했다. 그러나 디폴트 메소드는 인터페이스를 구현한 모든 클래스가 상속받은 것과 같이 기본적으로 사용할 수 있는 메소드이다.
+<p>디폴트 메소드는 인터페이스에서 코드를 구현한 메소드이다. 추상 메소드만 가질 수 있던 자바8 이전에는 인터페이스를 구현한 여러 클래스에서 공통된 기능의 메소드가 필요하면 각 클래스마다 같은 코드를 여러 번 구현해야했다. 그러나 디폴트 메소드는 인터페이스를 구현한 모든 클래스가 상속받은 것과 같이 기본적으로 사용할 수 있는 메소드이다.</p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public interface Calc {
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Calc</span> <span class="o">{</span>
    
-   double PI = 3.14;
-   int ERROR = -999999999;
+   <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="no">ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999999999</span><span class="o">;</span>
    
-   default int add(int num1, int num2) {
-      return num1+num2;
-   }
+   <span class="k">default</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   default int subtract(int num1, int num2) {
-      return num1-num2;
-   }
+   <span class="k">default</span> <span class="kt">int</span> <span class="nf">subtract</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">-</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   int mul(int num1, int num2);
-   double div(int num1, int num2);
-}
-~~~
+   <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+   <span class="kt">double</span> <span class="nf">div</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-add(), subtract() 두 메소드는 default 예약어를 통해 선언되었다. 인터페이스의 메소드이지만 코드가 구현되어 있다. 그리고 Calc 인터페이스를 구현한 모든 클래스에서는 add(), subtract() 메소드를 기본적으로 사용할 수 있다.
+<p>add(), subtract() 두 메소드는 default 예약어를 통해 선언되었다. 인터페이스의 메소드이지만 코드가 구현되어 있다. 그리고 Calc 인터페이스를 구현한 모든 클래스에서는 add(), subtract() 메소드를 기본적으로 사용할 수 있다.</p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public class MyCalc implements Calc{
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCalc</span> <span class="kd">implements</span> <span class="nc">Calc</span><span class="o">{</span>
 
-   @Override
-   public int mul(int num1, int num2) {
-      return num1*num2;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">*</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   @Override
-   public double div(int num1, int num2) {
-      return (num2==0) ? ERROR : (double)num1/num2;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">double</span> <span class="nf">div</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="o">(</span><span class="n">num2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="no">ERROR</span> <span class="o">:</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">num1</span><span class="o">/</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-인터페이스의 추상 메소드 mul()과 div()의 코드를 정의 하였다.
+<p>인터페이스의 추상 메소드 mul()과 div()의 코드를 정의 하였다.</p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public class CalcTest {
-   public static void main(String[] args) {
-      MyCalc cal = new MyCalc();
-      System.out.println(cal.add(5, 2));
-      System.out.println(cal.subtract(5, 2));
-      System.out.println(cal.mul(5, 2));
-      System.out.println(cal.div(5, 2));
-   }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalcTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MyCalc</span> <span class="n">cal</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyCalc</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">mul</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">div</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-mul(), div()와 같이 인터페이스를 구현한 클래스에서 만든 메소드뿐만 아니라 인터페이스에서 만든 default 메소드 역시 사용 가능하다.
+<p>mul(), div()와 같이 인터페이스를 구현한 클래스에서 만든 메소드뿐만 아니라 인터페이스에서 만든 default 메소드 역시 사용 가능하다.</p>
 
-추가적으로, **디폴트 메소드는 인터페이스를 구현한 클래스에서 재정의(오버라이딩) 가능하다.**
+<p>추가적으로, <strong>디폴트 메소드는 인터페이스를 구현한 클래스에서 재정의(오버라이딩) 가능하다.</strong></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. static 메소드
+<h1 id="2-static-메소드">2. static 메소드</h1>
 
-* * *
+<hr />
 
-정적 메소드는 static 선언을 하여 만든 메소드이다. 클래스 내에서 static 변수와 static 메소드는 인스턴스의 생성 여부와 상관 없이 사용 가능 하였다.
+<p>정적 메소드는 static 선언을 하여 만든 메소드이다. 클래스 내에서 static 변수와 static 메소드는 인스턴스의 생성 여부와 상관 없이 사용 가능 하였다.</p>
 
-인터페이스에서도 같다. 인스턴스를 만들지 않고도 호출 가능한 메소드의 사용을 위해 Java8부터 인터페이스에서도 static 메소드 기능을 지원하는 것이다.
+<p>인터페이스에서도 같다. 인스턴스를 만들지 않고도 호출 가능한 메소드의 사용을 위해 Java8부터 인터페이스에서도 static 메소드 기능을 지원하는 것이다.</p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public interface Calc {
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Calc</span> <span class="o">{</span>
    
-   double PI = 3.14;
-   int ERROR = -999999999;
+   <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="no">ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999999999</span><span class="o">;</span>
    
-   static int add(int num1, int num2) {
-      return num1+num2;
-   }
-}
-~~~
+   <span class="kd">static</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public class CalcTest {
-   public static void main(String[] args) {
-      System.out.println(Calc.add(1, 2));
-   }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalcTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Calc</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
+
   </div>
   
   <div class="post">
@@ -11025,144 +10984,146 @@ public class CalcTest {
 
     <span class="post-date">19 Dec 2018</span>
 
-    #   1. 인터페이스의 역할
+    <h1 id="-1-인터페이스의-역할">  1. 인터페이스의 역할</h1>
 
-* * *
+<hr />
 
-인터페이스에는 코드가 작성되지 않은 추상 메소드만 있다. 그러나 인터페이스를 구현한 클래스에서 정의하는 메소드의 반환형과 이름, 매개변수의 타입 등 메소드의 형태를 알 수 있는 정보가 포함되어 있다.
+<p>인터페이스에는 코드가 작성되지 않은 추상 메소드만 있다. 그러나 인터페이스를 구현한 클래스에서 정의하는 메소드의 반환형과 이름, 매개변수의 타입 등 메소드의 형태를 알 수 있는 정보가 포함되어 있다.</p>
 
-인터페이스는 사용 설명서 같은 역할을 한다. 어떠한 인터페이스를 구현하는 클래스1, 클래스2, 클래스3이 있고 각각 기능에 따라 메소드 구현을 달리 하더라도 메소드의 형태에 관한 정보가 인터페이스에 있기 때문에 인터페이스가 구현된 코드를 보면 이를 구현하는 클래스의 사용 방법에 대해 알 수 있다.
+<p>인터페이스는 사용 설명서 같은 역할을 한다. 어떠한 인터페이스를 구현하는 클래스1, 클래스2, 클래스3이 있고 각각 기능에 따라 메소드 구현을 달리 하더라도 메소드의 형태에 관한 정보가 인터페이스에 있기 때문에 인터페이스가 구현된 코드를 보면 이를 구현하는 클래스의 사용 방법에 대해 알 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 인터페이스와 다형성
+<h1 id="2-인터페이스와-다형성">2. 인터페이스와 다형성</h1>
 
-* * *
+<hr />
 
-콜센터 상담원 배분 프로그램을 만들려고 한다. 그런데 3가지의 서로 다른 배분 방식을 구현하고 싶다.
+<p>콜센터 상담원 배분 프로그램을 만들려고 한다. 그런데 3가지의 서로 다른 배분 방식을 구현하고 싶다.</p>
 
-1. 순서대로 전화를 가져와 상담원 순서대로 배분
+<ol>
+  <li>
+    <p>순서대로 전화를 가져와 상담원 순서대로 배분</p>
+  </li>
+  <li>
+    <p>순서대로 전화를 가져와 대기고객 수가 적은 상담원에 배분</p>
+  </li>
+  <li>
+    <p>고객 등급 순으로 전화를 가져와 업무 능력이 높은 상담원에게 우선 배분</p>
+  </li>
+</ol>
 
-2. 순서대로 전화를 가져와 대기고객 수가 적은 상담원에 배분
+<p>먼저 공통적인 기능의 메소드를 정의한 인터페이스부터 만들 수 있다.</p>
 
-3. 고객 등급 순으로 전화를 가져와 업무 능력이 높은 상담원에게 우선 배분
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">scheduler</span><span class="o">;</span>
 
-먼저 공통적인 기능의 메소드를 정의한 인터페이스부터 만들 수 있다.
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Scheduler</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNextCall</span><span class="o">();</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendCallToAgent</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-package scheduler;
+<p>이제 각각의 방법마다 인터페이스를 구현한 3가지의 클래스를 만들어본다.</p>
 
-public interface Scheduler {
-   public void getNextCall();
-   public void sendCallToAgent();
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">scheduler</span><span class="o">;</span>
 
-이제 각각의 방법마다 인터페이스를 구현한 3가지의 클래스를 만들어본다.
+<span class="c1">//배분 방식 1</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RoundRobin</span> <span class="kd">implements</span> <span class="nc">Scheduler</span> <span class="o">{</span>
 
-~~~ java
-package scheduler;
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNextCall</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"get calls as ordered"</span><span class="o">);</span>
+   <span class="o">}</span>
 
-//배분 방식 1
-public class RoundRobin implements Scheduler {
-
-   @Override
-   public void getNextCall() {
-      System.out.println("get calls as ordered");
-   }
-
-   @Override
-   public void sendCallToAgent() {
-      System.out.println("send call to next ordered agent");
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendCallToAgent</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"send call to next ordered agent"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-package scheduler;
-//배분 방식 2
-public class LeastJob implements Scheduler {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">scheduler</span><span class="o">;</span>
+<span class="c1">//배분 방식 2</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LeastJob</span> <span class="kd">implements</span> <span class="nc">Scheduler</span> <span class="o">{</span>
 
-   @Override
-   public void getNextCall() {
-      System.out.println("get calls as ordered");
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNextCall</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"get calls as ordered"</span><span class="o">);</span>
+   <span class="o">}</span>
 
-   @Override
-   public void sendCallToAgent() {
-      System.out.println("send calls to agents with least job");
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendCallToAgent</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"send calls to agents with least job"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package scheduler;
-//배분 방식 3
-public class PriorityAllocation implements Scheduler {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">scheduler</span><span class="o">;</span>
+<span class="c1">//배분 방식 3</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PriorityAllocation</span> <span class="kd">implements</span> <span class="nc">Scheduler</span> <span class="o">{</span>
 
-   @Override
-   public void getNextCall() {
-      System.out.println("get calls from prior customers first");
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNextCall</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"get calls from prior customers first"</span><span class="o">);</span>
+   <span class="o">}</span>
 
-   @Override
-   public void sendCallToAgent() {
-      System.out.println("give calls to better agents");
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendCallToAgent</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"give calls to better agents"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-이제 클래스의 객체를 만들어 실행해 볼 차례다.
+<p>이제 클래스의 객체를 만들어 실행해 볼 차례다.</p>
 
-~~~ java
-package scheduler;
-import java.io.IOException;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">scheduler</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 
-public class SchedulerTest {
-   public static void main(String[] args) throws IOException {
-      System.out.println("Select call allocation method");
-      System.out.println("R : RoundRobin");
-      System.out.println("L : LeastJob");
-      System.out.println("P : Priority Allocation");
-      System.out.print("Type here : ");
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SchedulerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Select call allocation method"</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"R : RoundRobin"</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"L : LeastJob"</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"P : Priority Allocation"</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Type here : "</span><span class="o">);</span>
       
-      int ch = System.in.read(); //문자를 입력받을 수 있는 함수
-      Scheduler scheduler = null; //아무런 객체도 참조하지 않는 Scheduler 인터페이스 자료형의 참조변수 생성
+      <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">.</span><span class="na">read</span><span class="o">();</span> <span class="c1">//문자를 입력받을 수 있는 함수</span>
+      <span class="nc">Scheduler</span> <span class="n">scheduler</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">//아무런 객체도 참조하지 않는 Scheduler 인터페이스 자료형의 참조변수 생성</span>
       
-      //문자를 입력받아 확인 후 객체 생성하여 scheduler 변수에 대입
-      if(ch == 'R' || ch == 'r') {
-         scheduler = new RoundRobin();
-      }
-      else if(ch == 'L' || ch == 'l') {
-         scheduler = new LeastJob();
-      }
-      else if(ch == 'P' || ch == 'p') {
-         scheduler = new PriorityAllocation();
-      }
-      else {
-         System.out.println("fuck you");
-         return;
-      }
+      <span class="c1">//문자를 입력받아 확인 후 객체 생성하여 scheduler 변수에 대입</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">ch</span> <span class="o">==</span> <span class="sc">'R'</span> <span class="o">||</span> <span class="n">ch</span> <span class="o">==</span> <span class="sc">'r'</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">scheduler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RoundRobin</span><span class="o">();</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">ch</span> <span class="o">==</span> <span class="sc">'L'</span> <span class="o">||</span> <span class="n">ch</span> <span class="o">==</span> <span class="sc">'l'</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">scheduler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LeastJob</span><span class="o">();</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">ch</span> <span class="o">==</span> <span class="sc">'P'</span> <span class="o">||</span> <span class="n">ch</span> <span class="o">==</span> <span class="sc">'p'</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">scheduler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityAllocation</span><span class="o">();</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"fuck you"</span><span class="o">);</span>
+         <span class="k">return</span><span class="o">;</span>
+      <span class="o">}</span>
       
-      //객체에 따른 메소드 호출
-      scheduler.getNextCall();
-      scheduler.sendCallToAgent();
-   }
-}
-~~~
+      <span class="c1">//객체에 따른 메소드 호출</span>
+      <span class="n">scheduler</span><span class="o">.</span><span class="na">getNextCall</span><span class="o">();</span>
+      <span class="n">scheduler</span><span class="o">.</span><span class="na">sendCallToAgent</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위에서 참조변수를 인터페이스 자료형인 Scheduler 타입으로 선언하고 일단 null값을 담아 아무런 객체도 참조하지 않도록 선언했다.
+<p>위에서 참조변수를 인터페이스 자료형인 Scheduler 타입으로 선언하고 일단 null값을 담아 아무런 객체도 참조하지 않도록 선언했다.</p>
 
-이후 입력된 문자에 따라 적절한 객체를 참조하도록 한 이후 메소드를 호출한다. 이 때 메소드는 인터페이스를 구현한 클래스에 해당하는 메소드가 호출된다.
+<p>이후 입력된 문자에 따라 적절한 객체를 참조하도록 한 이후 메소드를 호출한다. 이 때 메소드는 인터페이스를 구현한 클래스에 해당하는 메소드가 호출된다.</p>
 
-이로써 인터페이스로 구현한 클래스 끼리도 다형성을 구현할 수 있음을 확인했다.
+<p>이로써 인터페이스로 구현한 클래스 끼리도 다형성을 구현할 수 있음을 확인했다.</p>
+
   </div>
   
   <div class="post">
@@ -11174,86 +11135,85 @@ public class SchedulerTest {
 
     <span class="post-date">19 Dec 2018</span>
 
-    인터페이스는 멤버 변수로는 상수(final 변수), 메소드는 추상 메소드만을 포함한다. 따라서 당연히 인터페이스 자체만으로는 인스턴스를 만들어 쓸 수 없다. 그렇다면 자체적으로 아무런 기능도 하지 못하는 인터페이스는 왜 쓸까?
+    <p>인터페이스는 멤버 변수로는 상수(final 변수), 메소드는 추상 메소드만을 포함한다. 따라서 당연히 인터페이스 자체만으로는 인스턴스를 만들어 쓸 수 없다. 그렇다면 자체적으로 아무런 기능도 하지 못하는 인터페이스는 왜 쓸까?</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 인터페이스 만들기
+<h1 id="1-인터페이스-만들기">1. 인터페이스 만들기</h1>
 
-* * *
+<hr />
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public interface Calc {
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Calc</span> <span class="o">{</span>
    
-   //final로 선언하지 않아도 컴파일 과정에서 상수로 변환
-   double PI = 3.14;
-   int ERROR = -999999999;
+   <span class="c1">//final로 선언하지 않아도 컴파일 과정에서 상수로 변환</span>
+   <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="no">ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999999999</span><span class="o">;</span>
    
-   //abstract로 선언하지 않아도 컴파일 과정에서 추상메소드로 변환
-   int add(int num1, int num2);
-   int subtract(int num1, int num2);
-   int multiply(int num1, int num2);
-   int divide(int num1, int num2);
-}
-~~~
+   <span class="c1">//abstract로 선언하지 않아도 컴파일 과정에서 추상메소드로 변환</span>
+   <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+   <span class="kt">int</span> <span class="nf">subtract</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+   <span class="kt">int</span> <span class="nf">multiply</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+   <span class="kt">int</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-인터페이스에 구현된 변수는 모두 상수로, 메소드는 추상 메소드로 컴파일 과정에서 변환이 된다.
+<p>인터페이스에 구현된 변수는 모두 상수로, 메소드는 추상 메소드로 컴파일 과정에서 변환이 된다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 클래스에서 인터페이스 구현
+<h1 id="2-클래스에서-인터페이스-구현">2. 클래스에서 인터페이스 구현</h1>
 
-* * *
+<hr />
 
-추상 클래스에서는 객체를 만들기 위해서 추상클래스를 상속받는(extends) 클래스를 만든 후 메소드 코드를 작성하여 객체를 만들어 사용하는 것과 같은 과정이 필요하다.
+<p>추상 클래스에서는 객체를 만들기 위해서 추상클래스를 상속받는(extends) 클래스를 만든 후 메소드 코드를 작성하여 객체를 만들어 사용하는 것과 같은 과정이 필요하다.</p>
 
-인터페이스는 이 과정을 조금 다르게 표현한다. 상속이 아니라 구현한다(implements)고 한다. 인터페이스를 구현하는 클래스를 만드는 것이다.
+<p>인터페이스는 이 과정을 조금 다르게 표현한다. 상속이 아니라 구현한다(implements)고 한다. 인터페이스를 구현하는 클래스를 만드는 것이다.</p>
 
-~~~ java
-package interfaceprac;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
 
-public class MyCalc implements Calc{
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCalc</span> <span class="kd">implements</span> <span class="nc">Calc</span><span class="o">{</span>
 
-   @Override
-   public int add(int num1, int num2) {
-      return num1+num2;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   @Override
-   public int subtract(int num1, int num2) {
-      return num1-num2;
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">subtract</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">-</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
    
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-Calc 인터페이스를 구현한 MyCalc 클래스이다.
+<p>Calc 인터페이스를 구현한 MyCalc 클래스이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 인터페이스를 구현한 클래스의 성질
+<h1 id="3-인터페이스를-구현한-클래스의-성질">3. 인터페이스를 구현한 클래스의 성질</h1>
 
-* * *
+<hr />
 
-**1) 인터페이스 자료형으로 형 변환(upcasting) 가능**
+<p><strong>1) 인터페이스 자료형으로 형 변환(upcasting) 가능</strong></p>
 
-**2) 인터페이스 자료형의 참조변수에 저장되었을 시 클래스에 추가적으로 구현한 메소드는 사용 불가능**
+<p><strong>2) 인터페이스 자료형의 참조변수에 저장되었을 시 클래스에 추가적으로 구현한 메소드는 사용 불가능</strong></p>
 
-**3) 인터페이스를 구현한 클래스 객체가 호출하는 메소드는 클래스에서 구현된 메소드(인터페이스에서는 구현된 메소드가 없으므로 당연한 이야기지만...)**
+<p><strong>3) 인터페이스를 구현한 클래스 객체가 호출하는 메소드는 클래스에서 구현된 메소드(인터페이스에서는 구현된 메소드가 없으므로 당연한 이야기지만…)</strong></p>
 
-&nbsp;
+<p> </p>
 
-이는 상위 클래스를 상속받은 하위 클래스, 혹은 추상 클래스를 상속받은 하위 클래스와 완전 동일하다.
+<p>이는 상위 클래스를 상속받은 하위 클래스, 혹은 추상 클래스를 상속받은 하위 클래스와 완전 동일하다.</p>
 
-일단 **인터페이스의 형 변환이 가능한 점과 인터페이스를 구현한 여러개의 클래스마다 자신의 메소드를 호출한다는 점은 다형성이 가능케 하는 부분이다.**
+<p>일단 <strong>인터페이스의 형 변환이 가능한 점과 인터페이스를 구현한 여러개의 클래스마다 자신의 메소드를 호출한다는 점은 다형성이 가능케 하는 부분이다.</strong></p>
 
-&nbsp;
+<p> </p>
+
   </div>
   
   <div class="post">
@@ -11265,77 +11225,76 @@ Calc 인터페이스를 구현한 MyCalc 클래스이다.
 
     <span class="post-date">19 Dec 2018</span>
 
-    final이라는 단어의 뜻은 '마지막의', '최종의' 정도로 해석된다. 단어의 뜻에서 유추할 수 있듯이 final로 선언한 변수 , 메소드, 클래스 등은 최종적인 것이라 생각하면 된다. final로 선언한 변수는 더 이상 바꿀 수 없고 final 클래스는 상속이 불가능하며 final 메소드는 재정의(오버라이딩)이 불가능하다.
+    <p>final이라는 단어의 뜻은 ‘마지막의’, ‘최종의’ 정도로 해석된다. 단어의 뜻에서 유추할 수 있듯이 final로 선언한 변수 , 메소드, 클래스 등은 최종적인 것이라 생각하면 된다. final로 선언한 변수는 더 이상 바꿀 수 없고 final 클래스는 상속이 불가능하며 final 메소드는 재정의(오버라이딩)이 불가능하다.</p>
 
-각각에 대해 final로 선언된 코드를 보면 바로 이해할 수 있을 것이다.
+<p>각각에 대해 final로 선언된 코드를 보면 바로 이해할 수 있을 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. final 메소드
+<h1 id="1-final-메소드">1. final 메소드</h1>
 
-* * *
+<hr />
 
-~~~ java
-package abstractpractice;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">abstractpractice</span><span class="o">;</span>
 
-public abstract class Car {
-   public abstract void drive();
-   public abstract void stop();
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">drive</span><span class="o">();</span>
+   <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">();</span>
    
-   public void startCar() {
-      System.out.println("turn on");
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">startCar</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"turn on"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   public void turnOff() {
-      System.out.println("turn off");
-   }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">turnOff</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"turn off"</span><span class="o">);</span>
+   <span class="o">}</span>
    
-   final public void run() {
-      startCar();
-      drive();
-      stop();
-      turnOff();
-   }
-}
-~~~
+   <span class="kd">final</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">startCar</span><span class="o">();</span>
+      <span class="n">drive</span><span class="o">();</span>
+      <span class="n">stop</span><span class="o">();</span>
+      <span class="n">turnOff</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-Car 클래스는 추상 클래스이며 startCar(), drive(), stop(), turnOff(), run()메소드를 가지고 있다. 어떤 차이든지 시동을 켜는 방법과 끄는 방법은 같을 것이므로 메소드를 구현해 놓았다. 그러나 조작법, 브레이크 작동이 달라 drive()와 stop() 메소드는 추상 메소드로 구현해놓았다.
+<p>Car 클래스는 추상 클래스이며 startCar(), drive(), stop(), turnOff(), run()메소드를 가지고 있다. 어떤 차이든지 시동을 켜는 방법과 끄는 방법은 같을 것이므로 메소드를 구현해 놓았다. 그러나 조작법, 브레이크 작동이 달라 drive()와 stop() 메소드는 추상 메소드로 구현해놓았다.</p>
 
-마지막으로 run() 메소드는 시동on-운전-멈춤-시동off라는 자동차의 로직을 구현해놓은 메소드이다. 모든 차는 저 순서대로 움직이므로 일반 메소드에 미리 로직을 구현해 놓은것이다. 그리고 특정 하위 클래스에서 저 로직을 거스르는 것을 막기 위해 final로 선언을 해놓았다. final 메소드는 하위클래스에서 재정의가 불가능하다.
+<p>마지막으로 run() 메소드는 시동on-운전-멈춤-시동off라는 자동차의 로직을 구현해놓은 메소드이다. 모든 차는 저 순서대로 움직이므로 일반 메소드에 미리 로직을 구현해 놓은것이다. 그리고 특정 하위 클래스에서 저 로직을 거스르는 것을 막기 위해 final로 선언을 해놓았다. final 메소드는 하위클래스에서 재정의가 불가능하다.</p>
 
-&nbsp;
+<p> </p>
 
-# 2. final 변수
+<h1 id="2-final-변수">2. final 변수</h1>
 
-* * *
+<hr />
 
-~~~ java
-package abstractpractice;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">abstractpractice</span><span class="o">;</span>
 
-public abstract class Car {
-   final double PI = 3.14;
-   final String NAME = "Kim";
-   final int MAX = 100;
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+   <span class="kd">final</span> <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+   <span class="kd">final</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Kim"</span><span class="o">;</span>
+   <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
    
-   public static void main(String[] args) {
-      PI = 10.0; //오류
-      NAME = "Lee"; //오류
-      MAX = 200;//오류
-   }
-}
-~~~
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="no">PI</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">;</span> <span class="c1">//오류</span>
+      <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Lee"</span><span class="o">;</span> <span class="c1">//오류</span>
+      <span class="no">MAX</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span><span class="c1">//오류</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-변수를 final로 선언하면 상수가 된다. 상수는 변수처럼 그 값이 변할 수 있는 수가 아니다. final로 선언된 상수에 다른 값을 대입하여 저장하려 하면 오류가 난다.
+<p>변수를 final로 선언하면 상수가 된다. 상수는 변수처럼 그 값이 변할 수 있는 수가 아니다. final로 선언된 상수에 다른 값을 대입하여 저장하려 하면 오류가 난다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. final 클래스
+<h1 id="3-final-클래스">3. final 클래스</h1>
 
-* * *
+<hr />
 
-final로 선언된 클래스는 상속될 수 없다. 더 이상 멤버변수나 메소드를 재정의 할 수 없다는 말이다. 우리가 흔히 정수를 선언할 때 쓰는 Int 클래스, 혹은 String 클래스등은 final로 선언되어있다. 쓰는 방법을 바꿀 수 없도록 말이다.
+<p>final로 선언된 클래스는 상속될 수 없다. 더 이상 멤버변수나 메소드를 재정의 할 수 없다는 말이다. 우리가 흔히 정수를 선언할 때 쓰는 Int 클래스, 혹은 String 클래스등은 final로 선언되어있다. 쓰는 방법을 바꿀 수 없도록 말이다.</p>
+
   </div>
   
 </div>

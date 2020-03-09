@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,47 +10682,47 @@
 
     <span class="post-date">14 Dec 2018</span>
 
-    객체란 간단히 말해 어떠한 사물이나 대상을 뜻한다. 눈에 보이는 사람, 자동차 등 부터 눈에 보이지 않는 마우스 클릭, 쇼핑 등도 객체가 될 수 있다.
+    <p>객체란 간단히 말해 어떠한 사물이나 대상을 뜻한다. 눈에 보이는 사람, 자동차 등 부터 눈에 보이지 않는 마우스 클릭, 쇼핑 등도 객체가 될 수 있다.</p>
 
-객체지향 프로그래밍이란 이러한 객체들 사이에 일어나는 유기적인 일들을 구현하여 프로그램을 만드는 것이다.
+<p>객체지향 프로그래밍이란 이러한 객체들 사이에 일어나는 유기적인 일들을 구현하여 프로그램을 만드는 것이다.</p>
 
-객체지향 프로그래밍은 클래스를 기반으로 모든게 일어나기 시작한다.
+<p>객체지향 프로그래밍은 클래스를 기반으로 모든게 일어나기 시작한다.</p>
 
-클래스란 객체의 속성이나 행동이 정의되는 하나의 모듈 단위이다. 객체를 만든다는 것은 바로 클래스를 정의한다는 것이다.
+<p>클래스란 객체의 속성이나 행동이 정의되는 하나의 모듈 단위이다. 객체를 만든다는 것은 바로 클래스를 정의한다는 것이다.</p>
 
-클래스는 객체의 <span style="text-decoration: underline;"><strong>속성, 특성</strong>을 나타내는 부분과 하나의 기능을 수행하는 <span style="text-decoration: underline;"><strong>메서드</strong>를 가진다.
+<p>클래스는 객체의 <span style="text-decoration: underline;"><strong>속성, 특성</strong>을 나타내는 부분과 하나의 기능을 수행하는 <span style="text-decoration: underline;"><strong>메서드</strong>를 가진다.</span></span></p>
 
-가령 사람이라는 객체에 대해 정의한다고 해보자.
+<p>가령 사람이라는 객체에 대해 정의한다고 해보자.</p>
 
-속성, 특성에는 나이, 이름, 주소 등이 있을 것이다. 그리고 기능에는 나이를 먹는다, 이름을 개명한다 등이 있을 것이다.
+<p>속성, 특성에는 나이, 이름, 주소 등이 있을 것이다. 그리고 기능에는 나이를 먹는다, 이름을 개명한다 등이 있을 것이다.</p>
 
-이러한 것을 클래스로 구현하는 것을 간단히 맛보자면 다음과 같다.
+<p>이러한 것을 클래스로 구현하는 것을 간단히 맛보자면 다음과 같다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-    // Person 클래스의 속성
-    int age;
-    String name;
-    String address;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="c1">// Person 클래스의 속성</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
 
-    // 나이 먹는 행위
-    void IncreaseAge(int age) {
-    this.age++;
-    }
-    // 차타기
-    void rideCar() {
-    System.out.println("부릉부릉~");
-    }
-}
-~~~
+    <span class="c1">// 나이 먹는 행위</span>
+    <span class="kt">void</span> <span class="nf">IncreaseAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">++;</span>
+    <span class="o">}</span>
+    <span class="c1">// 차타기</span>
+    <span class="kt">void</span> <span class="nf">rideCar</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"부릉부릉~"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-이러한 클래스를 한 번 정의하면 여러 사람이라는 객체를 찍어내며 만들 수 있다. 이것이 객체지향 프로그래밍의 생산성을 높여주는 부분이다.
+<p>이러한 클래스를 한 번 정의하면 여러 사람이라는 객체를 찍어내며 만들 수 있다. 이것이 객체지향 프로그래밍의 생산성을 높여주는 부분이다.</p>
 
-&nbsp;
+<p> </p>
 
-이처럼 클래스를 기반으로 다양한 객체를 만들어 그들 사이에 일어나는 상호작용을 구현하고 프로그래밍 하는것이다.
+<p>이처럼 클래스를 기반으로 다양한 객체를 만들어 그들 사이에 일어나는 상호작용을 구현하고 프로그래밍 하는것이다.</p>
+
   </div>
   
   <div class="post">
@@ -10758,152 +10734,144 @@ public class Person {
 
     <span class="post-date">14 Dec 2018</span>
 
-    switch 문은 if / else 조건문보다는 사용할 수 있는 범위가 제한적이지만 조건의 분류가 다소 많을 때 유용하게 사용할 수 있습니다.
+    <p>switch 문은 if / else 조건문보다는 사용할 수 있는 범위가 제한적이지만 조건의 분류가 다소 많을 때 유용하게 사용할 수 있습니다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. switch 문의 구조
+<h1 id="1-switch-문의-구조">1. switch 문의 구조</h1>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package hello;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num=3;
-        switch(num){
-            case 0:
-            System.out.println("num is 0");
-            break;
-            case 1:
-            System.out.println("num is 1");
-            break;
-            case 2:
-            System.out.println("num is 2");
-            break;
-            case 3:
-            System.out.println("num is 3");
-            break;
-            default:
-            System.out.println("num is not 1 or 2 or 3");
-        }
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">3</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span><span class="n">num</span><span class="o">){</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 0"</span><span class="o">);</span>
+            <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 1"</span><span class="o">);</span>
+            <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 2"</span><span class="o">);</span>
+            <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 3"</span><span class="o">);</span>
+            <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is not 1 or 2 or 3"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
 
-~~~
+<p>실행결과<br />
+The number is 3</p>
 
-실행결과  
-The number is 3
+<p>계속하려면 아무 키나 누르십시오 . . .&lt;/pre&gt;</p>
 
+<p>switch 문에서 ( )에는 <strong>‘정수형 변수’</strong>를 넣을 수 있습니다. 그리고 { } 안에서 case라는 구문으로 num값의 경우에 따라 다른 문장이 실행됩니다. num이 어떤 case도 만족하지 않으면 default를 실행시킵니다. 사실 default가 없어도 프로그램은 오류가 나지 않습니다. 하지만 아무런 case도 만족하지 않고 default가 없을 때에 switch문은 결국 아무것도 실행하지 않고 끝나버립니다.</p>
 
-계속하려면 아무 키나 누르십시오 . . .</pre>
+<p> </p>
 
-switch 문에서 ( )에는 **'정수형 변수'**를 넣을 수 있습니다. 그리고 { } 안에서 case라는 구문으로 num값의 경우에 따라 다른 문장이 실행됩니다. num이 어떤 case도 만족하지 않으면 default를 실행시킵니다. 사실 default가 없어도 프로그램은 오류가 나지 않습니다. 하지만 아무런 case도 만족하지 않고 default가 없을 때에 switch문은 결국 아무것도 실행하지 않고 끝나버립니다.
+<p> </p>
 
-&nbsp;
+<h1 id="2-break-역할">2. break 역할</h1>
 
-&nbsp;
+<hr />
 
-# 2. break 역할
+<p>break문은 break가 포함된 가장 하위단의 반복문을 빠져나온다고 말했지만 switch문을 탈출하는 데에도 사용이 됩니다.  switch문은 case를 차례대로 훑으며 num과 같은 값이 인자로 전달된 case를 찾아 실행한다 했습니다. 하지만 <strong>switch문은 조건이 성립하는 case만 실행하는 것이 아니라, 그 case부터 마지막 case까지 모든 case를 실행시킵니다.</strong> <strong>그렇기 때문에 특정한 문장만 실행한 이후 switch문을 빠져나오기 위해서 break를 쓰는겁니다.</strong></p>
 
-* * *
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-break문은 break가 포함된 가장 하위단의 반복문을 빠져나온다고 말했지만 switch문을 탈출하는 데에도 사용이 됩니다.  switch문은 case를 차례대로 훑으며 num과 같은 값이 인자로 전달된 case를 찾아 실행한다 했습니다. 하지만 **switch문은 조건이 성립하는 case만 실행하는 것이 아니라, 그 case부터 마지막 case까지 모든 case를 실행시킵니다.** **그렇기 때문에 특정한 문장만 실행한 이후 switch문을 빠져나오기 위해서 break를 쓰는겁니다.**
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">3</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span><span class="n">num</span><span class="o">){</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 0"</span><span class="o">);</span>
+            <span class="c1">//break;</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 1"</span><span class="o">);</span>
+            <span class="c1">//break;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 2"</span><span class="o">);</span>
+            <span class="c1">//break;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 3"</span><span class="o">);</span>
+            <span class="c1">//break;</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 4"</span><span class="o">);</span>
+            <span class="c1">// break;</span>
+            <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is 5"</span><span class="o">);</span>
+            <span class="c1">// break;</span>
+            <span class="k">default</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is not 1 or 2 or 3"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-package hello;
+<p>실행결과</p>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num=3;
-        switch(num){
-            case 0:
-            System.out.println("num is 0");
-            //break;
-            case 1:
-            System.out.println("num is 1");
-            //break;
-            case 2:
-            System.out.println("num is 2");
-            //break;
-            case 3:
-            System.out.println("num is 3");
-            //break;
-            case 4:
-            System.out.println("num is 4");
-            // break;
-            case 5:
-            System.out.println("num is 5");
-            // break;
-            default:
-            System.out.println("num is not 1 or 2 or 3");
-        }
-    }
-}
-~~~
+<p>The number is 3</p>
 
-실행결과
+<p>The number is 4</p>
 
-The number is 3
+<p>The number is 5</p>
 
+<p>The number is 6</p>
 
-The number is 4
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
 
+<p>break를 주석 처리하고 실행한 결과입니다. num이 3이기 때문에 case3에서 멈추고 실해을 시킵니다. 하지만 이후에 빠져나오지 못하고 그 이후의 모든 case를 조건에 상관없이 실행시켜버립니다.</p>
 
-The number is 5
+<p><img class="aligncenter wp-image-950" src="/images/2018/09/4123.jpg" alt="" width="545" height="323" srcset="/images/2018/09/4123.jpg 900w, /images/2018/09/4123-300x178.jpg 300w, /images/2018/09/4123-768x455.jpg 768w" sizes="(max-width: 545px) 100vw, 545px" /></p>
 
+<p> </p>
 
-The number is 6
+<p> </p>
 
+<h1 id="3-switch와-문자">3. switch와 문자</h1>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<hr />
 
-break를 주석 처리하고 실행한 결과입니다. num이 3이기 때문에 case3에서 멈추고 실해을 시킵니다. 하지만 이후에 빠져나오지 못하고 그 이후의 모든 case를 조건에 상관없이 실행시켜버립니다.
+<p>switch문은 정수형 변수를 전달인자로 받는다고 했어요. 따라서 문자도 받을 수 있습니다. 문자도 ASCII를 통해 변환 된 정수일 뿐이기 때문입니다.</p>
 
-<img class="aligncenter wp-image-950" src="/images/2018/09/4123.jpg" alt="" width="545" height="323" srcset="/images/2018/09/4123.jpg 900w, /images/2018/09/4123-300x178.jpg 300w, /images/2018/09/4123-768x455.jpg 768w" sizes="(max-width: 545px) 100vw, 545px" /> 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-&nbsp;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">ch</span><span class="o">=</span><span class="sc">'B'</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span><span class="n">ch</span><span class="o">){</span>
+            <span class="k">case</span> <span class="sc">'A'</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="sc">'A'</span><span class="o">);</span>
+            <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="sc">'B'</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="sc">'B'</span><span class="o">);</span>
+            <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="sc">'C'</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="sc">'C'</span><span class="o">);</span>
+            <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"None"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-# 3. switch와 문자
+<p>실행결과</p>
 
-* * *
+<p>B</p>
 
-switch문은 정수형 변수를 전달인자로 받는다고 했어요. 따라서 문자도 받을 수 있습니다. 문자도 ASCII를 통해 변환 된 정수일 뿐이기 때문입니다.
-
-~~~ java
-package hello;
-
-public class HelloJava{
-    public static void main(String[] args){
-        int ch='B';
-        switch(ch){
-            case 'A':
-            System.out.println('A');
-            break;
-            case 'B':
-            System.out.println('B');
-            break;
-            case 'C':
-            System.out.println('C');
-            break;
-            default:
-            System.out.println("None");
-        }
-    }
-}
-~~~
-
-&nbsp;
-
-실행결과
-
-B
   </div>
   
   <div class="post">
@@ -10915,104 +10883,97 @@ B
 
     <span class="post-date">14 Dec 2018</span>
 
-    **조건 연산자 **는 코드를 더 간결하고 직관적으로 작성하는 데 도움을 줍니다.
+    <p><strong>조건 연산자 </strong>는 코드를 더 간결하고 직관적으로 작성하는 데 도움을 줍니다.</p>
 
-두개의 정수형 변수 num1과 num2가 있습니다. 그리고 larger 라는 변수에 num1과 num2 중 더 큰 값을 가지는 변수의 값을 담고 싶다고 해봅시다. 먼저 if ~ else 조건문으로 작성해봅시다.
+<p>두개의 정수형 변수 num1과 num2가 있습니다. 그리고 larger 라는 변수에 num1과 num2 중 더 큰 값을 가지는 변수의 값을 담고 싶다고 해봅시다. 먼저 if ~ else 조건문으로 작성해봅시다.</p>
 
-~~~ java
-package hello;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num1 = 10;
-        int num2 = 20;
-        int larger;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">larger</span><span class="o">;</span>
 
-        if (num1 >= num2)
-        {
-            larger = num1;
-        }
-        else
-        {
-            larger = num2;
-        }
-        System.out.println("The larger number is "+larger);
-    }
-}
-~~~
+        <span class="k">if</span> <span class="o">(</span><span class="n">num1</span> <span class="o">&gt;=</span> <span class="n">num2</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="n">larger</span> <span class="o">=</span> <span class="n">num1</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span>
+        <span class="o">{</span>
+            <span class="n">larger</span> <span class="o">=</span> <span class="n">num2</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The larger number is "</span><span class="o">+</span><span class="n">larger</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-The larger number is 20
+<p>The larger number is 20</p>
 
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>위의 코드는 조건 연산자로 훨씬 간결하게 작성할 수 있습니다.</p>
 
-위의 코드는 조건 연산자로 훨씬 간결하게 작성할 수 있습니다.
+<p>조건 연산자는 <strong>‘어떠한 조건을 판단하여 ‘참’이면 앞의 것, ‘거짓’이면 뒤의 것을 선택하는 연산자’</strong> 입니다. 구조는 다음과 같습니다.</p>
 
-조건 연산자는 **'어떠한 조건을 판단하여 '참'이면 앞의 것, '거짓'이면 뒤의 것을 선택하는 연산자'** 입니다. 구조는 다음과 같습니다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="n">조건</span><span class="o">)</span> <span class="o">?</span> <span class="n">변수1</span> <span class="o">:</span> <span class="n">변수2</span>
+</code></pre></div></div>
 
-~~~ java
-(조건) ? 변수1 : 변수2
-~~~
+<p>(조건) 을 판단하여 그것이 ‘참’이면 변수1을 반환하고, ‘거짓’이면 변수2를 반환합니다.</p>
 
-(조건) 을 판단하여 그것이 '참'이면 변수1을 반환하고, '거짓'이면 변수2를 반환합니다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-~~~ java
-package hello;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num1</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">num2</span><span class="o">=</span><span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">larger</span> <span class="o">=</span> <span class="o">(</span><span class="n">num1</span><span class="o">&gt;</span><span class="n">num2</span><span class="o">)</span> <span class="o">?</span> <span class="n">num1</span> <span class="o">:</span> <span class="n">num2</span><span class="o">;</span>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num1=10;
-        int num2=20;
-        int larger = (num1>num2) ? num1 : num2;
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">larger</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-        System.out.println(larger);
-    }
-}
-~~~
+<p>실행결과</p>
 
-실행결과
+<p>The larger number is 20</p>
 
-The larger number is 20
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
 
+<p>if / else 문으로 작성했던 코드가 단 한 줄로 표현이 됩니다. 가독성 측면에서도 더 뛰어납니다.</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>조건 연산자 는 <strong>중첩</strong>이 됩니다.</p>
 
-if / else 문으로 작성했던 코드가 단 한 줄로 표현이 됩니다. 가독성 측면에서도 더 뛰어납니다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-조건 연산자 는 **중첩**이 됩니다.
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">max</span><span class="o">;</span>
 
-~~~ java
-package hello;
+        <span class="n">max</span> <span class="o">=</span> <span class="o">((</span><span class="n">num1</span> <span class="o">&gt;</span> <span class="n">num2</span> <span class="o">)</span> <span class="o">?</span> <span class="nl">num1:</span> <span class="n">num2</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">num3</span> <span class="o">?</span> <span class="o">((</span><span class="n">num1</span> <span class="o">&gt;</span> <span class="n">num2</span><span class="o">)</span> <span class="o">?</span> <span class="nl">num1:</span> <span class="n">num2</span><span class="o">):</span> <span class="n">num3</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The maximum number is "</span><span class="o">+</span><span class="n">max</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num1 = 10;
-        int num2 = 20;
-        int num3 = 30;
-        int max;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
 
-        max = ((num1 > num2 ) ? num1: num2) > num3 ? ((num1 > num2) ? num1: num2): num3;
-        System.out.println("The maximum number is "+max);
-    }
-}
-~~~
+<p>실행결과</p>
 
-~~~ java
+<p>The maximum number is 30</p>
 
-~~~
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
 
-실행결과
+<p>먼저 num1과 num2를 비교해서 반환되는 더 큰 값과 num3를 또 한 번 비교하여 더 큰 값을 반환시켜 max에 담습니다.</p>
 
-The maximum number is 30
+<p>중첩이 한 번이 아니라 여러번도 가능합니다. 사람에 따라서 if / else 문이 더 잘 읽히시는 분도 있을 것이기 때문에 상황에 따라 어떤것을 사용할지를 판단하시면 됩니다.</p>
 
-
-계속하려면 아무 키나 누르십시오 . . . 
-
-먼저 num1과 num2를 비교해서 반환되는 더 큰 값과 num3를 또 한 번 비교하여 더 큰 값을 반환시켜 max에 담습니다.
-
-중첩이 한 번이 아니라 여러번도 가능합니다. 사람에 따라서 if / else 문이 더 잘 읽히시는 분도 있을 것이기 때문에 상황에 따라 어떤것을 사용할지를 판단하시면 됩니다.
   </div>
   
   <div class="post">
@@ -11024,165 +10985,152 @@ The maximum number is 30
 
     <span class="post-date">14 Dec 2018</span>
 
-    조건문이란 어떠한 조건이 '참'인 경우 코드를 실행시킬 때 사용합니다. if 는 가장 대표적인 조건문입니다.
+    <p>조건문이란 어떠한 조건이 ‘참’인 경우 코드를 실행시킬 때 사용합니다. if 는 가장 대표적인 조건문입니다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. if문 구조
+<h1 id="1-if문-구조">1. if문 구조</h1>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-~~~ java
-if(조건)
-{
-. . .
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="o">(</span><span class="n">조건</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-if문이 실행되면 ( ) 안의 조건식을 판단합니다. 결과가 true면 {. . .}을 실행하고 flase면 아무것도 실행하지 않고 다음 코드로 넘어갑니다.
+<p>if문이 실행되면 ( ) 안의 조건식을 판단합니다. 결과가 true면 {. . .}을 실행하고 flase면 아무것도 실행하지 않고 다음 코드로 넘어갑니다.</p>
 
-~~~ java
-package hello;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num=10;
-        if(num>0){
-            System.out.println("num is larger than 0");
-        }
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is larger than 0"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-실행결과
+<p>실행결과</p>
 
-num is largerthan 0
+<p>num is largerthan 0</p>
 
-num은 10이므로 10>0은 true가 되어 if문 블록 안의 내용이 실행됩니다.
+<p>num은 10이므로 10&gt;0은 true가 되어 if문 블록 안의 내용이 실행됩니다.</p>
 
-&nbsp;
+<p> </p>
 
-# 2. if~else
+<h1 id="2-ifelse">2. if~else</h1>
 
-* * *
+<hr />
 
-else문은 if문의 조건이 false인 경우 실행됩니다.
+<p>else문은 if문의 조건이 false인 경우 실행됩니다.</p>
 
-~~~ java
-package hello;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num=10;
-        if(num<0){
-            System.out.println("num is smaller than 0");
-        }
-        else{
-            System.out.println("num is larger than 0");
-        }
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is smaller than 0"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span><span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is larger than 0"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-조건 10<0이 false이므로 else문 안의 내용이 실행된다.
+<p>조건 10&lt;0이 false이므로 else문 안의 내용이 실행된다.</p>
 
-실행결과
+<p>실행결과</p>
 
-num is larger than 0
+<p>num is larger than 0</p>
 
-&nbsp;
+<p> </p>
 
-# 3. if~else if
+<h1 id="3-ifelse-if">3. if~else if</h1>
 
-* * *
+<hr />
 
-여러 개의 조건을 판단하여 실행을 분기시키고 싶은 경우에는 else if문을 사용합니다.
+<p>여러 개의 조건을 판단하여 실행을 분기시키고 싶은 경우에는 else if문을 사용합니다.</p>
 
-~~~ java
-package hello;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num = 5;
-        if(num<0){
-            System.out.println("num is smaller than 0");
-        }
-        else if((num>0) && (num<10)){
-            System.out.println("num is between 0 and 10");
-        }
-        else{
-            System.out.println("num is larger than 10");
-        }
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is smaller than 0"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">((</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">)){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is between 0 and 10"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span><span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is larger than 10"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-~~~ java
-실행결과
-<code>num is between 0 and 10
-</code>
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">실행결과</span>
+<span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">num</span> <span class="n">is</span> <span class="n">between</span> <span class="mi">0</span> <span class="n">and</span> <span class="mi">10</span>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 4. break
+<h1 id="4-break">4. break</h1>
 
-* * *
+<hr />
 
-break를 씀으로써 우리는 <span style="text-decoration: underline;"><strong>반복문</strong>을 강제로 탈출할 수 있습니다. break를 쓰면 break가 포함되어있는 가장 하위단의 반복문을 벗어나게 됩니다. 조건문이 아니라 반복문이라는 점을 명심하셔야합니다.
+<p>break를 씀으로써 우리는 <span style="text-decoration: underline;"><strong>반복문</strong>을 강제로 탈출할 수 있습니다. break를 쓰면 break가 포함되어있는 가장 하위단의 반복문을 벗어나게 됩니다. 조건문이 아니라 반복문이라는 점을 명심하셔야합니다.</span></p>
 
-~~~ java
-package hello;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int num=0;
-        while(true){
-            if(num>10){
-                break;
-            }
-            num+=2;
-            System.out.println(num);
-        }
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">){</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">num</span><span class="o">+=</span><span class="mi">2</span><span class="o">;</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-실행결과
+<p>실행결과</p>
 
-2
+<p>2</p>
 
+<p>4</p>
 
-4
+<p>6</p>
 
+<p>8</p>
 
-6
+<p>10</p>
 
+<p>12</p>
 
-8
+<p>다시 한 번 강조드리지만 <strong>break은 break을 포함하는 가장 하위단의 반복문을 탈출하게 해줍니다.</strong></p>
 
+<p>break와 반대되는 continue라는 것도 있는데 이는 아래의 반복문 이내의 아래의 코드를 무시하고 다시 조건 판단 구문으로 돌아가도록 합니다.</p>
 
-10
-
-
-12
-
-
- 
-
-다시 한 번 강조드리지만 **break은 break을 포함하는 가장 하위단의 반복문을 탈출하게 해줍니다.**
-
-break와 반대되는 continue라는 것도 있는데 이는 아래의 반복문 이내의 아래의 코드를 무시하고 다시 조건 판단 구문으로 돌아가도록 합니다.
   </div>
   
   <div class="post">
@@ -11194,48 +11142,47 @@ break와 반대되는 continue라는 것도 있는데 이는 아래의 반복문
 
     <span class="post-date">14 Dec 2018</span>
 
-    while문과 for문은 조건을 만족하지 않으면 반복문 내의 코드가 한 번도 실행되지 않습니다. 최소 한 번은 반복문을 실행하고 그 이후에 조건에 따라 실행 여부를 결정하고 싶을 때 사용하는 것이 do-while 반복문입니다.
+    <p>while문과 for문은 조건을 만족하지 않으면 반복문 내의 코드가 한 번도 실행되지 않습니다. 최소 한 번은 반복문을 실행하고 그 이후에 조건에 따라 실행 여부를 결정하고 싶을 때 사용하는 것이 do-while 반복문입니다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. do while 반복문 구조
+<h1 id="1-do-while-반복문-구조">1. do while 반복문 구조</h1>
 
-* * *
+<hr />
 
-~~~ java
-do
-{
-. . .
-}while(. . .)
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span>
+<span class="o">{</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="o">}</span><span class="k">while</span><span class="o">(.</span> <span class="o">.</span> <span class="o">.)</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-do- while 반복문이 실행되면 처음으로 do를 통해 {. . .}를 한 번 실행합니다. 그 이후 (. . .)의 조건식을 판단합니다. 이 조건식이 맞다면 다시 한 번 {. . .}를 실행하고 다시 (. . .)의 조건식을 판단합니다. while문과의 차이점은 최초 실행 여부입니다.
+<p>do- while 반복문이 실행되면 처음으로 do를 통해 {. . .}를 한 번 실행합니다. 그 이후 (. . .)의 조건식을 판단합니다. 이 조건식이 맞다면 다시 한 번 {. . .}를 실행하고 다시 (. . .)의 조건식을 판단합니다. while문과의 차이점은 최초 실행 여부입니다.</p>
 
-사실 do-while문은 while문에 비해서 활용빈도가 그리 높지 않습니다. 그리고 do-while문으로 구현가능한 코드는 while문이 100% 대체 가능할 수 있기도 합니다. 그럼에도 불구하고 do-while문이 while문보다 더 적절한 경우도 있습니다.
+<p>사실 do-while문은 while문에 비해서 활용빈도가 그리 높지 않습니다. 그리고 do-while문으로 구현가능한 코드는 while문이 100% 대체 가능할 수 있기도 합니다. 그럼에도 불구하고 do-while문이 while문보다 더 적절한 경우도 있습니다.</p>
 
-~~~ java
-package hello;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
 
-public class HelloJava{
-    public static void main(String[] args){
-        int sum = 1;
-        do{
-            sum+=sum;
-        }while(sum<10)
-        System.out.println(sum);
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">do</span><span class="o">{</span>
+            <span class="n">sum</span><span class="o">+=</span><span class="n">sum</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">while</span><span class="o">(</span><span class="n">sum</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sum</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-실행결과
+<p>실행결과</p>
 
-16
+<p>16</p>
+
   </div>
   
 </div>

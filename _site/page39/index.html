@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,196 +10682,177 @@
 
     <span class="post-date">17 Sep 2018</span>
 
-      * 지금까지 우리가 숫자, 리스트, 튜플 등의 자료형을 정의하면서 사용했던 것이 변수이다.
-  * 숫자, 리스트, 튜플 등의 자료형을 저장하면서 이름을 붙인 것이 변수이다.
-  * 자료형을 선언하는 순간 데이터가 메모리에 저장되는데, 변수는 메모리공간에 접근하기 위한 수단이 된다.
+    <ul>
+  <li>지금까지 우리가 숫자, 리스트, 튜플 등의 자료형을 정의하면서 사용했던 것이 변수이다.</li>
+  <li>숫자, 리스트, 튜플 등의 자료형을 저장하면서 이름을 붙인 것이 변수이다.</li>
+  <li>자료형을 선언하는 순간 데이터가 메모리에 저장되는데, 변수는 메모리공간에 접근하기 위한 수단이 된다.</li>
+</ul>
 
-# 1. 변수란?
+<h1 id="1-변수란">1. 변수란?</h1>
 
-* * *
+<hr />
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># a라는 변수를 선언하고 숫자 자료형 1을 저장했다.
+</span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span><span class="mi">20</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span> <span class="c1"># b라는 변수를 선언하고 문자,숫자,튜플을 요소로 가지는 리스트를 저장했다.
+</span></code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-a = 1 # a라는 변수를 선언하고 숫자 자료형 1을 저장했다.
-b = ['a',20,(2,3)] # b라는 변수를 선언하고 문자,숫자,튜플을 요소로 가지는 리스트를 저장했다.
-~~~
+<ul>
+  <li>변수를 선언할 때에는 = 기호를 사용하는데 이는 할당을 한다는 의미이다.</li>
+  <li>변수를 선언하는 일반적인 방법은 :: 변수명 = 저장할 자료 :: 이다.</li>
+  <li>조금 더 깊게 들어가자면, 변수는 객체(object)를 가르키는 레퍼런스(reference)이다. 다른 말로 변수가 객체를 참조한다고 한다.</li>
+  <li>객체란 프로그램에서 만든 자료, 함수 등 모든 데이터를 뜻한다.</li>
+  <li>가령 a=1이라고 선언하는 순간 1이라는 숫자 자료형(객체)가 메모리에 생성되고 a는 그곳을 가르키는 레퍼런스이다.</li>
+</ul>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">10</span>
+</code></pre></div></div>
 
-  * 변수를 선언할 때에는 = 기호를 사용하는데 이는 할당을 한다는 의미이다.
-  * 변수를 선언하는 일반적인 방법은 :: 변수명 = 저장할 자료 :: 이다.
-  * 조금 더 깊게 들어가자면, 변수는 객체(object)를 가르키는 레퍼런스(reference)이다. 다른 말로 변수가 객체를 참조한다고 한다.
-  * 객체란 프로그램에서 만든 자료, 함수 등 모든 데이터를 뜻한다.
-  * 가령 a=1이라고 선언하는 순간 1이라는 숫자 자료형(객체)가 메모리에 생성되고 a는 그곳을 가르키는 레퍼런스이다.
+<p> </p>
 
+<ul>
+  <li>10은 하나의 정수형 객체이다. 변수 a와 b는 모두 메모리공간에 생성된 정수 자료형 10을 가르킨다.</li>
+  <li>10이 서로 다른 메모리 공간에 2개 만들어지고 a와 b가 각각 가르키는 것이 아니다.</li>
+</ul>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># True
+</span></code></pre></div></div>
 
-~~~ python
-a=10
-b=10
-~~~
+<p> </p>
 
-&nbsp;
+<ul>
+  <li>is 는 두 변수가 동일한 객체를 가르키는지 판단하는 함수이다. 참이면 1, 거짓이면 0을 반환한다.</li>
+</ul>
 
-  * 10은 하나의 정수형 객체이다. 변수 a와 b는 모두 메모리공간에 생성된 정수 자료형 10을 가르킨다.
-  * 10이 서로 다른 메모리 공간에 2개 만들어지고 a와 b가 각각 가르키는 것이 아니다.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 14
+</span></code></pre></div></div>
 
+<p> </p>
 
+<p>sys 라이브러리를 import 하여 라이브러리에 포함된 getrefcount 함수를 사용하면 정수 10의 참조 갯수를 알 수 있다.<br />
+위에서 2가 아닌 14가 나온 이유는 이미 파이썬에서 내부적으로 정수 10을 참조했기 때문이다.</p>
 
-~~~ python
-print(a is b) # True
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 15
+</span><span class="n">d</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 16
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-  * is 는 두 변수가 동일한 객체를 가르키는지 판단하는 함수이다. 참이면 1, 거짓이면 0을 반환한다.
+<p>10을 참조하는 변수를 추가할수록 getrefcount 함수의 리턴값이 1씩 증가하는 것을 볼 수 있다.</p>
 
+<p> </p>
 
+<p> </p>
 
-~~~ python
-import sys
-print(sys.getrefcount(10)) # 14
-~~~
+<h1 id="2-변수-선언방법">2. 변수 선언방법</h1>
 
-&nbsp;
+<hr />
 
-sys 라이브러리를 import 하여 라이브러리에 포함된 getrefcount 함수를 사용하면 정수 10의 참조 갯수를 알 수 있다.  
-위에서 2가 아닌 14가 나온 이유는 이미 파이썬에서 내부적으로 정수 10을 참조했기 때문이다.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">var</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># 일반적인 변수
+</span>
+<span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">'ok'</span><span class="p">,</span><span class="s">'no'</span><span class="p">]</span> <span class="c1"># 리스트형 변수 선언
+</span><span class="k">print</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">])</span> <span class="c1"># ['ok','no']
+</span><span class="k">print</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 'ok'
+</span><span class="k">print</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 'no'
+</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s">'hello'</span><span class="p">]</span> <span class="c1"># 튜플형 변수 선언
+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># 여러개의 변수에 하나의 객체 대입
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># 10
+</span><span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 10
+</span><span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1"># 10
+</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span> <span class="c1"># a와 b의 값을 바꿈
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># 20
+</span><span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 10
+</span></code></pre></div></div>
 
+<p> </p>
 
+<p> </p>
 
-~~~ python
-c=10
-print(sys.getrefcount(10)) # 15
-d=10
-print(sys.getrefcount(10)) # 16
-~~~
+<p> </p>
 
-&nbsp;
+<h1 id="3-변수-삭제">3. 변수 삭제</h1>
 
-10을 참조하는 변수를 추가할수록 getrefcount 함수의 리턴값이 1씩 증가하는 것을 볼 수 있다.
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">a</span> <span class="c1"># 변수 a 삭제
+</span><span class="k">del</span> <span class="n">b</span> <span class="c1"># 변수 b 삭제
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-리스트-복사">4. 리스트 복사</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="c1"># 변수 b에 리스트 a를 대입
+</span><span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># [1,2,3]
+</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># a[0]의 값을 1에서 10으로 변경
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [10,2,3]
+</span><span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># [10,2,3]
+</span></code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>a[0]을 바꿨는데 리스트 b의 b[0]도 바뀌었다.</li>
+  <li>b = a의 선언에서 단순히 a의 리스트 값만 복사되어 b가 참조하는 것이 아니다.</li>
+  <li>b = a의 선언의 의미는 변수 b가 변수 a와 완전히 동일한 메모리공간의 리스트를 참조하도록 한 것이다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span> <span class="c1"># 리스트 a와 값만 같은 다른 리스트를 가르키도록 :를 사용하여 선언
+</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># a[0]의 값을 10으로 변환
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [10,2,3]
+</span><span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># [1,2,3]
+</span></code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>이번에는 a[0]을 바꾸어도 b[0]의 값은 바뀌지 않았다.</li>
+  <li>a와 b가 서로 다른 리스트를 참조하기 때문이다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span> <span class="c1">#이해는 뒤로 미루고 copy함수를 사용하기 위한 선언이라는 것만 알아두자.
+</span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># b = a[:] 와 동일한 선언이다.
+</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [10,2,3]
+</span><span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># [1,2,3]
+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># True
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">c</span><span class="p">)</span> <span class="c1"># False
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">d</span><span class="p">)</span> <span class="c1"># False
+</span></code></pre></div></div>
+
+<p>is 함수를 사용하여 두 변수가 서로 같은 객체를 참조하는지 알 수 있다. 같은 객체를 참조하면 True, 아니면 False 리턴</p>
 
-&nbsp;
-
-&nbsp;
-
-# 2. 변수 선언방법
-
-* * *
-
-
-
-~~~ python
-var = 10 # 일반적인 변수
-
-[a,b] = ['ok','no'] # 리스트형 변수 선언
-print([a,b]) # ['ok','no']
-print([a,b][0]) # 'ok'
-print([a,b][1]) # 'no'
-
-(a,b) = [1,'hello'] # 튜플형 변수 선언
-
-a = b = c = 10 # 여러개의 변수에 하나의 객체 대입
-print(a) # 10
-print(b) # 10
-print(c) # 10
-
-a=10
-b=20
-a,b = b,a # a와 b의 값을 바꿈
-print(a) # 20
-print(b) # 10
-~~~
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-# 3. 변수 삭제
-
-* * *
-
-
-
-~~~ python
-a = 10
-b = 20
-print(a)
-print(b)
-del a # 변수 a 삭제
-del b # 변수 b 삭제
-~~~
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-# 4. 리스트 복사
-
-* * *
-
-
-
-~~~ python
-a = [1,2,3]
-b = a # 변수 b에 리스트 a를 대입
-print(b) # [1,2,3]
-a[0] = 10 # a[0]의 값을 1에서 10으로 변경
-print(a) # [10,2,3]
-print(b) # [10,2,3]
-~~~
-
-&nbsp;
-
-  * a[0]을 바꿨는데 리스트 b의 b[0]도 바뀌었다.
-  * b = a의 선언에서 단순히 a의 리스트 값만 복사되어 b가 참조하는 것이 아니다.
-  * b = a의 선언의 의미는 변수 b가 변수 a와 완전히 동일한 메모리공간의 리스트를 참조하도록 한 것이다.
-
-
-
-~~~ python
-a = [1,2,3]
-b = a[:] # 리스트 a와 값만 같은 다른 리스트를 가르키도록 :를 사용하여 선언
-a[0] = 10 # a[0]의 값을 10으로 변환
-print(a) # [10,2,3]
-print(b) # [1,2,3]
-~~~
-
-&nbsp;
-
-  * 이번에는 a[0]을 바꾸어도 b[0]의 값은 바뀌지 않았다.
-  * a와 b가 서로 다른 리스트를 참조하기 때문이다.
-
-
-
-~~~ python
-from copy import copy #이해는 뒤로 미루고 copy함수를 사용하기 위한 선언이라는 것만 알아두자.
-a = [1,2,3]
-b = copy(a) # b = a[:] 와 동일한 선언이다.
-a[0] = 10
-print(a) # [10,2,3]
-print(b) # [1,2,3]
-
-a = [1,2,3]
-b = a
-c = a[:]
-d = copy(a)
-
-print(a is b) # True
-print(a is c) # False
-print(a is d) # False
-~~~
-
-
-
-is 함수를 사용하여 두 변수가 서로 같은 객체를 참조하는지 알 수 있다. 같은 객체를 참조하면 True, 아니면 False 리턴
   </div>
   
   <div class="post">
@@ -10907,71 +10864,71 @@ is 함수를 사용하여 두 변수가 서로 같은 객체를 참조하는지 
 
     <span class="post-date">17 Sep 2018</span>
 
-    &nbsp;
+    <p> </p>
 
-  * a == b 라는 조건이 맞으면 'a==b'라는 문장 자체가 1(True)을 반환하고 틀리면 0(False)를 반환한다.
-  * 1, 5, 'hello', [1,2], (3,4) 등 비어있지 않은 자료는 참(True)이다.
-  * [], {}, (), 0 등 비어있는 공백 자료는 거짓(False)이다.
+<ul>
+  <li>a == b 라는 조건이 맞으면 ‘a==b’라는 문장 자체가 1(True)을 반환하고 틀리면 0(False)를 반환한다.</li>
+  <li>1, 5, ‘hello’, [1,2], (3,4) 등 비어있지 않은 자료는 참(True)이다.</li>
+  <li>[], {}, (), 0 등 비어있는 공백 자료는 거짓(False)이다.</li>
+</ul>
 
-# 1. 자료형의 참/거짓
+<h1 id="1-자료형의-참거짓">1. 자료형의 참/거짓</h1>
 
-* * *
+<hr />
 
-각 자료형 별로 참과 거짓의 구분 기준은 조건문에 들어갔을 때 참(True)를 리턴하느냐, 거짓(False)를 리턴하느냐이다.
+<p>각 자료형 별로 참과 거짓의 구분 기준은 조건문에 들어갔을 때 참(True)를 리턴하느냐, 거짓(False)를 리턴하느냐이다.</p>
 
-**1) 숫자**  
-참 : 1, 10, 3.14, 1/10, -4 등 0이 아닌 숫자  
-거짓 : 0
+<p><strong>1) 숫자</strong><br />
+참 : 1, 10, 3.14, 1/10, -4 등 0이 아닌 숫자<br />
+거짓 : 0</p>
 
-**2) 문자열**  
-참 : "abc", "a", "10" 등 비어있지 않은 문자열  
-거짓 : "" 비어있는 문자열
+<p><strong>2) 문자열</strong><br />
+참 : “abc”, “a”, “10” 등 비어있지 않은 문자열<br />
+거짓 : “” 비어있는 문자열</p>
 
-**3) 리스트**  
-참 : [1],[1,3],['a',1] 등 비어있지 않은 리스트  
-거짓 : [] 비어있는 리스트
+<p><strong>3) 리스트</strong><br />
+참 : [1],[1,3],[‘a’,1] 등 비어있지 않은 리스트<br />
+거짓 : [] 비어있는 리스트</p>
 
-**4) 튜플**  
-참 : (1,'a'), (3,) 등 비어있지 않은 튜플  
-거짓 : () 비어있는 튜플
+<p><strong>4) 튜플</strong><br />
+참 : (1,’a’), (3,) 등 비어있지 않은 튜플<br />
+거짓 : () 비어있는 튜플</p>
 
-**5) 딕셔너리**  
-참 : {1:'a', 2:'b'} 등 비어있지 않은 딕셔너리  
-거짓 : {} 비어있는 딕셔너리
+<p><strong>5) 딕셔너리</strong><br />
+참 : {1:’a’, 2:’b’} 등 비어있지 않은 딕셔너리<br />
+거짓 : {} 비어있는 딕셔너리</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 자료형과 제어문
+<h1 id="2-자료형과-제어문">2. 자료형과 제어문</h1>
 
-* * *
+<hr />
 
-제어문 강의에서 자세히 다루겠지만 if, while, for 등의 제어문은 조건이 참이면 내부함수를 실행하는 구조이다.  
+<p>제어문 강의에서 자세히 다루겠지만 if, while, for 등의 제어문은 조건이 참이면 내부함수를 실행하는 구조이다.</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"a is 1"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"a is not 1"</span><span class="p">)</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+</code></pre></div></div>
 
-~~~ python
-a=1
-if a==1:
-        print("a is 1")
-else:
-        print("a is not 1")<code></code>
-~~~
+<ul>
+  <li>위의 a==1 은 ‘참’이므로 위의 조건문은 “a is 1”이라는 문장을 출력한다.</li>
+  <li>만약 위의 조건이 ‘거짓’이었다면 else 아래의 “a is not 1”이라는 문장이 출력된다.</li>
+</ul>
 
-  * 위의 a==1 은 '참'이므로 위의 조건문은 "a is 1"이라는 문장을 출력한다.
-  * 만약 위의 조건이 '거짓'이었다면 else 아래의 "a is not 1"이라는 문장이 출력된다.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">]</span>
+<span class="k">while</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</code></pre></div></div>
 
+<p> </p>
 
+<p>while문은 조건이 참인 동안 계속해서 내부 함수인 a.pop()을 실행하면서 그 리턴값을 출력한다. pop() 함수는 리스트의 마지막 요소를 리턴하고 삭제시키는 함수이다. [‘a’,’b’,’c’]는 참이므로 ‘c’를 뱉어낸다. 다음 실행에서 [‘a’,’b’]는 참이므로 ‘b’를 뱉어낸다. 다음 실행에서 [‘a’]는 참이므로 ‘a’를 뱉어낸다. 다음 실행에서 []는 거짓이므로 while문을 빠져나간다.</p>
 
-~~~ python
-a = ['a','b','c']
-while a:
-        print(a.pop())
-~~~
-
-&nbsp;
-
-while문은 조건이 참인 동안 계속해서 내부 함수인 a.pop()을 실행하면서 그 리턴값을 출력한다. pop() 함수는 리스트의 마지막 요소를 리턴하고 삭제시키는 함수이다. ['a','b','c']는 참이므로 'c'를 뱉어낸다. 다음 실행에서 ['a','b']는 참이므로 'b'를 뱉어낸다. 다음 실행에서 ['a']는 참이므로 'a'를 뱉어낸다. 다음 실행에서 []는 거짓이므로 while문을 빠져나간다.
   </div>
   
   <div class="post">
@@ -10983,131 +10940,109 @@ while문은 조건이 참인 동안 계속해서 내부 함수인 a.pop()을 실
 
     <span class="post-date">17 Sep 2018</span>
 
-    &nbsp;
+    <p> </p>
 
-# 1. 집합 표현방식
+<h1 id="1-집합-표현방식">1. 집합 표현방식</h1>
 
-* * *
+<hr />
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {1,2,3}
+</span><span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'python'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># {'t','o','y','n','p','h'}   집합의 특징1 : 순서가 없다.
+</span><span class="n">s3</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'apple'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span> <span class="c1"># {'e','l','a','p'}   집합의 특징2 : 중복이 안된다.
+</span></code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-s1 = set([1,2,3])
-print(s1) # {1,2,3}
-s2 = set('python')
-print(s2) # {'t','o','y','n','p','h'}   집합의 특징1 : 순서가 없다.
-s3 = set('apple')
-print(s3) # {'e','l','a','p'}   집합의 특징2 : 중복이 안된다.
-~~~
+<ul>
+  <li>순서가 없다는 것은 index가 없다는 말이다. 따라서 인덱싱이나 슬라이싱을 통해서 값을 얻을 수 없다.</li>
+  <li>리스트, 튜플 자료형은 순서가 있어 인덱싱,슬라이싱이 되었다. 딕셔너리, 집합 자료형은 순서가 없으므로 인덱싱, 슬라이싱이 되지 않는다.</li>
+</ul>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># 집합 s1을 리스트형으로 변환
+</span><span class="k">print</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="c1"># [1,2,3]
+</span><span class="n">t1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># 집합 s1을 튜플형으로 변환
+</span><span class="k">print</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="c1"># (1,2,3)
+</span></code></pre></div></div>
 
-  * 순서가 없다는 것은 index가 없다는 말이다. 따라서 인덱싱이나 슬라이싱을 통해서 값을 얻을 수 없다.
-  * 리스트, 튜플 자료형은 순서가 있어 인덱싱,슬라이싱이 되었다. 딕셔너리, 집합 자료형은 순서가 없으므로 인덱싱, 슬라이싱이 되지 않는다.
+<p> </p>
 
+<p> </p>
 
+<p> </p>
 
-~~~ python
-l1 = list(s1) # 집합 s1을 리스트형으로 변환
-print(l1) # [1,2,3]
-t1 = tuple(s1) # 집합 s1을 튜플형으로 변환
-print(t1) # (1,2,3)
-~~~
+<h1 id="2-집합-활용방법">2. 집합 활용방법</h1>
 
-&nbsp;
+<hr />
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-# 2. 집합 활용방법
+<p><strong>1) 교집합</strong></p>
 
-* * *
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">&amp;</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># {4,5}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c1"># {4,5}
+</span></code></pre></div></div>
 
+<p> </p>
 
+<p><strong>2) 합집합</strong></p>
 
-~~~ python
-s1 = set([1,2,3,4,5])
-s2 = set([4,5,6,7,8])
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">|</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># {1,2,3,4,5,6,7,8}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c1"># {1,2,3,4,5,6,7,8}
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-**1) 교집합**  
+<p><strong>3) 차집합</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">-</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># {1,2,3}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="o">-</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {6,7,8}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c1"># {1,2,3}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span> <span class="c1"># {6,7,8}
+</span></code></pre></div></div>
 
-~~~ python
-print(s1&s2) # {4,5}
-print(s1.intersection(s2)) # {4,5}
-~~~
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-**2) 합집합**  
+<p> </p>
 
+<h1 id="3-집합-관련-함수">3. 집합 관련 함수</h1>
 
-~~~ python
-print(s1|s2) # {1,2,3,4,5,6,7,8}
-print(s1.union(s2)) # {1,2,3,4,5,6,7,8}
-~~~
+<hr />
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
 
-**3) 차집합**  
+<p> </p>
 
+<p><strong>1) 값 1개 추가</strong></p>
 
-~~~ python
-print(s1-s2) # {1,2,3}
-print(s2-s1) # {6,7,8}
-print(s1.difference(s2)) # {1,2,3}
-print(s2.difference(s1)) # {6,7,8}
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 4 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {1,2,3,4}
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p><strong>2) 값 여러개 추가</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span> <span class="c1"># {5,6,7} 집합 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {1,2,3,4,5,6,7}
+</span></code></pre></div></div>
 
-# 3. 집합 관련 함수
+<p> </p>
 
-* * *
+<p><strong>3) 값 제거</strong></p>
 
-
-
-~~~ python
-s1 = set([1,2,3])
-~~~
-
-&nbsp;
-
-**1) 값 1개 추가**  
-
-
-~~~ python
-s1.add(4) # 4 추가
-print(s1) # {1,2,3,4}
-~~~
-
-&nbsp;
-
-**2) 값 여러개 추가**  
-
-
-~~~ python
-s1.update([5,6,7]) # {5,6,7} 집합 추가
-print(s1) # {1,2,3,4,5,6,7}
-~~~
-
-&nbsp;
-
-**3) 값 제거**  
-
-
-~~~ python
-s1.remove(3) # 3 제거
-print(s1) # {1,2,4,5,6,7}
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># 3 제거
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {1,2,4,5,6,7}
+</span></code></pre></div></div>
 
 
   </div>
@@ -11121,247 +11056,219 @@ print(s1) # {1,2,4,5,6,7}
 
     <span class="post-date">16 Sep 2018</span>
 
-    &nbsp;
+    <p> </p>
 
-  * 딕셔너리는 대응관계를 나타내는 자료형이다.
-  * 딕셔너리는 리스트, 튜플처럼 순차적인 요소가 아닌 key를 통해 value를 얻는 key : value 의 대응요소를 가지고 있다.
+<ul>
+  <li>딕셔너리는 대응관계를 나타내는 자료형이다.</li>
+  <li>딕셔너리는 리스트, 튜플처럼 순차적인 요소가 아닌 key를 통해 value를 얻는 key : value 의 대응요소를 가지고 있다.</li>
+</ul>
 
-&nbsp;
+<p> </p>
 
-# 1. 딕셔너리 표현방식
-* * *
+<h1 id="1-딕셔너리-표현방식">1. 딕셔너리 표현방식</h1>
+<hr />
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'John'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s">'phone'</span><span class="p">:</span><span class="s">'010-0000-1234'</span><span class="p">}</span>
+</code></pre></div></div>
 
-~~~ python
-person = {'name':'John', 'age':20, 'phone':'010-0000-1234'}
-~~~
+<ul>
+  <li>딕셔너리 자료형 person의 key는 ‘name’, ‘age’, ‘phone’ 이다.</li>
+  <li>딕셔너리 자료형 person의 value는 ‘John’, 20, ‘010-0000-1234’ 이다.</li>
+</ul>
 
-- 딕셔너리 자료형 person의 key는 'name', 'age', 'phone' 이다.  
-- 딕셔너리 자료형 person의 value는 'John', 20, '010-0000-1234' 이다.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">]}</span> <span class="c1"># value로 리스트 자료형도 가능하다.
+</span><span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:(</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">)}</span> <span class="c1"># value로 튜플 자료형도 가능하다.
+</span></code></pre></div></div>
 
+<p> </p>
 
+<h1 id="2-딕셔너리-쌍-추가">2. 딕셔너리 쌍 추가</h1>
+<hr />
 
-~~~ python
-a = {1:['a','b']} # value로 리스트 자료형도 가능하다.
-b = {1:('a','b')} # value로 튜플 자료형도 가능하다.
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s">'a'</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># {1: 'a'}
+</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">'b'</span> <span class="c1"># 2: 'b' 쌍 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># {1: 'a', 2: 'b'}
+</span>
+<span class="n">a</span><span class="p">[</span><span class="s">'age'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># 'age': 20 쌍 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># {1: 'a', 2: 'b', 'age': 20}
+</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span> <span class="c1"># 3: [10,20] 쌍 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># {1: 'a', 2: 'b', 'age': 20, 3:[10,20]}
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
+<p>참고로 딕셔너리에서는 순차적으로 요소를 구하지 않고 key로 value를 얻으므로 순서는 신경쓸 필요 없다.</p>
 
-# 2. 딕셔너리 쌍 추가
-* * *
+<p> </p>
 
-~~~ python
-a = {1:'a'}
-print(a) # {1: 'a'}
+<h1 id="3-딕셔너리-쌍-삭제">3. 딕셔너리 쌍 삭제</h1>
 
-a[2] = 'b' # 2: 'b' 쌍 추가
-print(a) # {1: 'a', 2: 'b'}
+<hr />
 
-a['age'] = 20 # 'age': 20 쌍 추가
-print(a) # {1: 'a', 2: 'b', 'age': 20}
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># 현재 a = {1: 'a', 2: 'b', 'age': 20, 3: [10,20]}
+</span>
+<span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1">#key가 2인 key:value 쌍 삭제  &lt;&lt; del a[key] 는 a의 key:value 쌍 삭제
+</span></code></pre></div></div>
 
-a[3] = [10,20] # 3: [10,20] 쌍 추가
-print(a) # {1: 'a', 2: 'b', 'age': 20, 3:[10,20]}
-~~~
+<p>a의 index 2 항목이 아니라는 것을 명심해야한다.</p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># {1: 'a', 'age': 20, 3: [10,20]}
+</span></code></pre></div></div>
 
-참고로 딕셔너리에서는 순차적으로 요소를 구하지 않고 key로 value를 얻으므로 순서는 신경쓸 필요 없다.
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 딕셔너리 쌍 삭제
+<p> </p>
 
-* * *
+<h1 id="4-딕셔너리-쌍-사용">4. 딕셔너리 쌍 사용</h1>
 
+<hr />
 
+<ul>
+  <li>딕셔너리 자료형은 보통 공통의 분류 항목에 대한 다른 값을 저장할 때 쓴다.</li>
+  <li>이는 리스트나 튜플 자료형으로 표현하기는 어렵다.</li>
+</ul>
 
-~~~ python
-print(a) # 현재 a = {1: 'a', 2: 'b', 'age': 20, 3: [10,20]}
+<p>각 휴대폰 브랜드마다 제조사의 데이터를 담고 싶은 경우를 예로 들어보자.</p>
 
-del a[2] #key가 2인 key:value 쌍 삭제  << del a[key] 는 a의 key:value 쌍 삭제
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span> <span class="o">=</span> <span class="p">{</span><span class="s">'galaxy'</span><span class="p">:</span><span class="s">'Samsung'</span><span class="p">,</span> <span class="s">'V20'</span><span class="p">:</span><span class="s">'LG'</span><span class="p">,</span> <span class="s">'G8'</span><span class="p">:</span><span class="s">'LG'</span><span class="p">,</span> <span class="s">'vega'</span><span class="p">:</span><span class="s">'PanTech'</span><span class="p">,</span> <span class="s">'iPhone'</span><span class="p">:</span><span class="s">'Apple'</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">phone</span><span class="p">[</span><span class="s">'vega'</span><span class="p">])</span> <span class="c1"># 'PanTech'
+</span><span class="k">print</span><span class="p">(</span><span class="n">phone</span><span class="p">[</span><span class="s">'galaxy'</span><span class="p">])</span> <span class="c1"># 'Samsung'&lt;code&gt;&lt;/code&gt;
+</span></code></pre></div></div>
 
-a의 index 2 항목이 아니라는 것을 명심해야한다.
+<ul>
+  <li>리스트나 튜플에서는 인덱싱, 슬라이싱을 활용해 요소를 얻었다.</li>
+  <li>딕셔너리에서는 key를 이용하는 방법 하나 뿐이다.</li>
+  <li>딕셔너리 변수[key] 를 이용해서 key에 해당하는 value를 얻는다.</li>
+</ul>
 
+<p> </p>
 
+<p> </p>
 
-~~~ python
-print(a) # {1: 'a', 'age': 20, 3: [10,20]}
-~~~
+<h1 id="5-주의사항">5. 주의사항</h1>
 
-&nbsp;
+<hr />
 
-&nbsp;
+<ul>
+  <li>key 중복 금지</li>
+  <li>딕셔너리에서 key는 고유한 값이어야 한다.</li>
+  <li>같은 key값이 2개 이상 존재할 경우 1나를 제외한 나머지는 모두 무시된다.</li>
+  <li>어떤 key값이 무시될 지는 예측할 수 없다. 따라서 중복되지 않도록 주의하자.</li>
+</ul>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'John'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s">'name'</span><span class="p">:</span><span class="s">'Kelly'</span><span class="p">,</span> <span class="s">'name'</span><span class="p">:</span><span class="s">'Jack'</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s">'name'</span><span class="p">])</span> <span class="c1"># 'John' 혹은 'Kelly' 혹은 'Jack'
+</span></code></pre></div></div>
 
-# 4. 딕셔너리 쌍 사용
+<p> </p>
 
-* * *
+<ul>
+  <li>key로 리스트 자료형 사용 금지</li>
+  <li>리스트 자료형은 그 값이 변할 수 있기 때문에 key로 사용 불가능</li>
+  <li>key로 튜플 자료형은 사용 가능하다.</li>
+  <li>튜플 자료형은 그 값이 변하지 않기 때문에 key로 사용 가능하다.</li>
+  <li>딕셔너리의 key로 사용할 수 있냐 없냐는 값이 변할 수 있느냐 없느냐에 달려있다.</li>
+  <li>딕셔너리의 value로는 변하는 값이든 변하지 않는 값이든 사용 가능하다.</li>
+</ul>
 
-  * 딕셔너리 자료형은 보통 공통의 분류 항목에 대한 다른 값을 저장할 때 쓴다.
-  * 이는 리스트나 튜플 자료형으로 표현하기는 어렵다.
+<p> </p>
 
-각 휴대폰 브랜드마다 제조사의 데이터를 담고 싶은 경우를 예로 들어보자.  
+<p> </p>
 
+<p> </p>
 
-~~~ python
-phone = {'galaxy':'Samsung', 'V20':'LG', 'G8':'LG', 'vega':'PanTech', 'iPhone':'Apple'}
-print(phone['vega']) # 'PanTech'
-print(phone['galaxy']) # 'Samsung'<code></code>
-~~~
+<h1 id="6-딕셔너리-관련-함수">6. 딕셔너리 관련 함수</h1>
 
-  * 리스트나 튜플에서는 인덱싱, 슬라이싱을 활용해 요소를 얻었다.
-  * 딕셔너리에서는 key를 이용하는 방법 하나 뿐이다.
-  * 딕셔너리 변수[key] 를 이용해서 key에 해당하는 value를 얻는다.
+<hr />
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span> <span class="o">=</span> <span class="p">{</span><span class="s">'galaxy'</span><span class="p">:</span><span class="s">'Samsung'</span><span class="p">,</span> <span class="s">'V20'</span><span class="p">:</span><span class="s">'LG'</span><span class="p">,</span> <span class="s">'G8'</span><span class="p">:</span><span class="s">'LG'</span><span class="p">,</span> <span class="s">'vega'</span><span class="p">:</span><span class="s">'PanTech'</span><span class="p">,</span> <span class="s">'iPhone'</span><span class="p">:</span><span class="s">'Apple'</span><span class="p">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-# 5. 주의사항
+<p><strong>1) key로 이루어진 list 만들기</strong></p>
 
-* * *
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c1"># 딕셔너리 phone의 key들로만 이루어진 dict_keys 객체를 리턴
+</span><span class="k">print</span><span class="p">(</span><span class="n">phone</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="c1"># dict_keys(['galaxy', 'V20', 'G8', 'vega', 'iPhone'])
+</span><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">phone</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span> <span class="c1"># ['galaxy', 'V20', 'G8', 'vega', 'iPhone']
+</span></code></pre></div></div>
 
-  * key 중복 금지
-  * 딕셔너리에서 key는 고유한 값이어야 한다.
-  * 같은 key값이 2개 이상 존재할 경우 1나를 제외한 나머지는 모두 무시된다.
-  * 어떤 key값이 무시될 지는 예측할 수 없다. 따라서 중복되지 않도록 주의하자.
+<p> </p>
 
+<ul>
+  <li>list를 만들고 싶으면 list() 함수를 사용하면 된다.</li>
+  <li>Python 3.0 버전 이전에는 애초에 list를 리턴하였으나 3.0 이후 메모리 낭비의 문제로 dict_keys로 리턴</li>
+</ul>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">phone</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="s">" is made by "</span><span class="o">+</span><span class="n">phone</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+</code></pre></div></div>
 
-~~~ python
-a = {'name':'John', 'age':20, 'name':'Kelly', 'name':'Jack'}
-print(a['name']) # 'John' 혹은 'Kelly' 혹은 'Jack'
-~~~
+<p> </p>
 
-&nbsp;
+<p>list() 함수를 써서 리스트로 변환하지 않더라도 dict_keys의 요소에 관한 반복문을 실행할 수 있다.</p>
 
-  * key로 리스트 자료형 사용 금지
-  * 리스트 자료형은 그 값이 변할 수 있기 때문에 key로 사용 불가능
-  * key로 튜플 자료형은 사용 가능하다.
-  * 튜플 자료형은 그 값이 변하지 않기 때문에 key로 사용 가능하다.
-  * 딕셔너리의 key로 사용할 수 있냐 없냐는 값이 변할 수 있느냐 없느냐에 달려있다.
-  * 딕셔너리의 value로는 변하는 값이든 변하지 않는 값이든 사용 가능하다.
+<p><strong>2) value로 이루어진 list 만들기</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="c1"># 딕셔너리 phone의 value들로만 이루어진 dict_values 객체 리턴
+</span><span class="k">print</span><span class="p">(</span><span class="n">phone</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="c1"># dict_values(['Samsung', 'LG', 'LG', 'PanTech', 'Apple'])
+</span><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">phone</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span> <span class="c1"># ['Samsung', 'LG', 'LG', 'PanTech', 'Apple']
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p><strong>3) key,value 쌍 구하기</strong></p>
 
-# 6. 딕셔너리 관련 함수
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="c1"># dict_items([('galaxy','Samsung'), ('V20','LG'),('G8','LG'),('vega','PanTech'),('iPhone','Apple')])
+</span></code></pre></div></div>
 
-* * *
+<p>dict_keys, dict_values, dict_items 등의 객체는 정수, 문자열, 리스트 등과는 다르게 하나의 사용자 정의 자료형이다.</p>
 
-
-
-~~~ python
-phone = {'galaxy':'Samsung', 'V20':'LG', 'G8':'LG', 'vega':'PanTech', 'iPhone':'Apple'}
-~~~
-
-&nbsp;
-
-**1) key로 이루어진 list 만들기**  
-
-
-~~~ python
-phone.keys() # 딕셔너리 phone의 key들로만 이루어진 dict_keys 객체를 리턴
-print(phone.keys()) # dict_keys(['galaxy', 'V20', 'G8', 'vega', 'iPhone'])
-print(list(phone.keys())) # ['galaxy', 'V20', 'G8', 'vega', 'iPhone']
-~~~
-
-&nbsp;
-
-  * list를 만들고 싶으면 list() 함수를 사용하면 된다.
-  * Python 3.0 버전 이전에는 애초에 list를 리턴하였으나 3.0 이후 메모리 낭비의 문제로 dict_keys로 리턴
-
-
-
-~~~ python
-for k in phone.keys():
-        print(k+" is made by "+phone[k])
-~~~
-
-&nbsp;
-
-list() 함수를 써서 리스트로 변환하지 않더라도 dict_keys의 요소에 관한 반복문을 실행할 수 있다.
-
-**2) value로 이루어진 list 만들기**  
-
-
-~~~ python
-phone.values() # 딕셔너리 phone의 value들로만 이루어진 dict_values 객체 리턴
-print(phone.values()) # dict_values(['Samsung', 'LG', 'LG', 'PanTech', 'Apple'])
-print(list(phone.values())) # ['Samsung', 'LG', 'LG', 'PanTech', 'Apple']
-~~~
-
-&nbsp;
-
-**3) key,value 쌍 구하기**  
-
-
-~~~ python
-phone.items() # dict_items([('galaxy','Samsung'), ('V20','LG'),('G8','LG'),('vega','PanTech'),('iPhone','Apple')])
-~~~
-
-dict\_keys, dict\_values, dict_items 등의 객체는 정수, 문자열, 리스트 등과는 다르게 하나의 사용자 정의 자료형이다.
-
-
-
-~~~ python
-phone.items() # dict_items([('galaxy','Samsung'), ('V20','LG'),('G8','LG'),('vega','PanTech'),('iPhone','Apple')])
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="c1"># dict_items([('galaxy','Samsung'), ('V20','LG'),('G8','LG'),('vega','PanTech'),('iPhone','Apple')])
 ### dict_keys, dict_values, dict_items 등의 객체는 정수, 문자열, 리스트 등과는 다르게 하나의 사용자 정의 자료형이다.
-type(phone.items()) # <class 'dict_items'>
-a = list(phone.items()) # [('galaxy','Samsung'), ('V20','LG'),('G8','LG'),('vega','PanTech'),('iPhone','Apple')]
-type(a) # <class 'list'>
-type(a[0]) # <class 'tuple'>
-~~~
+</span><span class="nb">type</span><span class="p">(</span><span class="n">phone</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="c1"># &lt;class 'dict_items'&gt;
+</span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">phone</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="c1"># [('galaxy','Samsung'), ('V20','LG'),('G8','LG'),('vega','PanTech'),('iPhone','Apple')]
+</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># &lt;class 'list'&gt;
+</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># &lt;class 'tuple'&gt;
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-list(phone.items())는 리스트 안에 튜플이 있는 구조인 것이었다.
+<p>list(phone.items())는 리스트 안에 튜플이 있는 구조인 것이었다.</p>
 
-**4) key,value 쌍 지우기**  
+<p><strong>4) key,value 쌍 지우기</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span> <span class="c1"># 딕셔너리 phone 요소들 모두 지우기
+</span><span class="k">print</span><span class="p">(</span><span class="n">phone</span><span class="p">)</span> <span class="c1"># {}
+</span></code></pre></div></div>
 
-~~~ python
-phone.clear() # 딕셔너리 phone 요소들 모두 지우기
-print(phone) # {}
-~~~
+<p> </p>
 
-&nbsp;
+<p><strong>5) key로 value를 얻는 또다른 방법 .get() 함수</strong></p>
 
-**5) key로 value를 얻는 또다른 방법 .get() 함수**  
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span> <span class="o">=</span> <span class="p">{</span><span class="s">'galaxy'</span><span class="p">:</span><span class="s">'Samsung'</span><span class="p">,</span> <span class="s">'V20'</span><span class="p">:</span><span class="s">'LG'</span><span class="p">,</span> <span class="s">'G8'</span><span class="p">:</span><span class="s">'LG'</span><span class="p">,</span> <span class="s">'vega'</span><span class="p">:</span><span class="s">'PanTech'</span><span class="p">,</span> <span class="s">'iPhone'</span><span class="p">:</span><span class="s">'Apple'</span><span class="p">}</span>
+<span class="n">phone</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'vega'</span><span class="p">)</span> <span class="c1"># 'PanTech'
+</span></code></pre></div></div>
 
+<p>phone[‘vega’]와 phone.get(‘vega’)는 같은 결과를 return 한다.</p>
 
-~~~ python
-phone = {'galaxy':'Samsung', 'V20':'LG', 'G8':'LG', 'vega':'PanTech', 'iPhone':'Apple'}
-phone.get('vega') # 'PanTech'
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phone</span><span class="p">[</span><span class="s">'G4'</span><span class="p">]</span> <span class="c1"># phone에 'G4'라는 key가 없어서 Key Error를 일으킨다.
+</span><span class="n">phone</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'G4'</span><span class="p">)</span> <span class="c1"># phone에 'G4'라는 key가 없어서 None을 반환한다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">phone</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'G4'</span><span class="p">))</span> <span class="c1"># None
+</span></code></pre></div></div>
 
-phone['vega']와 phone.get('vega')는 같은 결과를 return 한다.
+<p> </p>
 
+<p><strong>6) 해당 key가 딕셔너리에 존재하는지 조사하기</strong></p>
 
-
-~~~ python
-phone['G4'] # phone에 'G4'라는 key가 없어서 Key Error를 일으킨다.
-phone.get('G4') # phone에 'G4'라는 key가 없어서 None을 반환한다.
-print(phone.get('G4')) # None
-~~~
-
-&nbsp;
-
-**6) 해당 key가 딕셔너리에 존재하는지 조사하기**  
-
-
-~~~ python
-'galaxy' in phone # True 리턴
-'G4' in phone # False 리턴
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">'galaxy'</span> <span class="ow">in</span> <span class="n">phone</span> <span class="c1"># True 리턴
+</span><span class="s">'G4'</span> <span class="ow">in</span> <span class="n">phone</span> <span class="c1"># False 리턴
+</span></code></pre></div></div>
 
 
   </div>
@@ -11375,107 +11282,97 @@ print(phone.get('G4')) # None
 
     <span class="post-date">16 Sep 2018</span>
 
-    &nbsp;
+    <p> </p>
 
-  * 튜플 자료형은 리스트와 거의 비슷하다.a
-  * 리스트는 대괄호 [ ]로 둘러쌓여있지만 튜플은 소괄호 ( )로 둘러쌓여있다.
-  * 리스트와 튜플의 가장 중요한 차이는 리스트는 요소의 추가,삭제,수정이 가능하지만 튜플은 불가능하다. C나 JAVA의 상수와 비슷한 개념이다.
-  * 따라서 프로그램에서 바뀌면 안되는 데이터는 튜플로 정의하고 수시로 값이 바뀌어야하는 데이터는 리스트로 정의한다.
+<ul>
+  <li>튜플 자료형은 리스트와 거의 비슷하다.a</li>
+  <li>리스트는 대괄호 [ ]로 둘러쌓여있지만 튜플은 소괄호 ( )로 둘러쌓여있다.</li>
+  <li>리스트와 튜플의 가장 중요한 차이는 리스트는 요소의 추가,삭제,수정이 가능하지만 튜플은 불가능하다. C나 JAVA의 상수와 비슷한 개념이다.</li>
+  <li>따라서 프로그램에서 바뀌면 안되는 데이터는 튜플로 정의하고 수시로 값이 바뀌어야하는 데이터는 리스트로 정의한다.</li>
+</ul>
 
-# 1. 튜플 표현방식
+<h1 id="1-튜플-표현방식">1. 튜플 표현방식</h1>
 
-* * *
+<hr />
 
-# 
+<p>#</p>
 
-~~~ python
-tu1 = () # 공백 튜플
-tu2 = (1,) # 요소가 1개인 경우는 요수 뒤에 콤마(,)를 반드시 붙여야한다.
-tu3 = (1,2,3)
-tu4 = 4,5,6 # 괄호를 생략할 수 있다. 자동으로 (4,5,6)으로 치환되어 저장된다.
-tu5 = ('a','b',('c','d','hello')) # 튜플 내부에 또다른 튜플을 포함할 수 있다.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tu1</span> <span class="o">=</span> <span class="p">()</span> <span class="c1"># 공백 튜플
+</span><span class="n">tu2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="c1"># 요소가 1개인 경우는 요수 뒤에 콤마(,)를 반드시 붙여야한다.
+</span><span class="n">tu3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">tu4</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span> <span class="c1"># 괄호를 생략할 수 있다. 자동으로 (4,5,6)으로 치환되어 저장된다.
+</span><span class="n">tu5</span> <span class="o">=</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,(</span><span class="s">'c'</span><span class="p">,</span><span class="s">'d'</span><span class="p">,</span><span class="s">'hello'</span><span class="p">))</span> <span class="c1"># 튜플 내부에 또다른 튜플을 포함할 수 있다.
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">)</span> <span class="c1"># ()
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu2</span><span class="p">)</span> <span class="c1"># (1,)
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu3</span><span class="p">)</span> <span class="c1"># (1,2,3)
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu4</span><span class="p">)</span> <span class="c1"># (4,5,6)
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu5</span><span class="p">)</span> <span class="c1"># ('a','b',('c','d','hello'))
+</span>
+<span class="n">tu6</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 요소가 1개인데 콤마(,)를 붙이지 않은 경우는 숫자 자료형 1로 저장된다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu6</span><span class="p">)</span> <span class="c1"># 1
+</span><span class="nb">type</span><span class="p">(</span><span class="n">tu6</span><span class="p">)</span> <span class="c1"># &lt;class 'int'&gt;    type 함수를 사용하여 class 확인 가능
+</span>
+<span class="k">del</span> <span class="n">t1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># TypeError : 'tuple' object does not support item deletion 오류 발생
+</span><span class="n">t1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># TypeError : 'tuple' object does not support item assignment 오류 발생
+</span></code></pre></div></div>
 
-print(tu1) # ()
-print(tu2) # (1,)
-print(tu3) # (1,2,3)
-print(tu4) # (4,5,6)
-print(tu5) # ('a','b',('c','d','hello'))
+<p>#</p>
 
-tu6 = (1) # 요소가 1개인데 콤마(,)를 붙이지 않은 경우는 숫자 자료형 1로 저장된다.
-print(tu6) # 1
-type(tu6) # <class 'int'>    type 함수를 사용하여 class 확인 가능
+<p> </p>
 
-del t1[0] # TypeError : 'tuple' object does not support item deletion 오류 발생
-t1[0] = 10 # TypeError : 'tuple' object does not support item assignment 오류 발생
-~~~
+<h1 id="2-튜플-연산">2. 튜플 연산</h1>
 
-# 
+<hr />
 
-&nbsp;
+<p><strong>1) 튜플 더하기</strong></p>
 
-# 2. 튜플 연산
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tu1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">tu2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="o">+</span><span class="n">tu2</span><span class="p">)</span> <span class="c1"># (1,2,3,4,5,6)
+</span></code></pre></div></div>
 
-* * *
+<p> </p>
 
-**1) 튜플 더하기**
+<p> </p>
 
+<p><strong>2) 튜플 곱하기</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># (1,2,3,1,2,3,1,2,3)  3번 반복
+</span></code></pre></div></div>
 
-~~~ python
-tu1 = (1,2,3)
-tu2 = (4,5,6)
-print(tu1+tu2) # (1,2,3,4,5,6)
-~~~
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-**2) 튜플 곱하기**  
+<p> </p>
 
+<h1 id="3-튜플-인덱싱">3. 튜플 인덱싱</h1>
 
-~~~ python
-print(tu1*3) # (1,2,3,1,2,3,1,2,3)  3번 반복
-~~~
+<hr />
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tu1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 3
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># 'c'
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 튜플 인덱싱
+<h1 id="4-튜플-슬라이싱">4. 튜플 슬라이싱</h1>
 
-* * *
+<hr />
 
-
-
-~~~ python
-tu1 = (1,2,3,'a','b','c')
-print(tu1[2]) # 3
-print(tu1[5]) # 'c'
-~~~
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-# 4. 튜플 슬라이싱
-
-* * *
-
-
-
-~~~ python
-tu1 = (1,2,3,'a','b','c')
-print(tu1[2:4]) # tu1[2] ~ tu1[3] = (3,'a')
-print(tu1[:3]) # tu1[0] ~ tu1[2] = (1,2,3)
-print(tu1[2:]) # (3,'a','b','c')
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tu1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># tu1[2] ~ tu1[3] = (3,'a')
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># tu1[0] ~ tu1[2] = (1,2,3)
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="c1"># (3,'a','b','c')
+</span></code></pre></div></div>
 
 
   </div>

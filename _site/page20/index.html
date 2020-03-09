@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,19 +10682,18 @@
 
     <span class="post-date">16 Dec 2018</span>
 
-    Java의 기본 문법에서 지원하는 배열에는 제약사항이 많다. 요소를 추가하려면 길이를 늘려야 하고 중간에 다른 값 하나를 추가하려하면 코드를 수정해야 한다. 이외에도 불편한 점이 많다.
+    <p>Java의 기본 문법에서 지원하는 배열에는 제약사항이 많다. 요소를 추가하려면 길이를 늘려야 하고 중간에 다른 값 하나를 추가하려하면 코드를 수정해야 한다. 이외에도 불편한 점이 많다.</p>
 
-java.util 패키지에는 객체 배열을 편리하게 다룰 수 있도록 해주는 ArrayList 클래스가 구현되어 있다. ArrayList 클래스는 주요 클래스로 자세히 다루어야 하지만 이번에는 일반 배열과 비교하는 목적으로 단지 사용법을 보도록 한다.
+<p>java.util 패키지에는 객체 배열을 편리하게 다룰 수 있도록 해주는 ArrayList 클래스가 구현되어 있다. ArrayList 클래스는 주요 클래스로 자세히 다루어야 하지만 이번에는 일반 배열과 비교하는 목적으로 단지 사용법을 보도록 한다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. ArrayList로 객체 배열 생성
+<h1 id="1-arraylist로-객체-배열-생성">1. ArrayList로 객체 배열 생성</h1>
 
-* * *
+<hr />
 
-~~~ java
-ArrayList<Student> stus = new ArrayList<Student>();
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;();</span>
+</code></pre></div></div>
 
 <E> 형태의 자료형은 제네릭이라고 하는데, 고정되지 않고 유동적인 자료형을 다루기 위해 사용하는 개념으로 나중에 자세히 다룬다.
 
@@ -10728,7 +10703,7 @@ ArrayList클래스의 사용을 위해서는 컴파일러에게 ArrayList클래�
 import java.util.ArrayList;
 ~~~
 
-java.util 패키지는 유용한 자료구조 & 알고리즘 클래스를 지원하는 패키지다.
+java.util 패키지는 유용한 자료구조 &amp; 알고리즘 클래스를 지원하는 패키지다.
 
 &nbsp;
 
@@ -10785,7 +10760,7 @@ public class Test {
        stus.add(new Student(1001, "John"));
        stus.add(new Student(1002, "Kelly"));
 
-       for(int i=0; i<stus.size(); i++) { //객체 배열의 길이를 반환하는 size() 메소드
+       for(int i=0; i&lt;stus.size(); i++) { //객체 배열의 길이를 반환하는 size() 메소드
           Student stu = stus.get(i); // 객체 배열의 index i 요소를 반환하는 get() 메소드
           stu.showInfo();
        }
@@ -10796,6 +10771,8 @@ public class Test {
 자주 사용하는 메소드는 기억해두면 편하다.
 
 JavaDoc에서 ArrayList에 관한 설명을 한 번 읽어보는 것이 도움될 것이다.
+</Student></Student></E>
+
   </div>
   
   <div class="post">
@@ -10807,175 +10784,153 @@ JavaDoc에서 ArrayList에 관한 설명을 한 번 읽어보는 것이 도움�
 
     <span class="post-date">16 Dec 2018</span>
 
-    # 1. arraycopy 메소드
+    <h1 id="1-arraycopy-메소드">1. arraycopy 메소드</h1>
 
-* * *
+<hr />
 
-~~~ java
-arraycopy(src, srcPos, dest, destPos, length);
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arraycopy</span><span class="o">(</span><span class="n">src</span><span class="o">,</span> <span class="n">srcPos</span><span class="o">,</span> <span class="n">dest</span><span class="o">,</span> <span class="n">destPos</span><span class="o">,</span> <span class="n">length</span><span class="o">);</span>
+</code></pre></div></div>
 
-src : 복사할 배열
+<p>src : 복사할 배열</p>
 
-srsPos : 복사할 시작 index
+<p>srsPos : 복사할 시작 index</p>
 
-dest : 붙여넣을 배열
+<p>dest : 붙여넣을 배열</p>
 
-destPos : 붙여넣을 시작 index
+<p>destPos : 붙여넣을 시작 index</p>
 
-length : 붙여넣을 갯수
+<p>length : 붙여넣을 갯수</p>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-       Student[] stus1 = new Student[3];
-       Student[] stus2 = new Student[3];
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
        
-       stus1[0] = new Student();
-       stus1[1] = new Student();
-       stus1[2] = new Student();
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
        
-       stus1[0].setName("John");
-       stus1[0].setStudentID(1001);
-       stus1[1].setName("Kelly");
-       stus1[1].setStudentID(1002);
-       stus1[2].setName("Paul");
-       stus1[2].setStudentID(1003);
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1001</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1002</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Paul"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1003</span><span class="o">);</span>
        
-       //stus1을 stus2에 복사
-       System.arraycopy(stus1, 0, stus2, 0, stus1.length);
+       <span class="c1">//stus1을 stus2에 복사</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">stus1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">stus2</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">stus1</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
        
-       for(int i=0; i<stus2.length; i++) {
-             stus2[i].showInfo();
-       }
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="o">}</span>
        
-       System.out.println();
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
        
-       //stus1의 첫 번째 객체 정보 변경
-       stus1[0].setName("Mac");
-       stus1[0].setStudentID(9999);
+       <span class="c1">//stus1의 첫 번째 객체 정보 변경</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Mac"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">9999</span><span class="o">);</span>
        
-       //stus2의 모든 객체 정보 출력
-       for(int i=0; i<stus2.length; i++) {
-             stus2[i].showInfo();
-       }
-    }
-}
-~~~
+       <span class="c1">//stus2의 모든 객체 정보 출력</span>
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-1001, John
+<p>1001, John</p>
 
+<p>1002, Kelly</p>
 
-1002, Kelly
+<p>1003, Paul</p>
 
+<p>9999, Mac</p>
 
-1003, Paul
+<p>1002, Kelly</p>
 
+<p>1003, Paul</p>
 
+<p>stus1의 첫 번째 요소가 가르키는 객체 정보를 변경했는데 stus2의 첫 번째 요소의 객체 정보도 변경되었다.</p>
 
+<p>arraycopy() 메소드의 원리를 보면 이유를 알 수 있다.</p>
 
-9999, Mac
+<p>어차피 객체 배열에 요소로 저장되어있는 것은 객체의 주소 정보이다. arraycopy() 메소드는 객체의 주소값을 복사해서 넘겨주는 메소드이다. 따라서 stus1과 stus2의 각 요소는 같은 객체를 가르키고 있는 참조변수인 것이다. 그래서 stus1로 객체에 접근해 정보를 변경하면 stus2를 통해 출력해도 바뀐 정보가 나오는 것이다.</p>
 
+<p>이를 얕은 복사라고 한다.</p>
 
-1002, Kelly
+<p> </p>
 
+<p> </p>
 
-1003, Paul
+<h1 id="2-깊은-복사">2. 깊은 복사</h1>
 
+<hr />
 
- 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-stus1의 첫 번째 요소가 가르키는 객체 정보를 변경했는데 stus2의 첫 번째 요소의 객체 정보도 변경되었다.
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
 
-arraycopy() 메소드의 원리를 보면 이유를 알 수 있다.
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
 
-어차피 객체 배열에 요소로 저장되어있는 것은 객체의 주소 정보이다. arraycopy() 메소드는 객체의 주소값을 복사해서 넘겨주는 메소드이다. 따라서 stus1과 stus2의 각 요소는 같은 객체를 가르키고 있는 참조변수인 것이다. 그래서 stus1로 객체에 접근해 정보를 변경하면 stus2를 통해 출력해도 바뀐 정보가 나오는 것이다.
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1001</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1002</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Paul"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1003</span><span class="o">);</span>
 
-이를 얕은 복사라고 한다.
+       <span class="n">stus2</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus2</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus2</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
 
-&nbsp;
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="n">stus1</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">());</span>
+          <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="n">stus1</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getStudentID</span><span class="o">());</span>
+       <span class="o">}</span>
 
-&nbsp;
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="o">}</span>
 
-# 2. 깊은 복사
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
 
-* * *
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Assy"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">10000</span><span class="o">);</span>
 
-~~~ java
-package classpart;
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>         
+       <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-public class Test {
-    public static void main(String[] args) {
-       Student[] stus1 = new Student[3];
-       Student[] stus2 = new Student[3];
+<p>실행결과</p>
 
-       stus1[0] = new Student();
-       stus1[1] = new Student();
-       stus1[2] = new Student();
+<p>1001, John</p>
 
-       stus1[0].setName("John");
-       stus1[0].setStudentID(1001);
-       stus1[1].setName("Kelly");
-       stus1[1].setStudentID(1002);
-       stus1[2].setName("Paul");
-       stus1[2].setStudentID(1003);
+<p>1002, Kelly</p>
 
-       stus2[0] = new Student();
-       stus2[1] = new Student();
-       stus2[2] = new Student();
+<p>1003, Paul</p>
 
-       for(int i=0; i<stus1.length; i++) {
-          stus2[i].setName(stus1[i].getName());
-          stus2[i].setStudentID(stus1[i].getStudentID());
-       }
+<p>1001, John</p>
 
-       for(int i=0; i<stus2.length; i++) {
-             stus2[i].showInfo();
-       }
+<p>1002, Kelly</p>
 
-       System.out.println();
+<p>1003, Paul</p>
 
-       stus1[0].setName("Assy");
-       stus1[0].setStudentID(10000);
+<p>stus2 인스턴스도 따로 만들고 stus1의 get() 메소드로 정보만 출력해서 저장하였다. 이 경우는 stus1과 stus2의 각 요소가 서로 다른 인스턴스를 가르키기 때문에 stus1을 통해 객체 정보를 변경한다고 해서 stus2가 참조하는 객체는 영향을 받지 않는다.</p>
 
-       for(int i=0; i<stus2.length; i++) {
-             stus2[i].showInfo();         
-       }
-    }
-}
-~~~
-
-실행결과
-
-1001, John
-
-
-1002, Kelly
-
-
-1003, Paul
-
-
-
-
-1001, John
-
-
-1002, Kelly
-
-
-1003, Paul
-
-
- 
-
-stus2 인스턴스도 따로 만들고 stus1의 get() 메소드로 정보만 출력해서 저장하였다. 이 경우는 stus1과 stus2의 각 요소가 서로 다른 인스턴스를 가르키기 때문에 stus1을 통해 객체 정보를 변경한다고 해서 stus2가 참조하는 객체는 영향을 받지 않는다.
   </div>
   
   <div class="post">
@@ -10987,120 +10942,113 @@ stus2 인스턴스도 따로 만들고 stus1의 get() 메소드로 정보만 출
 
     <span class="post-date">16 Dec 2018</span>
 
-    # 1. 객체 배열
+    <h1 id="1-객체-배열">1. 객체 배열</h1>
 
-* * *
+<hr />
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Student {
-    int studentID;
-    String name;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">studentID</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
     
-    public Student() {};
+    <span class="kd">public</span> <span class="nf">Student</span><span class="o">()</span> <span class="o">{};</span>
    
-    public int getStudentID() {
-      return studentID;
-   }
-   public void setStudentID(int studentID) {
-      this.studentID = studentID;
-   }
-   public String getName() {
-      return name;
-   }
-   public void setName(String name) {
-      this.name = name;
-   }
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getStudentID</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">studentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStudentID</span><span class="o">(</span><span class="kt">int</span> <span class="n">studentID</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">studentID</span> <span class="o">=</span> <span class="n">studentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
     
-    public void showInfo() {
-       System.out.println(studentID+", "+name);
-    }
-}
-~~~
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="o">()</span> <span class="o">{</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">studentID</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위와 같이 Student 클래스를 생성했다.
+<p>위와 같이 Student 클래스를 생성했다.</p>
 
-멤버 변수로는 이름과 학번이 있고 각각에 대해 get(), set() 메소드를 지원한다. 또한 학생 정보를 출력해주는 showInfo()메소드를 만들었다.
+<p>멤버 변수로는 이름과 학번이 있고 각각에 대해 get(), set() 메소드를 지원한다. 또한 학생 정보를 출력해주는 showInfo()메소드를 만들었다.</p>
 
-이제 Student를 하나의 참조 자료형으로 사용한 Student 자료형 배열을 만들어보자.
+<p>이제 Student를 하나의 참조 자료형으로 사용한 Student 자료형 배열을 만들어보자.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-       Student[] stus = new Student[3]; //Student형의 인스턴스를 저장할 배열공간만 확보했을 뿐 아직 인스턴스가 만들어지지 않았다.
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span> <span class="c1">//Student형의 인스턴스를 저장할 배열공간만 확보했을 뿐 아직 인스턴스가 만들어지지 않았다.</span>
        
-       //배열 요소마다 인스턴스 생성
-       stus[0] = new Student();
-       stus[1] = new Student();
-       stus[2] = new Student();
+       <span class="c1">//배열 요소마다 인스턴스 생성</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
        
-       stus[0].setName("John");
-       stus[0].setStudentID(1001);
-       stus[1].setName("Kelly");
-       stus[1].setStudentID(1002);
-       stus[2].setName("Faul");
-       stus[2].setStudentID(1003);
+       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1001</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1002</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Faul"</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1003</span><span class="o">);</span>
        
-       for(int i=0; i<stus.length; i++) {
-          stus[i].showInfo();
-       }
-    }
-}
-~~~
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-가장 처음에 Student[] stus = new Student[3]; 를 써서 Student 타입의 길이가 3인 배열 stus를 만들었다.
+<p>가장 처음에 Student[] stus = new Student[3]; 를 써서 Student 타입의 길이가 3인 배열 stus를 만들었다.</p>
 
-주의해야 할 건 아직 인스턴스가 만들어지지 않았단 것이다. stus배열의 각각의 요소는 아직 아무런 객체의 주소값도 가지고 있지 않다. 출력해보면 null이 나온다.
+<p>주의해야 할 건 아직 인스턴스가 만들어지지 않았단 것이다. stus배열의 각각의 요소는 아직 아무런 객체의 주소값도 가지고 있지 않다. 출력해보면 null이 나온다.</p>
 
-따라서 이후에 각각의 요소마다 인스턴스를 생성해주고 이후의 코드를 진행해야한다.
+<p>따라서 이후에 각각의 요소마다 인스턴스를 생성해주고 이후의 코드를 진행해야한다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-       Student[] stus = new Student[3]; //Student형의 인스턴스를 저장할 배열 공간만 확보했을 뿐 아직 인스턴스가 만들어지지 않았다.
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span> <span class="c1">//Student형의 인스턴스를 저장할 배열 공간만 확보했을 뿐 아직 인스턴스가 만들어지지 않았다.</span>
        
-       for(int i=0; i<stus.length; i++) {
-          System.out.println(stus[i]);
-       }
-       //배열 요소마다 인스턴스 생성
-       stus[0] = new Student();
-       stus[1] = new Student();
-       stus[2] = new Student();
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+       <span class="o">}</span>
+       <span class="c1">//배열 요소마다 인스턴스 생성</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
        
-       for(int i=0; i<stus.length; i++) {
-          System.out.println(stus[i]);
-       }
-    }
-}
-~~~
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-null
+<p>null</p>
 
+<p>null</p>
 
-null
+<p>null</p>
 
+<p>classpart.Student@15db9742</p>
 
-null
+<p>classpart.Student@6d06d69c</p>
 
+<p>classpart.Student@7852e922</p>
 
-classpart.Student@15db9742
+<p>결과를 보면 각각의 배열요소마다 인스턴스를 생성하여 저장하기 전 아무런 객체도 참조하지 않는 null 상태이다. 혹시나 실수로 인스턴스 생성을 까먹으면 NullPointException 컴파일 오류가 난다.</p>
 
+<p> </p>
 
-classpart.Student@6d06d69c
-
-
-classpart.Student@7852e922
-
-결과를 보면 각각의 배열요소마다 인스턴스를 생성하여 저장하기 전 아무런 객체도 참조하지 않는 null 상태이다. 혹시나 실수로 인스턴스 생성을 까먹으면 NullPointException 컴파일 오류가 난다.
-
-&nbsp;
   </div>
   
   <div class="post">
@@ -11112,143 +11060,125 @@ classpart.Student@7852e922
 
     <span class="post-date">16 Dec 2018</span>
 
-    배열은 같은 자료형을 여러 개 묶어서 관리할 수 있는 자료구조이다.
+    <p>배열은 같은 자료형을 여러 개 묶어서 관리할 수 있는 자료구조이다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 선언, 초기화
+<h1 id="1-선언-초기화">1. 선언, 초기화</h1>
 
-* * *
+<hr />
 
-~~~ java
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
 
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+<span class="c1">//자료형[] 이름 = new 자료형[길이];</span>
+</code></pre></div></div>
 
-~~~ java
-int[] myNums = new int[10];
-//자료형[] 이름 = new 자료형[길이];
-~~~
+<p>위와 같이 선언하면 배열이 생성된다. 아무런 초기화가 없는 경우 정수는 0, 실수는 0.0, 객체는 null로 초기화 된다.</p>
 
-위와 같이 선언하면 배열이 생성된다. 아무런 초기화가 없는 경우 정수는 0, 실수는 0.0, 객체는 null로 초기화 된다.
+<p> </p>
 
-&nbsp;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span> <span class="c1">//길이가 5인 배열 선언과 동시에 초기화</span>
+<span class="c1">//int[] myNums = new int[5]{1,2,3,4,5}; //오류 발생</span>
+</code></pre></div></div>
 
-~~~ java
-int[] myNums = new int[] {1,2,3,4,5}; //길이가 5인 배열 선언과 동시에 초기화
-//int[] myNums = new int[5]{1,2,3,4,5}; //오류 발생
-~~~
+<p>선언과 동시에 초기화 시킬 수 있다. 이 경우는 배열의 길이정보를 빼 주어야 한다.</p>
 
-선언과 동시에 초기화 시킬 수 있다. 이 경우는 배열의 길이정보를 빼 주어야 한다.
+<p> </p>
 
-&nbsp;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span> <span class="c1">//new int[] 생략 가능</span>
+</code></pre></div></div>
 
-~~~ java
-int[] myNums = {1,2,3,4}; //new int[] 생략 가능
-~~~
+<p>new int[]를 생략하여도 배열을 선언하는 데에는 충분한 모든 정보가 포함되어 있다.</p>
 
-new int[]를 생략하여도 배열을 선언하는 데에는 충분한 모든 정보가 포함되어 있다.
+<p> </p>
 
-&nbsp;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span> <span class="c1">//배열 선언</span>
+<span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span> <span class="c1">//초기화</span>
+</code></pre></div></div>
 
-~~~ java
-int[] myNums; //배열 선언
-myNums = new int[] {1,2,3,4,5}; //초기화
-~~~
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<h1 id="2-배열-자료-사용">2. 배열 자료 사용</h1>
 
-# 2. 배열 자료 사용
+<hr />
 
-* * *
+<p>배열에 저장된 자료에 접근할 때에는 index 연산자 []를 사용한다.</p>
 
-배열에 저장된 자료에 접근할 때에는 index 연산자 []를 사용한다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-~~~ java
-package classpart;
-
-public class MyTest {  
-   public static void main(String[] args) {
-      int[] myNums;
-      myNums = new int[] {1,2,3,4,5};
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="o">{</span>  
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span>
+      <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
       
-      System.out.println(myNums[0]);
-      System.out.println(myNums[1]);
-      System.out.println(myNums[2]);
-      System.out.println(myNums[3]);
-      System.out.println(myNums[4]);
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]);</span>
       
-      myNums[0]+=10;
-      myNums[1]+=10;
-      myNums[2]+=10;
-      myNums[3]+=10;
-      myNums[4]+=10;
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
       
-      System.out.println();
-      System.out.println(myNums[0]);
-      System.out.println(myNums[1]);
-      System.out.println(myNums[2]);
-      System.out.println(myNums[3]);
-      System.out.println(myNums[4]);
-   }
-}
-~~~
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-1
+<p>1</p>
 
+<p>2</p>
 
-2
+<p>3</p>
 
+<p>4</p>
 
-3
+<p>5</p>
 
+<p>11</p>
 
-4
+<p>12</p>
 
+<p>13</p>
 
-5
+<p>14</p>
 
+<p>15</p>
 
-11
+<p>주의해야 할 건 <strong>배열의 index는 0부터 시작</strong>한다는 것이다.</p>
 
+<p>배열 객체는 length라는 변수를 가지고 있다. length는 배열의 길이 정보를 반환해준다.</p>
 
-12
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-
-13
-
-
-14
-
-
-15
-
-
- 
-
-주의해야 할 건 **배열의 index는 0부터 시작**한다는 것이다.
-
-배열 객체는 length라는 변수를 가지고 있다. length는 배열의 길이 정보를 반환해준다.
-
-~~~ java
-package classpart;
-
-public class MyTest {  
-   public static void main(String[] args) {
-      int[] myNums;
-      myNums = new int[] {1,2,3,4,5};
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="o">{</span>  
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span>
+      <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
       
-      for(int i=0; i<myNums.length; i++) {
-         System.out.println(myNums[i]);
-      }
-   }
-}
-~~~
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">myNums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-myNums.length는 myNums배열의 길이인 5를 반환한다. length속성을 사용해서 for문으로 myNums의 모든 요소를 한 번에 출력할 수 있다.
+<p>myNums.length는 myNums배열의 길이인 5를 반환한다. length속성을 사용해서 for문으로 myNums의 모든 요소를 한 번에 출력할 수 있다.</p>
+
   </div>
   
   <div class="post">
@@ -11260,83 +11190,80 @@ myNums.length는 myNums배열의 길이인 5를 반환한다. length속성을 �
 
     <span class="post-date">15 Dec 2018</span>
 
-    객체지향 프로그래밍에서 클래스의 인스턴스를 단 한 개만 만들어서 사용하는 디자인 패턴이다. 학교 객체와 학생들 객체가 있을 때, 학교는 1개이므로 인스턴스를 한 개만 만들면 된다. 이럴 경우 싱글톤 패턴을 사용한다.
+    <p>객체지향 프로그래밍에서 클래스의 인스턴스를 단 한 개만 만들어서 사용하는 디자인 패턴이다. 학교 객체와 학생들 객체가 있을 때, 학교는 1개이므로 인스턴스를 한 개만 만들면 된다. 이럴 경우 싱글톤 패턴을 사용한다.</p>
 
-싱글톤 패턴을 단계적으로 프로그래밍 해보자.
+<p>싱글톤 패턴을 단계적으로 프로그래밍 해보자.</p>
 
-&nbsp;
+<p> </p>
 
-## 1. private 생성자 생성
+<h2 id="1-private-생성자-생성">1. private 생성자 생성</h2>
 
-생성자가 없을 경우 컴파일러가 넣어주는 default 생성자는 항상 public이다. 싱글톤 패턴에서는 외부에서 인스턴스를 생성할 수 없도록 항상 private 생성자를 선언해준다.
+<p>생성자가 없을 경우 컴파일러가 넣어주는 default 생성자는 항상 public이다. 싱글톤 패턴에서는 외부에서 인스턴스를 생성할 수 없도록 항상 private 생성자를 선언해준다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class School {
-   private School() {}
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-## 2. static을 사용하여 유일한 인스턴스 생성
+<h2 id="2-static을-사용하여-유일한-인스턴스-생성">2. static을 사용하여 유일한 인스턴스 생성</h2>
 
-단계1에서 private 생성자를 만들어놓았으므로 외부에서는 인스턴스를 생성할 수 없게 되었다. 따라서 미리 클래스 내부에서 인스턴스를 하나 만들어 주는 것이다.
+<p>단계1에서 private 생성자를 만들어놓았으므로 외부에서는 인스턴스를 생성할 수 없게 되었다. 따라서 미리 클래스 내부에서 인스턴스를 하나 만들어 주는 것이다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class School {
-   private static School instance = new School(); // 클래스의 유일한 인스턴스
-   private School() {}
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="nc">School</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">School</span><span class="o">();</span> <span class="c1">// 클래스의 유일한 인스턴스</span>
+   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-## 3. 외부에 공개되는 메소드 생성
+<h2 id="3-외부에-공개되는-메소드-생성">3. 외부에 공개되는 메소드 생성</h2>
 
-클래스 내부에서 생성한 private 인스턴스를 외부에서 사용 가능하도록 메소드를 만들어준다.
+<p>클래스 내부에서 생성한 private 인스턴스를 외부에서 사용 가능하도록 메소드를 만들어준다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class School {
-   private static School instance = new School(); // 클래스의 유일한 인스턴스
-   private School() {}
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="nc">School</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">School</span><span class="o">();</span> <span class="c1">// 클래스의 유일한 인스턴스</span>
+   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
    
-   public static School getInstance() {
-      if(instance == null) {
-          instance = new School();
-      }
-      return instance;
-   }
-}
-~~~
+   <span class="kd">public</span> <span class="kd">static</span> <span class="nc">School</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">School</span><span class="o">();</span>
+      <span class="o">}</span>
+      <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-getInstance() 메소드는 static 메소드로 선언했다. 왜냐하면 인스턴스가 만들어지기 전부터 사용할 수 있어야 하기 때문이다.
+<p>getInstance() 메소드는 static 메소드로 선언했다. 왜냐하면 인스턴스가 만들어지기 전부터 사용할 수 있어야 하기 때문이다.</p>
 
-## 4. 사용하기
+<h2 id="4-사용하기">4. 사용하기</h2>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-       School school1 = School.getInstance();
-       School school2 = School.getInstance();
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">School</span> <span class="n">school1</span> <span class="o">=</span> <span class="nc">School</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+       <span class="nc">School</span> <span class="n">school2</span> <span class="o">=</span> <span class="nc">School</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
        
-       System.out.println(school1==school2);
-    }
-}
-~~~
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">school1</span><span class="o">==</span><span class="n">school2</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-true
+<p>true</p>
 
-school1 참조변수와 school2 참조변수 모두 같은 인스턴스를 참조한다.
+<p>school1 참조변수와 school2 참조변수 모두 같은 인스턴스를 참조한다.</p>
+
   </div>
   
 </div>

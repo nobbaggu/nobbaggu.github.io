@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,59 +10682,53 @@
 
     <span class="post-date">31 Dec 2018</span>
 
-    Scanner 클래스는 java.util 패키지의 클래스로 입력 스트림을 제공한다. Scanner 클래스로 만든 입력 스트림은 정수, 실수, 문자 등 다양한 자료를 읽어들일 수 있다. 간편하게 사용할 수 있어 자주 사용하는 클래스이므로 알아두면 편리하다.
+    <p>Scanner 클래스는 java.util 패키지의 클래스로 입력 스트림을 제공한다. Scanner 클래스로 만든 입력 스트림은 정수, 실수, 문자 등 다양한 자료를 읽어들일 수 있다. 간편하게 사용할 수 있어 자주 사용하는 클래스이므로 알아두면 편리하다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. Scanner 클래스
+<h1 id="1-scanner-클래스">1. Scanner 클래스</h1>
 
-* * *
+<hr />
 
-Scanner 클래스의 참조자료에 객체를 만들어 저장해두고 다양한 메소드를 호출하여 사용할 수 있다.
+<p>Scanner 클래스의 참조자료에 객체를 만들어 저장해두고 다양한 메소드를 호출하여 사용할 수 있다.</p>
 
-~~~ java
-package stream;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
 
-import java.util.Scanner;
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 
-public class SystemInTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SystemInTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      Scanner scanner = new Scanner(System.in); //System.in = 표준 입력 스트림 ->키보드 입력을 받기위해 System.in을 생성자 매개변수로 전달
+      <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span> <span class="c1">//System.in = 표준 입력 스트림 -&gt;키보드 입력을 받기위해 System.in을 생성자 매개변수로 전달</span>
       
-      System.out.print("Name: ");
-      String name = scanner.nextLine(); //문자열 입력 메소드
-      System.out.print("Address: ");
-      String addr = scanner.nextLine(); //문자열 입력 메소드
-      System.out.print("Age: ");
-      int age = scanner.nextInt(); //정수 입력 메소드
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Name: "</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">//문자열 입력 메소드</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Address: "</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">//문자열 입력 메소드</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Age: "</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span> <span class="c1">//정수 입력 메소드</span>
       
-      System.out.println("Name: "+name+ ", Age: "+age+ ", Address: "+addr);
-   }
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Name: "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span> <span class="s">", Age: "</span><span class="o">+</span><span class="n">age</span><span class="o">+</span> <span class="s">", Address: "</span><span class="o">+</span><span class="n">addr</span><span class="o">);</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Name: John
+<p>Name: John</p>
 
+<p>Address: Seoul</p>
 
-Address: Seoul
+<p>Age: 29</p>
 
+<p>Name: John, Age: 29, Address: Seoul</p>
 
-Age: 29
+<p>Scanner 객체를 만들 때 생성자의 매개변수로 System.in, 즉 표준 입력 스트림을 전달해주었는데, 이는 키보드로 입력을 하기 위해서이다. 이외에도 파일이나 문자열 입력도 받을 수 있다.</p>
 
+<p>이것을 하기위해 System.in 표준입력스트림의 read() 메소드를 사용했다면 while문을 써서 읽어들여야 했을 것이다. 또한 예외처리까지 해주어야 해서 코드가 더 복잡해지고 과정이 번거로울 것이다.</p>
 
-Name: John, Age: 29, Address: Seoul
-
-
- 
-
-Scanner 객체를 만들 때 생성자의 매개변수로 System.in, 즉 표준 입력 스트림을 전달해주었는데, 이는 키보드로 입력을 하기 위해서이다. 이외에도 파일이나 문자열 입력도 받을 수 있다.
-
-이것을 하기위해 System.in 표준입력스트림의 read() 메소드를 사용했다면 while문을 써서 읽어들여야 했을 것이다. 또한 예외처리까지 해주어야 해서 코드가 더 복잡해지고 과정이 번거로울 것이다.
   </div>
   
   <div class="post">
@@ -10770,57 +10740,57 @@ Scanner 객체를 만들 때 생성자의 매개변수로 System.in, 즉 표준 
 
     <span class="post-date">31 Dec 2018</span>
 
-    입출력이란 **데이터 이동의 방향**을 말한다. 입력은 프로그램으로 데이터가 들어오는 것, 출력은 데이터를 내보내는 것이라고 할 수 있다. 대표적으로 모니터, 키보드, 마우스부터 네트워크 등 모든 것이 데이터를 읽고 써야 제 기능을 한다. 이 때 장치마다 입출력을 제각각 구현해야한다면 비생산적이고 장치간의 호환성도 떨어질 것이다.
+    <p>입출력이란 <strong>데이터 이동의 방향</strong>을 말한다. 입력은 프로그램으로 데이터가 들어오는 것, 출력은 데이터를 내보내는 것이라고 할 수 있다. 대표적으로 모니터, 키보드, 마우스부터 네트워크 등 모든 것이 데이터를 읽고 써야 제 기능을 한다. 이 때 장치마다 입출력을 제각각 구현해야한다면 비생산적이고 장치간의 호환성도 떨어질 것이다.</p>
 
-Java는 장치에 의존하지 않는 **일관적인 데이터의 입출력을 위해 스트림이라는 것을 제공**한다. 스트림은 데이터의 이동 통로이다. 스트림은 시냇물, 개울을 뜻한다. 데이터가 이동하는 모습이 물이 흐르는 것과 비슷하다하여 붙여진 이름이다.
+<p>Java는 장치에 의존하지 않는 <strong>일관적인 데이터의 입출력을 위해 스트림이라는 것을 제공</strong>한다. 스트림은 데이터의 이동 통로이다. 스트림은 시냇물, 개울을 뜻한다. 데이터가 이동하는 모습이 물이 흐르는 것과 비슷하다하여 붙여진 이름이다.</p>
 
-<a href="https://SWnomad.com/?attachment_id=1066" rel="attachment wp-att-1066"><img class="aligncenter wp-image-1066" src="/images/2018/09/1-14.jpg" alt="" width="393" height="197" srcset="/images/2018/09/1-14.jpg 519w, /images/2018/09/1-14-300x150.jpg 300w" sizes="(max-width: 393px) 100vw, 393px" /></a>
+<p><a href="https://SWnomad.com/?attachment_id=1066" rel="attachment wp-att-1066"><img class="aligncenter wp-image-1066" src="/images/2018/09/1-14.jpg" alt="" width="393" height="197" srcset="/images/2018/09/1-14.jpg 519w, /images/2018/09/1-14-300x150.jpg 300w" sizes="(max-width: 393px) 100vw, 393px" /></a></p>
 
-# 1. 스트림의 세 가지 분류 방식
+<h1 id="1-스트림의-세-가지-분류-방식">1. 스트림의 세 가지 분류 방식</h1>
 
-* * *
+<hr />
 
-## 1) 입력 vs 출력
+<h2 id="1-입력-vs-출력">1) 입력 vs 출력</h2>
 
-스트림은 데이터를 오직 한 방향으로만 보낼 수 있도록 제공된다. 따라서 하나의 스트림으로 입력과 출력을 동시에 할 수 없어 따로 만들어 주어야한다.
+<p>스트림은 데이터를 오직 한 방향으로만 보낼 수 있도록 제공된다. 따라서 하나의 스트림으로 입력과 출력을 동시에 할 수 없어 따로 만들어 주어야한다.</p>
 
-입력 스트림 : FileInputStream, FileReader, BufferedInputStream, BufferedReader 등
+<p>입력 스트림 : FileInputStream, FileReader, BufferedInputStream, BufferedReader 등</p>
 
-출력 스트림 : FileOutputStream, FileWriter, BufferedOutputStream, BufferedWriter 등
+<p>출력 스트림 : FileOutputStream, FileWriter, BufferedOutputStream, BufferedWriter 등</p>
 
-&nbsp;
+<p> </p>
 
-## 2) 바이트 vs 문자
+<h2 id="2-바이트-vs-문자">2) 바이트 vs 문자</h2>
 
-Java의 스트림은 기본적으로 데이터를 바이트(byte)단위로 묶어 이동시킨다. 그러나 문자를 나타내는 char 자료형은 2byte이며 이를 1byte씩 이동시킨다면 문자가 깨지는 현상이 발생한다. 따라서 문자 데이터를 위해 별도로 2byte씩 데이터를 이동시키는 문자 스트림을 따로 제공한다.
+<p>Java의 스트림은 기본적으로 데이터를 바이트(byte)단위로 묶어 이동시킨다. 그러나 문자를 나타내는 char 자료형은 2byte이며 이를 1byte씩 이동시킨다면 문자가 깨지는 현상이 발생한다. 따라서 문자 데이터를 위해 별도로 2byte씩 데이터를 이동시키는 문자 스트림을 따로 제공한다.</p>
 
-클래스 이름이 Stream으로 끝나면 byte 단위로 데이터를 처리하는 스트림이고 Reader, Writer로 끝나면 문자 스트림 클래스이다.
+<p>클래스 이름이 Stream으로 끝나면 byte 단위로 데이터를 처리하는 스트림이고 Reader, Writer로 끝나면 문자 스트림 클래스이다.</p>
 
-바이트 스트림 : FileInputStream, FileOutputStream, BufferedInputStream, BufferedOutputStream 등
+<p>바이트 스트림 : FileInputStream, FileOutputStream, BufferedInputStream, BufferedOutputStream 등</p>
 
-문자 스트림: FileReader, FileWriter, BufferedReader, BufferedWriter
+<p>문자 스트림: FileReader, FileWriter, BufferedReader, BufferedWriter</p>
 
-&nbsp;
+<p> </p>
 
-## 3) 기반 vs 보조
+<h2 id="3-기반-vs-보조">3) 기반 vs 보조</h2>
 
-데이터를 직접 source로부터 읽어들이거나 target에 쓰는 기능을 제공하기 위해 직접 연결되는 기반스트림 이외에도 항상 다른 스트림에 포함하여 생성되어 보조역할을 하는 보조 스트림이 있다.
+<p>데이터를 직접 source로부터 읽어들이거나 target에 쓰는 기능을 제공하기 위해 직접 연결되는 기반스트림 이외에도 항상 다른 스트림에 포함하여 생성되어 보조역할을 하는 보조 스트림이 있다.</p>
 
-기반 스트림 : FileInputStream, FileOutputStream, FileReader, FileWriter 등
+<p>기반 스트림 : FileInputStream, FileOutputStream, FileReader, FileWriter 등</p>
 
-보조 스트림 : InputStreamReader, OutputStreamWriter, BufferedInputStream, BufferedOutputStream 등
+<p>보조 스트림 : InputStreamReader, OutputStreamWriter, BufferedInputStream, BufferedOutputStream 등</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 표준 I/O
+<h1 id="2-표준-io">2. 표준 I/O</h1>
 
-* * *
+<hr />
 
-표준 입출력은 키보드와 모니터를 대상으로 데이터를 읽고 쓰는 가장 기본적인 스트림이다. 이 스트림은 프로그램 시작과 동시에 자동으로 생성되므로 따로 만들어 줄 필요가 없다.
+<p>표준 입출력은 키보드와 모니터를 대상으로 데이터를 읽고 쓰는 가장 기본적인 스트림이다. 이 스트림은 프로그램 시작과 동시에 자동으로 생성되므로 따로 만들어 줄 필요가 없다.</p>
 
-우리가 지금까지 많이 쓰던 System.out.println()을 한 번 뜯어보자. System 클래스에는 static 변수 out이 선언되어있다. out은 System의 하위클래스인 PrintStream 클래스 객체를 참조한다. 따라서 System.out을 통해 PrintStream의 println()메소드를 호출한 것이다. PrintStream은 표준 출력 스트림 클래스이다.
+<p>우리가 지금까지 많이 쓰던 System.out.println()을 한 번 뜯어보자. System 클래스에는 static 변수 out이 선언되어있다. out은 System의 하위클래스인 PrintStream 클래스 객체를 참조한다. 따라서 System.out을 통해 PrintStream의 println()메소드를 호출한 것이다. PrintStream은 표준 출력 스트림 클래스이다.</p>
 
 <table style="height: 109px;" width="687">
   <tr>
@@ -10880,52 +10850,48 @@ Java의 스트림은 기본적으로 데이터를 바이트(byte)단위로 묶�
   </tr>
 </table>
 
-out은 표준 출력을 위한 참조변수, in은 표준 입력을 위한 참조변수, err는 표준 오류 출력을 위한 참조변수이며 모두 System클래스 안에 정의되어 있다. System.err를 통해 빨간색의 오류 메세지를 출력할 수 있다.
+<p>out은 표준 출력을 위한 참조변수, in은 표준 입력을 위한 참조변수, err는 표준 오류 출력을 위한 참조변수이며 모두 System클래스 안에 정의되어 있다. System.err를 통해 빨간색의 오류 메세지를 출력할 수 있다.</p>
 
-예제를 하나 보자.
+<p>예제를 하나 보자.</p>
 
-~~~ java
-package stream;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
 
-import java.io.IOException;
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 
-public class SystemInTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SystemInTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      int myData;
+      <span class="kt">int</span> <span class="n">myData</span><span class="o">;</span>
       
-      while(true) {
-         try {
-            myData = System.in.read(); //1byte 읽어들임
-            if(myData != '\n') { //엔터가 아니면
-               System.out.print((char)myData); //하나 출력하고
-               continue;//계속
-            }
-            else { //myData == '\n'(엔터)이면
-               break; //while문 탈출
-            }
-         } catch (IOException e) {
-            e.printStackTrace();
-         }
+      <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">try</span> <span class="o">{</span>
+            <span class="n">myData</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">.</span><span class="na">read</span><span class="o">();</span> <span class="c1">//1byte 읽어들임</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">myData</span> <span class="o">!=</span> <span class="sc">'\n'</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//엔터가 아니면</span>
+               <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="n">myData</span><span class="o">);</span> <span class="c1">//하나 출력하고</span>
+               <span class="k">continue</span><span class="o">;</span><span class="c1">//계속</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span> <span class="c1">//myData == '\n'(엔터)이면</span>
+               <span class="k">break</span><span class="o">;</span> <span class="c1">//while문 탈출</span>
+            <span class="o">}</span>
+         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+         <span class="o">}</span>
          
-      }
-   }
+      <span class="o">}</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-hello world!
+<p>hello world!</p>
 
+<p>hello world!</p>
 
-hello world!
+<p>in은 InputStream클래스의 객체를 참조하는데, InputStream클래스는 바이트 단위 스트림이므로 1byte씩만 읽어들인다. 따라서 ASCII코드가 아닌 문자 형태로 출력하려면 char형으로 강제 형변환을 해주어야 한다.</p>
 
-
- 
-
-in은 InputStream클래스의 객체를 참조하는데, InputStream클래스는 바이트 단위 스트림이므로 1byte씩만 읽어들인다. 따라서 ASCII코드가 아닌 문자 형태로 출력하려면 char형으로 강제 형변환을 해주어야 한다.
   </div>
   
   <div class="post">
@@ -10937,205 +10903,197 @@ in은 InputStream클래스의 객체를 참조하는데, InputStream클래스는
 
     <span class="post-date">30 Dec 2018</span>
 
-    # 1. 예외 던지기
+    <h1 id="1-예외-던지기">1. 예외 던지기</h1>
 
-* * *
+<hr />
 
-예외를 해당 메소드의 코드에서 처리하지 않고 이후 객체의 메소드를 호출하여 사용하는 부분에서 처리하도록 미루는 것이 있는데, 이를 예외 던지기, 예외 미루기 라고 한다.
+<p>예외를 해당 메소드의 코드에서 처리하지 않고 이후 객체의 메소드를 호출하여 사용하는 부분에서 처리하도록 미루는 것이 있는데, 이를 예외 던지기, 예외 미루기 라고 한다.</p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
 
-public class ArrayException {
-   public static void main(String[] args) throws FileNotFoundException {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">FileNotFoundException</span> <span class="o">{</span>
       
-      FileInputStream fis = new FileInputStream("a.txt");
-   }
-}
-~~~
+      <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"a.txt"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위 코드에서는 FileNotFoundException 예외를 main() 메소드를 호출하여 사용하는 부분으로 넘긴다. 그런데 main()메소드는 운영체제의 자바 가상머신(JVM)에서 호출하므로 프로그램이 비정상 종료된다. 따라서 예외를 main() 메소드까지 미루는것은 좋지 않다.
+<p>위 코드에서는 FileNotFoundException 예외를 main() 메소드를 호출하여 사용하는 부분으로 넘긴다. 그런데 main()메소드는 운영체제의 자바 가상머신(JVM)에서 호출하므로 프로그램이 비정상 종료된다. 따라서 예외를 main() 메소드까지 미루는것은 좋지 않다.</p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
 
-public class ThrowsException {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThrowsException</span> <span class="o">{</span>
     
-   // FileNotFoundException, ClassNotFoundException 예외 처리 미루기
-   public Class getClass(String filename, String className) throws FileNotFoundException, ClassNotFoundException {
-      FileInputStream fis = new FileInputStream(filename);
-      Class myClass = Class.forName(className);
+   <span class="c1">// FileNotFoundException, ClassNotFoundException 예외 처리 미루기</span>
+   <span class="kd">public</span> <span class="nc">Class</span> <span class="nf">getClass</span><span class="o">(</span><span class="nc">String</span> <span class="n">filename</span><span class="o">,</span> <span class="nc">String</span> <span class="n">className</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">FileNotFoundException</span><span class="o">,</span> <span class="nc">ClassNotFoundException</span> <span class="o">{</span>
+      <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">filename</span><span class="o">);</span>
+      <span class="nc">Class</span> <span class="n">myClass</span> <span class="o">=</span> <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">className</span><span class="o">);</span>
       
-      return myClass;
-   }
+      <span class="k">return</span> <span class="n">myClass</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   public static void main(String[] args) {
-      ThrowsException te = new ThrowsException();
-      Class c = te.getClass("myfile.txt", "myClass.class"); //에러 발생
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">ThrowsException</span> <span class="n">te</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ThrowsException</span><span class="o">();</span>
+      <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span> <span class="c1">//에러 발생</span>
 
-   }
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-위 코드에서는 ThrowsException 클래스에서 두 개의 예외를 던졌다. 이후 main()메소드에서 객체를 만들어 getClass() 메소드를 호출하므로 main메소드에서 예외를 처리해야 한다. 이 때에는 두 가지 방법이 있다.
+<p>위 코드에서는 ThrowsException 클래스에서 두 개의 예외를 던졌다. 이후 main()메소드에서 객체를 만들어 getClass() 메소드를 호출하므로 main메소드에서 예외를 처리해야 한다. 이 때에는 두 가지 방법이 있다.</p>
 
-<a href="https://SWnomad.com/%ec%98%88%ec%99%b8-throws/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-196/" rel="attachment wp-att-1661"><img class="aligncenter size-full wp-image-1661" src="/images/2018/12/no-name-41.jpg" alt="" width="524" height="150" srcset="/images/2018/12/no-name-41.jpg 524w, /images/2018/12/no-name-41-300x86.jpg 300w" sizes="(max-width: 524px) 100vw, 524px" /></a>
+<p><a href="https://SWnomad.com/%ec%98%88%ec%99%b8-throws/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-196/" rel="attachment wp-att-1661"><img class="aligncenter size-full wp-image-1661" src="/images/2018/12/no-name-41.jpg" alt="" width="524" height="150" srcset="/images/2018/12/no-name-41.jpg 524w, /images/2018/12/no-name-41-300x86.jpg 300w" sizes="(max-width: 524px) 100vw, 524px" /></a></p>
 
-처리하는 방법은 3가지이다. 첫 번째는 다시 던지는 것인데 이는 JVM으로 던져버리므로 프로그램의 비정상적 종료를 불러일으킬 것이므로 아래 두 가지 방법을 선택하는 것이 좋다.
+<p>처리하는 방법은 3가지이다. 첫 번째는 다시 던지는 것인데 이는 JVM으로 던져버리므로 프로그램의 비정상적 종료를 불러일으킬 것이므로 아래 두 가지 방법을 선택하는 것이 좋다.</p>
 
-### 1) Surround with try/multi-catch
+<h3 id="1-surround-with-trymulti-catch">1) Surround with try/multi-catch</h3>
 
-이 방법에서는 하나의 catch문에서 여러개의 예외를 처리하도록 할 수 있다.
+<p>이 방법에서는 하나의 catch문에서 여러개의 예외를 처리하도록 할 수 있다.</p>
 
-~~~ java
-try {
-         Class c = te.getClass("myfile.txt", "myClass.class");
-      } catch (FileNotFoundException | ClassNotFoundException e) { //두 예외 중 한 가지 발생하면 블록 실행
-         e.printStackTrace();
-      }
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+         <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="o">|</span> <span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//두 예외 중 한 가지 발생하면 블록 실행</span>
+         <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+      <span class="o">}</span>
+</code></pre></div></div>
 
-OR 조건 연산자를 사용하여 여러 예외를 하나의 블록문으로 처리할 수 있다.
+<p>OR 조건 연산자를 사용하여 여러 예외를 하나의 블록문으로 처리할 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-### 2) Surround with try/catch
+<h3 id="2-surround-with-trycatch">2) Surround with try/catch</h3>
 
-~~~ java
-try {
-         Class c = te.getClass("myfile.txt", "myClass.class");
-      } catch (FileNotFoundException e) {
-         System.out.println("Can not find the file");
-      } catch (ClassNotFoundException e) {
-         System.out.println("Can not find the class");
-      }
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+         <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Can not find the file"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Can not find the class"</span><span class="o">);</span>
+      <span class="o">}</span>
+</code></pre></div></div>
 
-이 방법은 각각의 예외를 다른 방식으로 처리해야 할 경우 사용할 수 있다.
+<p>이 방법은 각각의 예외를 다른 방식으로 처리해야 할 경우 사용할 수 있다.</p>
 
-어떤 방식을 선택할지는 상황에따라, 그리고 만드는 프로그램의 특성에 따라 달리할 수 있다. 예를들어 같은 예외라도 여러곳에서 호출하면서 호출하여 사용하는 부분에 따라 다른 방식의 처리가 필요하다면 일단 throws를 통해 예외를 던진 후 호출하는 부분에서 상황에 맞게 예외를 처리하면 된다.
+<p>어떤 방식을 선택할지는 상황에따라, 그리고 만드는 프로그램의 특성에 따라 달리할 수 있다. 예를들어 같은 예외라도 여러곳에서 호출하면서 호출하여 사용하는 부분에 따라 다른 방식의 처리가 필요하다면 일단 throws를 통해 예외를 던진 후 호출하는 부분에서 상황에 맞게 예외를 처리하면 된다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 다중 예외처리
+<h1 id="2-다중-예외처리">2. 다중 예외처리</h1>
 
-* * *
+<hr />
 
-~~~ java
-try {
-   Class c = te.getClass("myfile.txt", "myClass.class");
-} catch (FileNotFoundException e) {
-   e.printStackTrace();
-} catch (ClassNotFoundException e) {
-   e.printStackTrace();
-} catch (Exception e) {
-   e.printStackTrace();
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+   <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-어떤 예외가 발생할 지 파악할 수 없는 경우에 위와 같이 마지막에 모든 예외 클래스의 최상위 클래스인 Exception 클래스로 예외처리를 해줄 수 있다. 이 경우 어떤 예외가 들어오더라도 Exception으로 자동 형변환 되어 예외가 처리된다.
+<p>어떤 예외가 발생할 지 파악할 수 없는 경우에 위와 같이 마지막에 모든 예외 클래스의 최상위 클래스인 Exception 클래스로 예외처리를 해줄 수 있다. 이 경우 어떤 예외가 들어오더라도 Exception으로 자동 형변환 되어 예외가 처리된다.</p>
 
-그런데 이런 상황에서 최상위 클래스인 Exception 클래스는 항상 마지막 catch문에 넣어주어야한다.
+<p>그런데 이런 상황에서 최상위 클래스인 Exception 클래스는 항상 마지막 catch문에 넣어주어야한다.</p>
 
-~~~ java
-try {
-   Class c = te.getClass("myfile.txt", "myClass.class");
-} catch (Exception e) {
-   e.printStackTrace();
-} catch (ClassNotFoundException e) {
-   e.printStackTrace();
-} catch (FileNotFoundException e) {
-   e.printStackTrace();
-}
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+   <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위와 같이 Exception클래스를 가장 위의 catch문에 놓을 경우 어떤 예외가 들어오더라도 첫 번째 catch문에 닿기 때문에 이후에 있는 예외에는 도달할 일이 없어 오류가 나게된다.
+<p>위와 같이 Exception클래스를 가장 위의 catch문에 놓을 경우 어떤 예외가 들어오더라도 첫 번째 catch문에 닿기 때문에 이후에 있는 예외에는 도달할 일이 없어 오류가 나게된다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 사용자 정의 예외처리
+<h1 id="3-사용자-정의-예외처리">3. 사용자 정의 예외처리</h1>
 
-* * *
+<hr />
 
-어떤 사이트에서 회원가입 기능을 구현할 때 아이디를 입력받으면 적합성 체크를 한다. 아이디가 비어있거나 길이 제한을 만족하지 않을 때 예외를 발생시켜야 하는데, 이러한 클래스는 자바에서 제공하지 않으므로 직접 만들어 사용해야 한다.
+<p>어떤 사이트에서 회원가입 기능을 구현할 때 아이디를 입력받으면 적합성 체크를 한다. 아이디가 비어있거나 길이 제한을 만족하지 않을 때 예외를 발생시켜야 하는데, 이러한 클래스는 자바에서 제공하지 않으므로 직접 만들어 사용해야 한다.</p>
 
-예외처리를 만들어 사용할 경우는 가장 비슷한 예외 클래스를 상속받으면 되는데, 잘 모를 경우는 최상위 클래스인 Exception 클래스를 상속받아도 된다.
+<p>예외처리를 만들어 사용할 경우는 가장 비슷한 예외 클래스를 상속받으면 되는데, 잘 모를 경우는 최상위 클래스인 Exception 클래스를 상속받아도 된다.</p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-public class IDException extends Exception {
-   public IDException(String message) {
-      super(message);
-   }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDException</span> <span class="kd">extends</span> <span class="nc">Exception</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="nf">IDException</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-IDException은 Exception 클래스를 상속받았다. IDException 객체를 생성하면서 예외 메세지를 같이 넣어주도록 만들었다. 이제 테스트를 해보자.
+<p>IDException은 Exception 클래스를 상속받았다. IDException 객체를 생성하면서 예외 메세지를 같이 넣어주도록 만들었다. 이제 테스트를 해보자.</p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-public class IDTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDTest</span> <span class="o">{</span>
 
-   private String id;
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
       
-   public String getId() {
-      return id;
-   }
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public void setId(String id) throws IDException {
-      if(id == null) {
-         throw new IDException("ID cannot be empty"); //강제 예외 발생
-      }
-      else if(id.length() < 8 || id.length() > 20) {
-         throw new IDException("ID length can be only in 8~20"); //강제 예외 발생
-      }
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IDException</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">id</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">IDException</span><span class="o">(</span><span class="s">"ID cannot be empty"</span><span class="o">);</span> <span class="c1">//강제 예외 발생</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="o">||</span> <span class="n">id</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">IDException</span><span class="o">(</span><span class="s">"ID length can be only in 8~20"</span><span class="o">);</span> <span class="c1">//강제 예외 발생</span>
+      <span class="o">}</span>
       
-      this.id = id;
-   }
+      <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+   <span class="o">}</span>
 
 
-   public static void main(String[] args) {
-      IDTest test = new IDTest();
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">IDTest</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IDTest</span><span class="o">();</span>
       
-      String id = null;
-      try {
-         test.setId(id);
-      } catch (IDException e) {
-         System.out.println(e.toString());
-      }
+      <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="n">test</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IDException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+      <span class="o">}</span>
       
-      String id2 = "abcd";
-      try {
-         test.setId(id2);
-      } catch(IDException e) {
-         System.out.println(e.toString());
-      }
-   }
+      <span class="nc">String</span> <span class="n">id2</span> <span class="o">=</span> <span class="s">"abcd"</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="n">test</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id2</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">IDException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-exception.IDException: ID cannot be empty
+<p>exception.IDException: ID cannot be empty</p>
 
+<p>exception.IDException: ID length can be only in 8~20</p>
 
-exception.IDException: ID length can be only in 8~20
+<p>직접 정의한 대로 예외 메세지가 출력된다.</p>
 
-직접 정의한 대로 예외 메세지가 출력된다.
   </div>
   
   <div class="post">
@@ -11147,307 +11105,289 @@ exception.IDException: ID length can be only in 8~20
 
     <span class="post-date">30 Dec 2018</span>
 
-    프로그램을 사용하다 보면 언제나 오류가 생길 가능성이 있다. 컴파일 이전 코드 작성단계에서 발견되는 에러는 큰 문제가 되지않고 수정하면 된다.
+    <p>프로그램을 사용하다 보면 언제나 오류가 생길 가능성이 있다. 컴파일 이전 코드 작성단계에서 발견되는 에러는 큰 문제가 되지않고 수정하면 된다.</p>
 
-그러나 컴파일과정에서 잡지 못한 에러가 있을 수 있다. 이것은 프로그램 실행 중에 문제를 일으킬 소지가 있으며, 따라서 실행오류(Runtime Error)라고 부른다.
+<p>그러나 컴파일과정에서 잡지 못한 에러가 있을 수 있다. 이것은 프로그램 실행 중에 문제를 일으킬 소지가 있으며, 따라서 실행오류(Runtime Error)라고 부른다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 실행오류
+<h1 id="1-실행오류">1. 실행오류</h1>
 
-* * *
+<hr />
 
-실행오류는 크게 2가지로 나뉜다.
+<p>실행오류는 크게 2가지로 나뉜다.</p>
 
-### 1) 오류(Error)
+<h3 id="1-오류error">1) 오류(Error)</h3>
 
-말 그대로 오류이다. 사용 가능한 스택 메모리의 부족, 배열의 잘못된 index 접근 등이 있다. 이것은 하드웨어적인 문제이므로 우리가 어떻게 제어할 방법이 없다.
+<p>말 그대로 오류이다. 사용 가능한 스택 메모리의 부족, 배열의 잘못된 index 접근 등이 있다. 이것은 하드웨어적인 문제이므로 우리가 어떻게 제어할 방법이 없다.</p>
 
-Throwable 클래스를 상속받는 Error클래스는 시스템 오류를 다루는 클래스이다. 그러나 프로그램에서 제어하지 않는다.
+<p>Throwable 클래스를 상속받는 Error클래스는 시스템 오류를 다루는 클래스이다. 그러나 프로그램에서 제어하지 않는다.</p>
 
-&nbsp;
+<p> </p>
 
-### 2) 예외(Exception)
+<h3 id="2-예외exception">2) 예외(Exception)</h3>
 
-예외는 우리가 충분히 제어 가능한 경우이다. 네트워크 연결이 끊어진 경우, 파일을 불러오려는데 파일이 비어있는 경우 등이 있다.
+<p>예외는 우리가 충분히 제어 가능한 경우이다. 네트워크 연결이 끊어진 경우, 파일을 불러오려는데 파일이 비어있는 경우 등이 있다.</p>
 
-Throwable 클래스를 상속받는 Exception클래스와 그 하위클래스들은 예외처리를 할 때 사용한다.
+<p>Throwable 클래스를 상속받는 Exception클래스와 그 하위클래스들은 예외처리를 할 때 사용한다.</p>
 
-&nbsp;
+<p> </p>
 
-# 
+<p>#</p>
 
-<a href="https://SWnomad.com/%ec%98%88%ec%99%b8%ec%b2%98%eb%a6%ac/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-195/" rel="attachment wp-att-1656"><img class="aligncenter wp-image-1656" src="/images/2018/12/no-name-40.jpg" alt="" width="496" height="240" srcset="/images/2018/12/no-name-40.jpg 738w, /images/2018/12/no-name-40-300x145.jpg 300w" sizes="(max-width: 496px) 100vw, 496px" /></a>
+<p><a href="https://SWnomad.com/%ec%98%88%ec%99%b8%ec%b2%98%eb%a6%ac/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-195/" rel="attachment wp-att-1656"><img class="aligncenter wp-image-1656" src="/images/2018/12/no-name-40.jpg" alt="" width="496" height="240" srcset="/images/2018/12/no-name-40.jpg 738w, /images/2018/12/no-name-40-300x145.jpg 300w" sizes="(max-width: 496px) 100vw, 496px" /></a></p>
 
-모든 예외처리 클래스의 최상위 클래스는 Exception클래스이다. 위 그림에 표시되지 않은 클래스 이외에도 많은 클래스가 있지만 위 클래스들은 사용 빈도가 높은 클래스들이다.
+<p>모든 예외처리 클래스의 최상위 클래스는 Exception클래스이다. 위 그림에 표시되지 않은 클래스 이외에도 많은 클래스가 있지만 위 클래스들은 사용 빈도가 높은 클래스들이다.</p>
 
-보통 예외가 발생하면 컴파일러가 알려주어 예외처리를 유도하기는 한다. 이 때에는 try-catch문을 사용하여 예외처리를 하면된다. 그런데 RuntimeException 경우는 예외처리를 하지 않아도 컴파일 과정에서 오류가 나지 않는다. 예를 들면 나누기 식에서 분모에 0이 입력되는 경우인데, 실제로 사용자로부터 입력을 받기 전까지는 0이 입력될 지 알 수 없기 때문이다.
+<p>보통 예외가 발생하면 컴파일러가 알려주어 예외처리를 유도하기는 한다. 이 때에는 try-catch문을 사용하여 예외처리를 하면된다. 그런데 RuntimeException 경우는 예외처리를 하지 않아도 컴파일 과정에서 오류가 나지 않는다. 예를 들면 나누기 식에서 분모에 0이 입력되는 경우인데, 실제로 사용자로부터 입력을 받기 전까지는 0이 입력될 지 알 수 없기 때문이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 예외 처리하기
+<h1 id="2-예외-처리하기">2. 예외 처리하기</h1>
 
-* * *
+<hr />
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-public class ArrayException {
-   public static void main(String[] args) {
-      int[] arr = {1,2,3,4,5};
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
       
-      //arr는 index가 0~4까지 인데 5를 대입하면 ArrayIndexOutOfBoundsException 발생
-      for(int i=0; i<=5; i++) {
-         System.out.println(arr[i]);
-      }
-   }
-}
-~~~
+      <span class="c1">//arr는 index가 0~4까지 인데 5를 대입하면 ArrayIndexOutOfBoundsException 발생</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위와 같은 예외는 컴파일 과정에서 잡아내지 않는다. 따라서 이후 프로그램 사용중에 런타임 에러에 의해 프로그램이 비정상 종료될 수도 있으므로 프로그래머가 예외처리를 해주어야한다.
+<p>위와 같은 예외는 컴파일 과정에서 잡아내지 않는다. 따라서 이후 프로그램 사용중에 런타임 에러에 의해 프로그램이 비정상 종료될 수도 있으므로 프로그래머가 예외처리를 해주어야한다.</p>
 
-예외처리는 try-catch문으로 한다. 위 코드를 예외처리를 하도록 변경하면 아래와 같이 된다.
+<p>예외처리는 try-catch문으로 한다. 위 코드를 예외처리를 하도록 변경하면 아래와 같이 된다.</p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-public class ArrayException {
-   public static void main(String[] args) {
-      int[] arr = {1,2,3,4,5};
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
       
       
-      try {//예외가 일어날 수 있는 코드
-         for(int i=0; i<=5; i++) {
-            System.out.println(arr[i]);
-         }
-      }catch(ArrayIndexOutOfBoundsException e) { //예외가 일어났을 경우 실행할 코드. 매개변수로는 처리할 예외의 종류
-         System.out.println(e);
-         System.out.println("배열 인덱스 범위 오류 예외처리");
-      }
+      <span class="k">try</span> <span class="o">{</span><span class="c1">//예외가 일어날 수 있는 코드</span>
+         <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+         <span class="o">}</span>
+      <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//예외가 일어났을 경우 실행할 코드. 매개변수로는 처리할 예외의 종류</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"배열 인덱스 범위 오류 예외처리"</span><span class="o">);</span>
+      <span class="o">}</span>
       
-   }
-}
-~~~
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-try문 안에는 예외가 발생할 수 있는 코드부분을 넣는다. catch문에는 예외가 일어났을 경우 실행할 코드를 넣어주면 된다. 그리고 catch문의 매개변수로는 처리할 예외를 넣어주면 된다.
+<p>try문 안에는 예외가 발생할 수 있는 코드부분을 넣는다. catch문에는 예외가 일어났을 경우 실행할 코드를 넣어주면 된다. 그리고 catch문의 매개변수로는 처리할 예외를 넣어주면 된다.</p>
 
-위 예제는 컴파일러가 예외를 체크하지 않는다. 그러나 자바에서는 많은 예외들을 컴파일러가 잡아내주어 이에 대해 예외처리를 해주지 않으면 컴파일리 되지 않는다. 파일 입출력이 이와 같은 경우이다.
+<p>위 예제는 컴파일러가 예외를 체크하지 않는다. 그러나 자바에서는 많은 예외들을 컴파일러가 잡아내주어 이에 대해 예외처리를 해주지 않으면 컴파일리 되지 않는다. 파일 입출력이 이와 같은 경우이다.</p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-import java.io.FileInputStream; //파일을 읽고 쓰기위한 스트림
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span> <span class="c1">//파일을 읽고 쓰기위한 스트림</span>
 
-public class ArrayException {
-   public static void main(String[] args) {
-      FileInputStream fis = new FileInputStream("myfile.txt"); // FileNotFoundException 예외 발생
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">);</span> <span class="c1">// FileNotFoundException 예외 발생</span>
       
-   }
-}
-~~~
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-이 예제에서는 읽으려는 파일이 없는경우에 해당하는 FileNotFoundException 예외가 발생하였다. 이 경우도 이 전의 예제와 같이 try-catch문으로 예외처리를 해주면 된다. 빨간줄이 나타나는 부분에 마우스를 가져다 대면 1) 예외를 던지거나 2) try-catch문으로 감싸거나 둘 중 하나를 선택할 수 있다. try-catch문으로 감싸는 것을 선택하면 다음과 같이 코드가 수정된다.
+<p>이 예제에서는 읽으려는 파일이 없는경우에 해당하는 FileNotFoundException 예외가 발생하였다. 이 경우도 이 전의 예제와 같이 try-catch문으로 예외처리를 해주면 된다. 빨간줄이 나타나는 부분에 마우스를 가져다 대면 1) 예외를 던지거나 2) try-catch문으로 감싸거나 둘 중 하나를 선택할 수 있다. try-catch문으로 감싸는 것을 선택하면 다음과 같이 코드가 수정된다.</p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
 
-public class ArrayException {
-   public static void main(String[] args) {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      try {
-         FileInputStream fis = new FileInputStream("myfile.txt");
-      } catch (FileNotFoundException e) {
-         System.out.println(e); //e.toString() 메소드 호출 -> 예외 메세지 출력
-      }
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> <span class="c1">//e.toString() 메소드 호출 -&gt; 예외 메세지 출력</span>
+      <span class="o">}</span>
 
-      System.out.println("Program is still running");
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Program is still running"</span><span class="o">);</span>
       
-   }
-}
-~~~
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-java.io.FileNotFoundException: myfile.txt (지정된 파일을 찾을 수 없습니다)
+<p>java.io.FileNotFoundException: myfile.txt (지정된 파일을 찾을 수 없습니다)</p>
 
+<p>Program is still running</p>
 
-Program is still running
+<p>예외 자료형의 참조변수 e를 출력한다는 것은 e.toString()을 출력하는 것이다. 그리고 이 메소드는 해당하는 예외 메세지를 출력하도록 재정의 되어있다.</p>
 
+<p>아무튼 try-catch문으로 예외를 처리해주면 런타임 오류시에도 프로그램의 비정상적인 종료가 일어나지 않는다. 뒷부분에 이를 확인하기 위해 넣어둔 “Program is still running” 구문이 출력되는 것으로 확인할 수 있다.</p>
 
- 
+<p> </p>
 
-예외 자료형의 참조변수 e를 출력한다는 것은 e.toString()을 출력하는 것이다. 그리고 이 메소드는 해당하는 예외 메세지를 출력하도록 재정의 되어있다.
+<p> </p>
 
-아무튼 try-catch문으로 예외를 처리해주면 런타임 오류시에도 프로그램의 비정상적인 종료가 일어나지 않는다. 뒷부분에 이를 확인하기 위해 넣어둔 "Program is still running" 구문이 출력되는 것으로 확인할 수 있다.
+<h1 id="3-finally문">3. finally문</h1>
 
-&nbsp;
+<hr />
 
-&nbsp;
+<p>위에서 파일 입출력을 위하여 FileInputStream을 생성하였다. 스트림을 생성한다는 것은 메모리 자원을 사용하는 것이다. 파일 입출력이 끝났다면 이 스트림을 해제하여 해당 자원을 다시 회수하는 것이 올바르다. 위에서는 fis라는 참조변수에 스트림 객체를 저장하였으므로 fis.close(); 메소드 호출을 통하여 스트림을 해제할 수 있다.</p>
 
-# 3. finally문
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-* * *
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 
-위에서 파일 입출력을 위하여 FileInputStream을 생성하였다. 스트림을 생성한다는 것은 메모리 자원을 사용하는 것이다. 파일 입출력이 끝났다면 이 스트림을 해제하여 해당 자원을 다시 회수하는 것이 올바르다. 위에서는 fis라는 참조변수에 스트림 객체를 저장하였으므로 fis.close(); 메소드 호출을 통하여 스트림을 해제할 수 있다.
-
-
-
-~~~ java
-package exception;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-public class ArrayException {
-   public static void main(String[] args) {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      try {
-         FileInputStream fis = new FileInputStream("myfile.txt");
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">);</span>
          
-         ///////////////////////////
-         if(fis != null) {
-            try {
-               fis.close();
-            }catch(IOException e) {    //스트림 종료
-               e.printStackTrace();
-            }
-         }
-         ///////////////////////////
+         <span class="c1">///////////////////////////</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">fis</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+               <span class="n">fis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>    <span class="c1">//스트림 종료</span>
+               <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+         <span class="o">}</span>
+         <span class="c1">///////////////////////////</span>
          
-      } catch (FileNotFoundException e) {
-         System.out.println(e);
-      }
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
       
-      System.out.println("Program is still running");
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Program is still running"</span><span class="o">);</span>
       
-   }
-}
-~~~
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위 코드는 스트림 종료 메소드 호출을 추가한 것이다. 그런데 지금은 try-catch문이 단순하다. 만약 예외가 발생할 수 있는 부분이 10개라면 10개 모두에 대한 try-catch문에서 모두 스트림 종류 메소드를 호출해 주어야하고 이는 코드를 매우 복잡하게 만들것이다.
+<p>위 코드는 스트림 종료 메소드 호출을 추가한 것이다. 그런데 지금은 try-catch문이 단순하다. 만약 예외가 발생할 수 있는 부분이 10개라면 10개 모두에 대한 try-catch문에서 모두 스트림 종류 메소드를 호출해 주어야하고 이는 코드를 매우 복잡하게 만들것이다.</p>
 
-이럴 때 사용할 수 있는것이 finally 구문이다. **finally구문은 일단 try문이 실행되었다면 어떤 상황에서도 실행이 된다.**
+<p>이럴 때 사용할 수 있는것이 finally 구문이다. <strong>finally구문은 일단 try문이 실행되었다면 어떤 상황에서도 실행이 된다.</strong></p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 
-public class ArrayException {
-   public static void main(String[] args) {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      FileInputStream fis = null;
+      <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
       
-      try {
-         fis = new FileInputStream("myfile.txt");
-      } catch (FileNotFoundException e) {
-         System.out.println(e);
-         return;
-      } finally {
-         if(fis != null) {
-            try {
-               fis.close();
-            } catch (IOException e) {
-               e.printStackTrace();
-            }
-         }
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+         <span class="k">return</span><span class="o">;</span>
+      <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">fis</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+               <span class="n">fis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+               <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+         <span class="o">}</span>
          
-         System.out.println("This finally block is always executed");
-      }
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This finally block is always executed"</span><span class="o">);</span>
+      <span class="o">}</span>
       
-   }
-}
-~~~
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-java.io.FileNotFoundException: myfile.txt (지정된 파일을 찾을 수 없습니다)
+<p>java.io.FileNotFoundException: myfile.txt (지정된 파일을 찾을 수 없습니다)</p>
 
+<p>This finally block is always executed</p>
 
-This finally block is always executed
+<p>예외가 발생하여 catch로 넘어가고 return문을 통해 프록램이 종료되도록 하더라도 finally문이 실행 된 다음에 프로그램이 종료된다.</p>
 
+<p> </p>
 
- 예외가 발생하여 catch로 넘어가고 return문을 통해 프록램이 종료되도록 하더라도 finally문이 실행 된 다음에 프로그램이 종료된다.
+<p> </p>
 
-&nbsp;
+<h1 id="4-autocloseable-인터페이스">4. AutoCloseable 인터페이스</h1>
 
-&nbsp;
+<hr />
 
-# 4. AutoCloseable 인터페이스
+<p>사실 Java7 부터는 FileInputStream이 명시적으로 close() 메소드 호출을 통해 닫아주지 않더라도 자동으로 닫히도록 구현되어있다.</p>
 
-* * *
+<p>AutoCloseable 인터페이스는 close() 추상메소드를 가지고 있고, 이를 구현한 클래스들은 close()메소드를 재정의 하여야한다.</p>
 
-사실 Java7 부터는 FileInputStream이 명시적으로 close() 메소드 호출을 통해 닫아주지 않더라도 자동으로 닫히도록 구현되어있다.
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-AutoCloseable 인터페이스는 close() 추상메소드를 가지고 있고, 이를 구현한 클래스들은 close()메소드를 재정의 하여야한다.
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AutoCloseTest</span> <span class="kd">implements</span> <span class="nc">AutoCloseable</span> <span class="o">{</span>
 
-~~~ java
-package exception;
-
-public class AutoCloseTest implements AutoCloseable {
-
-   @Override
-   public void close() throws Exception {
-      System.out.println("close() is called automatically"); //호출되면 해당 문장 출력    
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"close() is called automatically"</span><span class="o">);</span> <span class="c1">//호출되면 해당 문장 출력    </span>
+   <span class="o">}</span>
    
-   public static void main(String[] args) {
-      try(AutoCloseTest obj = new AutoCloseTest()){
-         //No Code
-      }catch(Exception e) {
-         System.out.println(e);
-      }
-   }
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">try</span><span class="o">(</span><span class="nc">AutoCloseTest</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AutoCloseTest</span><span class="o">()){</span>
+         <span class="c1">//No Code</span>
+      <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
 
-}
+<span class="o">}</span>
 
 
-~~~
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-close() is called automatically
+<p>close() is called automatically</p>
 
-AutoCloseTest 클래스는 AutoCloseable 인터페이스를 구현하였고 close() 메소드를 재정의하였다. 이후 try문에서 AutoCloseTest로 객체를 하나 만들어 넘겨주었고 close() 메소드가 자동으로 호출되는 것을 확인할 수 있다.
+<p>AutoCloseTest 클래스는 AutoCloseable 인터페이스를 구현하였고 close() 메소드를 재정의하였다. 이후 try문에서 AutoCloseTest로 객체를 하나 만들어 넘겨주었고 close() 메소드가 자동으로 호출되는 것을 확인할 수 있다.</p>
 
-catch문에서도 close 메소드가 호출되는지 확인해야한다. 위 코드에서 //No Code 부분에 throw new Exception(); 이라고 치면 강제로 예외를 만들어내어 catch문을 실행시킬 수 있다.
+<p>catch문에서도 close 메소드가 호출되는지 확인해야한다. 위 코드에서 //No Code 부분에 throw new Exception(); 이라고 치면 강제로 예외를 만들어내어 catch문을 실행시킬 수 있다.</p>
 
-~~~ java
-package exception;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
 
-public class AutoCloseTest implements AutoCloseable {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AutoCloseTest</span> <span class="kd">implements</span> <span class="nc">AutoCloseable</span> <span class="o">{</span>
 
-   @Override
-   public void close() throws Exception {
-      System.out.println("close() is called automatically"); //호출되면 해당 문장 출력    
-   }
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"close() is called automatically"</span><span class="o">);</span> <span class="c1">//호출되면 해당 문장 출력    </span>
+   <span class="o">}</span>
    
-   public static void main(String[] args) {
-      try(AutoCloseTest obj = new AutoCloseTest()){
-         throw new Exception(); //강제로 예외 발생시켜 catch문 실행
-      }catch(Exception e) {
-         System.out.println("This is exception");
-      }
-   }
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">try</span><span class="o">(</span><span class="nc">AutoCloseTest</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AutoCloseTest</span><span class="o">()){</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">Exception</span><span class="o">();</span> <span class="c1">//강제로 예외 발생시켜 catch문 실행</span>
+      <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This is exception"</span><span class="o">);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-close() is called automatically
+<p>close() is called automatically</p>
 
-
-This is exception
-
+<p>This is exception</p>
 
 
   </div>
@@ -11461,348 +11401,339 @@ This is exception
 
     <span class="post-date">28 Dec 2018</span>
 
-    스트림(stream)은 배열, 컬렉션 같은 여러 자료를 처리하는 일을 더 효율적으로 할 수 있도록 도와주는 라이브러리이다. **처리해야 하는 자료에 상관없이 동일한 방법으로 처리(메소드를 사용)할 수 있도록 기능이 구현**되어있다.
+    <p>스트림(stream)은 배열, 컬렉션 같은 여러 자료를 처리하는 일을 더 효율적으로 할 수 있도록 도와주는 라이브러리이다. <strong>처리해야 하는 자료에 상관없이 동일한 방법으로 처리(메소드를 사용)할 수 있도록 기능이 구현</strong>되어있다.</p>
 
-~~~ java
-package stream;
-import java.util.Arrays;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 
-public class IntArrayTest {
-   public static void main(String[] args) {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IntArrayTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 
-      int arr[] = {1,2,3,4,5};
+      <span class="kt">int</span> <span class="n">arr</span><span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
       
-      //배열의 모든 요소 출력 1
-      for(int i=0; i<arr.length; i++) {
-         System.out.println(arr[i]);
-      }
+      <span class="c1">//배열의 모든 요소 출력 1</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="o">}</span>
       
-      System.out.println();
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
       
-      //배열의 모든 요소 출력 2 : stream 사용
-      Arrays.stream(arr).forEach(x -> System.out.println(x));
-   }
-}
-~~~
+      <span class="c1">//배열의 모든 요소 출력 2 : stream 사용</span>
+      <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">forEach</span><span class="o">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-기본적으로 for문을 사용하여 배열의 모든 요소를 출력할 수 있는데, 스트림을 이용해서 같은 기능을 수행하는 코드를 예시로 보았다. 뭔가 더 간결해보인다.
+<p>기본적으로 for문을 사용하여 배열의 모든 요소를 출력할 수 있는데, 스트림을 이용해서 같은 기능을 수행하는 코드를 예시로 보았다. 뭔가 더 간결해보인다.</p>
 
-위에서 예시로 든 것과 같이 스트림은 자료를 효율적으로 처리하도록 도와준다. 자료형의 관계에 상관없이 말이다.
+<p>위에서 예시로 든 것과 같이 스트림은 자료를 효율적으로 처리하도록 도와준다. 자료형의 관계에 상관없이 말이다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 스트림 연산
+<h1 id="1-스트림-연산">1. 스트림 연산</h1>
 
-* * *
+<hr />
 
-스트림 연산에는 중간연산과 최종연산이 있다. 중간연산은 자료를 변경하여 내부적으로 새로운 자료를 생성한다. 최종 연산은 생성된 내부자료에 대해 연산을 수행하여 연산결과를 만들어내며, 마지막에 단 한 번만 호출된다.
+<p>스트림 연산에는 중간연산과 최종연산이 있다. 중간연산은 자료를 변경하여 내부적으로 새로운 자료를 생성한다. 최종 연산은 생성된 내부자료에 대해 연산을 수행하여 연산결과를 만들어내며, 마지막에 단 한 번만 호출된다.</p>
 
-모든 중간연산, 최종연산 메소드를 알 필요는 없다. 자주 쓰이는 메소드 위주로 보면서 사용법을 익히면 충분하다.
+<p>모든 중간연산, 최종연산 메소드를 알 필요는 없다. 자주 쓰이는 메소드 위주로 보면서 사용법을 익히면 충분하다.</p>
 
-~~~ java
-package stream;
-import java.util.Arrays;
-import java.util.ArrayList;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 
-public class IntArrayTest {
-   public static void main(String[] args) {
-      ArrayList<String> myStrings = new ArrayList<String>();
-      myStrings.add("hello");
-      myStrings.add("java");
-      myStrings.add("digimon");
-      myStrings.add("ha");
-      myStrings.add("say");
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IntArrayTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">myStrings</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"java"</span><span class="o">);</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"digimon"</span><span class="o">);</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"ha"</span><span class="o">);</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"say"</span><span class="o">);</span>
       
-      //        (스트림생성) (길이가 4 인 문자열만 추출)         (추출된 각각의 문자열을 출력)
+      <span class="c1">//        (스트림생성) (길이가 4 인 문자열만 추출)         (추출된 각각의 문자열을 출력)</span>
 	  
-      myStrings.stream().filter(s -> s.length() >=4).forEach(s -> System.out.println(s));
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;=</span><span class="mi">4</span><span class="o">).</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">));</span>
       
-   }
-}
-~~~
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위 예제에서 filter() 중간연산으로 길이가 4이상인 문자열만 추출하여 새로운 자료를 내부적으로 생성하였다. 그리고 마지막에는 forEach() 최종연산으로 중간연산으로 생성된 자료를 하나하나 훑으며 출력하는 최종 연산을 수행한다.
+<p>위 예제에서 filter() 중간연산으로 길이가 4이상인 문자열만 추출하여 새로운 자료를 내부적으로 생성하였다. 그리고 마지막에는 forEach() 최종연산으로 중간연산으로 생성된 자료를 하나하나 훑으며 출력하는 최종 연산을 수행한다.</p>
 
-하나의 예시를 더 보자.
+<p>하나의 예시를 더 보자.</p>
 
-~~~ java
-package stream;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
 
-public class Student {
-   int age;
-   String name;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
    
-   public Student(int age, String name) {
-      this.age = age;
-      this.name = name;
-   }
+   <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public int getAge() {
-      return age;
-   }
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public String getName() {
-      return name;
-   }
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package stream;
-import java.util.ArrayList;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 
-public class StudentTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      ArrayList<Student> stus = new ArrayList<>();
-      stus.add(new Student(20, "Lee"));
-      stus.add(new Student(17, "Kim"));
-      stus.add(new Student(22, "Park"));
-      stus.add(new Student(15, "Choi"));
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">17</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">22</span><span class="o">,</span> <span class="s">"Park"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">15</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">));</span>
       
-      int sum=0;
-      stus.stream().map(p -> p.getName()).forEach(p -> System.out.println(p));
-   }
+      <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">forEach</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package stream;
-import java.util.Arrays;
-import java.util.ArrayList;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 
-public class IntArrayTest {
-   public static void main(String[] args) {
-      int arr[] = {1,2,3,4,5};
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IntArrayTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">arr</span><span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
       
-      int sum = Arrays.stream(arr).sum();
-      int count = (int)Arrays.stream(arr).count(); //count()의 반환값은 long형 정수이므로 int로 형변환
+      <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">sum</span><span class="o">();</span>
+      <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">count</span><span class="o">();</span> <span class="c1">//count()의 반환값은 long형 정수이므로 int로 형변환</span>
       
-      System.out.println("sum = "+sum+", count = "+count);
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"sum = "</span><span class="o">+</span><span class="n">sum</span><span class="o">+</span><span class="s">", count = "</span><span class="o">+</span><span class="n">count</span><span class="o">);</span>
       
-   }
-}
-~~~
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 스트림 사용
+<h1 id="2-스트림-사용">2. 스트림 사용</h1>
 
-* * *
+<hr />
 
-~~~ java
-package stream;
-import java.util.ArrayList;
-import java.util.stream.Stream;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Stream</span><span class="o">;</span>
 
-public class StudentTest {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
       
-      //ArrayList 생성하여 4명의 학생 객체 추가
-      ArrayList<Student> stus = new ArrayList<>();
-      stus.add(new Student(20, "Lee"));
-      stus.add(new Student(17, "Kim"));
-      stus.add(new Student(22, "Park"));
-      stus.add(new Student(15, "Choi"));
+      <span class="c1">//ArrayList 생성하여 4명의 학생 객체 추가</span>
+      <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">17</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">22</span><span class="o">,</span> <span class="s">"Park"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">15</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">));</span>
       
       
-      Stream<Student> stream = stus.stream(); //스트림 생성
-      stream.map(s -> s.getAge()).forEach(s -> System.out.println(s)); //스트림 소모
+      <span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">stus</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span> <span class="c1">//스트림 생성</span>
+      <span class="n">stream</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getAge</span><span class="o">()).</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">));</span> <span class="c1">//스트림 소모</span>
       
-      // stream.map(s -> s.getName()).forEach(s -> System.out.println(s)); // 오류 발생
+      <span class="c1">// stream.map(s -&gt; s.getName()).forEach(s -&gt; System.out.println(s)); // 오류 발생</span>
       
-      Stream<Student> stream2 = stus.stream(); //스트림 재생성
-      stream2.map(s -> s.getName()).forEach(s -> System.out.println(s)); //스트림 소모
-   }
+      <span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stream2</span> <span class="o">=</span> <span class="n">stus</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span> <span class="c1">//스트림 재생성</span>
+      <span class="n">stream2</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">));</span> <span class="c1">//스트림 소모</span>
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-위에서 처음으로 스트림을 생성하고 나이만 추출한 후 출력을 하였다. 이후에는 스트림으로 이름만 추출하여 출력하려하는데 오류가 발생한다. 오류발생 이유는 스트림이 소모되었기 때문이다. 스트림은 최종 출력결과를 내는 최종연산 메소드를 호출하여 최종결과를 내면서 스트림을 소모한다. 따라서 스트림을 사용하려면 다시 스트림을 생성해 주어야한다.
+<p>위에서 처음으로 스트림을 생성하고 나이만 추출한 후 출력을 하였다. 이후에는 스트림으로 이름만 추출하여 출력하려하는데 오류가 발생한다. 오류발생 이유는 스트림이 소모되었기 때문이다. 스트림은 최종 출력결과를 내는 최종연산 메소드를 호출하여 최종결과를 내면서 스트림을 소모한다. 따라서 스트림을 사용하려면 다시 스트림을 생성해 주어야한다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 스트림의 성질
+<h1 id="3-스트림의-성질">3. 스트림의 성질</h1>
 
-* * *
+<hr />
 
-### 1) 자료형에 상관없이 동일한 방법 적용
+<h3 id="1-자료형에-상관없이-동일한-방법-적용">1) 자료형에 상관없이 동일한 방법 적용</h3>
 
-자료형에 관계없이 같은 방법으로 메소드를 호출해서 사용하면 된다. 이는 아주 편리한 특징이다. 이는 스트림이 자료구조에 의존하지 않는 일관성있는 메소드를 제공하기 때문이다.
+<p>자료형에 관계없이 같은 방법으로 메소드를 호출해서 사용하면 된다. 이는 아주 편리한 특징이다. 이는 스트림이 자료구조에 의존하지 않는 일관성있는 메소드를 제공하기 때문이다.</p>
 
-&nbsp;
+<p> </p>
 
-### 2) 스트림은 소모된다
+<h3 id="2-스트림은-소모된다">2) 스트림은 소모된다</h3>
 
-한 번 생성된 스트림으로 일단 연산을 하면 스트림이 소모된다. 스트림으로 또 다른 작업을 하기 위해서는 새로 생성해주어야한다.
+<p>한 번 생성된 스트림으로 일단 연산을 하면 스트림이 소모된다. 스트림으로 또 다른 작업을 하기 위해서는 새로 생성해주어야한다.</p>
 
-&nbsp;
+<p> </p>
 
-### 3) 스트림은 별도의 메모리 공간을 사용한다
+<h3 id="3-스트림은-별도의-메모리-공간을-사용한다">3) 스트림은 별도의 메모리 공간을 사용한다</h3>
 
-스트림을 호출하여 리스트, 집합 등의 자료를 가지고 여러가지 연산을 하여도 대상이 되는 자료는 아무런 영향을 받지 않는다. 이는 스트림이 연산을 할 때 사용하는 별도의 메모리공간이 존재하기 때문이다.
+<p>스트림을 호출하여 리스트, 집합 등의 자료를 가지고 여러가지 연산을 하여도 대상이 되는 자료는 아무런 영향을 받지 않는다. 이는 스트림이 연산을 할 때 사용하는 별도의 메모리공간이 존재하기 때문이다.</p>
 
-&nbsp;
+<p> </p>
 
-### 4) 중간 연산은 여러번 가능하다
+<h3 id="4-중간-연산은-여러번-가능하다">4) 중간 연산은 여러번 가능하다</h3>
 
-예를들어 학생 객체를 요소로 가지는 ArrayList가 있다고 하자. 이 때 15세 이상의 학생만 추출하기 위해 중간연산 메소드인 filter()를 한 번 호출하고, 이를 오름차순으로 정렬하기위해 sorted()메소드를 한 번 호출할 수 있다.
+<p>예를들어 학생 객체를 요소로 가지는 ArrayList가 있다고 하자. 이 때 15세 이상의 학생만 추출하기 위해 중간연산 메소드인 filter()를 한 번 호출하고, 이를 오름차순으로 정렬하기위해 sorted()메소드를 한 번 호출할 수 있다.</p>
 
-하지만 마지막으로 최종연산 메소드를 호출하여야만 결과가 만들어진다.
+<p>하지만 마지막으로 최종연산 메소드를 호출하여야만 결과가 만들어진다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 4. 프로그래머가 정의하는 연산기능 : reduce()
+<h1 id="4-프로그래머가-정의하는-연산기능--reduce">4. 프로그래머가 정의하는 연산기능 : reduce()</h1>
 
-* * *
+<hr />
 
-reduce()는 스트림의 자료를 하나하나 소모해가며 프로그래머가 직접 정의한 함수 기능을 수행한다.
+<p>reduce()는 스트림의 자료를 하나하나 소모해가며 프로그래머가 직접 정의한 함수 기능을 수행한다.</p>
 
-reduce() 메소드는 다음의 형태로 정의되어있다.
+<p>reduce() 메소드는 다음의 형태로 정의되어있다.</p>
 
-~~~ java
-T reduce(T identify, BinaryOperator<T> accumulator)
-//T reduce(초기값, 함수 기능)
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">T</span> <span class="nf">reduce</span><span class="o">(</span><span class="no">T</span> <span class="n">identify</span><span class="o">,</span> <span class="nc">BinaryOperator</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">accumulator</span><span class="o">)</span>
+<span class="c1">//T reduce(초기값, 함수 기능)</span>
+</code></pre></div></div>
 
-identify는 초기값을 의미하고 BinaryOperator는 인터페이스로, 람다식을 써주어도 되고 인터페이스를 구현한 클래스를 만들어 추상메소드를 재정의할 수도 있다.
+<p>identify는 초기값을 의미하고 BinaryOperator는 인터페이스로, 람다식을 써주어도 되고 인터페이스를 구현한 클래스를 만들어 추상메소드를 재정의할 수도 있다.</p>
 
-BinaryOperator는 apply() 추상메소드를 가지고 있으며 우리가 람다식으로 구현한 기능, 혹은 클래스를 통해 구현한 기능이 apply()메소드의 기능으로 재정의 되는 원리이다. apply() 메소드는 매개변수 2개, 반환값 1개를 가지며 세 가지의 자료형은 동일하다.
+<p>BinaryOperator는 apply() 추상메소드를 가지고 있으며 우리가 람다식으로 구현한 기능, 혹은 클래스를 통해 구현한 기능이 apply()메소드의 기능으로 재정의 되는 원리이다. apply() 메소드는 매개변수 2개, 반환값 1개를 가지며 세 가지의 자료형은 동일하다.</p>
 
-겉보기에 복잡해 보이지만 사용방법은 엄청 단순하다.
+<p>겉보기에 복잡해 보이지만 사용방법은 엄청 단순하다.</p>
 
-~~~ java
-package stream;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
 
-import java.util.function.BinaryOperator;
-import java.util.Arrays;
+<span class="kn">import</span> <span class="nn">java.util.function.BinaryOperator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 
-public class CompareString implements BinaryOperator{  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CompareString</span> <span class="kd">implements</span> <span class="nc">BinaryOperator</span><span class="o">{</span>  
    
-   @Override //apply() 메소드는 두 개씩 비교하며 큰 것을 추려내도록 재정의
-   public Object apply(Object s1, Object s2) {
+   <span class="nd">@Override</span> <span class="c1">//apply() 메소드는 두 개씩 비교하며 큰 것을 추려내도록 재정의</span>
+   <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">apply</span><span class="o">(</span><span class="nc">Object</span> <span class="n">s1</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">s2</span><span class="o">)</span> <span class="o">{</span>
       
-      if(((String) s1).getBytes().length >= ((String) s2).getBytes().length) {
-         return s1;
-      }
-      else {
-         return s2;
-      }
+      <span class="k">if</span><span class="o">(((</span><span class="nc">String</span><span class="o">)</span> <span class="n">s1</span><span class="o">).</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span> <span class="o">&gt;=</span> <span class="o">((</span><span class="nc">String</span><span class="o">)</span> <span class="n">s2</span><span class="o">).</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">return</span> <span class="n">s1</span><span class="o">;</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="o">{</span>
+         <span class="k">return</span> <span class="n">s2</span><span class="o">;</span>
+      <span class="o">}</span>
       
-   }
+   <span class="o">}</span>
    
-   public static void main(String[] args) {
-      String[] says = {"hello man~!", "yo man hallo~ Yeah!", "halo~"};
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">String</span><span class="o">[]</span> <span class="n">says</span> <span class="o">=</span> <span class="o">{</span><span class="s">"hello man~!"</span><span class="o">,</span> <span class="s">"yo man hallo~ Yeah!"</span><span class="o">,</span> <span class="s">"halo~"</span><span class="o">};</span>
       
-      //1. 인터페이스를 구현한 클래스 객체를 전달하여 사용하는 방법
-      String str = (String) Arrays.stream(says).reduce(new CompareString()).get();
-      System.out.println(str);
+      <span class="c1">//1. 인터페이스를 구현한 클래스 객체를 전달하여 사용하는 방법</span>
+      <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">says</span><span class="o">).</span><span class="na">reduce</span><span class="o">(</span><span class="k">new</span> <span class="nc">CompareString</span><span class="o">()).</span><span class="na">get</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
       
-      //2.  초기값과 람다식을 직접 전달하여 사용하는 방법
-      System.out.println(
-         Arrays.stream(says).reduce("", (s1, s2) -> {
-         if(s1.getBytes().length >= s2.getBytes().length) {return s1;}
-         else {return s2;}
-         })
-      );
-   }
+      <span class="c1">//2.  초기값과 람다식을 직접 전달하여 사용하는 방법</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
+         <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">says</span><span class="o">).</span><span class="na">reduce</span><span class="o">(</span><span class="s">""</span><span class="o">,</span> <span class="o">(</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span> <span class="o">&gt;=</span> <span class="n">s2</span><span class="o">.</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span><span class="k">return</span> <span class="n">s1</span><span class="o">;}</span>
+         <span class="k">else</span> <span class="o">{</span><span class="k">return</span> <span class="n">s2</span><span class="o">;}</span>
+         <span class="o">})</span>
+      <span class="o">);</span>
+   <span class="o">}</span>
 
-}
+<span class="o">}</span>
 
 
-~~~
+</code></pre></div></div>
 
-인터페이스를 구현한 클래스로 객체를 만들어 reduce() 메소드의 매개변수로 전달하면 클래스에 재정의된 apply()메소드가 자동으로 호출된다. 마지막에 남은 최종 결과를 get()메소드를 이용하여 얻어서 str에 저장하고 출력해보면 가장 긴 문자열이 출력된다.
+<p>인터페이스를 구현한 클래스로 객체를 만들어 reduce() 메소드의 매개변수로 전달하면 클래스에 재정의된 apply()메소드가 자동으로 호출된다. 마지막에 남은 최종 결과를 get()메소드를 이용하여 얻어서 str에 저장하고 출력해보면 가장 긴 문자열이 출력된다.</p>
 
-초기값과 람다식을 직접 전달한 경우도 같다. 사실 이 경우도 익명클래스 객체가 생성되는 경우이므로 내부적인 구조와 로직이 인터페이스를 구현한 클래스로 호출하는 경우와 동일하다.
+<p>초기값과 람다식을 직접 전달한 경우도 같다. 사실 이 경우도 익명클래스 객체가 생성되는 경우이므로 내부적인 구조와 로직이 인터페이스를 구현한 클래스로 호출하는 경우와 동일하다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 5. 예제
+<h1 id="5-예제">5. 예제</h1>
 
-* * *
+<hr />
 
-여행사의 고객 리스트 클래스를 정의한다. 멤버변수로는 이름, 나이, 가격이 있는데 20세 이상 고객은 100원, 밑으로는 50원의 가격을 적용한다.
+<p>여행사의 고객 리스트 클래스를 정의한다. 멤버변수로는 이름, 나이, 가격이 있는데 20세 이상 고객은 100원, 밑으로는 50원의 가격을 적용한다.</p>
 
-~~~ java
-package stream;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
 
-public class TravelCustomer {
-   private String name;
-   private int age;
-   private int price;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TravelCustomer</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">price</span><span class="o">;</span>
    
-   public TravelCustomer(String name, int age, int price) {
-      this.name = name;
-      this.age = age;
-      this.price = price;
-   }
+   <span class="kd">public</span> <span class="nf">TravelCustomer</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public String getName() {
-      return name;
-   }
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public int getAge() {
-      return age;
-   }
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+   <span class="o">}</span>
 
-   public int getPrice() {
-      return price;
-   }
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
    
-   @Override
-   public String toString() {
-      return "name: "+name +" age: "+age+ " price: "+price;
-   }
-}
-~~~
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="s">"name: "</span><span class="o">+</span><span class="n">name</span> <span class="o">+</span><span class="s">" age: "</span><span class="o">+</span><span class="n">age</span><span class="o">+</span> <span class="s">" price: "</span><span class="o">+</span><span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package stream;
-import java.util.ArrayList;
-import java.util.List;
-public class TravelTest {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TravelTest</span> <span class="o">{</span>
 
-   public static void main(String[] args) {
-      List<TravelCustomer> list = new ArrayList<>();
-      list.add(new TravelCustomer("Lee", 25, 100));
-      list.add(new TravelCustomer("Kim", 45, 100));
-      list.add(new TravelCustomer("Park", 14, 50));
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">List</span><span class="o">&lt;</span><span class="nc">TravelCustomer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TravelCustomer</span><span class="o">(</span><span class="s">"Lee"</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TravelCustomer</span><span class="o">(</span><span class="s">"Kim"</span><span class="o">,</span> <span class="mi">45</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TravelCustomer</span><span class="o">(</span><span class="s">"Park"</span><span class="o">,</span> <span class="mi">14</span><span class="o">,</span> <span class="mi">50</span><span class="o">));</span>
       
-      System.out.println("======show all customers=======");
-      list.stream().forEach(p -> System.out.println(p));
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"======show all customers======="</span><span class="o">);</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
       
-      System.out.println("=======total cost==========");
-      int total = list.stream().mapToInt(p -> p.getPrice()).sum();
-      System.out.println(total);
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=======total cost=========="</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getPrice</span><span class="o">()).</span><span class="na">sum</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">total</span><span class="o">);</span>
       
-      System.out.println("========all adult customer========"); //20세 이상 고객만 출력
-      //filter()를 사용하여 20세 이상만 추출 -> map 메소드를 사용하여 이름만 추출 -> 오름차순 정렬 -> 각각의 요소를 출력
-      list.stream().filter(p->p.getAge()>=20).map(p->p.getName()).sorted().forEach(p -> System.out.println(p));
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"========all adult customer========"</span><span class="o">);</span> <span class="c1">//20세 이상 고객만 출력</span>
+      <span class="c1">//filter()를 사용하여 20세 이상만 추출 -&gt; map 메소드를 사용하여 이름만 추출 -&gt; 오름차순 정렬 -&gt; 각각의 요소를 출력</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()&gt;=</span><span class="mi">20</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">sorted</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
       
-   }
+   <span class="o">}</span>
 
-}
-~~~
+<span class="o">}</span>
+</code></pre></div></div>
 
-성인 이상의 고객 명단만 출력할 때에는 중간 연산 메소드를 총 3개 사용하였다. 다시 한 번 말하지만 중간연산은 몇번이 되어도 상관없으며 항상 최종연산을 하여야 결과를 얻을 수 있다.
+<p>성인 이상의 고객 명단만 출력할 때에는 중간 연산 메소드를 총 3개 사용하였다. 다시 한 번 말하지만 중간연산은 몇번이 되어도 상관없으며 항상 최종연산을 하여야 결과를 얻을 수 있다.</p>
+
   </div>
   
 </div>

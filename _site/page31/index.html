@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,213 +10682,190 @@
 
     <span class="post-date">09 Oct 2018</span>
 
-    # 1. 포인터와 문자열
+    <h1 id="1-포인터와-문자열">1. 포인터와 문자열</h1>
 
-* * *
+<hr />
 
-포인터와 문자열 둘은 아주 관련이 깊고, 배열에 문자열을 저장하고 %s 서식문자를 이용하여 문자열을 출력했던 원리를 이제 알 수 있습니다.
+<p>포인터와 문자열 둘은 아주 관련이 깊고, 배열에 문자열을 저장하고 %s 서식문자를 이용하여 문자열을 출력했던 원리를 이제 알 수 있습니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char str[] = "C is very easy!";
-    printf("%s\n", str);
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"C is very easy!"</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-C is very easy!
+<p>C is very easy!</p>
 
+<p>계속하려면 무 키나 누르십시오 . . .</p>
 
-계속하려면 무 키나 누르십시오 . . .
+<p>str이라는 배열을 선언하고 C is very easy!라는 문장을 저장했습니다. 이 때, 배열의 이름 str은 문자열이 저장된 곳을 가르키는 포인터입니다. 그리고 문자열의 마지막에는 항상 null문자 \0이 자동으로 저장된다고 했습니다. <strong>%s 서식문자는 배열이름 str이 가르키는 주소값에서 출력을 시작하여 null문자 \0을 만나면 출력을 종료합니다.</strong></p>
 
-str이라는 배열을 선언하고 C is very easy!라는 문장을 저장했습니다. 이 때, 배열의 이름 str은 문자열이 저장된 곳을 가르키는 포인터입니다. 그리고 문자열의 마지막에는 항상 null문자 \0이 자동으로 저장된다고 했습니다. **%s 서식문자는 배열이름 str이 가르키는 주소값에서 출력을 시작하여 null문자 \0을 만나면 출력을 종료합니다.**
+<p>배열의 이름이 포인터인 만큼, 포인터에도 문자열 저장이 됩니다.</p>
 
-배열의 이름이 포인터인 만큼, 포인터에도 문자열 저장이 됩니다.
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char * ptr = "C is very easy!";
-    int i = 0;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="s">"C is very easy!"</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     
-    printf("%s\n", ptr); // %s 서식문자를 이용한 출력
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span> <span class="c1">// %s 서식문자를 이용한 출력</span>
     
-    while(ptr[i]!='\0') // %s 서식문자를 이용하지 않고 문자를 하나하나 출력 
-    {
-        printf("%c", ptr[i]);
-        i++;
-    }
-    printf("\n");
+    <span class="k">while</span><span class="p">(</span><span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">!=</span><span class="sc">'\0'</span><span class="p">)</span> <span class="c1">// %s 서식문자를 이용하지 않고 문자를 하나하나 출력 </span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-C is very easy!
+<p>C is very easy!</p>
 
+<p>C is very easy!</p>
 
-C is very easy!
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
+<p>포인터에 문자열을 저장한 이후에 %s 서식문자를 이용해서 출력을 했습니다. 포인터에 어떻게 문자열을 담을 수 있는 것일까요? 포인터는 메모리공간의 주소를 담는 변수인데 말입니다. 사실 위의 코드에서 “C is very easy!”가 반환하는 것은 가장 첫 번째 데이터인 C의 주소입니다. <strong>큰 따움표 “ “로 둘러쌓인 문자열이 반환하는 것은 가장 첫 번째 byte의 주소값 입니다.</strong> <strong>따라서 포인터에 “문자열”을 저장하면 문자열의 첫 번째 주소값이 저장되고 출력을 할 때는 그 위치부터 null문자가 나올 때 까지 출력을 해주는 것입니다</strong>.</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>이렇게 편리한 기능을 제공하는 %s 서식문자가 없다면 우리는 문자를 하나하나 출력해야 합니다. 위에서 보여드리는대로 while 반복문을 이용해서 널 문자가 아닌 동안에만 출력을 하게끔 코드를 작성합니다. 이조차도 할 수 있는 이유는 바로 null문자가 존재하기 때문입니다. <strong>null문자 ‘\0’은 문자열의 끝을 알려주기 때문에 우리가 문자열을 구분할 수 있게 해주는겁니다.</strong></p>
 
-포인터에 문자열을 저장한 이후에 %s 서식문자를 이용해서 출력을 했습니다. 포인터에 어떻게 문자열을 담을 수 있는 것일까요? 포인터는 메모리공간의 주소를 담는 변수인데 말입니다. 사실 위의 코드에서 "C is very easy!"가 반환하는 것은 가장 첫 번째 데이터인 C의 주소입니다. **큰 따움표 " "로 둘러쌓인 문자열이 반환하는 것은 가장 첫 번째 byte의 주소값 입니다.** **따라서 포인터에 "문자열"을 저장하면 문자열의 첫 번째 주소값이 저장되고 출력을 할 때는 그 위치부터 null문자가 나올 때 까지 출력을 해주는 것입니다**.
+<p> </p>
 
-이렇게 편리한 기능을 제공하는 %s 서식문자가 없다면 우리는 문자를 하나하나 출력해야 합니다. 위에서 보여드리는대로 while 반복문을 이용해서 널 문자가 아닌 동안에만 출력을 하게끔 코드를 작성합니다. 이조차도 할 수 있는 이유는 바로 null문자가 존재하기 때문입니다. **null문자 '\0'은 문자열의 끝을 알려주기 때문에 우리가 문자열을 구분할 수 있게 해주는겁니다.**
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<h1 id="2-s-서식문자와--연산자">2. %s 서식문자와 &amp; 연산자</h1>
 
-&nbsp;
+<hr />
 
-# 2. %s 서식문자와 & 연산자
+<p>이제 scanf 함수를 사용하여 %s형태로 배열이나 포인터에 문자열을 저장할 때 &amp;연산자를 사용하지 않는 이유를 설명할 수 있습니다. <strong>변수에 어떤 문자나 숫자를 저장할 때는 &amp;연산자를 사용했습니다. 이는 scanf 함수가 &amp;연산자가 반환시켜주는 주소로 가서 입력받은 데이터를 저장해주기 때문입니다. 하지만 배열의 이름이나 포인터는 그 자체가 주소값이기 때문에 &amp;연산자를 사용하지 않는겁니다.</strong></p>
 
-* * *
+<p>이 전 강의에서 배열의 이름은 상수 포인터이기때문에 가르키는 위치를 변경할 수 없다고 했고 변수 포인터는 말 그대로 변수이기 때문에 다른곳을 가르키도록 재정의 할 수 있다고 했습니다.</p>
 
-이제 scanf 함수를 사용하여 %s형태로 배열이나 포인터에 문자열을 저장할 때 &연산자를 사용하지 않는 이유를 설명할 수 있습니다. **변수에 어떤 문자나 숫자를 저장할 때는 &연산자를 사용했습니다. 이는 scanf 함수가 &연산자가 반환시켜주는 주소로 가서 입력받은 데이터를 저장해주기 때문입니다. 하지만 배열의 이름이나 포인터는 그 자체가 주소값이기 때문에 &연산자를 사용하지 않는겁니다.**
+<p><img class="aligncenter wp-image-990" src="/images/2018/09/1-12.jpg" alt="" width="725" height="371" srcset="/images/2018/09/1-12.jpg 866w, /images/2018/09/1-12-300x153.jpg 300w, /images/2018/09/1-12-768x393.jpg 768w" sizes="(max-width: 725px) 100vw, 725px" /></p>
 
-이 전 강의에서 배열의 이름은 상수 포인터이기때문에 가르키는 위치를 변경할 수 없다고 했고 변수 포인터는 말 그대로 변수이기 때문에 다른곳을 가르키도록 재정의 할 수 있다고 했습니다.
+<p>예상처럼 배열의 이름은 다른곳을 가르키도록 변경할 수 없습니다.</p>
 
-<img class="aligncenter wp-image-990" src="/images/2018/09/1-12.jpg" alt="" width="725" height="371" srcset="/images/2018/09/1-12.jpg 866w, /images/2018/09/1-12-300x153.jpg 300w, /images/2018/09/1-12-768x393.jpg 768w" sizes="(max-width: 725px) 100vw, 725px" /> 
+<p>오늘의 내용과는 별 상관없지만 한 가지 더 알려드리고 오늘 내용을 끝내겠습니다. 바로 포인터 배열이란 거에요.</p>
 
-예상처럼 배열의 이름은 다른곳을 가르키도록 변경할 수 없습니다.
+<p>보통 배열에는 숫자나 문자, 문자열 같은 값들을 저장합니다. 포인터 배열이란 것은 딱히 특별한 것이 아닌 배열의 요소로서 일반 변수가 아닌 변수의 주소값을 가지는 것 일 뿐입니다.</p>
 
-오늘의 내용과는 별 상관없지만 한 가지 더 알려드리고 오늘 내용을 끝내겠습니다. 바로 포인터 배열이란 거에요.
+<p> </p>
 
-보통 배열에는 숫자나 문자, 문자열 같은 값들을 저장합니다. 포인터 배열이란 것은 딱히 특별한 것이 아닌 배열의 요소로서 일반 변수가 아닌 변수의 주소값을 가지는 것 일 뿐입니다.
+<p> </p>
 
-&nbsp;
+<h1 id="2-포인터-배열">2. 포인터 배열</h1>
 
-&nbsp;
+<hr />
 
-# 2. 포인터 배열
+<p>선언 방법은 포인터를 저장할 배열이기 때문에 <strong>type * name[length];</strong> 의 형태로 선언을 해야합니다.</p>
 
-* * *
-
-선언 방법은 포인터를 저장할 배열이기 때문에 **type * name[length];** 의 형태로 선언을 해야합니다.
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num1 = 10, num2 = 20, num3 = 30, num4 = 40, num5 = 50;
-    int * arr[5] = {&num1, &num2, &num3, &num4, &num5};
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">num4</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">num5</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">&amp;</span><span class="n">num1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num2</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num4</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num5</span><span class="p">};</span>
     
-    printf("%#x\n", arr[0]);
-    printf("%#x\n", arr[1]);
-    printf("%#x\n", arr[2]);
-    printf("%#x\n", arr[3]);
-    printf("%#x\n", arr[4]);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
     
-    printf("\n");
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
     
-    printf("%d\n", *arr[0]);
-    printf("%d\n", *arr[1]);
-    printf("%d\n", *arr[2]);
-    printf("%d\n", *arr[3]);
-    printf("%d\n", *arr[4]);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-0x4ff8cc
+<p>0x4ff8cc</p>
 
+<p>0x4ff8c0</p>
 
-0x4ff8c0
+<p>0x4ff8b4</p>
 
+<p>0x4ff8a8</p>
 
-0x4ff8b4
+<p>0x4ff89c</p>
 
+<p>10</p>
 
-0x4ff8a8
+<p>20</p>
 
+<p>30</p>
 
-0x4ff89c
+<p>40</p>
 
+<p>50</p>
 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
+<p>배열 arr에 num1부터 num5까지의 주소값을 저장했습니다. 각 배열의 요소인 arr[0]~arr[4]까지를 출력하면 당연히 num1~num5의 주소값이 반환이 됩니다. 이제 arr[0]~arr[4]는 주소값이기 때문에 *연산자를 이용하여 그 주소값에 해당하는 메모리공간의 데이터에 저장할 수 있어요. 위의 코드를 그림으로 나타내보면 다음과 같습니다.</p>
 
-10
+<p><img class="aligncenter wp-image-991" src="/images/2018/09/2-5.jpg" alt="" width="476" height="292" srcset="/images/2018/09/2-5.jpg 759w, /images/2018/09/2-5-300x184.jpg 300w" sizes="(max-width: 476px) 100vw, 476px" /></p>
 
+<p>arr가 가지고 있는 것은 num1~ num5까지의 주소값이고 * 연산자를 이용해서 직접 그 데이터에 접근하는 것입니다.</p>
 
-20
+<p>배열에 포인터를 담을 수 있다고 했습니다. 그렇다면 배열의 하나의 요소로서 문자열 자체를 담을 수도 있습니다. 위에서 말씀드린 대로 큰 따움표 “ “가 반환하는 것은 할당된 메모리공간의 가장 첫 번째 주소값이기 때문입니다.</p>
 
-
-30
-
-
-40
-
-
-50
-
-
-계속하려면 아무 키나 누르십시오 . . .
-
-배열 arr에 num1부터 num5까지의 주소값을 저장했습니다. 각 배열의 요소인 arr[0]~arr[4]까지를 출력하면 당연히 num1~num5의 주소값이 반환이 됩니다. 이제 arr[0]~arr[4]는 주소값이기 때문에 *연산자를 이용하여 그 주소값에 해당하는 메모리공간의 데이터에 저장할 수 있어요. 위의 코드를 그림으로 나타내보면 다음과 같습니다.
-
-<img class="aligncenter wp-image-991" src="/images/2018/09/2-5.jpg" alt="" width="476" height="292" srcset="/images/2018/09/2-5.jpg 759w, /images/2018/09/2-5-300x184.jpg 300w" sizes="(max-width: 476px) 100vw, 476px" /> 
-
-arr가 가지고 있는 것은 num1~ num5까지의 주소값이고 * 연산자를 이용해서 직접 그 데이터에 접근하는 것입니다.
-
-배열에 포인터를 담을 수 있다고 했습니다. 그렇다면 배열의 하나의 요소로서 문자열 자체를 담을 수도 있습니다. 위에서 말씀드린 대로 큰 따움표 " "가 반환하는 것은 할당된 메모리공간의 가장 첫 번째 주소값이기 때문입니다.
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char * arr[] = {"one", "two", "three", "four", "five"};
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">"one"</span><span class="p">,</span> <span class="s">"two"</span><span class="p">,</span> <span class="s">"three"</span><span class="p">,</span> <span class="s">"four"</span><span class="p">,</span> <span class="s">"five"</span><span class="p">};</span>
     
-    printf("%#x\n", arr[0]);
-    printf("%#x\n", arr[1]);
-    printf("%#x\n", arr[2]);
-    printf("%#x\n", arr[3]);
-    printf("%#x\n", arr[4]);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-0xc75760
+<p>0xc75760</p>
 
+<p>0xc7575c</p>
 
-0xc7575c
+<p>0xc75754</p>
 
+<p>0xc7574c</p>
 
-0xc75754
+<p>0xc75744</p>
 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-0xc7574c
+<p>arr[i]로 데이터에 접근을 해서 출력을 했는데 그 결과를 보시면 배열 arr가 요소로 가지고 있는 것은 메모리공간의 주소라는게 나옵니다. 이처럼 포인터 배열은 주소값을 저장하기 때문에 첫 번째 주소값을 반환시켜주는 문자열을 저장할 수 있는 겁니다.</p>
 
+<p><img class="aligncenter wp-image-992" src="/images/2018/09/3-4.jpg" alt="" width="536" height="299" srcset="/images/2018/09/3-4.jpg 836w, /images/2018/09/3-4-300x167.jpg 300w, /images/2018/09/3-4-768x428.jpg 768w" sizes="(max-width: 536px) 100vw, 536px" /></p>
 
-0xc75744
+<p>결국 포인터 배열은 일반변수가 아닌 포인터변수를 담고 있는 배열일 뿐인 것입니다. 그렇기 때문에 첫 번째 데이터의 주소값을 반환하는 “문자열” 역시도 담을 수 있는 것입니다.</p>
 
-
-계속하려면 아무 키나 누르십시오 . . .
-
-arr[i]로 데이터에 접근을 해서 출력을 했는데 그 결과를 보시면 배열 arr가 요소로 가지고 있는 것은 메모리공간의 주소라는게 나옵니다. 이처럼 포인터 배열은 주소값을 저장하기 때문에 첫 번째 주소값을 반환시켜주는 문자열을 저장할 수 있는 겁니다.
-
-<img class="aligncenter wp-image-992" src="/images/2018/09/3-4.jpg" alt="" width="536" height="299" srcset="/images/2018/09/3-4.jpg 836w, /images/2018/09/3-4-300x167.jpg 300w, /images/2018/09/3-4-768x428.jpg 768w" sizes="(max-width: 536px) 100vw, 536px" /> 
-
-결국 포인터 배열은 일반변수가 아닌 포인터변수를 담고 있는 배열일 뿐인 것입니다. 그렇기 때문에 첫 번째 데이터의 주소값을 반환하는 "문자열" 역시도 담을 수 있는 것입니다.
   </div>
   
   <div class="post">
@@ -10924,276 +10877,265 @@ arr[i]로 데이터에 접근을 해서 출력을 했는데 그 결과를 보시
 
     <span class="post-date">09 Oct 2018</span>
 
-    <br>
+    <p><br /></p>
 
-이번 내용의 결론은 **"배열은 포인터이고, 포인터는 배열이다."** 가 됩니다.
+<p>이번 내용의 결론은 <strong>“배열은 포인터이고, 포인터는 배열이다.”</strong> 가 됩니다.</p>
 
-<br>
-## 1. 포인터와 메모리
-* * *
+<p><br /></p>
+<h2 id="1-포인터와-메모리">1. 포인터와 메모리</h2>
+<hr />
 
-**포인터는 데이터가 있는 위치를 가르키는 변수입니다. 직관적으로 생각했을 때 포인터를 +1 증가시키는 행위는 다음 데이터를 가르키도록 하게 될 겁니다. 다음 데이터는 자료형의 크기만큼 위치를 이동시킨 곳에 있습니다.**
+<p><strong>포인터는 데이터가 있는 위치를 가르키는 변수입니다. 직관적으로 생각했을 때 포인터를 +1 증가시키는 행위는 다음 데이터를 가르키도록 하게 될 겁니다. 다음 데이터는 자료형의 크기만큼 위치를 이동시킨 곳에 있습니다.</strong></p>
 
+<p><img src="/images/2018/09/1-11.jpg" alt="1-11" width="80%" height="80%" /></p>
 
-![1-11](/images/2018/09/1-11.jpg){: width="80%" height="80%"}
+<p>ptr은 data1을 가르킵니다. 정확히는 data1의 첫 번째 byte를 가르킵니다. ptr에 +1을 더하면 4byte를 뛰어넘어 다음 데이터를 가르킵니다. 메모리공간에는 1byte당 하나의 주소값이 할당이 됩니다. 따라서 위 그림의 경우에는 4byte를 뛰어넘기때문에 주소값도 +4 증가합니다.</p>
 
-ptr은 data1을 가르킵니다. 정확히는 data1의 첫 번째 byte를 가르킵니다. ptr에 +1을 더하면 4byte를 뛰어넘어 다음 데이터를 가르킵니다. 메모리공간에는 1byte당 하나의 주소값이 할당이 됩니다. 따라서 위 그림의 경우에는 4byte를 뛰어넘기때문에 주소값도 +4 증가합니다.
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num = 10;
-    int * ptr = &num;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">;</span>
     
-    printf("%#x, %d\n", ptr, ptr);
-    printf("%#x, %d\n", ptr+1, ptr+1);
-    printf("%#x, %d\n", ptr+2, ptr+2);
-    printf("%#x, %d\n", ptr+3, ptr+3);
-    printf("%#x, %d\n", ptr+4, ptr+4);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ptr</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">ptr</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">ptr</span><span class="o">+</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">ptr</span><span class="o">+</span><span class="mi">4</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-0xaffd14, 11533588
+<p>0xaffd14, 11533588</p>
 
+<p>0xaffd18, 11533592</p>
 
-0xaffd18, 11533592
+<p>0xaffd1c, 11533596</p>
 
+<p>0xaffd20, 11533600</p>
 
-0xaffd1c, 11533596
+<p>0xaffd24, 11533604</p>
 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-0xaffd20, 11533600
+<p><br /></p>
 
+<p>위 코드의 결과에서 알 수 있는 건 <strong>“포인터의 증가/감소 연산은 포인터형의 크기만큼 메모리에서의 위치 이동이며 그만큼 주소값이 증가/감소 한다”</strong> 입니다.</p>
 
-0xaffd24, 11533604
+<p><br /></p>
+<h2 id="2-배열의-이름은-포인터다">2. 배열의 이름은 포인터다</h2>
+<hr />
 
+<p><strong>배열의 이름은 포인터이며 배열 원소들 중 가장 첫 번째 원소를 가르킵니다.</strong> 그리고 배열도 포인터처럼 * 연산자를 사용한 연산이 가능하고, 포인터 또한 배열처럼 대괄호 [ ]를 통한 index값으로 다룰 수 있습니다.</p>
 
-계속하려면 아무 키나 누르십시오 . . .
-
-<br>
-
-위 코드의 결과에서 알 수 있는 건 **"포인터의 증가/감소 연산은 포인터형의 크기만큼 메모리에서의 위치 이동이며 그만큼 주소값이 증가/감소 한다"** 입니다.
-
-<br>
-## 2. 배열의 이름은 포인터다
-* * *
-
-**배열의 이름은 포인터이며 배열 원소들 중 가장 첫 번째 원소를 가르킵니다.** 그리고 배열도 포인터처럼 \* 연산자를 사용한 연산이 가능하고, 포인터 또한 배열처럼 대괄호 \[ \]를 통한 index값으로 다룰 수 있습니다.
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int iarr[] = {0,1,2,3,4,5,6,7,8,9,10};
-    double darr[] = {0.0, 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9, 10.10};
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">iarr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">};</span>
+    <span class="kt">double</span> <span class="n">darr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">.</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">.</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">.</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">.</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">.</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">.</span><span class="mi">10</span><span class="p">};</span>
     
-    printf("%#x, %d\n", iarr, iarr);
-    printf("%#x, %d\n", iarr+1, iarr+1);
-    printf("%#x, %d\n", iarr+2, iarr+2);
-    printf("%#x, %d\n", iarr+3, iarr+3);
-    printf("%#x, %d\n", iarr+4, iarr+4);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">iarr</span><span class="p">,</span> <span class="n">iarr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">iarr</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">iarr</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">iarr</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">iarr</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">iarr</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">iarr</span><span class="o">+</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">iarr</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">iarr</span><span class="o">+</span><span class="mi">4</span><span class="p">);</span>
     
-    printf("\n");
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
     
-    printf("%#x, %d\n", darr, darr);
-    printf("%#x, %d\n", darr+1, darr+1);
-    printf("%#x, %d\n", darr+2, darr+2);
-    printf("%#x, %d\n", darr+3, darr+3);
-    printf("%#x, %d\n", darr+4, darr+4);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">darr</span><span class="p">,</span> <span class="n">darr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">darr</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">darr</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">darr</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">darr</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">darr</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">darr</span><span class="o">+</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">darr</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">darr</span><span class="o">+</span><span class="mi">4</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-0x12ff974, 19921268
+<p>0x12ff974, 19921268</p>
 
-0x12ff978, 19921272
+<p>0x12ff978, 19921272</p>
 
-0x12ff97c, 19921276
+<p>0x12ff97c, 19921276</p>
 
-0x12ff980, 19921280
+<p>0x12ff980, 19921280</p>
 
-0x12ff984, 19921284
+<p>0x12ff984, 19921284</p>
 
-<br>
-0x12ff914, 19921172
+<p><br />
+0x12ff914, 19921172</p>
 
-0x12ff91c, 19921180
+<p>0x12ff91c, 19921180</p>
 
-0x12ff924, 19921188
+<p>0x12ff924, 19921188</p>
 
-0x12ff92c, 19921196
+<p>0x12ff92c, 19921196</p>
 
-0x12ff934, 19921204
+<p>0x12ff934, 19921204</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-int형 배열의 이름은 +1씩 증가연산을 시킬때마다 가르키는 주소값이 +4만큼 증가하면서 다음 원소를 가르키고 double형 배열의 이름은 가르키는 주소값이 +8만큼 증가하면서 다음 원소를 가르킵니다. **배열 이름의 +1 증가연산의 결과는 배열 원소들의 자료형 크기만큼의 값의 증가이다'**는 결론이 나옵니다.
+<p>int형 배열의 이름은 +1씩 증가연산을 시킬때마다 가르키는 주소값이 +4만큼 증가하면서 다음 원소를 가르키고 double형 배열의 이름은 가르키는 주소값이 +8만큼 증가하면서 다음 원소를 가르킵니다. <strong>배열 이름의 +1 증가연산의 결과는 배열 원소들의 자료형 크기만큼의 값의 증가이다’</strong>는 결론이 나옵니다.</p>
 
-배열 이름은 포인터 연산자 \* 역시도 당연히 사용 가능합니다.
+<p>배열 이름은 포인터 연산자 * 역시도 당연히 사용 가능합니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int arr[] = {0,1,2,3,4,5,6,7,8,9,10};
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">};</span>
     
-    printf("arr[0] = %d, *arr = %d\n", arr[0], *arr);
-    printf("arr[1] = %d, *(arr+1) = %d\n", arr[1], *(arr+1));
-    printf("arr[2] = %d, *(arr+2) = %d\n", arr[2], *(arr+2));
-    printf("arr[3] = %d, *(arr+3) = %d\n", arr[3], *(arr+3));
-    printf("arr[4] = %d, *(arr+4) = %d\n", arr[4], *(arr+4));
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[0] = %d, *arr = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">arr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[1] = %d, *(arr+1) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">*</span><span class="p">(</span><span class="n">arr</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[2] = %d, *(arr+2) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">*</span><span class="p">(</span><span class="n">arr</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[3] = %d, *(arr+3) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">*</span><span class="p">(</span><span class="n">arr</span><span class="o">+</span><span class="mi">3</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[4] = %d, *(arr+4) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="o">*</span><span class="p">(</span><span class="n">arr</span><span class="o">+</span><span class="mi">4</span><span class="p">));</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-arr\[0\] = 0, \*arr = 0
+<p>arr[0] = 0, *arr = 0</p>
 
-arr\[1\] = 1, \*(arr+1) = 1
+<p>arr[1] = 1, *(arr+1) = 1</p>
 
-arr\[2\] = 2, \*(arr+2) = 2
+<p>arr[2] = 2, *(arr+2) = 2</p>
 
-arr\[3\] = 3, \*(arr+3) = 3
+<p>arr[3] = 3, *(arr+3) = 3</p>
 
-arr\[4\] = 4, \*(arr+4) = 4
+<p>arr[4] = 4, *(arr+4) = 4</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-배열의 이름 arr가 포인터라면, \*arr를 통해 포인터인 arr가 가르키는 메모리 주소의 data(배열 arr의 가장 첫 번째 원소)에 접근할 수 있어야합니다. arr\[0\]과 \*arr의 값이 같습니다. 정말로 배열의 이름은 가장 첫 번째 원소를 가르키는 포인터였던 것입니다.
+<p>배열의 이름 arr가 포인터라면, *arr를 통해 포인터인 arr가 가르키는 메모리 주소의 data(배열 arr의 가장 첫 번째 원소)에 접근할 수 있어야합니다. arr[0]과 *arr의 값이 같습니다. 정말로 배열의 이름은 가장 첫 번째 원소를 가르키는 포인터였던 것입니다.</p>
 
-<br>
-## 3. 포인터도 배열처럼 index 연산이 가능하다
-* * *
+<p><br /></p>
+<h2 id="3-포인터도-배열처럼-index-연산이-가능하다">3. 포인터도 배열처럼 index 연산이 가능하다</h2>
+<hr />
 
-위에서는 배열 이름이 포인터이기 때문에 포인터의 연산이 모두 가능한 것을 확인했습니다.
+<p>위에서는 배열 이름이 포인터이기 때문에 포인터의 연산이 모두 가능한 것을 확인했습니다.</p>
 
-그리고 반대로 **포인터 변수 역시 배열과 같은 방법으로 index값을 이용하여 메모리공간에 접근이 가능합니다.**
+<p>그리고 반대로 <strong>포인터 변수 역시 배열과 같은 방법으로 index값을 이용하여 메모리공간에 접근이 가능합니다.</strong></p>
 
-~~~ c
-#include <stdio.h>
-int main(void)
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 
-{
-    int arr[] = {0,1,2,3,4,5};
-    int * ptr = &arr[0]; //ptr이 arr[0]의 위치를 가르키도록 초기화
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">//ptr이 arr[0]의 위치를 가르키도록 초기화</span>
     
-    printf("arr[0] = %d, ptr[0] = %d\n",arr[0], ptr[0]);
-    printf("arr[1] = %d, ptr[1] = %d\n",arr[0], ptr[1]);
-    printf("arr[2] = %d, ptr[2] = %d\n",arr[0], ptr[2]);
-    printf("arr[3] = %d, ptr[3] = %d\n",arr[0], ptr[3]);
-    printf("arr[4] = %d, ptr[4] = %d\n",arr[0], ptr[4]);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[0] = %d, ptr[0] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ptr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[1] = %d, ptr[1] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ptr</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[2] = %d, ptr[2] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ptr</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[3] = %d, ptr[3] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ptr</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"arr[4] = %d, ptr[4] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ptr</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-arr\[0\] = 0, ptr\[0\] = 0
+<p>arr[0] = 0, ptr[0] = 0</p>
 
-arr\[1\] = 0, ptr\[1\] = 1
+<p>arr[1] = 0, ptr[1] = 1</p>
 
-arr\[2\] = 0, ptr\[2\] = 2
+<p>arr[2] = 0, ptr[2] = 2</p>
 
-arr\[3\] = 0, ptr\[3\] = 3
+<p>arr[3] = 0, ptr[3] = 3</p>
 
-arr\[4\] = 0, ptr\[4\] = 4
+<p>arr[4] = 0, ptr[4] = 4</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-포인터도 배열처럼 index를 이용하여 ptr\[0\], ptr\[1\], ptr\[2\], . . . 와 같이 index를 통한 값의 참조가 가능합니다. 결국은 서로가 서로의 연산을 이용할 수 있는겁니다.
+<p>포인터도 배열처럼 index를 이용하여 ptr[0], ptr[1], ptr[2], . . . 와 같이 index를 통한 값의 참조가 가능합니다. 결국은 서로가 서로의 연산을 이용할 수 있는겁니다.</p>
 
-정리하자면,
+<p>정리하자면,</p>
 
-**배열의 이름은 가장 첫 번째 원소를 가르키는 포인터이며 \*연산이 가능하다. 그리고 배열 이름의 포인터형은 배열의 원소들의 자료형과 같다. 또한 포인터 역시 배열처럼 index를 이용한 데이터의 접근이 가능하다.**
+<p><strong>배열의 이름은 가장 첫 번째 원소를 가르키는 포인터이며 *연산이 가능하다. 그리고 배열 이름의 포인터형은 배열의 원소들의 자료형과 같다. 또한 포인터 역시 배열처럼 index를 이용한 데이터의 접근이 가능하다.</strong></p>
 
-위의 결론을 수식으로 표현하면 C언에서 포인터와 배열의 중요한 관계식이 나옵니다.
+<p>위의 결론을 수식으로 표현하면 C언에서 포인터와 배열의 중요한 관계식이 나옵니다.</p>
 
-~~~ c
-arr[i] = *(arr+i)
-*(ptr+i) = ptr[i]
-~~~
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">arr</span><span class="o">+</span><span class="n">i</span><span class="p">)</span>
+<span class="o">*</span><span class="p">(</span><span class="n">ptr</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</code></pre></div></div>
 
-<br>
-## 4. 포인터와 배열의 차이
-* * *
+<p><br /></p>
+<h2 id="4-포인터와-배열의-차이">4. 포인터와 배열의 차이</h2>
+<hr />
 
-사실 **배열=포인터의 관계가 성립하는 것은 아닙니다. 말하자면 배열은 말 그대로 데이터를 담고있는 바구니이고 포인터는 첫 번째 데이터를 가르키는 포인터 변수일 뿐입니다.** 하지만 배열의 이름 자체는 포인터이기 때문에 연산이나 데이터의 접근 방법에 있어서 유사성이 있는것입니다.
+<p>사실 <strong>배열=포인터의 관계가 성립하는 것은 아닙니다. 말하자면 배열은 말 그대로 데이터를 담고있는 바구니이고 포인터는 첫 번째 데이터를 가르키는 포인터 변수일 뿐입니다.</strong> 하지만 배열의 이름 자체는 포인터이기 때문에 연산이나 데이터의 접근 방법에 있어서 유사성이 있는것입니다.</p>
 
-<br>
+<p><br /></p>
 
-![2-4](/images/2018/09/2-4.jpg){: width="80%" height="80%"}
+<p><img src="/images/2018/09/2-4.jpg" alt="2-4" width="80%" height="80%" /></p>
 
-<br>
+<p><br /></p>
 
-또한 배열의 이름과 포인터는 size가 다릅니다.
+<p>또한 배열의 이름과 포인터는 size가 다릅니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int iarr[] = {1,2,3,4,5,6,7};
-    double darr[] = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7};
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">iarr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">};</span>
+    <span class="kt">double</span> <span class="n">darr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">.</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">.</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">.</span><span class="mi">7</span><span class="p">};</span>
     
-    int * iptr = &iarr[0];
-    double * dptr = &darr[0];
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">iptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">iarr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">*</span> <span class="n">dptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">darr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
     
-    printf("size of iarr : %d\n", sizeof(iarr));
-    printf("size of iptr : %d\n", sizeof(iptr));
-    printf("size of darr : %d\n", sizeof(darr));
-    printf("size of dptr : %d\n", sizeof(dptr));
+    <span class="n">printf</span><span class="p">(</span><span class="s">"size of iarr : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">iarr</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"size of iptr : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">iptr</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"size of darr : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">darr</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"size of dptr : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">dptr</span><span class="p">));</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-size of iarr : 28
+<p>size of iarr : 28</p>
 
-size of iptr : 4
+<p>size of iptr : 4</p>
 
-size of darr : 56
+<p>size of darr : 56</p>
 
-size of dptr : 4
+<p>size of dptr : 4</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-iarr는 크기가 4byte인 int형 정수를 7개 담고 있으므로 28byte가 나오고 darr는 크기가 8byte인 double형 실수 7개를 담고 있으므로 56byte가 나옵니다. 하지만 포인터의 크기는 항상 4byte가 나옵니다. 이유는 포인터의 개념을 생각해보시면 알 수 있습니다.
+<p>iarr는 크기가 4byte인 int형 정수를 7개 담고 있으므로 28byte가 나오고 darr는 크기가 8byte인 double형 실수 7개를 담고 있으므로 56byte가 나옵니다. 하지만 포인터의 크기는 항상 4byte가 나옵니다. 이유는 포인터의 개념을 생각해보시면 알 수 있습니다.</p>
 
-포인터는 메모리공간의 주소값을 저장하는 변수입니다. 주소값의 크기는 항상 4byte이기 때문에 sizeof 연산의 결과가 4가 나온겁니다. 4byte는 32bit이고 8개의 hex값으로 나타낼 수 있습니다. 가령 0x11ff2310 같은 값 말입니다. 제가 사용하는 컴파일러는 주소값을 32bit로 표현하도록 설정되어있습니다. 만약 제 컴파일러가 64bit의 주소값을 사용하도록 설정을 하면 모든 포인터의 sizeof 연산의 결과는 8이 나올겁니다. 이는 운영체제때문이 아닙니다. x64의 운영체제도 32bit 컴파일을 할 수 있고 16bit 컴파일도 가능합니다. 16bit로 컴파일러에서는 모든 포인터의 sizeof 연산결과는 2가 나올겁니다.
+<p>포인터는 메모리공간의 주소값을 저장하는 변수입니다. 주소값의 크기는 항상 4byte이기 때문에 sizeof 연산의 결과가 4가 나온겁니다. 4byte는 32bit이고 8개의 hex값으로 나타낼 수 있습니다. 가령 0x11ff2310 같은 값 말입니다. 제가 사용하는 컴파일러는 주소값을 32bit로 표현하도록 설정되어있습니다. 만약 제 컴파일러가 64bit의 주소값을 사용하도록 설정을 하면 모든 포인터의 sizeof 연산의 결과는 8이 나올겁니다. 이는 운영체제때문이 아닙니다. x64의 운영체제도 32bit 컴파일을 할 수 있고 16bit 컴파일도 가능합니다. 16bit로 컴파일러에서는 모든 포인터의 sizeof 연산결과는 2가 나올겁니다.</p>
 
-포인터의 크기와 포인터의 연산은 헷갈릴 수 있습니다. 포인터의 크기는 메모리상의 주소를 나타내기 위해 사용하는 bit수와 관련이 있으며 컴파일 설정에 따라 달라지는 값이고 증가 감소 연산은 포인터가 가르키는 자료형의 크기에 따라 달라지는 겁니다.
+<p>포인터의 크기와 포인터의 연산은 헷갈릴 수 있습니다. 포인터의 크기는 메모리상의 주소를 나타내기 위해 사용하는 bit수와 관련이 있으며 컴파일 설정에 따라 달라지는 값이고 증가 감소 연산은 포인터가 가르키는 자료형의 크기에 따라 달라지는 겁니다.</p>
 
-<br>
+<p><br /></p>
 
-포인터는 변수포인터와 상수포인터로 나뉩니다. **배열의 이름은 상수 포인터이기 때문에 가르키는 곳을 변경할 수 없습니다.** 배열의 이름은 자신의 원소 중 가장 첫 번째 원소만 가르킬 수 있는 상수 포인터입니다.
+<p>포인터는 변수포인터와 상수포인터로 나뉩니다. <strong>배열의 이름은 상수 포인터이기 때문에 가르키는 곳을 변경할 수 없습니다.</strong> 배열의 이름은 자신의 원소 중 가장 첫 번째 원소만 가르킬 수 있는 상수 포인터입니다.</p>
 
-![3-3](/images/2018/09/3-3.jpg){: width="80%" height="80%"}
+<p><img src="/images/2018/09/3-3.jpg" alt="3-3" width="80%" height="80%" /></p>
 
-배열 이름은 상수 포인터이기 때문에 위 사진과 같이 다른 변수의 주소를 대입하려고 시도하니 오류가 납니다.
+<p>배열 이름은 상수 포인터이기 때문에 위 사진과 같이 다른 변수의 주소를 대입하려고 시도하니 오류가 납니다.</p>
+
   </div>
   
   <div class="post">
@@ -11205,255 +11147,250 @@ iarr는 크기가 4byte인 int형 정수를 7개 담고 있으므로 28byte가 �
 
     <span class="post-date">09 Oct 2018</span>
 
-    <br>
-## 1. 변수와 메모리
-* * *
+    <p><br /></p>
+<h2 id="1-변수와-메모리">1. 변수와 메모리</h2>
+<hr />
 
-char형 변수 'A', 'H' 2개와 int형 정수 100이 선언이 되었다고 해봅시다. 이들이 할당된 메모리공간을 그림으로 나타내면 다음과 같습니다.
+<p>char형 변수 ‘A’, ‘H’ 2개와 int형 정수 100이 선언이 되었다고 해봅시다. 이들이 할당된 메모리공간을 그림으로 나타내면 다음과 같습니다.</p>
 
-![1-10](/images/2018/09/1-10.jpg){: width="80%" height="80%"}
+<p><img src="/images/2018/09/1-10.jpg" alt="1-10" width="80%" height="80%" /></p>
 
-물론 주소값은 임의로 정한 것입니다. **메모리 공간은 1byte 단위로 주소값을 가지고 있습니다.** 변수의 메모리 주소는 변수가 차지하는 첫 번째 byte의 주소를 말합니다. 따라서 위 그림에서 정수 100은 0x11bb32번지에 있다고 말합니다. 어차피 변수를 선언할 때 자료형을 명시해주기 때문에 시작 번지만 알면 그 변수가 할당된 메모리공간 전체를 알 수 있습니다.
+<p>물론 주소값은 임의로 정한 것입니다. <strong>메모리 공간은 1byte 단위로 주소값을 가지고 있습니다.</strong> 변수의 메모리 주소는 변수가 차지하는 첫 번째 byte의 주소를 말합니다. 따라서 위 그림에서 정수 100은 0x11bb32번지에 있다고 말합니다. 어차피 변수를 선언할 때 자료형을 명시해주기 때문에 시작 번지만 알면 그 변수가 할당된 메모리공간 전체를 알 수 있습니다.</p>
 
-<br>
-## 2. 포인터 변수
-* * *
+<p><br /></p>
+<h2 id="2-포인터-변수">2. 포인터 변수</h2>
+<hr />
 
-**포인터변수는 것은 메모리의 주소를 저장하는 변수**입니다. 일반 변수는 정수나 실수 데이터 자체를 저장하는데 사용되지만 포인터변수는 메모리의 주소를 저장하는데 사용됩니다.
+<p><strong>포인터변수는 것은 메모리의 주소를 저장하는 변수</strong>입니다. 일반 변수는 정수나 실수 데이터 자체를 저장하는데 사용되지만 포인터변수는 메모리의 주소를 저장하는데 사용됩니다.</p>
 
-포인터 변수는 다음과 같이 선언, 초기화 됩니다.
+<p>포인터 변수는 다음과 같이 선언, 초기화 됩니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num = 10;
-    int * pnum = &num; //num의 주소값을 포인터변수 pnum에 저장
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">;</span> <span class="c1">//num의 주소값을 포인터변수 pnum에 저장</span>
     
-    printf("%#x\n", &num); //메모리공간의 주소는 보통 16진수(hex)로 표시
-    printf("%#x\n", pnum); //메모리공간의 주소는 보통 16진수(hex)로 표시
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span> <span class="c1">//메모리공간의 주소는 보통 16진수(hex)로 표시</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum</span><span class="p">);</span> <span class="c1">//메모리공간의 주소는 보통 16진수(hex)로 표시</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-0x135fab4
+<p>0x135fab4</p>
 
-0x135fab4
+<p>0x135fab4</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-포인터 변수라는것을 알리기 위해서 선언을 할 때에 \*를 붙입니다. & 연산자는 변수의 주소를 반환시켜주는 연산자입니다. &num은 num변수의 주소값을 반환합니다. 이제 pnum 포인터 변수는 변수 num이 저장되어있는 메모리의 주소값을 저장하고 있습니다(혹은 주로 가르킨다고 표현합니다). num은 int형 변수이므로 총 4byte의 메모리공간을 차지하는데, pnum은 그 첫 번째 바이트의 주소를 가르킵니다.
+<p>포인터 변수라는것을 알리기 위해서 선언을 할 때에 *를 붙입니다. &amp; 연산자는 변수의 주소를 반환시켜주는 연산자입니다. &amp;num은 num변수의 주소값을 반환합니다. 이제 pnum 포인터 변수는 변수 num이 저장되어있는 메모리의 주소값을 저장하고 있습니다(혹은 주로 가르킨다고 표현합니다). num은 int형 변수이므로 총 4byte의 메모리공간을 차지하는데, pnum은 그 첫 번째 바이트의 주소를 가르킵니다.</p>
 
-위의 출력결과를 보세요. 먼저 변수 num의 주소값을 출력하기 위해 주소값을 반환하는 연산자 &을 써서 &num을 출력했습니다. 그리고 다른 하나는 pnum의 값을 출력했습니다. 둘 모두 16진수(hex) 형태로 출력했습니다. 두 개의 출력결과가 같은건 당연한 결과입니다. &num과 pnum 모두 num의 주소값을 나타내기 때문입니다.
+<p>위의 출력결과를 보세요. 먼저 변수 num의 주소값을 출력하기 위해 주소값을 반환하는 연산자 &amp;을 써서 &amp;num을 출력했습니다. 그리고 다른 하나는 pnum의 값을 출력했습니다. 둘 모두 16진수(hex) 형태로 출력했습니다. 두 개의 출력결과가 같은건 당연한 결과입니다. &amp;num과 pnum 모두 num의 주소값을 나타내기 때문입니다.</p>
 
-다시 돌아가서 포인터의 선언과 초기화식을 자세히 살펴봅시다.
+<p>다시 돌아가서 포인터의 선언과 초기화식을 자세히 살펴봅시다.</p>
 
-![2-3](/images/2018/09/2-3.jpg){: width="50%" height="50%"}
+<p><img src="/images/2018/09/2-3.jpg" alt="2-3" width="50%" height="50%" /></p>
 
-<br>
+<p><br /></p>
 
-포인터 변수를 선언할 때 필수적인 요소는 다음과 같습니다.
+<p>포인터 변수를 선언할 때 필수적인 요소는 다음과 같습니다.</p>
 
-**1. 포인터 형 : 포인터가 가르킬 변수의 자료형**
+<p><strong>1. 포인터 형 : 포인터가 가르킬 변수의 자료형</strong></p>
 
-**2. 이름 : 포인터 변수 이름**
+<p><strong>2. 이름 : 포인터 변수 이름</strong></p>
 
-**3. 초기값 : &연산자를 써서 변수의 주소로 초기화.**
+<p><strong>3. 초기값 : &amp;연산자를 써서 변수의 주소로 초기화.</strong></p>
 
-\* 연산자는 **"~의 메모리공간에 접근해서"** 혹은 **"~가 가르키는 곳으로 가서"** 정도로 해석할 수 있습니다.
+<p>* 연산자는 <strong>“~의 메모리공간에 접근해서”</strong> 혹은 <strong>“~가 가르키는 곳으로 가서”</strong> 정도로 해석할 수 있습니다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num = 10;
-    int * pnum = &num;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">;</span>
     
-    printf("num : %d\n", num); //num값 출력
-    printf("pnum : %#x\n", pnum);//(pnum값 = num의 주소) 출력
-    printf("*pnum : %d\n", *pnum); //(pnum이 가르키는 곳에 저장된 값 = num값) 출력
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span> <span class="c1">//num값 출력</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"pnum : %#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum</span><span class="p">);</span><span class="c1">//(pnum값 = num의 주소) 출력</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"*pnum : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">pnum</span><span class="p">);</span> <span class="c1">//(pnum이 가르키는 곳에 저장된 값 = num값) 출력</span>
     
-    num++; //num 1 증가
-    printf("num : %d\n", num);
+    <span class="n">num</span><span class="o">++</span><span class="p">;</span> <span class="c1">//num 1 증가</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
     
-    (*pnum)++; //(pnum이 가르키는 곳에 저장된 값 = num값) 1 증가
-    printf("num : %d\n", num);
+    <span class="p">(</span><span class="o">*</span><span class="n">pnum</span><span class="p">)</span><span class="o">++</span><span class="p">;</span> <span class="c1">//(pnum이 가르키는 곳에 저장된 값 = num값) 1 증가</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-num : 10
+<p>num : 10</p>
 
-pnum : 0x97f910
+<p>pnum : 0x97f910</p>
 
-\*pnum : 10
+<p>*pnum : 10</p>
 
-num : 11
+<p>num : 11</p>
 
-num : 12
+<p>num : 12</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-num과 \*pnum의 출력결과가 같습니다. 변수 num이 가진 값을 출력하던지, \* 연산자를 통해 pnum이 가르키는 주소로 메모리에 접근해서 저장된 값을 출력하던지 같은겁니다. 그리고 num++을 하여 num값을 1 증가시킬수도있고, (\*pnum)++로 pnum이 가진 주소값에 접근해서 그 데이터를 1 증가시킬수도 있는겁니다.
+<p>num과 *pnum의 출력결과가 같습니다. 변수 num이 가진 값을 출력하던지, * 연산자를 통해 pnum이 가르키는 주소로 메모리에 접근해서 저장된 값을 출력하던지 같은겁니다. 그리고 num++을 하여 num값을 1 증가시킬수도있고, (*pnum)++로 pnum이 가진 주소값에 접근해서 그 데이터를 1 증가시킬수도 있는겁니다.</p>
 
-포인터변수는 메모리공간에 직접 접근이 가능하다는 점에서 유용하기도 하고 때로는 위험하기도 한 변수입니다.
+<p>포인터변수는 메모리공간에 직접 접근이 가능하다는 점에서 유용하기도 하고 때로는 위험하기도 한 변수입니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num1 = 10;
-    int num2 = 20;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
     
-    int * pnum;
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">pnum</span><span class="p">;</span>
     
-    printf("num1 : %d\n", num1);
-    printf("num2 : %d\n", num2);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num1 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num2 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
     
-    pnum = &num1;
-    (*pnum)++;
+    <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num1</span><span class="p">;</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">pnum</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
     
-    pnum = &num2;
-    (*pnum)++;
+    <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num2</span><span class="p">;</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">pnum</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
     
-    printf("num1 : %d\n", num1);
-    printf("num2 : %d\n", num2);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num1 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num2 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-num1 : 10
+<p>num1 : 10</p>
 
-num2 : 20
+<p>num2 : 20</p>
 
-num1 : 11
+<p>num1 : 11</p>
 
-num2 : 21
+<p>num2 : 21</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-pnum이 num1을 가르키도록 했다가 num2를 가르키도록 했습니다. 포인터 변수 역시 일반 변수처럼 가르키는 주소값이 재정의 될 수 있습니다. 물론 여러개의 포인터변수가 하나의 주소값도 담을 수 있습니다. 가령 변수 num이 있고 포인터변수 pnum1, pnum2이 num을 가르키도록 하면 num의 메모리공간에는 pnum1과 pnum2 중 무엇을 사용해도 접근이 가능합니다.
+<p>pnum이 num1을 가르키도록 했다가 num2를 가르키도록 했습니다. 포인터 변수 역시 일반 변수처럼 가르키는 주소값이 재정의 될 수 있습니다. 물론 여러개의 포인터변수가 하나의 주소값도 담을 수 있습니다. 가령 변수 num이 있고 포인터변수 pnum1, pnum2이 num을 가르키도록 하면 num의 메모리공간에는 pnum1과 pnum2 중 무엇을 사용해도 접근이 가능합니다.</p>
 
-<br>
-## 3. 포인터 연산
-* * *
+<p><br /></p>
+<h2 id="3-포인터-연산">3. 포인터 연산</h2>
+<hr />
 
-포인터변수를 연산하면 어떻게 되는지 알아봅시다.
+<p>포인터변수를 연산하면 어떻게 되는지 알아봅시다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int num1 = 10;
-    double num2 = 3.14;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">14</span><span class="p">;</span>
     
-    int * pnum1 = &num1; //num1 주소 저장
-    double * pnum2 = &num2; //num2 주소 저장
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">pnum1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num1</span><span class="p">;</span> <span class="c1">//num1 주소 저장</span>
+    <span class="kt">double</span> <span class="o">*</span> <span class="n">pnum2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num2</span><span class="p">;</span> <span class="c1">//num2 주소 저장</span>
     
-    printf("%#x, %d\n", pnum1, pnum1);
-    pnum1++; //포인터 증가연산
-    printf("%#x, %d\n", pnum1, pnum1);
-    pnum1++; //포인터 증가연산
-    printf("%#x, %d\n", pnum1, pnum1);
-    pnum1++; //포인터 증가연산
-    printf("%#x, %d\n", pnum1, pnum1);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">);</span>
+    <span class="n">pnum1</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">);</span>
+    <span class="n">pnum1</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">);</span>
+    <span class="n">pnum1</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">);</span>
     
-    printf("\n");
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
     
-    printf("%#x, %d\n", pnum2, pnum2);
-    pnum2++; //포인터 증가연산
-    printf("%#x, %d\n", pnum2, pnum2);
-    pnum2++; //포인터 증가연산
-    printf("%#x, %d\n", pnum2, pnum2);
-    pnum2++; //포인터 증가연산
-    printf("%#x, %d\n", pnum2, pnum2);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">);</span>
+    <span class="n">pnum2</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">);</span>
+    <span class="n">pnum2</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">);</span>
+    <span class="n">pnum2</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-0x73f8b8, 7600312
+<p>0x73f8b8, 7600312</p>
 
-0x73f8bc, 7600316
+<p>0x73f8bc, 7600316</p>
 
-0x73f8c0, 7600320
+<p>0x73f8c0, 7600320</p>
 
-0x73f8c4, 7600324
+<p>0x73f8c4, 7600324</p>
 
+<p>0x73f8a8, 7600296</p>
 
-0x73f8a8, 7600296
+<p>0x73f8b0, 7600304</p>
 
-0x73f8b0, 7600304
+<p>0x73f8b8, 7600312</p>
 
-0x73f8b8, 7600312
+<p>0x73f8c0, 7600320</p>
 
-0x73f8c0, 7600320
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p><br /></p>
 
-<br>
+<p>포인터 변수를 ++연산시키니 pnum1은 4씩 커지고 pnum2는 8씩 커집니다. 포인터가 가르키는 자료형 때문입니다. pnum1은 4byte 크기의 int형 변수를 가르키므로 4번지씩 증가합니다. 반면 pnum2는 8byte크기의 double형 변수를 가르키므로 8번지씩 증가하는겁니다.</p>
 
-포인터 변수를 ++연산시키니 pnum1은 4씩 커지고 pnum2는 8씩 커집니다. 포인터가 가르키는 자료형 때문입니다. pnum1은 4byte 크기의 int형 변수를 가르키므로 4번지씩 증가합니다. 반면 pnum2는 8byte크기의 double형 변수를 가르키므로 8번지씩 증가하는겁니다.
+<p>방금 코드의 실행 결과는 <strong>포인터형이 존재하는 이유</strong>에 대한 힌트를 줍니다. <strong>포인터가 가르키는 데이터의 자료형을 알아야 포인터가 가르키는 시작 번지부터 얼마만큼의 메모리공간을 읽어들여야 하는지 알 수 있기 때문입니다. 포인터에 자료형이 없다면 얼마만큼의 크기를 참조해야하는지알 수없습니다.</strong></p>
 
-방금 코드의 실행 결과는 **포인터형이 존재하는 이유**에 대한 힌트를 줍니다. **포인터가 가르키는 데이터의 자료형을 알아야 포인터가 가르키는 시작 번지부터 얼마만큼의 메모리공간을 읽어들여야 하는지 알 수 있기 때문입니다. 포인터에 자료형이 없다면 얼마만큼의 크기를 참조해야하는지알 수없습니다.**
+<p><br /></p>
+<h1 id="4-null-포인터">4. NULL 포인터</h1>
+<hr />
 
-<br>
-# 4. NULL 포인터
-* * *
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    int * ptr;
-    int * ptr1 = 0;
-    int * ptr2 = NULL;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr2</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
     
-    printf("%#x\n", ptr);
-    printf("%#x\n", ptr1);
-    printf("%#x\n", ptr2);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr2</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-0xcccccccc
+<p>0xcccccccc</p>
 
-0
+<p>0</p>
 
-0
+<p>0</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-위와 같이 포인터변수를 선언하면서 초기화를 하지 않으면 아무런 의미가 없는 쓰레기값으로 초기화가 됩니다. 초기화 없이 포인터변수를 선언하면 랜덤한 곳을 가르키기 때문에 건드려서는 안 될 메모리 주소를 건드리게 될 수 있습니다. 따라서 이후에 사용하기 위해 미리 포인터변수를 선언하는 경우에는 0이나 NULL로 초기화를 시켜줘야 합니다. **여기서 0은 ASCILL CODE 값 NULL을 의미합니다. 0이나 NULL이나 똑같은 표현입니다. 여기서 0과 NULL이 의미하는 것은 0번지가 아닙니다. '어느곳도 가르키지 않는다'는 뜻입니다.**
+<p>위와 같이 포인터변수를 선언하면서 초기화를 하지 않으면 아무런 의미가 없는 쓰레기값으로 초기화가 됩니다. 초기화 없이 포인터변수를 선언하면 랜덤한 곳을 가르키기 때문에 건드려서는 안 될 메모리 주소를 건드리게 될 수 있습니다. 따라서 이후에 사용하기 위해 미리 포인터변수를 선언하는 경우에는 0이나 NULL로 초기화를 시켜줘야 합니다. <strong>여기서 0은 ASCILL CODE 값 NULL을 의미합니다. 0이나 NULL이나 똑같은 표현입니다. 여기서 0과 NULL이 의미하는 것은 0번지가 아닙니다. ‘어느곳도 가르키지 않는다’는 뜻입니다.</strong></p>
+
   </div>
   
   <div class="post">
@@ -11465,220 +11402,213 @@ int main(void)
 
     <span class="post-date">07 Oct 2018</span>
 
-    <br>
+    <p><br /></p>
 
-문자열 이전 문자에 관해 상기 해보겠습니다.
+<p>문자열 이전 문자에 관해 상기 해보겠습니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char ch1 = 'A';
-    char ch2 = 65;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">ch1</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">ch2</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
     
-    printf("ch1 dec : %d, ch1 ASCII : %c\n", ch1, ch1);
-    printf("ch2 dec : %d, ch2 ASCII : %c\n", ch2, ch2);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"ch1 dec : %d, ch1 ASCII : %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch1</span><span class="p">,</span> <span class="n">ch1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"ch2 dec : %d, ch2 ASCII : %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch2</span><span class="p">,</span> <span class="n">ch2</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-ch1 dec : 65, ch1 ASCII : A
+<p>ch1 dec : 65, ch1 ASCII : A</p>
 
-ch2 dec : 65, ch2 ASCII : A
+<p>ch2 dec : 65, ch2 ASCII : A</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-문자 'A'의 10진수 ASCII code는 10입니다. 그리고 10진수 65의 ASCII 문자는 'A' 입니다. 'A'를 저장하던 십진수 65를 저장 하던 같은 겁니다. 물론 문자를 표현할 때 char형 말고 다른 정수 자료형을 써도 되지만 아스키 코드는 0~127의 정수를 다루기 때문에 char 자료형만으로도 충분히 표현가능하기 때문에 문자를 저장할 때 보통 char 자료형을 쓰는 것입니다.
+<p>문자 ‘A’의 10진수 ASCII code는 10입니다. 그리고 10진수 65의 ASCII 문자는 ‘A’ 입니다. ‘A’를 저장하던 십진수 65를 저장 하던 같은 겁니다. 물론 문자를 표현할 때 char형 말고 다른 정수 자료형을 써도 되지만 아스키 코드는 0~127의 정수를 다루기 때문에 char 자료형만으로도 충분히 표현가능하기 때문에 문자를 저장할 때 보통 char 자료형을 쓰는 것입니다.</p>
 
-<br>
+<p><br /></p>
 
-그럼 문자열을 만드는 방법들에 대해 알아보겠습니다.
+<p>그럼 문자열을 만드는 방법들에 대해 알아보겠습니다.</p>
 
-<br>
-## 1. 배열에 여러 개의 문자를 저장
-* * *
+<p><br /></p>
+<h2 id="1-배열에-여러-개의-문자를-저장">1. 배열에 여러 개의 문자를 저장</h2>
+<hr />
 
-아무튼 변수에는 문자 '한 개'만 저장이 가능합니다. 문자가 여러개인 문자열은 하나의 변수에 저장이 되지 않습니다. 배열을 이용하면 문자열을 저장할 수 있습니다.
+<p>아무튼 변수에는 문자 ‘한 개’만 저장이 가능합니다. 문자가 여러개인 문자열은 하나의 변수에 저장이 되지 않습니다. 배열을 이용하면 문자열을 저장할 수 있습니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char str[] = {'C',' ','i','s',' ','v','e','r','y',' ','e','a','s','y','!'};
-    int i;
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'C'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'i'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'v'</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'r'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'a'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">'!'</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     
-    for(i = 0; i<sizeof(str)/sizeof(char); i++)
-    {
-        printf("%c",str[i]);
-    }
-    printf("\n");
-    printf("The length of str : %d\n", sizeof(str)/sizeof(char));
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The length of str : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-C is very easy!
+<p>C is very easy!</p>
 
-The length of str : 15
+<p>The length of str : 15</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-위와 같이 우리는 문자를 하나하나 배열에 저장할 수 있습니다. 하지만 좀 무식한 방법같아 보입니다. 그리고 사실 이것은 C언어에서 문자열이라고 하지 않습니다. 왜냐하면 마지막에 NULL 문자가 없기 때문인데, 이유는 뒤에 나옵니다.
+<p>위와 같이 우리는 문자를 하나하나 배열에 저장할 수 있습니다. 하지만 좀 무식한 방법같아 보입니다. 그리고 사실 이것은 C언어에서 문자열이라고 하지 않습니다. 왜냐하면 마지막에 NULL 문자가 없기 때문인데, 이유는 뒤에 나옵니다.</p>
 
-<br>
-## 2. 큰 따움표를 사용한 문자열 저장
-* * *
+<p><br /></p>
+<h2 id="2-큰-따움표를-사용한-문자열-저장">2. 큰 따움표를 사용한 문자열 저장</h2>
+<hr />
 
-문자열을 만드는 제대로 된 방법은 큰 따움표 " " 를 사용하는 것입니다.
+<p>문자열을 만드는 제대로 된 방법은 큰 따움표 “ “ 를 사용하는 것입니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char str[] = "C is very easy!";
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"C is very easy!"</span><span class="p">;</span>
     
-    printf("%s\n", str); //문자열을 위한 서식문자 %s
-    printf("The length of str : %d\n", sizeof(str)/sizeof(char));
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span> <span class="c1">//문자열을 위한 서식문자 %s</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The length of str : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-C is very easy!
+<p>C is very easy!</p>
 
-The length of str : 16
+<p>The length of str : 16</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-**%s는 문자열을 출력해주는 서식문자입니다.**
+<p><strong>%s는 문자열을 출력해주는 서식문자입니다.</strong></p>
 
-그리고 저장한 문자열의 길이를 출력했는데, 16이 나왔습니다. 위에서 문자 하나하나를 저장했던 것과 다른 결과입니다.
+<p>그리고 저장한 문자열의 길이를 출력했는데, 16이 나왔습니다. 위에서 문자 하나하나를 저장했던 것과 다른 결과입니다.</p>
 
-**큰 따움표 " "를 이용하여 문자열을 저장하면 항상 마지막에 null문자 '\0'이 자동으로 추가 됩니다. 그리고 null문자 '\0'은 ASCII code 값 0에 해당합니다. 그리고 이 null문자를 %c를 이용하여 문자형태로 출력하면 아무런 출력이 발생하지 않습니다. 그리고 이 null 문자 '\0'은 공백문자 ' '와는 엄연히 다릅니다.**
+<p><strong>큰 따움표 “ “를 이용하여 문자열을 저장하면 항상 마지막에 null문자 ‘\0’이 자동으로 추가 됩니다. 그리고 null문자 ‘\0’은 ASCII code 값 0에 해당합니다. 그리고 이 null문자를 %c를 이용하여 문자형태로 출력하면 아무런 출력이 발생하지 않습니다. 그리고 이 null 문자 ‘\0’은 공백문자 ‘ ‘와는 엄연히 다릅니다.</strong></p>
 
-![1-9](/images/2018/09/1-9.jpg){: width="80%" height="80%"}
+<p><img src="/images/2018/09/1-9.jpg" alt="1-9" width="80%" height="80%" /></p>
 
-**C언어에서 무조건 모든 문자열의 끝에는 null문자가 삽입됩니다. 반대로 null문자가 존재하면 그것은 문자열로 인식이 가능합니다. 그리고 %s 서식문자는 배열의 시작부터 문자를 하나하나 출력해주다가 null문자를 만나면 출력을 종료해합니다. null 문자가 필요한 이유기도 합니다. 어디까지를 하나의 문자열로 인식할지 null문자가 알려주는 것입니다.**
+<p><strong>C언어에서 무조건 모든 문자열의 끝에는 null문자가 삽입됩니다. 반대로 null문자가 존재하면 그것은 문자열로 인식이 가능합니다. 그리고 %s 서식문자는 배열의 시작부터 문자를 하나하나 출력해주다가 null문자를 만나면 출력을 종료해합니다. null 문자가 필요한 이유기도 합니다. 어디까지를 하나의 문자열로 인식할지 null문자가 알려주는 것입니다.</strong></p>
 
-<br>
+<p><br /></p>
 
-%s를 이용하여 문자열을 출력할 수 있는 것처럼, 사용자로부터 문자열을 입력받는것도 당연히 가능합니다.
+<p>%s를 이용하여 문자열을 출력할 수 있는 것처럼, 사용자로부터 문자열을 입력받는것도 당연히 가능합니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char str[100];
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
     
-    printf("Type a sentence : ");
-    scanf("%s", str);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Type a sentence : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
     
-    printf("%s\n", str);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Type a sentence : Hello
+<p>Type a sentence : Hello</p>
 
-Hello
+<p>Hello</p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-Hello를 입력하면 마지막에 null문자가 자동으로 삽입이 되어 Hello\0으로 저장이 됩니다.
+<p>Hello를 입력하면 마지막에 null문자가 자동으로 삽입이 되어 Hello\0으로 저장이 됩니다.</p>
 
-<br>
-## 3. scanf 함수와 문자열
-* * *
+<p><br /></p>
+<h2 id="3-scanf-함수와-문자열">3. scanf 함수와 문자열</h2>
+<hr />
 
-scanf 함수를 이용하여 변수에 데이터를 저장할 때는 항상 & 연산자를 붙여주었습니다. 그런데 문자열을 배열에 저장할 때는 배열의 명만 넣어줍니다. **&연산자는 주소값을 반환시켜주는 연산자입니다.** 가령 변수 num에 &연산자를 이용하여 &num으로 표현하면 num 변수의 주소값이 반환됩니다. scanf("%d", &num)은 사용자로부터 입력을 받아 10진수 정수 형태로 num이라는 변수의 주소가 가르키는 메모리공간에 저장을하라는 의미인데, **사실 배열의 이름은 그 자체가 메모리공간의 주소를 의미합니다.** 따라서 &연산자를 붙여줄 필요가 없던겁니다.
+<p>scanf 함수를 이용하여 변수에 데이터를 저장할 때는 항상 &amp; 연산자를 붙여주었습니다. 그런데 문자열을 배열에 저장할 때는 배열의 명만 넣어줍니다. <strong>&amp;연산자는 주소값을 반환시켜주는 연산자입니다.</strong> 가령 변수 num에 &amp;연산자를 이용하여 &amp;num으로 표현하면 num 변수의 주소값이 반환됩니다. scanf(“%d”, &amp;num)은 사용자로부터 입력을 받아 10진수 정수 형태로 num이라는 변수의 주소가 가르키는 메모리공간에 저장을하라는 의미인데, <strong>사실 배열의 이름은 그 자체가 메모리공간의 주소를 의미합니다.</strong> 따라서 &amp;연산자를 붙여줄 필요가 없던겁니다.</p>
 
-<br>
+<p><br /></p>
 
-**서식문자 %s의 원리도 배열의 이름인 메모리공간의 첫 byte 주소값부터 시작하여 null문자를 만날 때 까지 출력을 해주는 것이었습니다.** 이 부분은 포인터와 관련 있습니다. 지금은 **%s 서식문자로 배열을 출력할 때에는 &연산자를 사용하지 않는다**는 것 정도만 아시면 됩니다.
+<p><strong>서식문자 %s의 원리도 배열의 이름인 메모리공간의 첫 byte 주소값부터 시작하여 null문자를 만날 때 까지 출력을 해주는 것이었습니다.</strong> 이 부분은 포인터와 관련 있습니다. 지금은 <strong>%s 서식문자로 배열을 출력할 때에는 &amp;연산자를 사용하지 않는다</strong>는 것 정도만 아시면 됩니다.</p>
 
-우리가 처음에 출력한 "C is very easy!" 라는 문장을 출력할 때는 %s 서식문자를 사용할 수 없습니다. 왜냐하면 마지막에 null 문자를 넣어주지 않아 %s 서식문자가 어디까지를 문자열의 끝으로 인식할 지 알 수 없기 때문입니다.
+<p>우리가 처음에 출력한 “C is very easy!” 라는 문장을 출력할 때는 %s 서식문자를 사용할 수 없습니다. 왜냐하면 마지막에 null 문자를 넣어주지 않아 %s 서식문자가 어디까지를 문자열의 끝으로 인식할 지 알 수 없기 때문입니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char str1[] = {'C',' ','i','s',' ','v','e','r','y',' ','e','a','s','y','!'};
-    char str2[] = {'C',' ','i','s',' ','v','e','r','y',' ','e','a','s','y','!','\0'};
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str1</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'C'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'i'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'v'</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'r'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'a'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">'!'</span><span class="p">};</span>
+    <span class="kt">char</span> <span class="n">str2</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'C'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'i'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'v'</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'r'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">' '</span><span class="p">,</span><span class="sc">'e'</span><span class="p">,</span><span class="sc">'a'</span><span class="p">,</span><span class="sc">'s'</span><span class="p">,</span><span class="sc">'y'</span><span class="p">,</span><span class="sc">'!'</span><span class="p">,</span><span class="sc">'\0'</span><span class="p">};</span>
     
-    printf("%s\n", str1);
-    printf("%s\n", str2);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str2</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-C is very easy!儆儆?．???
+<p>C is very easy!儆儆?．???</p>
 
+<p>C is very easy!</p>
 
-C is very easy!
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
+<p><br /></p>
 
-계속하려면 아무 키나 누르십시오 . . . 
+<p>첫 번째 배열은 null문자가 없어 끝에 알 수 없는 값을 출력합니다.</p>
 
-<br>
+<p>또 한 가지 팁을 드리자면 scanf 함수를 이용하여 문자열을 입력받을 때 띄어쓰기를 사용할 수 없습니다. 띄어쓰기가 없는 문자열만 넣을 수 있습니다.</p>
 
-첫 번째 배열은 null문자가 없어 끝에 알 수 없는 값을 출력합니다.
-
-또 한 가지 팁을 드리자면 scanf 함수를 이용하여 문자열을 입력받을 때 띄어쓰기를 사용할 수 없습니다. 띄어쓰기가 없는 문자열만 넣을 수 있습니다.
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-    char str[100];
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
     
-    printf("Type a sentence : ");
-    scanf("%s", str);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Type a sentence : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
     
-    printf("%s\n", str);
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
     
-    return 0;
-}
-~~~
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-Type a sentence : C is very easy!
+<p>Type a sentence : C is very easy!</p>
 
-C
+<p>C</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-<br>
+<p><br /></p>
 
-scanf 함수는 띄어쓰기나 탭 등의 공백을 기준으로 문자열을 구분짓습니다. 위와 같은 경우에는 C\0 , is\0 , very\0 , easy!\0 처럼 총 4개의 문자열로 인식을 합니다. scanf 함수는 문자열을 입력받기에 적절하지 않은 함수입니다. 문자열 입력을 위해서는 \<string.h\> 라이브러리를 가져와서 문자열 입출력 함수를 사용하면 됩니다.
+<p>scanf 함수는 띄어쓰기나 탭 등의 공백을 기준으로 문자열을 구분짓습니다. 위와 같은 경우에는 C\0 , is\0 , very\0 , easy!\0 처럼 총 4개의 문자열로 인식을 합니다. scanf 함수는 문자열을 입력받기에 적절하지 않은 함수입니다. 문자열 입력을 위해서는 &lt;string.h&gt; 라이브러리를 가져와서 문자열 입출력 함수를 사용하면 됩니다.</p>
+
   </div>
   
   <div class="post">
@@ -11690,7 +11620,7 @@ scanf 함수는 띄어쓰기나 탭 등의 공백을 기준으로 문자열을 �
 
     <span class="post-date">07 Oct 2018</span>
 
-    머신러닝 competition 으로 유명한 플랫폼인 Kaggle에 입문할 때 가장 많이 다루는 titanic survival data로 구출자 예측에 관한 모델링을 해보았다. 이 dataset에는 분명 pattern이란 것이 나타난다. 구출된 사람의 데이터에는 남자보다는 여자, 청년보다는 노인과 어린아이, 더 높은 객석의 등급이라는 특징이 있다. 이 dataset으로 모델링을 하면 이후에도 승객의 데이터를 가지고 구출이 될 것인지 아닌지 예측을 할 수 있다.
+    <p>머신러닝 competition 으로 유명한 플랫폼인 Kaggle에 입문할 때 가장 많이 다루는 titanic survival data로 구출자 예측에 관한 모델링을 해보았다. 이 dataset에는 분명 pattern이란 것이 나타난다. 구출된 사람의 데이터에는 남자보다는 여자, 청년보다는 노인과 어린아이, 더 높은 객석의 등급이라는 특징이 있다. 이 dataset으로 모델링을 하면 이후에도 승객의 데이터를 가지고 구출이 될 것인지 아닌지 예측을 할 수 있다.</p>
 
 <pre><span style="color: #0000ff;">
 from</span> pandas <span style="color: #0000ff;">import</span> read_csv
@@ -11783,7 +11713,7 @@ X = X_tr
 Y = Y_tr
 
 <span style="color: #3b9931;">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
-<span style="color: #3b9931;">########pipeline을 통한 feature selection & model selection###########</span>
+<span style="color: #3b9931;">########pipeline을 통한 feature selection &amp; model selection###########</span>
 <span style="color: #3b9931;">features = []</span>
 <span style="color: #3b9931;">features.append(('KBest', SelectKBest(score_func=chi2, k=3))) #KBest 알고리즘과 LDA 알고리즘 비교</span>
 <span style="color: #3b9931;">features.append(('lda', LDA()))</span>
@@ -11838,25 +11768,26 @@ models[<span style="color: #993366;">1</span>][<span style="color: #993366;">1</
 filename = <span style="color: #3b9931;">'titanic_survival_prediction_%s.sav'</span> % models[<span style="color: #993366;">1</span>][<span style="color: #993366;"></span>]
 dump(models[<span style="color: #993366;">1</span>][<span style="color: #993366;">1</span>], filename)</pre>
 
-&nbsp;
+<p> </p>
 
-<img class="aligncenter size-full wp-image-1202" src="/images/2018/10/no-name-1.jpg" alt="" width="618" height="181" srcset="/images/2018/10/no-name-1.jpg 618w, /images/2018/10/no-name-1-300x88.jpg 300w" sizes="(max-width: 618px) 100vw, 618px" /> 
+<p><img class="aligncenter size-full wp-image-1202" src="/images/2018/10/no-name-1.jpg" alt="" width="618" height="181" srcset="/images/2018/10/no-name-1.jpg 618w, /images/2018/10/no-name-1-300x88.jpg 300w" sizes="(max-width: 618px) 100vw, 618px" /></p>
 
-위는 feature의 correlation 정보이다. 절대값이 1이면 완벽한 correlation, 0으로 갈수록 서로 연관이 없단 소리다.
+<p>위는 feature의 correlation 정보이다. 절대값이 1이면 완벽한 correlation, 0으로 갈수록 서로 연관이 없단 소리다.</p>
 
-Survived와 깊게 관련된 feature는 Pclass, Sex, Fare 정도로 보인다. 남성보단 여성이, 그리고 더 좋은 등급의 Fare를 가진 계급의 사람이 통계적으로 더 많이 구출되었단 소리다.
+<p>Survived와 깊게 관련된 feature는 Pclass, Sex, Fare 정도로 보인다. 남성보단 여성이, 그리고 더 좋은 등급의 Fare를 가진 계급의 사람이 통계적으로 더 많이 구출되었단 소리다.</p>
 
-그런데 Raw Data를 불러오면 Character로 된 feature가 있다. 예를들어 Sex 같은 경우는 남자는 &#8216;male&#8217;, 여자는 &#8216;female&#8217;이라는 문자열로 되어있는데 map 함수를 사용하여 숫자 데이터로 변환해야한다. 또한 NaN 으로 표시되는 정보가 비어있는 데이터가 있는데 이것은 각 feature의 median 값으로 채워넣었다. pandas 라이브러리의 fillna 함수를 사용하면 가능하다.
+<p>그런데 Raw Data를 불러오면 Character로 된 feature가 있다. 예를들어 Sex 같은 경우는 남자는 ‘male’, 여자는 ‘female’이라는 문자열로 되어있는데 map 함수를 사용하여 숫자 데이터로 변환해야한다. 또한 NaN 으로 표시되는 정보가 비어있는 데이터가 있는데 이것은 각 feature의 median 값으로 채워넣었다. pandas 라이브러리의 fillna 함수를 사용하면 가능하다.</p>
 
-<img class="aligncenter size-full wp-image-1205" src="/images/2018/10/no-name-3.jpg" alt="" width="431" height="161" srcset="/images/2018/10/no-name-3.jpg 431w, /images/2018/10/no-name-3-300x112.jpg 300w" sizes="(max-width: 431px) 100vw, 431px" /> 
+<p><img class="aligncenter size-full wp-image-1205" src="/images/2018/10/no-name-3.jpg" alt="" width="431" height="161" srcset="/images/2018/10/no-name-3.jpg 431w, /images/2018/10/no-name-3-300x112.jpg 300w" sizes="(max-width: 431px) 100vw, 431px" /></p>
 
-아무튼 Logistic Regression, K-Nearest Neighbors, Random Forest 3개의 모델을 사용하여 결과를 구하면 다음과 같다. cross validation 점수와 test data의 예측 결과가 조금 다르다. 단순히 data의 예측 불가능함의 우연에서 온 것인지 bias-variance trade-off에 의한 결과인지는 조금 더 봐야 알겠다.
+<p>아무튼 Logistic Regression, K-Nearest Neighbors, Random Forest 3개의 모델을 사용하여 결과를 구하면 다음과 같다. cross validation 점수와 test data의 예측 결과가 조금 다르다. 단순히 data의 예측 불가능함의 우연에서 온 것인지 bias-variance trade-off에 의한 결과인지는 조금 더 봐야 알겠다.</p>
 
-이 문제를 이후로도 여러 모델을 사용하여 parameter tuning과 데이터 전처리 스킬을 늘린 후 accuracy 높이기에 도전해 볼 생각이다.
+<p>이 문제를 이후로도 여러 모델을 사용하여 parameter tuning과 데이터 전처리 스킬을 늘린 후 accuracy 높이기에 도전해 볼 생각이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
+
   </div>
   
 </div>

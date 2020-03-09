@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,301 +10682,264 @@
 
     <span class="post-date">16 Sep 2018</span>
 
-    리스트는 데이터의 집합이다. 홀수의 집합 [1,3,4,...] 라던지 소수 집합 [2,3,5,7,11,...] 등은 리스트이다.
+    <p>리스트는 데이터의 집합이다. 홀수의 집합 [1,3,4,…] 라던지 소수 집합 [2,3,5,7,11,…] 등은 리스트이다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 리스트 표현방식
+<h1 id="1-리스트-표현방식">1. 리스트 표현방식</h1>
 
-* * *
+<hr />
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">odd</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># 1,2,3,4,5의 숫자 모음 리스트
+</span><span class="n">game</span> <span class="o">=</span> <span class="p">[</span><span class="s">'star craft'</span><span class="p">,</span><span class="s">'battle ground'</span><span class="p">,</span> <span class="s">'sudden attack'</span><span class="p">,</span> <span class="s">'crazy arcade'</span><span class="p">]</span> <span class="c1"># 추천게임 리스트
+</span><span class="n">hello</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s">'hi'</span><span class="p">,[</span><span class="s">'world'</span><span class="p">,</span><span class="s">'Korea'</span><span class="p">]]</span> <span class="c1"># 숫자와 문자, 리스트를 포함하는 리스트
+</span></code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-odd = [1,2,3,4,5] # 1,2,3,4,5의 숫자 모음 리스트
-game = ['star craft','battle ground', 'sudden attack', 'crazy arcade'] # 추천게임 리스트
-hello = [1,'hi',['world','Korea']] # 숫자와 문자, 리스트를 포함하는 리스트
-~~~
+<ul>
+  <li>리스트는 대괄호 []로 감싸고 쉼표 , 로 요소를 구분해준다.</li>
+  <li>리스트를 요소값으로 가지는 리스트도 정의할 수 있다.</li>
+  <li>리스트는 어떤 자료형이라도 포함할 수 있다.</li>
+</ul>
 
-&nbsp;
+<p> </p>
 
-  * 리스트는 대괄호 []로 감싸고 쉼표 , 로 요소를 구분해준다.
-  * 리스트를 요소값으로 가지는 리스트도 정의할 수 있다.
-  * 리스트는 어떤 자료형이라도 포함할 수 있다.
+<p> </p>
 
-&nbsp;
+<h1 id="2-리스트-인덱싱indexing">2. 리스트 인덱싱(indexing)</h1>
 
-&nbsp;
+<hr />
 
-# 2. 리스트 인덱싱(indexing)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># list num의 첫 번째 요소(1)
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># list num의 세 번째 요소(3)
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># list num의 뒤에서 첫 번째 요소(3)
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 1+2 = 3
+</span>
+<span class="n">double_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 1
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1">#['a','b','c']
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 'a'
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 'c'
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 'c'
+</span>
+<span class="n">triple_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,[</span><span class="s">'dog'</span><span class="p">,</span><span class="s">'cat'</span><span class="p">]]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">triple_list</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 'dog'
+</span></code></pre></div></div>
 
-* * *
+<p> </p>
 
+<p> </p>
 
+<p> </p>
 
-~~~ python
-num=[1,2,3]
-print(num[0]) # list num의 첫 번째 요소(1)
-print(num[2]) # list num의 세 번째 요소(3)
-print(num[-1]) # list num의 뒤에서 첫 번째 요소(3)
-print(num[0]+num[1]) # 1+2 = 3
+<p> </p>
 
-double_list = [1,2,3,['a','b','c']]
-print(double_list[0]) # 1
-print(double_list[3]) #['a','b','c']
-print(double_list[3][0]) # 'a'
-print(double_list[3][2]) # 'c'
-print(double_list[-1][2]) # 'c'
+<h1 id="3-리스트-슬라이싱slicing">3. 리스트 슬라이싱(slicing)</h1>
 
-triple_list = [1,2,3,['a','b',['dog','cat']]]
-print(triple_list[3][2][0]) # 'dog'
-~~~
+<hr />
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># [1,2,3] = [num[0], num[1], num[2]]   문자열 슬라이싱처럼 num[3]은 포함되지 않는다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 처음 ~ num[1] = [1,2]
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="c1"># num[2] ~ 끝 = [2,3,4,5]
+</span>
+<span class="n">double_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">],</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># double_list[2] ~ double_list[4] = [3,['a','b','c'],4]
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># ['a','b','c']
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 'b'
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">3</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span> <span class="c1">#['a','b']
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 리스트 슬라이싱(slicing)
+<p> </p>
 
-* * *
+<h1 id="4-리스트-연산">4. 리스트 연산</h1>
 
+<hr />
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
 
-~~~ python
-num = [1,2,3,4,5]
-print(num[0:3]) # [1,2,3] = [num[0], num[1], num[2]]   문자열 슬라이싱처럼 num[3]은 포함되지 않는다.
-print(num[:2]) # 처음 ~ num[1] = [1,2]
-print(num[2:]) # num[2] ~ 끝 = [2,3,4,5]
-
-double_list = [1,2,3,['a','b','c'],4,5]
-print(double_list[2:5]) # double_list[2] ~ double_list[4] = [3,['a','b','c'],4]
-print(double_list[2:5][1]) # ['a','b','c']
-print(double_list[2:5][1][1]) # 'b'
-print(double_list[3][:2]) #['a','b']
-~~~
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-# 4. 리스트 연산
-
-* * *
-
-
-
-~~~ python
-a=[1,2,3]
-b=[4,5,6]
-
-1) 리스트 더하기(이어붙이기)
-print(a+b) # [1,2,3,4,5,6]
-
-2) 리스트 곱하기(반복)
-print(a*4) # [1,2,3,1,2,3,1,2,3,1,2,3] 4번 반복
+<span class="mi">1</span><span class="p">)</span> <span class="err">리스트</span> <span class="err">더하기</span><span class="p">(</span><span class="err">이어붙이기</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="c1"># [1,2,3,4,5,6]
+</span>
+<span class="mi">2</span><span class="p">)</span> <span class="err">리스트</span> <span class="err">곱하기</span><span class="p">(</span><span class="err">반복</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># [1,2,3,1,2,3,1,2,3,1,2,3] 4번 반복
 #print(a[2]+'hello') # 3hello가 나올것으로 기대하지만 숫자+문자열 은 자료형 오류를 일으킨다.
-~~~
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 5. 리스트 수정,삭제
+<h1 id="5-리스트-수정삭제">5. 리스트 수정,삭제</h1>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-**1) 리스트 수정**  
+<p><strong>1) 리스트 수정</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4]
+</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,10,3,4]
+</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">]</span> <span class="c1"># a[1:2]는 a[1]=10 하나만 해당한다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,11,12,13,3,4]
+</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">]</span> <span class="c1">#a[1] = 11
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,[15,16,17],12,13,3,4]&lt;code&gt;&lt;/code&gt;
+</span></code></pre></div></div>
 
-~~~ python
-a=[1,2,3,4]
-print(a) # [1,2,3,4]
+<ul>
+  <li>a[1:2]를 바꾸는것과 a[1]을 바꾸는 것은 다르다.</li>
+  <li>슬라이싱을 사용해 리스트를 수정하면 새로 넣어주는 리스트의 값들이 자연스럽게 추가된다.</li>
+  <li>인덱싱을 사용해 리스트를 수정하면 새로 넣어주는 리스트 자체가 리스트 안에 포함된다.</li>
+</ul>
 
-a[1]=10
-print(a) # [1,10,3,4]
+<p> </p>
 
-a[1:2] = [11,12,13] # a[1:2]는 a[1]=10 하나만 해당한다.
-print(a) # [1,11,12,13,3,4]
+<p><strong>2) 리스트 삭제</strong></p>
 
-a[1] = [15,16,17] #a[1] = 11
-print(a) # [1,[15,16,17],12,13,3,4]<code></code>
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># a[2]~a[3] 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,'b','c']
+</span>
+<span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># a[2] = 'b' 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,'c']&lt;code&gt;&lt;/code&gt;
+</span></code></pre></div></div>
 
-  * a[1:2]를 바꾸는것과 a[1]을 바꾸는 것은 다르다.
-  * 슬라이싱을 사용해 리스트를 수정하면 새로 넣어주는 리스트의 값들이 자연스럽게 추가된다.
-  * 인덱싱을 사용해 리스트를 수정하면 새로 넣어주는 리스트 자체가 리스트 안에 포함된다.
+<p>자료 삭제 방법은 위와 같이 2가 모두 사용 가능하다. 자료 = [] 혹은 del 자료</p>
 
-&nbsp;
+<p> </p>
 
-**2) 리스트 삭제**  
+<h1 id="6-리스트-관련함수">6. 리스트 관련함수</h1>
 
+<hr />
 
-~~~ python
-a = [1,2,3,'a','b','c']
-a[2:4] = [] # a[2]~a[3] 삭제
-print(a) # [1,2,'b','c']
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+</code></pre></div></div>
 
-del a[2] # a[2] = 'b' 삭제
-print(a) # [1,2,'c']<code></code>
-~~~
+<p> </p>
 
-자료 삭제 방법은 위와 같이 2가 모두 사용 가능하다. 자료 = [] 혹은 del 자료
+<p><strong>1) 추가</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># 리스트 a 마지막에 5 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4,5]
+</span><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4,5,['a','b']]
+</span></code></pre></div></div>
 
-# 6. 리스트 관련함수
+<p> </p>
 
-* * *
+<p> </p>
 
-~~~ python
-a = [1,2,3,4]
-~~~
+<p><strong>2) 정렬</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span> <span class="c1"># a를 요소 크기순으로 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,4,7]
+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'e'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'d'</span><span class="p">,</span><span class="s">'c'</span><span class="p">,</span><span class="s">'a'</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span> <span class="c1"># a를 알파벳 순으로 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># ['a','b','c','d','e']
+</span></code></pre></div></div>
 
-**1) 추가**  
+<p> </p>
 
+<p><strong>3) 뒤집기</strong></p>
 
-~~~ python
-a.append(5) # 리스트 a 마지막에 5 추가
-print(a) # [1,2,3,4,5]
-a.append(['a','b'])
-print(a) # [1,2,3,4,5,['a','b']]
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'dog'</span><span class="p">,</span><span class="s">'cat'</span><span class="p">,</span><span class="s">'pig'</span><span class="p">,</span><span class="s">'man'</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c1"># a의 순서를 역순으로 뒤집기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># ['man','pig','cat','dog']
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-**2) 정렬**
+<p><strong>4) 위치 반환</strong></p>
 
-
-
-~~~ python
-a = [2,4,1,7]
-a.sort() # a를 요소 크기순으로 정렬
-print(a) # [1,2,4,7]
-
-a = ['e','b','d','c','a']
-a.sort() # a를 알파벳 순으로 정렬
-print(a) # ['a','b','c','d','e']
-~~~
-
-&nbsp;
-
-
-
-**3) 뒤집기**  
-
-
-~~~ python
-a = ['dog','cat','pig','man']
-a.reverse() # a의 순서를 역순으로 뒤집기
-print(a) # ['man','pig','cat','dog']
-~~~
-
-&nbsp;
-
-&nbsp;
-
-**4) 위치 반환**  
-
-
-~~~ python
-a=[1,2,3,4]
-print(a.index(3)) # 요소 3의 index 반환. 3 = a[2] 이므로 2 반환
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 요소 3의 index 반환. 3 = a[2] 이므로 2 반환
 #print(a.index(5)) # 5라는 요소는 리스트에 존재하지 않으므로 값 오류(ValueError) 발
-~~~
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-**5) 삽입**
+<p><strong>5) 삽입</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c1">#a[0] 위치에 5를 삽입
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [5,1,2,3,4]   a[0] = 5
+</span><span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c1">#a[4] 위치에 6을 삽입
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [5,1,2,3,6,4]
+</span></code></pre></div></div>
 
+<p>a[n]의 위치에 x를 삽입하면 a[n]=x가 되고 원래 a[n]은 뒤로 한 칸 밀린다.</p>
 
-~~~ python
-a=[1,2,3,4]
-a.insert(0,5) #a[0] 위치에 5를 삽입
-print(a) # [5,1,2,3,4]   a[0] = 5
-a.insert(4,6) #a[4] 위치에 6을 삽입
-print(a) # [5,1,2,3,6,4]
-~~~
+<p> </p>
 
-a[n]의 위치에 x를 삽입하면 a[n]=x가 되고 원래 a[n]은 뒤로 한 칸 밀린다.
+<p> </p>
 
-&nbsp;
+<p><strong>6) 삭제</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 4라는 요소를 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,5]
+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'dog'</span><span class="p">,</span><span class="s">'cat'</span><span class="p">,</span><span class="s">'pig'</span><span class="p">,</span><span class="s">'man'</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'cat'</span><span class="p">)</span> <span class="c1"># 'cat' 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># ['dog','pig','man']
+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,3,1,2,3,1,2,3]
+</span></code></pre></div></div>
 
-**6) 삭제**
+<p>지우려는 요소값이 여러개인 경우 첫 번째로 나오는 요소만 삭제</p>
 
+<p> </p>
 
+<p><strong>7) 끄집어내기</strong></p>
 
-~~~ python
-a = [1,2,3,4,5]
-a.remove(4) # 4라는 요소를 삭제
-print(a) # [1,2,3,5]
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1">#마지막 요소를 return 시키면서 삭제. 리턴값이 있다는 것을 명심해야한다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span> <span class="c1"># a.pop() = 5 리턴값이 있으므로 출력 가능
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4]   5가 삭제되었다.
+</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># a[1]=2를 return 시키면서 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,3,4]
+</span></code></pre></div></div>
 
-a = ['dog','cat','pig','man']
-a.remove('cat') # 'cat' 삭제
-print(a) # ['dog','pig','man']
+<p> </p>
 
-a = [1,2,3,1,2,3,1,2,3]
-a.remove(2)
-print(a) # [1,3,1,2,3,1,2,3]
-~~~
+<p> </p>
 
-지우려는 요소값이 여러개인 경우 첫 번째로 나오는 요소만 삭제
+<p><strong>8) 포함 된 요소의 갯수 세기</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># '3이 포함된 횟수 return값' = 2 출력
+</span></code></pre></div></div>
 
-**7) 끄집어내기**  
+<p> </p>
 
+<p><strong>9) 리스트 확장</strong></p>
 
-~~~ python
-a = [1,2,3,4,5]
-a.pop() #마지막 요소를 return 시키면서 삭제. 리턴값이 있다는 것을 명심해야한다.
-print(a.pop()) # a.pop() = 5 리턴값이 있으므로 출력 가능
-print(a) # [1,2,3,4]   5가 삭제되었다.
-a.pop(1) # a[1]=2를 return 시키면서 삭제
-print(a) # [1,3,4]
-~~~
-
-&nbsp;
-
-&nbsp;
-
-**8) 포함 된 요소의 갯수 세기**
-
-~~~ python
-a = [1,4,2,3,5,1,2,3,5]
-print(a.count(3)) # '3이 포함된 횟수 return값' = 2 출력
-~~~
-
-
-
-&nbsp;
-
-**9) 리스트 확장**  
-
-
-~~~ python
-a = [1,2,3]
-a.extend([4,5,6]) # 리스트 a에 리스트 [4,5,6] 덧붙이며 확장
-print(a) # [1,2,3,4,5,6]
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c1"># 리스트 a에 리스트 [4,5,6] 덧붙이며 확장
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4,5,6]
+</span></code></pre></div></div>
 
 
   </div>
@@ -11014,148 +10953,122 @@ print(a) # [1,2,3,4,5,6]
 
     <span class="post-date">16 Sep 2018</span>
 
-    문자열 자료형은 우리가 알고 있는 문자들을 열거한 자료형이다.
+    <p>문자열 자료형은 우리가 알고 있는 문자들을 열거한 자료형이다.</p>
 
-# 
+<p>#</p>
 
-# 1. 문자열 표현방식
+<h1 id="1-문자열-표현방식">1. 문자열 표현방식</h1>
 
-* * *
+<hr />
 
-**1)  큰 따음표(" ")로 둘러싸기**
+<p><strong>1)  큰 따음표(“ “)로 둘러싸기</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">"Hello, world 1"</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-str = "Hello, world 1"
-print(str)
-~~~
+<p><strong>2) 작은 따음표(‘ ‘)로 둘러싸기</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">'Hello, world 2'</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
 
-**2) 작은 따음표(' ')로 둘러싸기**  
+<p> </p>
 
+<p><strong>3) 큰 따음표 연속 3개(“”” “”“)로 둘러싸기</strong></p>
 
-~~~ python
-str = 'Hello, world 2'
-print(str)
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">"""Hello, world 3"""</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-**3) 큰 따음표 연속 3개(""" """)로 둘러싸기**  
+<p><strong>4) 작은 따음표 연속 3개(‘’’ ‘’‘)로 둘러싸기</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="s">'''Hello, world 4'''</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
 
-~~~ python
-str = """Hello, world 3"""
-print(str)
-~~~
+<p> </p>
 
-&nbsp;
+<p>문법적 간결함이 자랑인 파이썬이 문자열을 표현하는 방법을 4개나 가지고 있는 이유가 있다.</p>
 
-**4) 작은 따음표 연속 3개(''' ''')로 둘러싸기**  
+<p> </p>
 
+<ul>
+  <li><span style="text-decoration: underline;"><strong>문자열 내부에 큰 따음표 혹은 작은 따음표를 포함시키고 싶을 때</strong></span></li>
+</ul>
 
-~~~ python
-str = '''Hello, world 4'''
-print(str)
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Python's funny!"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
 
-&nbsp;
+<p>큰 따음표 안에 있는 작은 따음표는 문자열기호로 인식되지 않고 하나의 문자로 인식이 된다.</p>
 
-문법적 간결함이 자랑인 파이썬이 문자열을 표현하는 방법을 4개나 가지고 있는 이유가 있다.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'he said "Oh, Python is very funny!"'</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
 
-&nbsp;
+<p>작은 따움표 안에 있는 큰 따움표는 문자열기호로 인식되지 않고 하나의 문자로 인식이 된다.</p>
 
-  * <span style="text-decoration: underline;"><strong>문자열 내부에 큰 따음표 혹은 작은 따음표를 포함시키고 싶을 때</strong></span>
+<p>한 번 큰 따움표 안에 큰따움표, 작은따움표 안에 작은 따움표를 넣고 실행해 보면 Syntax Error가 발생할 것이다. 확인해보기 바란다.</p>
 
+<p>위의 방법 말고도 이스케이프 코드(escape code)를 사용하면 큰 따움표 안에 큰 따움표, 작은 다움표 안에 작은 따움표를 사용할 수 있다.</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'Python</span><span class="se">\'</span><span class="s">s funny!'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
 
-~~~ python
-pyfun = "Python's funny!"
-print(pyfun)
-~~~
+<p>\뒤에 오는 작은따움표 ‘는 문자열기호가 아닌 하나의 문자 자체로 인식이 된다.</p>
 
-큰 따음표 안에 있는 작은 따음표는 문자열기호로 인식되지 않고 하나의 문자로 인식이 된다.
+<p> </p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"he said </span><span class="se">\"</span><span class="s">Oh, Python is very funny!</span><span class="se">\"</span><span class="s">"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
 
+<p>\뒤에 오는 큰 따움표 “는 문자열기호가 아닌 하나의 문자 자체로 인식이 된다.</p>
 
-~~~ python
-pyfun = 'he said "Oh, Python is very funny!"' 
-print(pyfun)
-~~~
+<p> </p>
 
-작은 따움표 안에 있는 큰 따움표는 문자열기호로 인식되지 않고 하나의 문자로 인식이 된다.
+<ul>
+  <li><span style="text-decoration: underline;"><strong>여러 줄로 된 문장을 변수에 저장하고 싶을 때</strong></span></li>
+</ul>
 
-한 번 큰 따움표 안에 큰따움표, 작은따움표 안에 작은 따움표를 넣고 실행해 보면 Syntax Error가 발생할 것이다. 확인해보기 바란다.
-
-위의 방법 말고도 이스케이프 코드(escape code)를 사용하면 큰 따움표 안에 큰 따움표, 작은 다움표 안에 작은 따움표를 사용할 수 있다.
-
-
-
-~~~ python
-pyfun = 'Python\'s funny!'
-print(pyfun)
-~~~
-
-\뒤에 오는 작은따움표 '는 문자열기호가 아닌 하나의 문자 자체로 인식이 된다.
-
-&nbsp;
-
-
-
-~~~ python
-pyfun = "he said \"Oh, Python is very funny!\""
-print(pyfun)
-~~~
-
-\뒤에 오는 큰 따움표 "는 문자열기호가 아닌 하나의 문자 자체로 인식이 된다.
-
-&nbsp;
-
-  * <span style="text-decoration: underline;"><strong>여러 줄로 된 문장을 변수에 저장하고 싶을 때</strong></span>
-
-
-
-~~~ python
-pyfun = """
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"""
 Life is too short
 You need Python
-"""
-print(pyfun)
-~~~
+"""</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
 
-큰 따움표 세 개를 사용하면 여러줄의 문자열을 변수에 저장할 수 있다.
+<p>큰 따움표 세 개를 사용하면 여러줄의 문자열을 변수에 저장할 수 있다.</p>
 
-
-
-~~~ python
-pyfun = '''
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">'''
 Life is too short
 You need Python
-'''
-print(pyfun)
-~~~
+'''</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
 
-작은 따움표 세 개를 사용하면 여러줄의 문자열을 변수에 저장할 수 있다.
+<p>작은 따움표 세 개를 사용하면 여러줄의 문자열을 변수에 저장할 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-사실 이스케이프 코드(escape code)를 사용해서 여러줄의 문자열을 표현할 수 있기도 하다.
+<p>사실 이스케이프 코드(escape code)를 사용해서 여러줄의 문자열을 표현할 수 있기도 하다.</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Life is too short</span><span class="se">\n</span><span class="s"> You need Python"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
 
+<span class="n">pyfun</span> <span class="o">=</span> <span class="s">'Life is too short</span><span class="se">\n</span><span class="s"> You need Python'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">)</span>
+</code></pre></div></div>
 
-~~~ python
-pyfun = "Life is too short\n You need Python"
-print(pyfun)
+<p> </p>
 
-pyfun = 'Life is too short\n You need Python'
-print(pyfun)
-~~~
-
-&nbsp;
-
-**Q. 이스케이프 코드란?**
+<p><strong>Q. 이스케이프 코드란?</strong></p>
 
 <table style="border-collapse: collapse; width: 62.1818%; height: 239px;" border="1">
   <tr style="height: 24px;">
@@ -11259,147 +11172,123 @@ print(pyfun)
   </tr>
 </table>
 
-굳이 외우기 보다는 활용 빈도가 높은 것들을 위주로 이후 코드를 공부하다보면 알아서 익숙해질 것이다.
+<p>굳이 외우기 보다는 활용 빈도가 높은 것들을 위주로 이후 코드를 공부하다보면 알아서 익숙해질 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 
+<p>#</p>
 
-# 2. 문자열 연산
+<h1 id="2-문자열-연산">2. 문자열 연산</h1>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-파이썬은 다른 프로그래밍 언어와 다르게 문자열 간의 연산이 가능하다.
+<p>파이썬은 다른 프로그래밍 언어와 다르게 문자열 간의 연산이 가능하다.</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first</span> <span class="o">=</span> <span class="s">"Python"</span>
+<span class="n">second</span> <span class="o">=</span> <span class="s">" is fun"</span>
+</code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-first = "Python"
-second = " is fun"
-~~~
+<p><strong>1) 문자열 더하기(연결)</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="n">second</span><span class="p">)</span> <span class="c1">#두 문자열이 이어서 나오게 된다.
+</span></code></pre></div></div>
 
-**1) 문자열 더하기(연결)**
+<p> </p>
 
+<p> </p>
 
+<p><strong>2) 문자열 곱하기</strong></p>
 
-~~~ python
-print(first + second) #두 문자열이 이어서 나오게 된다.
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span> <span class="c1">#문자열이 5번 연속으로 출력된다.
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p>#</p>
 
-**2) 문자열 곱하기**
+<h1 id="3-문자열-인덱싱indexing">3. 문자열 인덱싱(indexing)</h1>
 
-~~~ python
-print(first*5) #문자열이 5번 연속으로 출력된다.
-~~~
+<hr />
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyfun</span> <span class="o">=</span> <span class="s">"Life is too short, You need Python"</span>
+</code></pre></div></div>
 
-# 
+<p> </p>
 
-# 3. 문자열 인덱싱(indexing)
+<p>첫 번째 문자부터 변수 pyfun의 index 0, index 1, index 2, … 이다.</p>
 
-* * *
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># python에서 숫자는 1이 아닌 0부터 시작한다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># space bar ' ' 역시 하나의 문자이다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 뒤에서 부터 index를 읽으려면 -를 붙인 음수를 사용하면 된다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
 
+<p> </p>
 
+<p> </p>
 
-~~~ python
-pyfun = "Life is too short, You need Python"
-~~~
+<h1 id="4-문자열-슬라이싱slicing">4. 문자열 슬라이싱(slicing)</h1>
 
-&nbsp;
+<hr />
 
-첫 번째 문자부터 변수 pyfun의 index 0, index 1, index 2, ... 이다.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># 'Life'
+</span><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span> <span class="c1"># 'is'
+</span><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">12</span><span class="p">])</span> <span class="c1"># 'too'
+</span></code></pre></div></div>
 
+<p> </p>
 
+<p>파이썬에서 가장 혼동하기 쉬운 부분이 문자열 슬라이싱에서 index이다. [a:b]는 a에서 b-1 까지이다. 슬라이싱에서 마지막 index는 포함하지 않는 것이다. 즉, pyfun[a:b]는 a &lt;= pyfun &lt; b 이다.</p>
 
-~~~ python
-print(pyfun[0]) # python에서 숫자는 1이 아닌 0부터 시작한다.
-print(pyfun[1])
-print(pyfun[2])
-print(pyfun[3])
-print(pyfun[4]) # space bar ' ' 역시 하나의 문자이다.
-print(pyfun[5])
-print(pyfun[6])
-print("\n")
-print(pyfun[-1]) # 뒤에서 부터 index를 읽으려면 -를 붙인 음수를 사용하면 된다.
-print(pyfun[-2])
-print(pyfun[-3])
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">19</span><span class="p">:])</span> <span class="c1"># 'You need Python'  pyfun[시작:끝] 에서 끝을 비워두면 문자열의 마지막 index까지를 의미한다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[:</span><span class="mi">17</span><span class="p">])</span> <span class="c1"># 'Life is too short'  pyfun[시작:끝] 에서 시작을 비워두면 문자열의 처음 index부터를 의미한다.
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyfun</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="o">-</span><span class="mi">7</span><span class="p">])</span> <span class="c1"># 'You need'  음수도 사용 가능하다. -8은 d 이다. 역시나 index -7은 포함되지 않는다는 것을 잊지 말자.
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
+<p> </p>
 
+<h1 id="5-문자열-포매팅formatting">5. 문자열 포매팅(formatting)</h1>
 
-# 4. 문자열 슬라이싱(slicing)
+<hr />
 
-* * *
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">man</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">d"</span> <span class="c1"># %d 는 정수를 표현하는 포맷 코드이다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># %d 에 3이 대입된다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># %d 에 5가 대입된다.
+</span>
+<span class="n">man</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">d and I live in </span><span class="si">%</span><span class="s">s"</span> <span class="c1"># %s 는 문자열을 표현하는 포맷 코드이다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">man</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">'Seoul'</span><span class="p">))</span> <span class="c1"># 문자열 포맷 코드가 2개인 문장에는 괄호와 쉼표를 사용하여 구분해주면 된다.
+</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">home</span> <span class="o">=</span> <span class="s">'Busan'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">home</span><span class="p">))</span> <span class="c1"># 문자열 포맷 코드에는 숫자나 문자열 자체가 아닌 변수 형태로도 대입이 된다.
+</span>
+<span class="n">woman</span> <span class="o">=</span> <span class="s">"My age is </span><span class="si">%</span><span class="s">s"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">woman</span> <span class="o">%</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># 한 가지 Tip은 사실 %s 포맷 코드는 % 뒤에 있는 자료형을 모두 문자열로 변환시키기 때문에 어떤 자료형이든 대입이 된다.
+</span></code></pre></div></div>
 
+<p> </p>
 
+<p>문자열 포매팅은 상황에 따라 특정 정보가 달라져야 하는 코드를 작성할 경우에 사용한다.</p>
 
-~~~ python
-print(pyfun[0:4]) # 'Life'
-print(pyfun[5:7]) # 'is'
-print(pyfun[9:12]) # 'too'
-~~~
-
-&nbsp;
-
-파이썬에서 가장 혼동하기 쉬운 부분이 문자열 슬라이싱에서 index이다. [a:b]는 a에서 b-1 까지이다. 슬라이싱에서 마지막 index는 포함하지 않는 것이다. 즉, pyfun[a:b]는 a <= pyfun < b 이다.
-
-
-
-~~~ python
-print(pyfun[19:]) # 'You need Python'  pyfun[시작:끝] 에서 끝을 비워두면 문자열의 마지막 index까지를 의미한다.
-print(pyfun[:17]) # 'Life is too short'  pyfun[시작:끝] 에서 시작을 비워두면 문자열의 처음 index부터를 의미한다.
-
-print(pyfun[19:-7]) # 'You need'  음수도 사용 가능하다. -8은 d 이다. 역시나 index -7은 포함되지 않는다는 것을 잊지 말자.
-~~~
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-# 5. 문자열 포매팅(formatting)
-
-* * *
-
-
-
-~~~ python
-man = "My age is %d" # %d 는 정수를 표현하는 포맷 코드이다.
-print(man %3) # %d 에 3이 대입된다.
-print(man %5) # %d 에 5가 대입된다.
-
-man = "My age is %d and I live in %s" # %s 는 문자열을 표현하는 포맷 코드이다.
-print(man %(10, 'Seoul')) # 문자열 포맷 코드가 2개인 문장에는 괄호와 쉼표를 사용하여 구분해주면 된다.
-
-num = 20
-home = 'Busan'
-print(man%(num,home)) # 문자열 포맷 코드에는 숫자나 문자열 자체가 아닌 변수 형태로도 대입이 된다.
-
-woman = "My age is %s"
-print(woman %5) # 한 가지 Tip은 사실 %s 포맷 코드는 % 뒤에 있는 자료형을 모두 문자열로 변환시키기 때문에 어떤 자료형이든 대입이 된다.
-~~~
-
-&nbsp;
-
-문자열 포매팅은 상황에 따라 특정 정보가 달라져야 하는 코드를 작성할 경우에 사용한다.
-
-## **Q. 문자열 포맷 코드란?**
+<h2 id="q-문자열-포맷-코드란"><strong>Q. 문자열 포맷 코드란?</strong></h2>
 
 <table style="border-collapse: collapse; width: 57.3333%;" border="1">
   <tr>
@@ -11473,241 +11362,193 @@ print(woman %5) # 한 가지 Tip은 사실 %s 포맷 코드는 % 뒤에 있는 �
   </tr>
 </table>
 
-&nbsp;
+<p> </p>
 
-문자열 내부에 포맷 코드가 있을 경우 기호 %를 나타내기 위해서는 무조건 %% 로 2개를 사용해야 한다.  
+<p>문자열 내부에 포맷 코드가 있을 경우 기호 %를 나타내기 위해서는 무조건 %% 로 2개를 사용해야 한다.</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sale</span> <span class="o">=</span> <span class="s">"The ratio is </span><span class="si">%</span><span class="s">d</span><span class="si">%%</span><span class="s">"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sale</span> <span class="o">%</span><span class="mi">50</span><span class="p">)</span> <span class="c1"># The ratio is 50% 라는 문자열이 출력된다.
+</span>
+<span class="n">sale</span> <span class="o">=</span> <span class="s">"The ratio is 50</span><span class="si">%</span><span class="s">"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sale</span><span class="p">)</span> <span class="c1"># 물론 문자열 안에 전혀 포맷 코드가 없는 경우에는 %기호 하나로 %캐릭터 자체가 출력된다.
+</span></code></pre></div></div>
 
-~~~ python
-sale = "The ratio is %d%%"
-print(sale %50) # The ratio is 50% 라는 문자열이 출력된다.
+<p> </p>
 
-sale = "The ratio is 50%"
-print(sale) # 물론 문자열 안에 전혀 포맷 코드가 없는 경우에는 %기호 하나로 %캐릭터 자체가 출력된다.
-~~~
+<h2 id="-숫자가-포함된-포맷코드"><strong># 숫자가 포함된 포맷코드</strong></h2>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">say</span> <span class="o">=</span> <span class="s">"she answered</span><span class="si">%10</span><span class="s">s"</span> <span class="c1"># %10s는 문자열 저장을 위해 총 10칸의 문자열 길이를 할당하고 오른쪽 정렬을 한다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">say</span> <span class="o">%</span><span class="s">'yes'</span><span class="p">)</span> <span class="c1"># 'she answered       yes' 를 출력한다. 총 10개의 문자열에서 3개의 yes가 오른쪽 정렬되어 왼쪽에 7개의 공백이 생긴다.
+</span>
+<span class="n">say</span> <span class="o">=</span> <span class="s">"</span><span class="si">%-10</span><span class="s">ssaid yes"</span> <span class="c1"># 문자열 칸을 총 10개 할당하고 왼쪽 정렬 하였으므로 오른쪽에 8개의 공백이 생긴다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">say</span> <span class="o">%</span><span class="s">'he'</span><span class="p">)</span> <span class="c1"># 'he        said yes'
+</span>
+<span class="n">pi_1</span> <span class="o">=</span> <span class="s">"pi is </span><span class="si">%0.2</span><span class="s">f"</span> <span class="c1"># 소수점 아래 2자리까지 표현
+</span><span class="n">pi_2</span> <span class="o">=</span> <span class="s">"pi is </span><span class="si">%0.4</span><span class="s">f"</span> <span class="c1"># 소수점 아래 4자리까지 표현
+</span><span class="k">print</span><span class="p">(</span><span class="n">pi_1</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c1"># 'pi is 3.14'
+</span><span class="k">print</span><span class="p">(</span><span class="n">pi_2</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c1"># 'pi is 3.1416' (3.1415가 아닌 이유는 소수점아래 5 번째 자리에서 반올림 되어서 그렇다.)
+</span>
+<span class="n">pi_3</span> <span class="o">=</span> <span class="s">"pi is</span><span class="si">%10.2</span><span class="s">f"</span> <span class="c1">#10칸의 문자열에서 오른쪽 정렬하여 숫자를 소수점 아래 2 자리까지 표현
+</span><span class="k">print</span><span class="p">(</span><span class="n">pi_3</span> <span class="o">%</span><span class="mf">3.141592</span><span class="p">)</span> <span class="c1"># 'pi is      3.14' 10칸의 문자열에서 3,.,1,4 총 4개의 문자열이 오른쪽 정렬되어 왼쪽에 6칸의 공백 형성
+</span></code></pre></div></div>
 
+<p>#</p>
 
-&nbsp;
+<p> </p>
 
-## **\# 숫자가 포함된 포맷코드**
+<h1 id="6-문자열-관련함수">6. 문자열 관련함수</h1>
 
+<hr />
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">py</span> <span class="o">=</span> <span class="s">"Python is funny"</span>
+</code></pre></div></div>
 
-~~~ python
-say = "she answered%10s" # %10s는 문자열 저장을 위해 총 10칸의 문자열 길이를 할당하고 오른쪽 정렬을 한다.
-print(say %'yes') # 'she answered       yes' 를 출력한다. 총 10개의 문자열에서 3개의 yes가 오른쪽 정렬되어 왼쪽에 7개의 공백이 생긴다.
+<p> </p>
 
-say = "%-10ssaid yes" # 문자열 칸을 총 10개 할당하고 왼쪽 정렬 하였으므로 오른쪽에 8개의 공백이 생긴다.
-print(say %'he') # 'he        said yes'
+<p><strong>1) 문자 갯수 세기</strong></p>
 
-pi_1 = "pi is %0.2f" # 소수점 아래 2자리까지 표현
-pi_2 = "pi is %0.4f" # 소수점 아래 4자리까지 표현
-print(pi_1 %3.141592) # 'pi is 3.14'
-print(pi_2 %3.141592) # 'pi is 3.1416' (3.1415가 아닌 이유는 소수점아래 5 번째 자리에서 반올림 되어서 그렇다.)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span>
+</code></pre></div></div>
 
-pi_3 = "pi is%10.2f" #10칸의 문자열에서 오른쪽 정렬하여 숫자를 소수점 아래 2 자리까지 표현
-print(pi_3 %3.141592) # 'pi is      3.14' 10칸의 문자열에서 3,.,1,4 총 4개의 문자열이 오른쪽 정렬되어 왼쪽에 6칸의 공백 형성
-~~~
+<p> </p>
 
+<p> </p>
 
+<p><strong>2) 위치 반환1</strong></p>
 
-# 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span> <span class="c1"># n이 처음 나온 index인 5 반환
+</span><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'z'</span><span class="p">))</span> <span class="c1"># 찾는 문자가 없으면 -1 반환
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-# 6. 문자열 관련함수
+<p> </p>
 
-* * *
+<p><strong>3) 위치 반환2</strong></p>
 
-
-
-~~~ python
-py = "Python is funny"
-~~~
-
-&nbsp;
-
-**1) 문자 갯수 세기**  
-
-
-~~~ python
-print(py.count('n'))
-~~~
-
-&nbsp;
-
-&nbsp;
-
-**2) 위치 반환1**  
-
-
-~~~ python
-print(py.find('n')) # n이 처음 나온 index인 5 반환
-print(py.find('z')) # 찾는 문자가 없으면 -1 반환
-~~~
-
-&nbsp;
-
-&nbsp;
-
-**3) 위치 반환2**  
-
-
-~~~ python
-print(py.index('n')) # n이 처음 나온 index인 5 반환
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">'n'</span><span class="p">))</span> <span class="c1"># n이 처음 나온 index인 5 반환
 #print(py.index('z')) # 찾는 문자가 없으면 오류 발생 ## 오류 때문에 뒤의 코드 실행 안되어 주석 처리
-~~~
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-**4) 문자열 삽입**  
+<p><strong>4) 문자열 삽입</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'123'</span><span class="p">)</span> <span class="c1"># 각각의 문자열 사이에 py("Python is funny") 를 삽입
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">#'1Python is funny2Python is funny3'
+</span></code></pre></div></div>
 
-~~~ python
-a = py.join('123') # 각각의 문자열 사이에 py("Python is funny") 를 삽입
-print(a) #'1Python is funny2Python is funny3'
-~~~
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p><strong>5) 대문자로 변환</strong></p>
 
-**5) 대문자로 변환**  
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span> <span class="c1"># 모든 문자를 대문자로 변환
+</span></code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-print(py.upper()) # 모든 문자를 대문자로 변환
-~~~
+<p> </p>
 
-&nbsp;
+<p><strong>6) 소문자로 변환</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="c1"># 모든 문자를 소문자로 변환
+</span></code></pre></div></div>
 
-**6) 소문자로 변환**  
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">py2</span> <span class="o">=</span> <span class="s">"   Python is funny      "</span>
+</code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-print(py.lower()) # 모든 문자를 소문자로 변환
-~~~
+<p><strong>7) 왼쪽 공백 삭제</strong></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">lstrip</span><span class="p">())</span> <span class="c1"># 문자열 가장 왼쪽의 모든 공백 삭제
+</span></code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-py2 = "   Python is funny      "
-~~~
+<p> </p>
 
-&nbsp;
+<p><strong>8) 오른쪽 공백 삭제</strong></p>
 
-**7) 왼쪽 공백 삭제**  
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span> <span class="c1"># 문자열 가장 오른쪽의 모든 공백 삭제
+</span></code></pre></div></div>
 
+<p> </p>
 
-~~~ python
-print(py2.lstrip()) # 문자열 가장 왼쪽의 모든 공백 삭제
-~~~
+<p> </p>
 
-&nbsp;
+<p><strong>9) 양쪽 공백 삭제</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py2</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="c1"># 문자열 가장 왼쪽, 오른쪽의 모든 공백 삭제
+</span></code></pre></div></div>
 
-**8) 오른쪽 공백 삭제**  
+<p> </p>
 
+<p> </p>
 
-~~~ python
-print(py2.rstrip()) # 문자열 가장 오른쪽의 모든 공백 삭제
-~~~
+<p><strong>10) 문자열 바꾸기</strong></p>
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"funny"</span><span class="p">,</span><span class="s">"GaeNoJam"</span><span class="p">))</span> <span class="c1"># ("바뀔 문자열", "대체할 문자열")  'funny'를 'GaeNoJam' 으로 변환
+</span></code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-**9) 양쪽 공백 삭제**  
+<p> </p>
 
+<p><strong>11) 문자열 나누기</strong></p>
 
-~~~ python
-print(py2.strip()) # 문자열 가장 왼쪽, 오른쪽의 모든 공백 삭제
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="c1"># 공백(space bar, tab, enter)을 기준으로 문자열을 나눈다. ['Python', 'is', 'funny']
+</span><span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'is'</span><span class="p">))</span> <span class="c1"># 'is' 를 기준으로 문자열을 나눈다. ['Python ', ' funny'] Python 뒤 공백 1칸, funny 앞 공백 1칸은 물론 포함된다.
+</span></code></pre></div></div>
 
-&nbsp;
+<p>위와 같이 문자열을 나누면 각각의 요소가 리스트(list)로 들어가게 된다. 리스트는 다음 시간에 공부한다.<br />
+위에서 소개한 문자열 관련 함수들은 사용 빈도나 꽤나 높기때문에 숙지해두면 도움이 된다.</p>
 
-&nbsp;
+<p> </p>
 
-**10) 문자열 바꾸기**  
+<p>#</p>
 
+<h1 id="bonus-문자열-포맷-함수">Bonus) 문자열 포맷 함수</h1>
 
-~~~ python
-print(py.replace("funny","GaeNoJam")) # ("바뀔 문자열", "대체할 문자열")  'funny'를 'GaeNoJam' 으로 변환
-~~~
+<hr />
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">man</span> <span class="o">=</span> <span class="s">"My name is {0} and age is {1}. I live in {2}"</span>
+</code></pre></div></div>
 
-&nbsp;
+<p>문자열 포맷함수로 지정할 항목들을 {0}, {1}, {2}, … 와 같이 indexing 해준다.</p>
 
-**11) 문자열 나누기**  
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">'John'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">'Seoul'</span><span class="p">))</span> <span class="c1"># .format() 함수를 사용하여 index 항목에 값 저장
+</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">'John'</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">home</span> <span class="o">=</span> <span class="s">'Seoul'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">man</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">home</span><span class="p">))</span> <span class="c1"># 값을 직접 입력하는 대신 변수로도 대입이 가능하다.
+</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hello, my name is {name} and age is {age} and I live in {home}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">'John'</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">home</span><span class="o">=</span> <span class="s">'Seoul'</span><span class="p">))</span>
+</code></pre></div></div>
 
+<p>{0}, {1}, … 형태의 index 대신 {name} 형태로 사용할 수도 있다. 이 경우에는 반드시 name=value 처럼 값을 지정해주어야한다.</p>
 
-~~~ python
-print(py.split()) # 공백(space bar, tab, enter)을 기준으로 문자열을 나눈다. ['Python', 'is', 'funny']
-print(py.split('is')) # 'is' 를 기준으로 문자열을 나눈다. ['Python ', ' funny'] Python 뒤 공백 1칸, funny 앞 공백 1칸은 물론 포함된다.
-~~~
+<p> </p>
 
-위와 같이 문자열을 나누면 각각의 요소가 리스트(list)로 들어가게 된다. 리스트는 다음 시간에 공부한다.  
-위에서 소개한 문자열 관련 함수들은 사용 빈도나 꽤나 높기때문에 숙지해두면 도움이 된다.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"{name:&gt;10}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c1"># :&gt;10 은 문자열의 크기를 10으로 지정하고 오른쪽 정렬 시키라는 의미이다. 10칸의 {name}에 'John'이 오른쪽 정렬된다.
+</span><span class="k">print</span><span class="p">(</span><span class="s">"{name:^20}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c1"># ^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키라는 의미이다. 20칸의 {name}에 'John'이 가운데 정렬된다.
+</span><span class="k">print</span><span class="p">(</span><span class="s">"{name:=^20}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c1"># =^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키는데, 공백을 '='로 채운다.
+</span><span class="k">print</span><span class="p">(</span><span class="s">"{name:@^20}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">))</span> <span class="c1"># @^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키는데, 공백을 '@'로 채운다.
+</span></code></pre></div></div>
 
-&nbsp;
+<p>정렬 시 공백을 지정한 문자로 채워주려면 정렬 문자인 &lt;,&gt;,^ 앞에 채워넣을 문자를 넣어주면 된다.</p>
 
-# 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"my age is {age:0.4f}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">age</span> <span class="o">=</span> <span class="mf">3.141592</span><span class="p">))</span> <span class="c1"># :0.4f는 age를 소수점 아래 4 자리까지만 지정한다.
+</span><span class="k">print</span><span class="p">(</span><span class="s">""</span><span class="o">.</span><span class="nb">format</span><span class="p">())</span> <span class="c1"># format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문자 자체로 나타내고 싶은 경우 1개가 아닌 2개를 사용한다.
+</span></code></pre></div></div>
 
-# Bonus) 문자열 포맷 함수
+<p>format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문자 자체로 나타내고 싶은 경우 1개가 아닌 2개를 사용한다.</p>
 
-* * *
-
-
-
-~~~ python
-man = "My name is {0} and age is {1}. I live in {2}"
-~~~
-
-문자열 포맷함수로 지정할 항목들을 {0}, {1}, {2}, ... 와 같이 indexing 해준다.
-
-
-
-~~~ python
-print(man.format('John', 20, 'Seoul')) # .format() 함수를 사용하여 index 항목에 값 저장
-
-name = 'John'
-age = 20
-home = 'Seoul'
-print(man.format(name,age,home)) # 값을 직접 입력하는 대신 변수로도 대입이 가능하다.
-
-print("hello, my name is {name} and age is {age} and I live in {home}".format(name = 'John', age=20, home= 'Seoul'))
-~~~
-
-{0}, {1}, ... 형태의 index 대신 {name} 형태로 사용할 수도 있다. 이 경우에는 반드시 name=value 처럼 값을 지정해주어야한다.
-
-&nbsp;
-
-
-
-~~~ python
-print("{name:>10}".format(name = "John")) # :>10 은 문자열의 크기를 10으로 지정하고 오른쪽 정렬 시키라는 의미이다. 10칸의 {name}에 'John'이 오른쪽 정렬된다.
-print("{name:^20}".format(name = "John")) # ^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키라는 의미이다. 20칸의 {name}에 'John'이 가운데 정렬된다.
-print("{name:=^20}".format(name= "John")) # =^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키는데, 공백을 '='로 채운다.
-print("{name:@^20}".format(name = "John")) # @^20은 문자열의 크기를 20으로 지정하고 가운데 정렬 시키는데, 공백을 '@'로 채운다.
-~~~
-
-정렬 시 공백을 지정한 문자로 채워주려면 정렬 문자인 <,>,^ 앞에 채워넣을 문자를 넣어주면 된다.
-
-
-
-~~~ python
-print("my age is {age:0.4f}".format(age = 3.141592)) # :0.4f는 age를 소수점 아래 4 자리까지만 지정한다.
-print("{{hello}}".format()) # format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문자 자체로 나타내고 싶은 경우 1개가 아닌 2개를 사용한다.
-~~~
-
-format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문자 자체로 나타내고 싶은 경우 1개가 아닌 2개를 사용한다.
   </div>
   
   <div class="post">
@@ -11719,122 +11560,106 @@ format 함수를 사용하면서 괄호 {, } 를 포매팅 문자가 아닌 문�
 
     <span class="post-date">15 Sep 2018</span>
 
-    # 
+    <p>#</p>
 
-# 1. 정수형(Integer)
+<h1 id="1-정수형integer">1. 정수형(Integer)</h1>
 
-* * *
+<hr />
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
+<span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
-~~~ python
-a=0
-print(a)
+<span class="n">a</span><span class="o">=-</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
 
-a=10
-print(a)
+<p> </p>
 
-a=-10
-print(a)
-~~~
+<h1 id="2-실수형floating-point">2. 실수형(Floating-point)</h1>
 
-&nbsp;
+<hr />
 
-# 2. 실수형(Floating-point)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mf">1.2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
-* * *
+<span class="n">a</span><span class="o">=-</span><span class="mf">3.45</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
+<span class="n">a</span><span class="o">=</span><span class="mf">1.2e10</span> <span class="c1">#컴퓨터식 지수 표현 방식 1.2e10 = 1.2*10^10
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
+<span class="n">a</span><span class="o">=</span><span class="mf">1.2e-10</span> <span class="c1">#1.2e-10 = 1.2*10^-10
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
 
-~~~ python
-a=1.2
-print(a)
+<p> </p>
 
-a=-3.45
-print(a)
+<p> </p>
 
-a=1.2e10 #컴퓨터식 지수 표현 방식 1.2e10 = 1.2*10^10
-print(a)
+<p> </p>
 
-a=1.2e-10 #1.2e-10 = 1.2*10^-10
-print(a)
-~~~
+<p> </p>
 
-&nbsp;
+<h1 id="3-8진수octal--16진수hexadecimal">3. 8진수(octal) / 16진수(hexadecimal)</h1>
 
-&nbsp;
+<hr />
 
-&nbsp;
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mo">0o123</span> <span class="c1">#10진수로 8^2*1 + 8^1*2 + 8^0*3 = 64 + 16 + 3 = 83
+</span><span class="n">b</span> <span class="o">=</span> <span class="mh">0x1ff</span> <span class="c1">#10진수로 16^2*1 + 16^1*15 + 16^0*15 = 256 + 240 + 15 = 511
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-# 3. 8진수(octal) / 16진수(hexadecimal)
+<p>#</p>
 
-* * *
+<h1 id="4-복소수complex-number">4. 복소수(Complex Number)</h1>
 
+<hr />
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mf">3j</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="o">-</span><span class="mf">5j</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
 
-~~~ python
-a = 0o123 #10진수로 8^2*1 + 8^1*2 + 8^0*3 = 64 + 16 + 3 = 83
-b = 0x1ff #10진수로 16^2*1 + 16^1*15 + 16^0*15 = 256 + 240 + 15 = 511
-print(a)
-print(b)
-~~~
+<p> </p>
 
-&nbsp;
+<ul>
+  <li>복소수와 관련한 파이썬 내장함수</li>
+</ul>
 
-# 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="c1">#실수부 return
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="c1">#허수부 return
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span> <span class="c1">#복소수의 켤레 return
+</span><span class="k">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c1"># 복소수의 크기 return
+</span></code></pre></div></div>
 
-# 4. 복소수(Complex Number)
+<p> </p>
 
-* * *
+<p> </p>
 
+<p>#</p>
 
+<h1 id="5-사칙연산">5. 사칙연산</h1>
 
-~~~ python
-a = 2+3j
-b = 4-5j
-print(a)
-print(b)
-print(a+b)
-~~~
+<hr />
 
-&nbsp;
-
-  * 복소수와 관련한 파이썬 내장함수
-
-
-
-~~~ python
-print(a.real) #실수부 return
-print(a.imag) #허수부 return
-print(a.conjugate()) #복소수의 켤레 return
-print(abs(a)) # 복소수의 크기 return
-~~~
-
-&nbsp;
-
-&nbsp;
-
-# 
-
-# 5. 사칙연산
-
-* * *
-
-
-
-~~~ python
-a=3
-b=10
-print(a+b) # 더하기
-print(a-b) # 빼기
-print(a*b) # 곱하기
-print(a/b) # 나누기
-print(a%b) # 나머지
-print(a**b) # 승수 a^b
-print(a//b) # 소수점 아래자리 버림
-~~~
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 더하기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 빼기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 곱하기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 나누기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 나머지
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 승수 a^b
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">//</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 소수점 아래자리 버림
+</span></code></pre></div></div>
 
 
   </div>
@@ -11848,250 +11673,291 @@ print(a//b) # 소수점 아래자리 버림
 
     <span class="post-date">15 Sep 2018</span>
 
-    파이썬 (Python)은 1990년 귀도 반 로섬이라는 프로그래머가 개발한 인터프리터 언어다.
+    <p>파이썬 (Python)은 1990년 귀도 반 로섬이라는 프로그래머가 개발한 인터프리터 언어다.</p>
 
-파이썬은 우리나라에서 자바, C++ 등의 프로그래밍 언어보다는 아직 덜 대중적이지만 현재 그 가치를 인정받고 특히 데이터과학, 머신러닝 분야에서 사용이 점점 더 늘어나는 추세이다.
+<p>파이썬은 우리나라에서 자바, C++ 등의 프로그래밍 언어보다는 아직 덜 대중적이지만 현재 그 가치를 인정받고 특히 데이터과학, 머신러닝 분야에서 사용이 점점 더 늘어나는 추세이다.</p>
 
-실제로 구글에서 만든 SW의 50% 이상이 파이썬으로 만들어졌다는 이야기도 있다.
+<p>실제로 구글에서 만든 SW의 50% 이상이 파이썬으로 만들어졌다는 이야기도 있다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 파이썬의 특징
+<h1 id="1-파이썬의-특징">1. 파이썬의 특징</h1>
 
-* * *
+<hr />
 
-<span style="font-size: 14pt;"><strong>1) 인간 친화적 언어</strong></span>
+<p><span style="font-size: 14pt;"><strong>1) 인간 친화적 언어</strong></span></p>
 
-파이썬은 사람이 생각하는 사고의 순서를 그대로 따라가며 표현할 수 있는 언어이다.
+<p>파이썬은 사람이 생각하는 사고의 순서를 그대로 따라가며 표현할 수 있는 언어이다.</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="s">'a'</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">,</span><span class="s">'d'</span><span class="p">,</span><span class="s">'e'</span><span class="p">]:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"a는 알파벳이다"</span><span class="p">)</span>
 
+</code></pre></div></div>
 
-~~~ python
-if 'a' in ['a','b','c','d','e']:
-        print("a는 알파벳이다")
+<p> </p>
 
-~~~
+<p>a라는 문자가 위 리스트의 항목 중 하나이면 a는 알파벳이다 라는 것을 표현하고 싶다. 소스코드를 보면 알 수 있듯이 매우 직관적이다.</p>
 
-&nbsp;
+<p> </p>
 
-a라는 문자가 위 리스트의 항목 중 하나이면 a는 알파벳이다 라는 것을 표현하고 싶다. 소스코드를 보면 알 수 있듯이 매우 직관적이다.
+<p><span style="font-size: 14pt;"><strong>2) 다른 언어에 접착성이 좋다</strong></span></p>
 
-&nbsp;
+<p>파이썬으로 만든 프로그램은 C/C++ 에서 사용 가능하고 C/C++에서 만든 프로그램도 파이썬에서 사용 가능하다.</p>
 
-<span style="font-size: 14pt;"><strong>2) 다른 언어에 접착성이 좋다</strong></span>
+<p>파이썬은 수치연산같이 빠른 실행속도를 필요로 하는 부분은 C로 만들어서 파이썬 라이브러리에 포함시킬 수 있다.</p>
 
-파이썬으로 만든 프로그램은 C/C++ 에서 사용 가능하고 C/C++에서 만든 프로그램도 파이썬에서 사용 가능하다.
+<p>즉, 전체적인 프레임은 파이썬으로, 특정 기능흔 C나 C++로 만든 라이브러리를 가져다 쓸 수 있다.</p>
 
-파이썬은 수치연산같이 빠른 실행속도를 필요로 하는 부분은 C로 만들어서 파이썬 라이브러리에 포함시킬 수 있다.
+<p> </p>
 
-즉, 전체적인 프레임은 파이썬으로, 특정 기능흔 C나 C++로 만든 라이브러리를 가져다 쓸 수 있다.
+<p><span style="font-size: 14pt;"><strong>3) 개발 속도가 빠르다</strong></span></p>
 
-&nbsp;
+<p>파이썬에 관한 유명한 말이 있다. “Life is too short, You need Python.”(인생은 너무 짧아서 파이썬이 필요하다.)</p>
 
-<span style="font-size: 14pt;"><strong>3) 개발 속도가 빠르다</strong></span>
+<p> </p>
 
-파이썬에 관한 유명한 말이 있다. "Life is too short, You need Python."(인생은 너무 짧아서 파이썬이 필요하다.)
+<p>파이썬은 다른 언어들이 할 수 있는 대부분의 일을 쉽게 해낸다. GUI(Graphic User Interface) 구현, 웹 프로그래밍, 수치 연산, DB 프로그래밍, 데이터 사이언스, 인공지능 등을 할 수 있다.</p>
 
-&nbsp;
+<p>하지만 파이썬이 하기에 적합하지 않은 일 역시 존재한다. 하드웨어를 다루는 임베디드 같은 경우 Linux나 엄청난 연산이 필요하다. 하드웨어를 제어하거나 엄청난 연산을 요구하는 경우는 파이썬이 적합하지 않다.</p>
 
-파이썬은 다른 언어들이 할 수 있는 대부분의 일을 쉽게 해낸다. GUI(Graphic User Interface) 구현, 웹 프로그래밍, 수치 연산, DB 프로그래밍, 데이터 사이언스, 인공지능 등을 할 수 있다.
+<p>또한 Android , IOS 등의 플랫폼에서 실행되는 앱은 개발은 할 수 있지만 아직까지 파이썬이 지원하는 좋은 API가 부족하다.</p>
 
-하지만 파이썬이 하기에 적합하지 않은 일 역시 존재한다. 하드웨어를 다루는 임베디드 같은 경우 Linux나 엄청난 연산이 필요하다. 하드웨어를 제어하거나 엄청난 연산을 요구하는 경우는 파이썬이 적합하지 않다.
+<p> </p>
 
-또한 Android , IOS 등의 플랫폼에서 실행되는 앱은 개발은 할 수 있지만 아직까지 파이썬이 지원하는 좋은 API가 부족하다.
+<p> </p>
 
-&nbsp;
+<h1 id="2-파이썬-설치">2. 파이썬 설치</h1>
 
-&nbsp;
+<hr />
 
-# 2. 파이썬 설치
+<p><a href="http://www.python.org/downloads">http://www.python.org/downloads</a></p>
 
-* * *
+<p>위 url은 파이썬 공식 홈페이지이다. 위에서 최신 버전의 python을 다운받을 수 있다.</p>
 
-<http://www.python.org/downloads>
+<p>이후 launcher를 실행하면 설치를 할 수 있는 화면이 나오는데, <strong>Add Python 3.6 to PATH </strong>부분을 꼭 체크를 해주어야 파이썬이 어느 곳에서든 실행될 수 있고 이해할 수 없는 오류를 방지할 수 있다.</p>
 
-위 url은 파이썬 공식 홈페이지이다. 위에서 최신 버전의 python을 다운받을 수 있다.
+<p><img class="aligncenter size-full wp-image-750" src="/images/2018/09/1.jpg" alt="" width="665" height="409" srcset="/images/2018/09/1.jpg 665w, /images/2018/09/1-300x185.jpg 300w" sizes="(max-width: 665px) 100vw, 665px" /></p>
 
-이후 launcher를 실행하면 설치를 할 수 있는 화면이 나오는데, **Add Python 3.6 to PATH **부분을 꼭 체크를 해주어야 파이썬이 어느 곳에서든 실행될 수 있고 이해할 수 없는 오류를 방지할 수 있다.
+<p>이후 Install Now를 누르면 설치가 끝난다.</p>
 
-<img class="aligncenter size-full wp-image-750" src="/images/2018/09/1.jpg" alt="" width="665" height="409" srcset="/images/2018/09/1.jpg 665w, /images/2018/09/1-300x185.jpg 300w" sizes="(max-width: 665px) 100vw, 665px" /> 
+<p>이후 파이썬을 실행하면 대화형 인터프리터가 뜬다.</p>
 
-이후 Install Now를 누르면 설치가 끝난다.
+<p><img class="aligncenter size-full wp-image-751" src="/images/2018/09/1-1.jpg" alt="" width="978" height="511" srcset="/images/2018/09/1-1.jpg 978w, /images/2018/09/1-1-300x157.jpg 300w, /images/2018/09/1-1-768x401.jpg 768w" sizes="(max-width: 978px) 100vw, 978px" /></p>
 
-이후 파이썬을 실행하면 대화형 인터프리터가 뜬다.
+<p>위의 대화형 인터프리터를 파이썬 셸(Python shell) 이라고 부른다.</p>
 
-<img class="aligncenter size-full wp-image-751" src="/images/2018/09/1-1.jpg" alt="" width="978" height="511" srcset="/images/2018/09/1-1.jpg 978w, /images/2018/09/1-1-300x157.jpg 300w, /images/2018/09/1-1-768x401.jpg 768w" sizes="(max-width: 978px) 100vw, 978px" /> 
+<p> </p>
 
-위의 대화형 인터프리터를 파이썬 셸(Python shell) 이라고 부른다.
+<p> </p>
 
-&nbsp;
+<h1 id="3-파이썬-문법-맛보기">3. 파이썬 문법 맛보기</h1>
 
-&nbsp;
+<hr />
 
-# 3. 파이썬 문법 맛보기
+<p>일단 파이썬 셸은 ctrl+Z + enter 를 눌러 종료할 수 있다. 혹은 sys 모듈을 불러와 exit()함수를 실행할 수도 있다.</p>
 
-* * *
+<p>import sys</p>
 
-일단 파이썬 셸은 ctrl+Z + enter 를 눌러 종료할 수 있다. 혹은 sys 모듈을 불러와 exit()함수를 실행할 수도 있다.
+<p>sys.exit()</p>
 
-import sys
+<p> </p>
 
+<ul>
+  <li>사칙연산</li>
+</ul>
 
-sys.exit()
+<p>&gt; 1+3<br />
+&gt; 4<br />
+&gt; 2*5<br />
+&gt; 10<br />
+&gt; 3/7<br />
+&gt; 0.42857142857142855<br />
+&gt; 4-3<br />
+&gt; 1<br />
+&gt; 5%2<br />
+&gt; 1</p>
+
+<p> </p>
+
+<ul>
+  <li>변수에 문자 대입하고 출력</li>
+</ul>
+
+<blockquote>
+  <p>a=”Python”<br />
+print(a)<br />
+Python</p>
+</blockquote>
+
+<p> </p>
+
+<ul>
+  <li>복소수</li>
+</ul>
+
+<blockquote>
+  <p>a = 4+3j<br />
+b = 2-6j<br />
+a+b<br />
+(6-3j)</p>
+</blockquote>
+
+<p> </p>
+
+<ul>
+  <li>if문</li>
+</ul>
+
+<blockquote>
+  <p>if a==10:<br />
+… print(“a is 10”)<br />
+…<br />
+a is 10</p>
+</blockquote>
 
-&nbsp;
+<p><img class=" wp-image-755 alignleft" src="/images/2018/09/1-2.jpg" alt="" width="396" height="139" srcset="/images/2018/09/1-2.jpg 516w, /images/2018/09/1-2-300x105.jpg 300w" sizes="(max-width: 396px) 100vw, 396px" /></p>
 
-  * 사칙연산
+<p> </p>
 
-\> 1+3  
-\> 4  
-\> 2*5  
-\> 10  
-\> 3/7  
-\> 0.42857142857142855  
-\> 4-3  
-\> 1  
-\> 5%2  
-\> 1
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-  * 변수에 문자 대입하고 출력
+<p> </p>
 
-> a="Python"  
-> print(a)  
-> Python
+<p>조건문 다음줄에서 spacebar 4칸 혹은 tab 1칸을 띄우고 명령어를 써야한다. 그리고 엔터를 치고 두 번째 …에서 엔터를 치면 조건문이 끝이난다.</p>
 
-&nbsp;
+<p> </p>
 
-  * 복소수
+<ul>
+  <li>for문</li>
+</ul>
 
-> a = 4+3j  
-> b = 2-6j  
-> a+b  
-> (6-3j)
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>for a in [1,2,3]:<br />
+… print(a)<br />
+…<br />
+1<br />
+2<br />
+3</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
-&nbsp;
+<p> </p>
 
-  * if문
+<ul>
+  <li>while문</li>
+</ul>
 
-> if a==10:  
-> ... print("a is 10")  
-> ...  
-> a is 10
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>a=0</p>
+      <blockquote>
+        <p>while a&lt;3:<br />
+… print(a)<br />
+… a=a+1<br />
+…</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
 
-<img class=" wp-image-755 alignleft" src="/images/2018/09/1-2.jpg" alt="" width="396" height="139" srcset="/images/2018/09/1-2.jpg 516w, /images/2018/09/1-2-300x105.jpg 300w" sizes="(max-width: 396px) 100vw, 396px" /> 
+  <p>1<br />
+2</p>
+</blockquote>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<ul>
+  <li>함수</li>
+</ul>
 
-&nbsp;
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>def mul(a,b):<br />
+… return a*b<br />
+…</p>
+      <blockquote>
+        <p>mul(2,5)<br />
+10<br />
+mul(3,4)<br />
+12</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
-&nbsp;
+<p> </p>
 
-조건문 다음줄에서 spacebar 4칸 혹은 tab 1칸을 띄우고 명령어를 써야한다. 그리고 엔터를 치고 두 번째 ...에서 엔터를 치면 조건문이 끝이난다.
+<p> </p>
 
-&nbsp;
+<ol>
+  <li>파이썬 에디터</li>
+</ol>
 
-  * for문
+<hr />
 
-> >> for a in [1,2,3]:  
-> ... print(a)  
-> ...  
-> 1  
-> 2  
-> 3
+<p>파이썬 에디터에는 editplus, pycharm, notepad++ 등이 있다.</p>
 
-&nbsp;
+<p>이 중 PyCharm(파이참)은 코드 자동완성, 문법 디버깅 등 편리한 기능을 제공하는 하나의 IDE 이다.</p>
 
-  * while문
+<p> </p>
 
-> >> a=0  
-> >>> while a<3:  
-> ... print(a)  
-> ... a=a+1  
-> ...  
->  
-> 1  
-> 2
+<p><a href="http://www.jetbrains.com/pycharm/download/">http://www.jetbrains.com/pycharm/download/</a></p>
 
-&nbsp;
+<p>위 url은 PyCharm 공식 다운로드 사이트이다.</p>
 
-  * 함수
+<p>Windows, Linux, MacOS 버전이 있는데 자신에게 맞는 것을 받으면 된다. Professional은 유료버전이므로 무료Community 버전을 받으면 된다. 실행을 하여 Next를 몇 번 누르면 다음과 같은 화면이 뜬다.</p>
 
-> >> def mul(a,b):  
-> ... return a*b  
-> ...  
-> >>> mul(2,5)  
-> 10  
-> >>> mul(3,4)  
-> 12
+<p> </p>
 
-&nbsp;
+<p><img class="aligncenter size-full wp-image-756" src="/images/2018/09/1-3.jpg" alt="" width="500" height="386" srcset="/images/2018/09/1-3.jpg 500w, /images/2018/09/1-3-300x232.jpg 300w" sizes="(max-width: 500px) 100vw, 500px" /></p>
 
-&nbsp;
+<p>32-bit launcher만 클릭해제하고 Next를 누르고 Install을 하면 된다.</p>
 
-4. 파이썬 에디터
+<p><img class="aligncenter size-full wp-image-757" src="/images/2018/09/no-name-6.png" alt="" width="470" height="177" srcset="/images/2018/09/no-name-6.png 470w, /images/2018/09/no-name-6-300x113.png 300w" sizes="(max-width: 470px) 100vw, 470px" /></p>
 
-* * *
+<p>그리고 우리는 처음 설치한 것이므로 ‘Do not import settings’를 클릭하고 OK를 한다.</p>
 
-파이썬 에디터에는 editplus, pycharm, notepad++ 등이 있다.
+<p><img class="aligncenter size-full wp-image-758" src="/images/2018/09/no-name-7.png" alt="" width="808" height="577" srcset="/images/2018/09/no-name-7.png 808w, /images/2018/09/no-name-7-300x214.png 300w, /images/2018/09/no-name-7-768x548.png 768w" sizes="(max-width: 808px) 100vw, 808px" /></p>
 
-이 중 PyCharm(파이참)은 코드 자동완성, 문법 디버깅 등 편리한 기능을 제공하는 하나의 IDE 이다.
+<p>그럼 위와 같이 첫 화면에서는 UI를 선택할 수 있는데, 자기가 마음에 드는 테마를 고르면 된다.</p>
 
-&nbsp;
+<p><img class="aligncenter size-full wp-image-760" src="/images/2018/09/no-name-9.png" alt="" width="780" height="485" srcset="/images/2018/09/no-name-9.png 780w, /images/2018/09/no-name-9-300x187.png 300w, /images/2018/09/no-name-9-768x478.png 768w" sizes="(max-width: 780px) 100vw, 780px" /></p>
 
-<http://www.jetbrains.com/pycharm/download/>
+<p>이후 넘기다가 Create new project를 누르면 위와 같이 디렉토리파일에 프로젝트를 만들 수 있는데 적당한 프로젝트 이름을 설정하고 Create를 누른다. 그리고 project interpreter를 선택하는 화살표를 누른다. 이미 Python 3.7이 설치되어 있으므로 Existing interpreter를 선택하고 Python3.7을 선택한 후 Create를 누르면 프로젝트 생성이 된다.</p>
 
-위 url은 PyCharm 공식 다운로드 사이트이다.
+<p><img class="aligncenter size-full wp-image-761" src="/images/2018/09/no-name-10.png" alt="" width="856" height="475" srcset="/images/2018/09/no-name-10.png 856w, /images/2018/09/no-name-10-300x166.png 300w, /images/2018/09/no-name-10-768x426.png 768w" sizes="(max-width: 856px) 100vw, 856px" /></p>
 
-Windows, Linux, MacOS 버전이 있는데 자신에게 맞는 것을 받으면 된다. Professional은 유료버전이므로 무료Community 버전을 받으면 된다. 실행을 하여 Next를 몇 번 누르면 다음과 같은 화면이 뜬다.
+<p>그리고 프로젝트 이름에서 마우스 오른쪽 버튼을 누르고 New &gt; Python File을 선택하면 드디어 .py 확장자의 python 파일이 만들어진다.</p>
 
-&nbsp;
+<p><img class="aligncenter size-full wp-image-762" src="/images/2018/09/no-name-11.png" alt="" width="778" height="153" srcset="/images/2018/09/no-name-11.png 778w, /images/2018/09/no-name-11-300x59.png 300w, /images/2018/09/no-name-11-768x151.png 768w" sizes="(max-width: 778px) 100vw, 778px" /></p>
 
-<img class="aligncenter size-full wp-image-756" src="/images/2018/09/1-3.jpg" alt="" width="500" height="386" srcset="/images/2018/09/1-3.jpg 500w, /images/2018/09/1-3-300x232.jpg 300w" sizes="(max-width: 500px) 100vw, 500px" /> 
+<p>위와 같이 스크립트를 작성해보자.</p>
 
-32-bit launcher만 클릭해제하고 Next를 누르고 Install을 하면 된다.
+<p>참고로 큰 따움표 세 개 “”” 사이에 쓰는 글은 주석이다. 컴파일 되지 않지만 다른 사람이 볼 때, 그리고 자신이 나중에 볼 때 알아보기 위한 기록을 할 때 사용한다. #은 한 라인이 주석이 되게 할 때 사용한다.</p>
 
-<img class="aligncenter size-full wp-image-757" src="/images/2018/09/no-name-6.png" alt="" width="470" height="177" srcset="/images/2018/09/no-name-6.png 470w, /images/2018/09/no-name-6-300x113.png 300w" sizes="(max-width: 470px) 100vw, 470px" /> 
+<p>위와 같이 작성한 후 저장을 하고 cmd 창에서 파일이 있는 디렉토리로 가서 실행을 해보자.</p>
 
-그리고 우리는 처음 설치한 것이므로 'Do not import settings'를 클릭하고 OK를 한다.
+<p><img class="aligncenter size-full wp-image-763" src="/images/2018/09/no-name-12.png" alt="" width="398" height="205" srcset="/images/2018/09/no-name-12.png 398w, /images/2018/09/no-name-12-300x155.png 300w" sizes="(max-width: 398px) 100vw, 398px" /></p>
 
-<img class="aligncenter size-full wp-image-758" src="/images/2018/09/no-name-7.png" alt="" width="808" height="577" srcset="/images/2018/09/no-name-7.png 808w, /images/2018/09/no-name-7-300x214.png 300w, /images/2018/09/no-name-7-768x548.png 768w" sizes="(max-width: 808px) 100vw, 808px" /> 
+<p>cmd 창은 window + R 키로 실행창을 띄운 다음 cmd를 입력하고 enter를 치면 된다.</p>
 
-그럼 위와 같이 첫 화면에서는 UI를 선택할 수 있는데, 자기가 마음에 드는 테마를 고르면 된다.
+<p>C:\Users\jchg1&gt;cd C:\Users\jchg1\PycharmProjects\MyProject</p>
 
-<img class="aligncenter size-full wp-image-760" src="/images/2018/09/no-name-9.png" alt="" width="780" height="485" srcset="/images/2018/09/no-name-9.png 780w, /images/2018/09/no-name-9-300x187.png 300w, /images/2018/09/no-name-9-768x478.png 768w" sizes="(max-width: 780px) 100vw, 780px" /> 
+<p>C:\Users\jchg1\PycharmProjects\MyProject&gt;python PyChang.py<br />
+Welcome to Python!</p>
 
-이후 넘기다가 Create new project를 누르면 위와 같이 디렉토리파일에 프로젝트를 만들 수 있는데 적당한 프로젝트 이름을 설정하고 Create를 누른다. 그리고 project interpreter를 선택하는 화살표를 누른다. 이미 Python 3.7이 설치되어 있으므로 Existing interpreter를 선택하고 Python3.7을 선택한 후 Create를 누르면 프로젝트 생성이 된다.
+<p>cd(change directory) 명령어로 프로젝트 파일이 있는 폴더로 이동하여 python + 파일명.py 를 입력하면 해당 파일이 실행이 된다.</p>
 
-<img class="aligncenter size-full wp-image-761" src="/images/2018/09/no-name-10.png" alt="" width="856" height="475" srcset="/images/2018/09/no-name-10.png 856w, /images/2018/09/no-name-10-300x166.png 300w, /images/2018/09/no-name-10-768x426.png 768w" sizes="(max-width: 856px) 100vw, 856px" /> 
+<p>지금은 한 문장을 print 하는 코드지만, 보통 프로그램은 아주 많은 양의 코드로 작성이 되므로 파이썬 쉘 보다는 에디터에서 작성한다. 파이썬 쉘에서 만든 프로그램은 쉘을 종료하면 사라지지만 에디터로 만든 프로그램은 계속 파일로 저장이 되어있어 계속해서 재사용 할 수 있다. 이것이 에디터를 사용하는 이유이다.</p>
 
-그리고 프로젝트 이름에서 마우스 오른쪽 버튼을 누르고 New > Python File을 선택하면 드디어 .py 확장자의 python 파일이 만들어진다.
+<p> </p>
 
-<img class="aligncenter size-full wp-image-762" src="/images/2018/09/no-name-11.png" alt="" width="778" height="153" srcset="/images/2018/09/no-name-11.png 778w, /images/2018/09/no-name-11-300x59.png 300w, /images/2018/09/no-name-11-768x151.png 768w" sizes="(max-width: 778px) 100vw, 778px" /> 
-
-위와 같이 스크립트를 작성해보자.
-
-참고로 큰 따움표 세 개 """ 사이에 쓰는 글은 주석이다. 컴파일 되지 않지만 다른 사람이 볼 때, 그리고 자신이 나중에 볼 때 알아보기 위한 기록을 할 때 사용한다. #은 한 라인이 주석이 되게 할 때 사용한다.
-
-위와 같이 작성한 후 저장을 하고 cmd 창에서 파일이 있는 디렉토리로 가서 실행을 해보자.
-
-<img class="aligncenter size-full wp-image-763" src="/images/2018/09/no-name-12.png" alt="" width="398" height="205" srcset="/images/2018/09/no-name-12.png 398w, /images/2018/09/no-name-12-300x155.png 300w" sizes="(max-width: 398px) 100vw, 398px" /> 
-
-cmd 창은 window + R 키로 실행창을 띄운 다음 cmd를 입력하고 enter를 치면 된다.
-
-C:\Users\jchg1>cd C:\Users\jchg1\PycharmProjects\MyProject
-
-C:\Users\jchg1\PycharmProjects\MyProject>python PyChang.py  
-Welcome to Python!
-
-cd(change directory) 명령어로 프로젝트 파일이 있는 폴더로 이동하여 python + 파일명.py 를 입력하면 해당 파일이 실행이 된다.
-
-지금은 한 문장을 print 하는 코드지만, 보통 프로그램은 아주 많은 양의 코드로 작성이 되므로 파이썬 쉘 보다는 에디터에서 작성한다. 파이썬 쉘에서 만든 프로그램은 쉘을 종료하면 사라지지만 에디터로 만든 프로그램은 계속 파일로 저장이 되어있어 계속해서 재사용 할 수 있다. 이것이 에디터를 사용하는 이유이다.
-
-&nbsp;
   </div>
   
   <div class="post">
@@ -12103,55 +11969,56 @@ cd(change directory) 명령어로 프로젝트 파일이 있는 폴더로 이동
 
     <span class="post-date">12 Sep 2018</span>
 
-    map reduce 는 large scale dataset 을 다루는 경우 사용하는 방법들 중 하나다.
+    <p>map reduce 는 large scale dataset 을 다루는 경우 사용하는 방법들 중 하나다.</p>
 
-large scale dataset을 다루는 방법들에는 stochastic gradient descent나 mini-batch gradient descent가 있었다.
+<p>large scale dataset을 다루는 방법들에는 stochastic gradient descent나 mini-batch gradient descent가 있었다.</p>
 
-이 알고리즘들은 parameter를 update 하기위해 한 대의 컴퓨터만 사용했다.
+<p>이 알고리즘들은 parameter를 update 하기위해 한 대의 컴퓨터만 사용했다.</p>
 
-이번에 소개할 Map Reduce는 여러대의 컴퓨터가 데이터를 나누어 가져가서 학습을 시켜 다시 master computer로 결과를 보내주어 합치는 알고리즘이다.
+<p>이번에 소개할 Map Reduce는 여러대의 컴퓨터가 데이터를 나누어 가져가서 학습을 시켜 다시 master computer로 결과를 보내주어 합치는 알고리즘이다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. Map Reduce
+<h1 id="1-map-reduce">1. Map Reduce</h1>
 
-* * *
+<hr />
 
-&nbsp;
+<p> </p>
 
-<span style="text-decoration: underline; font-size: 14pt;"><strong>Batch Gradient Descent</strong></span>
+<p><span style="text-decoration: underline; font-size: 14pt;"><strong>Batch Gradient Descent</strong></span></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\for\quad&space;j=1:n\\&space;\left&space;\{&space;\theta_{j}=\theta_{j}-\frac{\alpha}{400,000,000}&space;\sum_{i=1}^{400,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}&space;\right&space;\}" alt="\dpi{120} \\for\quad j=1:n\\ \left \{ \theta_{j}=\theta_{j}-\frac{\alpha}{400,000,000} \sum_{i=1}^{400,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)} \right \}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\for\quad&space;j=1:n\\&space;\left&space;\{&space;\theta_{j}=\theta_{j}-\frac{\alpha}{400,000,000}&space;\sum_{i=1}^{400,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}&space;\right&space;\}" alt="\dpi{120} \\for\quad j=1:n\\ \left \{ \theta_{j}=\theta_{j}-\frac{\alpha}{400,000,000} \sum_{i=1}^{400,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)} \right \}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-<span style="text-decoration: underline; font-size: 14pt;"><strong>Map-Reduce</strong></span>
+<p><span style="text-decoration: underline; font-size: 14pt;"><strong>Map-Reduce</strong></span></p>
 
-Map Reduce에서는 여러대의 컴퓨터가 학습 데이터를 등분하여 학습 parameter를 계산한다.
+<p>Map Reduce에서는 여러대의 컴퓨터가 학습 데이터를 등분하여 학습 parameter를 계산한다.</p>
 
-아래는 총 4대의 컴퓨터가 4억개의 데이터를 각각 1억개씩 가져가서 학습을 시키는 경우이다.
+<p>아래는 총 4대의 컴퓨터가 4억개의 데이터를 각각 1억개씩 가져가서 학습을 시키는 경우이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;temp^{(1)}_{j}=\sum_{i=1}^{100,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" alt="\dpi{120} temp^{(1)}_{j}=\sum_{i=1}^{100,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;temp^{(1)}_{j}=\sum_{i=1}^{100,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" alt="\dpi{120} temp^{(1)}_{j}=\sum_{i=1}^{100,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;temp^{(2)}_{j}=\sum_{i=100,000,001}^{200,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" alt="\dpi{120} temp^{(2)}_{j}=\sum_{i=100,000,001}^{200,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;temp^{(2)}_{j}=\sum_{i=100,000,001}^{200,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" alt="\dpi{120} temp^{(2)}_{j}=\sum_{i=100,000,001}^{200,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;temp^{(3)}_{j}=\sum_{i=200,000,001}^{300,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" alt="\dpi{120} temp^{(3)}_{j}=\sum_{i=200,000,001}^{300,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;temp^{(3)}_{j}=\sum_{i=200,000,001}^{300,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" alt="\dpi{120} temp^{(3)}_{j}=\sum_{i=200,000,001}^{300,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;temp^{(4)}_{j}=\sum_{i=300,000,001}^{400,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" alt="\dpi{120} temp^{(4)}_{j}=\sum_{i=300,000,001}^{400,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;temp^{(4)}_{j}=\sum_{i=300,000,001}^{400,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" alt="\dpi{120} temp^{(4)}_{j}=\sum_{i=300,000,001}^{400,000,000}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}" align="absmiddle" /></p>
 
-위와 같이 계산된 값들이 master server에 전송이 되면 최종적으로 parameter는 다음과 같이 update 된다.
+<p>위와 같이 계산된 값들이 master server에 전송이 되면 최종적으로 parameter는 다음과 같이 update 된다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{j}:=\theta_{j}-\frac{\alpha}{400,000,000}(temp^{(1)}_{j}+temp^{(2)}_{j}+temp^{(3)}_{j}+temp^{(4)}_{j})" alt="\dpi{120} \theta_{j}:=\theta_{j}-\frac{\alpha}{400,000,000}(temp^{(1)}_{j}+temp^{(2)}_{j}+temp^{(3)}_{j}+temp^{(4)}_{j})" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{j}:=\theta_{j}-\frac{\alpha}{400,000,000}(temp^{(1)}_{j}+temp^{(2)}_{j}+temp^{(3)}_{j}+temp^{(4)}_{j})" alt="\dpi{120} \theta_{j}:=\theta_{j}-\frac{\alpha}{400,000,000}(temp^{(1)}_{j}+temp^{(2)}_{j}+temp^{(3)}_{j}+temp^{(4)}_{j})" align="absmiddle" /></p>
 
-이 작업은 완전히 Batch Gradient Descent와 동일하다. 단지 여러대의 컴퓨터가 데이터를 나누어 계산을 하기때문에 계산 속도 성능이 4배로 향상된 것일 뿐이다.
+<p>이 작업은 완전히 Batch Gradient Descent와 동일하다. 단지 여러대의 컴퓨터가 데이터를 나누어 계산을 하기때문에 계산 속도 성능이 4배로 향상된 것일 뿐이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
+
   </div>
   
 </div>

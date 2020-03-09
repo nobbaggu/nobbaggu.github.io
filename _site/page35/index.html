@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,70 +10682,97 @@
 
     <span class="post-date">30 Sep 2018</span>
 
-    상수란 변하지 않는 숫자, 혹은 고정된 값을 의미합니다.
+    <p>상수란 변하지 않는 숫자, 혹은 고정된 값을 의미합니다.</p>
 
-C언어에는 두 가지의 상수가 존재합니다.
+<p>C언어에는 두 가지의 상수가 존재합니다.</p>
 
-**1) 리터럴(literal) 상수 : 이름이 없는 상수**
+<p><strong>1) 리터럴(literal) 상수 : 이름이 없는 상수</strong></p>
 
-**2) 심볼릭(symbolic) 상수 : 이름이 있는 상수**
+<p><strong>2) 심볼릭(symbolic) 상수 : 이름이 있는 상수</strong></p>
 
-<br>
-## 1. 리터럴 상수
-* * *
+<p><br /></p>
+<h2 id="1-리터럴-상수">1. 리터럴 상수</h2>
+<hr />
 
-literal의 사전적 의미는 1) 글자 그대로의 2) 문자의 입니다.
+<p>literal의 사전적 의미는 1) 글자 그대로의 2) 문자의 입니다.</p>
 
-~~~ c
-char add = 3+5;
-~~~
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">add</span> <span class="o">=</span> <span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="p">;</span>
+</code></pre></div></div>
 
-add라는 변수를 정의하고 3+5의 결과값을 대입합니다. 3+5는 CPU에서 연산이 되고 결과값 8이 add에 저장돼야 합니다. 하지만 일단 연산을 하기위해서는 RAM에 3과 5를 불러와야합니다. 하지만 3과 5는 메모리에 로드될 때, 이름이 붙지 않습니다. 우리가 인위적으로 변수명을 지정하고 값을 대입한 것이 아니기 때문입니다. 그래서 리터럴상수라고 부르는 것입니다. 말 그대로 **리터럴 상수는 메모리에 담기는 데이터 그 자체**입니다. 정수, 실수, 문자, 문자열 모두 리터럴상수입니다.
+<p>add라는 변수를 정의하고 3+5의 결과값을 대입합니다. 3+5는 CPU에서 연산이 되고 결과값 8이 add에 저장돼야 합니다. 하지만 일단 연산을 하기위해서는 RAM에 3과 5를 불러와야합니다. 하지만 3과 5는 메모리에 로드될 때, 이름이 붙지 않습니다. 우리가 인위적으로 변수명을 지정하고 값을 대입한 것이 아니기 때문입니다. 그래서 리터럴상수라고 부르는 것입니다. 말 그대로 <strong>리터럴 상수는 메모리에 담기는 데이터 그 자체</strong>입니다. 정수, 실수, 문자, 문자열 모두 리터럴상수입니다.</p>
 
-<br>
-리터럴 상수는 어떤 자료형으로 메모리에 저장될까요?
+<p><br />
+리터럴 상수는 어떤 자료형으로 메모리에 저장될까요?</p>
 
-정수는 기본적으로 int형, 실수는 double형으로 저장합니다. int, double로 표현되는 범위를 넘어선다면 더 큰 자료형으로 저장됩니다.
+<p>정수는 기본적으로 int형, 실수는 double형으로 저장합니다. int, double로 표현되는 범위를 넘어선다면 더 큰 자료형으로 저장됩니다.</p>
 
-상수의 자료형을 직접 정해 줄 수도 있습니다. 숫자의 뒤에 접미사를 붙이면 됩니다. ex) 10U, 100F, 391L ...
+<p>상수의 자료형을 직접 정해 줄 수도 있습니다. 숫자의 뒤에 접미사를 붙이면 됩니다. ex) 10U, 100F, 391L …</p>
 
-|자료형|접미사|
-|unsigned int|U/u|
-|long|L/l|
-|unsigned long|UL/ul|
-|long long|LL/ll|
-|unsigned long long|ULL/ull|
-|float|F/f|
-long double|L/l|
+<table>
+  <tbody>
+    <tr>
+      <td>자료형</td>
+      <td>접미사</td>
+    </tr>
+    <tr>
+      <td>unsigned int</td>
+      <td>U/u</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>L/l</td>
+    </tr>
+    <tr>
+      <td>unsigned long</td>
+      <td>UL/ul</td>
+    </tr>
+    <tr>
+      <td>long long</td>
+      <td>LL/ll</td>
+    </tr>
+    <tr>
+      <td>unsigned long long</td>
+      <td>ULL/ull</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>F/f</td>
+    </tr>
+    <tr>
+      <td>long double</td>
+      <td>L/l</td>
+    </tr>
+  </tbody>
+</table>
 
-<br>
+<p><br /></p>
 
-## 2. 심볼릭 상수
-* * *
+<h2 id="2-심볼릭-상수">2. 심볼릭 상수</h2>
+<hr />
 
-**심볼릭 상수는 const를 사용해 선언한 상수입니다.** 심볼릭 상수는 한 번 정의하면 값의 변경이 불가능합니다.
+<p><strong>심볼릭 상수는 const를 사용해 선언한 상수입니다.</strong> 심볼릭 상수는 한 번 정의하면 값의 변경이 불가능합니다.</p>
 
-~~~ c
-#include <stdio.h>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">141592</span><span class="p">;</span>
+    <span class="n">PI</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
-int main(void)
-{
-    const double PI = 3.141592;
-    PI = 10;
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-    return 0;
-}
-~~~
+<p><br /></p>
 
-<br>
+<p>일반적인 변수를 선언할 때와 다르게 const를 붙입니다. 그리고 상수는 대문자로 표현하는 것이 관례입니다.</p>
 
-일반적인 변수를 선언할 때와 다르게 const를 붙입니다. 그리고 상수는 대문자로 표현하는 것이 관례입니다.
+<p><img src="/images/2018/09/no20name.png" alt="no20name" width="70%" height="70%" /></p>
 
-![no20name](/images/2018/09/no20name.png){: width="70%" height="70%"} 
+<p>상수 PI의 값을 바꾸려 했기 때문에 오류가 난 것입니다.</p>
 
-상수 PI의 값을 바꾸려 했기 때문에 오류가 난 것입니다.
+<p>가령 계산기 프로그램에서 원주율 PI 같은 고정된  값을 정의할 때 심볼릭  상수를 사용합니다.</p>
 
-가령 계산기 프로그램에서 원주율 PI 같은 고정된  값을 정의할 때 심볼릭  상수를 사용합니다.
   </div>
   
   <div class="post">
@@ -10781,119 +10784,167 @@ int main(void)
 
     <span class="post-date">29 Sep 2018</span>
 
-    <br>
+    <p><br /></p>
 
-변수를 선언할 때 자료형 을 명시해주는 이유는 다음과 같습니다.
+<p>변수를 선언할 때 자료형 을 명시해주는 이유는 다음과 같습니다.</p>
 
-1. **'정수'와 '정수가 아닌 실수'를 표현하는 방식 자체가 다르기 때문에 컴파일러에게 미리 알려줘야한다.**
+<ol>
+  <li>
+    <p><strong>‘정수’와 ‘정수가 아닌 실수’를 표현하는 방식 자체가 다르기 때문에 컴파일러에게 미리 알려줘야한다.</strong></p>
+  </li>
+  <li>
+    <p><strong>데이터를 저장할 메모리공간의 크기를 컴파일러에게 알려주어야한다</strong>.</p>
+  </li>
+</ol>
 
-2. **데이터를 저장할 메모리공간의 크기를 컴파일러에게 알려주어야한다**.
+<p><br /></p>
+<h2 id="1-정수-자료형--숫자-표현">1. 정수 자료형 : 숫자 표현</h2>
+<hr />
 
-<br>
-## 1. 정수 자료형 : 숫자 표현
-* * *
+<p>C언어에서는 아래와 같은 자료형이 있습니다.</p>
 
-C언어에서는 아래와 같은 자료형이 있습니다.
+<p><br /></p>
 
-<br>
+<p>&lt;정수&gt;</p>
 
-\<정수\>
+<table>
+  <thead>
+    <tr>
+      <th>자료형</th>
+      <th>메모리</th>
+      <th>표현가능 범위</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>char</td>
+      <td>1byte</td>
+      <td>-128 ~ +127</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>2byte</td>
+      <td>-32,768 ~ +32,767</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>4byte</td>
+      <td>-2,147,483,648 ~ +2,147,483,647</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>4byte</td>
+      <td>-2,147,483,648 ~ +2,147,483,647</td>
+    </tr>
+    <tr>
+      <td>long long</td>
+      <td>8byte</td>
+      <td>-9,223,372,036,854,775,808 ~ +9,223,372,036,854,775,807</td>
+    </tr>
+  </tbody>
+</table>
 
-|자료형|메모리|표현가능 범위|
-|------|------|-------------|
-|char|1byte|-128 ~ +127|
-|short|2byte|-32,768 ~ +32,767|
-|int|4byte|-2,147,483,648 ~ +2,147,483,647|
-|long|4byte|-2,147,483,648 ~ +2,147,483,647|
-|long long|8byte|-9,223,372,036,854,775,808 ~ +9,223,372,036,854,775,807|
+<p><br /></p>
 
-<br>
+<p>&lt;실수&gt;</p>
 
-\<실수\>
+<table>
+  <tbody>
+    <tr>
+      <td>자료형</td>
+      <td>메모리</td>
+      <td>표현가능 범위</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>4byte</td>
+      <td>±3.4×10^-37 ~ ±3.4×10^+38</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td>8byte</td>
+      <td>±1.7×10^-307 ~ ±1.7×10^+308</td>
+    </tr>
+  </tbody>
+</table>
 
-|자료형|메모리|표현가능 범위|
-|float|4byte|±3.4×10^-37 ~ ±3.4×10^+38|
-|double|8byte|±1.7×10^-307 ~ ±1.7×10^+308|
+<p><br /></p>
 
-<br>
+<p>사실 우리는 <strong>정수형 변수를 선언할 때 보통 int보다 작은 자료형은 잘 쓰지 않습니다. char나 short, int 중 무엇을 쓰던지 사실 CPU의 처리속도는 차이가 거의 나지 않기 때문입니다.</strong> 따라서 메모리를 쥐어짜야하는 경우가 아니라면 대부분의 정수형 자료는 int타입으로 선언합니다.</p>
 
-사실 우리는 **정수형 변수를 선언할 때 보통 int보다 작은 자료형은 잘 쓰지 않습니다. char나 short, int 중 무엇을 쓰던지 사실 CPU의 처리속도는 차이가 거의 나지 않기 때문입니다.** 따라서 메모리를 쥐어짜야하는 경우가 아니라면 대부분의 정수형 자료는 int타입으로 선언합니다.
+<p>정수 자료형을 사용하여 표현할 수 있는 숫자의 범위는 그 자료형의 크기가 나타낼 수 있는 경우의 수와 같습니다. 가령 short는 2byte = 16bit이기 때문에 2^16 = 65,536의 경우의 수를 나타낼 수 있습니다. 단, 가장 앞에 오는 최상위 비트(MSB)는 부호를 표현하는데 사용이 됩니다. 나머지 15bit는 정수의 절대크기를 나타내는데 사용됩니다. 2^15 = 32,768 가지의 상태를 나타낼 수 있습니다. 가장 앞의 bit가 0이면 양수, 1이면 음수를 나타냅니다.</p>
 
-정수 자료형을 사용하여 표현할 수 있는 숫자의 범위는 그 자료형의 크기가 나타낼 수 있는 경우의 수와 같습니다. 가령 short는 2byte = 16bit이기 때문에 2^16 = 65,536의 경우의 수를 나타낼 수 있습니다. 단, 가장 앞에 오는 최상위 비트(MSB)는 부호를 표현하는데 사용이 됩니다. 나머지 15bit는 정수의 절대크기를 나타내는데 사용됩니다. 2^15 = 32,768 가지의 상태를 나타낼 수 있습니다. 가장 앞의 bit가 0이면 양수, 1이면 음수를 나타냅니다.
+<p>음수가 필요없는 경우에는 자료형 앞에 unsigned를 붙여서 해결할 수 있습니다. 예를들어 <code class="highlighter-rouge">unsigned short a;</code> 라고 선언을 하면 첫번째 bit도 데이터의 크기를 표현하는데 사용이 되기때문에 2^16 = 65,536 가지의 상태를 온전히 데이터의 크기만 표현하는데 사용할 수 있습니다.</p>
 
-음수가 필요없는 경우에는 자료형 앞에 unsigned를 붙여서 해결할 수 있습니다. 예를들어 `unsigned short a;` 라고 선언을 하면 첫번째 bit도 데이터의 크기를 표현하는데 사용이 되기때문에 2^16 = 65,536 가지의 상태를 온전히 데이터의 크기만 표현하는데 사용할 수 있습니다.
+<p><br /></p>
+<h2 id="2-정수-자료형--문자-표현">2. 정수 자료형 : 문자 표현</h2>
+<hr />
 
+<p>정수 자료형 char는 문자(character)를 표현할 때도 사용됩니다. (물론 다른 정수 자료형도 문자를 나타내는데 사용할 수 있습니다.) 문자가 표현되는 원리를 알려면 ASCII(American Standard Code for Information Interchange)에 대해 알아야합니다. 아스키 코드는 미국표준협회(ANSI)에서 만든 표준 코드체계입니다. 아스키 코드는 문자를 표현하기 위한 약속입니다. 아래 사진은 아스키 코드 테이블입니다.</p>
 
-<br>
-## 2. 정수 자료형 : 문자 표현
-* * *
+<p><br /></p>
 
-정수 자료형 char는 문자(character)를 표현할 때도 사용됩니다. (물론 다른 정수 자료형도 문자를 나타내는데 사용할 수 있습니다.) 문자가 표현되는 원리를 알려면 ASCII(American Standard Code for Information Interchange)에 대해 알아야합니다. 아스키 코드는 미국표준협회(ANSI)에서 만든 표준 코드체계입니다. 아스키 코드는 문자를 표현하기 위한 약속입니다. 아래 사진은 아스키 코드 테이블입니다.
+<p><img src="/images/2018/09/ASCII.jpg" alt="ASCII" width="100%" height="100%" /></p>
 
-<br>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">char</span> <span class="n">char1</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>
+   <span class="kt">char</span> <span class="n">char2</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
 
-![ASCII](/images/2018/09/ASCII.jpg){: width="100%" height="100%"}
+   <span class="n">printf</span><span class="p">(</span><span class="s">"The character of char1 is %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">char1</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"The ASCII code of char1 is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">char1</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"The character of char2 is %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">char2</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"The ASCII code of char2 is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">char2</span><span class="p">);</span>
 
-~~~ c
-int main(void)
-{
-   char char1 = 'A';
-   char char2 = 65;
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-   printf("The character of char1 is %c\n", char1);
-   printf("The ASCII code of char1 is %d\n", char1);
-   printf("\n");
-   printf("The character of char2 is %c\n", char2);
-   printf("The ASCII code of char2 is %d\n", char2);
+<p>실행결과</p>
 
-   return 0;
-}
-~~~
+<p>The character of ch1 is A</p>
 
-실행결과
+<p>The ASCII code of ch1 is 65</p>
 
-The character of ch1 is A
+<p>The character of ch2 is A</p>
 
-The ASCII code of ch1 is 65
+<p>The ASCII code of ch2 is 65</p>
 
-The character of ch2 is A
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-The ASCII code of ch2 is 65
+<p><br /></p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>char1 변수에 ‘A’ 를 저장했습니다. <strong>문자를 대입할때는 ‘ ‘ 을 사용합니다</strong>. char2에는 정수 65를 저장했습니다. char1은 ‘A’로 저장했는데 %d의 서식문자를 사용해 출력을 하면 65가 나옵니다.</p>
 
-<br>
+<p>반면에 char2에는 정수 65를 저장하였는데 %c의 서식문자를 사용해 출력을 하니 A가 나옵니다. 여기서 알 수 있는건 <strong>char형 변수에 정수를 저장하든 그 정수에 아스키코드상에서 대입이 되는 문자를 저장하든 정확히 같은 행위라는 사실입니다.</strong></p>
 
-char1 변수에 'A' 를 저장했습니다. **문자를 대입할때는 ' ' 을 사용합니다**. char2에는 정수 65를 저장했습니다. char1은 'A'로 저장했는데 %d의 서식문자를 사용해 출력을 하면 65가 나옵니다.
+<p>추가로 한 가지를 더 확인을 해보겠습니다.</p>
 
-반면에 char2에는 정수 65를 저장하였는데 %c의 서식문자를 사용해 출력을 하니 A가 나옵니다. 여기서 알 수 있는건 **char형 변수에 정수를 저장하든 그 정수에 아스키코드상에서 대입이 되는 문자를 저장하든 정확히 같은 행위라는 사실입니다.**
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">char</span> <span class="n">ch1</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch1</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch1</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
 
-추가로 한 가지를 더 확인을 해보겠습니다.
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-~~~ c
-# include <stdio.h>
+<p>실행결과</p>
 
-int main(void)
-{
-   char ch1 = 'A';
-   printf("%d\n", ch1 + 10);
-   printf("%c\n", ch1 + 10);
+<p>75</p>
 
-   return 0;
-}
-~~~
+<p>K</p>
 
-실행결과
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-75
+<p>char1+10의 출력결과는 75입니다. ‘A’에 해당하는 아스키 코드 65에 10을 더했기 때문입니다. char1+10을 %c(문자형태)로 출력하면 ‘K’가 나옵니다. 아스키코드 75는 문자 ‘K’이기 때문입니다.</p>
 
-K
+<p>그리고 문자를 표현할 때 char 자료형을 사용하는 이유는 모든 정수 자료형에 문자를 저장할 수 있지만 아스키코드는 0~127의 값 밖에 없기 때문에 char 자료형을 사용하여 모두 표현 가능하기 때문입니다.</p>
 
-계속하려면 아무 키나 누르십시오 . . .
-
-char1+10의 출력결과는 75입니다. 'A'에 해당하는 아스키 코드 65에 10을 더했기 때문입니다. char1+10을 %c(문자형태)로 출력하면 'K'가 나옵니다. 아스키코드 75는 문자 'K'이기 때문입니다.
-
-그리고 문자를 표현할 때 char 자료형을 사용하는 이유는 모든 정수 자료형에 문자를 저장할 수 있지만 아스키코드는 0~127의 값 밖에 없기 때문에 char 자료형을 사용하여 모두 표현 가능하기 때문입니다.
   </div>
   
   <div class="post">
@@ -10905,49 +10956,49 @@ char1+10의 출력결과는 75입니다. 'A'에 해당하는 아스키 코드 65
 
     <span class="post-date">28 Sep 2018</span>
 
-    printf()함수는 거의 모든 C코드에 들어갑니다.
+    <p>printf()함수는 거의 모든 C코드에 들어갑니다.</p>
 
-printf()함수는 모니터를 통해서 어떠한 문장을 출력해주는 함수입니다.
+<p>printf()함수는 모니터를 통해서 어떠한 문장을 출력해주는 함수입니다.</p>
 
-~~~ c
-#include <stdio.h>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+   <span class="kt">char</span> <span class="n">sex</span> <span class="o">=</span> <span class="sc">'M'</span><span class="p">;</span>
+   <span class="kt">char</span> <span class="n">say</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="s">"I will be a C language master</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
 
-int main(void)
-{
-   int age = 80;
-   char sex = 'M';
-   char say[100] = "I will be a C language master\n";
+   <span class="n">printf</span><span class="p">(</span><span class="s">"I love C language</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"my age is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">age</span><span class="p">);</span> <span class="c1">// %d는 정수 서식문자</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"my age is %d and sex is %c </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">);</span> <span class="c1">// %c는 문자 서식문자</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n\n\n</span><span class="s">"</span><span class="p">);</span> <span class="c1">//개행 3번</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">say</span><span class="p">);</span> <span class="c1">// %s는 문자열 서식문자</span>
 
-   printf("I love C language\n");
-   printf("my age is %d\n", age); // %d는 정수 서식문자
-   printf("my age is %d and sex is %c \n",age, sex); // %c는 문자 서식문자
-   printf("\n\n\n"); //개행 3번
-   printf("%s\n", say); // %s는 문자열 서식문자
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-   return 0;
-}
-~~~
+<p><br />
+실행결과</p>
 
-<br>
-실행결과
+<p>I love C language</p>
 
-I love C language
+<p>my age is 80</p>
 
-my age is 80
+<p>my age is 80 and sex is M</p>
 
-my age is 80 and sex is M
+<p>I will be a C language master</p>
 
-I will be a C language master
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p> </p>
 
-&nbsp;
+<p>위에서 알 수 있는건, <strong>printf() 함수는 “ “ 사이에 있는 문장을 출력해준다</strong>는 것입니다.</p>
 
-위에서 알 수 있는건, **printf() 함수는 " " 사이에 있는 문장을 출력해준다**는 것입니다.
+<p>그리고 %d와 %c를 <strong>서식 문자</strong>라고 하는데, 촐력을 할 때 출력이 되는 형태를 지정해주기 위해 씁니다. age는 정수이기 때문에 %d를 사용하고, M은 하나의 문자이기 때문에 %c를 사용했습니다. %s는 문자가 여러개인 문자열을 출력할 때 쓰는 서식문자입니다.</p>
 
-그리고 %d와 %c를 **서식 문자**라고 하는데, 촐력을 할 때 출력이 되는 형태를 지정해주기 위해 씁니다. age는 정수이기 때문에 %d를 사용하고, M은 하나의 문자이기 때문에 %c를 사용했습니다. %s는 문자가 여러개인 문자열을 출력할 때 쓰는 서식문자입니다.
+<p>\n은 <strong>개행</strong>을 의미합니다. 줄을 띄울 때 씁니다. \n을 넣지않고 출력하면 줄이 바뀌지 않고 바로 이어서 다음 문장이 오기때문에 \n을 써주어야 합니다.</p>
 
-\n은 **개행**을 의미합니다. 줄을 띄울 때 씁니다. \n을 넣지않고 출력하면 줄이 바뀌지 않고 바로 이어서 다음 문장이 오기때문에 \n을 써주어야 합니다.
   </div>
   
   <div class="post">
@@ -10959,103 +11010,98 @@ I will be a C language master
 
     <span class="post-date">28 Sep 2018</span>
 
-    # 1. 변수란?
+    <h1 id="1-변수란">1. 변수란?</h1>
 
-* * *
+<hr />
 
-변수(variable)가 무엇일까요? 변수는 여러분이 가지고있는 **이름**과 같습니다. 여러분의 실제적인 물리적 데이터(키, 피부색, 치아의 갯수, 심장의 크기 등등)는 여러분의 몸에 담겨 있어요. 그리고 우리는 그 물리적 데이터를 담고있는 여러분 자체에 이름을 붙여서 부릅니다.
+<p>변수(variable)가 무엇일까요? 변수는 여러분이 가지고있는 <strong>이름</strong>과 같습니다. 여러분의 실제적인 물리적 데이터(키, 피부색, 치아의 갯수, 심장의 크기 등등)는 여러분의 몸에 담겨 있어요. 그리고 우리는 그 물리적 데이터를 담고있는 여러분 자체에 이름을 붙여서 부릅니다.</p>
 
-컴퓨터도 같습니다. 실제적인 메모리 공간에 데이터를 담으며 이름을 붙입니다. 위에서 예로 든 상황에서는 [여러분의 이름 = 변수명, 여러분 자체 = 메모리공간, 여러분에 대한 물리적 정보 = 데이터] 입니다.
+<p>컴퓨터도 같습니다. 실제적인 메모리 공간에 데이터를 담으며 이름을 붙입니다. 위에서 예로 든 상황에서는 [여러분의 이름 = 변수명, 여러분 자체 = 메모리공간, 여러분에 대한 물리적 정보 = 데이터] 입니다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 변수의 선언과 초기화
+<h1 id="2-변수의-선언과-초기화">2. 변수의 선언과 초기화</h1>
 
-* * *
+<hr />
 
-~~~ c
-int a; //변수의 선언
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span><span class="p">;</span> <span class="c1">//변수의 선언</span>
 
-a = 10; //변수의 초기화
-~~~
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//변수의 초기화</span>
+</code></pre></div></div>
 
-위와 같이 변수의 선언을 하는 순간 컴파일러는 특정한 메모리 공간을 할당하고 거기에 a라는 이름을 붙입니다. 그리고 우리는 거기에 a라는 변수명을 붙였기 때문에 이후에는 a라는 문자를 써서 그 메모리 공간의 데이터에 접근할 수 있습니다. 그리고 a에 10을 대입했습니다. 만약 변수를 선언하고 초기화를 하기 전에 printf()함수를 써서 a를 출력해보면 의미가 없는 아무 숫자(쓰레기값)이 나옵니다.
+<p>위와 같이 변수의 선언을 하는 순간 컴파일러는 특정한 메모리 공간을 할당하고 거기에 a라는 이름을 붙입니다. 그리고 우리는 거기에 a라는 변수명을 붙였기 때문에 이후에는 a라는 문자를 써서 그 메모리 공간의 데이터에 접근할 수 있습니다. 그리고 a에 10을 대입했습니다. 만약 변수를 선언하고 초기화를 하기 전에 printf()함수를 써서 a를 출력해보면 의미가 없는 아무 숫자(쓰레기값)이 나옵니다.</p>
 
-&nbsp;
+<p> </p>
 
-아래와 같이 변수 선언과 동시에 초기화도 가능합니다.
+<p>아래와 같이 변수 선언과 동시에 초기화도 가능합니다.</p>
 
-~~~ c
-int a = 10;// 변수의 선언, 초기화
-~~~
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span><span class="c1">// 변수의 선언, 초기화</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-변수 명 앞의 int는 무엇일까요? int는 자료형(data type) 중의 하나입니다. 여기서 int는 4byte의 메모리 공간을 차지하여 정수를 표현할 수 있는 자료형이라는 것만 기억하시면 됩니다. 변수를 선언할 때는 자료형을 명시해 주어야 합니다. 그래야 컴파일러가 변수를 저장하기 위해 얼마만큼의 메모리 공간을 할당할 지 알 수 있기 때문입니다.
+<p>변수 명 앞의 int는 무엇일까요? int는 자료형(data type) 중의 하나입니다. 여기서 int는 4byte의 메모리 공간을 차지하여 정수를 표현할 수 있는 자료형이라는 것만 기억하시면 됩니다. 변수를 선언할 때는 자료형을 명시해 주어야 합니다. 그래야 컴파일러가 변수를 저장하기 위해 얼마만큼의 메모리 공간을 할당할 지 알 수 있기 때문입니다.</p>
 
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-   int a = 10; //변수 a를 선언하고 10으로 초기화  
-   int b = 20; //변수 b를 선언하고 20으로 초기화
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//변수 a를 선언하고 10으로 초기화  </span>
+   <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//변수 b를 선언하고 20으로 초기화</span>
    
-   printf("a = %d, b = %d\n",a,b);
+   <span class="n">printf</span><span class="p">(</span><span class="s">"a = %d, b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
    
-   a = 100; //a에 100을 대입  
-   b = 200; //b에 100을 대입
+   <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//a에 100을 대입  </span>
+   <span class="n">b</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span> <span class="c1">//b에 100을 대입</span>
    
-   printf("a = %d, b = %d\n",a,b);
+   <span class="n">printf</span><span class="p">(</span><span class="s">"a = %d, b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
    
-   return 0;
-}
-~~~
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-실행결과
+<p>실행결과</p>
 
-a = 10, b = 20
+<p>a = 10, b = 20</p>
 
+<p>a = 100, b = 200</p>
 
-a = 100, b = 200
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
 
+<p>위의 코드에서 우리는 int형 변수 a,b를 정의함과 동시에 각각 10,20의 데이터를 담았어요. 그리고 출력을 하면 a = 10, b = 20의 결과가 나옵니다.</p>
 
-계속하려면 아무 키나 누르십시오 . . .
+<p>그리고 이제는 변수명 a,b를 사용해서 a,b라는 변수에 100,200을 대입해요. 그리고 출력을 해보면 a = 100, b = 200의 결과가 나옵니다.</p>
 
-위의 코드에서 우리는 int형 변수 a,b를 정의함과 동시에 각각 10,20의 데이터를 담았어요. 그리고 출력을 하면 a = 10, b = 20의 결과가 나옵니다.
+<p>변수를 한번 선언하고 나면 자료형 없이 변수명만을 이용해서 데이터를 다룰 수 있다는 겁니다.</p>
 
-그리고 이제는 변수명 a,b를 사용해서 a,b라는 변수에 100,200을 대입해요. 그리고 출력을 해보면 a = 100, b = 200의 결과가 나옵니다.
+<p>그리고 <strong>printf()함수를 사용하여 모니터를 통해 출력을 할 수 있다</strong> 라는 정도만 알아두셔도 무방합니다!</p>
 
-변수를 한번 선언하고 나면 자료형 없이 변수명만을 이용해서 데이터를 다룰 수 있다는 겁니다.
+<p>정리를 해볼까요?</p>
 
-그리고 **printf()함수를 사용하여 모니터를 통해 출력을 할 수 있다** 라는 정도만 알아두셔도 무방합니다!
+<p>변수란 어떠한 물리적 데이터를 담을 수 있는 <strong>메모리공간에 붙이는 이름</strong>이다. 그리고 변수를 선언할 때에는 필히 그 변수의 <strong>자료형을 명시</strong>해주어야한다. 그래야지 컴파일러가 해석을 하며 얼만큼의 메모리 크기를 할당할지 알 수 있기 때문이다. 그리고 이후에는 우리는 변수명을 사용하여 데이터를 다룰 수 있다.</p>
 
-정리를 해볼까요?
+<p> </p>
 
-변수란 어떠한 물리적 데이터를 담을 수 있는 **메모리공간에 붙이는 이름**이다. 그리고 변수를 선언할 때에는 필히 그 변수의 **자료형을 명시**해주어야한다. 그래야지 컴파일러가 해석을 하며 얼만큼의 메모리 크기를 할당할지 알 수 있기 때문이다. 그리고 이후에는 우리는 변수명을 사용하여 데이터를 다룰 수 있다.
+<p>주의해야할 건, 변수의 선언은 항상 함수 내에서 가장 먼저 해 주는게 좋습니다.</p>
 
-&nbsp;
-
-주의해야할 건, 변수의 선언은 항상 함수 내에서 가장 먼저 해 주는게 좋습니다.
-
-~~~ c
-#include <stdio.h>
-
-int main(void)
-{
-   int a = 10; //변수 a 선언과 동시에 10으로 초기화
-   a = 100; //a에 100 대입
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//변수 a 선언과 동시에 10으로 초기화</span>
+   <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//a에 100 대입</span>
    
-   int b = 20;// 변수 b 선언
-   return 0;
-}
-~~~
+   <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span><span class="c1">// 변수 b 선언</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-이 코드는 실행을 시키면 오류가 날 수도 있고 아닐 수도 있습니다. 컴파일러에 따라 변수의 선언이 무조건 함수 내에서 가장 먼저 와야되는 컴파일러도 있고 아닌 컴파일러도 있습니다. 사실 현재의 ANSI 표준은 변수의 선언이 가장 먼저 앞에 오지 않아도 됩니다. 하지만 일반적으로 변수의 선언은 함수의 시작부분에서 해주는 게 맞습니다.
+<p>이 코드는 실행을 시키면 오류가 날 수도 있고 아닐 수도 있습니다. 컴파일러에 따라 변수의 선언이 무조건 함수 내에서 가장 먼저 와야되는 컴파일러도 있고 아닌 컴파일러도 있습니다. 사실 현재의 ANSI 표준은 변수의 선언이 가장 먼저 앞에 오지 않아도 됩니다. 하지만 일반적으로 변수의 선언은 함수의 시작부분에서 해주는 게 맞습니다.</p>
+
   </div>
   
   <div class="post">
@@ -11067,100 +11113,102 @@ int main(void)
 
     <span class="post-date">27 Sep 2018</span>
 
-    &nbsp;
+    <p> </p>
 
-~~~ c
-#include <stdio.h>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"hello, world!"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-int main(void)
-{
-	printf("hello, world!");
-}
-~~~
+<p>이 코드에는 C언어의 핵심적인 내용이 대부분 포함되었습니다. 이 코드를 이해하기 위해 하나하나 살펴보겠습니다.</p>
 
-이 코드에는 C언어의 핵심적인 내용이 대부분 포함되었습니다. 이 코드를 이해하기 위해 하나하나 살펴보겠습니다.
+<p> </p>
+<h1 id="1-헤더파일">1. 헤더파일</h1>
+<hr />
 
-&nbsp;
-# 1. 헤더파일
-***
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt; // 표준 입출력 헤더파일
+</span></code></pre></div></div>
 
-~~~ c
-#include <stdio.h> // 표준 입출력 헤더파일
-~~~
+<p> 
+기본적으로 우리는 C언어 코딩을 할 때 무조건! 가장 첫 번째로 <code class="highlighter-rouge">#include &lt;stdio.h&gt;</code>를 추가하고 시작합니다. 이 부분이 어떤 의미를 가질까요?</p>
 
-&nbsp;
-기본적으로 우리는 C언어 코딩을 할 때 무조건! 가장 첫 번째로 `#include <stdio.h>`를 추가하고 시작합니다. 이 부분이 어떤 의미를 가질까요?
+<p>#은 매크로 기호로써 나중에 자세히 다루게 될테니, 지금은 include 앞에는 무조건 #이 와야한다는 정도만 알면 충분합니다. <code class="highlighter-rouge">#include</code>는 ~를 포함해라 라는 명령어입니다. 그렇다면 <code class="highlighter-rouge">#include &lt;stdio.h&gt;</code>는 <u>"stdio.h"라는 헤더파일을 포함해라</u> 라는 뜻입니다.</p>
 
-#은 매크로 기호로써 나중에 자세히 다루게 될테니, 지금은 include 앞에는 무조건 #이 와야한다는 정도만 알면 충분합니다. `#include`는 ~를 포함해라 라는 명령어입니다. 그렇다면 `#include <stdio.h>`는 <u>"stdio.h"라는 헤더파일을 포함해라</u> 라는 뜻입니다.
+<p>시작부분의 소스코드에 있는 <code class="highlighter-rouge">printf()</code> 함수는 우리가 모니터에 어떠한 문장을 출력할 때 쓰는 함수이며 문자열을 출력해주는 역할을 합니다. 하지만 우리는 그렇게 되도록 만든적이 없습니다. <code class="highlighter-rouge">#include &lt;stdio.h&gt;</code> 코드를 통해서 추가된 “stdio.h” 파일에 printf()함수를 정의했기 때문에 그냥 사용 가능합니다. 자주 사용되는 것들을 미리 만들어 둔 파일들을 라이브러리라고 합니다. stdio.h 파일은 C언어가 기본적으로 제공하는 표준 입출력(standard input output) 라이브러리입니다.</p>
 
-시작부분의 소스코드에 있는 `printf()` 함수는 우리가 모니터에 어떠한 문장을 출력할 때 쓰는 함수이며 문자열을 출력해주는 역할을 합니다. 하지만 우리는 그렇게 되도록 만든적이 없습니다. `#include <stdio.h>` 코드를 통해서 추가된 "stdio.h" 파일에 printf()함수를 정의했기 때문에 그냥 사용 가능합니다. 자주 사용되는 것들을 미리 만들어 둔 파일들을 라이브러리라고 합니다. stdio.h 파일은 C언어가 기본적으로 제공하는 표준 입출력(standard input output) 라이브러리입니다.
+<p><code class="highlighter-rouge">#include &lt;stdio.h&gt;</code> 코드로 인해 컴파일러는 자동으로 stdio.h에 있는 내용들을 가지고 와서 작성중인 파일에 포함시킵니다. 즉, stdio.h에 있는 코드를 복사하여 붙여놓는 것과 동일한 겁니다.</p>
 
-`#include <stdio.h>` 코드로 인해 컴파일러는 자동으로 stdio.h에 있는 내용들을 가지고 와서 작성중인 파일에 포함시킵니다. 즉, stdio.h에 있는 코드를 복사하여 붙여놓는 것과 동일한 겁니다.
+<p> </p>
+<h1 id="2-함수">2. 함수</h1>
 
-&nbsp;
-# 2. 함수
+<hr />
 
-***
+<p>C언어는 함수들로 이루어져 있습니다. 가장 기본이 되는 main함수 역시 하나의 함수입니다. 함수란 간단하게 <strong>어떠한 일을 해주는 것</strong> 정도가 되겠습니다. 먼저, 함수의 기본 형태를 봅시다.</p>
 
-C언어는 함수들로 이루어져 있습니다. 가장 기본이 되는 main함수 역시 하나의 함수입니다. 함수란 간단하게 **어떠한 일을 해주는 것** 정도가 되겠습니다. 먼저, 함수의 기본 형태를 봅시다.
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
 
-~~~ c
-int add(int a, int b)
-{
-   int c = a+b;
+   <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-   return c;
-}
-~~~
+<p> </p>
 
-&nbsp;
+<ul>
+  <li><strong>반환형</strong></li>
+</ul>
 
-+ **반환형**
+<p>add 함수는 호출이 되면 최종적으로 c를 돌려줍니다. c를 내어놓는단 겁니다. 함수가 어떠한 값을 반환해야 할 때 return 이라는 명령어를 사용합니다.</p>
 
-add 함수는 호출이 되면 최종적으로 c를 돌려줍니다. c를 내어놓는단 겁니다. 함수가 어떠한 값을 반환해야 할 때 return 이라는 명령어를 사용합니다.
+<p> </p>
+<ul>
+  <li><strong>전달인자</strong></li>
+</ul>
 
-&nbsp;
-+ **전달인자**
+<p>함수가 전달받는 것 입니다. 함수는 외부에서 선언된 변수, 배열등의 자료를 전달인자를 통해 전달받아 함수 내에서 사용할 수 있습니다.</p>
 
-함수가 전달받는 것 입니다. 함수는 외부에서 선언된 변수, 배열등의 자료를 전달인자를 통해 전달받아 함수 내에서 사용할 수 있습니다.
+<p> </p>
+<ul>
+  <li><strong>몸체</strong></li>
+</ul>
 
-&nbsp;
-+ **몸체**
+<p>함수가 실행시킬 내용으로 { }에 둘려싸여 있습니다. 위의 함수는 c라는 새로운 변수를 선언하고, a와 b의 합을 거기에 저장하는 과정을 거칩니다. 최종적으로 return 명령어를 통해 함수를 호출한 곳으로 c를 반환시켜줍니다.</p>
 
-함수가 실행시킬 내용으로 { }에 둘려싸여 있습니다. 위의 함수는 c라는 새로운 변수를 선언하고, a와 b의 합을 거기에 저장하는 과정을 거칩니다. 최종적으로 return 명령어를 통해 함수를 호출한 곳으로 c를 반환시켜줍니다.
+<p> 
+함수에 대해서는 나중 함수 파트에서 자세히 다룰테니 이렇게 쓰는거구나 감 정도만 잡으면 충분합니다.</p>
 
-&nbsp;
-함수에 대해서는 나중 함수 파트에서 자세히 다룰테니 이렇게 쓰는거구나 감 정도만 잡으면 충분합니다.
+<h1 id="3-main-함수">3. main 함수</h1>
+<hr />
 
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">//메인함수</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"I love C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="c1">//모니터 출력함수</span>
 
-# 3. main 함수
-***
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 리턴문</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-~~~ c
-int main(void) //메인함수
-{
-   printf("I love C\n"); //모니터 출력함수
+<p> 
+C로 작성된 프로그램이 실행되면, 운영체제는 main() 함수를 찾아서 코드를 한줄 한줄 차례대로 실행시킵니다. 즉, 우리가 C프로그램을 실행한다는건, main()함수 내부의 문장들을 실행시키는 것입니다. 즉, 모든 C 프로그램은 main() 함수를 가지고 있어야합니다. C코드는 이러한 main()함수에 부가적으로 필요한 함수들을 main() 함수 외부에 정의하고 가져다 쓰는 구조인 것입니다.</p>
 
-   return 0; // 리턴문
-}
-~~~
+<p>main 함수는 항상 마지막으로 return 0; 라는 문장을 가집니다. main함수를 종료한다는 것은 프로그램의 종료이며, main함수는 0을 운영체제로 반환시켜 줌으로써 프로그램의 종료를 알립니다.</p>
 
-&nbsp;
-C로 작성된 프로그램이 실행되면, 운영체제는 main() 함수를 찾아서 코드를 한줄 한줄 차례대로 실행시킵니다. 즉, 우리가 C프로그램을 실행한다는건, main()함수 내부의 문장들을 실행시키는 것입니다. 즉, 모든 C 프로그램은 main() 함수를 가지고 있어야합니다. C코드는 이러한 main()함수에 부가적으로 필요한 함수들을 main() 함수 외부에 정의하고 가져다 쓰는 구조인 것입니다.
+<p> </p>
+<h1 id="4-명령의-끝을-알리는-세미콜론">4. 명령의 끝을 알리는 세미콜론(;)</h1>
+<hr />
 
-main 함수는 항상 마지막으로 return 0; 라는 문장을 가집니다. main함수를 종료한다는 것은 프로그램의 종료이며, main함수는 0을 운영체제로 반환시켜 줌으로써 프로그램의 종료를 알립니다.
+<p>추가로 모든 문장의 끝에 세미콜론(;)이 보이시죠? 세미콜론은 여기서 문장이 끝났음을 알리는 용도입니다. 문장간의 구분을 위해 사용해야하는 빼먹지 말아야 할 기호입니다.</p>
 
-&nbsp;
-# 4. 명령의 끝을 알리는 세미콜론(;)
-***
+<p> </p>
+<h1 id="5-주석">5. 주석</h1>
+<hr />
 
-추가로 모든 문장의 끝에 세미콜론(;)이 보이시죠? 세미콜론은 여기서 문장이 끝났음을 알리는 용도입니다. 문장간의 구분을 위해 사용해야하는 빼먹지 말아야 할 기호입니다.
+<p>소스코드의 옆에 제가 // 와 함께 설명 해 놓은 부분이 주석입니다. //를 쓴 이후의 문장은 컴파일러가 무시를 합니다. 주석은 스스로 나중에 코드를 보면서 기억하기위한 목적과 타인이 코드를 이해할 수 있도록 도움을 주는 목적으로 사용합니다.</p>
 
-&nbsp;
-# 5. 주석
-***
-
-소스코드의 옆에 제가 // 와 함께 설명 해 놓은 부분이 주석입니다. //를 쓴 이후의 문장은 컴파일러가 무시를 합니다. 주석은 스스로 나중에 코드를 보면서 기억하기위한 목적과 타인이 코드를 이해할 수 있도록 도움을 주는 목적으로 사용합니다.
   </div>
   
 </div>

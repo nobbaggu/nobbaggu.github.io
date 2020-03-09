@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,41 +10682,42 @@
 
     <span class="post-date">12 Sep 2018</span>
 
-    Online Learning 은 실시간으로 흘러들어오는 데이터로 알고리즘을 학습시킬 경우에 사용하는 방법이다.
+    <p>Online Learning 은 실시간으로 흘러들어오는 데이터로 알고리즘을 학습시킬 경우에 사용하는 방법이다.</p>
 
-웹사이트는 방문자들의 행동에 관한 데이터로 그들의 알고리즘을 학습시킨다. 구글, 아마존과 같은 대형 웹사이트는 실시간으로 계속해서 방문자가 찾아온다. 데이터가 계속해서 흘러 들어오는 것이다. 이러한 continuous flow of data를 어떻게 처리하고 알고리즘을 학습시키는지가 지금 알아볼 내용이다.
+<p>웹사이트는 방문자들의 행동에 관한 데이터로 그들의 알고리즘을 학습시킨다. 구글, 아마존과 같은 대형 웹사이트는 실시간으로 계속해서 방문자가 찾아온다. 데이터가 계속해서 흘러 들어오는 것이다. 이러한 continuous flow of data를 어떻게 처리하고 알고리즘을 학습시키는지가 지금 알아볼 내용이다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. Online Learning
+<h1 id="1-online-learning">1. Online Learning</h1>
 
-* * *
+<hr />
 
-택배사 홈페이지를 예로 들어보자. 그들이 출발지, 도착지, 금액이 feature이고 그들이 서비스를 이용하는지(y=1) 않는지(y=0)이 결과이다.
+<p>택배사 홈페이지를 예로 들어보자. 그들이 출발지, 도착지, 금액이 feature이고 그들이 서비스를 이용하는지(y=1) 않는지(y=0)이 결과이다.</p>
 
-그럼 머신러닝 알고리즘에 계속 들어오는 data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x,y)" alt="\dpi{120} (x,y)" align="absmiddle" />이다. 그리고 parameter는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />이다.
+<p>그럼 머신러닝 알고리즘에 계속 들어오는 data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x,y)" alt="\dpi{120} (x,y)" align="absmiddle" />이다. 그리고 parameter는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />이다.</p>
 
-data <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x,y)" alt="\dpi{120} (x,y)" align="absmiddle" />가 들어오는 족족 그 data를 가지고 parameter <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 학습시키는 것이다.
+<p>data <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x,y)" alt="\dpi{120} (x,y)" align="absmiddle" />가 들어오는 족족 그 data를 가지고 parameter <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 학습시키는 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{j}:=\theta_{j}-\alpha(h_{\theta}(x)-y)x_{j}" alt="\dpi{120} \theta_{j}:=\theta_{j}-\alpha(h_{\theta}(x)-y)x_{j}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{j}:=\theta_{j}-\alpha(h_{\theta}(x)-y)x_{j}" alt="\dpi{120} \theta_{j}:=\theta_{j}-\alpha(h_{\theta}(x)-y)x_{j}" align="absmiddle" /></p>
 
-우리가 원하는 model은 출발지, 도착지에 따른 금액 조건에서 서비스를 이용할 확률<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(y=1|x;\theta)" alt="\dpi{120} p(y=1|x;\theta)" align="absmiddle" />  이다.
+<p>우리가 원하는 model은 출발지, 도착지에 따른 금액 조건에서 서비스를 이용할 확률<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(y=1|x;\theta)" alt="\dpi{120} p(y=1|x;\theta)" align="absmiddle" />  이다.</p>
 
-한가지 더, 이렇게 한 번 학습에 쓰여진 데이터는 버리고 다시 사용하지 않는다.
+<p>한가지 더, 이렇게 한 번 학습에 쓰여진 데이터는 버리고 다시 사용하지 않는다.</p>
 
-그냥 몇만명 정도의 데이터로만 학습을 시키고 그 parameter를 계속 사용해도 되지 않을까? 하는 궁금증이 생길 수도 있다. 하지만 경제상황 등의 상황에 따라 계속 parameter는 달라질 수 밖에 없기 때문에 이런 online learning 알고리즘이 필요한 것이다.
+<p>그냥 몇만명 정도의 데이터로만 학습을 시키고 그 parameter를 계속 사용해도 되지 않을까? 하는 궁금증이 생길 수도 있다. 하지만 경제상황 등의 상황에 따라 계속 parameter는 달라질 수 밖에 없기 때문에 이런 online learning 알고리즘이 필요한 것이다.</p>
 
-위에서 말한 내용으로 알 수 있는 online learning 알고리즘의 특성이 있다. 바로 변화하는 user preferences에 적응 가능 하다는 것이다. 알고리즘이 스스로 최근의 변화 trend를 따라간다.
+<p>위에서 말한 내용으로 알 수 있는 online learning 알고리즘의 특성이 있다. 바로 변화하는 user preferences에 적응 가능 하다는 것이다. 알고리즘이 스스로 최근의 변화 trend를 따라간다.</p>
 
-&nbsp;
+<p> </p>
 
-언뜻 보면 stochastic gradient descent와 비슷하다. 하지만 stochastic gradient descent 알고리즘은 가지고 있는 데이터를 하나씩 사용해서 학습시키는 알고리즘인 반면, online learning 알고리즘은 실시간으로 흘러 들어오는 데이터를 가지고 학습시키는 경우 사용한다.
+<p>언뜻 보면 stochastic gradient descent와 비슷하다. 하지만 stochastic gradient descent 알고리즘은 가지고 있는 데이터를 하나씩 사용해서 학습시키는 알고리즘인 반면, online learning 알고리즘은 실시간으로 흘러 들어오는 데이터를 가지고 학습시키는 경우 사용한다.</p>
 
-위에서도 말했듯이 데이터와 결과의 패턴, 트렌드가 변하는 경우에도 적응이 가능하여 이러한 변화들이 반영이 되어야하는 모델에 사용한다.
+<p>위에서도 말했듯이 데이터와 결과의 패턴, 트렌드가 변하는 경우에도 적응이 가능하여 이러한 변화들이 반영이 되어야하는 모델에 사용한다.</p>
 
-&nbsp;
+<p> </p>
+
   </div>
   
   <div class="post">
@@ -10752,67 +10729,68 @@ data <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x,y)" alt=
 
     <span class="post-date">11 Sep 2018</span>
 
-    Stochastic Gradient Descent 는 large dataset을 학습시킬 때 쓸 수 있는 방법이다.
+    <p>Stochastic Gradient Descent 는 large dataset을 학습시킬 때 쓸 수 있는 방법이다.</p>
 
-학습 데이터가 100,000,000개 있다고 해보자.
+<p>학습 데이터가 100,000,000개 있다고 해보자.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\theta)&space;=&space;\frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\theta) = \frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\theta)&space;=&space;\frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\theta) = \frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" align="absmiddle" /></p>
 
-cost function이 위와 같을 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />의 update식은 다음과 같다.
+<p>cost function이 위와 같을 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />의 update식은 다음과 같다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}" alt="\\for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial J }{ \partial { \theta }_{ j } } ={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}" alt="\\for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial J }{ \partial { \theta }_{ j } } ={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \}" align="absmiddle" /></p>
 
-m = 100,000,000에 대한 sum을 계산해야 한다. 심지어 이것이 한 번의 step이다. 이 작업을 cost function이 수렴할 때 까지 하려면 메모리의 부담이 너무 크고 작업속도도 엄청 느릴 것이다.
+<p>m = 100,000,000에 대한 sum을 계산해야 한다. 심지어 이것이 한 번의 step이다. 이 작업을 cost function이 수렴할 때 까지 하려면 메모리의 부담이 너무 크고 작업속도도 엄청 느릴 것이다.</p>
 
-이 때 우리가 시도할 수 있는 방법 중 하나인 stochastic gradient descent이다.
+<p>이 때 우리가 시도할 수 있는 방법 중 하나인 stochastic gradient descent이다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. Stochastic Gradient Descent
+<h1 id="1-stochastic-gradient-descent">1. Stochastic Gradient Descent</h1>
 
-* * *
+<hr />
 
-우리가 지금까지 알던 Gradient Descent 는 다른 말로 Batch Gradient Descent 라고도 부른다. Batch는 여기서 데이터전체 다발을 의미한다. 이 Batch Gradient Descent 에서의 cost function과 update식을 다시 한 번 짚고 넘어가보자.
+<p>우리가 지금까지 알던 Gradient Descent 는 다른 말로 Batch Gradient Descent 라고도 부른다. Batch는 여기서 데이터전체 다발을 의미한다. 이 Batch Gradient Descent 에서의 cost function과 update식을 다시 한 번 짚고 넘어가보자.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\theta)&space;=&space;\frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\theta) = \frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\theta)&space;=&space;\frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\theta) = \frac{1}{2m}\sum_{i=1}^{m}[h_{\theta}(x^{(i)})-y^{(i)}]^{2}" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}" alt="\\for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial J }{ \partial { \theta }_{ j } } ={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;j&space;}&space;}&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}" alt="\\for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\alpha \frac { \partial J }{ \partial { \theta }_{ j } } ={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-Stochastic Gradient Descent 는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />  update 식에서 전체 data batch의 cost function의 미분의 평균이 아닌 data 하나의 cost의 미분만 사용하는 것이다.
+<p>Stochastic Gradient Descent 는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />  update 식에서 전체 data batch의 cost function의 미분의 평균이 아닌 data 하나의 cost의 미분만 사용하는 것이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;i=1:m&space;\\&space;\left&space;\{&space;for\quad&space;j=1:n&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}&space;\right&space;\}" alt="\\for\quad i=1:m \\ \left \{ for\quad j=1:n \left \{ { \theta }_{ j }: ={ \theta }_{ j }-\frac { \alpha }{ m } { { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \} \right \}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\\for\quad&space;i=1:m&space;\\&space;\left&space;\{&space;for\quad&space;j=1:n&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:&space;={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}&space;\right&space;\}" alt="\\for\quad i=1:m \\ \left \{ for\quad j=1:n \left \{ { \theta }_{ j }: ={ \theta }_{ j }-\frac { \alpha }{ m } { { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \} \right \}" align="absmiddle" /></p>
 
-n개의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 data 하나를 이용해서 update한다. 이 과정을 m개의 data에 대해서 update 하는 것이다.
+<p>n개의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 data 하나를 이용해서 update한다. 이 과정을 m개의 data에 대해서 update 하는 것이다.</p>
 
-Batch Gradient Descent 는 m개의 dataset을 사용하여 평균을 내어 한 번 update를 한다.
+<p>Batch Gradient Descent 는 m개의 dataset을 사용하여 평균을 내어 한 번 update를 한다.</p>
 
-Stochastic Gradient Descent는 각각의 data마다 cost를 미분하여 update를 m번 한다.
+<p>Stochastic Gradient Descent는 각각의 data마다 cost를 미분하여 update를 m번 한다.</p>
 
-직관적으로 global minimum으로의 방향의 정확도는 BGD가, speed는 SGD가 더 높을 것이라고 생각된다.
+<p>직관적으로 global minimum으로의 방향의 정확도는 BGD가, speed는 SGD가 더 높을 것이라고 생각된다.</p>
 
-<img class="aligncenter wp-image-730" src="/images/2018/09/no-name-5.png" alt="" width="373" height="195" srcset="/images/2018/09/no-name-5.png 575w, /images/2018/09/no-name-5-300x157.png 300w" sizes="(max-width: 373px) 100vw, 373px" /> 
+<p><img class="aligncenter wp-image-730" src="/images/2018/09/no-name-5.png" alt="" width="373" height="195" srcset="/images/2018/09/no-name-5.png 575w, /images/2018/09/no-name-5-300x157.png 300w" sizes="(max-width: 373px) 100vw, 373px" /></p>
 
-Stochastic Gradient Descent의 특징은 Global minimum으로 수렴하는 것이 아니라 주변을 맴돈다. 아무래도 하나의 데이터만 이용해서 update하다보니 움직임이 가볍고 정확한 global minimum으로 향하지는 못한다. 하지만 learning rate <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\alpha" alt="\dpi{120} \alpha" align="absmiddle" />를 작게 할 수록 수렴하는 것에 가깝게는 만들 수 있다.
+<p>Stochastic Gradient Descent의 특징은 Global minimum으로 수렴하는 것이 아니라 주변을 맴돈다. 아무래도 하나의 데이터만 이용해서 update하다보니 움직임이 가볍고 정확한 global minimum으로 향하지는 못한다. 하지만 learning rate <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\alpha" alt="\dpi{120} \alpha" align="absmiddle" />를 작게 할 수록 수렴하는 것에 가깝게는 만들 수 있다.</p>
 
-Stochastic Gradient Descent 알고리즘은 m개의 data에 대해 parameter를 update하는 이 행위를 보통 1번이면 위의 그림과 같이 수렴한다. Batch Gradient Descent 알고리즘은 m개의 data에 대한 cost function의 미분의 평균을 한 번 update 한 것이 위의 화살표 한 번의 step이다. Stochastic Gradient Descent 는 Batch Gradient Descent 보다 학습 속도가 빠르고 우리가 large dataset에 대해 Stochastic Gradient Descent 알고리즘을 사용하는 이유이다.
+<p>Stochastic Gradient Descent 알고리즘은 m개의 data에 대해 parameter를 update하는 이 행위를 보통 1번이면 위의 그림과 같이 수렴한다. Batch Gradient Descent 알고리즘은 m개의 data에 대한 cost function의 미분의 평균을 한 번 update 한 것이 위의 화살표 한 번의 step이다. Stochastic Gradient Descent 는 Batch Gradient Descent 보다 학습 속도가 빠르고 우리가 large dataset에 대해 Stochastic Gradient Descent 알고리즘을 사용하는 이유이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. Mini-Batch Gradient Descent
+<h1 id="2-mini-batch-gradient-descent">2. Mini-Batch Gradient Descent</h1>
 
-* * *
+<hr />
 
-Mini-Batch Gradient Descent도 Stochastic Gradient Descent 와 마찬가지로 컴퓨터 메모리의 계산부담을 줄이고 학습속도를 향상시키기 위한 알고리즘으로, 위에서 말한 Stochastic Gradient Descent와 원리가 같다. 다만 parameter를 update 하기위해 data를 1개는 아니고 가령 10개, 혹은 b(<m)개를 사용하는 것이다. b는 batch size이다. 가령 10개의 data를 사용한다고 하면 알고리즘은 다음과 같다.
+<p>Mini-Batch Gradient Descent도 Stochastic Gradient Descent 와 마찬가지로 컴퓨터 메모리의 계산부담을 줄이고 학습속도를 향상시키기 위한 알고리즘으로, 위에서 말한 Stochastic Gradient Descent와 원리가 같다. 다만 parameter를 update 하기위해 data를 1개는 아니고 가령 10개, 혹은 b(&lt;m)개를 사용하는 것이다. b는 batch size이다. 가령 10개의 data를 사용한다고 하면 알고리즘은 다음과 같다.</p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?\\for&space;\quad&space;k=1,11,21,...\\&space;\left&space;\{&space;for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=k}^{&space;k+9&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}&space;\right&space;\}" alt="\\for \quad k=1,11,21,...\\ \left \{ for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=k}^{ k+9 }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \} \right \}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\\for&space;\quad&space;k=1,11,21,...\\&space;\left&space;\{&space;for\quad&space;j=1:n&space;\\&space;\left&space;\{&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=k}^{&space;k+9&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;\right&space;\}&space;\right&space;\}" alt="\\for \quad k=1,11,21,...\\ \left \{ for\quad j=1:n \\ \left \{ { \theta }_{ j }:={ \theta }_{ j }-\frac { \alpha }{ m } \sum _{ i=k}^{ k+9 }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) } \right \} \right \}" align="absmiddle" /></p>
 
-이 알고리즘은 stochastic gradient descent보다도 학습속도에서 더 좋은 성능을 낼 수도 있다.
+<p>이 알고리즘은 stochastic gradient descent보다도 학습속도에서 더 좋은 성능을 낼 수도 있다.</p>
+
   </div>
   
   <div class="post">
@@ -10824,117 +10802,120 @@ Mini-Batch Gradient Descent도 Stochastic Gradient Descent 와 마찬가지로 �
 
     <span class="post-date">07 Sep 2018</span>
 
-    Recommender System은 머신러닝 알고리즘의 적용이 가장 활발한 분야들 중 하나이다. 어떠한 사용자의 시청기록, 평점부여 기록을 토대로 그 사람에게 관련영화를 추천해 주는 시스템이 있다.
+    <p>Recommender System은 머신러닝 알고리즘의 적용이 가장 활발한 분야들 중 하나이다. 어떠한 사용자의 시청기록, 평점부여 기록을 토대로 그 사람에게 관련영화를 추천해 주는 시스템이 있다.</p>
 
-<img class="aligncenter wp-image-706" src="/images/2018/09/no-name-4.png" alt="" width="488" height="206" srcset="/images/2018/09/no-name-4.png 663w, /images/2018/09/no-name-4-300x127.png 300w" sizes="(max-width: 488px) 100vw, 488px" /> 
+<p><img class="aligncenter wp-image-706" src="/images/2018/09/no-name-4.png" alt="" width="488" height="206" srcset="/images/2018/09/no-name-4.png 663w, /images/2018/09/no-name-4-300x127.png 300w" sizes="(max-width: 488px) 100vw, 488px" /></p>
 
-방법 하나는 각 영화마다 로맨스정도, 액션정도, 코믹 정도등을 feature로 정량화 시키는 것이다.
+<p>방법 하나는 각 영화마다 로맨스정도, 액션정도, 코믹 정도등을 feature로 정량화 시키는 것이다.</p>
 
-각 user마다 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta_{1},\theta_{2})" alt="\dpi{120} (\theta_{1},\theta_{2})" align="absmiddle" />의 parameter가 있다고 하면 아직 그 user가 rating하지 않은 영화에 대해서도 feature vector를 곱하여 추측할 수 있다. user2의 parameter vector가 (4,10)이라고 하면 이 유저의 movie2에 대한 예상되는 평점은 3.8점이다.
+<p>각 user마다 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta_{1},\theta_{2})" alt="\dpi{120} (\theta_{1},\theta_{2})" align="absmiddle" />의 parameter가 있다고 하면 아직 그 user가 rating하지 않은 영화에 대해서도 feature vector를 곱하여 추측할 수 있다. user2의 parameter vector가 (4,10)이라고 하면 이 유저의 movie2에 대한 예상되는 평점은 3.8점이다.</p>
 
-이를 좀 일반적으로 정리해보겠다.
+<p>이를 좀 일반적으로 정리해보겠다.</p>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><strong>1. Problem formulation</strong></span>
+<h1 id="1-problem-formulation"><span style="font-size: 18pt;"><strong>1. Problem formulation</strong></span></h1>
 
-* * *
+<hr />
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n_{u}=" alt="\dpi{120} n_{u}=" align="absmiddle" /> user(사용자) 수
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n_{u}=" alt="\dpi{120} n_{u}=" align="absmiddle" /> user(사용자) 수</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n_{m}=" alt="\dpi{120} n_{m}=" align="absmiddle" /> movie(영화) 수
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n_{m}=" alt="\dpi{120} n_{m}=" align="absmiddle" /> movie(영화) 수</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;r(i,j)=" alt="\dpi{120} r(i,j)=" align="absmiddle" /> user<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /> 가 movie<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />  에 rate(평가)를 했으면 1 아니면 0
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;r(i,j)=" alt="\dpi{120} r(i,j)=" align="absmiddle" /> user<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /> 가 movie<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />  에 rate(평가)를 했으면 1 아니면 0</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;y(i,j)=" alt="\dpi{120} y(i,j)=" align="absmiddle" /> user<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /> 가 movie<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />  에 매긴 rating(평점)       <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;r(i,j)=1" alt="\dpi{120} r(i,j)=1" align="absmiddle" />인 경우만 정의
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;y(i,j)=" alt="\dpi{120} y(i,j)=" align="absmiddle" /> user<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /> 가 movie<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />  에 매긴 rating(평점)       <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;r(i,j)=1" alt="\dpi{120} r(i,j)=1" align="absmiddle" />인 경우만 정의</p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta&{(j)}=" alt="\dpi{120} \theta&{(j)}=" align="absmiddle" />  parameter vector for user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" />
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta&amp;{(j)}=" alt="\dpi{120} \theta&amp;{(j)}=" align="absmiddle" />  parameter vector for user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}=" alt="\dpi{120} x^{(i)}=" align="absmiddle" />  feature vector for user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}=" alt="\dpi{120} x^{(i)}=" align="absmiddle" />  feature vector for user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" /></p>
 
-prediction =<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta^{(j)})^T&space;x^{(i)}" alt="\dpi{120} (\theta^{(j)})^T x^{(i)}" align="absmiddle" /> 
+<p>prediction =<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta^{(j)})^T&space;x^{(i)}" alt="\dpi{120} (\theta^{(j)})^T x^{(i)}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" />의 parameter를 optimize 한다고 할 때 결국 우리의 목표는 다음의 cost function을 최소화 시키는 것이다.
+<p>user <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;j" alt="\dpi{120} j" align="absmiddle" />의 parameter를 optimize 한다고 할 때 결국 우리의 목표는 다음의 cost function을 최소화 시키는 것이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta^{(j)})=\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^{(T)}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(\theta^{(j)})=\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^{(T)}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta^{(j)})=\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^{(T)}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(\theta^{(j)})=\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^{(T)}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
 
-앞서 linear regression에서 배운 gradient descent나 matlab, octave, python 등에서 제공하는 라이브러리의 optimization function을 사용해도 된다.
+<p>앞서 linear regression에서 배운 gradient descent나 matlab, octave, python 등에서 제공하는 라이브러리의 optimization function을 사용해도 된다.</p>
 
-좀 더 범위를 넓혀 모든 사용자들의 cost function을 계산하는 것이 일반적이다.
+<p>좀 더 범위를 넓혀 모든 사용자들의 cost function을 계산하는 것이 일반적이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=\frac{1}{2}\sum_{j=1}^{n_{u}}\sum_{i:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(\theta)=\frac{1}{2}\sum_{j=1}^{n_{u}}\sum_{i:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=\frac{1}{2}\sum_{j=1}^{n_{u}}\sum_{i:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(\theta)=\frac{1}{2}\sum_{j=1}^{n_{u}}\sum_{i:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
 
-우리가 익숙한 cost function과 다른 것은 training dataset(movie)의 갯수 m을 식에 넣지 않았다는 것이다. m이 있으나 없으나 최소화 되는 과정에서 parameter가 정해지는 것에는 아무런 영향이 없기 때문에 상관없다.
+<p>우리가 익숙한 cost function과 다른 것은 training dataset(movie)의 갯수 m을 식에 넣지 않았다는 것이다. m이 있으나 없으나 최소화 되는 과정에서 parameter가 정해지는 것에는 아무런 영향이 없기 때문에 상관없다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><strong>2. Collaborative Filtering</strong></span>
+<h1 id="2-collaborative-filtering"><span style="font-size: 18pt;"><strong>2. Collaborative Filtering</strong></span></h1>
 
-* * *
+<hr />
 
-하지만 영화의 로맨스 정도, 액션 정도 등의 feature는 주관적인 생각이 많이 개입되는 특성이 있어 이를 수치화 하는 것 또한 애매한 부분이 있어 쉽지가 않다. 만약 사용자의 parameter가 정해져 있다고 가정한다면 역으로 위의 parameter에 대한 cost function이 아닌 feature에 대한 cost function을 사용해서 feature를 찾을 수 있다.
+<p>하지만 영화의 로맨스 정도, 액션 정도 등의 feature는 주관적인 생각이 많이 개입되는 특성이 있어 이를 수치화 하는 것 또한 애매한 부분이 있어 쉽지가 않다. 만약 사용자의 parameter가 정해져 있다고 가정한다면 역으로 위의 parameter에 대한 cost function이 아닌 feature에 대한 cost function을 사용해서 feature를 찾을 수 있다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x)=\frac{1}{2}\sum_{i=1}^{n_{m}}\sum_{j:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}" alt="\dpi{120} J(x)=\frac{1}{2}\sum_{i=1}^{n_{m}}\sum_{j:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x)=\frac{1}{2}\sum_{i=1}^{n_{m}}\sum_{j:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}" alt="\dpi{120} J(x)=\frac{1}{2}\sum_{i=1}^{n_{m}}\sum_{j:r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}" align="absmiddle" /></p>
 
-이렇게 찾은 feature를 이용해서 parameter를 다시 update한다. 그리고 이 parameter를 사용해서 feature를 다시 update 한다. 이렇게 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta&space;\rightarrow&space;x&space;\rightarrow&space;\theta&space;\rightarrow&space;x&space;\rightarrow&space;\cdot\cdot\cdot" alt="\dpi{120} \theta \rightarrow x \rightarrow \theta \rightarrow x \rightarrow \cdot\cdot\cdot" align="absmiddle" />의 과정을 반복하여 수렴시키면 좋은 parameter와 feature를 구할 수 있다.
+<p>이렇게 찾은 feature를 이용해서 parameter를 다시 update한다. 그리고 이 parameter를 사용해서 feature를 다시 update 한다. 이렇게 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta&space;\rightarrow&space;x&space;\rightarrow&space;\theta&space;\rightarrow&space;x&space;\rightarrow&space;\cdot\cdot\cdot" alt="\dpi{120} \theta \rightarrow x \rightarrow \theta \rightarrow x \rightarrow \cdot\cdot\cdot" align="absmiddle" />의 과정을 반복하여 수렴시키면 좋은 parameter와 feature를 구할 수 있다.</p>
 
-위 처럼 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />와 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" />를 왔다갔다 하며 update 하는 것 보다 간단한 방법이 있다.
+<p>위 처럼 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />와 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" />를 왔다갔다 하며 update 하는 것 보다 간단한 방법이 있다.</p>
 
-다음의 식을 minimize 함으로써 parameter와 feature를 **동시에** optimize 할 수 있다.
+<p>다음의 식을 minimize 함으로써 parameter와 feature를 <strong>동시에</strong> optimize 할 수 있다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x,\theta)=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(x,\theta)=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x,\theta)=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" alt="\dpi{120} J(x,\theta)=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^{T}x^{(i)}-y^{(i,j)})^{2}+\frac{\lambda}{2}\sum_{i=1}^{n_{m}}\sum_{k=1}^{n}(x^{(i)}_{k})^{2}+\frac{\lambda}{2}\sum_{j=1}^{n_{u}}\sum_{k=1}^{n}(\theta^{(j)}_{k})^{2}" align="absmiddle" /></p>
 
-식이 복잡해 보이지만 우리가 익숙하게 알고있던 parameter의 cost function과 feature의 cost function을 합친 것일 뿐이다. 이것을 우리는 collaborative filtering이라고 부른다.
+<p>식이 복잡해 보이지만 우리가 익숙하게 알고있던 parameter의 cost function과 feature의 cost function을 합친 것일 뿐이다. 이것을 우리는 collaborative filtering이라고 부른다.</p>
 
-참고로 이 알고리즘은 스스로 학습을 하므로 bias unit은 없다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x\in&space;\mathbb{R}^{n},\quad&space;\theta&space;\in&space;\mathbb{R}^{n}" alt="\dpi{120} x\in \mathbb{R}^{n},\quad \theta \in \mathbb{R}^{n}" align="absmiddle" />
+<p>참고로 이 알고리즘은 스스로 학습을 하므로 bias unit은 없다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x\in&space;\mathbb{R}^{n},\quad&space;\theta&space;\in&space;\mathbb{R}^{n}" alt="\dpi{120} x\in \mathbb{R}^{n},\quad \theta \in \mathbb{R}^{n}" align="absmiddle" /></p>
 
-위의 알고리즘을 순서대로 정리해보자.
+<p>위의 알고리즘을 순서대로 정리해보자.</p>
 
-1.<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(n_{m})}),&space;(\theta^{(1)},\theta^{(2)},\cdot\cdot\cdot,\theta^{(n_{u})})" alt="\dpi{120} (x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(n_{m})}), (\theta^{(1)},\theta^{(2)},\cdot\cdot\cdot,\theta^{(n_{u})})" align="absmiddle" /> 를 small random value로 initialize 한다.
+<p>1.<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(n_{m})}),&space;(\theta^{(1)},\theta^{(2)},\cdot\cdot\cdot,\theta^{(n_{u})})" alt="\dpi{120} (x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(n_{m})}), (\theta^{(1)},\theta^{(2)},\cdot\cdot\cdot,\theta^{(n_{u})})" align="absmiddle" /> 를 small random value로 initialize 한다.</p>
 
-2. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x,\theta)" alt="\dpi{120} J(x,\theta)" align="absmiddle" />를 gradient descent 혹은 라이브러리에서 제공하는 optimization 함수를 사용하여 minimize 한다.
+<p>2. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(x,\theta)" alt="\dpi{120} J(x,\theta)" align="absmiddle" />를 gradient descent 혹은 라이브러리에서 제공하는 optimization 함수를 사용하여 minimize 한다.</p>
 
-3. 위에서 구한 parameter를 가지고 아직 어떤 유저가 아직 rating하지 않은 영화를 predict 한다.
+<ol>
+  <li>위에서 구한 parameter를 가지고 아직 어떤 유저가 아직 rating하지 않은 영화를 predict 한다.</li>
+</ol>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><strong>3. Vectorization : Low Rank Matrix Factorization</strong></span>
+<h1 id="3-vectorization--low-rank-matrix-factorization"><span style="font-size: 18pt;"><strong>3. Vectorization : Low Rank Matrix Factorization</strong></span></h1>
 
-* * *
+<hr />
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X=\begin{bmatrix}---x^{(1)}---&space;\\&space;---x^{(2)}---&space;\\&space;\cdot&space;\cdot&space;\cdot&space;\\&space;---x^{(n_{m})}---&space;\end{bmatrix}\quad&space;\qaud&space;\Theta=\begin{bmatrix}&space;---\theta^{(1)}---&space;\\&space;---\theta^{(2)}---&space;\\&space;\cdot&space;\cdot&space;\cdot&space;\\&space;---\theta^{(n_{u})}---&space;\end{bmatrix}" alt="\dpi{120} X=\begin{bmatrix}---x^{(1)}--- \\ ---x^{(2)}--- \\ \cdot \cdot \cdot \\ ---x^{(n_{m})}--- \end{bmatrix}\quad \qaud \Theta=\begin{bmatrix} ---\theta^{(1)}--- \\ ---\theta^{(2)}--- \\ \cdot \cdot \cdot \\ ---\theta^{(n_{u})}--- \end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X=\begin{bmatrix}---x^{(1)}---&space;\\&space;---x^{(2)}---&space;\\&space;\cdot&space;\cdot&space;\cdot&space;\\&space;---x^{(n_{m})}---&space;\end{bmatrix}\quad&space;\qaud&space;\Theta=\begin{bmatrix}&space;---\theta^{(1)}---&space;\\&space;---\theta^{(2)}---&space;\\&space;\cdot&space;\cdot&space;\cdot&space;\\&space;---\theta^{(n_{u})}---&space;\end{bmatrix}" alt="\dpi{120} X=\begin{bmatrix}---x^{(1)}--- \\ ---x^{(2)}--- \\ \cdot \cdot \cdot \\ ---x^{(n_{m})}--- \end{bmatrix}\quad \qaud \Theta=\begin{bmatrix} ---\theta^{(1)}--- \\ ---\theta^{(2)}--- \\ \cdot \cdot \cdot \\ ---\theta^{(n_{u})}--- \end{bmatrix}" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" /> 의 각 row는 영화 하나의 feature vector이고, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />의 각 row는 유저 한 명의 parameter vector이다.
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" /> 의 각 row는 영화 하나의 feature vector이고, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />의 각 row는 유저 한 명의 parameter vector이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Y=X\Theta^{T}" alt="\dpi{120} Y=X\Theta^{T}" align="absmiddle" />  matrix의 각 row는 한 편의 영화, 각 column은 한 명의 유저를 나타낸다.
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Y=X\Theta^{T}" alt="\dpi{120} Y=X\Theta^{T}" align="absmiddle" />  matrix의 각 row는 한 편의 영화, 각 column은 한 명의 유저를 나타낸다.</p>
 
-Y의 3행 4열 위치는 3번째 영화에 대한 4번째 유저의 평점을 나타낸다.
+<p>Y의 3행 4열 위치는 3번째 영화에 대한 4번째 유저의 평점을 나타낸다.</p>
 
-&nbsp;
+<p> </p>
 
-새로운 유저를 추가한다고 했을 때, 초기 parameter는 regularization term에 의하여 모둔 parameter가 0으로 initialize 될 것이다. 따라서 어떤 영화에 대한 예측 평점도 0이 될 것이고, 이는 상식적으로 생각해도 부적절하다.
+<p>새로운 유저를 추가한다고 했을 때, 초기 parameter는 regularization term에 의하여 모둔 parameter가 0으로 initialize 될 것이다. 따라서 어떤 영화에 대한 예측 평점도 0이 될 것이고, 이는 상식적으로 생각해도 부적절하다.</p>
 
-기존의 유저, 영화들로 계산한 matrix Y가 다음과 같다고 해보자.
+<p>기존의 유저, 영화들로 계산한 matrix Y가 다음과 같다고 해보자.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Y&space;=&space;\begin{bmatrix}&space;5&5&0&0&space;\\&space;4&?&?&0&space;\\&space;0&0&5&4&space;\\&space;0&0&5&0&space;\end{bmatrix}" alt="\dpi{120} Y = \begin{bmatrix} 5&5&0&0 \\ 4&?&?&0 \\ 0&0&5&4 \\ 0&0&5&0 \end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Y&space;=&space;\begin{bmatrix}&space;5&amp;5&amp;0&amp;0&space;\\&space;4&amp;?&amp;?&amp;0&space;\\&space;0&amp;0&amp;5&amp;4&space;\\&space;0&amp;0&amp;5&amp;0&space;\end{bmatrix}" alt="\dpi{120} Y = \begin{bmatrix} 5&amp;5&amp;0&amp;0 \\ 4&amp;?&amp;?&amp;0 \\ 0&amp;0&amp;5&amp;4 \\ 0&amp;0&amp;5&amp;0 \end{bmatrix}" align="absmiddle" /></p>
 
-영화 i에 대한 평균은 다음의 식으로 계산 가능하다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{i}=\frac{\sum_{j:r(i,j)=1}Y_{i,j}}{\sum_{j}{r(i,j)}}" alt="\dpi{120} \mu_{i}=\frac{\sum_{j:r(i,j)=1}Y_{i,j}}{\sum_{j}{r(i,j)}}" align="absmiddle" />
+<p>영화 i에 대한 평균은 다음의 식으로 계산 가능하다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{i}=\frac{\sum_{j:r(i,j)=1}Y_{i,j}}{\sum_{j}{r(i,j)}}" alt="\dpi{120} \mu_{i}=\frac{\sum_{j:r(i,j)=1}Y_{i,j}}{\sum_{j}{r(i,j)}}" align="absmiddle" /></p>
 
-위의 matrix의 평균은 다음과 같이 된다.
+<p>위의 matrix의 평균은 다음과 같이 된다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\begin{bmatrix}2.5\\2\\2.25\\1.25&space;\end{bmatrix}" alt="\dpi{120} \begin{bmatrix}2.5\\2\\2.25\\1.25 \end{bmatrix}" align="absmiddle" />  각 영화의 (총 평점의 합) / (평가한 사용자 수) 이다.
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\begin{bmatrix}2.5\\2\\2.25\\1.25&space;\end{bmatrix}" alt="\dpi{120} \begin{bmatrix}2.5\\2\\2.25\\1.25 \end{bmatrix}" align="absmiddle" />  각 영화의 (총 평점의 합) / (평가한 사용자 수) 이다.</p>
 
-따라서 새로운 유저를 추가할 때에는 평점을 기존 데이터의 평균으로 초기화하고 parameter는 위에서 말한 그대로 random small value로 초기화하면 된다. 이후에 위의 collaborative filtering 알고리즘으로 parameter와 feature를 학습시키면 된다.
+<p>따라서 새로운 유저를 추가할 때에는 평점을 기존 데이터의 평균으로 초기화하고 parameter는 위에서 말한 그대로 random small value로 초기화하면 된다. 이후에 위의 collaborative filtering 알고리즘으로 parameter와 feature를 학습시키면 된다.</p>
 
-이 알고리즘의 목적을 다른 식으로 해석하자면 어떤 유저가 어떤 영화 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />를 좋아했다면, 그 영화의 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />와 비슷한 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(j)}" alt="\dpi{120} x^{(j)}" align="absmiddle" />를 가진 영화를 추천해주는 것이다. 즉,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;\|&space;x^{(i)}-x^{(j)}&space;\right&space;\|" alt="\dpi{120} \left \| x^{(i)}-x^{(j)} \right \|" align="absmiddle" /> 가 작은 영화를 찾는 것이다.
+<p>이 알고리즘의 목적을 다른 식으로 해석하자면 어떤 유저가 어떤 영화 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;i" alt="\dpi{120} i" align="absmiddle" />를 좋아했다면, 그 영화의 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />와 비슷한 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(j)}" alt="\dpi{120} x^{(j)}" align="absmiddle" />를 가진 영화를 추천해주는 것이다. 즉,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;\|&space;x^{(i)}-x^{(j)}&space;\right&space;\|" alt="\dpi{120} \left \| x^{(i)}-x^{(j)} \right \|" align="absmiddle" /> 가 작은 영화를 찾는 것이다.</p>
+
   </div>
   
   <div class="post">
@@ -10946,128 +10927,133 @@ Y의 3행 4열 위치는 3번째 영화에 대한 4번째 유저의 평점을 �
 
     <span class="post-date">04 Sep 2018</span>
 
-    정상적인 범주 내에 있는 normal한 data들의 분포에서 많이 벗어나는 data를 anomaly 라고 한다. anomaly 는 &#8216;변칙&#8217;이란 뜻을 가지고 있다.
+    <p>정상적인 범주 내에 있는 normal한 data들의 분포에서 많이 벗어나는 data를 anomaly 라고 한다. anomaly 는 ‘변칙’이란 뜻을 가지고 있다.</p>
 
-<img class="aligncenter wp-image-694" src="/images/2018/09/no-name-1.png" alt="" width="289" height="243" srcset="/images/2018/09/no-name-1.png 423w, /images/2018/09/no-name-1-300x252.png 300w" sizes="(max-width: 289px) 100vw, 289px" /> 
+<p><img class="aligncenter wp-image-694" src="/images/2018/09/no-name-1.png" alt="" width="289" height="243" srcset="/images/2018/09/no-name-1.png 423w, /images/2018/09/no-name-1-300x252.png 300w" sizes="(max-width: 289px) 100vw, 289px" /></p>
 
-위와 같은 비이상적 data인 anomaly 를 detect 하는 알고리즘은 제품 공정에서 불량을 찾거나 데이터 센터에서 소자의 이상한 움직임을 감지한다던지 하는데에 적용할 수 있다.
+<p>위와 같은 비이상적 data인 anomaly 를 detect 하는 알고리즘은 제품 공정에서 불량을 찾거나 데이터 센터에서 소자의 이상한 움직임을 감지한다던지 하는데에 적용할 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><strong>1. Gaussian Distribution</strong></span>
+<h1 id="1-gaussian-distribution"><span style="font-size: 18pt;"><strong>1. Gaussian Distribution</strong></span></h1>
 
-* * *
+<hr />
 
-일반적인 normal 데이터들의 분포는 보통 Gaussian distribution(가우스 분포) &#8211; normal distribution(정규분포)라고도 한다- 를 따른다. 가우스 분포는 다음과 같다.
+<p>일반적인 normal 데이터들의 분포는 보통 Gaussian distribution(가우스 분포) – normal distribution(정규분포)라고도 한다- 를 따른다. 가우스 분포는 다음과 같다.</p>
 
-<img class="aligncenter wp-image-696" src="/images/2018/09/no-name-3.png" alt="" width="533" height="162" srcset="/images/2018/09/no-name-3.png 819w, /images/2018/09/no-name-3-300x91.png 300w, /images/2018/09/no-name-3-768x233.png 768w" sizes="(max-width: 533px) 100vw, 533px" /> 
+<p><img class="aligncenter wp-image-696" src="/images/2018/09/no-name-3.png" alt="" width="533" height="162" srcset="/images/2018/09/no-name-3.png 819w, /images/2018/09/no-name-3-300x91.png 300w, /images/2018/09/no-name-3-768x233.png 768w" sizes="(max-width: 533px) 100vw, 533px" /></p>
 
-위는 mean(평균)이 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu" alt="\dpi{120} \mu" align="absmiddle" />이고 variance(분산)이 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" />인 가우스 분포이다.
+<p>위는 mean(평균)이 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu" alt="\dpi{120} \mu" align="absmiddle" />이고 variance(분산)이 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" />인 가우스 분포이다.</p>
 
-어떤 데이터의 집합이 가우스 분포를 따른다고 할 때 다음과 같이 나타낸다.   <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}\sim&space;N(\mu,\sigma^{2})" alt="\dpi{120} x^{(i)}\sim N(\mu,\sigma^{2})" align="absmiddle" />
+<p>어떤 데이터의 집합이 가우스 분포를 따른다고 할 때 다음과 같이 나타낸다.   <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}\sim&space;N(\mu,\sigma^{2})" alt="\dpi{120} x^{(i)}\sim N(\mu,\sigma^{2})" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><strong>2. Algorithm</strong></span>
+<h1 id="2-algorithm"><span style="font-size: 18pt;"><strong>2. Algorithm</strong></span></h1>
 
-* * *
+<hr />
 
-training dataset <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" alt="\dpi{120} x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" align="absmiddle" />이 있다고 해보자.
+<p>training dataset <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" alt="\dpi{120} x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" align="absmiddle" />이 있다고 해보자.</p>
 
-먼저 anomaly 에 대해서는 p가 작고 normal data에 대해서는 p를 크게 해 줄 것 같은 적절한 feature를 선정한다. feature의 수는 n이라고 하고<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(i)}\in&space;\mathbb{R}^{n})" alt="\dpi{120} (x^{(i)}\in \mathbb{R}^{n})" align="absmiddle" />  data들이 가우스 분포를 따른다고 하면 model 식은 다음과 같다.
+<p>먼저 anomaly 에 대해서는 p가 작고 normal data에 대해서는 p를 크게 해 줄 것 같은 적절한 feature를 선정한다. feature의 수는 n이라고 하고<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(i)}\in&space;\mathbb{R}^{n})" alt="\dpi{120} (x^{(i)}\in \mathbb{R}^{n})" align="absmiddle" />  data들이 가우스 분포를 따른다고 하면 model 식은 다음과 같다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\\p(x;\mu,\sigma^{2})=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}" alt="\dpi{150} \\p(x;\mu,\sigma^{2})=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}" align="absmiddle" />                      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}&space;\\&space;\sigma^{2}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^{2}" alt="\dpi{120} \\ \mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)} \\ \sigma^{2}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^{2}" align="absmiddle" />
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\\p(x;\mu,\sigma^{2})=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}" alt="\dpi{150} \\p(x;\mu,\sigma^{2})=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}" align="absmiddle" />                      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}&space;\\&space;\sigma^{2}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^{2}" alt="\dpi{120} \\ \mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)} \\ \sigma^{2}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^{2}" align="absmiddle" /></p>
 
-각 data의 feature은 각각이 서로 독립적이라고 가정하면 모델은 다음과 같이 표현 가능하다.
+<p>각 data의 feature은 각각이 서로 독립적이라고 가정하면 모델은 다음과 같이 표현 가능하다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x;\mu,\sigma^{2})=p(x_{1};\mu_{1},\sigma_{1^{2}})p(x_{2};\mu_{2},\sigma_{2}^{2})\cdot\cdot\cdotp(x_{n};\mu_{n},\sigma_{n}^{2})=\prod_{j=1}^{n}p(x_{j};\mu_{j},\sigma_{j}^{2})" alt="\dpi{120} p(x;\mu,\sigma^{2})=p(x_{1};\mu_{1},\sigma_{1^{2}})p(x_{2};\mu_{2},\sigma_{2}^{2})\cdot\cdot\cdotp(x_{n};\mu_{n},\sigma_{n}^{2})=\prod_{j=1}^{n}p(x_{j};\mu_{j},\sigma_{j}^{2})" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x;\mu,\sigma^{2})=p(x_{1};\mu_{1},\sigma_{1^{2}})p(x_{2};\mu_{2},\sigma_{2}^{2})\cdot\cdot\cdotp(x_{n};\mu_{n},\sigma_{n}^{2})=\prod_{j=1}^{n}p(x_{j};\mu_{j},\sigma_{j}^{2})" alt="\dpi{120} p(x;\mu,\sigma^{2})=p(x_{1};\mu_{1},\sigma_{1^{2}})p(x_{2};\mu_{2},\sigma_{2}^{2})\cdot\cdot\cdotp(x_{n};\mu_{n},\sigma_{n}^{2})=\prod_{j=1}^{n}p(x_{j};\mu_{j},\sigma_{j}^{2})" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_{j}&space;\\&space;\sigma^{2}_{j}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}_{j}-\mu_{j})^{2}" alt="\dpi{120} \\ \mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_{j} \\ \sigma^{2}_{j}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}_{j}-\mu_{j})^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_{j}&space;\\&space;\sigma^{2}_{j}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}_{j}-\mu_{j})^{2}" alt="\dpi{120} \\ \mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_{j} \\ \sigma^{2}_{j}=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}_{j}-\mu_{j})^{2}" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x^{(i)})" alt="\dpi{120} p(x^{(i)})" align="absmiddle" /> 는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" /> 가 normal한 data일 확률이다. 여기에 새로운 data  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{test}" alt="\dpi{120} x_{test}" align="absmiddle" />가 들어왔을 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x_{test})" alt="\dpi{120} p(x_{test})" align="absmiddle" /> 우리가 정한 어떤 수 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />보다 작으면 anomaly 라고 판단한다.
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x^{(i)})" alt="\dpi{120} p(x^{(i)})" align="absmiddle" /> 는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" /> 가 normal한 data일 확률이다. 여기에 새로운 data  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{test}" alt="\dpi{120} x_{test}" align="absmiddle" />가 들어왔을 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x_{test})" alt="\dpi{120} p(x_{test})" align="absmiddle" /> 우리가 정한 어떤 수 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />보다 작으면 anomaly 라고 판단한다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;p(x_{test})>&space;\epsilon:normal(y=0)&space;\\&space;p(x_{test})<&space;\epsilon:anomaly(y=1)" alt="\dpi{120} \\ p(x_{test})> \epsilon:normal(y=0) \\ p(x_{test})< \epsilon:anomaly(y=1)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;p(x_{test})&gt;&space;\epsilon:normal(y=0)&space;\\&space;p(x_{test})&lt;&space;\epsilon:anomaly(y=1)" alt="\dpi{120} \\ p(x_{test})&gt; \epsilon:normal(y=0) \\ p(x_{test})&lt; \epsilon:anomaly(y=1)" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><strong>3. model evaluation</strong></span>
+<h1 id="3-model-evaluation"><span style="font-size: 18pt;"><strong>3. model evaluation</strong></span></h1>
 
-* * *
+<hr />
 
-model을 세운다고 끝이 아니다. 모델의 성능이 쓸만해야한다.
+<p>model을 세운다고 끝이 아니다. 모델의 성능이 쓸만해야한다.</p>
 
-normal한 data가 10,000개 있고 anomaly data가 20개 있을 때 모든 데이터를 모델 훈련에 쓰는 것이 아니라 다음과 같이 나눈다.
+<p>normal한 data가 10,000개 있고 anomaly data가 20개 있을 때 모든 데이터를 모델 훈련에 쓰는 것이 아니라 다음과 같이 나눈다.</p>
 
-&nbsp;
+<p> </p>
 
-**training data : normal 6,000개<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" alt="\dpi{120} x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" align="absmiddle" />** 
+<p><strong>training data : normal 6,000개<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" alt="\dpi{120} x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" align="absmiddle" /></strong></p>
 
-**cv(cross validation) data : normal 2,000개 / anomaly 10개 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{cv})},y^{(m_{cv})})" alt="\dpi{120} (x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{cv})},y^{(m_{cv})})" align="absmiddle" />**
+<p><strong>cv(cross validation) data : normal 2,000개 / anomaly 10개 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{cv})},y^{(m_{cv})})" alt="\dpi{120} (x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{cv})},y^{(m_{cv})})" align="absmiddle" /></strong></p>
 
-**test data : normal 2,000개 / anomaly 10개 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{test})},y^{(m_{test})})" alt="\dpi{120} (x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{test})},y^{(m_{test})})" align="absmiddle" />**
+<p><strong>test data : normal 2,000개 / anomaly 10개 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{test})},y^{(m_{test})})" alt="\dpi{120} (x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\cdot\cdot\cdot,(x^{(m_{test})},y^{(m_{test})})" align="absmiddle" /></strong></p>
 
-&nbsp;
+<p> </p>
 
-training data는 normal한 데이터만 가지고 이를 사용해 모델을 구한다.
+<p>training data는 normal한 데이터만 가지고 이를 사용해 모델을 구한다.</p>
 
-그리고 cv dataset을 사용해서<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" /> 를 조정한다. model의 성능을 확인하는 지표로 F score를 활용하면 된다.
+<p>그리고 cv dataset을 사용해서<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" /> 를 조정한다. model의 성능을 확인하는 지표로 F score를 활용하면 된다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;F=\frac{PR}{P+R}\quad&space;(P:precision\quad&space;R:recall)" alt="\dpi{120} F=\frac{PR}{P+R}\quad (P:precision\quad R:recall)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;F=\frac{PR}{P+R}\quad&space;(P:precision\quad&space;R:recall)" alt="\dpi{120} F=\frac{PR}{P+R}\quad (P:precision\quad R:recall)" align="absmiddle" /></p>
 
-ex) 여러 개의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />으로 model <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />를 학습시켜 각각의 model의 F score를 비교하여 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" /> 결정
+<p>ex) 여러 개의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />으로 model <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />를 학습시켜 각각의 model의 F score를 비교하여 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" /> 결정</p>
 
-ex) 어떤 featrue를 포함 시킬지 말지 결정해야할 때, 포함시킨 경우의 F score와 포함시키지 않은 경우 F score 비교
+<p>ex) 어떤 featrue를 포함 시킬지 말지 결정해야할 때, 포함시킨 경우의 F score와 포함시키지 않은 경우 F score 비교</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><strong>4. Anomaly Detection   vs.   Supervised Learning</strong></span>
+<h1 id="4-anomaly-detection-vs-supervised-learning"><span style="font-size: 18pt;"><strong>4. Anomaly Detection   vs.   Supervised Learning</strong></span></h1>
 
-* * *
+<hr />
 
-언뜻 보면 supervised learning의 binary classification 알고리즘을 사용하여 cv data와 test data가 normal data인 경우를 y=0, anomaly data인 경우를 y=1로 놓고 학습을 시켜 모델을 만들 수도 있을 것 같다. 그도 그럴것이 cv dataset과 test dataset은 label(y=1,y=0)을 가지고 있다. 이는 실제로 결함이 있는 data에 대해 예측을 하여 모델의 성능을 평가해야하기 때문에 특별히 실제로 결함인지 아닌지 판단하기 위해 label을 넣은 것이다. 하지만 두 알고리즘은 서로 다른 상황에서 적용된다. 그 차이를 짚고 넘어가겠다.
+<p>언뜻 보면 supervised learning의 binary classification 알고리즘을 사용하여 cv data와 test data가 normal data인 경우를 y=0, anomaly data인 경우를 y=1로 놓고 학습을 시켜 모델을 만들 수도 있을 것 같다. 그도 그럴것이 cv dataset과 test dataset은 label(y=1,y=0)을 가지고 있다. 이는 실제로 결함이 있는 data에 대해 예측을 하여 모델의 성능을 평가해야하기 때문에 특별히 실제로 결함인지 아닌지 판단하기 위해 label을 넣은 것이다. 하지만 두 알고리즘은 서로 다른 상황에서 적용된다. 그 차이를 짚고 넘어가겠다.</p>
 
-&nbsp;
+<p> </p>
 
-**1) Anomaly Detection**
+<p><strong>1) Anomaly Detection</strong></p>
 
-  * 매우 적은 수의 anomaly data / 아주 많은 수의 normal data
-  * 적은 수의 anomaly data로는 모델을 학습시키기가 힘들다. anomaly에는 많은 종류가 있기 때문에 현재 가진 anomaly 로 학습을 시켜도 미래에 들어올 data의 anomaly 가 이와 비슷한 종류라는 보장이 없다. 가령, 비행기 엔진 생산라인에서 anomaly detection 알고리즘으로 결함이 있는 엔진을 가려낼 때, 엔진의 파손이나 동작이상에는 매우 많은 종류의 원인이 있을 것이다.
+<ul>
+  <li>매우 적은 수의 anomaly data / 아주 많은 수의 normal data</li>
+  <li>적은 수의 anomaly data로는 모델을 학습시키기가 힘들다. anomaly에는 많은 종류가 있기 때문에 현재 가진 anomaly 로 학습을 시켜도 미래에 들어올 data의 anomaly 가 이와 비슷한 종류라는 보장이 없다. 가령, 비행기 엔진 생산라인에서 anomaly detection 알고리즘으로 결함이 있는 엔진을 가려낼 때, 엔진의 파손이나 동작이상에는 매우 많은 종류의 원인이 있을 것이다.</li>
+</ul>
 
-&nbsp;
+<p> </p>
 
-**2) Supervised Learning**
+<p><strong>2) Supervised Learning</strong></p>
 
-  * 많은 수의 positive class / negative class 데이터
-  * 충분한 수의 positive data가 있고 이는 abnormal한 경우가 아니라 다른 하나의 class일 뿐이기 때문에 미래에 들어올 data가 positive class에 속한다면 현재 가지고 있는 positive class와 비슷할 것이라는 자신감이 있다.
+<ul>
+  <li>많은 수의 positive class / negative class 데이터</li>
+  <li>충분한 수의 positive data가 있고 이는 abnormal한 경우가 아니라 다른 하나의 class일 뿐이기 때문에 미래에 들어올 data가 positive class에 속한다면 현재 가지고 있는 positive class와 비슷할 것이라는 자신감이 있다.</li>
+</ul>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><strong>5. Tips</strong></span>
+<h1 id="5-tips"><span style="font-size: 18pt;"><strong>5. Tips</strong></span></h1>
 
-* * *
+<hr />
 
-histogram을 그리든 다른 방법을 쓰든 feature가 Gaussian을 따르는지 확인을 해서 따르지 않는 경우는 데이터를 좀 주물러서(?) Gaussian 형태가 되도록 하는 방법이 있다.
+<p>histogram을 그리든 다른 방법을 쓰든 feature가 Gaussian을 따르는지 확인을 해서 따르지 않는 경우는 데이터를 좀 주물러서(?) Gaussian 형태가 되도록 하는 방법이 있다.</p>
 
-  *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;log(x)" alt="\dpi{120} log(x)" align="absmiddle" /> 
+<p>*<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;log(x)" alt="\dpi{120} log(x)" align="absmiddle" /> 
   *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;log(x+c)" alt="\dpi{120} log(x+c)" align="absmiddle" /> 
   *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sqrt{x}" alt="\dpi{120} \sqrt{x}" align="absmiddle" /> 
-  *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{p}" alt="\dpi{120} x^{p}" align="absmiddle" /> 
+  *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{p}" alt="\dpi{120} x^{p}" align="absmiddle" /></p>
 
-위의 수식을들 통해 data를 변형해서 Gaussian을 따르도록 한 새로운 feature를 사용하면 된다.
+<p>위의 수식을들 통해 data를 변형해서 Gaussian을 따르도록 한 새로운 feature를 사용하면 된다.</p>
 
-&nbsp;
+<p> </p>
 
-우리의 최종 목표는 normal한 data에 대해서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />가 매우 크고 anomaly 에 대해서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />가 매우 작게 하는 모델을 만드는 것이다.
+<p>우리의 최종 목표는 normal한 data에 대해서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />가 매우 크고 anomaly 에 대해서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(x)" alt="\dpi{120} p(x)" align="absmiddle" />가 매우 작게 하는 모델을 만드는 것이다.</p>
+
   </div>
   
   <div class="post">
@@ -11079,157 +11065,165 @@ histogram을 그리든 다른 방법을 쓰든 feature가 Gaussian을 따르는�
 
     <span class="post-date">01 Sep 2018</span>
 
-    <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X&space;=&space;\begin{bmatrix}1&2&7&13&space;\\&space;4&8&9&4\\3&6&11&9&space;\\&space;\end{bmatrix}" alt="\dpi{120} X = \begin{bmatrix}1&2&7&13 \\ 4&8&9&4\\3&6&11&9 \\ \end{bmatrix}" align="absmiddle" />
+    <p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X&space;=&space;\begin{bmatrix}1&amp;2&amp;7&amp;13&space;\\&space;4&amp;8&amp;9&amp;4\\3&amp;6&amp;11&amp;9&space;\\&space;\end{bmatrix}" alt="\dpi{120} X = \begin{bmatrix}1&amp;2&amp;7&amp;13 \\ 4&amp;8&amp;9&amp;4\\3&amp;6&amp;11&amp;9 \\ \end{bmatrix}" align="absmiddle" /></p>
 
-위 행렬에서 두 번째 열은 첫 번째 열에 단순히 2를 곱하면 나온다. 위의 행렬이 dataset이라면 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{1}" alt="\dpi{120} x_{1}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{2}" alt="\dpi{120} x_{2}" align="absmiddle" />는 완전히 동일한 정보를 담고 있는 것이다. 이처럼 완전히 동일한 정보는 아니더라도, 두 feature가 서로 highly correlated 되어있다면 이 두 feature를 잘 요약해주는 새로운 1개의 feature로 표현하는 것이 효율적이다.
+<p>위 행렬에서 두 번째 열은 첫 번째 열에 단순히 2를 곱하면 나온다. 위의 행렬이 dataset이라면 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{1}" alt="\dpi{120} x_{1}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{2}" alt="\dpi{120} x_{2}" align="absmiddle" />는 완전히 동일한 정보를 담고 있는 것이다. 이처럼 완전히 동일한 정보는 아니더라도, 두 feature가 서로 highly correlated 되어있다면 이 두 feature를 잘 요약해주는 새로운 1개의 feature로 표현하는 것이 효율적이다.</p>
 
-highly correlated한 여러개의 feature가 있을 때 그 수를 줄여 더 적은 수의 feature로 나타내는 방법들이 있다. 그 중에 많이 쓰이는 방법 중 하나가 PCA(Principal Component Analysis)이다.
+<p>highly correlated한 여러개의 feature가 있을 때 그 수를 줄여 더 적은 수의 feature로 나타내는 방법들이 있다. 그 중에 많이 쓰이는 방법 중 하나가 PCA(Principal Component Analysis)이다.</p>
 
-이러한 알고리즘을 적용하여 feature 수를 줄이면 계산에 필요한 메모리공간이 절약되고 시간복잡도 역시 줄일 수 있다. 그리고 feature를 3개 이하로 줄일 수 있다면 그래프상으로 visulalization하여 볼 수도 있다.
+<p>이러한 알고리즘을 적용하여 feature 수를 줄이면 계산에 필요한 메모리공간이 절약되고 시간복잡도 역시 줄일 수 있다. 그리고 feature를 3개 이하로 줄일 수 있다면 그래프상으로 visulalization하여 볼 수도 있다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 18pt;"><strong>1. PCA(Principal Component Analysis)</strong></span>
+<p><span style="font-size: 18pt;"><strong>1. PCA(Principal Component Analysis)</strong></span></p>
 
-* * *
+<hr />
 
-<img class="aligncenter size-full wp-image-669" src="/images/2018/08/no-name-108.png" alt="" width="934" height="306" srcset="/images/2018/08/no-name-108.png 934w, /images/2018/08/no-name-108-300x98.png 300w, /images/2018/08/no-name-108-768x252.png 768w" sizes="(max-width: 934px) 100vw, 934px" /> 
+<p><img class="aligncenter size-full wp-image-669" src="/images/2018/08/no-name-108.png" alt="" width="934" height="306" srcset="/images/2018/08/no-name-108.png 934w, /images/2018/08/no-name-108-300x98.png 300w, /images/2018/08/no-name-108-768x252.png 768w" sizes="(max-width: 934px) 100vw, 934px" /></p>
 
-기본적인 idea는 이렇다. feature 2개를 어떠한 벡터에 projection하였을 때 수직 거리(error)들의 합이 가장 작은 벡터를 구한다. 이 새로운 vector에 각각의 data를 projection한 것을 새로운 data로 사용한다. 이렇게 하면  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{1}" alt="\dpi{120} x_{1}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{2}" alt="\dpi{120} x_{2}" align="absmiddle" /> 두 개의 feature가 1개의 feature로 대체된다. 이 방법은 일반적으로 n개의 feature를 그보다 작은 k개의 feature vector <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" alt="\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" align="absmiddle" /> 로 줄이는 데 사용할 수 있다. PCA의 목적은 이 error의 합의 최소값을 찾는 것이다.
+<p>기본적인 idea는 이렇다. feature 2개를 어떠한 벡터에 projection하였을 때 수직 거리(error)들의 합이 가장 작은 벡터를 구한다. 이 새로운 vector에 각각의 data를 projection한 것을 새로운 data로 사용한다. 이렇게 하면  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{1}" alt="\dpi{120} x_{1}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{2}" alt="\dpi{120} x_{2}" align="absmiddle" /> 두 개의 feature가 1개의 feature로 대체된다. 이 방법은 일반적으로 n개의 feature를 그보다 작은 k개의 feature vector <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" alt="\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" align="absmiddle" /> 로 줄이는 데 사용할 수 있다. PCA의 목적은 이 error의 합의 최소값을 찾는 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 14pt;"><strong>1) Pre-processing of the data</strong></span>
+<p><span style="font-size: 14pt;"><strong>1) Pre-processing of the data</strong></span></p>
 
-PCA 알고리즘을 적용하기 전 먼저 data를 feature normalization을 해준다.
+<p>PCA 알고리즘을 적용하기 전 먼저 data를 feature normalization을 해준다.</p>
 
-  * i-th data의 j-th feature를 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}" alt="\dpi{120} x^{(i)}_{j}" align="absmiddle" />라고 할 때, 모든 data example의 j-th feature의 평균을 구한다.
+<ul>
+  <li>i-th data의 j-th feature를 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}" alt="\dpi{120} x^{(i)}_{j}" align="absmiddle" />라고 할 때, 모든 data example의 j-th feature의 평균을 구한다.</li>
+</ul>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_j" alt="\dpi{120} \mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_j" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_j" alt="\dpi{120} \mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_j" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-  * 모든 데이터를 다음의 데이터로 바꾼다.
+<ul>
+  <li>모든 데이터를 다음의 데이터로 바꾼다.</li>
+</ul>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}\rightarrow&space;x^{(i)}_j-\mu_{j}" alt="\dpi{120} x^{(i)}_{j}\rightarrow x^{(i)}_j-\mu_{j}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}\rightarrow&space;x^{(i)}_j-\mu_{j}" alt="\dpi{120} x^{(i)}_{j}\rightarrow x^{(i)}_j-\mu_{j}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-  * feature마다 scale 차이가 크다면 feature scailing을 해준다. 을 한다.
+<ul>
+  <li>feature마다 scale 차이가 크다면 feature scailing을 해준다. 을 한다.</li>
+</ul>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}\rightarrow&space;\frac{x^{(i)}_j-\mu_{j}}{\sigma_{j}}" alt="\dpi{120} x^{(i)}_{j}\rightarrow \frac{x^{(i)}_j-\mu_{j}}{\sigma_{j}}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}\rightarrow&space;\frac{x^{(i)}_j-\mu_{j}}{\sigma_{j}}" alt="\dpi{120} x^{(i)}_{j}\rightarrow \frac{x^{(i)}_j-\mu_{j}}{\sigma_{j}}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-위의 과정을 거쳐서 얻은 새로운 data matrix  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />를 사용한다.
+<p>위의 과정을 거쳐서 얻은 새로운 data matrix  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />를 사용한다.</p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 14pt;"><strong>2) PCA algorithm</strong></span>
+<p><span style="font-size: 14pt;"><strong>2) PCA algorithm</strong></span></p>
 
-먼저 PCA는 다음의 작업을 하는 것이라 할 수 있다.
+<p>먼저 PCA는 다음의 작업을 하는 것이라 할 수 있다.</p>
 
-  * n dimensional feature로 이루어진 n dimensional feature로 이루어진 data를 projection 했을 때 projection error가 가장 작은 k개의 벡터 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" alt="\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" align="absmiddle" />를 찾는다.
-  * 위의 vector에 data를 projection하여 k dimensional ffeature로 이루어진 새로운 dataset <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(1)},z^{(2)},\cdot\cdot\cdot,z^{(m)}" alt="\dpi{120} z^{(1)},z^{(2)},\cdot\cdot\cdot,z^{(m)}" align="absmiddle" />을 찾는다.
+<ul>
+  <li>n dimensional feature로 이루어진 n dimensional feature로 이루어진 data를 projection 했을 때 projection error가 가장 작은 k개의 벡터 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" alt="\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" align="absmiddle" />를 찾는다.</li>
+  <li>위의 vector에 data를 projection하여 k dimensional ffeature로 이루어진 새로운 dataset <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(1)},z^{(2)},\cdot\cdot\cdot,z^{(m)}" alt="\dpi{120} z^{(1)},z^{(2)},\cdot\cdot\cdot,z^{(m)}" align="absmiddle" />을 찾는다.</li>
+</ul>
 
-이제 PCA 알고리즘을 사용하여 위의 작업을 해보자.
+<p>이제 PCA 알고리즘을 사용하여 위의 작업을 해보자.</p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 14pt;"><strong>a) covariant matrix 계산</strong></span>
+<p><span style="font-size: 14pt;"><strong>a) covariant matrix 계산</strong></span></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma&space;=&space;\frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T&space;=&space;\frac{1}{m}X^{T}\cdot&space;X" alt="\dpi{120} \Sigma = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T = \frac{1}{m}X^{T}\cdot X" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma&space;=&space;\frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T&space;=&space;\frac{1}{m}X^{T}\cdot&space;X" alt="\dpi{120} \Sigma = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T = \frac{1}{m}X^{T}\cdot X" align="absmiddle" /></p>
 
-<img class="alignleft" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma" alt="\dpi{120} \Sigma" align="absmiddle" /> 를 합계 기호와 혼동하지 말아야한다. 하나의 행렬이다.
+<p><img class="alignleft" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma" alt="\dpi{120} \Sigma" align="absmiddle" /> 를 합계 기호와 혼동하지 말아야한다. 하나의 행렬이다.</p>
 
-&nbsp;
+<p> </p>
 
-<img class="alignleft" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\x^{(i)}&space;:&space;n\times&space;1\qaud\quad\quad&space;\quad(x^{(i)})^{T}:1&space;\times&space;n&space;\\&space;X&space;:&space;m&space;\times&space;n\quad&space;\quad&space;\quad&space;X^{T}:n&space;\times&space;m" alt="\dpi{120} \\x^{(i)} : n\times 1\qaud\quad\quad \quad(x^{(i)})^{T}:1 \times n \\ X : m \times n\quad \quad \quad X^{T}:n \times m" align="absmiddle" /> 
+<p><img class="alignleft" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\x^{(i)}&space;:&space;n\times&space;1\qaud\quad\quad&space;\quad(x^{(i)})^{T}:1&space;\times&space;n&space;\\&space;X&space;:&space;m&space;\times&space;n\quad&space;\quad&space;\quad&space;X^{T}:n&space;\times&space;m" alt="\dpi{120} \\x^{(i)} : n\times 1\qaud\quad\quad \quad(x^{(i)})^{T}:1 \times n \\ X : m \times n\quad \quad \quad X^{T}:n \times m" align="absmiddle" /></p>
 
-이다. 따라서 covariant matrix는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;n" alt="\dpi{120} n \times n" align="absmiddle" /> 행렬이다.
+<p>이다. 따라서 covariant matrix는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;n" alt="\dpi{120} n \times n" align="absmiddle" /> 행렬이다.</p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 14pt;"><strong>b)  covariant matrix </strong></span><span style="font-size: 14pt;"><strong><img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma" alt="\dpi{120} \Sigma" align="absmiddle" /> 의 eigen-vectors&#8217; matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" /> 계산</strong></span>
+<p><span style="font-size: 14pt;"><strong>b)  covariant matrix </strong></span><span style="font-size: 14pt;"><strong><img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma" alt="\dpi{120} \Sigma" align="absmiddle" /> 의 eigen-vectors’ matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" /> 계산</strong></span></p>
 
-covariant matrix의 eigen vector들로 이루어진 matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" />를 구하려면 singular value decomposition을 하면된다. 이는 복잡한 수식계산의 과정을 거쳐야 한다. 다양한 머신러닝 라이브러리에서는 이러한 계산을 해주는 함수를 지원한다. octave에서는 svd() 함수를 사용하면 된다. →<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U&space;=&space;svd(\Sigma)" alt="\dpi{120} U = svd(\Sigma)" align="absmiddle" />      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" /> 는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;n" alt="\dpi{120} n \times n" align="absmiddle" /> 행렬이다. 그리고 바로 이 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" />가 우리의 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />를 projection 할 line과 같은 것이다.
+<p>covariant matrix의 eigen vector들로 이루어진 matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" />를 구하려면 singular value decomposition을 하면된다. 이는 복잡한 수식계산의 과정을 거쳐야 한다. 다양한 머신러닝 라이브러리에서는 이러한 계산을 해주는 함수를 지원한다. octave에서는 svd() 함수를 사용하면 된다. →<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U&space;=&space;svd(\Sigma)" alt="\dpi{120} U = svd(\Sigma)" align="absmiddle" />      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" /> 는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;n" alt="\dpi{120} n \times n" align="absmiddle" /> 행렬이다. 그리고 바로 이 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" />가 우리의 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />를 projection 할 line과 같은 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 14pt;"><strong>c) k dimensional vector z들의 matrix <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z" alt="\dpi{120} Z" align="absmiddle" />를 구한다.</strong></span>
+<p><span style="font-size: 14pt;"><strong>c) k dimensional vector z들의 matrix <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z" alt="\dpi{120} Z" align="absmiddle" />를 구한다.</strong></span></p>
 
-먼저 U의 1~k번째 column만으로 이루어진 matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U_{reduce}" alt="\dpi{120} U_{reduce}" align="absmiddle" />를 구한다. <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U_{reduce}" alt="\dpi{120} U_{reduce}" align="absmiddle" />는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;k" alt="\dpi{120} n \times k" align="absmiddle" /> 행렬이다.
+<p>먼저 U의 1~k번째 column만으로 이루어진 matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U_{reduce}" alt="\dpi{120} U_{reduce}" align="absmiddle" />를 구한다. <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U_{reduce}" alt="\dpi{120} U_{reduce}" align="absmiddle" />는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;k" alt="\dpi{120} n \times k" align="absmiddle" /> 행렬이다.</p>
 
-<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}=U_{reduce}^{T}\cdot&space;x^{(i)}\quad&space;\quad&space;\quad&space;Z=X\cdot&space;U_{reduce}" alt="\dpi{120} z^{(i)}=U_{reduce}^{T}\cdot x^{(i)}\quad \quad \quad Z=X\cdot U_{reduce}" align="absmiddle" />  는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;k" alt="\dpi{120} m \times k" align="absmiddle" />  행렬이다. projection을 하여 새로운 k-dimensional featured data를 얻어내었다.
+<p><img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}=U_{reduce}^{T}\cdot&space;x^{(i)}\quad&space;\quad&space;\quad&space;Z=X\cdot&space;U_{reduce}" alt="\dpi{120} z^{(i)}=U_{reduce}^{T}\cdot x^{(i)}\quad \quad \quad Z=X\cdot U_{reduce}" align="absmiddle" />  는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;k" alt="\dpi{120} m \times k" align="absmiddle" />  행렬이다. projection을 하여 새로운 k-dimensional featured data를 얻어내었다.</p>
 
-결국 우리는<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;n" alt="\dpi{120} m \times n" align="absmiddle" /> 행렬 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />에서 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;k" alt="\dpi{120} m \times k" align="absmiddle" />행렬 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z" alt="\dpi{120} Z" align="absmiddle" />를 얻어냈다.
+<p>결국 우리는<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;n" alt="\dpi{120} m \times n" align="absmiddle" /> 행렬 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />에서 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;k" alt="\dpi{120} m \times k" align="absmiddle" />행렬 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z" alt="\dpi{120} Z" align="absmiddle" />를 얻어냈다.</p>
 
-<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z=\begin{bmatrix}&space;---z^{(1)}---&space;\\---z^{(2)}---\\&space;\cdot&space;\\&space;\cdot&space;\\---z^{(m)}---&space;\end{bmatrix}" alt="\dpi{120} Z=\begin{bmatrix} ---z^{(1)}--- \\---z^{(2)}---\\ \cdot \\ \cdot \\---z^{(m)}--- \end{bmatrix}" align="absmiddle" /> 
+<p><img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z=\begin{bmatrix}&space;---z^{(1)}---&space;\\---z^{(2)}---\\&space;\cdot&space;\\&space;\cdot&space;\\---z^{(m)}---&space;\end{bmatrix}" alt="\dpi{120} Z=\begin{bmatrix} ---z^{(1)}--- \\---z^{(2)}---\\ \cdot \\ \cdot \\---z^{(m)}--- \end{bmatrix}" align="absmiddle" /></p>
 
-Z의 각 data example은 k개의 feature를 가지고 있다. 각각의 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}" alt="\dpi{120} z^{(i)}" align="absmiddle" />는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />를 vector <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(i)}" alt="\dpi{120} u^{(i)}" align="absmiddle" />에 projection한 data이다.
+<p>Z의 각 data example은 k개의 feature를 가지고 있다. 각각의 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}" alt="\dpi{120} z^{(i)}" align="absmiddle" />는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />를 vector <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(i)}" alt="\dpi{120} u^{(i)}" align="absmiddle" />에 projection한 data이다.</p>
 
-이제 이 dataset을 가지고 K-means 알고리즘이나 다른 unsupervised 알고리즘을 적용하면 된다.
+<p>이제 이 dataset을 가지고 K-means 알고리즘이나 다른 unsupervised 알고리즘을 적용하면 된다.</p>
 
-&nbsp;
+<p> </p>
 
-뭔가 꽤 설명한 것 같지만 다음과 같은 간결하고 몇 줄 되지 않는 matlab 코드로 PCA알고리즘이 구현된다.
+<p>뭔가 꽤 설명한 것 같지만 다음과 같은 간결하고 몇 줄 되지 않는 matlab 코드로 PCA알고리즘이 구현된다.</p>
 
-`1  Sigma = (1/m) * X' * X; % compute the covariance matrix<br/>
-2  [U,S,V] = svd(Sigma);   % compute our projected directions<br/>
-3  Ureduce = U(:,1:k);     % take the first k directions<br/>
-4  Z = X * Ureduce;        % compute the projected data points`
+<p><code class="highlighter-rouge">1  Sigma = (1/m) * X' * X; % compute the covariance matrix&lt;br/&gt;
+2  [U,S,V] = svd(Sigma);   % compute our projected directions&lt;br/&gt;
+3  Ureduce = U(:,1:k);     % take the first k directions&lt;br/&gt;
+4  Z = X * Ureduce;        % compute the projected data points</code></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 18pt;"><strong>2. Reconstruction <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;X" alt="\dpi{150} X" align="absmiddle" /> from <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;Z" alt="\dpi{150} Z" align="absmiddle" /></strong></span>
+<p><span style="font-size: 18pt;"><strong>2. Reconstruction <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;X" alt="\dpi{150} X" align="absmiddle" /> from <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;Z" alt="\dpi{150} Z" align="absmiddle" /></strong></span></p>
 
-* * *
+<hr />
 
-<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}=U_{reduce}^{T}\cdot&space;x^{(i)}\quad&space;\quad&space;\quad&space;Z=X\cdot&space;U_{reduce}" alt="\dpi{120} z^{(i)}=U_{reduce}^{T}\cdot x^{(i)}\quad \quad \quad Z=X\cdot U_{reduce}" align="absmiddle" />  의 관계가 되었었다.
+<p><img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}=U_{reduce}^{T}\cdot&space;x^{(i)}\quad&space;\quad&space;\quad&space;Z=X\cdot&space;U_{reduce}" alt="\dpi{120} z^{(i)}=U_{reduce}^{T}\cdot x^{(i)}\quad \quad \quad Z=X\cdot U_{reduce}" align="absmiddle" />  의 관계가 되었었다.</p>
 
-반대로<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{approx}=U_{reduce}\cdot&space;z^{(i)}\quad&space;\quad&space;\quad&space;X_{approx}=Z\cdot&space;U_{reduce}^{T}" alt="\dpi{120} x^{(i)}_{approx}=U_{reduce}\cdot z^{(i)}\quad \quad \quad X_{approx}=Z\cdot U_{reduce}^{T}" align="absmiddle" /> 의 관계식을 이용하여 Z로부터 X를 복구할 수 있다. 하지만 완벽히 100% 복구되지는 못한다. 이미 근사(approximation)하여 어느정도의 error를 무시해버렸기 때문에 이로부터 복원되는 것도 X의 근사일 뿐이다.
+<p>반대로<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{approx}=U_{reduce}\cdot&space;z^{(i)}\quad&space;\quad&space;\quad&space;X_{approx}=Z\cdot&space;U_{reduce}^{T}" alt="\dpi{120} x^{(i)}_{approx}=U_{reduce}\cdot z^{(i)}\quad \quad \quad X_{approx}=Z\cdot U_{reduce}^{T}" align="absmiddle" /> 의 관계식을 이용하여 Z로부터 X를 복구할 수 있다. 하지만 완벽히 100% 복구되지는 못한다. 이미 근사(approximation)하여 어느정도의 error를 무시해버렸기 때문에 이로부터 복원되는 것도 X의 근사일 뿐이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-family: georgia, palatino, serif; font-size: 18pt;"><strong>3. Choosing the number of Principal Components</strong></span>
+<p><span style="font-family: georgia, palatino, serif; font-size: 18pt;"><strong>3. Choosing the number of Principal Components</strong></span></p>
 
-* * *
+<hr />
 
-PCA 알고리즘을 사용하면 n개의 feature를 k개의 feature로 줄일 수 있다 하였다. 이 때 k를 몇으로 정하는 것이 좋을지 생각해보지 않을 수 없다.
+<p>PCA 알고리즘을 사용하면 n개의 feature를 k개의 feature로 줄일 수 있다 하였다. 이 때 k를 몇으로 정하는 것이 좋을지 생각해보지 않을 수 없다.</p>
 
-  *<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{average\quad&space;projection\quad&space;error}{total\quad&space;variation}=\frac{\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}-x^{(i)}_{approx}&space;\right&space;\|^{2}}{\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}&space;\right&space;\|^{2}}\leq&space;0.01" alt="\dpi{120} \frac{average\quad projection\quad error}{total\quad variation}=\frac{\frac{1}{m}\sum_{i=1}^{m}\left \| x^{(i)}-x^{(i)}_{approx} \right \|^{2}}{\frac{1}{m}\sum_{i=1}^{m}\left \| x^{(i)} \right \|^{2}}\leq 0.01" align="absmiddle" /> 를 만족하는 가장 작은 k를 선택한다.
+<p>*<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{average\quad&space;projection\quad&space;error}{total\quad&space;variation}=\frac{\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}-x^{(i)}_{approx}&space;\right&space;\|^{2}}{\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}&space;\right&space;\|^{2}}\leq&space;0.01" alt="\dpi{120} \frac{average\quad projection\quad error}{total\quad variation}=\frac{\frac{1}{m}\sum_{i=1}^{m}\left \| x^{(i)}-x^{(i)}_{approx} \right \|^{2}}{\frac{1}{m}\sum_{i=1}^{m}\left \| x^{(i)} \right \|^{2}}\leq 0.01" align="absmiddle" /> 를 만족하는 가장 작은 k를 선택한다.</p>
 
-이 때 99%의 variance가 보존된다고 본다. 0.01 이 아니라 0.05를 사용한다면 95%의 variance가 보존되는 것이다. variance가 보존된다는 것은 기존의 data들의 relevant한 position이 유지된다는 말이다. 되도않는 hyperplane을 골라서 projection하면 기존의 class별 classification 되어있던 data들이 오히려 더 섞여 classification이 악화될 소지가 있는 것이다.
+<p>이 때 99%의 variance가 보존된다고 본다. 0.01 이 아니라 0.05를 사용한다면 95%의 variance가 보존되는 것이다. variance가 보존된다는 것은 기존의 data들의 relevant한 position이 유지된다는 말이다. 되도않는 hyperplane을 골라서 projection하면 기존의 class별 classification 되어있던 data들이 오히려 더 섞여 classification이 악화될 소지가 있는 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-지금까지의 내용으로 결론을 지어보자.
+<p>지금까지의 내용으로 결론을 지어보자.</p>
 
 <table style="width: 100%; border-collapse: collapse; border-style: double; background-color: #ebe8e8;" border="1">
   <tr>
     <td style="width: 100%;">
-      1) k=1, 2, 3, ··· 순차적으로 늘려가며 PCA를 적용한다.</p> 
+      1) k=1, 2, 3, ··· 순차적으로 늘려가며 PCA를 적용한다.&lt;/p&gt; 
       
       <p>
         2) <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U_{reduce},z^{(i)},x_{approx}^{(i)}" alt="\dpi{120} U_{reduce},z^{(i)},x_{approx}^{(i)}" align="absmiddle" />를 계산한다.
       </p>
       
       <p>
-        3) 99%이상의 variance가 보존되는지 check하여 실패하면 k를 1 늘려서 다시 test한다. 위에서 말한 variance 보존 공식을 적용하는 k 중 가장 작은 값을 찾을 때 까지이다.</td> </tr> </tbody> </table> 
+        3) 99%이상의 variance가 보존되는지 check하여 실패하면 k를 1 늘려서 다시 test한다. 위에서 말한 variance 보존 공식을 적용하는 k 중 가장 작은 값을 찾을 때 까지이다.&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; 
         
         <p>
           결국은 위와 같은 알고리즘을 짜는 것인데, 비효율적이고 귀찮은 작업이라는 느낌이 든다. 아까 말했던 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U&space;=&space;svd(\Sigma)" alt="\dpi{120} U = svd(\Sigma)" align="absmiddle" />함수를 기억하는가? 위에서는 U만 썼지만, svd() 함수는 3개의 값을 return 해준다. 코드를 다음과 같이 쓰면 된다.
@@ -11254,6 +11248,8 @@ PCA 알고리즘을 사용하면 n개의 feature를 k개의 feature로 줄일 �
         <p>
           그렇다고 무작정 처음부터 PCA를 적용할 것이 아니라 먼저 모델을 학습시켜보고 필요할 때에만 하는 것이 좋다.
         </p>
+</p></td></tr></table>
+
   </div>
   
 </div>

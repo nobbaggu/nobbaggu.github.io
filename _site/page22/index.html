@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,44 +10682,43 @@
 
     <span class="post-date">15 Dec 2018</span>
 
-    클래스는 하나의 자료형이 될 수 있다.
+    <p>클래스는 하나의 자료형이 될 수 있다.</p>
 
-우리가 문자열을 선언할 때 흔히 쓰는 String 자료형도 int, char, double처럼 기본 자료형이 아닌 참조 자료형이다. 누군가 JDK에 만들어 놓은것을 사용할 뿐이다.
+<p>우리가 문자열을 선언할 때 흔히 쓰는 String 자료형도 int, char, double처럼 기본 자료형이 아닌 참조 자료형이다. 누군가 JDK에 만들어 놓은것을 사용할 뿐이다.</p>
 
-아무튼 클래스가 하나의 자료형이 될 수 있고 그것을 참조 자료형이라고 부른다는 것이 중요하다. 여기에서 객체지향 프로그래밍의 맛보기를 알 수 있다.
+<p>아무튼 클래스가 하나의 자료형이 될 수 있고 그것을 참조 자료형이라고 부른다는 것이 중요하다. 여기에서 객체지향 프로그래밍의 맛보기를 알 수 있다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Subject {
-    int midScore;
-    int finScore;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Subject</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">midScore</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">finScore</span><span class="o">;</span>
 
-    public Subject(int mid, int fin) {
-        midScore = mid;
-        finScore = fin;
-    }
-}
-~~~
+    <span class="kd">public</span> <span class="nf">Subject</span><span class="o">(</span><span class="kt">int</span> <span class="n">mid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">fin</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">midScore</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+        <span class="n">finScore</span> <span class="o">=</span> <span class="n">fin</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Student {
-   int stuID;
-   String stuName;
-   Subject math = new Subject(50,90);
-   Subject physics = new Subject(80,40);
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">stuID</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">stuName</span><span class="o">;</span>
+   <span class="nc">Subject</span> <span class="n">math</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span><span class="mi">90</span><span class="o">);</span>
+   <span class="nc">Subject</span> <span class="n">physics</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="o">(</span><span class="mi">80</span><span class="o">,</span><span class="mi">40</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-어떤 학생의 학번, 이름, 수강과목의 중간,기말 점수를 저장하고 싶을 때 Student 클래스안에 모두 선언하면 복잡할 것이다. 이렇게 할 경우 수학의 중간,기말과 물리의 중간,기말 총 4개를 더 추가해야한다. 하지만 수강과목을 하나의 클래스로 외부에 선언하고 Student 클래스에 Subject 참조 자료형의 변수를 선언하고 객체를 만들어주면 편리하다.
+<p>어떤 학생의 학번, 이름, 수강과목의 중간,기말 점수를 저장하고 싶을 때 Student 클래스안에 모두 선언하면 복잡할 것이다. 이렇게 할 경우 수학의 중간,기말과 물리의 중간,기말 총 4개를 더 추가해야한다. 하지만 수강과목을 하나의 클래스로 외부에 선언하고 Student 클래스에 Subject 참조 자료형의 변수를 선언하고 객체를 만들어주면 편리하다.</p>
 
-이처럼 객체 상호간의 유기작용을 프로그래밍 하는것이 객체지향 프로그래밍의 핵심이다.
+<p>이처럼 객체 상호간의 유기작용을 프로그래밍 하는것이 객체지향 프로그래밍의 핵심이다.</p>
+
   </div>
   
   <div class="post">
@@ -10755,150 +10730,144 @@ public class Student {
 
     <span class="post-date">15 Dec 2018</span>
 
-    생성자 는 클래스형의 인스턴스를 만들 때 필요한 요소이다. 생성자는 멤버 인스턴스가 만들어 질 때 멤버변수의 초기화에 관여하고 정보은닉과 관계되는 Java의 핵심 내용중 하나이다.
+    <p>생성자 는 클래스형의 인스턴스를 만들 때 필요한 요소이다. 생성자는 멤버 인스턴스가 만들어 질 때 멤버변수의 초기화에 관여하고 정보은닉과 관계되는 Java의 핵심 내용중 하나이다.</p>
 
-# 1. 생성자
+<h1 id="1-생성자">1. 생성자</h1>
 
-* * *
+<hr />
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-   String name;
-   int age;
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위와 같이 정의된 클래스로 인스턴스를 만들 때 다음과 같이 했다.
+<p>위와 같이 정의된 클래스로 인스턴스를 만들 때 다음과 같이 했다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-       Person per = new Person();
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Person</span> <span class="n">per</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-저기서 Person()을 생성자(Constructor)라고 한다.
+<p>저기서 Person()을 생성자(Constructor)라고 한다.</p>
 
-Person 클래스를 정의한 코드는 컴파일되면서 자동으로 다음과 같이 된다.
+<p>Person 클래스를 정의한 코드는 컴파일되면서 자동으로 다음과 같이 된다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-   String name;
-   int age;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
 
-   public Person() {} //default 생성자
-}
-~~~
+   <span class="kd">public</span> <span class="nf">Person</span><span class="o">()</span> <span class="o">{}</span> <span class="c1">//default 생성자</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-클래스를 정의할 때 생성자가 포함되어있지 않으면 디폴트로 생성자를 넣어준다.
+<p>클래스를 정의할 때 생성자가 포함되어있지 않으면 디폴트로 생성자를 넣어준다.</p>
 
-디폴트 생성자는 아무런 매개변수도 없고 코드도 없다. 단지 인스턴스를 만들기 위한 용도만 가지고 있다.
+<p>디폴트 생성자는 아무런 매개변수도 없고 코드도 없다. 단지 인스턴스를 만들기 위한 용도만 가지고 있다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 생성자 만들기
+<h1 id="2-생성자-만들기">2. 생성자 만들기</h1>
 
-* * *
+<hr />
 
-생성자를 프로그래머가 직접 만들 수 있다. 보통 이런 경우는 인스턴스가 만들어지면서 곧바로 멤버 변수들을 초기화 시킬때이다.
+<p>생성자를 프로그래머가 직접 만들 수 있다. 보통 이런 경우는 인스턴스가 만들어지면서 곧바로 멤버 변수들을 초기화 시킬때이다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-   String name;
-   int age;
-   String addr;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">addr</span><span class="o">;</span>
 
-   public Person(String str) {
-      name = str;
-   } 
-}
-~~~
+   <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="n">str</span><span class="o">;</span>
+   <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></div></div>
 
-위 코드에서는 생성자가 매개변수를 가지고 있다. 매개변수를 받아 멤버변수 name에 값을 저장한다.
+<p>위 코드에서는 생성자가 매개변수를 가지고 있다. 매개변수를 받아 멤버변수 name에 값을 저장한다.</p>
 
-위와 같이 만들어진 클래스로 인스턴스를 만드는 방법은 다음과 같다.
+<p>위와 같이 만들어진 클래스로 인스턴스를 만드는 방법은 다음과 같다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-        Person per = new Person("Kim");
-        System.out.println(per.name); // "Kim"
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Person</span> <span class="n">per</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Kim"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per</span><span class="o">.</span><span class="na">name</span><span class="o">);</span> <span class="c1">// "Kim"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-인스턴스를 만들면서 바로 String 타입의 문자열을 전달해야 한다. 이 때 전달받은 문자열이 name에 저장된다. 출력해보면 "Kim"이 나온다.
+<p>인스턴스를 만들면서 바로 String 타입의 문자열을 전달해야 한다. 이 때 전달받은 문자열이 name에 저장된다. 출력해보면 “Kim”이 나온다.</p>
 
-**생성자를 프로그래머가 직접 만든 경우에는 default 생성자가 자동으로 만들어지지 않는다.** 따라서 위에서 만든 생성자뿐이므로 인스턴스를 만들 때 매개변수를 넣어주어야 하고 그렇지 않으면 컴파일 오류가 난다.
+<p><strong>생성자를 프로그래머가 직접 만든 경우에는 default 생성자가 자동으로 만들어지지 않는다.</strong> 따라서 위에서 만든 생성자뿐이므로 인스턴스를 만들 때 매개변수를 넣어주어야 하고 그렇지 않으면 컴파일 오류가 난다.</p>
 
-디폴트 생성자도 추가해주면 인스턴스는 두 가지 생성자 중에서 하나를 이용해서 만들 수 있다.
+<p>디폴트 생성자도 추가해주면 인스턴스는 두 가지 생성자 중에서 하나를 이용해서 만들 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 생성자 오버로드
+<h1 id="3-생성자-오버로드">3. 생성자 오버로드</h1>
 
-* * *
+<hr />
 
-위에서 매개변수가 있는 생성자나 디폴트생성자 모두 사용할 수 있다고 했다. 이 때에는 디폴트 생성자도 프로그래머가 직접 추가해야한다.
+<p>위에서 매개변수가 있는 생성자나 디폴트생성자 모두 사용할 수 있다고 했다. 이 때에는 디폴트 생성자도 프로그래머가 직접 추가해야한다.</p>
 
-그리고 매개변수가 있는 생성자도 여러개 만들 수 있다.
+<p>그리고 매개변수가 있는 생성자도 여러개 만들 수 있다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-    String name;
-    int age;
-    String addr;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">addr</span><span class="o">;</span>
 
-    public Person(String pname) {
-        name = pname;
-    }
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">pname</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">pname</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    public Person(String pname, int page) {
-        name = pname;
-        age = page;
-    }
-}
-~~~
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">pname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">page</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">pname</span><span class="o">;</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">page</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위에서는 매개변수가 1개인 생성자와 2개인 생성자가 있다. 이같은 경우를 생성자 **오버로드(OverLoad)**라고 한다.
+<p>위에서는 매개변수가 1개인 생성자와 2개인 생성자가 있다. 이같은 경우를 생성자 <strong>오버로드(OverLoad)</strong>라고 한다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-        Person per1 = new Person("Kim");
-        Person per2 = new Person("Kelly", 20);
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Kim"</span><span class="o">);</span>
+        <span class="nc">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
     
-        System.out.println(per1.name);
-        System.out.println(per2.name);
-        System.out.println(per2.age);
-    }
-}
-~~~
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per2</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per2</span><span class="o">.</span><span class="na">age</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-이렇게 두 생성자중 아무거나 사용하여 인스턴스를 생성할 수 있다.
+<p>이렇게 두 생성자중 아무거나 사용하여 인스턴스를 생성할 수 있다.</p>
 
-매개변수가 프로그램 사용자에게 노출되면 안되는 경우 매개변수에 직접 접근하는 것을 제한시키고 인스턴스를 만들 때 정보를 입력받아 초기화 해야하는 경우 등에 매개변수가 있는 생성자를 사용한다.
+<p>매개변수가 프로그램 사용자에게 노출되면 안되는 경우 매개변수에 직접 접근하는 것을 제한시키고 인스턴스를 만들 때 정보를 입력받아 초기화 해야하는 경우 등에 매개변수가 있는 생성자를 사용한다.</p>
 
-또한 홈페이지등에 회원가입을 할 때 필수 입력사항같은 항목도 미리 생성자의 매개변수로 지정해두면 편리하다.
+<p>또한 홈페이지등에 회원가입을 할 때 필수 입력사항같은 항목도 미리 생성자의 매개변수로 지정해두면 편리하다.</p>
+
   </div>
   
   <div class="post">
@@ -10910,144 +10879,140 @@ public class Test {
 
     <span class="post-date">15 Dec 2018</span>
 
-    클래스와 클래스 내부의 멤버변수, 메소드에 대해 알면 이제 만들어서 사용해볼 차례다.
+    <p>클래스와 클래스 내부의 멤버변수, 메소드에 대해 알면 이제 만들어서 사용해볼 차례다.</p>
 
-실제 사용은 main()함수 내부에서 하는데 main함수는 보통 가장 먼저 시작 될 클래스에 포함시킨다.
+<p>실제 사용은 main()함수 내부에서 하는데 main함수는 보통 가장 먼저 시작 될 클래스에 포함시킨다.</p>
 
-지금은 사용할 클래스와 같은 패키지 내부에 Test.java 클래스를 만들어서 main()함수를 포함시킨다.
+<p>지금은 사용할 클래스와 같은 패키지 내부에 Test.java 클래스를 만들어서 main()함수를 포함시킨다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 클래스 생성하기
+<h1 id="1-클래스-생성하기">1. 클래스 생성하기</h1>
 
-* * *
+<hr />
 
-클래스를 생성하는 방법은 다음과 같다.
+<p>클래스를 생성하는 방법은 다음과 같다.</p>
 
-(클래스형) (변수명) = new 생성자;
+<p>(클래스형) (변수명) = new 생성자;</p>
 
-클래스를 생성하기 전에 다음과 같은 클래스를 정의해보자.
+<p>클래스를 생성하기 전에 다음과 같은 클래스를 정의해보자.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-    String name;
-    int age;
-    String address;
-    char gender;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+    <span class="kt">char</span> <span class="n">gender</span><span class="o">;</span>
     
-    public void setName(String str) {
-        name = str;
-    }
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">str</span><span class="o">;</span>
+    <span class="o">}</span>
     
-    public String getName() {
-        return name;
-    }
-}
-~~~
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위 클래스를 사용해서 하나 생성을 해보겠다.
+<p>위 클래스를 사용해서 하나 생성을 해보겠다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-        Person per1 = new Person(); // Person 클래스 객체를 하나 생성
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span> <span class="c1">// Person 클래스 객체를 하나 생성</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-이렇게 클래스가 하나 생성된 것이다.
+<p>이렇게 클래스가 하나 생성된 것이다.</p>
 
-클래스를 생성한다는 것은 사용할 수 있도록 힙 메모리에 저장하는 행위이며 **생성자를 호출함으로써 생성**할 수 있다. 이렇게 생성된 클래스를 **인스턴스**라고 한다. 인스턴스를 가리키는 클래스형 변수를 **참조변수**라고 한다.
+<p>클래스를 생성한다는 것은 사용할 수 있도록 힙 메모리에 저장하는 행위이며 <strong>생성자를 호출함으로써 생성</strong>할 수 있다. 이렇게 생성된 클래스를 <strong>인스턴스</strong>라고 한다. 인스턴스를 가리키는 클래스형 변수를 <strong>참조변수</strong>라고 한다.</p>
 
-즉, 위의 클래스 객체 생성 코드가 의미하는 바는 Person() 생성자앞에 new를 붙여 Person 클래스의 인스턴스를 하나 만들고 per1변수가 그 인스턴스를 참조하도록 한 것이다. 일반 변수 선언과 크게 다르지 않다. 물론 클래스 타입의 인스턴스는 몇 개든 상관없이 찍어낼 수 있다.
+<p>즉, 위의 클래스 객체 생성 코드가 의미하는 바는 Person() 생성자앞에 new를 붙여 Person 클래스의 인스턴스를 하나 만들고 per1변수가 그 인스턴스를 참조하도록 한 것이다. 일반 변수 선언과 크게 다르지 않다. 물론 클래스 타입의 인스턴스는 몇 개든 상관없이 찍어낼 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 인스턴스 사용
+<h1 id="2-인스턴스-사용">2. 인스턴스 사용</h1>
 
-* * *
+<hr />
 
-클래스형 변수인 참조변수는 생성자로 만들어진 인스턴스에 접근할 수 있는 수단이다. 어렵게 생각하지 않아도 int num = 10; 이라고 선언하면 num을 사용해 10에 접근할 수 있는것과 완전히 같은 것이다.
+<p>클래스형 변수인 참조변수는 생성자로 만들어진 인스턴스에 접근할 수 있는 수단이다. 어렵게 생각하지 않아도 int num = 10; 이라고 선언하면 num을 사용해 10에 접근할 수 있는것과 완전히 같은 것이다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-        Person per1 = new Person(); // Person 클래스의 인스턴스 생성
-        Person per2 = new Person(); // Person 클래스의 인스턴스 생성
-    }
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
+        <span class="nc">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위 처럼 2개의 인스턴스를 생성하면 각각의 인스턴스에 참조변수 per1, per2를 사용해서 접근할 수 있는 것이다. 참조변수를 사용하면 인스턴스의 멤버변수와 메소드를 사용할 수 있다.
+<p>위 처럼 2개의 인스턴스를 생성하면 각각의 인스턴스에 참조변수 per1, per2를 사용해서 접근할 수 있는 것이다. 참조변수를 사용하면 인스턴스의 멤버변수와 메소드를 사용할 수 있다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-        Person per1 = new Person(); // Person 클래스의 인스턴스 생성
-        Person per2 = new Person(); // Person 클래스의 인스턴스 생성
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
+        <span class="nc">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
 
-        per1.name = "John"; //참조변수.멤버변수 형태로 name에 접근하여 "John" 저장
-        System.out.println(per1.name); // 참조변수.멤버변수 형태로 name에 접근하여 출력
+        <span class="n">per1</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="o">;</span> <span class="c1">//참조변수.멤버변수 형태로 name에 접근하여 "John" 저장</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">name</span><span class="o">);</span> <span class="c1">// 참조변수.멤버변수 형태로 name에 접근하여 출력</span>
 
-        per1.setName("Kelly"); //참조변수.메소드 형태로 name에 접근하여 "Kelly" 저장
-        System.out.println(per1.getName()); // 참조변수.메소드 형태로 name에 접근하여 출력
-    }
-}
-~~~
+        <span class="n">per1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span> <span class="c1">//참조변수.메소드 형태로 name에 접근하여 "Kelly" 저장</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">// 참조변수.메소드 형태로 name에 접근하여 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위 코드에서 확인했지만 인스턴스를 이용한다는 것은 멤버변수와 메소드를 활용하는 것이고 방법은 아래와 같이 정리가 된다.
+<p>위 코드에서 확인했지만 인스턴스를 이용한다는 것은 멤버변수와 메소드를 활용하는 것이고 방법은 아래와 같이 정리가 된다.</p>
 
-<span style="font-family: arial, helvetica, sans-serif;"><strong><em><span style="text-decoration: underline;">참조변수.멤버변수
+<p><span style="font-family: arial, helvetica, sans-serif;"><strong><em><span style="text-decoration: underline;">참조변수.멤버변수</span></em></strong></span></p>
 
-<span style="font-family: arial, helvetica, sans-serif;"><strong><em><span style="text-decoration: underline;">참조변수.메소
+<p><span style="font-family: arial, helvetica, sans-serif;"><strong><em><span style="text-decoration: underline;">참조변수.메소</span></em></strong></span></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 참조변수와 인스턴스
+<h1 id="3-참조변수와-인스턴스">3. 참조변수와 인스턴스</h1>
 
-* * *
+<hr />
 
-참고로 참조변수는 지역변수이므로 스택 메모리에 생성되고 **인스턴스는 객체이므로 힙 메모리에 생성**된다.
+<p>참고로 참조변수는 지역변수이므로 스택 메모리에 생성되고 <strong>인스턴스는 객체이므로 힙 메모리에 생성</strong>된다.</p>
 
-힙 메모리는 동적 메모리로 C나 C++에서 프로그래머가 수동으로 관리해야하는 것과는 다르게 Java에서는 가비지 컬렉터가 자동으로 관리해준다.
+<p>힙 메모리는 동적 메모리로 C나 C++에서 프로그래머가 수동으로 관리해야하는 것과는 다르게 Java에서는 가비지 컬렉터가 자동으로 관리해준다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Test {
-    public static void main(String[] args) {
-        Person per1 = new Person(); // Person 클래스의 인스턴스 생성
-        Person per2 = new Person(); // Person 클래스의 인스턴스 생성
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
+        <span class="nc">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span> <span class="c1">// Person 클래스의 인스턴스 생성</span>
 
-        per1.name = "John"; //참조변수.멤버변수 형태로 name에 접근하여 "John" 저장
-        System.out.println(per1.name); // 참조변수.멤버변수 형태로 name에 접근하여 출력
+        <span class="n">per1</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="o">;</span> <span class="c1">//참조변수.멤버변수 형태로 name에 접근하여 "John" 저장</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">name</span><span class="o">);</span> <span class="c1">// 참조변수.멤버변수 형태로 name에 접근하여 출력</span>
 
-        per1.setName("Kelly"); //참조변수.메소드 형태로 name에 접근하여 "Kelly" 저장
-        System.out.println(per1.getName()); // 참조변수.메소드 형태로 name에 접근하여 출력
+        <span class="n">per1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span> <span class="c1">//참조변수.메소드 형태로 name에 접근하여 "Kelly" 저장</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">// 참조변수.메소드 형태로 name에 접근하여 출력</span>
 
-        System.out.println(per1); //classpart.Person@15db9742
-        System.out.println(per2); //classpart.Person@6d06d69c
-    }
-}
-~~~
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">);</span> <span class="c1">//classpart.Person@15db9742</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per2</span><span class="o">);</span> <span class="c1">//classpart.Person@6d06d69c</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-참조변수에 저장된 값은 인스턴스가 저장된 메모리의 주소값이다. 참조변수에 저장된 인스턴스의 메모리 주소값을 참조하여 메모리공간에서 멤버변수와 메소드에 관한 데이터를 쓰고 읽고 할 수 있었던 것이다.
+<p>참조변수에 저장된 값은 인스턴스가 저장된 메모리의 주소값이다. 참조변수에 저장된 인스턴스의 메모리 주소값을 참조하여 메모리공간에서 멤버변수와 메소드에 관한 데이터를 쓰고 읽고 할 수 있었던 것이다.</p>
 
-이 주소는 JVM에서 객체가 생성될 때 할당하는 가상 주소값이다.
+<p>이 주소는 JVM에서 객체가 생성될 때 할당하는 가상 주소값이다.</p>
 
-정리하자면 **인스턴스가 저장된 힙 메모리의 주소를 참조값, 그것이 저장된 것이 참조변수이다.**
+<p>정리하자면 <strong>인스턴스가 저장된 힙 메모리의 주소를 참조값, 그것이 저장된 것이 참조변수이다.</strong></p>
+
   </div>
   
   <div class="post">
@@ -11059,136 +11024,135 @@ public class Test {
 
     <span class="post-date">14 Dec 2018</span>
 
-    클래스 내부에서 특정 기능을 수행하는 부분인 메소드는 다른 말로 멤버 함수 라고도 한다. 함수는 많은 프로그래밍 언어에서 지원하는 중요한 기능이다. 자바에서는 클래스에 기능을 불어넣기 위해 함수를 사용한다. 이처럼 클래스 내부에서 정의되어 객체지향의 개념이 포함된 개념의 함수를 메소드라고 한다.
+    <p>클래스 내부에서 특정 기능을 수행하는 부분인 메소드는 다른 말로 멤버 함수 라고도 한다. 함수는 많은 프로그래밍 언어에서 지원하는 중요한 기능이다. 자바에서는 클래스에 기능을 불어넣기 위해 함수를 사용한다. 이처럼 클래스 내부에서 정의되어 객체지향의 개념이 포함된 개념의 함수를 메소드라고 한다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. 함수의 구성 요소
+<h1 id="1-함수의-구성-요소">1. 함수의 구성 요소</h1>
 
-* * *
+<hr />
 
-### 1) 반환형
+<h3 id="1-반환형">1) 반환형</h3>
 
-**반환형(return type)**은 함수가 뱉어내는 결과값의 자료형이다. **반환은** **자기자신을 호출(call)한 대상에게 한다. **함수의 반환은 return 예약어를 써서 수행한다. 반환형이 없다고 함수의 이름앞을 비워두면 안된다. 이 때에는 '비어있다'는 뜻을 가지는 void를 써주면 된다.
+<p><strong>반환형(return type)</strong>은 함수가 뱉어내는 결과값의 자료형이다. <strong>반환은</strong> <strong>자기자신을 호출(call)한 대상에게 한다. </strong>함수의 반환은 return 예약어를 써서 수행한다. 반환형이 없다고 함수의 이름앞을 비워두면 안된다. 이 때에는 ‘비어있다’는 뜻을 가지는 void를 써주면 된다.</p>
 
-## 
+<p>##</p>
 
-### 2) 이름
+<h3 id="2-이름">2) 이름</h3>
 
-함수의 이름은 우리가 임의로 짓는다. 다만 자바 프로그램이 실행되면 가장 먼저 실행되는 함수인 main함수만큼은 항상 정해져 있다.
+<p>함수의 이름은 우리가 임의로 짓는다. 다만 자바 프로그램이 실행되면 가장 먼저 실행되는 함수인 main함수만큼은 항상 정해져 있다.</p>
 
-통상적으로 함수의 이름은 함수의 기능을 유추할 수 있도록 짓는다.
+<p>통상적으로 함수의 이름은 함수의 기능을 유추할 수 있도록 짓는다.</p>
 
-## 
+<p>##</p>
 
-### 3) 매개변수
+<h3 id="3-매개변수">3) 매개변수</h3>
 
-함수 이름 옆의 ( ) 안에는 매개변수가 들어간다. 매개변수가 없다면 비워두면 된다.
+<p>함수 이름 옆의 ( ) 안에는 매개변수가 들어간다. 매개변수가 없다면 비워두면 된다.</p>
 
-함수를 호출할 때 함수를 정의할 때 선언된 매개변수의 자료형에 맞는 변수를 전달해야한다.
+<p>함수를 호출할 때 함수를 정의할 때 선언된 매개변수의 자료형에 맞는 변수를 전달해야한다.</p>
 
-주의해야 할 것은 **매개변수에 어떤 변수명을 넣었을 때 실제로 전달되는 것은 그 변수의 복사값이다. 다시 말해 함수를 통해서 외부에 있는 변수의 데이터를 직접 조작할 수 없다.**
+<p>주의해야 할 것은 <strong>매개변수에 어떤 변수명을 넣었을 때 실제로 전달되는 것은 그 변수의 복사값이다. 다시 말해 함수를 통해서 외부에 있는 변수의 데이터를 직접 조작할 수 없다.</strong></p>
 
-&nbsp;
+<p> </p>
 
-### 4) 몸체
+<h3 id="4-몸체">4) 몸체</h3>
 
-{ }에는 실행할 코드가 들어간다.
+<p>{ }에는 실행할 코드가 들어간다.</p>
 
-&nbsp;
+<p> </p>
 
-무슨 말인지는 직접 함수를 만들어보면 바로 파악될 것이다.
+<p>무슨 말인지는 직접 함수를 만들어보면 바로 파악될 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 함수의 종류
+<h1 id="2-함수의-종류">2. 함수의 종류</h1>
 
-* * *
+<hr />
 
-함수는 위에서 말한 요소들에 따라 크게 4가지로 분류 가능하다.
+<p>함수는 위에서 말한 요소들에 따라 크게 4가지로 분류 가능하다.</p>
 
-1) 반환형 o, 전달인자 o
+<p>1) 반환형 o, 전달인자 o</p>
 
-2) 반환형 o, 전달인자 x
+<p>2) 반환형 o, 전달인자 x</p>
 
-3) 반환형 x, 전달인자 o
+<p>3) 반환형 x, 전달인자 o</p>
 
-4) 반환형 x, 전달인자 x
+<p>4) 반환형 x, 전달인자 x</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-   int mul(int a, int b) { //반환형 o, 매개변수 o
-       int c = a*b;
-       return c;
-   }//두 매개변수를 곱하여 반환
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//반환형 o, 매개변수 o</span>
+       <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">;</span>
+       <span class="k">return</span> <span class="n">c</span><span class="o">;</span>
+   <span class="o">}</span><span class="c1">//두 매개변수를 곱하여 반환</span>
 
-   int getNum() {//반환형 o, 전달인자 x
-       int num=10;        
-       return num;
-   } //숫자 10을 반환
+   <span class="kt">int</span> <span class="nf">getNum</span><span class="o">()</span> <span class="o">{</span><span class="c1">//반환형 o, 전달인자 x</span>
+       <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>        
+       <span class="k">return</span> <span class="n">num</span><span class="o">;</span>
+   <span class="o">}</span> <span class="c1">//숫자 10을 반환</span>
 
-   void showResult(int num) {//반환형 x, 매개변수 o
-       System.out.println("The result is "+num);
-   } //매개변수를 출력
+   <span class="kt">void</span> <span class="nf">showResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span><span class="c1">//반환형 x, 매개변수 o</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The result is "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+   <span class="o">}</span> <span class="c1">//매개변수를 출력</span>
 
-   void sayHello() { //반환형 x, 매개변수 x
-       System.out.println("hello");
-   } //"hello" 문자열 출력
-}
-~~~
+   <span class="kt">void</span> <span class="nf">sayHello</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//반환형 x, 매개변수 x</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+   <span class="o">}</span> <span class="c1">//"hello" 문자열 출력</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-&nbsp;
+<p> </p>
 
-우리가 어떤 기능이 필요하여 함수를 어떻게 만들지 구상하면 반환형과 전달인자는 자동으로 정해진다.
+<p>우리가 어떤 기능이 필요하여 함수를 어떻게 만들지 구상하면 반환형과 전달인자는 자동으로 정해진다.</p>
 
-참고로, 반환형이 void인 함수에서도 return을 사용할 수 있다. return은 어떠한 값을 반환한다는 의미도 있지만, **'함수를 종료한다'**는 의미도 같이 가지고 있기 때문이다. 함수 내부의 코드가 수행되다가 return을 만나면 함수가 종료된다.
+<p>참고로, 반환형이 void인 함수에서도 return을 사용할 수 있다. return은 어떠한 값을 반환한다는 의미도 있지만, <strong>‘함수를 종료한다’</strong>는 의미도 같이 가지고 있기 때문이다. 함수 내부의 코드가 수행되다가 return을 만나면 함수가 종료된다.</p>
 
-직접 함수를 호출해보자.
+<p>직접 함수를 호출해보자.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-    public static void main(String[] args) {
-        int num1 = 10;
-        int num2 = 20;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
         
-        int mulResult = mul(num1, num2); // mul함수 호출
-        System.out.println(mulResult);
-    }
+        <span class="kt">int</span> <span class="n">mulResult</span> <span class="o">=</span> <span class="n">mul</span><span class="o">(</span><span class="n">num1</span><span class="o">,</span> <span class="n">num2</span><span class="o">);</span> <span class="c1">// mul함수 호출</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">mulResult</span><span class="o">);</span>
+    <span class="o">}</span>
     
-    public static int mul(int a, int b) {// 반환형 o, 매개변수 o
-        int c = a * b;
-        return c;
-    } // 두 매개변수를 곱하여 반환
-}
-~~~
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="c1">// 반환형 o, 매개변수 o</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">c</span><span class="o">;</span>
+    <span class="o">}</span> <span class="c1">// 두 매개변수를 곱하여 반환</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-실행결과
+<p>실행결과</p>
 
-200
+<p>200</p>
 
-# 3. 함수의 호출과 스택 메모리
+<h1 id="3-함수의-호출과-스택-메모리">3. 함수의 호출과 스택 메모리</h1>
 
-* * *
+<hr />
 
-함수가 호출되면 함수의 매개변수와 지역변수 등을 저장하기 위해 메모리 공간이 할당되어야 한다. 이 메모리 공간을 스택 메모리(stack memory)라고 부른다. 스택 메모리는 가장 나중에 들어온 데이터가 가장 먼저 소멸되는 Last In First Out(LIFO) 구조이다.
+<p>함수가 호출되면 함수의 매개변수와 지역변수 등을 저장하기 위해 메모리 공간이 할당되어야 한다. 이 메모리 공간을 스택 메모리(stack memory)라고 부른다. 스택 메모리는 가장 나중에 들어온 데이터가 가장 먼저 소멸되는 Last In First Out(LIFO) 구조이다.</p>
 
-위에서 코드에서 main함수가 mul함수를 호출(call)하는 과정의 메모리 공간의 차지와 할당을 살펴보자.
+<p>위에서 코드에서 main함수가 mul함수를 호출(call)하는 과정의 메모리 공간의 차지와 할당을 살펴보자.</p>
 
-<a href="https://SWnomad.com/%eb%a9%94%ec%86%8c%eb%93%9c/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-192/" rel="attachment wp-att-1574"><img class="aligncenter size-full wp-image-1574" src="/images/2018/12/no-name-37.jpg" alt="" width="269" height="183" /></a>
+<p><a href="https://SWnomad.com/%eb%a9%94%ec%86%8c%eb%93%9c/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-192/" rel="attachment wp-att-1574"><img class="aligncenter size-full wp-image-1574" src="/images/2018/12/no-name-37.jpg" alt="" width="269" height="183" /></a></p>
 
-먼저 main함수가 호출되므로 main함수의 변수인 num1과 num2 mulResult가 메모리공간에 할당된다. mulResult에 mul함의 결과를 대입하는 과정에서 mul함수가 호출되면서 스택메모리에 a,b와 c가 할당된다. 함수의 호출이 끝나면서 mul함수와 관련된 데이터가 먼저 메모리공간에서 해제되고 프로그램이 끝나면서 main함수와 관련된 데이터가 스택 메모리에서 소멸한다.
+<p>먼저 main함수가 호출되므로 main함수의 변수인 num1과 num2 mulResult가 메모리공간에 할당된다. mulResult에 mul함의 결과를 대입하는 과정에서 mul함수가 호출되면서 스택메모리에 a,b와 c가 할당된다. 함수의 호출이 끝나면서 mul함수와 관련된 데이터가 먼저 메모리공간에서 해제되고 프로그램이 끝나면서 main함수와 관련된 데이터가 스택 메모리에서 소멸한다.</p>
 
-&nbsp;
+<p> </p>
 
-함수를 사용하는 이유는 기능을 한 번 구현해놓으면 같은 상황에서 얼마든지 가져다 쓰기만 하면 되기 때문에 재사용성이 높아서이다.
+<p>함수를 사용하는 이유는 기능을 한 번 구현해놓으면 같은 상황에서 얼마든지 가져다 쓰기만 하면 되기 때문에 재사용성이 높아서이다.</p>
 
-또한 기능별로 나누어 함수로 정의하면 코드의 가독성이 높아진다. 모든 기능을 main함수안에 때려넣으면 코드가 복잡해질 것이다.
+<p>또한 기능별로 나누어 함수로 정의하면 코드의 가독성이 높아진다. 모든 기능을 main함수안에 때려넣으면 코드가 복잡해질 것이다.</p>
+
   </div>
   
   <div class="post">
@@ -11200,85 +11164,84 @@ public class Person {
 
     <span class="post-date">14 Dec 2018</span>
 
-    클래스(class)는 객체지향 프록래밍의 기반이다. 객체지향 프로그래밍은 클래스를 선언하고 정의하는 것부터 시작한다. 클래스는 객체의 속성, 특성을 정의하고 또한 그 객체가 지원하는 기능을 정의해놓은 것이라 할 수 있다. 즉 객체는 클래스를 정의함으로 만들어진다.
+    <p>클래스(class)는 객체지향 프록래밍의 기반이다. 객체지향 프로그래밍은 클래스를 선언하고 정의하는 것부터 시작한다. 클래스는 객체의 속성, 특성을 정의하고 또한 그 객체가 지원하는 기능을 정의해놓은 것이라 할 수 있다. 즉 객체는 클래스를 정의함으로 만들어진다.</p>
 
-&nbsp;
+<p> </p>
 
-# 1. class의 속성 : 멤버 변수
+<h1 id="1-class의-속성--멤버-변수">1. class의 속성 : 멤버 변수</h1>
 
-* * *
+<hr />
 
-사람이라는 객체를 만들려 한다.
+<p>사람이라는 객체를 만들려 한다.</p>
 
-객체의 속성으로는 나이, 이름, 주소가 있다고 해보자. 이를 클래스로 구현하려면 다음과 같이 하면 된다.
+<p>객체의 속성으로는 나이, 이름, 주소가 있다고 해보자. 이를 클래스로 구현하려면 다음과 같이 하면 된다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-    //멤버 변수
-    int age;
-    String name;
-    String address;
-}
-~~~
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="c1">//멤버 변수</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-클래스의 속성은 클래스 내부에 변수로 선언한다. 클래스의 속성을 <span style="text-decoration: underline;"><strong>'멤버 변수'</strong> 라고 부른다.
+<p>클래스의 속성은 클래스 내부에 변수로 선언한다. 클래스의 속성을 <span style="text-decoration: underline;"><strong>‘멤버 변수’</strong> 라고 부른다.</span></p>
 
-참고로 자바는 객체지향 언어 답게 모든 요소가 클래스 내부에 온다. 클래스 외부에 올 수 있는것은 package 선언과 외부 라이브러리를 가져오는 import 선언밖에 없다.
+<p>참고로 자바는 객체지향 언어 답게 모든 요소가 클래스 내부에 온다. 클래스 외부에 올 수 있는것은 package 선언과 외부 라이브러리를 가져오는 import 선언밖에 없다.</p>
 
-이렇게 만들어진 클래스는 하나의 또다른 자료형이 될 수 있다. 사실 String자료형 역시 자료형은 int, double과 같이 자바가 기본적으로 지원하는 자료형이 아니고 우리가 컴퓨터에 설치한 JDK에서 지원하는 하나의 클래스이다.
+<p>이렇게 만들어진 클래스는 하나의 또다른 자료형이 될 수 있다. 사실 String자료형 역시 자료형은 int, double과 같이 자바가 기본적으로 지원하는 자료형이 아니고 우리가 컴퓨터에 설치한 JDK에서 지원하는 하나의 클래스이다.</p>
 
-이처럼 하나의 클래스로 이루어진 자료형을 <span style="text-decoration: underline;"><strong>참조 자료형</strong>이라고 하며 뒤에서 자세히 다룰 것이다.
+<p>이처럼 하나의 클래스로 이루어진 자료형을 <span style="text-decoration: underline;"><strong>참조 자료형</strong>이라고 하며 뒤에서 자세히 다룰 것이다.</span></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. class의 기능 : 메소드
+<h1 id="2-class의-기능--메소드">2. class의 기능 : 메소드</h1>
 
-* * *
+<hr />
 
-클래스는 멥버 변수 뿐만 아니라 클래스가 수행하는 기능이 정의된 메소드(method)를 가질 수 있다. 이름을 개명한다던지, 밥을 먹는다던지 하는 기능을 수행하는 메소드를 정의해보겠다.
+<p>클래스는 멥버 변수 뿐만 아니라 클래스가 수행하는 기능이 정의된 메소드(method)를 가질 수 있다. 이름을 개명한다던지, 밥을 먹는다던지 하는 기능을 수행하는 메소드를 정의해보겠다.</p>
 
-~~~ java
-package classpart;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
 
-public class Person {
-    // Person 클래스의 속성
-    int age;
-    String name;
-    String address;
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="c1">// Person 클래스의 속성</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
 
-    // 밥먹기 메소드
-    public void eatMeal() {
-    System.out.println("냠냠쩌쩝쩝");
-    }
+    <span class="c1">// 밥먹기 메소드</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eatMeal</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"냠냠쩌쩝쩝"</span><span class="o">);</span>
+    <span class="o">}</span>
     
-    // 이름 바꾸기 메소드
-    public void changeName(String newName) {
-    this.name = newName;
-    }
-}
-~~~
+    <span class="c1">// 이름 바꾸기 메소드</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changeName</span><span class="o">(</span><span class="nc">String</span> <span class="n">newName</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-이처럼 클래스의 기능을 구현한 것을 메소드 혹은 멤버 함수라고 부르는데, 주로 메소드라고 부른다.
+<p>이처럼 클래스의 기능을 구현한 것을 메소드 혹은 멤버 함수라고 부르는데, 주로 메소드라고 부른다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 패키지
+<h1 id="3-패키지">3. 패키지</h1>
 
-* * *
+<hr />
 
-패키지란 클래스 파일들의 묶음이다. 어떠한 프로젝트를 일정한 기준으로 클래스 파일들을 분류하여 하나의 패키지에 넣어놓고 관리할 수 있다.
+<p>패키지란 클래스 파일들의 묶음이다. 어떠한 프로젝트를 일정한 기준으로 클래스 파일들을 분류하여 하나의 패키지에 넣어놓고 관리할 수 있다.</p>
 
-패키지를 사용해서 프로젝트의 계층 구조를 효율적으로 잘 구성해야 프로젝트의 관리와 유지보수가 편리해진다.
+<p>패키지를 사용해서 프로젝트의 계층 구조를 효율적으로 잘 구성해야 프로젝트의 관리와 유지보수가 편리해진다.</p>
 
-위에서 정의한 클래스는 Person이라는 이름을 가지고 있다. 사실 Person의 풀 네임은 classpart.Person이다. 같은 패키지 내에서는 패키지 명을 생략할 수 있어서 그렇게 한 것이었다.
+<p>위에서 정의한 클래스는 Person이라는 이름을 가지고 있다. 사실 Person의 풀 네임은 classpart.Person이다. 같은 패키지 내에서는 패키지 명을 생략할 수 있어서 그렇게 한 것이었다.</p>
 
-따라서 클래스 이름이 같더라도 다른 패키지에 있으면 풀네임이 다르므로 서로 연관이 없는 완전히 다른 클래스이다.
+<p>따라서 클래스 이름이 같더라도 다른 패키지에 있으면 풀네임이 다르므로 서로 연관이 없는 완전히 다른 클래스이다.</p>
+
   </div>
   
 </div>

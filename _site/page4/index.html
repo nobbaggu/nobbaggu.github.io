@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,201 +10682,215 @@
 
     <span class="post-date">31 May 2019</span>
 
-    안드로이드에서 HTTP를 사용해 웹에 정보를 요청하는 일은 표준 자바의 방식을 그대로 사용할 수 있다.
+    <p>안드로이드에서 HTTP를 사용해 웹에 정보를 요청하는 일은 표준 자바의 방식을 그대로 사용할 수 있다.</p>
 
-<br>
+<p><br /></p>
 
-* 1. URL 객체 생성
+<ul>
+  <li>
+    <ol>
+      <li>URL 객체 생성</li>
+    </ol>
+  </li>
+</ul>
 
-~~~ java
-URL url = new URL("https://google.com"); //구글 연결을 위한 url 객체 생성
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://google.com"</span><span class="o">);</span> <span class="c1">//구글 연결을 위한 url 객체 생성</span>
+</code></pre></div></div>
 
-URL 객체의 파라미터로 전달하는 문자열에 "http://" 혹은 "https://"가 포함되면 HTTP 연결을 위한 객체를 만들게 된다.
+<p>URL 객체의 파라미터로 전달하는 문자열에 “http://” 혹은 “https://”가 포함되면 HTTP 연결을 위한 객체를 만들게 된다.</p>
 
-<br>
+<p><br /></p>
 
-* 2. HttpURLConnection 객체 생성
+<ul>
+  <li>
+    <ol>
+      <li>HttpURLConnection 객체 생성</li>
+    </ol>
+  </li>
+</ul>
 
-~~~ java
-HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HttpURLConnection</span> <span class="n">conn</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+</code></pre></div></div>
 
-URL 객체의 `openConnection()` 메소드를 호출하면 URLConnection 객체가 리턴된다. 그런데 URL객체를 만들 때 "https://" 문자열이 포함되어있어서 HTTP 연결을 위한 URL객체가 생성되었다. 따라서 리턴된 URLConnection 객체는 HttpURLConnection 객체로 타입 캐스팅할 수 있다.
+<p>URL 객체의 <code class="highlighter-rouge">openConnection()</code> 메소드를 호출하면 URLConnection 객체가 리턴된다. 그런데 URL객체를 만들 때 “https://” 문자열이 포함되어있어서 HTTP 연결을 위한 URL객체가 생성되었다. 따라서 리턴된 URLConnection 객체는 HttpURLConnection 객체로 타입 캐스팅할 수 있다.</p>
 
-<br>
+<p><br /></p>
 
-* 3. HttpURlConnection 객체의 입력 스트림을 통해 웹 페이지 데이터 가져오기
+<ul>
+  <li>
+    <ol>
+      <li>HttpURlConnection 객체의 입력 스트림을 통해 웹 페이지 데이터 가져오기</li>
+    </ol>
+  </li>
+</ul>
 
-~~~ java
-BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream());
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">conn</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">());</span>
+</code></pre></div></div>
 
-InputStreamReader는 문자를 하나씩만 가져온다. 따라서 여기에 버퍼링을 사용하여 한 줄씩 가져올 수 있는 보조스트림인 BufferedReader의 도움을 받았다. 매개변수로는 스트림 객체를 넣어주어야 하는데, 우리가 연결을 구성한 웹페이지의 내용을 읽어올 것이므로 HttpURLConnection 객체의 입력 스트림을 넣어주었다. HttpURLConnection의 입력 스트림을 가져오기 위해서 `getInputStream() 메소드를 사용하였다.
+<p>InputStreamReader는 문자를 하나씩만 가져온다. 따라서 여기에 버퍼링을 사용하여 한 줄씩 가져올 수 있는 보조스트림인 BufferedReader의 도움을 받았다. 매개변수로는 스트림 객체를 넣어주어야 하는데, 우리가 연결을 구성한 웹페이지의 내용을 읽어올 것이므로 HttpURLConnection 객체의 입력 스트림을 넣어주었다. HttpURLConnection의 입력 스트림을 가져오기 위해서 `getInputStream() 메소드를 사용하였다.</p>
 
-<br>
+<p><br /></p>
 
-<br>
+<p><br /></p>
 
-나머지는 이제 사용자가 원하는 기능을 구성하기 나름이다. 위에서 생성한 객체들을 사용해서 웹페이지에 HTTP request를 보내서 응답을 읽어와서 화면에 표시하는 간단한 앱을 만들어보자.
+<p>나머지는 이제 사용자가 원하는 기능을 구성하기 나름이다. 위에서 생성한 객체들을 사용해서 웹페이지에 HTTP request를 보내서 응답을 읽어와서 화면에 표시하는 간단한 앱을 만들어보자.</p>
 
-<br>
+<p><br /></p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+    <span class="nt">&lt;RelativeLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span><span class="nt">&gt;</span>
 
-        <Button
-            android:id="@+id/requestBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="요청"
-            android:textSize="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"/>
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/requestBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"요청"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:layout_alignParentRight=</span><span class="s">"true"</span>
+            <span class="na">android:layout_marginRight=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
 
-        <EditText
-            android:id="@+id/urlInput"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginHorizontal="10dp"
-            android:layout_alignBottom="@+id/requestBtn"/>
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/urlInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"250dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_alignParentLeft=</span><span class="s">"true"</span>
+            <span class="na">android:layout_marginHorizontal=</span><span class="s">"10dp"</span>
+            <span class="na">android:layout_alignBottom=</span><span class="s">"@+id/requestBtn"</span><span class="nt">/&gt;</span>
 
-    </RelativeLayout>
+    <span class="nt">&lt;/RelativeLayout&gt;</span>
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">&gt;</span>
 
-        <TextView
-            android:id="@+id/viewer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="#33000000"
-            android:textColor="#ff000000"
-            android:textSize="12dp"/>
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/viewer"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"10dp"</span>
+            <span class="na">android:background=</span><span class="s">"#33000000"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ff000000"</span>
+            <span class="na">android:textSize=</span><span class="s">"12dp"</span><span class="nt">/&gt;</span>
 
-    </ScrollView>
+    <span class="nt">&lt;/ScrollView&gt;</span>
 
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-URL 주소를 입력할 입력상자 및 웹페이지 요청을 위한 버튼, 그리고 가져온 내용을 표시할 텍스트뷰를 만들었다.
+<p>URL 주소를 입력할 입력상자 및 웹페이지 요청을 위한 버튼, 그리고 가져온 내용을 표시할 텍스트뷰를 만들었다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ java
-public class MainActivity extends AppCompatActivity {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    EditText urlInput; // URL 입력상자
-    TextView viewer; // HTTP 응답내용 표시 영역
+    <span class="nc">EditText</span> <span class="n">urlInput</span><span class="o">;</span> <span class="c1">// URL 입력상자</span>
+    <span class="nc">TextView</span> <span class="n">viewer</span><span class="o">;</span> <span class="c1">// HTTP 응답내용 표시 영역</span>
 
-    Handler handler = new Handler(); // 메인 스레드 핸들러
-    StringBuilder sb; // 읽어온 내용 저장할 스트링빌더 객체
+    <span class="nc">Handler</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">();</span> <span class="c1">// 메인 스레드 핸들러</span>
+    <span class="nc">StringBuilder</span> <span class="n">sb</span><span class="o">;</span> <span class="c1">// 읽어온 내용 저장할 스트링빌더 객체</span>
 
-    HttpThread thread;
+    <span class="nc">HttpThread</span> <span class="n">thread</span><span class="o">;</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        urlInput = findViewById(R.id.urlInput);
-        viewer = findViewById(R.id.viewer);
+        <span class="n">urlInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">urlInput</span><span class="o">);</span>
+        <span class="n">viewer</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">viewer</span><span class="o">);</span>
 
-        Button requestBtn = findViewById(R.id.requestBtn);
-        requestBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thread = new HttpThread(); // HttpThread 객체 생성
-                thread.start(); // 스레드 시작
-            }
-        });
-    }
+        <span class="nc">Button</span> <span class="n">requestBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">requestBtn</span><span class="o">);</span>
+        <span class="n">requestBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HttpThread</span><span class="o">();</span> <span class="c1">// HttpThread 객체 생성</span>
+                <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">// 스레드 시작</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        try{
-            thread.join(); //화면이 안보이게 될 때 스레드 해제
-        }catch(Exception e){}
-    }
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">thread</span><span class="o">.</span><span class="na">join</span><span class="o">();</span> <span class="c1">//화면이 안보이게 될 때 스레드 해제</span>
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){}</span>
+    <span class="o">}</span>
 
-    class HttpThread extends Thread{
+    <span class="kd">class</span> <span class="nc">HttpThread</span> <span class="kd">extends</span> <span class="nc">Thread</span><span class="o">{</span>
 
-        public HttpThread() {}
+        <span class="kd">public</span> <span class="nf">HttpThread</span><span class="o">()</span> <span class="o">{}</span>
 
-        @Override
-        public void run() {
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
 
-            sb  = new StringBuilder();
+            <span class="n">sb</span>  <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
 
-            try{
-                URL url = new URL(urlInput.getText().toString().trim()); // 입력상자에서 URL 주소 가져오기
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // HTTP 연결 객체 생성
+            <span class="k">try</span><span class="o">{</span>
+                <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="n">urlInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">());</span> <span class="c1">// 입력상자에서 URL 주소 가져오기</span>
+                <span class="nc">HttpURLConnection</span> <span class="n">conn</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span> <span class="c1">// HTTP 연결 객체 생성</span>
 
-                if(conn!=null){
-                    conn.setConnectTimeout(10000); // 타임아웃 10초로 설정
-                    conn.setRequestMethod("GET"); // GET방식으로 요청
+                <span class="k">if</span><span class="o">(</span><span class="n">conn</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="na">setConnectTimeout</span><span class="o">(</span><span class="mi">10000</span><span class="o">);</span> <span class="c1">// 타임아웃 10초로 설정</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span> <span class="c1">// GET방식으로 요청</span>
 
-                    /* HttpURLConnection 객체의 입력, 출력 Enable */
-                    conn.setDoInput(true);
-                    conn.setDoOutput(true);
+                    <span class="cm">/* HttpURLConnection 객체의 입력, 출력 Enable */</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="na">setDoInput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 
-                    int resCode = conn.getResponseCode(); // 웹서버에 페이지 요청
+                    <span class="kt">int</span> <span class="n">resCode</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span> <span class="c1">// 웹서버에 페이지 요청</span>
 
-                    /* HTTP 연결 입력 스트림 객체 참조 */
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    <span class="cm">/* HTTP 연결 입력 스트림 객체 참조 */</span>
+                    <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">conn</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
 
-                    /* 스트림을 통해 내용 한줄씩 읽어들이면서 contents에 덧붙이기 */
-                    String line = null;
-                    while(true){
-                        line = br.readLine();
-                        if(line == null){
-                            break;
-                        }
-                        sb.append(line+"\n");
-                    }
+                    <span class="cm">/* 스트림을 통해 내용 한줄씩 읽어들이면서 contents에 덧붙이기 */</span>
+                    <span class="nc">String</span> <span class="n">line</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+                        <span class="n">line</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">line</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+                            <span class="k">break</span><span class="o">;</span>
+                        <span class="o">}</span>
+                        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">line</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                    <span class="o">}</span>
 
-                    br.close(); // 스트림 해제
-                    conn.disconnect(); // Http 연결 해제
-                }
+                    <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> <span class="c1">// 스트림 해제</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="na">disconnect</span><span class="o">();</span> <span class="c1">// Http 연결 해제</span>
+                <span class="o">}</span>
 
-            }catch(Exception e){
-                e.printStackTrace();
-            }
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
 
-            /* 메인스레드의 핸들러를 통해 텍스트뷰에 내용 표시 */
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    viewer.setText(sb.toString());
-                }
-            });
-        }
-    }
-}
-~~~
+            <span class="cm">/* 메인스레드의 핸들러를 통해 텍스트뷰에 내용 표시 */</span>
+            <span class="n">handler</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="n">viewer</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-위에서 설명한 메소드를 통해서 URL 객체를 만들고, 이 객체의 `openConnection()` 메소드를 통해 HttpURLConnection 객체를 만들었다. 이후 기타 부가적인 설정을 한 다음 스트림을 생성해 내용을 읽어들여서 텍스트뷰에 표시했다. 안드로이드는 정책상 네트워킹을 상요할 때 반드시 새로운 스레드를 만들어서 처리하도록 되어있다. 따라서 텍스트뷰에 가져온 내용을 업데이트 할 때 메인스레드의 핸들러를 사용했다.
+<p>위에서 설명한 메소드를 통해서 URL 객체를 만들고, 이 객체의 <code class="highlighter-rouge">openConnection()</code> 메소드를 통해 HttpURLConnection 객체를 만들었다. 이후 기타 부가적인 설정을 한 다음 스트림을 생성해 내용을 읽어들여서 텍스트뷰에 표시했다. 안드로이드는 정책상 네트워킹을 상요할 때 반드시 새로운 스레드를 만들어서 처리하도록 되어있다. 따라서 텍스트뷰에 가져온 내용을 업데이트 할 때 메인스레드의 핸들러를 사용했다.</p>
 
-앱을 실행하고 웹서버에 페이지를 요청하면 아래 사진과 같은 결과가 나온다.
+<p>앱을 실행하고 웹서버에 페이지를 요청하면 아래 사진과 같은 결과가 나온다.</p>
 
-<br>
+<p><br /></p>
 
-![1](/images/android/51/1.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/51/1.jpg" alt="1" width="30%" height="30%" /></p>
+
   </div>
   
   <div class="post">
@@ -10912,219 +10902,220 @@ public class MainActivity extends AppCompatActivity {
 
     <span class="post-date">30 May 2019</span>
 
-    소켓 통신에서는 **클라이언트와 서버 사이의 연결이 지속되고 실시간으로 양방향으로 데이터를 주고받는다.** 오늘 할 일은 아래와 같다.
+    <p>소켓 통신에서는 <strong>클라이언트와 서버 사이의 연결이 지속되고 실시간으로 양방향으로 데이터를 주고받는다.</strong> 오늘 할 일은 아래와 같다.</p>
 
-> 1. PC에서 이클립스와 Java를 통해 서버를 만들고 소켓을 뚫어서 돌린다.
-> 2. 안드로이드 단말에서 위에서 만든 서버로 요청을 보내고 응답을 받는다.
+<blockquote>
+  <ol>
+    <li>PC에서 이클립스와 Java를 통해 서버를 만들고 소켓을 뚫어서 돌린다.</li>
+    <li>안드로이드 단말에서 위에서 만든 서버로 요청을 보내고 응답을 받는다.</li>
+  </ol>
+</blockquote>
 
-<br>
+<p><br /></p>
 
-여기서 주의해야할 것이 있다. PC로 서버를 돌릴 때, 공용 wifi를 사용했다면 IP주소는 192로 시작한다. 이 때는 안드로이드 역시 같은 공용 와이파이를 사용하는 상태라야 서버로 접근할 수 있다. 왜냐하면 공유기에 물려서 내부에서만 유효한 네트워크에 연결된 상태이기 때문에 외부에서 접근할 방법이 없기 때문이다. 이 부분을 모르고 포트포워딩을 하려다가 괜히 삽질로 시간만 날릴 수 있다.
+<p>여기서 주의해야할 것이 있다. PC로 서버를 돌릴 때, 공용 wifi를 사용했다면 IP주소는 192로 시작한다. 이 때는 안드로이드 역시 같은 공용 와이파이를 사용하는 상태라야 서버로 접근할 수 있다. 왜냐하면 공유기에 물려서 내부에서만 유효한 네트워크에 연결된 상태이기 때문에 외부에서 접근할 방법이 없기 때문이다. 이 부분을 모르고 포트포워딩을 하려다가 괜히 삽질로 시간만 날릴 수 있다.</p>
 
-먼저 이클립스에서 프로젝트를 생성하여 서버측 코드를 작성한다.
+<p>먼저 이클립스에서 프로젝트를 생성하여 서버측 코드를 작성한다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ java
-public class SocketServer {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SocketServer</span> <span class="o">{</span>
 	
-	public static void main(String[] args) {
-		int portNumber = 5555;
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">portNumber</span> <span class="o">=</span> <span class="mi">5555</span><span class="o">;</span>
 		
-		try {
-			System.out.println("서버를 시작합니다...");
-			ServerSocket serverSocket = new ServerSocket(portNumber); //포트번호를 매개변수로 전달하면서 서버 소켓 열기
-			System.out.println("포트 " + portNumber + "에서 요청 대기중...");
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"서버를 시작합니다..."</span><span class="o">);</span>
+			<span class="nc">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ServerSocket</span><span class="o">(</span><span class="n">portNumber</span><span class="o">);</span> <span class="c1">//포트번호를 매개변수로 전달하면서 서버 소켓 열기</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"포트 "</span> <span class="o">+</span> <span class="n">portNumber</span> <span class="o">+</span> <span class="s">"에서 요청 대기중..."</span><span class="o">);</span>
 			
-			while(true) {
-				Socket socket = serverSocket.accept(); //클라이언트가 접근했을 때 accept() 메소드를 통해 클라이언트 소켓 객체 참조
-				InetAddress clientHost = socket.getLocalAddress();
-				int clientPort = socket.getPort();
-				System.out.println("클라이언트 연결됨. 호스트 : " + clientHost + ", 포트 : " + clientPort);
+			<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">serverSocket</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span> <span class="c1">//클라이언트가 접근했을 때 accept() 메소드를 통해 클라이언트 소켓 객체 참조</span>
+				<span class="nc">InetAddress</span> <span class="n">clientHost</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getLocalAddress</span><span class="o">();</span>
+				<span class="kt">int</span> <span class="n">clientPort</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"클라이언트 연결됨. 호스트 : "</span> <span class="o">+</span> <span class="n">clientHost</span> <span class="o">+</span> <span class="s">", 포트 : "</span> <span class="o">+</span> <span class="n">clientPort</span><span class="o">);</span>
 				
-				ObjectInputStream instream = new ObjectInputStream(socket.getInputStream()); //소켓의 입력 스트림 객체 참조
-				Object obj = instream.readObject(); // 입력 스트림으로부터 Object 객체 가져오기
-				System.out.println("클라이언트로부터 받은 데이터 : " + obj); // 가져온 객체 출력
+				<span class="nc">ObjectInputStream</span> <span class="n">instream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectInputStream</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">());</span> <span class="c1">//소켓의 입력 스트림 객체 참조</span>
+				<span class="nc">Object</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">instream</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span> <span class="c1">// 입력 스트림으로부터 Object 객체 가져오기</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"클라이언트로부터 받은 데이터 : "</span> <span class="o">+</span> <span class="n">obj</span><span class="o">);</span> <span class="c1">// 가져온 객체 출력</span>
 				
-				ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream()); //소켓의 출력 스트림 객체 참조
-				outstream.writeObject(obj + " from server"); //출력 스트림에 응답 넣기
-				outstream.flush(); // 출력
-				socket.close(); //소켓 해제
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-}
-~~~
+				<span class="nc">ObjectOutputStream</span> <span class="n">outstream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectOutputStream</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span> <span class="c1">//소켓의 출력 스트림 객체 참조</span>
+				<span class="n">outstream</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">obj</span> <span class="o">+</span> <span class="s">" from server"</span><span class="o">);</span> <span class="c1">//출력 스트림에 응답 넣기</span>
+				<span class="n">outstream</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span> <span class="c1">// 출력</span>
+				<span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> <span class="c1">//소켓 해제</span>
+			<span class="o">}</span>
+		<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-서버 소켓의 `accept()` 메소드를 사용하면 클라이언트의 요청이 왔을 때 클라이언트 소켓의 연결정보를 확인할 수 있다. 여기서 참조한 소켓의 입력 스트림을 통해 입력된 데이터를 읽고 출력 스트림을 생성하여 소켓을통해 내보낸다. 마지막으로 소켓을 해제한다.
+<p>서버 소켓의 <code class="highlighter-rouge">accept()</code> 메소드를 사용하면 클라이언트의 요청이 왔을 때 클라이언트 소켓의 연결정보를 확인할 수 있다. 여기서 참조한 소켓의 입력 스트림을 통해 입력된 데이터를 읽고 출력 스트림을 생성하여 소켓을통해 내보낸다. 마지막으로 소켓을 해제한다.</p>
 
-<br>
+<p><br /></p>
 
-이제 클라이언트 측 코드를 안드로이드 스튜디오에서 작성할 차례다. 먼저 화면은 연결할 서버의 IP주소와 전송할 데이터를 위한 입력상자 2개와 클릭했을 때 전송을 하기위한 버튼을 하나 만든다.
+<p>이제 클라이언트 측 코드를 안드로이드 스튜디오에서 작성할 차례다. 먼저 화면은 연결할 서버의 IP주소와 전송할 데이터를 위한 입력상자 2개와 클릭했을 때 전송을 하기위한 버튼을 하나 만든다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <EditText
-        android:id="@+id/addressInput"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="서버 IP"
-        android:textSize="20dp"
-        android:layout_marginTop="200dp"
-        android:layout_gravity="center_horizontal"/>
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/addressInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"200dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:hint=</span><span class="s">"서버 IP"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"200dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
 
-    <EditText
-        android:id="@+id/dataInput"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="보낼 데이터"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"/>
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/dataInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"200dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:hint=</span><span class="s">"보낼 데이터"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
 
-    <Button
-        android:id="@+id/socketConnectBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="서버 전송"
-        android:textSize="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/socketConnectBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"서버 전송"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-<br>
+<p><br /></p>
 
-클라이언트 자바 코드는 아래와 같이 작성한다.
+<p>클라이언트 자바 코드는 아래와 같이 작성한다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ java
-public class MainActivity extends AppCompatActivity {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    EditText addressInput; //호스트 IP 입력상자
-    EditText dataInput; //서버로 전송할 데이터 입력상자
+    <span class="nc">EditText</span> <span class="n">addressInput</span><span class="o">;</span> <span class="c1">//호스트 IP 입력상자</span>
+    <span class="nc">EditText</span> <span class="n">dataInput</span><span class="o">;</span> <span class="c1">//서버로 전송할 데이터 입력상자</span>
 
-    String str;
-    String addr;
+    <span class="nc">String</span> <span class="n">str</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">addr</span><span class="o">;</span>
 
-    String response; //서버 응답
+    <span class="nc">String</span> <span class="n">response</span><span class="o">;</span> <span class="c1">//서버 응답</span>
 
-    Handler handler = new Handler(); // 토스트를 띄우기 위한 메인스레드 핸들러 객체 생성
+    <span class="nc">Handler</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">();</span> <span class="c1">// 토스트를 띄우기 위한 메인스레드 핸들러 객체 생성</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        addressInput = findViewById(R.id.addressInput);
-        dataInput = findViewById(R.id.dataInput);
-        Button socketConnectBtn = findViewById(R.id.socketConnectBtn);
+        <span class="n">addressInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">addressInput</span><span class="o">);</span>
+        <span class="n">dataInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dataInput</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">socketConnectBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">socketConnectBtn</span><span class="o">);</span>
 
-        /*
+        <span class="cm">/*
         버튼을 클릭했을 때
         1. 입력상자의 서버 IP 주소와 전송할 데이터 가져오기
         2. 소켓통신을 위한 스레드의 매개변수로 넣어주어 스레드 객체 생성
         3. 스레드 시작
-        */
-        socketConnectBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addr = addressInput.getText().toString().trim();
-                str = dataInput.getText().toString();
-                SocketThread thread = new SocketThread(addr, str);
-                thread.start();
-            }
-        });
-    }
+        */</span>
+        <span class="n">socketConnectBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">addr</span> <span class="o">=</span> <span class="n">addressInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+                <span class="n">str</span> <span class="o">=</span> <span class="n">dataInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="nc">SocketThread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SocketThread</span><span class="o">(</span><span class="n">addr</span><span class="o">,</span> <span class="n">str</span><span class="o">);</span>
+                <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
 
-    class SocketThread extends Thread{
+    <span class="kd">class</span> <span class="nc">SocketThread</span> <span class="kd">extends</span> <span class="nc">Thread</span><span class="o">{</span>
 
-        String host; // 서버 IP
-        String data; // 전송 데이터
+        <span class="nc">String</span> <span class="n">host</span><span class="o">;</span> <span class="c1">// 서버 IP</span>
+        <span class="nc">String</span> <span class="n">data</span><span class="o">;</span> <span class="c1">// 전송 데이터</span>
 
-        public SocketThread(String host, String data){
-            this.host = host;
-            this.data = data;
-        }
+        <span class="kd">public</span> <span class="nf">SocketThread</span><span class="o">(</span><span class="nc">String</span> <span class="n">host</span><span class="o">,</span> <span class="nc">String</span> <span class="n">data</span><span class="o">){</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">host</span> <span class="o">=</span> <span class="n">host</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public void run() {
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
 
-            try{
-                int port = 5555; //포트 번호는 서버측과 똑같이
-                Socket socket = new Socket(host, port); // 소켓 열어주기
-                ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream()); //소켓의 출력 스트림 참조
-                outstream.writeObject(data); // 출력 스트림에 데이터 넣기
-                outstream.flush(); // 출력
+            <span class="k">try</span><span class="o">{</span>
+                <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="mi">5555</span><span class="o">;</span> <span class="c1">//포트 번호는 서버측과 똑같이</span>
+                <span class="nc">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Socket</span><span class="o">(</span><span class="n">host</span><span class="o">,</span> <span class="n">port</span><span class="o">);</span> <span class="c1">// 소켓 열어주기</span>
+                <span class="nc">ObjectOutputStream</span> <span class="n">outstream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectOutputStream</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span> <span class="c1">//소켓의 출력 스트림 참조</span>
+                <span class="n">outstream</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">data</span><span class="o">);</span> <span class="c1">// 출력 스트림에 데이터 넣기</span>
+                <span class="n">outstream</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span> <span class="c1">// 출력</span>
 
-                ObjectInputStream instream = new ObjectInputStream(socket.getInputStream()); // 소켓의 입력 스트림 참조
-                response = (String) instream.readObject(); // 응답 가져오기
+                <span class="nc">ObjectInputStream</span> <span class="n">instream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectInputStream</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">());</span> <span class="c1">// 소켓의 입력 스트림 참조</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">instream</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span> <span class="c1">// 응답 가져오기</span>
 
-                /* 토스트로 서버측 응답 결과 띄워줄 러너블 객체 생성하여 메인스레드 핸들러로 전달 */
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(MainActivity.this, "서버 응답 : " + response, Toast.LENGTH_LONG).show();
-                    }
-                });
+                <span class="cm">/* 토스트로 서버측 응답 결과 띄워줄 러너블 객체 생성하여 메인스레드 핸들러로 전달 */</span>
+                <span class="n">handler</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"서버 응답 : "</span> <span class="o">+</span> <span class="n">response</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                    <span class="o">}</span>
+                <span class="o">});</span>
 
-                socket.close(); // 소켓 해제
+                <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> <span class="c1">// 소켓 해제</span>
 
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-    }
-}
-~~~
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-여기서 중요한 것이 있다.
+<p>여기서 중요한 것이 있다.</p>
 
-**안드로이드에서는 네트워킹을 반드시 새로운 스레드를 통해서 해야한다.** 최신 버전부터 이렇게 변경되었다. 따라서 네트워킹을 통해 UI를 업데이트 할 때는 메인 스레드의 핸들러를 통해서 해야한다.
+<p><strong>안드로이드에서는 네트워킹을 반드시 새로운 스레드를 통해서 해야한다.</strong> 최신 버전부터 이렇게 변경되었다. 따라서 네트워킹을 통해 UI를 업데이트 할 때는 메인 스레드의 핸들러를 통해서 해야한다.</p>
 
-아무튼 버튼을 클릭했을 때 새로운 스레드를 만들고 소켓을 뚫은다음 소켓의 출력 스트림을 통해 데이터를 내보내주는 것이 전부이다. 이 때 소켓 생성 시 서버IP와 연결할 포트번호를 매개변수로 전달해주어야한다.
+<p>아무튼 버튼을 클릭했을 때 새로운 스레드를 만들고 소켓을 뚫은다음 소켓의 출력 스트림을 통해 데이터를 내보내주는 것이 전부이다. 이 때 소켓 생성 시 서버IP와 연결할 포트번호를 매개변수로 전달해주어야한다.</p>
 
-또한 네트워크 통신을 하기위해 매니페스트 파일을 열고 다음과 같이 인터넷 권한을 부여한다.
+<p>또한 네트워크 통신을 하기위해 매니페스트 파일을 열고 다음과 같이 인터넷 권한을 부여한다.</p>
 
-~~~ xml
-<uses-permission android:name="android.permission.INTERNET"/>
-~~~
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
 
-<br>
+<p><br /></p>
 
-먼저 이클립스에서 클래스를 실행하면 다음과 같은 화면을 볼 수 있다.
+<p>먼저 이클립스에서 클래스를 실행하면 다음과 같은 화면을 볼 수 있다.</p>
 
-![1](/images/android/50/1.png){: width="100%" height="100%"}
+<p><img src="/images/android/50/1.png" alt="1" width="100%" height="100%" /></p>
 
-<br>
+<p><br /></p>
 
-이제 안드로이드 앱을 실행한 아래 사진과 같이 다음 IP주소와 보낼 데이터를 입력하고 보내면 된다.
+<p>이제 안드로이드 앱을 실행한 아래 사진과 같이 다음 IP주소와 보낼 데이터를 입력하고 보내면 된다.</p>
 
-![2](/images/android/50/2.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/50/2.jpg" alt="2" width="30%" height="30%" /></p>
 
-서버 IP주소는 PC에서 네트워크 및 공유센터에서 확인하면 된다. 아무튼 코드를 작성한대로 서버에서 받은 데이터에 " from server" 라는 문자열을 덧붙여서 응답으로 보내는 것을 볼 수 있다.
+<p>서버 IP주소는 PC에서 네트워크 및 공유센터에서 확인하면 된다. 아무튼 코드를 작성한대로 서버에서 받은 데이터에 “ from server” 라는 문자열을 덧붙여서 응답으로 보내는 것을 볼 수 있다.</p>
 
-<br>
+<p><br /></p>
 
-이 때, 서버측으로 다시 돌아가서 출력 결과를 마저 확인해보자.
+<p>이 때, 서버측으로 다시 돌아가서 출력 결과를 마저 확인해보자.</p>
 
-![3](/images/android/50/3.png){: width="100%" height="100%"}
+<p><img src="/images/android/50/3.png" alt="3" width="100%" height="100%" /></p>
 
-코드에서 `System.out.println()`을 통해 클라이언트의 IP주소와 포트 번호를 확인할 수 있도록 해놓았었다. 또한 받은 데이터 역시 출력하도록 했었다. 그 결과를 위 출력화면에서 확인할 수 있다.
+<p>코드에서 <code class="highlighter-rouge">System.out.println()</code>을 통해 클라이언트의 IP주소와 포트 번호를 확인할 수 있도록 해놓았었다. 또한 받은 데이터 역시 출력하도록 했었다. 그 결과를 위 출력화면에서 확인할 수 있다.</p>
 
-<br>
+<p><br /></p>
 
-아주 간단한 기능만 하는 서버와 클라이언트를 작성했지만, 이 내용은 안드로이드에서 네트워크를 사용하기 위한 기본이 된다. 결국 모바일 게임등의 네트워크가 필요한 애플리케이션들은 모두 위의 내용을 기초하여 구현하는 것이기 때문이다.
+<p>아주 간단한 기능만 하는 서버와 클라이언트를 작성했지만, 이 내용은 안드로이드에서 네트워크를 사용하기 위한 기본이 된다. 결국 모바일 게임등의 네트워크가 필요한 애플리케이션들은 모두 위의 내용을 기초하여 구현하는 것이기 때문이다.</p>
+
   </div>
   
   <div class="post">
@@ -11136,68 +11127,72 @@ public class MainActivity extends AppCompatActivity {
 
     <span class="post-date">29 May 2019</span>
 
-    <br>
-# 1. 네트워크 모델
-* * *
+    <p><br /></p>
+<h1 id="1-네트워크-모델">1. 네트워크 모델</h1>
+<hr />
 
-네트워크(Network)란 여러 기기들이 데이터를 교환할 수 있는 인터넷 망을 의미한다.
+<p>네트워크(Network)란 여러 기기들이 데이터를 교환할 수 있는 인터넷 망을 의미한다.</p>
 
-데이터를 요청하는 쪽이 클라이언트(Client), 요청을 확인하고 응답을 보내는 쪽이 서버(Server)이다. 네트워크를 구성하는 모델은 많은 경우가 있지만 대표적인 2티어, 3티어 모델을 살펴보자.
+<p>데이터를 요청하는 쪽이 클라이언트(Client), 요청을 확인하고 응답을 보내는 쪽이 서버(Server)이다. 네트워크를 구성하는 모델은 많은 경우가 있지만 대표적인 2티어, 3티어 모델을 살펴보자.</p>
 
-<br>
+<p><br /></p>
 
-### 1) 2티어 모델
+<h3 id="1-2티어-모델">1) 2티어 모델</h3>
 
-![1](/images/android/49/1.png){: width="70%" height="70%"}
+<p><img src="/images/android/49/1.png" alt="1" width="70%" height="70%" /></p>
 
-클라이언트에서 데이터를 요청(Request)하면 서버에서 응답(Response)를 통해 결과를 보여주는 단순한 방식이다.
+<p>클라이언트에서 데이터를 요청(Request)하면 서버에서 응답(Response)를 통해 결과를 보여주는 단순한 방식이다.</p>
 
-<br>
+<p><br /></p>
 
-### 2) 3티어 모델
+<h3 id="2-3티어-모델">2) 3티어 모델</h3>
 
-![2](/images/android/49/2.png){: width="70%" height="70%"}
+<p><img src="/images/android/49/2.png" alt="2" width="70%" height="70%" /></p>
 
-DB 중간에 응용 서버를 두어 여러 클라이언트들의 요청 트래픽 분산 처리, 요청을 받아 필요한 데이터에 액세스하여 클라이언트에게 응답을 보내주는 역할을 한다. 클라이언트측에서 보면 응용서버가 실제 DB처럼 보인다.
+<p>DB 중간에 응용 서버를 두어 여러 클라이언트들의 요청 트래픽 분산 처리, 요청을 받아 필요한 데이터에 액세스하여 클라이언트에게 응답을 보내주는 역할을 한다. 클라이언트측에서 보면 응용서버가 실제 DB처럼 보인다.</p>
 
-<br>
+<p><br /></p>
 
-위에서 서버라고 하여 실제로 방대한 데이터를 저장하는 저장소로만 생각하면 안된다. 예를 들어 서로 다른 두 개의 모바일이 P2P(Peer-to-Peer) 통신을 하는 경우에는 각각의 모바일 단말이 클라이언트와 서버가 될 수 있다.
+<p>위에서 서버라고 하여 실제로 방대한 데이터를 저장하는 저장소로만 생각하면 안된다. 예를 들어 서로 다른 두 개의 모바일이 P2P(Peer-to-Peer) 통신을 하는 경우에는 각각의 모바일 단말이 클라이언트와 서버가 될 수 있다.</p>
 
-<br>
-# 2. 소켓과 HTTP
-* * *
+<p><br /></p>
+<h1 id="2-소켓과-http">2. 소켓과 HTTP</h1>
+<hr />
 
-데이터 통신 방식에는 대표적으로 소켓(Socket) 통신 방식과 HTTP(Hyper-Text Transfer Protocol) 요청 방식이 있다. 소켓과 HTTP 통신 방식과 차이에 대해 알아보자.
+<p>데이터 통신 방식에는 대표적으로 소켓(Socket) 통신 방식과 HTTP(Hyper-Text Transfer Protocol) 요청 방식이 있다. 소켓과 HTTP 통신 방식과 차이에 대해 알아보자.</p>
 
-<br>
+<p><br /></p>
 
-### 1) HTTP
+<h3 id="1-http">1) HTTP</h3>
 
-HTTP 프로토콜은 **클라이언트로부터 요청이 오면 응답을 하고 곧바로 연결을 종료한다.** 따라서 단방향 통신으로 보아야하며, 서버에서는 클라이언트측으로 요청을 보낼 수 없다. 가장 대표적인 경우가 웹 페이지 요청이다. 사용자가 인터넷 브라우저에서 특정 페이지에 접속하는 행위는 웹 서버로 웹 페이지 화면을 띄워달라는 요청을 보내는 것이다. 웹 서버에서는 웹 페이지를 구성하는데 필요한 데이터를 응답으로 보내고 곧바로 연결을 종료한다.
+<p>HTTP 프로토콜은 <strong>클라이언트로부터 요청이 오면 응답을 하고 곧바로 연결을 종료한다.</strong> 따라서 단방향 통신으로 보아야하며, 서버에서는 클라이언트측으로 요청을 보낼 수 없다. 가장 대표적인 경우가 웹 페이지 요청이다. 사용자가 인터넷 브라우저에서 특정 페이지에 접속하는 행위는 웹 서버로 웹 페이지 화면을 띄워달라는 요청을 보내는 것이다. 웹 서버에서는 웹 페이지를 구성하는데 필요한 데이터를 응답으로 보내고 곧바로 연결을 종료한다.</p>
 
-<br>
+<p><br /></p>
 
-### 2) 소켓
+<h3 id="2-소켓">2) 소켓</h3>
 
-소켓이란 네트워크에서 클라이언트와 서버가 데이터를 주고받기 위한 소프트웨어적인 장치이다. 일종의 창구 개념으로 보면된다. 데이터를 주고받으려면 클라이언트와 서버 모두 소켓을 뚫어주어야한다.
+<p>소켓이란 네트워크에서 클라이언트와 서버가 데이터를 주고받기 위한 소프트웨어적인 장치이다. 일종의 창구 개념으로 보면된다. 데이터를 주고받으려면 클라이언트와 서버 모두 소켓을 뚫어주어야한다.</p>
 
-소켓 통신에서는 **클라이언트와 서버 사이의 연결이 지속되고 실시간으로 양방향으로 데이터를 주고받는다.** 실시간 스트리밍 중계방송 등이 소켓통신을 활용한 경우에 해당한다. 만약 실시간 스트리밍을 HTTP 통신으로 구현하려면 실시간 화면 업데이트를 위해 끊임없이 요청과 응답이 오고가야 하므로 엄청난 부하가 걸릴 것이다. 따라서 이러한 경우 소켓 통신이 유리하다.
+<p>소켓 통신에서는 <strong>클라이언트와 서버 사이의 연결이 지속되고 실시간으로 양방향으로 데이터를 주고받는다.</strong> 실시간 스트리밍 중계방송 등이 소켓통신을 활용한 경우에 해당한다. 만약 실시간 스트리밍을 HTTP 통신으로 구현하려면 실시간 화면 업데이트를 위해 끊임없이 요청과 응답이 오고가야 하므로 엄청난 부하가 걸릴 것이다. 따라서 이러한 경우 소켓 통신이 유리하다.</p>
 
-<br>
+<p><br /></p>
 
-<br>
-# 3. 안드로이드 네트워킹
-* * *
+<p><br /></p>
+<h1 id="3-안드로이드-네트워킹">3. 안드로이드 네트워킹</h1>
+<hr />
 
-안드로이드에서는 소켓을 사용하기 위해서 기본적으로 표준 자바의 java.net 라이브러리를 그대로 사용한다.
+<p>안드로이드에서는 소켓을 사용하기 위해서 기본적으로 표준 자바의 java.net 라이브러리를 그대로 사용한다.</p>
 
-단, 안드로이드에서는 네트워킹을 사용할 때 반드시 지켜야 할 것들이 있다.
+<p>단, 안드로이드에서는 네트워킹을 사용할 때 반드시 지켜야 할 것들이 있다.</p>
 
-<br>
+<p><br /></p>
 
-> 1. 최신 버전의 안드로이드는 네트워크킹을 사용할 때 반드시 스레드를 사용해야한다.
-> 2. 따라서 네트워크를 통해 UI에 접근할 때는 메인스레드의 핸들러를 통해서 한다.
+<blockquote>
+  <ol>
+    <li>최신 버전의 안드로이드는 네트워크킹을 사용할 때 반드시 스레드를 사용해야한다.</li>
+    <li>따라서 네트워크를 통해 UI에 접근할 때는 메인스레드의 핸들러를 통해서 한다.</li>
+  </ol>
+</blockquote>
 
 
   </div>
@@ -11211,210 +11206,230 @@ HTTP 프로토콜은 **클라이언트로부터 요청이 오면 응답을 하�
 
     <span class="post-date">25 May 2019</span>
 
-    서브 스레드에서 UI작업을 하기위해 핸들러를 사용하여 메인 스레드로 message나 Runnable 객체를 전달하는 방법이 있다. 하지만 이 방법은 코드가 복잡해지고 불편한 구석이 많다. 그런데 AsyncTask 클래스를 사용하면 UI작업과 백그라운드 작업을 동시에 할 수 있어 엄청 편리하다. AsyncTask객체는 메인스레드에서 처리할 작업과 서브스레드에서 처리할 작업을 서로 다른 메소드로 분리해놓았으므로 적당한 메소드에 처리할 작업의 코드를 작성하여 필요할 때 호출하여 실행하면 된다.
+    <p>서브 스레드에서 UI작업을 하기위해 핸들러를 사용하여 메인 스레드로 message나 Runnable 객체를 전달하는 방법이 있다. 하지만 이 방법은 코드가 복잡해지고 불편한 구석이 많다. 그런데 AsyncTask 클래스를 사용하면 UI작업과 백그라운드 작업을 동시에 할 수 있어 엄청 편리하다. AsyncTask객체는 메인스레드에서 처리할 작업과 서브스레드에서 처리할 작업을 서로 다른 메소드로 분리해놓았으므로 적당한 메소드에 처리할 작업의 코드를 작성하여 필요할 때 호출하여 실행하면 된다.</p>
 
-AsyncTask의 동작방식을 그림으로 보자.
+<p>AsyncTask의 동작방식을 그림으로 보자.</p>
 
-![1](/images/android/48/1.png){: width="100%" height="100%"}
+<p><img src="/images/android/48/1.png" alt="1" width="100%" height="100%" /></p>
 
-각 메소드에 대한 설명을 보자.
+<p>각 메소드에 대한 설명을 보자.</p>
 
-|메소드|설명|
-|----|--|
-|doInBackground()|서브 스레드에서 백그라운드 작업을 수행한다. AsyncTask객체의 execute() 메소드를 호출할 때 사용된 파라미터를 전달받는다.|
-|onPreExecute()|백그라운드 작업 수행 중 호출. 초기화 작업에 사용된다.|
-|onProgressUpdate()|백그라운드 작업 중간중간 UI객체에 접근할 때 사용하며 호출을 하기위해서는 백그라운드 작업 중 publishProgressed() 메소드를 호출하면 된다.|
-|onPostExecute()|백그라운드 작업이 끝난 후 호출된다. 사용된 리소스의 해제 작업 등에 사용된다. 백그라운드 작업의 결과가 Result 타입의 파라미터로 전달된다.|
+<table>
+  <thead>
+    <tr>
+      <th>메소드</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>doInBackground()</td>
+      <td>서브 스레드에서 백그라운드 작업을 수행한다. AsyncTask객체의 execute() 메소드를 호출할 때 사용된 파라미터를 전달받는다.</td>
+    </tr>
+    <tr>
+      <td>onPreExecute()</td>
+      <td>백그라운드 작업 수행 중 호출. 초기화 작업에 사용된다.</td>
+    </tr>
+    <tr>
+      <td>onProgressUpdate()</td>
+      <td>백그라운드 작업 중간중간 UI객체에 접근할 때 사용하며 호출을 하기위해서는 백그라운드 작업 중 publishProgressed() 메소드를 호출하면 된다.</td>
+    </tr>
+    <tr>
+      <td>onPostExecute()</td>
+      <td>백그라운드 작업이 끝난 후 호출된다. 사용된 리소스의 해제 작업 등에 사용된다. 백그라운드 작업의 결과가 Result 타입의 파라미터로 전달된다.</td>
+    </tr>
+  </tbody>
+</table>
 
-<br>
+<p><br /></p>
 
-추가적으로 알아야 할 메소드가 2개 더 있다.
-~~~ java
-AsyncTask.cancel() //태스크가 실행되고 있는 중에 강제로 끝내기
-publishProgress() // onProgressUpdate() 메소드 호출
-~~~
+<p>추가적으로 알아야 할 메소드가 2개 더 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">AsyncTask</span><span class="o">.</span><span class="na">cancel</span><span class="o">()</span> <span class="c1">//태스크가 실행되고 있는 중에 강제로 끝내기</span>
+<span class="n">publishProgress</span><span class="o">()</span> <span class="c1">// onProgressUpdate() 메소드 호출</span>
+</code></pre></div></div>
 
-<br>
+<p><br /></p>
 
-실제로 사용하면서 이해해보자. 프로그레스바를 만들어 백그라운드에서 진행률을 증가시킬 것이고 이 값을 통해 메인 스레드에서는 프로그레스바의 진행상태를 업데이트하는 간단한 앱을 만들어볼 것이다.
+<p>실제로 사용하면서 이해해보자. 프로그레스바를 만들어 백그라운드에서 진행률을 증가시킬 것이고 이 값을 통해 메인 스레드에서는 프로그레스바의 진행상태를 업데이트하는 간단한 앱을 만들어볼 것이다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="진행"
-        android:textSize="20dp"
-        android:textColor="#ff000000"
-        android:textStyle="bold"
-        android:layout_margin="10dp"/>
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"진행"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:textColor=</span><span class="s">"#ff000000"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
 
-   <ProgressBar
-       android:id="@+id/progressBar"
-       style="?android:attr/progressBarStyleHorizontal"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_margin="10dp"
-       android:max="100"
-       android:background="#22000000" />
+   <span class="nt">&lt;ProgressBar</span>
+       <span class="na">android:id=</span><span class="s">"@+id/progressBar"</span>
+       <span class="na">style=</span><span class="s">"?android:attr/progressBarStyleHorizontal"</span>
+       <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+       <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+       <span class="na">android:layout_margin=</span><span class="s">"10dp"</span>
+       <span class="na">android:max=</span><span class="s">"100"</span>
+       <span class="na">android:background=</span><span class="s">"#22000000"</span> <span class="nt">/&gt;</span>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal">
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span>
+        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">&gt;</span>
 
-        <Button
-            android:id="@+id/executeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="실행"
-            android:textSize="24dp"
-            android:layout_marginRight="10dp"
-            android:textStyle="bold"/>
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/executeBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"실행"</span>
+            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+            <span class="na">android:layout_marginRight=</span><span class="s">"10dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span><span class="nt">/&gt;</span>
 
-        <Button
-            android:id="@+id/cancelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="취소"
-            android:textSize="24dp"
-            android:layout_marginLeft="10dp"
-            android:textStyle="bold"/>
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/cancelBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"취소"</span>
+            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+            <span class="na">android:layout_marginLeft=</span><span class="s">"10dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span><span class="nt">/&gt;</span>
 
-    </LinearLayout>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
 
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-텍스트뷰는 현재 진행 정도를 나타내기위한 것이다. 진행 버튼을 클릭하면 태스크 시작, 취소 버튼을 누르면 중도에 태스크를 취소하도록 할 것이다.
+<p>텍스트뷰는 현재 진행 정도를 나타내기위한 것이다. 진행 버튼을 클릭하면 태스크 시작, 취소 버튼을 누르면 중도에 태스크를 취소하도록 할 것이다.</p>
 
-<br>
+<p><br /></p>
 
-~~~ java
-public class MainActivity extends AppCompatActivity {
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    TextView textView;
-    ProgressBar progressBar;
-    Backgroundtask task;
-    int value;
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+    <span class="nc">ProgressBar</span> <span class="n">progressBar</span><span class="o">;</span>
+    <span class="nc">Backgroundtask</span> <span class="n">task</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        textView = findViewById(R.id.textView);
-        progressBar = findViewById(R.id.progressBar);
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+        <span class="n">progressBar</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">progressBar</span><span class="o">);</span>
 
-        Button executeBtn = findViewById(R.id.executeBtn);
-        Button cancelBtn = findViewById(R.id.cancelBtn);
+        <span class="nc">Button</span> <span class="n">executeBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">executeBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">cancelBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">cancelBtn</span><span class="o">);</span>
 
-        /* 실행 버튼을 클릭하여 새로운 태스크 생성 후 실행 */
-        executeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                task = new Backgroundtask();
-                task.execute(100);
-            }
-        });
+        <span class="cm">/* 실행 버튼을 클릭하여 새로운 태스크 생성 후 실행 */</span>
+        <span class="n">executeBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Backgroundtask</span><span class="o">();</span>
+                <span class="n">task</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
 
-        /* 취소 버튼을 누르면 태스크 취소 */
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                task.cancel(true);
-            }
-        });
-    }
+        <span class="cm">/* 취소 버튼을 누르면 태스크 취소 */</span>
+        <span class="n">cancelBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">task</span><span class="o">.</span><span class="na">cancel</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
 
-    /* AsyncTask 클래스 상속하여 백그라운드 태스크 클래스 정의 */
-    class Backgroundtask extends AsyncTask<Integer, Integer, Integer>{
+    <span class="cm">/* AsyncTask 클래스 상속하여 백그라운드 태스크 클래스 정의 */</span>
+    <span class="kd">class</span> <span class="nc">Backgroundtask</span> <span class="kd">extends</span> <span class="nc">AsyncTask</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;{</span>
 
-        /* 백그라운드 작업 이전에 프로그레스바 진행률 0으로 초기화 */
-        @Override
-        protected void onPreExecute() {
-            value = 0;
-            progressBar.setProgress(value);
-        }
+        <span class="cm">/* 백그라운드 작업 이전에 프로그레스바 진행률 0으로 초기화 */</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPreExecute</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="n">progressBar</span><span class="o">.</span><span class="na">setProgress</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        /* 백그라운드 작업 정의
+        <span class="cm">/* 백그라운드 작업 정의
          * 1. value값 1 증가
-          * 2. publishProgress() 호출 -> onProgressUpdate() 호출 -> UI 업데이트
-          * 3. 100ms 간격 주기 */
-        @Override
-        protected Integer doInBackground(Integer... integers) {
-            while(!isCancelled()){
-                value++; //진행률 1 증가
-                if(value>100){
-                    break;
-                }else{
-                    // value값 파라미터로 전달하면서 onProgressUpdate() 메소드 호출
-                    publishProgress(value);
-                }
+          * 2. publishProgress() 호출 -&gt; onProgressUpdate() 호출 -&gt; UI 업데이트
+          * 3. 100ms 간격 주기 */</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="nc">Integer</span> <span class="nf">doInBackground</span><span class="o">(</span><span class="nc">Integer</span><span class="o">...</span> <span class="n">integers</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">while</span><span class="o">(!</span><span class="n">isCancelled</span><span class="o">()){</span>
+                <span class="n">value</span><span class="o">++;</span> <span class="c1">//진행률 1 증가</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">value</span><span class="o">&gt;</span><span class="mi">100</span><span class="o">){</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                    <span class="c1">// value값 파라미터로 전달하면서 onProgressUpdate() 메소드 호출</span>
+                    <span class="n">publishProgress</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+                <span class="o">}</span>
 
-                try{
-                    Thread.sleep(100); // 100ms 시간 지연
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span> <span class="c1">// 100ms 시간 지연</span>
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
 
-            return value;
-            /* 백그라운드 작업 완료 후 return 한 것은 onPostExecute() 메소드의 파라미터로 전달된다. */
-        }
+            <span class="k">return</span> <span class="n">value</span><span class="o">;</span>
+            <span class="cm">/* 백그라운드 작업 완료 후 return 한 것은 onPostExecute() 메소드의 파라미터로 전달된다. */</span>
+        <span class="o">}</span>
 
-        /* 백그라운드 작업 중간에 프로그레스바 진행률 업데이트
-         * 전달받은 값이 value 하나이므로 values[0]으로 value값 참조 */
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            progressBar.setProgress(values[0].intValue());
-            textView.setText("현재 진행률: " + values[0].toString());
-        }
+        <span class="cm">/* 백그라운드 작업 중간에 프로그레스바 진행률 업데이트
+         * 전달받은 값이 value 하나이므로 values[0]으로 value값 참조 */</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onProgressUpdate</span><span class="o">(</span><span class="nc">Integer</span><span class="o">...</span> <span class="n">values</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">progressBar</span><span class="o">.</span><span class="na">setProgress</span><span class="o">(</span><span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">intValue</span><span class="o">());</span>
+            <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"현재 진행률: "</span> <span class="o">+</span> <span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
 
-        /* 백그라운드 작업 끝난 이후 호출
-         * result는 doInBackground() 메소드의 리턴값이다. */
-        @Override
-        protected void onPostExecute(Integer result) {
-            progressBar.setProgress(result);
-            textView.setText("완료!");
-        }
+        <span class="cm">/* 백그라운드 작업 끝난 이후 호출
+         * result는 doInBackground() 메소드의 리턴값이다. */</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPostExecute</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">progressBar</span><span class="o">.</span><span class="na">setProgress</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+            <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"완료!"</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        /* 취소 버튼 눌렸을 때 호출 */
-        @Override
-        protected void onCancelled() {
-            progressBar.setProgress(0);
-            textView.setText("취소됨");
-        }
-    }
-}
-~~~
+        <span class="cm">/* 취소 버튼 눌렸을 때 호출 */</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCancelled</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">progressBar</span><span class="o">.</span><span class="na">setProgress</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+            <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"취소됨"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-먼저 AsyncTask 클래스를 상속하여 BackgroundTask 클래스를 정의하였다. 클래스를 정의할 때 제네릭 자료형을 3개 정의한다.
-* 첫 번째 제네릭은 `doInBackground()` 메소드의 파라미터로 전달될 자료형이다.
-* 두 번재 제네릭은 `onProgressUpdate()` 메소드의 파라미터로 전달될 자료형으로, `publishProgress()` 메소드를 호출하면서 파라미터로 전달하면 `onProgressUpdate()` 메소드가 호출되면서 파라미터로 전달된다.
-* 세 번째 제네릭은 `onPostExecute()` 메소드의 파라미터로 전달될 자료형이다. `doInBackground()` 메소드가 종료되면서 이 자료형의 데이터를 return하면 `onPostExecute()` 메소드에서 파라미터로 전달받는다.
+<p>먼저 AsyncTask 클래스를 상속하여 BackgroundTask 클래스를 정의하였다. 클래스를 정의할 때 제네릭 자료형을 3개 정의한다.</p>
+<ul>
+  <li>첫 번째 제네릭은 <code class="highlighter-rouge">doInBackground()</code> 메소드의 파라미터로 전달될 자료형이다.</li>
+  <li>두 번재 제네릭은 <code class="highlighter-rouge">onProgressUpdate()</code> 메소드의 파라미터로 전달될 자료형으로, <code class="highlighter-rouge">publishProgress()</code> 메소드를 호출하면서 파라미터로 전달하면 <code class="highlighter-rouge">onProgressUpdate()</code> 메소드가 호출되면서 파라미터로 전달된다.</li>
+  <li>세 번째 제네릭은 <code class="highlighter-rouge">onPostExecute()</code> 메소드의 파라미터로 전달될 자료형이다. <code class="highlighter-rouge">doInBackground()</code> 메소드가 종료되면서 이 자료형의 데이터를 return하면 <code class="highlighter-rouge">onPostExecute()</code> 메소드에서 파라미터로 전달받는다.</li>
+</ul>
 
-코드를 보면 백그라운드 작업을 하면서 100ms마다 한 번씩 value 값을 1씩 증가시키고 `publishProgress()` 메소드를 호출하면서 파라미터로 전달한다. 그러면 `onProgressUpdate()` 메소드가 호출되면서 프로그레스바와 텍스트뷰 UI에 접근하여 업데이트한다. 이 메소드의 코드는 메인 스레드에서 처리되므로 UI객체에 접근할 수 있는것이다.
+<p>코드를 보면 백그라운드 작업을 하면서 100ms마다 한 번씩 value 값을 1씩 증가시키고 <code class="highlighter-rouge">publishProgress()</code> 메소드를 호출하면서 파라미터로 전달한다. 그러면 <code class="highlighter-rouge">onProgressUpdate()</code> 메소드가 호출되면서 프로그레스바와 텍스트뷰 UI에 접근하여 업데이트한다. 이 메소드의 코드는 메인 스레드에서 처리되므로 UI객체에 접근할 수 있는것이다.</p>
 
-그리고 `doInBackground()` 메소드가 끝이나면 value를 리턴한다. 이후 이 값이 `onPostExecute()` 메소드가 호출되면서 파라미터로 전달된다. 이어서 프로그레스바의 값으로 설정이 되고 텍스트뷰의 텍스트가 "완료!"로 설정된다.
+<p>그리고 <code class="highlighter-rouge">doInBackground()</code> 메소드가 끝이나면 value를 리턴한다. 이후 이 값이 <code class="highlighter-rouge">onPostExecute()</code> 메소드가 호출되면서 파라미터로 전달된다. 이어서 프로그레스바의 값으로 설정이 되고 텍스트뷰의 텍스트가 “완료!”로 설정된다.</p>
 
-진행 도중에 취소버튼을 누르면 `task.cancel()` 메소드가 호출되고 `isCancelled()` 메소드가 false를 반환하여 `doInBackground()` 메소드의 while문을 탈출한다. 이어서 자동으로 `onCancelled()` 메소드가 호출되어 프로그레스바의 값을 0으로 초기화시키고 텍스트뷰의 텍스트를 "취소됨"으로 설정한다.
+<p>진행 도중에 취소버튼을 누르면 <code class="highlighter-rouge">task.cancel()</code> 메소드가 호출되고 <code class="highlighter-rouge">isCancelled()</code> 메소드가 false를 반환하여 <code class="highlighter-rouge">doInBackground()</code> 메소드의 while문을 탈출한다. 이어서 자동으로 <code class="highlighter-rouge">onCancelled()</code> 메소드가 호출되어 프로그레스바의 값을 0으로 초기화시키고 텍스트뷰의 텍스트를 “취소됨”으로 설정한다.</p>
 
-앱을 실행하면 다음의 결과를 볼 수 있다.
+<p>앱을 실행하면 다음의 결과를 볼 수 있다.</p>
 
-![2](/images/android/48/2.jpg){: width="30%" height="30%"}
-![3](/images/android/48/3.jpg){: width="30%" height="30%"}
-![4](/images/android/48/4.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/48/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/48/3.jpg" alt="3" width="30%" height="30%" />
+<img src="/images/android/48/4.jpg" alt="4" width="30%" height="30%" /></p>
+
   </div>
   
   <div class="post">
@@ -11426,161 +11441,158 @@ public class MainActivity extends AppCompatActivity {
 
     <span class="post-date">25 May 2019</span>
 
-    이전 포스팅에서는 스레드와 핸들러, 메시지 큐에 대해 공부했었다. 그리고 서브 스레드에서 메인 스레드로 메시지나 러너블 객체를 전달해서 UI 구성요소를 변경하는 방법을 알았다. 그런데 역으로 메인 스레드에서도 서브 스레드로 메시지나 러너블 객체를 전달할 수 있다.
+    <p>이전 포스팅에서는 스레드와 핸들러, 메시지 큐에 대해 공부했었다. 그리고 서브 스레드에서 메인 스레드로 메시지나 러너블 객체를 전달해서 UI 구성요소를 변경하는 방법을 알았다. 그런데 역으로 메인 스레드에서도 서브 스레드로 메시지나 러너블 객체를 전달할 수 있다.</p>
 
-단, 다른 점은 서브 스레드에서 핸들러를 사용하기 위해서는 루퍼를 따로 생성해주어고 실행시켜 주어야 한다는 것이다. 메인 스레드에서는 이런 과정이 생략되더라도 자동으로 루퍼가 생성되고 메시지큐를 모니터링하면서 새로운 메시지나 러너블 객체가 전달되면 그것을 가져와서 실행했었다.
+<p>단, 다른 점은 서브 스레드에서 핸들러를 사용하기 위해서는 루퍼를 따로 생성해주어고 실행시켜 주어야 한다는 것이다. 메인 스레드에서는 이런 과정이 생략되더라도 자동으로 루퍼가 생성되고 메시지큐를 모니터링하면서 새로운 메시지나 러너블 객체가 전달되면 그것을 가져와서 실행했었다.</p>
 
-루퍼는 다음의 코드 두 줄만으로 생성할 수 있다.
+<p>루퍼는 다음의 코드 두 줄만으로 생성할 수 있다.</p>
 
-~~~ java
-Looper.prepare();
-Looper.loop();
-~~~
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Looper</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span>
+<span class="nc">Looper</span><span class="o">.</span><span class="na">loop</span><span class="o">();</span>
+</code></pre></div></div>
 
-이번에는 단순히 서브 스레드에서 루퍼를 만들어 메인 스레드와 서브 스레드간에 메시지를 주고받는 간단한 예제를 하나 보면서 루퍼를 생성하는 방법을 알아보겠다.
+<p>이번에는 단순히 서브 스레드에서 루퍼를 만들어 메인 스레드와 서브 스레드간에 메시지를 주고받는 간단한 예제를 하나 보면서 루퍼를 생성하는 방법을 알아보겠다.</p>
 
+<p><br /></p>
 
-<br>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span> <span class="nt">&gt;</span>
 
-~~~ xml
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span>
+        <span class="nt">&gt;</span>
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/textView1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"메인 스레드에서 받은 데이터 : "</span>
+            <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+            <span class="nt">/&gt;</span>
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/editText1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Hello"</span>
+            <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+            <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span>
+        <span class="nt">&gt;</span>
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/textView2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"스레드 #1 에서 받은 데이터 : "</span>
+            <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+            <span class="nt">/&gt;</span>
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/editText2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">""</span>
+            <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+            <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span>
+        <span class="na">android:text=</span><span class="s">"시작하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+        <span class="nt">/&gt;</span>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        >
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="메인 스레드에서 받은 데이터 : "
-            android:textSize="18dp"
-            />
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello"
-            android:textSize="18dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        >
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="스레드 #1 에서 받은 데이터 : "
-            android:textSize="18dp"
-            />
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"
-            />
-    </LinearLayout>
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="시작하기"
-        android:textSize="18dp"
-        />
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-</LinearLayout>
-~~~
+<p>버튼을 클릭하면 입력상자1의 텍스트를 가져와서 메인 스레드에서 서브 스레드로 메시지 객체에 담아서 전송을 한다. 그리고 서브 스레드에서는 이 메시지 객체에 “ from SubThread”라는 문자열을 덧붙여 다시 메인스레드로 전송한다. 그러면 메인스레드에서는 입력상자2의 텍스트를 설정하도록 할 것이다.</p>
 
-버튼을 클릭하면 입력상자1의 텍스트를 가져와서 메인 스레드에서 서브 스레드로 메시지 객체에 담아서 전송을 한다. 그리고 서브 스레드에서는 이 메시지 객체에 " from SubThread"라는 문자열을 덧붙여 다시 메인스레드로 전송한다. 그러면 메인스레드에서는 입력상자2의 텍스트를 설정하도록 할 것이다.
+<p><br /></p>
 
-<br>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-~~~ java
-public class MainActivity extends AppCompatActivity {
+    <span class="nc">EditText</span> <span class="n">editText1</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">editText2</span><span class="o">;</span>
 
-    EditText editText1;
-    EditText editText2;
+    <span class="nc">Handler</span> <span class="n">handler</span><span class="o">;</span>
+    <span class="nc">Handler</span> <span class="n">subHandler</span><span class="o">;</span>
 
-    Handler handler;
-    Handler subHandler;
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        <span class="n">editText1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText1</span><span class="o">);</span>
+        <span class="n">editText2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText2</span><span class="o">);</span>
 
-        editText1 = findViewById(R.id.editText1);
-        editText2 = findViewById(R.id.editText2);
+        <span class="cm">/* 메인 스레드 핸들러 객체 생성
+        * 메시지를 받으면 입려상자2의 텍스트로 설정*/</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">(){</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="nc">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="na">obj</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+                <span class="n">editText2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
 
-        /* 메인 스레드 핸들러 객체 생성
-        * 메시지를 받으면 입려상자2의 텍스트로 설정*/
-        handler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                String str = msg.obj.toString();
-                editText2.setText(str);
-            }
-        };
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 메인 스레드에서 서브 스레드로 메시지 보내기 */</span>
+                <span class="nc">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="nc">Message</span><span class="o">.</span><span class="na">obtain</span><span class="o">();</span>
+                <span class="n">msg</span><span class="o">.</span><span class="na">obj</span> <span class="o">=</span> <span class="n">editText1</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+                <span class="n">subHandler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
 
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /* 메인 스레드에서 서브 스레드로 메시지 보내기 */
-                Message msg = Message.obtain();
-                msg.obj = editText1.getText();
-                subHandler.sendMessage(msg);
-            }
-        });
+        <span class="nc">Thread</span> <span class="n">subThread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SubThread</span><span class="o">();</span> <span class="c1">//서브스레드 생성</span>
+        <span class="n">subThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span><span class="c1">//서브스레드 시작</span>
+    <span class="o">}</span>
 
-        Thread subThread = new SubThread(); //서브스레드 생성
-        subThread.start();//서브스레드 시작
-    }
+    <span class="cm">/* 스레드 상송받아 서브스레드 클래스 정의 */</span>
+    <span class="kd">class</span> <span class="nc">SubThread</span> <span class="kd">extends</span> <span class="nc">Thread</span><span class="o">{</span>
 
-    /* 스레드 상송받아 서브스레드 클래스 정의 */
-    class SubThread extends Thread{
+        <span class="cm">/* 서브스레드 생성될 때 핸들러 생성*/</span>
+        <span class="kd">public</span> <span class="nf">SubThread</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">subHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">(){</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="nc">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="cm">/*  메시지 받자마자 입력상자1 텍스트로 설정
+                     * 이어서 "Mike!!" 문자열 덧붙여서 메인 스레드로 전송*/</span>
+                    <span class="nc">Message</span> <span class="n">resultMsg</span> <span class="o">=</span> <span class="nc">Message</span><span class="o">.</span><span class="na">obtain</span><span class="o">();</span>
+                    <span class="n">resultMsg</span><span class="o">.</span><span class="na">obj</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="na">obj</span> <span class="o">+</span> <span class="s">" from SubThread"</span><span class="o">;</span>
+                    <span class="n">handler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">resultMsg</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">};</span>
+        <span class="o">}</span>
 
-        /* 서브스레드 생성될 때 핸들러 생성*/
-        public SubThread() {
-            subHandler = new Handler(){
-                @Override
-                public void handleMessage(Message msg) {
-                    /*  메시지 받자마자 입력상자1 텍스트로 설정
-                     * 이어서 "Mike!!" 문자열 덧붙여서 메인 스레드로 전송*/
-                    Message resultMsg = Message.obtain();
-                    resultMsg.obj = msg.obj + " from SubThread";
-                    handler.sendMessage(resultMsg);
-                }
-            };
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">Looper</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span> <span class="c1">//루퍼 생성</span>
+            <span class="nc">Looper</span><span class="o">.</span><span class="na">loop</span><span class="o">();</span> <span class="c1">//루퍼 돌리기</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-        @Override
-        public void run() {
-            Looper.prepare(); //루퍼 생성
-            Looper.loop(); //루퍼 돌리기
-        }
-    }
-}
-~~~
+<p>이 코드에서 봐야할 건 <code class="highlighter-rouge">Looper.prepare()</code> 부분과 <code class="highlighter-rouge">Looper.loop()</code> 메소드 부분이다. 이 메소드를 통해 루퍼를 생성하고 실행시켜주지 않으면 서브 스레드의 핸들러와 메시지큐를 사용할 수 없다.</p>
 
-이 코드에서 봐야할 건 `Looper.prepare()` 부분과 `Looper.loop()` 메소드 부분이다. 이 메소드를 통해 루퍼를 생성하고 실행시켜주지 않으면 서브 스레드의 핸들러와 메시지큐를 사용할 수 없다.
+<p>앱을 실행하고 입력상자1에 내용을 적어넣고 버튼을 클릭하면 입력상자2에 “ from SubThread”라는 문자열이 덧붙여져서 설정될 것이다.</p>
 
-앱을 실행하고 입력상자1에 내용을 적어넣고 버튼을 클릭하면 입력상자2에 " from SubThread"라는 문자열이 덧붙여져서 설정될 것이다.
+<p><img src="/images/android/47/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/47/1.jpg" alt="2" width="30%" height="30%" /></p>
 
-![1](/images/android/47/1.jpg){: width="30%" height="30%"}
-![2](/images/android/47/1.jpg){: width="30%" height="30%"}
   </div>
   
 </div>

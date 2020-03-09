@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,114 +10682,123 @@
 
     <span class="post-date">19 Aug 2018</span>
 
-    cross validation에서 model의 hyper-parameter들을 어떻게 fit하여 모델을 개선하는지에 대해 설명한다. 결국 이 parameter들의 값을 조정한다는 것은 high bias(underfit)과 high variance(overfit) 사이에서 어떻게 균형을 맞춰나가는 지에 대한 것이다. 이러한 작업을 하는 것 역시 어느정도 시간을 들여야 하는 작업이지만, 우리가 만든 모델이 생각보다 큰 예측에러를 가지고 있는 경우 대부분은 high bias나 high variance때문인 것을 생각한다면 충분히 가치있는 일이다.
+    <p>cross validation에서 model의 hyper-parameter들을 어떻게 fit하여 모델을 개선하는지에 대해 설명한다. 결국 이 parameter들의 값을 조정한다는 것은 high bias(underfit)과 high variance(overfit) 사이에서 어떻게 균형을 맞춰나가는 지에 대한 것이다. 이러한 작업을 하는 것 역시 어느정도 시간을 들여야 하는 작업이지만, 우리가 만든 모델이 생각보다 큰 예측에러를 가지고 있는 경우 대부분은 high bias나 high variance때문인 것을 생각한다면 충분히 가치있는 일이다.</p>
 
-<img class="aligncenter wp-image-549" src="/images/2018/08/no-name-75-1024x364.png" alt="" width="652" height="232" srcset="/images/2018/08/no-name-75-1024x364.png 1024w, /images/2018/08/no-name-75-300x107.png 300w, /images/2018/08/no-name-75-768x273.png 768w, /images/2018/08/no-name-75.png 1259w" sizes="(max-width: 652px) 100vw, 652px" /> 
+<p><img class="aligncenter wp-image-549" src="/images/2018/08/no-name-75-1024x364.png" alt="" width="652" height="232" srcset="/images/2018/08/no-name-75-1024x364.png 1024w, /images/2018/08/no-name-75-300x107.png 300w, /images/2018/08/no-name-75-768x273.png 768w, /images/2018/08/no-name-75.png 1259w" sizes="(max-width: 652px) 100vw, 652px" /></p>
 
-먼저 기호를 한 번 정리하겠다.
+<p>먼저 기호를 한 번 정리하겠다.</p>
 
-  * d : 가설함수의 최고차항의 차수
-  * m : training dataset의 갯수
-  * λ : regularization parameter
+<ul>
+  <li>d : 가설함수의 최고차항의 차수</li>
+  <li>m : training dataset의 갯수</li>
+  <li>λ : regularization parameter</li>
+</ul>
 
-&nbsp;
+<p> </p>
 
-high bias와 high variance는 training data의 cost function<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" /> 과 validation data의 cost function <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />의 그래프를 그려놓고 보면 파악 할 수 있다. 일단 overfit인지 underfit인지 알면 위에서 말한 보조 parameter를 줄이거나 키워 조절 할 수 있게 된다.
+<p>high bias와 high variance는 training data의 cost function<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" /> 과 validation data의 cost function <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />의 그래프를 그려놓고 보면 파악 할 수 있다. 일단 overfit인지 underfit인지 알면 위에서 말한 보조 parameter를 줄이거나 키워 조절 할 수 있게 된다.</p>
 
-# 
+<p>#</p>
 
-# 1. d에 따른 bias vs. variance
+<h1 id="1-d에-따른-bias-vs-variance">1. d에 따른 bias vs. variance</h1>
 
-* * *
+<hr />
 
-가설함수의 최고차항인 d를 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;d=1,d=2,d=3,\cdot\cdot\cdot" alt="\dpi{120} d=1,d=2,d=3,\cdot\cdot\cdot" align="absmiddle" /> 와 같이 크게하면 모델의 복잡도가 증가해 training dataset에 점점 잘 들어맞게 되면서<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />은 작아질 것이다. 또한 어느 정도까지는 모델이 개선되기 때문에 validation data에 대한 예측 정확도도 증가할 것이다. 하지만 어느 순간을 넘어가면 high variance(overfit)이 일어난다. 이 때부터는 가설함수가 새로운 데이터에 일반화되지 못하고 오히려 validation data에 대한 예측 정확도는 떨어지면서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 증가할 것이다.
+<p>가설함수의 최고차항인 d를 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;d=1,d=2,d=3,\cdot\cdot\cdot" alt="\dpi{120} d=1,d=2,d=3,\cdot\cdot\cdot" align="absmiddle" /> 와 같이 크게하면 모델의 복잡도가 증가해 training dataset에 점점 잘 들어맞게 되면서<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />은 작아질 것이다. 또한 어느 정도까지는 모델이 개선되기 때문에 validation data에 대한 예측 정확도도 증가할 것이다. 하지만 어느 순간을 넘어가면 high variance(overfit)이 일어난다. 이 때부터는 가설함수가 새로운 데이터에 일반화되지 못하고 오히려 validation data에 대한 예측 정확도는 떨어지면서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 증가할 것이다.</p>
 
-<img class="aligncenter size-medium wp-image-551" src="/images/2018/08/no-name-76-300x231.png" alt="" width="300" height="231" srcset="/images/2018/08/no-name-76-300x231.png 300w, /images/2018/08/no-name-76.png 562w" sizes="(max-width: 300px) 100vw, 300px" /> 
+<p><img class="aligncenter size-medium wp-image-551" src="/images/2018/08/no-name-76-300x231.png" alt="" width="300" height="231" srcset="/images/2018/08/no-name-76-300x231.png 300w, /images/2018/08/no-name-76.png 562w" sizes="(max-width: 300px) 100vw, 300px" /></p>
 
-  * high bias(underfit) : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}\approx&space;J_{cv}" alt="\dpi{120} J_{train}\approx J_{cv}" align="absmiddle" />
-  * high variance(overfit) : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}\ll&space;J_{cv}" alt="\dpi{120} J_{train}\ll J_{cv}" align="absmiddle" />1)
+<ul>
+  <li>high bias(underfit) : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}\approx&space;J_{cv}" alt="\dpi{120} J_{train}\approx J_{cv}" align="absmiddle" /></li>
+  <li>high variance(overfit) : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}\ll&space;J_{cv}" alt="\dpi{120} J_{train}\ll J_{cv}" align="absmiddle" />1)</li>
+</ul>
 
-&nbsp;
+<p> </p>
 
-1) <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;d=1,d=2,d=3,\cdot\cdot\cdot" alt="\dpi{120} d=1,d=2,d=3,\cdot\cdot\cdot" align="absmiddle" /> d 각각의 d에 대해 training dataset으로 모델 학습
+<p>1) <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;d=1,d=2,d=3,\cdot\cdot\cdot" alt="\dpi{120} d=1,d=2,d=3,\cdot\cdot\cdot" align="absmiddle" /> d 각각의 d에 대해 training dataset으로 모델 학습</p>
 
-2) 위에서 구한 각각의 모델로 cross validation dataset의 error <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 계산
+<p>2) 위에서 구한 각각의 모델로 cross validation dataset의 error <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 계산</p>
 
-3) <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />가 최소가 되는 d를 선택
+<p>3) <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />가 최소가 되는 d를 선택</p>
 
-4) test dataset의 결과를 예측하여 모델의 성능을 판단
+<p>4) test dataset의 결과를 예측하여 모델의 성능을 판단</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **2. λ에 따른 bias  vs.  variance**
+<h1 id="2-λ에-따른-bias-vs-variance"><strong>2. λ에 따른 bias  vs.  variance</strong></h1>
 
-* * *
+<hr />
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\lambda=0,&space;\lambda=0.1,&space;\lambda=0.3,&space;\lambda=0.9,&space;\lambda=0.27,&space;\lambda=0.81,&space;\cdot&space;\cdot&space;\cdot" alt="\dpi{120} \lambda=0, \lambda=0.1, \lambda=0.3, \lambda=0.9, \lambda=0.27, \lambda=0.81, \cdot \cdot \cdot" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\lambda=0,&space;\lambda=0.1,&space;\lambda=0.3,&space;\lambda=0.9,&space;\lambda=0.27,&space;\lambda=0.81,&space;\cdot&space;\cdot&space;\cdot" alt="\dpi{120} \lambda=0, \lambda=0.1, \lambda=0.3, \lambda=0.9, \lambda=0.27, \lambda=0.81, \cdot \cdot \cdot" align="absmiddle" /></p>
 
-보통 위와 같이 λ를 3배씩 늘려가면서 확인한다. λ는 hypothesis function의 parameter Θ를 죽여서 overfit을 해결하는 역할이다. λ가 너무 크면 오히려 high bias(underfit)이 일어나고 λ가 너무 작으면 high variance(overfit)이 일어난다.
+<p>보통 위와 같이 λ를 3배씩 늘려가면서 확인한다. λ는 hypothesis function의 parameter Θ를 죽여서 overfit을 해결하는 역할이다. λ가 너무 크면 오히려 high bias(underfit)이 일어나고 λ가 너무 작으면 high variance(overfit)이 일어난다.</p>
 
-<img class="aligncenter size-medium wp-image-554" src="/images/2018/08/no-name-77-300x231.png" alt="" width="300" height="231" srcset="/images/2018/08/no-name-77-300x231.png 300w, /images/2018/08/no-name-77.png 562w" sizes="(max-width: 300px) 100vw, 300px" /> 1)<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\lambda=0,&space;\lambda=0.1,&space;\lambda=0.3,&space;\lambda=0.9,&space;\lambda=0.27,\cdot&space;\cdot&space;\cdot" alt="\dpi{120} \lambda=0, \lambda=0.1, \lambda=0.3, \lambda=0.9, \lambda=0.27,\cdot \cdot \cdot" align="absmiddle" />  각각의 λ에 대해 training dataset으로 모델 학습
+<p><img class="aligncenter size-medium wp-image-554" src="/images/2018/08/no-name-77-300x231.png" alt="" width="300" height="231" srcset="/images/2018/08/no-name-77-300x231.png 300w, /images/2018/08/no-name-77.png 562w" sizes="(max-width: 300px) 100vw, 300px" /> 1)<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\lambda=0,&space;\lambda=0.1,&space;\lambda=0.3,&space;\lambda=0.9,&space;\lambda=0.27,\cdot&space;\cdot&space;\cdot" alt="\dpi{120} \lambda=0, \lambda=0.1, \lambda=0.3, \lambda=0.9, \lambda=0.27,\cdot \cdot \cdot" align="absmiddle" />  각각의 λ에 대해 training dataset으로 모델 학습</p>
 
-2) 위에서 구한 각각의 모델로 cross validation dataset의 error <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 계산
+<p>2) 위에서 구한 각각의 모델로 cross validation dataset의 error <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 계산</p>
 
-3) <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />가 최소가 되는 λ를 선택
+<p>3) <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />가 최소가 되는 λ를 선택</p>
 
-4) test dataset의 결과를 예측하여 모델의 성능을 판단
+<p>4) test dataset의 결과를 예측하여 모델의 성능을 판단</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **3. m에 따른 bias  vs.  variance**
+<h1 id="3-m에-따른-bias-vs-variance"><strong>3. m에 따른 bias  vs.  variance</strong></h1>
 
-* * *
+<hr />
 
-training dataset의 갯수 m에 따른 training data와 validation data의 error를 그려 보는 것으로 우리가 더 많은 dataset을 필요로 하는지 파악할 수 있는데, 이 그래프를 <span style="font-size: 14pt; color: #ff0000;"><strong>learning curves</strong></span>라고 한다.
+<p>training dataset의 갯수 m에 따른 training data와 validation data의 error를 그려 보는 것으로 우리가 더 많은 dataset을 필요로 하는지 파악할 수 있는데, 이 그래프를 <span style="font-size: 14pt; color: #ff0000;"><strong>learning curves</strong></span>라고 한다.</p>
 
-  * <span style="font-size: 14pt;"><strong>high bias(underfit)</strong></span>
+<ul>
+  <li><span style="font-size: 14pt;"><strong>high bias(underfit)</strong></span></li>
+</ul>
 
-model이 high bias 되어있다고 가정해보자. 이 때 training dataset의 갯수 m을 점점 늘리면 error <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />은 증가할 것이다. training data를 늘려봐야 단순한 모델로는 따라가지 못하기 때문에 error만 쌓이는 것이다. 그리고 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 m을 늘릴수록 그래도 조금씩은 작아질 것이다. 하지만 단순한 모델일수록 data에 둔감하여 새로운 데이터가 들어오더라도 모델이 잘 따라가지 않는다. 따라서 어느 시점부터는 데이터 size m이 많아지더라도 단순한 모델로는 그 데이터 패턴에 일반화되지 못해 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />  curve가 flat하게 되고 더 줄어들지 않는다. 평균적으로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 모두 높다는 것이 high bias의 특징이다.
+<p>model이 high bias 되어있다고 가정해보자. 이 때 training dataset의 갯수 m을 점점 늘리면 error <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />은 증가할 것이다. training data를 늘려봐야 단순한 모델로는 따라가지 못하기 때문에 error만 쌓이는 것이다. 그리고 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 m을 늘릴수록 그래도 조금씩은 작아질 것이다. 하지만 단순한 모델일수록 data에 둔감하여 새로운 데이터가 들어오더라도 모델이 잘 따라가지 않는다. 따라서 어느 시점부터는 데이터 size m이 많아지더라도 단순한 모델로는 그 데이터 패턴에 일반화되지 못해 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />  curve가 flat하게 되고 더 줄어들지 않는다. 평균적으로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 모두 높다는 것이 high bias의 특징이다.</p>
 
-<img class="aligncenter size-medium wp-image-557" src="/images/2018/08/no-name-79-300x218.png" alt="" width="300" height="218" srcset="/images/2018/08/no-name-79-300x218.png 300w, /images/2018/08/no-name-79.png 522w" sizes="(max-width: 300px) 100vw, 300px" /> 
+<p><img class="aligncenter size-medium wp-image-557" src="/images/2018/08/no-name-79-300x218.png" alt="" width="300" height="218" srcset="/images/2018/08/no-name-79-300x218.png 300w, /images/2018/08/no-name-79.png 522w" sizes="(max-width: 300px) 100vw, 300px" /></p>
 
-  * <span style="font-size: 14pt;"><strong>high variance(overfit)</strong></span>
+<ul>
+  <li><span style="font-size: 14pt;"><strong>high variance(overfit)</strong></span></li>
+</ul>
 
-모델이 high variance 되어있다면  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />의 차이가 크다. 왜냐하면 overfit이라는 것은 training dataset에는 과하게 들어맞도록 만들어 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />는 작겠지만 새로운 데이터를 예측하는 성능은 오히려 떨어져 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 크기 때문이다. 이 때에는 training data의 갯수 m을 늘려가면 overfit이 조금씩 해결이 되고 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 사이의 gap이 줄어들 것이다.
+<p>모델이 high variance 되어있다면  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />의 차이가 크다. 왜냐하면 overfit이라는 것은 training dataset에는 과하게 들어맞도록 만들어 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />는 작겠지만 새로운 데이터를 예측하는 성능은 오히려 떨어져 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 크기 때문이다. 이 때에는 training data의 갯수 m을 늘려가면 overfit이 조금씩 해결이 되고 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 사이의 gap이 줄어들 것이다.</p>
 
-<img class="aligncenter size-medium wp-image-558" src="/images/2018/08/3-3-300x209.png" alt="" width="300" height="209" srcset="/images/2018/08/3-3-300x209.png 300w, /images/2018/08/3-3.png 561w" sizes="(max-width: 300px) 100vw, 300px" /> 
+<p><img class="aligncenter size-medium wp-image-558" src="/images/2018/08/3-3-300x209.png" alt="" width="300" height="209" srcset="/images/2018/08/3-3-300x209.png 300w, /images/2018/08/3-3.png 561w" sizes="(max-width: 300px) 100vw, 300px" /></p>
 
-&nbsp;
+<p> </p>
 
-위의 내용들을 토대로 model을 학습시켜 high bias나 high variance되지 않는 균형잡인 model을 만들면 새로운 data에 대한 예측확률이 올라갈 것이다.
+<p>위의 내용들을 토대로 model을 학습시켜 high bias나 high variance되지 않는 균형잡인 model을 만들면 새로운 data에 대한 예측확률이 올라갈 것이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-<span style="font-size: 18pt;"><strong>4. neural network(신경망)의 high bias  vs.  high variance</strong></span>
+<p><span style="font-size: 18pt;"><strong>4. neural network(신경망)의 high bias  vs.  high variance</strong></span></p>
 
-* * *
+<hr />
 
-인공 신경망은 구조가 단순하고 parameter 갯수가 적을수록 high bias(underfit)이 일어나기 쉽고 구조가 복잡하고 parameter 갯수가 많을수록 high variance(overfit)이 일어나기 쉬운 경향이 있다. 이 때에는 신경망의 node의 갯수를 늘리거나 layer를 추가하는 식으로 high bias를 해결하고 regularization을 통해 high variance를 해결한다.
+<p>인공 신경망은 구조가 단순하고 parameter 갯수가 적을수록 high bias(underfit)이 일어나기 쉽고 구조가 복잡하고 parameter 갯수가 많을수록 high variance(overfit)이 일어나기 쉬운 경향이 있다. 이 때에는 신경망의 node의 갯수를 늘리거나 layer를 추가하는 식으로 high bias를 해결하고 regularization을 통해 high variance를 해결한다.</p>
 
-<img class="aligncenter wp-image-559" src="/images/2018/08/no-name-78-1024x443.png" alt="" width="717" height="310" srcset="/images/2018/08/no-name-78-1024x443.png 1024w, /images/2018/08/no-name-78-300x130.png 300w, /images/2018/08/no-name-78-768x333.png 768w, /images/2018/08/no-name-78.png 1044w" sizes="(max-width: 717px) 100vw, 717px" /> 
+<p><img class="aligncenter wp-image-559" src="/images/2018/08/no-name-78-1024x443.png" alt="" width="717" height="310" srcset="/images/2018/08/no-name-78-1024x443.png 1024w, /images/2018/08/no-name-78-300x130.png 300w, /images/2018/08/no-name-78-768x333.png 768w, /images/2018/08/no-name-78.png 1044w" sizes="(max-width: 717px) 100vw, 717px" /></p>
 
-&nbsp;
+<p> </p>
 
-여기서 한 가지 tip을 얻을 수 있다.
+<p>여기서 한 가지 tip을 얻을 수 있다.</p>
 
-**simple model** : **<span style="color: #ff0000;">data에 둔감</span>** → input X 추가에 영향을 별로 받지않음 → <span style="color: #ff0000;"><strong>high bias</strong></span>(underfit)
+<p><strong>simple model</strong> : <strong><span style="color: #ff0000;">data에 둔감</span></strong> → input X 추가에 영향을 별로 받지않음 → <span style="color: #ff0000;"><strong>high bias</strong></span>(underfit)</p>
 
-**complex model**  : <span style="color: #ff0000;"><strong>data에 민감</strong></span> → input X 추가에 큰 영향을 받음 → <span style="color: #ff0000;"><strong>high variance</strong></span>(overfit)
+<p><strong>complex model</strong>  : <span style="color: #ff0000;"><strong>data에 민감</strong></span> → input X 추가에 큰 영향을 받음 → <span style="color: #ff0000;"><strong>high variance</strong></span>(overfit)</p>
 
-&nbsp;
+<p> </p>
 
-신경망의 구조를 복잡하게 한 후 일반화 될 때 까지 regularization을 하여 모델을 만드는 것은 좋은 선택이다. 하지만 신경망의 구조가 복잡해질수록 계산의 시간 복잡도가 크게 증가한다. 따라서 무조건 좋은 성능을 위해 신경망을 더 복잡한 구조로 선택하는 것 보다는 hidden layer의 수를 1부터 차례로 증가시키면서 cross validation dataset에 대해 최적화시켜 hidden layer의 수를 정하는 것이 좋겠다.
+<p>신경망의 구조를 복잡하게 한 후 일반화 될 때 까지 regularization을 하여 모델을 만드는 것은 좋은 선택이다. 하지만 신경망의 구조가 복잡해질수록 계산의 시간 복잡도가 크게 증가한다. 따라서 무조건 좋은 성능을 위해 신경망을 더 복잡한 구조로 선택하는 것 보다는 hidden layer의 수를 1부터 차례로 증가시키면서 cross validation dataset에 대해 최적화시켜 hidden layer의 수를 정하는 것이 좋겠다.</p>
+
   </div>
   
   <div class="post">
@@ -10825,85 +10810,90 @@ model이 high bias 되어있다고 가정해보자. 이 때 training dataset의 
 
     <span class="post-date">18 Aug 2018</span>
 
-    # **1. model evaluation**
+    <h1 id="1-model-evaluation"><strong>1. model evaluation</strong></h1>
 
-* * *
+<hr />
 
-지금까지 머신러닝 알고리즘을 학습시켜 training dataset에 잘 들어맞는 model을 구했다. 하지만 결국 머신러닝 알고리즘을 학습시키는 최종목표는 새로운 data가 들어왔을 때의 결과 예측이다.
+<p>지금까지 머신러닝 알고리즘을 학습시켜 training dataset에 잘 들어맞는 model을 구했다. 하지만 결국 머신러닝 알고리즘을 학습시키는 최종목표는 새로운 data가 들어왔을 때의 결과 예측이다.</p>
 
-  1.  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" /> 를 학습시켜 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}(\Theta)" alt="\dpi{120} J_{train}(\Theta)" align="absmiddle" /> 최소화
-  2. 모델을 test dataset에 적용, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}(\Theta)" alt="\dpi{120} J_{test}(\Theta)" align="absmiddle" /> 계산하여 모델의 예측성능 평가
+<ol>
+  <li> <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" /> 를 학습시켜 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}(\Theta)" alt="\dpi{120} J_{train}(\Theta)" align="absmiddle" /> 최소화</li>
+  <li>모델을 test dataset에 적용, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}(\Theta)" alt="\dpi{120} J_{test}(\Theta)" align="absmiddle" /> 계산하여 모델의 예측성능 평가</li>
+</ol>
 
-training data에 대해서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}(\Theta)" alt="\dpi{120} J_{train}(\Theta)" align="absmiddle" />을 최소화 시켰다고 해도 새로운 test data의 결과를 잘 예측한다고 보장할 수 없다. 예를 들면 모델이 overfitting(high variance)인 경우 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}(\Theta)" alt="\dpi{120} J_{train}(\Theta)" align="absmiddle" />은 아주 작지만 오히려 새로운 data에 대해서는 일반화(generalization) 되지못하고 성능이 떨어져 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}(\Theta)" alt="\dpi{120} J_{test}(\Theta)" align="absmiddle" />는 커질 가능성이 높다. 만약 예측 성능이 떨어진다면 우리는 무엇을 할 수 있을까?
+<p>training data에 대해서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}(\Theta)" alt="\dpi{120} J_{train}(\Theta)" align="absmiddle" />을 최소화 시켰다고 해도 새로운 test data의 결과를 잘 예측한다고 보장할 수 없다. 예를 들면 모델이 overfitting(high variance)인 경우 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}(\Theta)" alt="\dpi{120} J_{train}(\Theta)" align="absmiddle" />은 아주 작지만 오히려 새로운 data에 대해서는 일반화(generalization) 되지못하고 성능이 떨어져 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}(\Theta)" alt="\dpi{120} J_{test}(\Theta)" align="absmiddle" />는 커질 가능성이 높다. 만약 예측 성능이 떨어진다면 우리는 무엇을 할 수 있을까?</p>
 
-  * training data를 더 모은다
-  * feature의 갯수를 늘리거나 줄인다(overfit &#8211; 줄인다 / underfit &#8211; 늘린다)
-  * higher order polynomial term을 추가한다(underfit인 경우)
-  * regularization parameter λ를 조절한다(overfit &#8211; 늘인다 / underfit &#8211; 줄인다)
+<ul>
+  <li>training data를 더 모은다</li>
+  <li>feature의 갯수를 늘리거나 줄인다(overfit – 줄인다 / underfit – 늘린다)</li>
+  <li>higher order polynomial term을 추가한다(underfit인 경우)</li>
+  <li>regularization parameter λ를 조절한다(overfit – 늘인다 / underfit – 줄인다)</li>
+</ul>
 
-하지만 무작정 위의 해결책을 random하게 적용하는 것은 시간낭비가 될 수 있다. 특히 training data를 더 모으는건 시간이 아주 많이 걸리는 일이다. 지금부터는 model을 조금 더 효과적으로 고르는 방법과 위의 해결책을 적절히 적용하는 방법들에 대해서 다루어 모델의 성능을 향상시키는 방법에 대해 설명하고자 한다.
+<p>하지만 무작정 위의 해결책을 random하게 적용하는 것은 시간낭비가 될 수 있다. 특히 training data를 더 모으는건 시간이 아주 많이 걸리는 일이다. 지금부터는 model을 조금 더 효과적으로 고르는 방법과 위의 해결책을 적절히 적용하는 방법들에 대해서 다루어 모델의 성능을 향상시키는 방법에 대해 설명하고자 한다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **2. model selection : Train / Validation / Test**
+<h1 id="2-model-selection--train--validation--test"><strong>2. model selection : Train / Validation / Test</strong></h1>
 
-* * *
+<hr />
 
-가지고 있는 data를 모두 모델을 학습시키는데 사용하지 말고 70%는 training dataset, 30%는 test dataset으로 나눈다고 하자.
+<p>가지고 있는 data를 모두 모델을 학습시키는데 사용하지 말고 70%는 training dataset, 30%는 test dataset으로 나눈다고 하자.</p>
 
-그리고 우리는 하나의 parameter를 더 추가하는데, hypothesis function 최고차항의 차수인 d(degree of polynomial) 이다.
+<p>그리고 우리는 하나의 parameter를 더 추가하는데, hypothesis function 최고차항의 차수인 d(degree of polynomial) 이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;h_{\theta}(x)&space;=&space;\theta_{0}+\theta_{1}x&space;\rightarrow&space;d=1&space;\\&space;h_{\theta}(x)&space;=&space;\theta_{0}+\theta_{1}x+\theta_{2}x^{2}&space;\rightarrow&space;d=2&space;\\&space;h_{\theta}(x)&space;=&space;\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}&space;\rightarrow&space;d=3&space;\\&space;\cdot&space;\\&space;\cdot" alt="\dpi{120} \\ h_{\theta}(x) = \theta_{0}+\theta_{1}x \rightarrow d=1 \\ h_{\theta}(x) = \theta_{0}+\theta_{1}x+\theta_{2}x^{2} \rightarrow d=2 \\ h_{\theta}(x) = \theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3} \rightarrow d=3 \\ \cdot \\ \cdot" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;h_{\theta}(x)&space;=&space;\theta_{0}+\theta_{1}x&space;\rightarrow&space;d=1&space;\\&space;h_{\theta}(x)&space;=&space;\theta_{0}+\theta_{1}x+\theta_{2}x^{2}&space;\rightarrow&space;d=2&space;\\&space;h_{\theta}(x)&space;=&space;\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}&space;\rightarrow&space;d=3&space;\\&space;\cdot&space;\\&space;\cdot" alt="\dpi{120} \\ h_{\theta}(x) = \theta_{0}+\theta_{1}x \rightarrow d=1 \\ h_{\theta}(x) = \theta_{0}+\theta_{1}x+\theta_{2}x^{2} \rightarrow d=2 \\ h_{\theta}(x) = \theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3} \rightarrow d=3 \\ \cdot \\ \cdot" align="absmiddle" /></p>
 
-training data를 가지고 d=1부터 해서 d를 올려가면서 test한다 생각해보자. d가 커질수록 더 높은 차수의 항으로 인해 training dataset의 cost function은 낮아질 것이다. 하지만 어느 순간부터는 d가 커질수록 overfit이 일어나 test data에 대한 예측은 오히려 나빠지고 test data의 cost function은 높아질 것이다.
+<p>training data를 가지고 d=1부터 해서 d를 올려가면서 test한다 생각해보자. d가 커질수록 더 높은 차수의 항으로 인해 training dataset의 cost function은 낮아질 것이다. 하지만 어느 순간부터는 d가 커질수록 overfit이 일어나 test data에 대한 예측은 오히려 나빠지고 test data의 cost function은 높아질 것이다.</p>
 
-<img class="aligncenter size-medium wp-image-533" src="/images/2018/08/no-name-74-300x232.png" alt="" width="300" height="232" srcset="/images/2018/08/no-name-74-300x232.png 300w, /images/2018/08/no-name-74.png 548w" sizes="(max-width: 300px) 100vw, 300px" /> 
+<p><img class="aligncenter size-medium wp-image-533" src="/images/2018/08/no-name-74-300x232.png" alt="" width="300" height="232" srcset="/images/2018/08/no-name-74-300x232.png 300w, /images/2018/08/no-name-74.png 548w" sizes="(max-width: 300px) 100vw, 300px" /></p>
 
-위 그림에서 포물선 모양의<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}" alt="\dpi{120} J_{test}" align="absmiddle" /> 가 최소가 되는 점에서 최고차항의 차수인 d를 선택해야한다.
+<p>위 그림에서 포물선 모양의<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}" alt="\dpi{120} J_{test}" align="absmiddle" /> 가 최소가 되는 점에서 최고차항의 차수인 d를 선택해야한다.</p>
 
-하지만 이 d라는 parameter 역시 test data에 대해서만 최적화 된 것이다. 즉, 이렇게 training data와 test data로 나누어서 d를 정하였는데, 이를 새로운 data에 적용하여 검증하지 않으면 의미가 없는 것이다.
+<p>하지만 이 d라는 parameter 역시 test data에 대해서만 최적화 된 것이다. 즉, 이렇게 training data와 test data로 나누어서 d를 정하였는데, 이를 새로운 data에 적용하여 검증하지 않으면 의미가 없는 것이다.</p>
 
-결론적으로 training dataset / test dataset의 2분류보다는 3 분류로 나누는게 가장 적절하다.
+<p>결론적으로 training dataset / test dataset의 2분류보다는 3 분류로 나누는게 가장 적절하다.</p>
 
-<span style="font-size: 14pt;"><strong>60% : training   dataset</strong></span>
+<p><span style="font-size: 14pt;"><strong>60% : training   dataset</strong></span></p>
 
-<span style="font-size: 14pt;"><strong>20% : cross validation dataset</strong></span>
+<p><span style="font-size: 14pt;"><strong>20% : cross validation dataset</strong></span></p>
 
-<span style="font-size: 14pt;"><strong>20% : test dataset</strong></span>
+<p><span style="font-size: 14pt;"><strong>20% : test dataset</strong></span></p>
 
-위의 3분류의 dataset을 가지고 다음의 절차에 따라 model 선택을 진행한다.
+<p>위의 3분류의 dataset을 가지고 다음의 절차에 따라 model 선택을 진행한다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-## **1) train**
+<h2 id="1-train"><strong>1) train</strong></h2>
 
-training dataset을 사용하여 model parameter 학습
+<p>training dataset을 사용하여 model parameter 학습</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\Theta)&space;=&space;\frac{1}{2m_{train}}\sum_{i=1}^{m_{train}}[h_{\Theta}(x_{train}^{(i)})-y_{train}^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\Theta) = \frac{1}{2m_{train}}\sum_{i=1}^{m_{train}}[h_{\Theta}(x_{train}^{(i)})-y_{train}^{(i)}]^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;J_{train}(\Theta)&space;=&space;\frac{1}{2m_{train}}\sum_{i=1}^{m_{train}}[h_{\Theta}(x_{train}^{(i)})-y_{train}^{(i)}]^{2}" alt="\dpi{120} \\ J_{train}(\Theta) = \frac{1}{2m_{train}}\sum_{i=1}^{m_{train}}[h_{\Theta}(x_{train}^{(i)})-y_{train}^{(i)}]^{2}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-## **2) cross validation**
+<h2 id="2-cross-validation"><strong>2) cross validation</strong></h2>
 
-validation dataset은 가설함수의 최고차항의 차수(d), regularization parameter(λ), training data의 갯수(m) 등 model의 보조 parameter를 fit하는 데 사용한다. 여러가지 크기의 d나 λ, m에 대하여 모델을 train한 후 각각의 모델로 cross validation dataset의 결과를 예측하여 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />가 최소인 d, λ, m 을 사용하면 된다.
+<p>validation dataset은 가설함수의 최고차항의 차수(d), regularization parameter(λ), training data의 갯수(m) 등 model의 보조 parameter를 fit하는 데 사용한다. 여러가지 크기의 d나 λ, m에 대하여 모델을 train한 후 각각의 모델로 cross validation dataset의 결과를 예측하여 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />가 최소인 d, λ, m 을 사용하면 된다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}(\Theta)&space;=&space;\frac{1}{2m_{cv}}\sum_{i=1}^{m_{cv}}[h_{\Theta}(x_{cv}^{(i)})-y_{cv}^{(i)}]^{2}" alt="\dpi{120} J_{cv}(\Theta) = \frac{1}{2m_{cv}}\sum_{i=1}^{m_{cv}}[h_{\Theta}(x_{cv}^{(i)})-y_{cv}^{(i)}]^{2}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}(\Theta)&space;=&space;\frac{1}{2m_{cv}}\sum_{i=1}^{m_{cv}}[h_{\Theta}(x_{cv}^{(i)})-y_{cv}^{(i)}]^{2}" alt="\dpi{120} J_{cv}(\Theta) = \frac{1}{2m_{cv}}\sum_{i=1}^{m_{cv}}[h_{\Theta}(x_{cv}^{(i)})-y_{cv}^{(i)}]^{2}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-## 
+<p>##</p>
 
-## **3) test**
+<h2 id="3-test"><strong>3) test</strong></h2>
 
-마지막으로 위에서 고른 model로 test dataset의 결과를 얼마나 잘 예측하는지 확인한다.
+<p>마지막으로 위에서 고른 model로 test dataset의 결과를 얼마나 잘 예측하는지 확인한다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}(\Theta)&space;=&space;\frac{1}{2m_{test}}\sum_{i=1}^{m_{test}}[h_{\Theta}(x_{test}^{(i)})-y_{test}^{(i)}]^{2}" alt="\dpi{120} J_{test}(\Theta) = \frac{1}{2m_{test}}\sum_{i=1}^{m_{test}}[h_{\Theta}(x_{test}^{(i)})-y_{test}^{(i)}]^{2}" align="absmiddle" />
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}(\Theta)&space;=&space;\frac{1}{2m_{test}}\sum_{i=1}^{m_{test}}[h_{\Theta}(x_{test}^{(i)})-y_{test}^{(i)}]^{2}" alt="\dpi{120} J_{test}(\Theta) = \frac{1}{2m_{test}}\sum_{i=1}^{m_{test}}[h_{\Theta}(x_{test}^{(i)})-y_{test}^{(i)}]^{2}" align="absmiddle" /></p>
+
   </div>
   
   <div class="post">
@@ -10915,133 +10905,134 @@ validation dataset은 가설함수의 최고차항의 차수(d), regularization 
 
     <span class="post-date">18 Aug 2018</span>
 
-    &nbsp;
+    <p> </p>
 
 <p style="text-align: right;">
-  <a role="button" href="/images/2018/08/digitRecog.zip"><span style="font-size: 14pt; color: #0000ff;"><strong><span style="text-decoration: underline;">소스코드.zip</span></strong></span><br/> </a>
+  <a role="button" href="/images/2018/08/digitRecog.zip"><span style="font-size: 14pt; color: #0000ff;"><strong><span style="text-decoration: underline;">소스코드.zip</span></strong></span><br /> </a>
 </p>
 
-이번 예제는 신경망을 학습하는 이론적인 방법에 대해 포스팅한 아래 링크에 해당하는 내용을 실제로 구현한 것입니다. 이 글의 상단에 소스코드가 첨부되어있으니 받아서 돌려보셔도 좋습니다.
+<p>이번 예제는 신경망을 학습하는 이론적인 방법에 대해 포스팅한 아래 링크에 해당하는 내용을 실제로 구현한 것입니다. 이 글의 상단에 소스코드가 첨부되어있으니 받아서 돌려보셔도 좋습니다.</p>
 
-https://SWnomad.com/12-back-propagation역전파-알고리즘
+<p>https://SWnomad.com/12-back-propagation역전파-알고리즘</p>
 
-필기숫자 인식은 고전적이지만 머신러닝의 신경망 알고리즘이 적용되는 가장 대표적인 문제입니다.
+<p>필기숫자 인식은 고전적이지만 머신러닝의 신경망 알고리즘이 적용되는 가장 대표적인 문제입니다.</p>
 
-우리가 숫자인식을 학습시킬 훈련 데이터를 직접 하나하나 만들어내기는 시간적으로 너무 비효율적입니다. 숫자인식 훈련 데이터의 정석이라 불리는 미국의 Yann LeCun 교수가 제공하는 MNIST dataset이 있는데, 오늘은 이것을 활용할 것입니다.
+<p>우리가 숫자인식을 학습시킬 훈련 데이터를 직접 하나하나 만들어내기는 시간적으로 너무 비효율적입니다. 숫자인식 훈련 데이터의 정석이라 불리는 미국의 Yann LeCun 교수가 제공하는 MNIST dataset이 있는데, 오늘은 이것을 활용할 것입니다.</p>
 
-MNIST dataset은 다음의 link에서 받을 수 있습니다.
+<p>MNIST dataset은 다음의 link에서 받을 수 있습니다.</p>
 
-<http://yann.lecun.com/exdb/mnist/index.html>
+<p><a href="http://yann.lecun.com/exdb/mnist/index.html">http://yann.lecun.com/exdb/mnist/index.html</a></p>
 
-그러나 위의 사이트에서 제공하는 .gz 확장자는 일반적인 이미지 format이 아닙니다. 검색을 통해 마침 적절하게 octave에서 바로 load하여 쓸 수 있는 .mat 확장자형태로 변환해 놓은 것이 있는데, 너무 감사한 일입니다. 이 .mat 확장자의 MNIST dataset은 아래의 링크를 타고가면 받을 수 있습니다.
+<p>그러나 위의 사이트에서 제공하는 .gz 확장자는 일반적인 이미지 format이 아닙니다. 검색을 통해 마침 적절하게 octave에서 바로 load하여 쓸 수 있는 .mat 확장자형태로 변환해 놓은 것이 있는데, 너무 감사한 일입니다. 이 .mat 확장자의 MNIST dataset은 아래의 링크를 타고가면 받을 수 있습니다.</p>
 
-<https://github.com/daniel-e/mnist_octave>
+<p><a href="https://github.com/daniel-e/mnist_octave">https://github.com/daniel-e/mnist_octave</a></p>
 
-MNIST dataset은 다음과 같은 구성으로 이루어져 있습니다.
+<p>MNIST dataset은 다음과 같은 구성으로 이루어져 있습니다.</p>
 
-60000개의 28×28 pixel의 training data
+<p>60000개의 28×28 pixel의 training data</p>
 
-60000개의 training label. 이 label은 1,2,3,4,5,6,7,8,9,10입니다. class 10은 숫자 0에 해당합니다..
+<p>60000개의 training label. 이 label은 1,2,3,4,5,6,7,8,9,10입니다. class 10은 숫자 0에 해당합니다..</p>
 
-10000개의 28×28 test data. 이 data로 학습된 신경망을 test 해볼 수 있다.
+<p>10000개의 28×28 test data. 이 data로 학습된 신경망을 test 해볼 수 있다.</p>
 
-10000개의 test용 label.
+<p>10000개의 test용 label.</p>
 
-<img src="/images/2018/08/no-name-62.png" alt="" width="1034" height="168" /> 
+<p><img src="/images/2018/08/no-name-62.png" alt="" width="1034" height="168" /></p>
 
-mnist.mat 파일을 저장한 디렉토리로 가서 위의 명령어로 파일을 로드하면 왼쪽과 같이 4개의 행렬이 생깁니다. 여기서 신경망 학습에 사용 될 데이터는 trainX와 label인 trainY구요.  label은 0~9 까지이다. trainX의 60000개의 이미지 중에 99번 째 이미지를 한 번 보죠.
+<p>mnist.mat 파일을 저장한 디렉토리로 가서 위의 명령어로 파일을 로드하면 왼쪽과 같이 4개의 행렬이 생깁니다. 여기서 신경망 학습에 사용 될 데이터는 trainX와 label인 trainY구요.  label은 0~9 까지이다. trainX의 60000개의 이미지 중에 99번 째 이미지를 한 번 보죠.</p>
 
-<img src="/images/2018/08/no-name-63.png" alt="" width="1179" height="583" /> 
+<p><img src="/images/2018/08/no-name-63.png" alt="" width="1179" height="583" /></p>
 
-먼저 reshape 함수를 사용해서 하나의 행으로 늘어져있는 784개 pixel의 명암정보를 28*28 행렬로 변환한 변수 A를 만듭니다. 그리고 imagesc함수를 사용해서 그림으로 표현하는데, colobar를 표시하고 colormap을 gray scale로 설정했습니. 위의 그림에서 colorbar를 보면 숫자 0이 완전한 black, 255가 완전한 white로 표현되는 걸 볼 수 있습니다. 아무튼 image pixel값은 0에서 255사이의 숫자를 사용해서 명암을 표시합니다. 위의 99번째 training data sample은 숫자 3을 그린 것이란 것을 알 수 있습니다.
+<p>먼저 reshape 함수를 사용해서 하나의 행으로 늘어져있는 784개 pixel의 명암정보를 28*28 행렬로 변환한 변수 A를 만듭니다. 그리고 imagesc함수를 사용해서 그림으로 표현하는데, colobar를 표시하고 colormap을 gray scale로 설정했습니. 위의 그림에서 colorbar를 보면 숫자 0이 완전한 black, 255가 완전한 white로 표현되는 걸 볼 수 있습니다. 아무튼 image pixel값은 0에서 255사이의 숫자를 사용해서 명암을 표시합니다. 위의 99번째 training data sample은 숫자 3을 그린 것이란 것을 알 수 있습니다.</p>
 
-**0. 데이터 로드**
+<p><strong>0. 데이터 로드</strong></p>
 
-<img src="/images/2018/08/no-name-65.png" alt="" width="611" height="183" /> 
+<p><img src="/images/2018/08/no-name-65.png" alt="" width="611" height="183" /></p>
 
-mnist data의 변수는  uint8형이라 먼저 실수형의 double로 바꿔주어야 합니다. 아니면 곱하기 연산자인 *가 먹히질 않습니다. 그리고 데이터를 60000개 다 쓰지않고 10000개만 쓰겠습니다. 6만개로 하면 계산하는데 시간이 너무오래 걸립니다ㅜㅜ. 알고리즘을 이해하고 구현한다는 것에 의미를 두면 충분합니다.
+<p>mnist data의 변수는  uint8형이라 먼저 실수형의 double로 바꿔주어야 합니다. 아니면 곱하기 연산자인 *가 먹히질 않습니다. 그리고 데이터를 60000개 다 쓰지않고 10000개만 쓰겠습니다. 6만개로 하면 계산하는데 시간이 너무오래 걸립니다ㅜㅜ. 알고리즘을 이해하고 구현한다는 것에 의미를 두면 충분합니다.</p>
 
-**1. 신경망의 구조 결정**
+<p><strong>1. 신경망의 구조 결정</strong></p>
 
-input layer : feature가 28*28 = 784이므로 784개의 node
+<p>input layer : feature가 28*28 = 784이므로 784개의 node</p>
 
-hidden layer : 300개의 node
+<p>hidden layer : 300개의 node</p>
 
-output layer : label의 수가 10이므로 10개의 node
+<p>output layer : label의 수가 10이므로 10개의 node</p>
 
-<img src="/images/2018/08/no-name-64.png" alt="" width="413" height="134" /> 
+<p><img src="/images/2018/08/no-name-64.png" alt="" width="413" height="134" /></p>
 
-**2. parameter 초기화**
+<p><strong>2. parameter 초기화</strong></p>
 
-regression 모델에서는 parameter를 모두 0으로 초기화 해도 상관 없었습니다. 하지만 **신경망 모델에서 파라미터를 0이던 어떤 수인지던간에 같은 값으로 초기화를 하면 forward propagation이던지 back propagation이던지 한 layer의 모든 unit이 같은 값을 가지게 되어서 의미없는 모델이 만들어집니다.** 신경망 모델에서 흔히 쓰이는 초기화 방법으로 행렬의 값들을 랜덤하게 모두 다른 수로 만들어주는 함수를 사용합니다.
+<p>regression 모델에서는 parameter를 모두 0으로 초기화 해도 상관 없었습니다. 하지만 <strong>신경망 모델에서 파라미터를 0이던 어떤 수인지던간에 같은 값으로 초기화를 하면 forward propagation이던지 back propagation이던지 한 layer의 모든 unit이 같은 값을 가지게 되어서 의미없는 모델이 만들어집니다.</strong> 신경망 모델에서 흔히 쓰이는 초기화 방법으로 행렬의 값들을 랜덤하게 모두 다른 수로 만들어주는 함수를 사용합니다.</p>
 
-<img src="/images/2018/08/no-name-66.png" alt="" width="793" height="158" /> 
+<p><img src="/images/2018/08/no-name-66.png" alt="" width="793" height="158" /></p>
 
-input layer와 output layer의 갯수에 의해 결정되는 ε이라는 작은 수를 만들고 위와 같이 rand함수를 사용해서 parameter를 초기화 시킵니다.
+<p>input layer와 output layer의 갯수에 의해 결정되는 ε이라는 작은 수를 만들고 위와 같이 rand함수를 사용해서 parameter를 초기화 시킵니다.</p>
 
-**3 & 4. forward propagation & back propagation**
+<p><strong>3 &amp; 4. forward propagation &amp; back propagation</strong></p>
 
-<img src="/images/2018/08/no-name-69.png" alt="" width="1339" height="376" /> 
+<p><img src="/images/2018/08/no-name-69.png" alt="" width="1339" height="376" /></p>
 
-<img src="/images/2018/08/no-name-67.png" alt="" width="1339" height="549" /> 
+<p><img src="/images/2018/08/no-name-67.png" alt="" width="1339" height="549" /></p>
 
-우리가 load 한 label y는 0~9의 값을 가지고 있습니다. 하지만 octave의 index는 1부터 시작하죠. 따라서  y의 값 중 0인 것들을 10으로 바꿉니다.
+<p>우리가 load 한 label y는 0~9의 값을 가지고 있습니다. 하지만 octave의 index는 1부터 시작하죠. 따라서  y의 값 중 0인 것들을 10으로 바꿉니다.</p>
 
-그리고 y\_bin이란 것은 y를 label 벡터화 시킨 것입니다. 예를들어 y가 7이라면 y\_bin은 index 7의 원소만 1이고 나머지는 0인 벡터이죠. 애초에 y는 아래와 같은 형태여야 합니다.
+<p>그리고 y_bin이란 것은 y를 label 벡터화 시킨 것입니다. 예를들어 y가 7이라면 y_bin은 index 7의 원소만 1이고 나머지는 0인 벡터이죠. 애초에 y는 아래와 같은 형태여야 합니다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?dpi{120}&space;yin&space;begin&space;{bmatrix}1&space;cdot&space;cdot&space;end{bmatrix},begin&space;{bmatrix}01&space;cdot&space;cdot&space;end{bmatrix},cdotcdotcdot,begin&space;{bmatrix}0&space;cdot&space;cdot1&space;end{bmatrix}" alt="dpi{120} yin begin {bmatrix}1 cdot cdot end{bmatrix},begin {bmatrix}01 cdot cdot end{bmatrix},cdotcdotcdot,begin {bmatrix}0 cdot cdot1 end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?dpi{120}&space;yin&space;begin&space;{bmatrix}1&space;cdot&space;cdot&space;end{bmatrix},begin&space;{bmatrix}01&space;cdot&space;cdot&space;end{bmatrix},cdotcdotcdot,begin&space;{bmatrix}0&space;cdot&space;cdot1&space;end{bmatrix}" alt="dpi{120} yin begin {bmatrix}1 cdot cdot end{bmatrix},begin {bmatrix}01 cdot cdot end{bmatrix},cdotcdotcdot,begin {bmatrix}0 cdot cdot1 end{bmatrix}" align="absmiddle" /></p>
 
-그리고 parameterVector라는 것은 Theta1과 Theta2의 모든 원소를 일렬로 쭉 풀어놓 것입니다. 하나의 벡터로 말입니다. 이후에 cost function을 자동으로 최적화 시켜주는 fminunc같은 종류의 함수를 사용할 때 함수의 variable로써 벡터는 받을 수 있지만 행렬은 받지 못하기 때문입니다.
+<p>그리고 parameterVector라는 것은 Theta1과 Theta2의 모든 원소를 일렬로 쭉 풀어놓 것입니다. 하나의 벡터로 말입니다. 이후에 cost function을 자동으로 최적화 시켜주는 fminunc같은 종류의 함수를 사용할 때 함수의 variable로써 벡터는 받을 수 있지만 행렬은 받지 못하기 때문입니다.</p>
 
-그리고 cost function J, error를 누적시키는 Δ,  label벡터 y_bin을 만들어주고 초기화 시킵니다.
+<p>그리고 cost function J, error를 누적시키는 Δ,  label벡터 y_bin을 만들어주고 초기화 시킵니다.</p>
 
-그 다음 1번째 training data부터 m번째 training data까지 모두 순전파, 역전파를 거치며 cost function과 각 node의 error들을 누적시킵니다. 이 후 for 반복문이 끝나고 J에 regularization 항을 넣어주고 누적시킨 error인 delta로부터 J의 gradient를 구합니다.
+<p>그 다음 1번째 training data부터 m번째 training data까지 모두 순전파, 역전파를 거치며 cost function과 각 node의 error들을 누적시킵니다. 이 후 for 반복문이 끝나고 J에 regularization 항을 넣어주고 누적시킨 error인 delta로부터 J의 gradient를 구합니다.</p>
 
-아무튼 위의 함수가 return하는 값은 [J grad] 입니다. J는 계산된 cost값이고, grad는 <img src="https://latex.codecogs.com/gif.latex?dpi{120}&space;frac{partial&space;J}{partial&space;Theta}" alt="dpi{120} frac{partial J}{partial Theta}" align="absmiddle" />를 일렬로 쭉 풀어놓은 벡터입니다.
+<p>아무튼 위의 함수가 return하는 값은 [J grad] 입니다. J는 계산된 cost값이고, grad는 <img src="https://latex.codecogs.com/gif.latex?dpi{120}&space;frac{partial&space;J}{partial&space;Theta}" alt="dpi{120} frac{partial J}{partial Theta}" align="absmiddle" />를 일렬로 쭉 풀어놓은 벡터입니다.</p>
 
-아! 참고로 cost function을 계산하는 지금 함수는 전달인자로 regularization parameter λ가 들어오는데 3으로 넣어줄겁니다 . 다음과 같이 말이에요.
+<p>아! 참고로 cost function을 계산하는 지금 함수는 전달인자로 regularization parameter λ가 들어오는데 3으로 넣어줄겁니다 . 다음과 같이 말이에요.</p>
 
-<img src="/images/2018/08/no-name-68.png" alt="" width="1264" height="134" /> 
+<p><img src="/images/2018/08/no-name-68.png" alt="" width="1264" height="134" /></p>
 
-**5. gradient check**
+<p><strong>5. gradient check</strong></p>
 
-우리가 gradient를 구하는 알고리즘을 제대로 짠 게 맞는지 안맞는지 확신을 하고가면 훨씬 좋을 것 같습니다. 기껏 시간들여 학습을 시켜놓았는데 예측 정확성이 말도 안되게 낮다거나 다른 문제가 있어 봤더니 실수가 있었다면 헛수고잖아요. 이 때에 우리는 gradient check를 하는거에요.
+<p>우리가 gradient를 구하는 알고리즘을 제대로 짠 게 맞는지 안맞는지 확신을 하고가면 훨씬 좋을 것 같습니다. 기껏 시간들여 학습을 시켜놓았는데 예측 정확성이 말도 안되게 낮다거나 다른 문제가 있어 봤더니 실수가 있었다면 헛수고잖아요. 이 때에 우리는 gradient check를 하는거에요.</p>
 
-<img src="/images/2018/08/no-name-71.png" alt="" width="1337" height="621" /> 
+<p><img src="/images/2018/08/no-name-71.png" alt="" width="1337" height="621" /></p>
 
-gradient check를 할 때에 우리가 학습시킬 모델의 구조와 training dataset을 그대로 사용할 필요 없습니다. 학습시키는데 시간이 좀 오래 걸리거든요. 따라서 위와같이 size가 작고 단순한 새로운 신경망을 만들고 X와 y도 위와 같이 rand함수와 mod함수를 사용해서 새로 만든 간단한 신경망에 맞는 것으로 다시 만듭니다.사실 mod(a,b)는 a를 b로 나눈 나머지를 뱉어내는 함수인데 위처럼 코드를 짜주면 중복되지 않는 수로 이루어진 값으로 y를 만들 수 있습니다. parameter를 초기화 시킵니다.
+<p>gradient check를 할 때에 우리가 학습시킬 모델의 구조와 training dataset을 그대로 사용할 필요 없습니다. 학습시키는데 시간이 좀 오래 걸리거든요. 따라서 위와같이 size가 작고 단순한 새로운 신경망을 만들고 X와 y도 위와 같이 rand함수와 mod함수를 사용해서 새로 만든 간단한 신경망에 맞는 것으로 다시 만듭니다.사실 mod(a,b)는 a를 b로 나눈 나머지를 뱉어내는 함수인데 위처럼 코드를 짜주면 중복되지 않는 수로 이루어진 값으로 y를 만들 수 있습니다. parameter를 초기화 시킵니다.</p>
 
-costFunc라는 것은 costFunction의 parameterVector가 들어갈 자리에 t를 넣음으로써 cost function을 나머지 variable을 상수로 고정시키고 parameterVector만의 함수로 만든거에요. parameterVector의 값을 변경시켜주면서 costfunction의 변화를 보기 위함입니다.
+<p>costFunc라는 것은 costFunction의 parameterVector가 들어갈 자리에 t를 넣음으로써 cost function을 나머지 variable을 상수로 고정시키고 parameterVector만의 함수로 만든거에요. parameterVector의 값을 변경시켜주면서 costfunction의 변화를 보기 위함입니다.</p>
 
-for 반복문에서는 gradient의 근사를 구합니다. perturb가 충분히 작다면 거의 똑같이 나와야합니다.
+<p>for 반복문에서는 gradient의 근사를 구합니다. perturb가 충분히 작다면 거의 똑같이 나와야합니다.</p>
 
-마지막으로 grad와 approxGrad를 출력하도록 코드를 넣어주면 둘을 비교할 수 있어요. 이 두 벡터가 거의 같아야 우리가 짠 알고리즘이 제대로 gradient를 계산하고 있다는 증거입니다.
+<p>마지막으로 grad와 approxGrad를 출력하도록 코드를 넣어주면 둘을 비교할 수 있어요. 이 두 벡터가 거의 같아야 우리가 짠 알고리즘이 제대로 gradient를 계산하고 있다는 증거입니다.</p>
 
-**6. parameter update**
+<p><strong>6. parameter update</strong></p>
 
-<img src="/images/2018/08/no-name-70.png" alt="" width="1169" height="264" /> 
+<p><img src="/images/2018/08/no-name-70.png" alt="" width="1169" height="264" /></p>
 
-이제 octave에서 제공하는 최적화 함수를 써서 parameter를 학습시킬 차례입니다.
+<p>이제 octave에서 제공하는 최적화 함수를 써서 parameter를 학습시킬 차례입니다.</p>
 
-costFunction 함수로부터 nn_costFunction이라는 새로운 함수를 만듭니다. 이 함수는 다른 variale을 상수로 고정시키고 parameterVector의 변화에 따른 costFunction의 변화를 보기위한 함수입니다. @(t)는 &#8220;at t&#8221;라고 읽으며 t에 대한 함수라고 해석할 수 있습니다. 위에서는 parameterVector를 t로 치환하였어요.
+<p>costFunction 함수로부터 nn_costFunction이라는 새로운 함수를 만듭니다. 이 함수는 다른 variale을 상수로 고정시키고 parameterVector의 변화에 따른 costFunction의 변화를 보기위한 함수입니다. @(t)는 “at t”라고 읽으며 t에 대한 함수라고 해석할 수 있습니다. 위에서는 parameterVector를 t로 치환하였어요.</p>
 
-그리고 octave에서 기본적으로 제공하는 fminunc라는 함수를 사용하지 않고 fmincg라는 optimization함수를 사용했는데, 이 함수는 octave에서 기본적으로 제공하는 함수가 아닙니다. 외부에 fminuc함수를 조금 조작해서 fmincg라는 함수로 만든 것인데 Standford의 Andrew Ng. 교수의 코드입니다. 굳이 소스를 알 필요 없고 가져다 쓰도록 합시다. fminunc함수를 쓰면 memory 어쩌구 하는 오류가 뜨기 때문입니다. 아무튼 fmincg함수를 사용해서 nn_costFunction이 최소가 되도록 학습시킵니다. 초기값으로는 위에서 우리가 rand함수를 써서 랜덤하게 초기화시킨 parameterVector를 넣어주고, 50번의 학습 iteration을 거치도록 설정한 옵션을 넣어줘요. 이 때 fmincg함수는 최적화된 parameterVector인 optParameterVector와 그 때의 cost값 J를 return합니다. 그리고 이제 optParameterVector로부터 최적화 된 parameter matrix인 optTheta1과 optTheta2를 만들어줍니다.
+<p>그리고 octave에서 기본적으로 제공하는 fminunc라는 함수를 사용하지 않고 fmincg라는 optimization함수를 사용했는데, 이 함수는 octave에서 기본적으로 제공하는 함수가 아닙니다. 외부에 fminuc함수를 조금 조작해서 fmincg라는 함수로 만든 것인데 Standford의 Andrew Ng. 교수의 코드입니다. 굳이 소스를 알 필요 없고 가져다 쓰도록 합시다. fminunc함수를 쓰면 memory 어쩌구 하는 오류가 뜨기 때문입니다. 아무튼 fmincg함수를 사용해서 nn_costFunction이 최소가 되도록 학습시킵니다. 초기값으로는 위에서 우리가 rand함수를 써서 랜덤하게 초기화시킨 parameterVector를 넣어주고, 50번의 학습 iteration을 거치도록 설정한 옵션을 넣어줘요. 이 때 fmincg함수는 최적화된 parameterVector인 optParameterVector와 그 때의 cost값 J를 return합니다. 그리고 이제 optParameterVector로부터 최적화 된 parameter matrix인 optTheta1과 optTheta2를 만들어줍니다.</p>
 
-이제 우리는 trainingdataset을 사용해서 학습시킨 최적화 된 parameter를 가지고 있는겁니다. 과연 50번의 iteration이 충분했는지는 아직은 모릅니다. 지금부터 보도록 하죠. 아! 참고로 학습시키는데 시간이 꽤 오래 걸립니다 ㅜㅜ. 데이터를 60000개중에 10000개만 썼는데도 한 30분 쫌 넘게 걸렸던 거 같습니다.
+<p>이제 우리는 trainingdataset을 사용해서 학습시킨 최적화 된 parameter를 가지고 있는겁니다. 과연 50번의 iteration이 충분했는지는 아직은 모릅니다. 지금부터 보도록 하죠. 아! 참고로 학습시키는데 시간이 꽤 오래 걸립니다 ㅜㅜ. 데이터를 60000개중에 10000개만 썼는데도 한 30분 쫌 넘게 걸렸던 거 같습니다.</p>
 
-**7. prediction**
+<p><strong>7. prediction</strong></p>
 
-처음에 mnist.mat을 load 했을 때 trainX와 trainY가 아닌 testX와 testY가 있었을겁니다. 각각 10000개의 이미지와 그에 해당하는 10000개의 라벨인데요 이제 이전에 본적없던 이미지인 test 데이터를 이용해서 얼마나 잘 맞추는지 보겠습니다.
+<p>처음에 mnist.mat을 load 했을 때 trainX와 trainY가 아닌 testX와 testY가 있었을겁니다. 각각 10000개의 이미지와 그에 해당하는 10000개의 라벨인데요 이제 이전에 본적없던 이미지인 test 데이터를 이용해서 얼마나 잘 맞추는지 보겠습니다.</p>
 
-<img src="/images/2018/08/no-name-72.png" alt="" width="1034" height="608" /> 
+<p><img src="/images/2018/08/no-name-72.png" alt="" width="1034" height="608" /></p>
 
-5000개의 데이터에 대해서만 테스트를 해보겠습니다.
+<p>5000개의 데이터에 대해서만 테스트를 해보겠습니다.</p>
 
-<img src="/images/2018/08/no-name-73.png" alt="" width="514" height="70" /> 
+<p><img src="/images/2018/08/no-name-73.png" alt="" width="514" height="70" /></p>
 
-91.74%의 확률로 예측을 하네요. 과연 cost function이 수렴하여 최소가 될 때 까지 충분히 iteration을 한 것인가 의문이 생깁니다. 궁금하시면 이 부분은 iteration에 대한 J의 그래프를 그려서 확인해셔도 됩니다.
+<p>91.74%의 확률로 예측을 하네요. 과연 cost function이 수렴하여 최소가 될 때 까지 충분히 iteration을 한 것인가 의문이 생깁니다. 궁금하시면 이 부분은 iteration에 대한 J의 그래프를 그려서 확인해셔도 됩니다.</p>
 
-아무튼 신경망 알고리즘을 설계하고 학습시키는 방법과 실제 구현을 해서 예측하는데 사용해보았습니다. 더 해보고 싶은신게 있으시면 UCL machine learning repository등의 open data 제공 사이트에 가서 직접 구현해보셔도 좋습니다.
+<p>아무튼 신경망 알고리즘을 설계하고 학습시키는 방법과 실제 구현을 해서 예측하는데 사용해보았습니다. 더 해보고 싶은신게 있으시면 UCL machine learning repository등의 open data 제공 사이트에 가서 직접 구현해보셔도 좋습니다.</p>
+
   </div>
   
   <div class="post">
@@ -11053,105 +11044,108 @@ costFunction 함수로부터 nn_costFunction이라는 새로운 함수를 만듭
 
     <span class="post-date">14 Aug 2018</span>
 
-    신경망 모델의 전반적인 이론과 파라미터를 학습시키기 위한 역전파의 방법에 대해 알아보았다. 이제 지금까지 배운 내용을 토대로 실제로 신경망 모델을 세우고 parameter를 학습시켜 최적화 시키는 절차에 대해 step by step으로 설명하겠다.
+    <p>신경망 모델의 전반적인 이론과 파라미터를 학습시키기 위한 역전파의 방법에 대해 알아보았다. 이제 지금까지 배운 내용을 토대로 실제로 신경망 모델을 세우고 parameter를 학습시켜 최적화 시키는 절차에 대해 step by step으로 설명하겠다.</p>
 
-&nbsp;
+<p> </p>
 
-# **1. 신경망 구조 결정하기**
+<h1 id="1-신경망-구조-결정하기"><strong>1. 신경망 구조 결정하기</strong></h1>
 
-* * *
+<hr />
 
-  * input layer unit의 수 = feature의 수
-  * output layer unit의 수 = class의 수
-  * hidden layer : 층의 수 = default 1 layer, 많으면 많을수록 더 정확한 예측 가능. hidden layer가 2층 이상일 때에는 모든 층이 같은 갯수의 unit을 가지도록 하는것이 default
+<ul>
+  <li>input layer unit의 수 = feature의 수</li>
+  <li>output layer unit의 수 = class의 수</li>
+  <li>hidden layer : 층의 수 = default 1 layer, 많으면 많을수록 더 정확한 예측 가능. hidden layer가 2층 이상일 때에는 모든 층이 같은 갯수의 unit을 가지도록 하는것이 default</li>
+</ul>
 
-&nbsp;
+<p> </p>
 
-# 
+<p>#</p>
 
-# **2. 초기 parameter값 설정**
+<h1 id="2-초기-parameter값-설정"><strong>2. 초기 parameter값 설정</strong></h1>
 
-* * *
+<hr />
 
-regression 문제처럼 모든 parameter를 0으로 초기화시키면 학습이 이루어지지 않는다. 모든 parameter가 0이든 어떤 수가 되었든 같은 값으로 학습시킨다 생각해보자. 그럼 l-th layer에서 (l+1)-th layer로 forward propagation을 시키면 (l+1)층의 모든 unit이 같은 값을 갖는다. 역시 역방향으로 back propagation을 시킨다 해도 모든 parameter가 같은 값으로 update 되어버린다. 의미없는 model이 만들어져 버리는 것이다. 결론부터 말하자면, 모든 parameter는 어떠한 작은 값<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;[-\epsilon,\epsilon]" alt="\dpi{120} [-\epsilon,\epsilon]" align="absmiddle" /> 범위 내에서 랜덤하게 초기화된다. 방법은 다음과 같다.
+<p>regression 문제처럼 모든 parameter를 0으로 초기화시키면 학습이 이루어지지 않는다. 모든 parameter가 0이든 어떤 수가 되었든 같은 값으로 학습시킨다 생각해보자. 그럼 l-th layer에서 (l+1)-th layer로 forward propagation을 시키면 (l+1)층의 모든 unit이 같은 값을 갖는다. 역시 역방향으로 back propagation을 시킨다 해도 모든 parameter가 같은 값으로 update 되어버린다. 의미없는 model이 만들어져 버리는 것이다. 결론부터 말하자면, 모든 parameter는 어떠한 작은 값<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;[-\epsilon,\epsilon]" alt="\dpi{120} [-\epsilon,\epsilon]" align="absmiddle" /> 범위 내에서 랜덤하게 초기화된다. 방법은 다음과 같다.</p>
 
-먼저, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta^{(l)}" alt="\dpi{120} \Theta^{(l)}" align="absmiddle" /> 행렬은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;s^{(l+1)}\times&space;(s^{(l)}+1)" alt="\dpi{120} s^{(l+1)}\times (s^{(l)}+1)" align="absmiddle" /> 구조란 것을 기억해야한다. (l+1층의 unit 수)×(l층의 unit 수 +1)
+<p>먼저, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta^{(l)}" alt="\dpi{120} \Theta^{(l)}" align="absmiddle" /> 행렬은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;s^{(l+1)}\times&space;(s^{(l)}+1)" alt="\dpi{120} s^{(l+1)}\times (s^{(l)}+1)" align="absmiddle" /> 구조란 것을 기억해야한다. (l+1층의 unit 수)×(l층의 unit 수 +1)</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\epsilon=\sqrt{\frac{6}{s^{(input-layer)}+s^{(output-layer)}}}\\&space;\\&space;\Theta^{(l)}=2\epsilon&space;\cdot&space;rand(s^{(l+1)},s^{(l)}+1)-\epsilon" alt="\dpi{120} \\ \epsilon=\sqrt{\frac{6}{s^{(input-layer)}+s^{(output-layer)}}}\\ \\ \Theta^{(l)}=2\epsilon \cdot rand(s^{(l+1)},s^{(l)}+1)-\epsilon" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\epsilon=\sqrt{\frac{6}{s^{(input-layer)}+s^{(output-layer)}}}\\&space;\\&space;\Theta^{(l)}=2\epsilon&space;\cdot&space;rand(s^{(l+1)},s^{(l)}+1)-\epsilon" alt="\dpi{120} \\ \epsilon=\sqrt{\frac{6}{s^{(input-layer)}+s^{(output-layer)}}}\\ \\ \Theta^{(l)}=2\epsilon \cdot rand(s^{(l+1)},s^{(l)}+1)-\epsilon" align="absmiddle" /></p>
 
-<img class="aligncenter size-medium wp-image-435" src="/images/2018/08/no-name-44-300x285.png" alt="" width="300" height="285" srcset="/images/2018/08/no-name-44-300x285.png 300w, /images/2018/08/no-name-44.png 570w" sizes="(max-width: 300px) 100vw, 300px" /> 
+<p><img class="aligncenter size-medium wp-image-435" src="/images/2018/08/no-name-44-300x285.png" alt="" width="300" height="285" srcset="/images/2018/08/no-name-44-300x285.png 300w, /images/2018/08/no-name-44.png 570w" sizes="(max-width: 300px) 100vw, 300px" /></p>
 
-위와 같은 신경망의 경우에는
+<p>위와 같은 신경망의 경우에는</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\epsilon=\frac{6}{s^{(1)}+s^{(3)}}=\frac{6}{5}=1.2\\&space;\\&space;\Theta^{(1)}=2\cdot&space;1.2&space;\cdot&space;rand(2,4)-1.2=2.4rand(2,4)-1.2\\&space;\\&space;\Theta^{(2)}=2\cdot&space;1.2&space;\cdot&space;rand(2,3)-1.2=2.4rand(2,3)-1.2\\&space;\\" alt="\dpi{120} \\ \epsilon=\frac{6}{s^{(1)}+s^{(3)}}=\frac{6}{5}=1.2\\ \\ \Theta^{(1)}=2\cdot 1.2 \cdot rand(2,4)-1.2=2.4rand(2,4)-1.2\\ \\ \Theta^{(2)}=2\cdot 1.2 \cdot rand(2,3)-1.2=2.4rand(2,3)-1.2\\ \\" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\epsilon=\frac{6}{s^{(1)}+s^{(3)}}=\frac{6}{5}=1.2\\&space;\\&space;\Theta^{(1)}=2\cdot&space;1.2&space;\cdot&space;rand(2,4)-1.2=2.4rand(2,4)-1.2\\&space;\\&space;\Theta^{(2)}=2\cdot&space;1.2&space;\cdot&space;rand(2,3)-1.2=2.4rand(2,3)-1.2\\&space;\\" alt="\dpi{120} \\ \epsilon=\frac{6}{s^{(1)}+s^{(3)}}=\frac{6}{5}=1.2\\ \\ \Theta^{(1)}=2\cdot 1.2 \cdot rand(2,4)-1.2=2.4rand(2,4)-1.2\\ \\ \Theta^{(2)}=2\cdot 1.2 \cdot rand(2,3)-1.2=2.4rand(2,3)-1.2\\ \\" align="absmiddle" /></p>
 
-rand함수는 octave나 matlab에서 제공한다. python이나 R 등의 다른 프로그래밍 툴 역시 위와 비슷한 함수를 제공할 것이니 manual을 참고하길 바란다.
+<p>rand함수는 octave나 matlab에서 제공한다. python이나 R 등의 다른 프로그래밍 툴 역시 위와 비슷한 함수를 제공할 것이니 manual을 참고하길 바란다.</p>
 
-<img class="aligncenter size-full wp-image-441" src="/images/2018/08/no-name-46.png" alt="" width="423" height="237" srcset="/images/2018/08/no-name-46.png 423w, /images/2018/08/no-name-46-300x168.png 300w" sizes="(max-width: 423px) 100vw, 423px" /> 
+<p><img class="aligncenter size-full wp-image-441" src="/images/2018/08/no-name-46.png" alt="" width="423" height="237" srcset="/images/2018/08/no-name-46.png 423w, /images/2018/08/no-name-46-300x168.png 300w" sizes="(max-width: 423px) 100vw, 423px" /></p>
 
-위와 같이 초기 Theta값을 계산할 수 있다.
+<p>위와 같이 초기 Theta값을 계산할 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **3. forward propagation**
+<h1 id="3-forward-propagation"><strong>3. forward propagation</strong></h1>
 
-* * *
+<hr />
 
-위에서 계산한 초기 Theta값을 가지고 forward propagation을 하여 output layer의 unit 값들과 cost function J를 계산한다.
+<p>위에서 계산한 초기 Theta값을 가지고 forward propagation을 하여 output layer의 unit 값들과 cost function J를 계산한다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **4. back propagation**
+<h1 id="4-back-propagation"><strong>4. back propagation</strong></h1>
 
-* * *
+<hr />
 
-output layer의 결과와 실제 data y의 차이를 error로 두고 back propagation하여 모든 layer의 error를 구한다. 그리고 역전파시켜 최종적으로 cost function J의 gradient  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" />를 계산한다.  역전파에 대한 자세한 내용은 이 전의 back propagation을 주제로한 포스팅에 나와있다.
+<p>output layer의 결과와 실제 data y의 차이를 error로 두고 back propagation하여 모든 layer의 error를 구한다. 그리고 역전파시켜 최종적으로 cost function J의 gradient  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" />를 계산한다.  역전파에 대한 자세한 내용은 이 전의 back propagation을 주제로한 포스팅에 나와있다.</p>
 
-<span style="text-decoration: underline;"><a href="https://SWnomad.com/12-back-propagation역전파-알고리즘/">https://SWnomad.com/12-back-propagation역전파-알고리즘/</a></span>
+<p><span style="text-decoration: underline;"><a href="https://SWnomad.com/12-back-propagation역전파-알고리즘/">https://SWnomad.com/12-back-propagation역전파-알고리즘/</a></span></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **5. gradient check**
+<h1 id="5-gradient-check"><strong>5. gradient check</strong></h1>
 
-* * *
+<hr />
 
-역전파로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" />를 계산했다고 해도 우리가 제대로 알고리즘을 구현했는지, 혹은 코드를 잘못 짜지는 않았는지 확인할 필요가 있다. 이 때에 쓰는 방법이 gradient check이다. 다음 그림을 보자.
+<p>역전파로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" />를 계산했다고 해도 우리가 제대로 알고리즘을 구현했는지, 혹은 코드를 잘못 짜지는 않았는지 확인할 필요가 있다. 이 때에 쓰는 방법이 gradient check이다. 다음 그림을 보자.</p>
 
-<img class="aligncenter size-full wp-image-447" src="/images/2018/08/no-name-47.png" alt="" width="512" height="256" srcset="/images/2018/08/no-name-47.png 512w, /images/2018/08/no-name-47-300x150.png 300w" sizes="(max-width: 512px) 100vw, 512px" /> 
+<p><img class="aligncenter size-full wp-image-447" src="/images/2018/08/no-name-47.png" alt="" width="512" height="256" srcset="/images/2018/08/no-name-47.png 512w, /images/2018/08/no-name-47-300x150.png 300w" sizes="(max-width: 512px) 100vw, 512px" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta-\epsilon" alt="\dpi{120} \theta-\epsilon" align="absmiddle" /> 에서<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta+\epsilon" alt="\dpi{120} \theta+\epsilon" align="absmiddle" />  사이의 함수 f의 평균 변화량은  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{f(\theta+\epsilon)-f(\theta-\epsilon)}{2\epsilon}" alt="\dpi{120} \frac{f(\theta+\epsilon)-f(\theta-\epsilon)}{2\epsilon}" align="absmiddle" />가 된다. 만약 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />이 충분히 작다면 이 값은 θ에서의 접선의 기울기와 거의 같을 것이다. 위와 같은 idea를 이용하여 우리가 gradient를 제대로 구했는지 체크할 수 있다. 참고로 여기서의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />은 parameter를 초기화 할 때 사용한 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />과 아무 상관 없는 수이다.
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta-\epsilon" alt="\dpi{120} \theta-\epsilon" align="absmiddle" /> 에서<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta+\epsilon" alt="\dpi{120} \theta+\epsilon" align="absmiddle" />  사이의 함수 f의 평균 변화량은  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{f(\theta+\epsilon)-f(\theta-\epsilon)}{2\epsilon}" alt="\dpi{120} \frac{f(\theta+\epsilon)-f(\theta-\epsilon)}{2\epsilon}" align="absmiddle" />가 된다. 만약 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />이 충분히 작다면 이 값은 θ에서의 접선의 기울기와 거의 같을 것이다. 위와 같은 idea를 이용하여 우리가 gradient를 제대로 구했는지 체크할 수 있다. 참고로 여기서의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />은 parameter를 초기화 할 때 사용한 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />과 아무 상관 없는 수이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta_{j}}\approx&space;\frac{J(\Theta_{1},\Theta_{2},...,\Theta_{j}+\epsilon,...,\Theta_{n})-J(\Theta_{1},\Theta_{2},...,\Theta_{j}-\epsilon,...,\Theta_{n})}{2\epsilon}" alt="\dpi{120} \frac{\partial J}{\partial \Theta_{j}}\approx \frac{J(\Theta_{1},\Theta_{2},...,\Theta_{j}+\epsilon,...,\Theta_{n})-J(\Theta_{1},\Theta_{2},...,\Theta_{j}-\epsilon,...,\Theta_{n})}{2\epsilon}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta_{j}}\approx&space;\frac{J(\Theta_{1},\Theta_{2},...,\Theta_{j}+\epsilon,...,\Theta_{n})-J(\Theta_{1},\Theta_{2},...,\Theta_{j}-\epsilon,...,\Theta_{n})}{2\epsilon}" alt="\dpi{120} \frac{\partial J}{\partial \Theta_{j}}\approx \frac{J(\Theta_{1},\Theta_{2},...,\Theta_{j}+\epsilon,...,\Theta_{n})-J(\Theta_{1},\Theta_{2},...,\Theta_{j}-\epsilon,...,\Theta_{n})}{2\epsilon}" align="absmiddle" /></p>
 
-back propagation을 통해 numeric하게 계산한 왼쪽식이 analytical하게 구한 오른쪽 식과 거의 차이가 없어야한다. 보통 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;10^{-4}" alt="\dpi{120} 10^{-4}" align="absmiddle" />정도를 쓰면 적당하다.
+<p>back propagation을 통해 numeric하게 계산한 왼쪽식이 analytical하게 구한 오른쪽 식과 거의 차이가 없어야한다. 보통 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\epsilon" alt="\dpi{120} \epsilon" align="absmiddle" />은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;10^{-4}" alt="\dpi{120} 10^{-4}" align="absmiddle" />정도를 쓰면 적당하다.</p>
 
-아무튼 gradient check를 통해서 우리가 정말로 gradient를 제대로 구했는지 확인이 되면 걱정말고 gradient descent나 optimization function을 써서 학습만 시키면 된다.
+<p>아무튼 gradient check를 통해서 우리가 정말로 gradient를 제대로 구했는지 확인이 되면 걱정말고 gradient descent나 optimization function을 써서 학습만 시키면 된다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# **6. parameter update하기**
+<h1 id="6-parameter-update하기"><strong>6. parameter update하기</strong></h1>
 
-* * *
+<hr />
 
-back propagation으로 cost function J의 gradient, 즉 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" />를 구했으면 gradient descent나 다른 advanced optimization function을 이용하면 된다. 개인적으로 gradient descent보다는 numeric computation의 전문가들이 잘 만들어놓은 라이브러리에서 함수를 가져다 쓰는걸 추천한다. 예를들어 octave에는 fminunc나 fmincg함수등이 있다. cost function J와 위에서 계산한 gradient만 입력해주면 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />에 대해 cost function J를 최소화 시켜주면서 가장 최적화된 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />를 계산해준다.
+<p>back propagation으로 cost function J의 gradient, 즉 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" />를 구했으면 gradient descent나 다른 advanced optimization function을 이용하면 된다. 개인적으로 gradient descent보다는 numeric computation의 전문가들이 잘 만들어놓은 라이브러리에서 함수를 가져다 쓰는걸 추천한다. 예를들어 octave에는 fminunc나 fmincg함수등이 있다. cost function J와 위에서 계산한 gradient만 입력해주면 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />에 대해 cost function J를 최소화 시켜주면서 가장 최적화된 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />를 계산해준다.</p>
 
-&nbsp;
+<p> </p>
 
-이상 위의 과정을 거치면 신경망 알고리즘으로 model이 만들어지는 것이다.
+<p>이상 위의 과정을 거치면 신경망 알고리즘으로 model이 만들어지는 것이다.</p>
 
-&nbsp;
+<p> </p>
+
   </div>
   
   <div class="post">
@@ -11163,105 +11157,114 @@ back propagation으로 cost function J의 gradient, 즉 <img src="https://latex
 
     <span class="post-date">10 Aug 2018</span>
 
-    # 1. 역전파 알고리즘
+    <h1 id="1-역전파-알고리즘">1. 역전파 알고리즘</h1>
 
-* * *
+<hr />
 
-신경망의 개념이 나온지는 꽤 되었지만 신경망을 학습시키는 방법을 몰라 오랫동안 사장된 이론이었다. 하지만 1970년대 미국의 한 대학원생은 신경망을 학습시킬 방법을 발견했고, 이것이 지금부터 설명할 역전파 이다. 사실 역전파 알고리즘은 우리가 regression 문제에서 이미 보았던 <span style="color: #000000;"><strong>gradient-descent(경사하강법)과 </strong>본질적으로 같다. </span>아무튼 역전파를 아래와 같은 3-2-2 층을 가진 신경망을 예시로 들어 설명하겠다.
+<p>신경망의 개념이 나온지는 꽤 되었지만 신경망을 학습시키는 방법을 몰라 오랫동안 사장된 이론이었다. 하지만 1970년대 미국의 한 대학원생은 신경망을 학습시킬 방법을 발견했고, 이것이 지금부터 설명할 역전파 이다. 사실 역전파 알고리즘은 우리가 regression 문제에서 이미 보았던 <span style="color: #000000;"><strong>gradient-descent(경사하강법)과 </strong>본질적으로 같다. </span>아무튼 역전파를 아래와 같은 3-2-2 층을 가진 신경망을 예시로 들어 설명하겠다.</p>
 
-<img class="aligncenter size-medium wp-image-435" src="/images/2018/08/no-name-44-300x285.png" alt="" width="300" height="285" srcset="/images/2018/08/no-name-44-300x285.png 300w, /images/2018/08/no-name-44.png 570w" sizes="(max-width: 300px) 100vw, 300px" /> 
+<p><img class="aligncenter size-medium wp-image-435" src="/images/2018/08/no-name-44-300x285.png" alt="" width="300" height="285" srcset="/images/2018/08/no-name-44-300x285.png 300w, /images/2018/08/no-name-44.png 570w" sizes="(max-width: 300px) 100vw, 300px" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\\&space;{&space;z&space;}_{&space;1&space;}^{&space;(2)&space;}={&space;\Theta&space;}_{&space;1,0&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,1&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,2&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,3&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;3&space;}^{&space;(1)&space;}\\&space;{&space;z&space;}_{&space;2&space;}^{&space;(2)&space;}={&space;\Theta&space;}_{&space;2,0&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,1&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,2&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,3&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;3&space;}^{&space;(1)&space;}" alt="\\ { z }_{ 1 }^{ (2) }={ \Theta }_{ 1,0 }^{ (1) }{ a }_{ 0 }^{ (1) }+{ \Theta }_{ 1,1 }^{ (1) }{ a }_{ 1 }^{ (1) }+{ \Theta }_{ 1,2 }^{ (1) }{ a }_{ 2 }^{ (1) }+{ \Theta }_{ 1,3 }^{ (1) }{ a }_{ 3 }^{ (1) }\\ { z }_{ 2 }^{ (2) }={ \Theta }_{ 2,0 }^{ (1) }{ a }_{ 0 }^{ (1) }+{ \Theta }_{ 2,1 }^{ (1) }{ a }_{ 1 }^{ (1) }+{ \Theta }_{ 2,2 }^{ (1) }{ a }_{ 2 }^{ (1) }+{ \Theta }_{ 2,3 }^{ (1) }{ a }_{ 3 }^{ (1) }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\\&space;{&space;z&space;}_{&space;1&space;}^{&space;(2)&space;}={&space;\Theta&space;}_{&space;1,0&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,1&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,2&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,3&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;3&space;}^{&space;(1)&space;}\\&space;{&space;z&space;}_{&space;2&space;}^{&space;(2)&space;}={&space;\Theta&space;}_{&space;2,0&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,1&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,2&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,3&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;3&space;}^{&space;(1)&space;}" alt="\\ { z }_{ 1 }^{ (2) }={ \Theta }_{ 1,0 }^{ (1) }{ a }_{ 0 }^{ (1) }+{ \Theta }_{ 1,1 }^{ (1) }{ a }_{ 1 }^{ (1) }+{ \Theta }_{ 1,2 }^{ (1) }{ a }_{ 2 }^{ (1) }+{ \Theta }_{ 1,3 }^{ (1) }{ a }_{ 3 }^{ (1) }\\ { z }_{ 2 }^{ (2) }={ \Theta }_{ 2,0 }^{ (1) }{ a }_{ 0 }^{ (1) }+{ \Theta }_{ 2,1 }^{ (1) }{ a }_{ 1 }^{ (1) }+{ \Theta }_{ 2,2 }^{ (1) }{ a }_{ 2 }^{ (1) }+{ \Theta }_{ 2,3 }^{ (1) }{ a }_{ 3 }^{ (1) }" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;{&space;a&space;}_{&space;1&space;}^{&space;(2)&space;}=g({&space;z&space;}_{&space;1&space;}^{&space;(2)&space;})\\&space;{&space;a&space;}_{&space;2&space;}^{&space;(2)&space;}=g({&space;z&space;}_{&space;2&space;}^{&space;(2)&space;})\\&space;{&space;z&space;}_{&space;1&space;}^{&space;(3)&space;}={&space;\Theta&space;}_{&space;1,0&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(2)&space;}+{&space;\Theta&space;}_{&space;1,1&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(2)&space;}+{&space;\theta&space;}_{&space;1,2&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(2)&space;}\\&space;{&space;z&space;}_{&space;2&space;}^{&space;(3)&space;}={&space;\Theta&space;}_{&space;2,0&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(2)&space;}+{&space;\Theta&space;}_{&space;2,1&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(2)&space;}+{&space;\Theta&space;}_{&space;2,2&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(2)&space;}\\&space;{&space;a&space;}_{&space;1&space;}^{&space;(3)&space;}=g({&space;z&space;}_{&space;1&space;}^{&space;(3)&space;})\\&space;{&space;a&space;}_{&space;2&space;}^{&space;(3)&space;}=g({&space;z&space;}_{&space;2&space;}^{&space;(3)&space;})\\&space;{&space;J&space;}_{&space;1&space;}=-{&space;y&space;}_{&space;1&space;}log({&space;a&space;}_{&space;1&space;}^{&space;(3)&space;})-(1-{&space;y&space;}_{&space;1&space;})log(1-{&space;a&space;}_{&space;1&space;}^{&space;(3)&space;})\\&space;{&space;J&space;}_{&space;2&space;}=-{&space;y&space;}_{&space;2&space;}log({&space;a&space;}_{&space;2&space;}^{&space;(3)&space;})-(1-{&space;y&space;}_{&space;2&space;})log(1-{&space;a&space;}_{&space;2&space;}^{&space;(3)&space;})" alt="\dpi{120} \\ { a }_{ 1 }^{ (2) }=g({ z }_{ 1 }^{ (2) })\\ { a }_{ 2 }^{ (2) }=g({ z }_{ 2 }^{ (2) })\\ { z }_{ 1 }^{ (3) }={ \Theta }_{ 1,0 }^{ (2) }{ a }_{ 0 }^{ (2) }+{ \Theta }_{ 1,1 }^{ (2) }{ a }_{ 1 }^{ (2) }+{ \theta }_{ 1,2 }^{ (2) }{ a }_{ 2 }^{ (2) }\\ { z }_{ 2 }^{ (3) }={ \Theta }_{ 2,0 }^{ (2) }{ a }_{ 0 }^{ (2) }+{ \Theta }_{ 2,1 }^{ (2) }{ a }_{ 1 }^{ (2) }+{ \Theta }_{ 2,2 }^{ (2) }{ a }_{ 2 }^{ (2) }\\ { a }_{ 1 }^{ (3) }=g({ z }_{ 1 }^{ (3) })\\ { a }_{ 2 }^{ (3) }=g({ z }_{ 2 }^{ (3) })\\ { J }_{ 1 }=-{ y }_{ 1 }log({ a }_{ 1 }^{ (3) })-(1-{ y }_{ 1 })log(1-{ a }_{ 1 }^{ (3) })\\ { J }_{ 2 }=-{ y }_{ 2 }log({ a }_{ 2 }^{ (3) })-(1-{ y }_{ 2 })log(1-{ a }_{ 2 }^{ (3) })" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;{&space;a&space;}_{&space;1&space;}^{&space;(2)&space;}=g({&space;z&space;}_{&space;1&space;}^{&space;(2)&space;})\\&space;{&space;a&space;}_{&space;2&space;}^{&space;(2)&space;}=g({&space;z&space;}_{&space;2&space;}^{&space;(2)&space;})\\&space;{&space;z&space;}_{&space;1&space;}^{&space;(3)&space;}={&space;\Theta&space;}_{&space;1,0&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(2)&space;}+{&space;\Theta&space;}_{&space;1,1&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(2)&space;}+{&space;\theta&space;}_{&space;1,2&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(2)&space;}\\&space;{&space;z&space;}_{&space;2&space;}^{&space;(3)&space;}={&space;\Theta&space;}_{&space;2,0&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(2)&space;}+{&space;\Theta&space;}_{&space;2,1&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(2)&space;}+{&space;\Theta&space;}_{&space;2,2&space;}^{&space;(2)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(2)&space;}\\&space;{&space;a&space;}_{&space;1&space;}^{&space;(3)&space;}=g({&space;z&space;}_{&space;1&space;}^{&space;(3)&space;})\\&space;{&space;a&space;}_{&space;2&space;}^{&space;(3)&space;}=g({&space;z&space;}_{&space;2&space;}^{&space;(3)&space;})\\&space;{&space;J&space;}_{&space;1&space;}=-{&space;y&space;}_{&space;1&space;}log({&space;a&space;}_{&space;1&space;}^{&space;(3)&space;})-(1-{&space;y&space;}_{&space;1&space;})log(1-{&space;a&space;}_{&space;1&space;}^{&space;(3)&space;})\\&space;{&space;J&space;}_{&space;2&space;}=-{&space;y&space;}_{&space;2&space;}log({&space;a&space;}_{&space;2&space;}^{&space;(3)&space;})-(1-{&space;y&space;}_{&space;2&space;})log(1-{&space;a&space;}_{&space;2&space;}^{&space;(3)&space;})" alt="\dpi{120} \\ { a }_{ 1 }^{ (2) }=g({ z }_{ 1 }^{ (2) })\\ { a }_{ 2 }^{ (2) }=g({ z }_{ 2 }^{ (2) })\\ { z }_{ 1 }^{ (3) }={ \Theta }_{ 1,0 }^{ (2) }{ a }_{ 0 }^{ (2) }+{ \Theta }_{ 1,1 }^{ (2) }{ a }_{ 1 }^{ (2) }+{ \theta }_{ 1,2 }^{ (2) }{ a }_{ 2 }^{ (2) }\\ { z }_{ 2 }^{ (3) }={ \Theta }_{ 2,0 }^{ (2) }{ a }_{ 0 }^{ (2) }+{ \Theta }_{ 2,1 }^{ (2) }{ a }_{ 1 }^{ (2) }+{ \Theta }_{ 2,2 }^{ (2) }{ a }_{ 2 }^{ (2) }\\ { a }_{ 1 }^{ (3) }=g({ z }_{ 1 }^{ (3) })\\ { a }_{ 2 }^{ (3) }=g({ z }_{ 2 }^{ (3) })\\ { J }_{ 1 }=-{ y }_{ 1 }log({ a }_{ 1 }^{ (3) })-(1-{ y }_{ 1 })log(1-{ a }_{ 1 }^{ (3) })\\ { J }_{ 2 }=-{ y }_{ 2 }log({ a }_{ 2 }^{ (3) })-(1-{ y }_{ 2 })log(1-{ a }_{ 2 }^{ (3) })" align="absmiddle" /></p>
 
-위와 같은 3-2-2층의 신경망이 있다. 각 node는 activation function으로 sigmoid 함수를 사용하므로 우리는 error를 정량화할 목적으로 classification에서 썼던 형태의 cost function을 사용할 수 있다.
+<p>위와 같은 3-2-2층의 신경망이 있다. 각 node는 activation function으로 sigmoid 함수를 사용하므로 우리는 error를 정량화할 목적으로 classification에서 썼던 형태의 cost function을 사용할 수 있다.</p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?J(\Theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;\sum&space;_{&space;k=1&space;}^{&space;K&space;}{&space;[{&space;y&space;}_{&space;k&space;}^{&space;(i)&space;}log({&space;({&space;h&space;}_{&space;\Theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}_{&space;k&space;})+({&space;1-y&space;}_{&space;k&space;}^{&space;(i)&space;})log({&space;1-({&space;h&space;}_{&space;\Theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}_{&space;k&space;})]&space;}&space;}&space;+" alt="J(\Theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ \sum _{ k=1 }^{ K }{ [{ y }_{ k }^{ (i) }log({ ({ h }_{ \Theta }({ x }^{ (i) })) }_{ k })+({ 1-y }_{ k }^{ (i) })log({ 1-({ h }_{ \Theta }({ x }^{ (i) })) }_{ k })] } } +" align="absmiddle" />  <img src="https://latex.codecogs.com/gif.latex?\frac&space;{&space;\lambda&space;}{&space;2m&space;}&space;\sum&space;_{&space;l=1&space;}^{&space;L-1&space;}{&space;\sum&space;_{&space;i=1&space;}^{&space;{&space;s&space;}_{&space;l&space;}&space;}{&space;\sum&space;_{&space;j=1&space;}^{&space;{&space;s&space;}_{&space;l+1&space;}&space;}{&space;{&space;({&space;\Theta&space;}_{&space;j,i&space;}^{&space;(l)&space;})&space;}^{&space;2&space;}&space;}&space;}&space;}" alt="\frac { \lambda }{ 2m } \sum _{ l=1 }^{ L-1 }{ \sum _{ i=1 }^{ { s }_{ l } }{ \sum _{ j=1 }^{ { s }_{ l+1 } }{ { ({ \Theta }_{ j,i }^{ (l) }) }^{ 2 } } } }" align="absmiddle" />
+<p><img src="https://latex.codecogs.com/gif.latex?J(\Theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;\sum&space;_{&space;k=1&space;}^{&space;K&space;}{&space;[{&space;y&space;}_{&space;k&space;}^{&space;(i)&space;}log({&space;({&space;h&space;}_{&space;\Theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}_{&space;k&space;})+({&space;1-y&space;}_{&space;k&space;}^{&space;(i)&space;})log({&space;1-({&space;h&space;}_{&space;\Theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}_{&space;k&space;})]&space;}&space;}&space;+" alt="J(\Theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ \sum _{ k=1 }^{ K }{ [{ y }_{ k }^{ (i) }log({ ({ h }_{ \Theta }({ x }^{ (i) })) }_{ k })+({ 1-y }_{ k }^{ (i) })log({ 1-({ h }_{ \Theta }({ x }^{ (i) })) }_{ k })] } } +" align="absmiddle" />  <img src="https://latex.codecogs.com/gif.latex?\frac&space;{&space;\lambda&space;}{&space;2m&space;}&space;\sum&space;_{&space;l=1&space;}^{&space;L-1&space;}{&space;\sum&space;_{&space;i=1&space;}^{&space;{&space;s&space;}_{&space;l&space;}&space;}{&space;\sum&space;_{&space;j=1&space;}^{&space;{&space;s&space;}_{&space;l+1&space;}&space;}{&space;{&space;({&space;\Theta&space;}_{&space;j,i&space;}^{&space;(l)&space;})&space;}^{&space;2&space;}&space;}&space;}&space;}" alt="\frac { \lambda }{ 2m } \sum _{ l=1 }^{ L-1 }{ \sum _{ i=1 }^{ { s }_{ l } }{ \sum _{ j=1 }^{ { s }_{ l+1 } }{ { ({ \Theta }_{ j,i }^{ (l) }) }^{ 2 } } } }" align="absmiddle" /></p>
 
-복잡해 보인다. 하지만 이 식에 너무 매몰되기보단 의미를 생각하면서 천천히 이해하면 된다.
+<p>복잡해 보인다. 하지만 이 식에 너무 매몰되기보단 의미를 생각하면서 천천히 이해하면 된다.</p>
 
-단순히 m개의 훈련 데이터, K개의 클래스에 대하여 cost function J의 합을 계산할 뿐이다. 뒤에 있는 regularization term은 전체 신경망의 parameter를 집어넣었을 뿐이다.
+<p>단순히 m개의 훈련 데이터, K개의 클래스에 대하여 cost function J의 합을 계산할 뿐이다. 뒤에 있는 regularization term은 전체 신경망의 parameter를 집어넣었을 뿐이다.</p>
 
-각각의 parameter가 cost function에 얼마나 영향을 미치는지(얼마만큼의 error를 만들어 내는지) 알기 위해서는 일단 모든 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />에 대해 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" />를 구해야한다. 이것을 구하면 gradient descent에서 했던 것처럼 적절한 learning rate를 곱하여 parameter를 update 할 수 있다. 이것이 역전파이다.
+<p>각각의 parameter가 cost function에 얼마나 영향을 미치는지(얼마만큼의 error를 만들어 내는지) 알기 위해서는 일단 모든 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />에 대해 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" />를 구해야한다. 이것을 구하면 gradient descent에서 했던 것처럼 적절한 learning rate를 곱하여 parameter를 update 할 수 있다. 이것이 역전파이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 역전파를 위한 cost function의 미분 계산
+<h1 id="2-역전파를-위한-cost-function의-미분-계산">2. 역전파를 위한 cost function의 미분 계산</h1>
 
-* * *
+<hr />
 
-목표는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" /> 를 계산하여 parameter를 update하는 것이다. 쉽게 계산하는 법은 다음과 같다.
+<p>목표는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial&space;\Theta}" alt="\dpi{120} \frac{\partial J}{\partial \Theta}" align="absmiddle" /> 를 계산하여 parameter를 update하는 것이다. 쉽게 계산하는 법은 다음과 같다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bigtriangleup^{(l)}&space;=&space;0\quad(l=1,2,...,L-1)" alt="\dpi{120} \bigtriangleup^{(l)} = 0\quad(l=1,2,...,L-1)" align="absmiddle" />      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\quad&space;\bigtriangleup^{(l)}" alt="\dpi{120} \quad \bigtriangleup^{(l)}" align="absmiddle" />은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta^{(l)}" alt="\dpi{120} \Theta^{(l)}" align="absmiddle" />과 같은 크기의 행렬이다. 아무튼 다음과 같은 행렬을 만들어놓고 다 0으로 초기화 시켜놓는다.
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bigtriangleup^{(l)}&space;=&space;0\quad(l=1,2,...,L-1)" alt="\dpi{120} \bigtriangleup^{(l)} = 0\quad(l=1,2,...,L-1)" align="absmiddle" />      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\quad&space;\bigtriangleup^{(l)}" alt="\dpi{120} \quad \bigtriangleup^{(l)}" align="absmiddle" />은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta^{(l)}" alt="\dpi{120} \Theta^{(l)}" align="absmiddle" />과 같은 크기의 행렬이다. 아무튼 다음과 같은 행렬을 만들어놓고 다 0으로 초기화 시켜놓는다.</p>
 
-**for i = 1:m(m은 training dataset의 갯수),**
+<p><strong>for i = 1:m(m은 training dataset의 갯수),</strong></p>
 
-**   1. forward-propagation을 해서 output layer의 결과를 구한다. vector <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;a^{&space;(L)&space;}" alt="\dpi{120} a^{ (L) }" align="absmiddle" />** 
+<p><strong>   1. forward-propagation을 해서 output layer의 결과를 구한다. vector <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;a^{&space;(L)&space;}" alt="\dpi{120} a^{ (L) }" align="absmiddle" /></strong></p>
 
-**   2. 계산결과값과 실제결과값의 차이 error vector를 다음과 같이 놓는다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{(L)}&space;=&space;a^{(L)}-y" alt="\dpi{120} \delta^{(L)} = a^{(L)}-y" align="absmiddle" />** 
+<p><strong>   2. 계산결과값과 실제결과값의 차이 error vector를 다음과 같이 놓는다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{(L)}&space;=&space;a^{(L)}-y" alt="\dpi{120} \delta^{(L)} = a^{(L)}-y" align="absmiddle" /></strong></p>
 
-**   3. 다음 공식에 따라 input layer를 제외한 층까지 역전파한다.  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;{&space;\delta&space;}^{&space;(l)&space;}=({&space;({&space;\Theta&space;}^{&space;(l)&space;})&space;}^{&space;T&space;}{&space;\delta&space;}^{&space;(l+1)&space;}).*{&space;a&space;}^{&space;(l)&space;}.*(1-{&space;a&space;}^{&space;(l)&space;})" alt="\dpi{120} { \delta }^{ (l) }=({ ({ \Theta }^{ (l) }) }^{ T }{ \delta }^{ (l+1) }).*{ a }^{ (l) }.*(1-{ a }^{ (l) })" align="absmiddle" />**
+<p><strong>   3. 다음 공식에 따라 input layer를 제외한 층까지 역전파한다.  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;{&space;\delta&space;}^{&space;(l)&space;}=({&space;({&space;\Theta&space;}^{&space;(l)&space;})&space;}^{&space;T&space;}{&space;\delta&space;}^{&space;(l+1)&space;}).*{&space;a&space;}^{&space;(l)&space;}.*(1-{&space;a&space;}^{&space;(l)&space;})" alt="\dpi{120} { \delta }^{ (l) }=({ ({ \Theta }^{ (l) }) }^{ T }{ \delta }^{ (l+1) }).*{ a }^{ (l) }.*(1-{ a }^{ (l) })" align="absmiddle" /></strong></p>
 
-**   4. <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bigtriangleup^{(l)}=\bigtriangleup^{(l)}+\delta^{(l+1)}(a^{(l)})^{T}" alt="\dpi{120} \bigtriangleup^{(l)}=\bigtriangleup^{(l)}+\delta^{(l+1)}(a^{(l)})^{T}" align="absmiddle" />  ←!!주의 : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{(l+1)}" alt="\dpi{120} \delta^{(l+1)}" align="absmiddle" />을 대입할 때 bias unit을 뺀 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta" alt="\dpi{120} \delta" align="absmiddle" />를 적용한다. 왜냐하면 forward propagation을 할 때에 고정된 값(1)인 bias unit에는 영향을 주지 않기 때문이다. 다시 한 번 말하자면 bias unit은 전파를 한 다음 추가하는 node이다. output layer에는 bias node를 애초에 추가하지 않았기 때문에 상관없다. 아무튼 만약 실수로 bias unit까지 넣는다면 행렬곱셈을 할 때에 dimension이 맞지 않아 컴퓨터가 계산 오류를 일으킬 것이다.**
+<p><strong>   4. <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bigtriangleup^{(l)}=\bigtriangleup^{(l)}+\delta^{(l+1)}(a^{(l)})^{T}" alt="\dpi{120} \bigtriangleup^{(l)}=\bigtriangleup^{(l)}+\delta^{(l+1)}(a^{(l)})^{T}" align="absmiddle" />  ←!!주의 : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{(l+1)}" alt="\dpi{120} \delta^{(l+1)}" align="absmiddle" />을 대입할 때 bias unit을 뺀 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta" alt="\dpi{120} \delta" align="absmiddle" />를 적용한다. 왜냐하면 forward propagation을 할 때에 고정된 값(1)인 bias unit에는 영향을 주지 않기 때문이다. 다시 한 번 말하자면 bias unit은 전파를 한 다음 추가하는 node이다. output layer에는 bias node를 애초에 추가하지 않았기 때문에 상관없다. 아무튼 만약 실수로 bias unit까지 넣는다면 행렬곱셈을 할 때에 dimension이 맞지 않아 컴퓨터가 계산 오류를 일으킬 것이다.</strong></p>
 
-**end**
+<p><strong>end</strong></p>
 
-이상으로 다음과 같은 멋진 결론이 나온다.
+<p>이상으로 다음과 같은 멋진 결론이 나온다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial\Theta^{(l)}}=\frac{1}{m}\bigtriangleup&space;^{(l)}" alt="\dpi{120} \frac{\partial J}{\partial\Theta^{(l)}}=\frac{1}{m}\bigtriangleup ^{(l)}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\partial&space;J}{\partial\Theta^{(l)}}=\frac{1}{m}\bigtriangleup&space;^{(l)}" alt="\dpi{120} \frac{\partial J}{\partial\Theta^{(l)}}=\frac{1}{m}\bigtriangleup ^{(l)}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-위의 수식의 증명은 길고 재미없고 심지어 더럽기까지한 미분의 연속이다. 알 필요 없다. 단지 실제 데이터와 우리가 순전파 시켜 나온 예상값과의 에러를 이전 층으로 다시 전파시키는 짓을 반복해가며 cost-function J를 줄인다는 것만 알고 가도 충분하다.
+<p>위의 수식의 증명은 길고 재미없고 심지어 더럽기까지한 미분의 연속이다. 알 필요 없다. 단지 실제 데이터와 우리가 순전파 시켜 나온 예상값과의 에러를 이전 층으로 다시 전파시키는 짓을 반복해가며 cost-function J를 줄인다는 것만 알고 가도 충분하다.</p>
 
-처음의 그림에 나와있는 3-2-2 신경망에 대해서 한 번 연습해보자.
+<p>처음의 그림에 나와있는 3-2-2 신경망에 대해서 한 번 연습해보자.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\Theta^{(1)}=2\times&space;4&space;matrix\\&space;\Theta^{(2)}=2\times&space;3&space;matrix" alt="\dpi{120} \\ \Theta^{(1)}=2\times 4 matrix\\ \Theta^{(2)}=2\times 3 matrix" align="absmiddle" />     따라서,    <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bigtriangleup^{(1)}&space;=&space;\begin{bmatrix}&space;0&space;&0&space;&&space;0&space;&&space;0\\&space;0&space;&&space;0&space;&&space;0&&space;0&space;\end{bmatrix},\quad&space;\bigtriangleup^{(2)}&space;=&space;\begin{bmatrix}&space;0&space;&0&space;&&space;0&space;\\&space;0&space;&&space;0&&space;0&space;\end{bmatrix}" alt="\dpi{120} \bigtriangleup^{(1)} = \begin{bmatrix} 0 &0 & 0 & 0\\ 0 & 0 & 0& 0 \end{bmatrix},\quad \bigtriangleup^{(2)} = \begin{bmatrix} 0 &0 & 0 \\ 0 & 0& 0 \end{bmatrix}" align="absmiddle" />
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\Theta^{(1)}=2\times&space;4&space;matrix\\&space;\Theta^{(2)}=2\times&space;3&space;matrix" alt="\dpi{120} \\ \Theta^{(1)}=2\times 4 matrix\\ \Theta^{(2)}=2\times 3 matrix" align="absmiddle" />     따라서,    <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bigtriangleup^{(1)}&space;=&space;\begin{bmatrix}&space;0&space;&amp;0&space;&amp;&space;0&space;&amp;&space;0\\&space;0&space;&amp;&space;0&space;&amp;&space;0&amp;&space;0&space;\end{bmatrix},\quad&space;\bigtriangleup^{(2)}&space;=&space;\begin{bmatrix}&space;0&space;&amp;0&space;&amp;&space;0&space;\\&space;0&space;&amp;&space;0&amp;&space;0&space;\end{bmatrix}" alt="\dpi{120} \bigtriangleup^{(1)} = \begin{bmatrix} 0 &amp;0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0&amp; 0 \end{bmatrix},\quad \bigtriangleup^{(2)} = \begin{bmatrix} 0 &amp;0 &amp; 0 \\ 0 &amp; 0&amp; 0 \end{bmatrix}" align="absmiddle" /></p>
 
-for i=1:m
+<p>for i=1:m</p>
 
-  * forward propagation, output layer error 계산
+<ul>
+  <li>forward propagation, output layer error 계산</li>
+</ul>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;\delta&space;}_{&space;1&space;}^{&space;(3)&space;}={&space;a&space;}_{&space;1&space;}^{&space;(3)&space;}-{&space;y&space;}_{&space;1&space;}" alt="{ \delta }_{ 1 }^{ (3) }={ a }_{ 1 }^{ (3) }-{ y }_{ 1 }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;\delta&space;}_{&space;1&space;}^{&space;(3)&space;}={&space;a&space;}_{&space;1&space;}^{&space;(3)&space;}-{&space;y&space;}_{&space;1&space;}" alt="{ \delta }_{ 1 }^{ (3) }={ a }_{ 1 }^{ (3) }-{ y }_{ 1 }" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;\delta&space;}_{&space;2&space;}^{&space;(3)&space;}={&space;a&space;}_{&space;2&space;}^{&space;(3)&space;}-{&space;y&space;}_{&space;2&space;}" alt="{ \delta }_{ 2 }^{ (3) }={ a }_{ 2 }^{ (3) }-{ y }_{ 2 }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;\delta&space;}_{&space;2&space;}^{&space;(3)&space;}={&space;a&space;}_{&space;2&space;}^{&space;(3)&space;}-{&space;y&space;}_{&space;2&space;}" alt="{ \delta }_{ 2 }^{ (3) }={ a }_{ 2 }^{ (3) }-{ y }_{ 2 }" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-  * back propagation, hidden layer error 계산
+<ul>
+  <li>back propagation, hidden layer error 계산</li>
+</ul>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\error\quad&space;back-propagation>>&space;\\&space;\\&space;\begin{bmatrix}&space;\delta_{1}^{(2)}&space;\\&space;\delta_{2}^{(2)}\end{bmatrix}=&space;\begin{bmatrix}&space;\Theta_{1,1}^{(2)}&space;&&space;\Theta_{2,1}^{(2)}&space;\\&space;\Theta_{1,2}^{(2)}&space;&&space;\Theta_{2,2}^{(2)}&space;\end{bmatrix}&space;\begin{bmatrix}&space;\delta_{1}^{(3)}&space;\\&space;\delta_{2}^{(3)}&space;\end{bmatrix}.*&space;\begin{bmatrix}&space;a_{1}^{(2)}&space;\\&space;a_{2}^{(2)}\end{bmatrix}.*&space;\begin{bmatrix}&space;1-a_{1}^{(2)}&space;\\&space;1-a_{2}^{(2)}\end{bmatrix}" alt="\dpi{120} \\error\quad back-propagation>> \\ \\ \begin{bmatrix} \delta_{1}^{(2)} \\ \delta_{2}^{(2)}\end{bmatrix}= \begin{bmatrix} \Theta_{1,1}^{(2)} & \Theta_{2,1}^{(2)} \\ \Theta_{1,2}^{(2)} & \Theta_{2,2}^{(2)} \end{bmatrix} \begin{bmatrix} \delta_{1}^{(3)} \\ \delta_{2}^{(3)} \end{bmatrix}.* \begin{bmatrix} a_{1}^{(2)} \\ a_{2}^{(2)}\end{bmatrix}.* \begin{bmatrix} 1-a_{1}^{(2)} \\ 1-a_{2}^{(2)}\end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\error\quad&space;back-propagation&gt;&gt;&space;\\&space;\\&space;\begin{bmatrix}&space;\delta_{1}^{(2)}&space;\\&space;\delta_{2}^{(2)}\end{bmatrix}=&space;\begin{bmatrix}&space;\Theta_{1,1}^{(2)}&space;&amp;&space;\Theta_{2,1}^{(2)}&space;\\&space;\Theta_{1,2}^{(2)}&space;&amp;&space;\Theta_{2,2}^{(2)}&space;\end{bmatrix}&space;\begin{bmatrix}&space;\delta_{1}^{(3)}&space;\\&space;\delta_{2}^{(3)}&space;\end{bmatrix}.*&space;\begin{bmatrix}&space;a_{1}^{(2)}&space;\\&space;a_{2}^{(2)}\end{bmatrix}.*&space;\begin{bmatrix}&space;1-a_{1}^{(2)}&space;\\&space;1-a_{2}^{(2)}\end{bmatrix}" alt="\dpi{120} \\error\quad back-propagation&gt;&gt; \\ \\ \begin{bmatrix} \delta_{1}^{(2)} \\ \delta_{2}^{(2)}\end{bmatrix}= \begin{bmatrix} \Theta_{1,1}^{(2)} &amp; \Theta_{2,1}^{(2)} \\ \Theta_{1,2}^{(2)} &amp; \Theta_{2,2}^{(2)} \end{bmatrix} \begin{bmatrix} \delta_{1}^{(3)} \\ \delta_{2}^{(3)} \end{bmatrix}.* \begin{bmatrix} a_{1}^{(2)} \\ a_{2}^{(2)}\end{bmatrix}.* \begin{bmatrix} 1-a_{1}^{(2)} \\ 1-a_{2}^{(2)}\end{bmatrix}" align="absmiddle" /></p>
 
-  * error 쌓아주기
+<ul>
+  <li>error 쌓아주기</li>
+</ul>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\bigtriangleup&space;^{(1)}=\bigtriangleup&space;^{(1)}+\delta^{(2)}(a^{(1)})^{T}\\&space;\bigtriangleup&space;^{(2)}=\bigtriangleup&space;^{(2)}+\delta^{(3)}(a^{(2)})^{T}" alt="\dpi{120} \\ \bigtriangleup ^{(1)}=\bigtriangleup ^{(1)}+\delta^{(2)}(a^{(1)})^{T}\\ \bigtriangleup ^{(2)}=\bigtriangleup ^{(2)}+\delta^{(3)}(a^{(2)})^{T}" align="absmiddle" />        <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{(2)}" alt="\dpi{120} \delta^{(2)}" align="absmiddle" />에서 bias node 빼주기.
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\bigtriangleup&space;^{(1)}=\bigtriangleup&space;^{(1)}+\delta^{(2)}(a^{(1)})^{T}\\&space;\bigtriangleup&space;^{(2)}=\bigtriangleup&space;^{(2)}+\delta^{(3)}(a^{(2)})^{T}" alt="\dpi{120} \\ \bigtriangleup ^{(1)}=\bigtriangleup ^{(1)}+\delta^{(2)}(a^{(1)})^{T}\\ \bigtriangleup ^{(2)}=\bigtriangleup ^{(2)}+\delta^{(3)}(a^{(2)})^{T}" align="absmiddle" />        <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{(2)}" alt="\dpi{120} \delta^{(2)}" align="absmiddle" />에서 bias node 빼주기.</p>
 
-end
+<p>end</p>
 
-  * 쌓인 error 평균내서 cost function의 gradient 구하기
+<ul>
+  <li>쌓인 error 평균내서 cost function의 gradient 구하기</li>
+</ul>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\frac{\partial&space;J}{\partial\Theta^{(1)}}=\frac{1}{m}\bigtriangleup&space;^{(1)}\\&space;\frac{\partial&space;J}{\partial\Theta^{(2)}}=\frac{1}{m}\bigtriangleup&space;^{(2)}" alt="\dpi{120} \\ \frac{\partial J}{\partial\Theta^{(1)}}=\frac{1}{m}\bigtriangleup ^{(1)}\\ \frac{\partial J}{\partial\Theta^{(2)}}=\frac{1}{m}\bigtriangleup ^{(2)}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;\frac{\partial&space;J}{\partial\Theta^{(1)}}=\frac{1}{m}\bigtriangleup&space;^{(1)}\\&space;\frac{\partial&space;J}{\partial\Theta^{(2)}}=\frac{1}{m}\bigtriangleup&space;^{(2)}" alt="\dpi{120} \\ \frac{\partial J}{\partial\Theta^{(1)}}=\frac{1}{m}\bigtriangleup ^{(1)}\\ \frac{\partial J}{\partial\Theta^{(2)}}=\frac{1}{m}\bigtriangleup ^{(2)}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-이제 gradient를 구했으니 적절한 learning rate를 이용해서 cost function J가 수렴할 때 까지 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />를 update하거나 python, matlab, octave 등의 라이브러리가 지원하는 optimization 함수를 사용하면 된다.
+<p>이제 gradient를 구했으니 적절한 learning rate를 이용해서 cost function J가 수렴할 때 까지 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Theta" alt="\dpi{120} \Theta" align="absmiddle" />를 update하거나 python, matlab, octave 등의 라이브러리가 지원하는 optimization 함수를 사용하면 된다.</p>
 
-한 가지 덧붙이자면 input layer는 parameter Θ와 상관없이 항상 고정된 값(feature)를 가지므로 error가 없다. 따라서 지금 예시로 다루고 있는 신경망에서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{&space;(2)&space;},&space;\delta^{&space;(3)&space;}" alt="\dpi{120} \delta^{ (2) }, \delta^{ (3) }" align="absmiddle" /> 두 층의 에러만 구하면 된다.
+<p>한 가지 덧붙이자면 input layer는 parameter Θ와 상관없이 항상 고정된 값(feature)를 가지므로 error가 없다. 따라서 지금 예시로 다루고 있는 신경망에서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{&space;(2)&space;},&space;\delta^{&space;(3)&space;}" alt="\dpi{120} \delta^{ (2) }, \delta^{ (3) }" align="absmiddle" /> 두 층의 에러만 구하면 된다.</p>
 
-지금까지 계산한 것을 그림으로 간단히 나타내면 다음과 같다.
+<p>지금까지 계산한 것을 그림으로 간단히 나타내면 다음과 같다.</p>
 
-<img class="aligncenter size-medium wp-image-436" src="/images/2018/08/no-name-45-295x300.png" alt="" width="295" height="300" srcset="/images/2018/08/no-name-45-295x300.png 295w, /images/2018/08/no-name-45.png 548w" sizes="(max-width: 295px) 100vw, 295px" /> 
+<p><img class="aligncenter size-medium wp-image-436" src="/images/2018/08/no-name-45-295x300.png" alt="" width="295" height="300" srcset="/images/2018/08/no-name-45-295x300.png 295w, /images/2018/08/no-name-45.png 548w" sizes="(max-width: 295px) 100vw, 295px" /></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
+
   </div>
   
 </div>

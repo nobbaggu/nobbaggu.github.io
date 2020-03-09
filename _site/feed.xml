@@ -5,12 +5,12 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Mar 2020 20:58:11 +0900</pubDate>
-    <lastBuildDate>Mon, 09 Mar 2020 20:58:11 +0900</lastBuildDate>
+    <pubDate>Mon, 09 Mar 2020 23:33:08 +0900</pubDate>
+    <lastBuildDate>Mon, 09 Mar 2020 23:33:08 +0900</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
-        <title>(Chapter03) 함수</title>
+        <title>(클린코드) Chapter03 - 함수</title>
         <description>&lt;h2 id=&quot;목차&quot;&gt;목차&lt;/h2&gt;
 &lt;hr /&gt;
 
@@ -101,7 +101,7 @@
       </item>
     
       <item>
-        <title>(Chapter02) 의미 있는 이름</title>
+        <title>(클린코드) Chapter02 - 의미 있는 이름</title>
         <description>&lt;h2 id=&quot;목차&quot;&gt;목차&lt;/h2&gt;
 &lt;hr /&gt;
 
@@ -598,9 +598,9 @@
 
 &lt;p&gt;좋은 이름을 붙이는 이유는 개발자는 자신이 짠 클래스 이름과 메소드 이름을 모두 기억하지 못한다. 따라서 잘 읽히는 코드를 짜야한다. 다른사람이 읽기 쉽도록 하는 목적도 있다.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 09 Mar 2020 13:37:19 +0900</pubDate>
-        <link>http://localhost:4000/2020/03/09/%EC%9D%98%EB%AF%B8-%EC%9E%88%EB%8A%94-%EC%9D%B4%EB%A6%84/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/03/09/%EC%9D%98%EB%AF%B8-%EC%9E%88%EB%8A%94-%EC%9D%B4%EB%A6%84/</guid>
+        <pubDate>Sun, 08 Mar 2020 13:37:19 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/08/%EC%9D%98%EB%AF%B8-%EC%9E%88%EB%8A%94-%EC%9D%B4%EB%A6%84/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/08/%EC%9D%98%EB%AF%B8-%EC%9E%88%EB%8A%94-%EC%9D%B4%EB%A6%84/</guid>
         
         <category>깨끗한코드</category>
         
@@ -614,7 +614,7 @@
       </item>
     
       <item>
-        <title>(Chapter01) 깨끗한 코드</title>
+        <title>(클린코드) Chapter01 - 깨끗한 코드</title>
         <description>&lt;h2 id=&quot;목차&quot;&gt;목차&lt;/h2&gt;
 &lt;hr /&gt;
 
@@ -758,9 +758,9 @@
 &lt;p&gt;&lt;br /&gt;
 이제부터 이러한 일들을 구체적으로 어떻게 하는지 한가지씩 알아보자!&lt;/p&gt;
 </description>
-        <pubDate>Sun, 08 Mar 2020 13:37:19 +0900</pubDate>
-        <link>http://localhost:4000/2020/03/08/%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/03/08/%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/</guid>
+        <pubDate>Sat, 07 Mar 2020 13:37:19 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/07/%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/07/%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/</guid>
         
         <category>깨끗한코드</category>
         

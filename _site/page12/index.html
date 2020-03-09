@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,78 +10682,83 @@
 
     <span class="post-date">28 Apr 2019</span>
 
-    텍스트뷰(TextView)는 화면에 텍스트를 보여주는 역할을 한다. 아래는 텍스트뷰의 주요 속성들에 대한 내용이다.
+    <p>텍스트뷰(TextView)는 화면에 텍스트를 보여주는 역할을 한다. 아래는 텍스트뷰의 주요 속성들에 대한 내용이다.</p>
 
-&nbsp;
-*text
+<p> 
+*text</p>
 
-텍스트뷰의 문자열을 설정한다.직접 문자열을 넣어줄수도 있고, /res/values/strings.xml 파일에 있는 문자열을 지정할 수도 있다.
+<p>텍스트뷰의 문자열을 설정한다.직접 문자열을 넣어줄수도 있고, /res/values/strings.xml 파일에 있는 문자열을 지정할 수도 있다.</p>
 
-~~~ xml
-<resources>
-    <string name="app_name">SampleWidget</string>
-    <string name="hello">안녕, 안드로이드!</string>
-</resources>
-~~~
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"app_name"</span><span class="nt">&gt;</span>SampleWidget<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"hello"</span><span class="nt">&gt;</span>안녕, 안드로이드!<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></div></div>
 
-app_name은 이 프로젝트의 이름으로 원래부터 있던 것이고, hello는 방금 추가한 것이다. 아무튼 <string> 태그에 있는 문자열은 다른 곳에서 name 속성값을 통해 참조할 수 있다. @string/hello 이런 식으로 말이다. 아래 코드를 참고하면 된다.
+<p>app_name은 이 프로젝트의 이름으로 원래부터 있던 것이고, hello는 방금 추가한 것이다. 아무튼 <string> 태그에 있는 문자열은 다른 곳에서 name 속성값을 통해 참조할 수 있다. @string/hello 이런 식으로 말이다. 아래 코드를 참고하면 된다.</string></p>
 
-~~~ xml
-<TextView
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="@string/hello"
-	android:textSize="24dp"/>
-~~~
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;TextView</span>
+	<span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+	<span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+	<span class="na">android:text=</span><span class="s">"@string/hello"</span>
+	<span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
 
-&nbsp;
-*textColor
+<p> 
+*textColor</p>
 
-"#AARRGGBB" 포맷으로 텍스트의 색상을 지정할 수 있다. 여기서 A는 Alphacode(투명도), R은 Red(빨강), G는 Green(초록), B는 Black(검정)을 의미한다. AA는 00~FF 사이의 값을 가지며 00에 가까울수록 투명해지다가 00이 되면 아예 보이지 않게 된다. RR, GG, BB 값은 00~FF 사이의 값을 가지며 클수록 해당 색의 농도가 짙어진다.
+<p>“#AARRGGBB” 포맷으로 텍스트의 색상을 지정할 수 있다. 여기서 A는 Alphacode(투명도), R은 Red(빨강), G는 Green(초록), B는 Black(검정)을 의미한다. AA는 00~FF 사이의 값을 가지며 00에 가까울수록 투명해지다가 00이 되면 아예 보이지 않게 된다. RR, GG, BB 값은 00~FF 사이의 값을 가지며 클수록 해당 색의 농도가 짙어진다.</p>
 
-&nbsp;
-*textSize
+<p> 
+*textSize</p>
 
-폰트 크기를 지정한다. 크기 단위는 dp, sp, px 등으로 다양하다.
+<p>폰트 크기를 지정한다. 크기 단위는 dp, sp, px 등으로 다양하다.</p>
 
-&nbsp;
-*textStyle
+<p> 
+*textStyle</p>
 
-문자열의 스타일을 지정한다. "normal", "bold", "italic" 등의 값을 가질 수 있다. '|' 기호를 사용하여 여러개의 값을 동시에 적용시킬 수도 있다.
+<table>
+  <tbody>
+    <tr>
+      <td>문자열의 스타일을 지정한다. “normal”, “bold”, “italic” 등의 값을 가질 수 있다. ‘</td>
+      <td>’ 기호를 사용하여 여러개의 값을 동시에 적용시킬 수도 있다.</td>
+    </tr>
+  </tbody>
+</table>
 
-&nbsp;
-*typeface
+<p> 
+*typeface</p>
 
-폰트(글꼴)를 지정한다. "normal", "sans", "serif", "monospace" 등의 값을 가질 수 있다.
+<p>폰트(글꼴)를 지정한다. “normal”, “sans”, “serif”, “monospace” 등의 값을 가질 수 있다.</p>
 
-&nbsp;
+<p> 
 *maxLines
-문자열의 최대 줄 수를 지정한다. 예를 들면 값을 2로 설정하면 두 줄을 넘어가는 부분은 표시되지 않는다.
+문자열의 최대 줄 수를 지정한다. 예를 들면 값을 2로 설정하면 두 줄을 넘어가는 부분은 표시되지 않는다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello"
-        android:textColor="#50ff0000"
-        android:textSize="30dp"
-        android:textStyle="bold|italic"
-        android:typeface="serif"
-        android:maxLines="1"/>
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"@string/hello"</span>
+        <span class="na">android:textColor=</span><span class="s">"#50ff0000"</span>
+        <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold|italic"</span>
+        <span class="na">android:typeface=</span><span class="s">"serif"</span>
+        <span class="na">android:maxLines=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-![1](/images/android/11/1.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/11/1.jpg" alt="1" width="30%" height="30%" /></p>
 
-RRGGBB 에서 ff0000은 빨간색인데, AA 값을 50으로 설정해서 투명도가 생겼다. 또한 text 속성의 값으로 @string/hello를 넣어주었는데, maxLines 값이 1이라 뒷부분이 잘려나갔다.
+<p>RRGGBB 에서 ff0000은 빨간색인데, AA 값을 50으로 설정해서 투명도가 생겼다. 또한 text 속성의 값으로 @string/hello를 넣어주었는데, maxLines 값이 1이라 뒷부분이 잘려나갔다.</p>
+
   </div>
   
   <div class="post">
@@ -10789,102 +10770,101 @@ RRGGBB 에서 ff0000은 빨간색인데, AA 값을 50으로 설정해서 투명�
 
     <span class="post-date">28 Apr 2019</span>
 
-    프레임 레이아웃은 가지고 있는 여러개의 뷰 중 한 번에 하나만 보여주는 레이아웃이다. 무척 단순하지만 꽤 자주 사용되는 레이아웃이다. 프레임 레이아웃에 여러개의 뷰를 차례차례 추가하면 가장 마지막에 추가한 뷰만 화면에 보이는 상태가 된다. 이 때, 프레임 레이아웃에 있는 뷰의 가시성(Visibility) 속성을 설정함으로써 특정 뷰를 보이거나 보이지 않게 함으로써 화면을 전환할 수 있다.
+    <p>프레임 레이아웃은 가지고 있는 여러개의 뷰 중 한 번에 하나만 보여주는 레이아웃이다. 무척 단순하지만 꽤 자주 사용되는 레이아웃이다. 프레임 레이아웃에 여러개의 뷰를 차례차례 추가하면 가장 마지막에 추가한 뷰만 화면에 보이는 상태가 된다. 이 때, 프레임 레이아웃에 있는 뷰의 가시성(Visibility) 속성을 설정함으로써 특정 뷰를 보이거나 보이지 않게 함으로써 화면을 전환할 수 있다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="이미지 바꾸기"
-        android:onClick="onButtonClicked"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:text=</span><span class="s">"이미지 바꾸기"</span>
+        <span class="na">android:onClick=</span><span class="s">"onButtonClicked"</span><span class="nt">/&gt;</span>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <span class="nt">&lt;FrameLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dream01"
-            android:visibility="invisible"/>
+        <span class="nt">&lt;ImageView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/imageView1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:src=</span><span class="s">"@drawable/dream01"</span>
+            <span class="na">android:visibility=</span><span class="s">"invisible"</span><span class="nt">/&gt;</span>
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dream02" />
-    </FrameLayout>
-</LinearLayout>
-~~~
+        <span class="nt">&lt;ImageView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/imageView2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:src=</span><span class="s">"@drawable/dream02"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/FrameLayout&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-이미지를 전환할 버튼을 하나 넣어주고 onClick 속성의 값으로 onButtonClicked 메소드를 넣어주었다.
+<p>이미지를 전환할 버튼을 하나 넣어주고 onClick 속성의 값으로 onButtonClicked 메소드를 넣어주었다.</p>
 
-그리고 그 아래에 프레임 레이아웃을 넣고 레이아웃 안에 ImageView를 2개 추가하였다. 이렇게 했을 때 중첩 된 ImageView들 중 2번째 ImageView만 화면에 보인다. 이제 뷰를 전환하는 기능을 적용하기 위해서 자바 소스코드를 수정해야한다.
+<p>그리고 그 아래에 프레임 레이아웃을 넣고 레이아웃 안에 ImageView를 2개 추가하였다. 이렇게 했을 때 중첩 된 ImageView들 중 2번째 ImageView만 화면에 보인다. 이제 뷰를 전환하는 기능을 적용하기 위해서 자바 소스코드를 수정해야한다.</p>
 
-~~~ java
-package io.swnomad.sampleframelayout;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleframelayout</span><span class="o">;</span>
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ImageView</span><span class="o">;</span>
 
-public class MainActivity extends AppCompatActivity {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    ImageView imageView1;
-    ImageView imageView2;
-    int imageIndex = 2; //현재 FrameLayout에 보이는 이미지 번호
+    <span class="nc">ImageView</span> <span class="n">imageView1</span><span class="o">;</span>
+    <span class="nc">ImageView</span> <span class="n">imageView2</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">imageIndex</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">//현재 FrameLayout에 보이는 이미지 번호</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        imageView1 = findViewById(R.id.imageView1); //imageView1 객체 참조
-        imageView2 = findViewById(R.id.imageView2); //imageView2 객체 참조
-    }
+        <span class="n">imageView1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView1</span><span class="o">);</span> <span class="c1">//imageView1 객체 참조</span>
+        <span class="n">imageView2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView2</span><span class="o">);</span> <span class="c1">//imageView2 객체 참조</span>
+    <span class="o">}</span>
 
-    /* 버튼 onClick 속성 값 메소드 */
-    public void onButtonClicked(View v){
-        changeImage();
-    }
+    <span class="cm">/* 버튼 onClick 속성 값 메소드 */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onButtonClicked</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">){</span>
+        <span class="n">changeImage</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    /* 프레임 레이아웃에 보이는 이미지 전환 메소드 */
-    public void changeImage(){
-        if(imageIndex==1){ //현재의 imageIndex가 1이면
-            imageView1.setVisibility(View.INVISIBLE); //첫 번째 이미지 안보이게
-            imageView2.setVisibility(View.VISIBLE); //두 번째 이미지 보이게
-            imageIndex = 2; //현재 imageIndex 2로 변경
+    <span class="cm">/* 프레임 레이아웃에 보이는 이미지 전환 메소드 */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changeImage</span><span class="o">(){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">imageIndex</span><span class="o">==</span><span class="mi">1</span><span class="o">){</span> <span class="c1">//현재의 imageIndex가 1이면</span>
+            <span class="n">imageView1</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="nc">View</span><span class="o">.</span><span class="na">INVISIBLE</span><span class="o">);</span> <span class="c1">//첫 번째 이미지 안보이게</span>
+            <span class="n">imageView2</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="nc">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span> <span class="c1">//두 번째 이미지 보이게</span>
+            <span class="n">imageIndex</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">//현재 imageIndex 2로 변경</span>
 
-        }else if(imageIndex==2){ //현재의 imageIndex가 2면
-            imageView1.setVisibility(View.VISIBLE); //첫 번째 이미지 보이게
-            imageView2.setVisibility(View.INVISIBLE); //두 번째 이미지 안보이게
-            imageIndex = 1; //현재 imageIndex 1로 변경
-        }
-    }
-}
-~~~
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">imageIndex</span><span class="o">==</span><span class="mi">2</span><span class="o">){</span> <span class="c1">//현재의 imageIndex가 2면</span>
+            <span class="n">imageView1</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="nc">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span> <span class="c1">//첫 번째 이미지 보이게</span>
+            <span class="n">imageView2</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="nc">View</span><span class="o">.</span><span class="na">INVISIBLE</span><span class="o">);</span> <span class="c1">//두 번째 이미지 안보이게</span>
+            <span class="n">imageIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">//현재 imageIndex 1로 변경</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-imageIndex 변수는 현재 화면에 보이는 이미지를 무엇인지 판단하기 위해 정의한 변수이다. 먼저 imageView1, imageView2 변수는 각각 이미지뷰 객체 ImageView1과 ImageView2 객체를 참조한다.
+<p>imageIndex 변수는 현재 화면에 보이는 이미지를 무엇인지 판단하기 위해 정의한 변수이다. 먼저 imageView1, imageView2 변수는 각각 이미지뷰 객체 ImageView1과 ImageView2 객체를 참조한다.</p>
 
-onButtonClicked 메소드에 changeImage() 메소드를 넣어줌으로써 버튼이 눌리면 changeImage() 메소드의 코드가 동작하도록 하였다. 현재의 imageIndex 변수의 값에 따라 ImageView의 visibility 속성을 setVisibility 메소드를 통해 제어해준다. 그리고 화면의 visibility 속성 변경 이후 imageIndex 변수의 값도 변경해주는 것을 잊으면 안된다.
+<p>onButtonClicked 메소드에 changeImage() 메소드를 넣어줌으로써 버튼이 눌리면 changeImage() 메소드의 코드가 동작하도록 하였다. 현재의 imageIndex 변수의 값에 따라 ImageView의 visibility 속성을 setVisibility 메소드를 통해 제어해준다. 그리고 화면의 visibility 속성 변경 이후 imageIndex 변수의 값도 변경해주는 것을 잊으면 안된다.</p>
 
-이렇게 했을 때 앱을 실행하면 다음과 같은 화면이 보인다.
+<p>이렇게 했을 때 앱을 실행하면 다음과 같은 화면이 보인다.</p>
 
-![1](/images/android/10/1.jpg){: width="30%" height="30%"}
-![2](/images/android/10/2.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/10/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/10/2.jpg" alt="2" width="30%" height="30%" /></p>
 
-버튼을 누를 때 마다 화면이 전환되지만 이는 단순히 두 개의 이미지가 중첩된 상태에서 보이게 하거나 보이지 않게 하는 것일 뿐이다.
+<p>버튼을 누를 때 마다 화면이 전환되지만 이는 단순히 두 개의 이미지가 중첩된 상태에서 보이게 하거나 보이지 않게 하는 것일 뿐이다.</p>
+
   </div>
   
   <div class="post">
@@ -10896,129 +10876,128 @@ onButtonClicked 메소드에 changeImage() 메소드를 넣어줌으로써 버�
 
     <span class="post-date">28 Apr 2019</span>
 
-    스크롤뷰는 뷰가 한 화면에 다 보이지 않을 때 사용하며, 스크롤 기능을 지원한다. 단지 뷰를 스크롤뷰 안에 넣는 것 만으로 스크롤 기능이 자동으로 적용되기 때문에 무척 편리하다.
+    <p>스크롤뷰는 뷰가 한 화면에 다 보이지 않을 때 사용하며, 스크롤 기능을 지원한다. 단지 뷰를 스크롤뷰 안에 넣는 것 만으로 스크롤 기능이 자동으로 적용되기 때문에 무척 편리하다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="이미지 바꾸기"
-        android:onClick="onButtonClicked"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:text=</span><span class="s">"이미지 바꾸기"</span>
+        <span class="na">android:onClick=</span><span class="s">"onButtonClicked"</span><span class="nt">/&gt;</span>
 
-    <HorizontalScrollView
-        android:id="@+id/horScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <span class="nt">&lt;HorizontalScrollView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/horScrollView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
 
-        <ScrollView
-            android:id="@+id/scrollView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <span class="nt">&lt;ScrollView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/scrollView"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <span class="nt">&lt;ImageView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/imageView"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
 
-        </ScrollView>
-    </HorizontalScrollView>
+        <span class="nt">&lt;/ScrollView&gt;</span>
+    <span class="nt">&lt;/HorizontalScrollView&gt;</span>
 
-</LinearLayout>
-~~~
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
 
-이미지를 번갈아가면서 보여주기 위해 버튼을 하나 만들었다. 그리고 스크롤뷰는 기본적으로 수직 방향을 지원하기 때문에 HorizontalScrollView도 하나 만들어 수직, 수평 방향 모두 스크롤을 할 수 있도록 하였다. 마지막으로 스크롤뷰 안에 이미지를 보여주기 위한 ImageView를 넣었다. 이제 자바 소스코드를 통해서 이미지를 바꾸어 보여주는 앱을 만들어보자.
+<p>이미지를 번갈아가면서 보여주기 위해 버튼을 하나 만들었다. 그리고 스크롤뷰는 기본적으로 수직 방향을 지원하기 때문에 HorizontalScrollView도 하나 만들어 수직, 수평 방향 모두 스크롤을 할 수 있도록 하였다. 마지막으로 스크롤뷰 안에 이미지를 보여주기 위한 ImageView를 넣었다. 이제 자바 소스코드를 통해서 이미지를 바꾸어 보여주는 앱을 만들어보자.</p>
 
-~~~ java
-package io.swnomad.samplescrollview;
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplescrollview</span><span class="o">;</span>
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ScrollView;
+<span class="kn">import</span> <span class="nn">android.content.res.Resources</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Bitmap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.drawable.BitmapDrawable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ImageView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ScrollView</span><span class="o">;</span>
 
-public class MainActivity extends AppCompatActivity {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
 
-    ScrollView scrollView;
-    ImageView imageView;
-    BitmapDrawable bitmap;
+    <span class="nc">ScrollView</span> <span class="n">scrollView</span><span class="o">;</span>
+    <span class="nc">ImageView</span> <span class="n">imageView</span><span class="o">;</span>
+    <span class="nc">BitmapDrawable</span> <span class="n">bitmap</span><span class="o">;</span>
 
-    int imageNumber = 1; //현재 imageView의 그림 번호
+    <span class="kt">int</span> <span class="n">imageNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">//현재 imageView의 그림 번호</span>
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
 
-        scrollView = findViewById(R.id.scrollView); //스크롤뷰 참조
-        imageView = findViewById(R.id.imageView); //이미지뷰 참조
+        <span class="n">scrollView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">scrollView</span><span class="o">);</span> <span class="c1">//스크롤뷰 참조</span>
+        <span class="n">imageView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView</span><span class="o">);</span> <span class="c1">//이미지뷰 참조</span>
 
-        scrollView.setHorizontalScrollBarEnabled(true);// 수평 스크롤바 사용 가능하게
+        <span class="n">scrollView</span><span class="o">.</span><span class="na">setHorizontalScrollBarEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span><span class="c1">// 수평 스크롤바 사용 가능하게</span>
 
-        /* drawable 폴더에 있는 image01 그림을 bitmap 변수에 저장 */
-        Resources res = getResources();
-        bitmap = (BitmapDrawable) res.getDrawable(R.drawable.image01);
-        int bitmapWidth = bitmap.getIntrinsicWidth();
-        int bitmapHeight = bitmap.getIntrinsicHeight();
+        <span class="cm">/* drawable 폴더에 있는 image01 그림을 bitmap 변수에 저장 */</span>
+        <span class="nc">Resources</span> <span class="n">res</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">();</span>
+        <span class="n">bitmap</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BitmapDrawable</span><span class="o">)</span> <span class="n">res</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">image01</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">bitmapWidth</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicWidth</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">bitmapHeight</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicHeight</span><span class="o">();</span>
 
-        imageView.setImageDrawable(bitmap); //ImageView 그림 설정
-        imageView.getLayoutParams().width = bitmapWidth; //ImageView 가로 크기 설정
-        imageView.getLayoutParams().height = bitmapHeight; //ImageView 세로 크기 설정
-    }
+        <span class="n">imageView</span><span class="o">.</span><span class="na">setImageDrawable</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span> <span class="c1">//ImageView 그림 설정</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">width</span> <span class="o">=</span> <span class="n">bitmapWidth</span><span class="o">;</span> <span class="c1">//ImageView 가로 크기 설정</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">height</span> <span class="o">=</span> <span class="n">bitmapHeight</span><span class="o">;</span> <span class="c1">//ImageView 세로 크기 설정</span>
+    <span class="o">}</span>
 
-    /* button의 onClick 속성으로 설정한 메소드 */
-    public void onButtonClicked(View v){
-        changeImage();
-    }
+    <span class="cm">/* button의 onClick 속성으로 설정한 메소드 */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onButtonClicked</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">){</span>
+        <span class="n">changeImage</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    /* imageView의 그림을 바꾸는 메소드 */
-    private void changeImage(){
-        Resources res = getResources();
-        if(imageNumber==1){ //imageNumber 변수 값이 1이면
+    <span class="cm">/* imageView의 그림을 바꾸는 메소드 */</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">changeImage</span><span class="o">(){</span>
+        <span class="nc">Resources</span> <span class="n">res</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">imageNumber</span><span class="o">==</span><span class="mi">1</span><span class="o">){</span> <span class="c1">//imageNumber 변수 값이 1이면</span>
 
-            /* imageView에 image02 그림 설정 */
-            bitmap = (BitmapDrawable) res.getDrawable(R.drawable.image02);
-            int bitmapWidth = bitmap.getIntrinsicWidth();
-            int bitmapHeight = bitmap.getIntrinsicHeight();
+            <span class="cm">/* imageView에 image02 그림 설정 */</span>
+            <span class="n">bitmap</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BitmapDrawable</span><span class="o">)</span> <span class="n">res</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">image02</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">bitmapWidth</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicWidth</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">bitmapHeight</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicHeight</span><span class="o">();</span>
 
-            imageView.setImageDrawable(bitmap);
-            imageView.getLayoutParams().width = bitmapWidth;
-            imageView.getLayoutParams().height = bitmapHeight;
-            imageNumber = 2; //imageNumber 변수 값 2로 설정
-        }else{ //imageNumber 변수 값이 1이 아니면
+            <span class="n">imageView</span><span class="o">.</span><span class="na">setImageDrawable</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">width</span> <span class="o">=</span> <span class="n">bitmapWidth</span><span class="o">;</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">height</span> <span class="o">=</span> <span class="n">bitmapHeight</span><span class="o">;</span>
+            <span class="n">imageNumber</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">//imageNumber 변수 값 2로 설정</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span> <span class="c1">//imageNumber 변수 값이 1이 아니면</span>
 
-            /* imageView에 image01 그림 설정 */
-            bitmap = (BitmapDrawable) res.getDrawable(R.drawable.image01);
-            int bitmapWidth = bitmap.getIntrinsicWidth();
-            int bitmapHeight = bitmap.getIntrinsicHeight();
+            <span class="cm">/* imageView에 image01 그림 설정 */</span>
+            <span class="n">bitmap</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BitmapDrawable</span><span class="o">)</span> <span class="n">res</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">image01</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">bitmapWidth</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicWidth</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">bitmapHeight</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicHeight</span><span class="o">();</span>
 
-            imageView.setImageDrawable(bitmap);
-            imageView.getLayoutParams().width = bitmapWidth;
-            imageView.getLayoutParams().height = bitmapHeight;
-            imageNumber = 1; //imageNumber 변수 값 1로 설정
-        }
-    }
-}
-~~~
+            <span class="n">imageView</span><span class="o">.</span><span class="na">setImageDrawable</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">width</span> <span class="o">=</span> <span class="n">bitmapWidth</span><span class="o">;</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">height</span> <span class="o">=</span> <span class="n">bitmapHeight</span><span class="o">;</span>
+            <span class="n">imageNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">//imageNumber 변수 값 1로 설정</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-findViewById 메소드에 XML 코드에서 만든 뷰의 id를 전달하면 뷰 객체를 참조할 수 있다. 그리고 /res 파일에 있는 리소스들은 getResources() 메소드를 통해서 참조할 수 있다. getResources()로 참조한 Rescources 객체에서 getDrawable 메소드를 사용하여 image01 혹은 image02를 불러와 BitmapDrawable객체로 강제 형변환을 하여 변수에 저장했다. BitmapDrawable 객체는 getIntrinsicWidth(), getIntrinsicHeight() 메소드를 통해서 크기를 참조할 수 있다. 이후 imageView에 setImageDrawable 메소드를 통해 이미지를 설정하고, getLayoutParams().width, getLayoutParams().height를 통해 이미지뷰의 크기를 설정할 수 있다.
+<p>findViewById 메소드에 XML 코드에서 만든 뷰의 id를 전달하면 뷰 객체를 참조할 수 있다. 그리고 /res 파일에 있는 리소스들은 getResources() 메소드를 통해서 참조할 수 있다. getResources()로 참조한 Rescources 객체에서 getDrawable 메소드를 사용하여 image01 혹은 image02를 불러와 BitmapDrawable객체로 강제 형변환을 하여 변수에 저장했다. BitmapDrawable 객체는 getIntrinsicWidth(), getIntrinsicHeight() 메소드를 통해서 크기를 참조할 수 있다. 이후 imageView에 setImageDrawable 메소드를 통해 이미지를 설정하고, getLayoutParams().width, getLayoutParams().height를 통해 이미지뷰의 크기를 설정할 수 있다.</p>
 
-changeImage() 메소드에서는 두 이미지를 번갈아가며 보여주기 위한 코드를 설정했다. 그리고 이 메소드를 버튼의 onClick 속성으로 설정한 메소드에 넣어주어 기능을 완성했다.
+<p>changeImage() 메소드에서는 두 이미지를 번갈아가며 보여주기 위한 코드를 설정했다. 그리고 이 메소드를 버튼의 onClick 속성으로 설정한 메소드에 넣어주어 기능을 완성했다.</p>
 
-![1](/images/android/9/1.jpg){: width="30%" height="30%"}
-![2](/images/android/9/2.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/9/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/9/2.jpg" alt="2" width="30%" height="30%" /></p>
+
   </div>
   
   <div class="post">
@@ -11030,124 +11009,122 @@ changeImage() 메소드에서는 두 이미지를 번갈아가며 보여주기 �
 
     <span class="post-date">28 Apr 2019</span>
 
-    테이블 레이아웃은 표의 형태와 비슷한 생김새의 레이아웃이다. 사실 이후에 배울 그리드 뷰라는 것이 테이블 레이아웃을 대체하는데다가, 더욱 간편한 기능을 지원하기 때문에 테이블 레이아웃은 사용할 일이 거의 없다.
+    <p>테이블 레이아웃은 표의 형태와 비슷한 생김새의 레이아웃이다. 사실 이후에 배울 그리드 뷰라는 것이 테이블 레이아웃을 대체하는데다가, 더욱 간편한 기능을 지원하기 때문에 테이블 레이아웃은 사용할 일이 거의 없다.</p>
 
-테이블 레이아웃은 TableRow라는 태그가 있는데, 이것은 하나의 행을 의미한다. 그리고 TableRow 안에 있는 뷰의 갯수가 열의 갯수가 된다.
+<p>테이블 레이아웃은 TableRow라는 태그가 있는데, 이것은 하나의 행을 의미한다. 그리고 TableRow 안에 있는 뷰의 갯수가 열의 갯수가 된다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;TableLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
 
-    <TableRow>
+    <span class="nt">&lt;TableRow&gt;</span>
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button1" />
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Button1"</span> <span class="nt">/&gt;</span>
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button2" />
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Button2"</span> <span class="nt">/&gt;</span>
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button3" />
-    </TableRow>
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button3"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Button3"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/TableRow&gt;</span>
 
-    <TableRow>
+    <span class="nt">&lt;TableRow&gt;</span>
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button4" />
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button4"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Button4"</span> <span class="nt">/&gt;</span>
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button5" />
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button5"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Button5"</span> <span class="nt">/&gt;</span>
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button6" />
-    </TableRow>
-</TableLayout>
-~~~
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button6"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Button6"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/TableRow&gt;</span>
+<span class="nt">&lt;/TableLayout&gt;</span>
+</code></pre></div></div>
 
-두 개의 TableRow를 추가하고 각각에 button을 3개씩 추가했다. 즉, 행은 2개이고 열이 3개가 된다. 앱을 실행하면 아래와 같은 화면이 나온다.
+<p>두 개의 TableRow를 추가하고 각각에 button을 3개씩 추가했다. 즉, 행은 2개이고 열이 3개가 된다. 앱을 실행하면 아래와 같은 화면이 나온다.</p>
 
-![1](/images/android/8/1.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/8/1.jpg" alt="1" width="30%" height="30%" /></p>
 
-오른쪽에 여유공간이 남는데, 세 개의 버튼이 이 여유공간을 나누어 가지면서 공간을 채우도록 하려면 TableLayout의 stretchColumns 속성을 사용하면 된다.
+<p>오른쪽에 여유공간이 남는데, 세 개의 버튼이 이 여유공간을 나누어 가지면서 공간을 채우도록 하려면 TableLayout의 stretchColumns 속성을 사용하면 된다.</p>
 
-~~~ xml
-android:stretchColumns="0,1,2"
-~~~
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:stretchColumns="0,1,2"
+</code></pre></div></div>
 
-TableLayout에 위 속성을 추가했다. 3개의 열이 모두 여유공간을 나누어 가지도록 0, 1, 2 인덱스를 모두 넣어주었다.
+<p>TableLayout에 위 속성을 추가했다. 3개의 열이 모두 여유공간을 나누어 가지도록 0, 1, 2 인덱스를 모두 넣어주었다.</p>
 
-![2](/images/android/8/2.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/8/2.jpg" alt="2" width="30%" height="30%" /></p>
 
-3개의 버튼이 여유공간을 나누어 채운 것이 보인다.
+<p>3개의 버튼이 여유공간을 나누어 채운 것이 보인다.</p>
 
-비슷하게 shirinkColumns 속성은 컨테이너를 벗어나는 뷰를 강제로 축소시켜 컨테이너에 맞출 수 있도록 해준다.
+<p>비슷하게 shirinkColumns 속성은 컨테이너를 벗어나는 뷰를 강제로 축소시켜 컨테이너에 맞출 수 있도록 해준다.</p>
 
-추가적인 속성을 확인하기 위해 다음 코드를 보자.
+<p>추가적인 속성을 확인하기 위해 다음 코드를 보자.</p>
 
-~~~xml
-<?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="0,1,2">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;TableLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:stretchColumns=</span><span class="s">"0,1,2"</span><span class="nt">&gt;</span>
 
-    <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이름 : "/>
+    <span class="nt">&lt;TableRow&gt;</span>
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"이름 : "</span><span class="nt">/&gt;</span>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_span="3"/>
-    </TableRow>
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_span=</span><span class="s">"3"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/TableRow&gt;</span>
 
-    <TableRow>
+    <span class="nt">&lt;TableRow&gt;</span>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="아니오"
-            android:layout_column="2"/>
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"아니오"</span>
+            <span class="na">android:layout_column=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="예" />
-    </TableRow>
-</TableLayout>
-~~~
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"예"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/TableRow&gt;</span>
+<span class="nt">&lt;/TableLayout&gt;</span>
+</code></pre></div></div>
 
-layout_span은 뷰가 몇 개의 열을 차지할 것인지 설정할 수 있는 속성이다. 첫 번째 행의 입력상자가 총 3개의 열얼 차지하도록 하였다.
+<p>layout_span은 뷰가 몇 개의 열을 차지할 것인지 설정할 수 있는 속성이다. 첫 번째 행의 입력상자가 총 3개의 열얼 차지하도록 하였다.</p>
 
-그리고 layout_column은 뷰의 열 인덱스를 지정한다. 두 번째 행의 첫 번째 버튼은 layout_column 속성의 값이 2이므로 다음 열의 인덱스는 3이 된다. 즉, 0,1 인덱스의 위치에는 아무런 뷰도 없는 것이다.
+<p>그리고 layout_column은 뷰의 열 인덱스를 지정한다. 두 번째 행의 첫 번째 버튼은 layout_column 속성의 값이 2이므로 다음 열의 인덱스는 3이 된다. 즉, 0,1 인덱스의 위치에는 아무런 뷰도 없는 것이다.</p>
 
-화면을 실행하면 다음과 같이 된다.
+<p>화면을 실행하면 다음과 같이 된다.</p>
 
-![3](/images/android/8/3.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/8/3.jpg" alt="3" width="30%" height="30%" /></p>
+
   </div>
   
   <div class="post">
@@ -11159,46 +11136,46 @@ layout_span은 뷰가 몇 개의 열을 차지할 것인지 설정할 수 있는
 
     <span class="post-date">28 Apr 2019</span>
 
-    &nbsp;
-상대 레이아웃은 부모 컨테이너, 그리고 뷰 사이의 상대적 위치관계를 정의하여 화면을 배치하는 레이아웃이다.
+    <p> 
+상대 레이아웃은 부모 컨테이너, 그리고 뷰 사이의 상대적 위치관계를 정의하여 화면을 배치하는 레이아웃이다.</p>
 
-~~~ xml
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;RelativeLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
     
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Button1"
-        android:layout_below="@+id/button3"
-        android:layout_above="@+id/button2"
-        />
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:text=</span><span class="s">"Button1"</span>
+        <span class="na">android:layout_below=</span><span class="s">"@+id/button3"</span>
+        <span class="na">android:layout_above=</span><span class="s">"@+id/button2"</span>
+        <span class="nt">/&gt;</span>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button2"
-        android:layout_alignParentBottom="true"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"Button2"</span>
+        <span class="na">android:layout_alignParentBottom=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button3"/>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button3"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"Button3"</span><span class="nt">/&gt;</span>
 
-</RelativeLayout>
-~~~
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</code></pre></div></div>
 
-layout_width와 layout_height 속성이 모두 match_parent인 button1은 layout_below 속성과 layout_above 속성값으로 각각 button3과 button2의 id를 넣어주어 두 버튼의 사이에 위치하게 된다. 다만, 뷰를 만들면 default로 화면의 윗쪽에 자리잡으므로 button2는 layout_alignParentBottom 속성의 값을 true로 해주어 부모 컨테이너의 아랫쪽에 붙여야 한다.
+<p>layout_width와 layout_height 속성이 모두 match_parent인 button1은 layout_below 속성과 layout_above 속성값으로 각각 button3과 button2의 id를 넣어주어 두 버튼의 사이에 위치하게 된다. 다만, 뷰를 만들면 default로 화면의 윗쪽에 자리잡으므로 button2는 layout_alignParentBottom 속성의 값을 true로 해주어 부모 컨테이너의 아랫쪽에 붙여야 한다.</p>
 
-앱의 화면은 아래와 같이 나타난다.
+<p>앱의 화면은 아래와 같이 나타난다.</p>
 
-![1](/images/android/7/1.jpg){: width="30%" height="30%"}
+<p><img src="/images/android/7/1.jpg" alt="1" width="30%" height="30%" /></p>
+
   </div>
   
 </div>

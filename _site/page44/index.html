@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="/public/css/custom.css">
   <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
@@ -28,31 +29,6 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139886519-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139886519-1');
-</script>
-
-<!-- Google Adsense Snippet -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5624366650986464",
-          enable_page_level_ads: true
-     });
-</script>
-
-<meta name="naver-site-verification" content="24f1d5dd572ee356a09fdae617e1bbed13ebc0ce"/>
-
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/axios.min.js"></script>
-</head>
 
 
   <body>
@@ -10706,177 +10682,178 @@
 
     <span class="post-date">10 Aug 2018</span>
 
-    신경망 알고리즘은 비선형적인 문제를 다루기에 매우 적합하다. Regression 모델은 feature의 갯수가 늘어나면서 복잡도가 높아질수록 힘을 잃는다. 가령 3차항을 포함하는 수식을 만들려고하는데 feature가 100개라면 모델의 항은 대략 17만개정도가 나온다. 특히 컴퓨터 비전처리같은 경우 10000개의 pixel로 된 이미지를 분류한다하면 몇백만, 몇천만개의 term까지 늘어나버린다. 더 이상 regression으로 해결할 수 있는 문제가 아니다.
+    <p>신경망 알고리즘은 비선형적인 문제를 다루기에 매우 적합하다. Regression 모델은 feature의 갯수가 늘어나면서 복잡도가 높아질수록 힘을 잃는다. 가령 3차항을 포함하는 수식을 만들려고하는데 feature가 100개라면 모델의 항은 대략 17만개정도가 나온다. 특히 컴퓨터 비전처리같은 경우 10000개의 pixel로 된 이미지를 분류한다하면 몇백만, 몇천만개의 term까지 늘어나버린다. 더 이상 regression으로 해결할 수 있는 문제가 아니다.</p>
 
-요약하자면 <span style="color: #ff0000;"><b>feature의 갯수가 많고 nonlinear한 경우 regression으로 문제를 해결하는데에는 한계가 있다.</b></span> 그리고 많은 머신러닝 문제들에서 feature의 갯수는 아주 많다.
+<p>요약하자면 <span style="color: #ff0000;"><b>feature의 갯수가 많고 nonlinear한 경우 regression으로 문제를 해결하는데에는 한계가 있다.</b></span> 그리고 많은 머신러닝 문제들에서 feature의 갯수는 아주 많다.</p>
 
-지금부터 이야기할 <span style="color: #ff0000; font-size: 14pt;"><b>인공 신경망</b></span>은 인공 신경망은 복잡하고 nonlinear한 문제를 다루기에 적합하다.
+<p>지금부터 이야기할 <span style="color: #ff0000; font-size: 14pt;"><b>인공 신경망</b></span>은 인공 신경망은 복잡하고 nonlinear한 문제를 다루기에 적합하다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 1. 신경세포의 모방
+<h1 id="1-신경세포의-모방">1. 신경세포의 모방</h1>
 
-* * *
+<hr />
 
-신경망 알고리즘은 동물의 뇌가 학습하는 과정의 아주 제한적인 부분을 그대로 모방하려 한 것이 그 시작이다.
+<p>신경망 알고리즘은 동물의 뇌가 학습하는 과정의 아주 제한적인 부분을 그대로 모방하려 한 것이 그 시작이다.</p>
 
-일단 동물의 신경세포 하나가 신호를 처리하는 과정을 간단히 보자. 수상돌기로 전기적인 신호(입력)이 들어오면 뉴런이 학습한 알고리즘에 따라 신호를 처리하여 축색돌기로 전기적인신호(출력)을 낸다. 이런 뉴런들이 아주 많이 모여서 집합을 이루는 것이 신경망이다.
+<p>일단 동물의 신경세포 하나가 신호를 처리하는 과정을 간단히 보자. 수상돌기로 전기적인 신호(입력)이 들어오면 뉴런이 학습한 알고리즘에 따라 신호를 처리하여 축색돌기로 전기적인신호(출력)을 낸다. 이런 뉴런들이 아주 많이 모여서 집합을 이루는 것이 신경망이다.</p>
 
-<img class="aligncenter  wp-image-382" src="/images/2018/08/KakaoTalk_20180722_194509991.png" alt="" width="462" height="236" srcset="/images/2018/08/KakaoTalk_20180722_194509991.png 900w, /images/2018/08/KakaoTalk_20180722_194509991-300x153.png 300w, /images/2018/08/KakaoTalk_20180722_194509991-768x392.png 768w" sizes="(max-width: 462px) 100vw, 462px" /> 
+<p><img class="aligncenter  wp-image-382" src="/images/2018/08/KakaoTalk_20180722_194509991.png" alt="" width="462" height="236" srcset="/images/2018/08/KakaoTalk_20180722_194509991.png 900w, /images/2018/08/KakaoTalk_20180722_194509991-300x153.png 300w, /images/2018/08/KakaoTalk_20180722_194509991-768x392.png 768w" sizes="(max-width: 462px) 100vw, 462px" /></p>
 
-<img class="aligncenter  wp-image-383" src="/images/2018/08/KakaoTalk_20180722_194509991-1.png" alt="" width="615" height="314" srcset="/images/2018/08/KakaoTalk_20180722_194509991-1.png 900w, /images/2018/08/KakaoTalk_20180722_194509991-1-300x153.png 300w, /images/2018/08/KakaoTalk_20180722_194509991-1-768x392.png 768w" sizes="(max-width: 615px) 100vw, 615px" /> 
+<p><img class="aligncenter  wp-image-383" src="/images/2018/08/KakaoTalk_20180722_194509991-1.png" alt="" width="615" height="314" srcset="/images/2018/08/KakaoTalk_20180722_194509991-1.png 900w, /images/2018/08/KakaoTalk_20180722_194509991-1-300x153.png 300w, /images/2018/08/KakaoTalk_20180722_194509991-1-768x392.png 768w" sizes="(max-width: 615px) 100vw, 615px" /></p>
 
-우리가 구현할 인공 신경망에서는 <span style="color: #ff0000;"><b>feature들이 입력</b></span>으로 들어와 중간단계를 거치고 마지막으로 계산되어서 나오는 <span style="color: #ff0000;"><b>hypothesis function의 결과값이 출력</b></span>이 된다. 그리고 인공신경망의 중간에 추가적인 몇겹의 층(layer)이 더 있고 몇 층을 더 사용할지는 우리가 결정할 일이다.
+<p>우리가 구현할 인공 신경망에서는 <span style="color: #ff0000;"><b>feature들이 입력</b></span>으로 들어와 중간단계를 거치고 마지막으로 계산되어서 나오는 <span style="color: #ff0000;"><b>hypothesis function의 결과값이 출력</b></span>이 된다. 그리고 인공신경망의 중간에 추가적인 몇겹의 층(layer)이 더 있고 몇 층을 더 사용할지는 우리가 결정할 일이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 2. 퍼셉트론(perceptron)
+<h1 id="2-퍼셉트론perceptron">2. 퍼셉트론(perceptron)</h1>
 
-* * *
+<hr />
 
-신경망의 시작은 <span style="color: #ff0000;"><b>perceptron(퍼셉트론)</b></span>이다. perceptron은 하나의 신경 세포라고 보면 된다. 아주 많은 신경 세포가 군집을 이룬 것이 신경망 이다. perceptron이 어떻게 동작하는지 알면 인공신경망의 동작도 이해할 수 있다. 수식적인 복잡성만 더해질 뿐이다. perceptron의 동작은 하나의 간단한 알고리즘을 따른다.
+<p>신경망의 시작은 <span style="color: #ff0000;"><b>perceptron(퍼셉트론)</b></span>이다. perceptron은 하나의 신경 세포라고 보면 된다. 아주 많은 신경 세포가 군집을 이룬 것이 신경망 이다. perceptron이 어떻게 동작하는지 알면 인공신경망의 동작도 이해할 수 있다. 수식적인 복잡성만 더해질 뿐이다. perceptron의 동작은 하나의 간단한 알고리즘을 따른다.</p>
 
-<img class="aligncenter  wp-image-384" src="/images/2018/08/no-name-27.png" alt="" width="385" height="245" srcset="/images/2018/08/no-name-27.png 695w, /images/2018/08/no-name-27-300x191.png 300w" sizes="(max-width: 385px) 100vw, 385px" /> 
+<p><img class="aligncenter  wp-image-384" src="/images/2018/08/no-name-27.png" alt="" width="385" height="245" srcset="/images/2018/08/no-name-27.png 695w, /images/2018/08/no-name-27-300x191.png 300w" sizes="(max-width: 385px) 100vw, 385px" /></p>
 
-각각의 입력이 가중치에 의해 곱해져서 나온 값을 다 더한다. 그리고 거기에 어떠한 bias term(DC term)이 더해진다. 그리고 이 sum값이 perceptron에 들어가면 activation function에 의해 활성화된 최종값이 나오게 된다. 이 activation function은 sigmoid function이다. 이러한 activation function은 결과값의 범위를 제한하여 수식적 편의성을 제공한다. 하지만 하나의 간단한 perceptron 알고리즘으로 해결할 수 있는 문제는 너무 제한적이다. 따라서 더 복잡한 알고리즘을 구현하기 위해 perceptron들을 여러 층 쌓은 Multi Layer Perceptron Model이 나왔고 이것이 현재의 신경망 모델이다.
+<p>각각의 입력이 가중치에 의해 곱해져서 나온 값을 다 더한다. 그리고 거기에 어떠한 bias term(DC term)이 더해진다. 그리고 이 sum값이 perceptron에 들어가면 activation function에 의해 활성화된 최종값이 나오게 된다. 이 activation function은 sigmoid function이다. 이러한 activation function은 결과값의 범위를 제한하여 수식적 편의성을 제공한다. 하지만 하나의 간단한 perceptron 알고리즘으로 해결할 수 있는 문제는 너무 제한적이다. 따라서 더 복잡한 알고리즘을 구현하기 위해 perceptron들을 여러 층 쌓은 Multi Layer Perceptron Model이 나왔고 이것이 현재의 신경망 모델이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. 신경망 모델
+<h1 id="3-신경망-모델">3. 신경망 모델</h1>
 
-* * *
+<hr />
 
-<img src="https://latex.codecogs.com/gif.latex?x\rightarrow&space;[\quad&space;]\rightarrow&space;{&space;h&space;}_{&space;\theta&space;}(x)" alt="x\rightarrow [\quad ]\rightarrow { h }_{ \theta }(x)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?x\rightarrow&space;[\quad&space;]\rightarrow&space;{&space;h&space;}_{&space;\theta&space;}(x)" alt="x\rightarrow [\quad ]\rightarrow { h }_{ \theta }(x)" align="absmiddle" /></p>
 
-위 수식이 무엇을 의미하는가? 머신러닝 알고리즘은 결국에는 input x에 대한 출력 <img src="https://latex.codecogs.com/gif.latex?h_{\theta}(x)" alt="h_{\theta}(x)" align="absmiddle" /> 를 얻어내는 것이다. linear regression이든, classification이든 각자만의 알고리즘에 의해 input x에 대한<img src="https://latex.codecogs.com/gif.latex?h_{\theta}(x)" alt="h_{\theta}(x)" align="absmiddle" /> 를 구해냈다. neural network도 마찬가지다. 먼저 modeling을 하기 전 neural network를 직관적으로 표현하는 그림을 보자.
+<p>위 수식이 무엇을 의미하는가? 머신러닝 알고리즘은 결국에는 input x에 대한 출력 <img src="https://latex.codecogs.com/gif.latex?h_{\theta}(x)" alt="h_{\theta}(x)" align="absmiddle" /> 를 얻어내는 것이다. linear regression이든, classification이든 각자만의 알고리즘에 의해 input x에 대한<img src="https://latex.codecogs.com/gif.latex?h_{\theta}(x)" alt="h_{\theta}(x)" align="absmiddle" /> 를 구해냈다. neural network도 마찬가지다. 먼저 modeling을 하기 전 neural network를 직관적으로 표현하는 그림을 보자.</p>
 
-<img class="aligncenter  wp-image-385" src="/images/2018/08/no-name-28.png" alt="" width="334" height="242" srcset="/images/2018/08/no-name-28.png 734w, /images/2018/08/no-name-28-300x218.png 300w" sizes="(max-width: 334px) 100vw, 334px" /> 
+<p><img class="aligncenter  wp-image-385" src="/images/2018/08/no-name-28.png" alt="" width="334" height="242" srcset="/images/2018/08/no-name-28.png 734w, /images/2018/08/no-name-28-300x218.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></p>
 
-퍼셉트론이 여러층을 쌓은 것일 뿐이다. 이 때에는 하나의 layer를 하나의 vector로 보고 node와 node사이의 계산과정에 필요한 parameter들은 하나의 matrix(행렬)로 묶어서 다루면 된다.
+<p>퍼셉트론이 여러층을 쌓은 것일 뿐이다. 이 때에는 하나의 layer를 하나의 vector로 보고 node와 node사이의 계산과정에 필요한 parameter들은 하나의 matrix(행렬)로 묶어서 다루면 된다.</p>
 
-한 layer에서 다음 layer의 node가 가지는 값들이 계산되는 과정은 다음과 같다.
+<p>한 layer에서 다음 layer의 node가 가지는 값들이 계산되는 과정은 다음과 같다.</p>
 
-&nbsp;
+<p> </p>
 
-**⇒**  <span style="color: #ff0000; font-size: 14pt;"><strong>1. </strong><strong>p</strong><strong>arameter matrix를 곱해준다.</strong></span>
+<p><strong>⇒</strong>  <span style="color: #ff0000; font-size: 14pt;"><strong>1. </strong><strong>p</strong><strong>arameter matrix를 곱해준다.</strong></span></p>
 
-<span style="color: #ff0000; font-size: 14pt;"><strong>      2. sigmoid함수를 씌운다.</strong></span>
+<p><span style="color: #ff0000; font-size: 14pt;"><strong>      2. sigmoid함수를 씌운다.</strong></span></p>
 
-&nbsp;
+<p> </p>
 
-무슨말이냐? 아래의 예시를 보면서 설명하겠다.
+<p>무슨말이냐? 아래의 예시를 보면서 설명하겠다.</p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?\begin{bmatrix}&space;{&space;x&space;}_{&space;0&space;}\\&space;{&space;x&space;}_{&space;1&space;}\\&space;{&space;x&space;}_{&space;2&space;}\\&space;{&space;x&space;}_{&space;3&space;}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;{&space;a&space;}_{&space;0&space;}\\&space;{&space;a&space;}_{&space;1&space;}\\&space;{&space;a&space;}_{&space;2&space;}&space;\end{bmatrix}&space;\rightarrow&space;{&space;h&space;}_{&space;\theta&space;}(x)" alt="\begin{bmatrix} { x }_{ 0 }\\ { x }_{ 1 }\\ { x }_{ 2 }\\ { x }_{ 3 } \end{bmatrix} \rightarrow \begin{bmatrix} { a }_{ 0 }\\ { a }_{ 1 }\\ { a }_{ 2 } \end{bmatrix} \rightarrow { h }_{ \theta }(x)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\begin{bmatrix}&space;{&space;x&space;}_{&space;0&space;}\\&space;{&space;x&space;}_{&space;1&space;}\\&space;{&space;x&space;}_{&space;2&space;}\\&space;{&space;x&space;}_{&space;3&space;}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;{&space;a&space;}_{&space;0&space;}\\&space;{&space;a&space;}_{&space;1&space;}\\&space;{&space;a&space;}_{&space;2&space;}&space;\end{bmatrix}&space;\rightarrow&space;{&space;h&space;}_{&space;\theta&space;}(x)" alt="\begin{bmatrix} { x }_{ 0 }\\ { x }_{ 1 }\\ { x }_{ 2 }\\ { x }_{ 3 } \end{bmatrix} \rightarrow \begin{bmatrix} { a }_{ 0 }\\ { a }_{ 1 }\\ { a }_{ 2 } \end{bmatrix} \rightarrow { h }_{ \theta }(x)" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-먼저 x로 구성된 입력 부분을<span style="color: #ff0000;"> <b>input layer</b></span>라고 하고 마지막의 결과 부분을 **<span style="color: #ff0000;">output</span> <span style="color: #ff0000;">layer</span>**라고 한다. 그리고 중간에 있는 층을 **<span style="color: #ff0000;">hidden</span> <span style="color: #ff0000;">layer</span>**라고 한다. hidden layer라고 부르는 이유는 간단하다. 우리가 결국 보는것은 어떤 알고리즘에 집어넣는 &#8216;입력&#8217;과 나오는 &#8216;출력&#8217; 뿐이기 때문이다. 따라서 중간에 있는 층은 숨어있다고 해서 hidden layer라고 부르는 것이다. 이 hidden layer는 2개이상이 될 수도 있다. 이 예시에서는 hidden layer가 한 층이다. 또한 각 layer의 요소 하나하나를 <span style="color: #ff0000;"><b>unit</b></span>혹은 <span style="color: #ff0000;"><b>node</b></span>라고 부른다.
+<p>먼저 x로 구성된 입력 부분을<span style="color: #ff0000;"> <b>input layer</b></span>라고 하고 마지막의 결과 부분을 <strong><span style="color: #ff0000;">output</span> <span style="color: #ff0000;">layer</span></strong>라고 한다. 그리고 중간에 있는 층을 <strong><span style="color: #ff0000;">hidden</span> <span style="color: #ff0000;">layer</span></strong>라고 한다. hidden layer라고 부르는 이유는 간단하다. 우리가 결국 보는것은 어떤 알고리즘에 집어넣는 ‘입력’과 나오는 ‘출력’ 뿐이기 때문이다. 따라서 중간에 있는 층은 숨어있다고 해서 hidden layer라고 부르는 것이다. 이 hidden layer는 2개이상이 될 수도 있다. 이 예시에서는 hidden layer가 한 층이다. 또한 각 layer의 요소 하나하나를 <span style="color: #ff0000;"><b>unit</b></span>혹은 <span style="color: #ff0000;"><b>node</b></span>라고 부른다.</p>
 
-**<span style="color: #ff0000;">모든 layer는 다음 layer로 전파되기 이전에 첫 번째 node로 항상 1을 추가한다</span>**. 이는 가중치 matrix가 w0를 가지기 때문에 행렬의 곱셈을 위한 dimension을 맞추기 위함이다.
+<p><strong><span style="color: #ff0000;">모든 layer는 다음 layer로 전파되기 이전에 첫 번째 node로 항상 1을 추가한다</span></strong>. 이는 가중치 matrix가 w0를 가지기 때문에 행렬의 곱셈을 위한 dimension을 맞추기 위함이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?g(\begin{bmatrix}&space;\Theta_{10}^{(1)}&space;&\Theta_{11}^{(1)}&space;&\Theta_{12}^{(1)}&space;&&space;\Theta_{13}^{(1)}\\&space;\Theta_{20}^{(1)}&space;&\Theta_{21}^{(1)}&space;&\Theta_{22}^{(1)}&space;&&space;\Theta_{23}^{(1)}&space;\end{bmatrix}&space;\begin{bmatrix}&space;x_{0}&space;\\&space;x_{1}&space;\\&space;x_{2}&space;\\&space;x_{3}&space;\end{bmatrix})&space;=&space;\begin{bmatrix}&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix}\rightarrow&space;\begin{bmatrix}&space;a_{0}&space;\\&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix}&space;\\&space;sigmoid&space;function&space;:&space;g(z)&space;=&space;\frac{1}{1+e^{-z}}" alt="g(\begin{bmatrix} \Theta_{10}^{(1)} &\Theta_{11}^{(1)} &\Theta_{12}^{(1)} & \Theta_{13}^{(1)}\\ \Theta_{20}^{(1)} &\Theta_{21}^{(1)} &\Theta_{22}^{(1)} & \Theta_{23}^{(1)} \end{bmatrix} \begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ x_{3} \end{bmatrix}) = \begin{bmatrix} a_{1} \\ a_{2} \end{bmatrix}\rightarrow \begin{bmatrix} a_{0} \\ a_{1} \\ a_{2} \end{bmatrix} \\ sigmoid function : g(z) = \frac{1}{1+e^{-z}}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?g(\begin{bmatrix}&space;\Theta_{10}^{(1)}&space;&amp;\Theta_{11}^{(1)}&space;&amp;\Theta_{12}^{(1)}&space;&amp;&space;\Theta_{13}^{(1)}\\&space;\Theta_{20}^{(1)}&space;&amp;\Theta_{21}^{(1)}&space;&amp;\Theta_{22}^{(1)}&space;&amp;&space;\Theta_{23}^{(1)}&space;\end{bmatrix}&space;\begin{bmatrix}&space;x_{0}&space;\\&space;x_{1}&space;\\&space;x_{2}&space;\\&space;x_{3}&space;\end{bmatrix})&space;=&space;\begin{bmatrix}&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix}\rightarrow&space;\begin{bmatrix}&space;a_{0}&space;\\&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix}&space;\\&space;sigmoid&space;function&space;:&space;g(z)&space;=&space;\frac{1}{1+e^{-z}}" alt="g(\begin{bmatrix} \Theta_{10}^{(1)} &amp;\Theta_{11}^{(1)} &amp;\Theta_{12}^{(1)} &amp; \Theta_{13}^{(1)}\\ \Theta_{20}^{(1)} &amp;\Theta_{21}^{(1)} &amp;\Theta_{22}^{(1)} &amp; \Theta_{23}^{(1)} \end{bmatrix} \begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ x_{3} \end{bmatrix}) = \begin{bmatrix} a_{1} \\ a_{2} \end{bmatrix}\rightarrow \begin{bmatrix} a_{0} \\ a_{1} \\ a_{2} \end{bmatrix} \\ sigmoid function : g(z) = \frac{1}{1+e^{-z}}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-<span style="color: #ff0000;"><b>1. 이전 layer에 parameter matrix를 곱한다.</b></span>
+<p><span style="color: #ff0000;"><b>1. 이전 layer에 parameter matrix를 곱한다.</b></span></p>
 
-<span style="color: #ff0000;"><b>   </b></span>
+<p><span style="color: #ff0000;"><b>   </b></span></p>
 
-<span style="color: #ff0000;"><b>2. activation function을 씌운다.</b></span>
+<p><span style="color: #ff0000;"><b>2. activation function을 씌운다.</b></span></p>
 
-&nbsp;
+<p> </p>
 
-<span style="color: #ff0000;"><b>3. output layer가 아니면 a0 ==1 을 추가한 이후 다음 layer로 전파</b></span>
+<p><span style="color: #ff0000;"><b>3. output layer가 아니면 a0 ==1 을 추가한 이후 다음 layer로 전파</b></span></p>
 
-&nbsp;
+<p> </p>
 
-다음 layer로 전파되기에 앞서 추가되는 1의 값을 가지는 node를 <span style="color: #ff0000;"><strong>bias unit</strong></span> 이라고 부른다고 했다. 이것이 θ0와 곱해져 일종의 DC성분을 만들어낸다. 가령 집값 예측 모델의 경우 feature에 추가된 1은 θ0와 곱해져 DC성분을 만들어내며 집값에 항상 일정한 최소값을 부여한다. 일단 집이라고 하면 기본적으로 θ0만큼의 가격에서 시작하여 각 feature들에 따라 변한다고 해석할 수 있는것이다.
+<p>다음 layer로 전파되기에 앞서 추가되는 1의 값을 가지는 node를 <span style="color: #ff0000;"><strong>bias unit</strong></span> 이라고 부른다고 했다. 이것이 θ0와 곱해져 일종의 DC성분을 만들어낸다. 가령 집값 예측 모델의 경우 feature에 추가된 1은 θ0와 곱해져 DC성분을 만들어내며 집값에 항상 일정한 최소값을 부여한다. 일단 집이라고 하면 기본적으로 θ0만큼의 가격에서 시작하여 각 feature들에 따라 변한다고 해석할 수 있는것이다.</p>
 
-위의 과정을 간단히 나타내면 다음과 같이 된다.
+<p>위의 과정을 간단히 나타내면 다음과 같이 된다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?g({&space;\Theta&space;}^{&space;(j)&space;}\cdot&space;{&space;a&space;}^{&space;(j)&space;})={&space;a&space;}^{&space;(j+1)&space;}" alt="g({ \Theta }^{ (j) }\cdot { a }^{ (j) })={ a }^{ (j+1) }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?g({&space;\Theta&space;}^{&space;(j)&space;}\cdot&space;{&space;a&space;}^{&space;(j)&space;})={&space;a&space;}^{&space;(j+1)&space;}" alt="g({ \Theta }^{ (j) }\cdot { a }^{ (j) })={ a }^{ (j+1) }" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-※ parameter matrix의 행/열의 수는 다음의 규칙을 기억하면 알기 쉽다.
+<p>※ parameter matrix의 행/열의 수는 다음의 규칙을 기억하면 알기 쉽다.</p>
 
-지금의 layer의 unit수가 j이고 다음 layer의 unit수가 k라면(j, k 모두 DC성분인 index 0항을 빼고 계산한 것이다.) **k × (j+1)** 행렬이 된다. j에 +1이 더해지는 것은 bias unit이 추가되었기 때문이다.
+<p>지금의 layer의 unit수가 j이고 다음 layer의 unit수가 k라면(j, k 모두 DC성분인 index 0항을 빼고 계산한 것이다.) <strong>k × (j+1)</strong> 행렬이 된다. j에 +1이 더해지는 것은 bias unit이 추가되었기 때문이다.</p>
 
-&nbsp;
+<p> </p>
 
-output layer로 전파되는 경우에도
+<p>output layer로 전파되는 경우에도</p>
 
-<img src="https://latex.codecogs.com/gif.latex?g(\begin{bmatrix}&space;\Theta_{10}^{(2)}&space;&\Theta_{11}^{(2)}&space;&\Theta_{12}^{(2)}&space;\end{bmatrix}&space;\begin{bmatrix}&space;a_{0}&space;\\&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix})=&space;h_{\Theta}(x)" alt="g(\begin{bmatrix} \Theta_{10}^{(2)} &\Theta_{11}^{(2)} &\Theta_{12}^{(2)} \end{bmatrix} \begin{bmatrix} a_{0} \\ a_{1} \\ a_{2} \end{bmatrix})= h_{\Theta}(x)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?g(\begin{bmatrix}&space;\Theta_{10}^{(2)}&space;&amp;\Theta_{11}^{(2)}&space;&amp;\Theta_{12}^{(2)}&space;\end{bmatrix}&space;\begin{bmatrix}&space;a_{0}&space;\\&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix})=&space;h_{\Theta}(x)" alt="g(\begin{bmatrix} \Theta_{10}^{(2)} &amp;\Theta_{11}^{(2)} &amp;\Theta_{12}^{(2)} \end{bmatrix} \begin{bmatrix} a_{0} \\ a_{1} \\ a_{2} \end{bmatrix})= h_{\Theta}(x)" align="absmiddle" /></p>
 
-여기에서는 output의 갯수(k)가 1이고 곱해지는 hidden layer의 성분의 수가 3(j)+1개 이기 때문에 1×4 행렬이 된다. 이렇게 해서 최종적으로 output이 나오는 것이다.
+<p>여기에서는 output의 갯수(k)가 1이고 곱해지는 hidden layer의 성분의 수가 3(j)+1개 이기 때문에 1×4 행렬이 된다. 이렇게 해서 최종적으로 output이 나오는 것이다.</p>
 
-위의 수식들을 그림으로 나타내면 다음과 같다.
+<p>위의 수식들을 그림으로 나타내면 다음과 같다.</p>
 
-<img class="aligncenter  wp-image-386" src="/images/2018/08/no-name-29.png" alt="" width="517" height="394" srcset="/images/2018/08/no-name-29.png 679w, /images/2018/08/no-name-29-300x228.png 300w, /images/2018/08/no-name-29-80x60.png 80w" sizes="(max-width: 517px) 100vw, 517px" /> 
+<p><img class="aligncenter  wp-image-386" src="/images/2018/08/no-name-29.png" alt="" width="517" height="394" srcset="/images/2018/08/no-name-29.png 679w, /images/2018/08/no-name-29-300x228.png 300w, /images/2018/08/no-name-29-80x60.png 80w" sizes="(max-width: 517px) 100vw, 517px" /></p>
 
-hidden layer의 갯수가 2층 이상인 경우는 이 과정의 반복일 뿐이다.
+<p>hidden layer의 갯수가 2층 이상인 경우는 이 과정의 반복일 뿐이다.</p>
 
-이는 동물 뇌신경이 정보를 전다하는 과정과 흡사하다. node와 node를 잊는 wire는 neuron과 neuron 사이의 신경섬유에 해당한다.
+<p>이는 동물 뇌신경이 정보를 전다하는 과정과 흡사하다. node와 node를 잊는 wire는 neuron과 neuron 사이의 신경섬유에 해당한다.</p>
 
-사실 항상 hypothesis output의 갯수가 1개이지는 않다. multiclass classification의 경우에는 마지막 output이 class의 갯수만큼 될 것이다.
+<p>사실 항상 hypothesis output의 갯수가 1개이지는 않다. multiclass classification의 경우에는 마지막 output이 class의 갯수만큼 될 것이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?\begin{bmatrix}&space;x_{0}&space;\\&space;x_{1}&space;\\&space;x_{2}&space;\\&space;x_{3}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;a_{0}^{(2)}&space;\\&space;a_{1}^{(2)}&space;\\a_{2}^{(2)}&space;\\a_{3}^{(2)}&space;\\a_{4}^{(2)}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;a_{0}^{(3)}&space;\\&space;a_{1}^{(3)}&space;\\a_{2}^{(3)}&space;\\a_{3}^{(3)}&space;\end{bmatrix}&space;\rightarrow&space;\cdot&space;\cdot&space;\cdot&space;\rightarrow&space;\begin{bmatrix}&space;h_{\Theta}(x)_{1}&space;\\&space;h_{\Theta}(x)_{2}&space;\\&space;h_{\Theta}(x)_{3}&space;\\&space;h_{\Theta}(x)_{4}\end{bmatrix}" alt="\begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ x_{3} \end{bmatrix} \rightarrow \begin{bmatrix} a_{0}^{(2)} \\ a_{1}^{(2)} \\a_{2}^{(2)} \\a_{3}^{(2)} \\a_{4}^{(2)} \end{bmatrix} \rightarrow \begin{bmatrix} a_{0}^{(3)} \\ a_{1}^{(3)} \\a_{2}^{(3)} \\a_{3}^{(3)} \end{bmatrix} \rightarrow \cdot \cdot \cdot \rightarrow \begin{bmatrix} h_{\Theta}(x)_{1} \\ h_{\Theta}(x)_{2} \\ h_{\Theta}(x)_{3} \\ h_{\Theta}(x)_{4}\end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\begin{bmatrix}&space;x_{0}&space;\\&space;x_{1}&space;\\&space;x_{2}&space;\\&space;x_{3}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;a_{0}^{(2)}&space;\\&space;a_{1}^{(2)}&space;\\a_{2}^{(2)}&space;\\a_{3}^{(2)}&space;\\a_{4}^{(2)}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;a_{0}^{(3)}&space;\\&space;a_{1}^{(3)}&space;\\a_{2}^{(3)}&space;\\a_{3}^{(3)}&space;\end{bmatrix}&space;\rightarrow&space;\cdot&space;\cdot&space;\cdot&space;\rightarrow&space;\begin{bmatrix}&space;h_{\Theta}(x)_{1}&space;\\&space;h_{\Theta}(x)_{2}&space;\\&space;h_{\Theta}(x)_{3}&space;\\&space;h_{\Theta}(x)_{4}\end{bmatrix}" alt="\begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ x_{3} \end{bmatrix} \rightarrow \begin{bmatrix} a_{0}^{(2)} \\ a_{1}^{(2)} \\a_{2}^{(2)} \\a_{3}^{(2)} \\a_{4}^{(2)} \end{bmatrix} \rightarrow \begin{bmatrix} a_{0}^{(3)} \\ a_{1}^{(3)} \\a_{2}^{(3)} \\a_{3}^{(3)} \end{bmatrix} \rightarrow \cdot \cdot \cdot \rightarrow \begin{bmatrix} h_{\Theta}(x)_{1} \\ h_{\Theta}(x)_{2} \\ h_{\Theta}(x)_{3} \\ h_{\Theta}(x)_{4}\end{bmatrix}" align="absmiddle" /></p>
 
-위의 식처럼 말이다. 위의 hidden layer의 unit들 위에 붙어있는 (2) (3)같은 위첨자는 hidden layer가 전체 인공신경망에서 몇 번째 layer인지 구분하기 위해 넣은 것이다.
+<p>위의 식처럼 말이다. 위의 hidden layer의 unit들 위에 붙어있는 (2) (3)같은 위첨자는 hidden layer가 전체 인공신경망에서 몇 번째 layer인지 구분하기 위해 넣은 것이다.</p>
 
-또한 위의 식처럼 class가 총 4개인 경우 실제 output vector y는 다음과 같은 값들을 가질 수 있다.
+<p>또한 위의 식처럼 class가 총 4개인 경우 실제 output vector y는 다음과 같은 값들을 가질 수 있다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?y=\begin{bmatrix}&space;1\\&space;0\\&space;0\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;1\\&space;0\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;0\\&space;1\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;0\\&space;0\\&space;1&space;\end{bmatrix}" alt="y=\begin{bmatrix} 1\\ 0\\ 0\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 1\\ 0\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 1\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 0\\ 1 \end{bmatrix}" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?y=\begin{bmatrix}&space;1\\&space;0\\&space;0\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;1\\&space;0\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;0\\&space;1\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;0\\&space;0\\&space;1&space;\end{bmatrix}" alt="y=\begin{bmatrix} 1\\ 0\\ 0\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 1\\ 0\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 1\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 0\\ 1 \end{bmatrix}" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 4. 신경망 예제
+<h1 id="4-신경망-예제">4. 신경망 예제</h1>
 
-* * *
+<hr />
 
-간단한 예제를 하나 보자. 전자회로, 디지털공학에서 가장 먼저 배우는 것은 논리 gate이다. 그 중 몇개의 gate를 신경망 알고리즘으로 구현해보겠다.
+<p>간단한 예제를 하나 보자. 전자회로, 디지털공학에서 가장 먼저 배우는 것은 논리 gate이다. 그 중 몇개의 gate를 신경망 알고리즘으로 구현해보겠다.</p>
 
-<img class="aligncenter  wp-image-388" src="/images/2018/08/no-name-30.png" alt="" width="697" height="261" srcset="/images/2018/08/no-name-30.png 1298w, /images/2018/08/no-name-30-300x112.png 300w, /images/2018/08/no-name-30-768x288.png 768w, /images/2018/08/no-name-30-1024x383.png 1024w" sizes="(max-width: 697px) 100vw, 697px" /> 
+<p><img class="aligncenter  wp-image-388" src="/images/2018/08/no-name-30.png" alt="" width="697" height="261" srcset="/images/2018/08/no-name-30.png 1298w, /images/2018/08/no-name-30-300x112.png 300w, /images/2018/08/no-name-30-768x288.png 768w, /images/2018/08/no-name-30-1024x383.png 1024w" sizes="(max-width: 697px) 100vw, 697px" /></p>
 
-&nbsp;
+<p> </p>
 
-두 개의 input이 모두 1일 때에만 output이 1인 AND gate와 하나라도 1이면 output이 1인 OR gate이다. (NOT x1) AND (NOT x2) gate 는 라는 것은 x1과 x2 모두 0이어야  output이 1이 된다.
+<p>두 개의 input이 모두 1일 때에만 output이 1인 AND gate와 하나라도 1이면 output이 1인 OR gate이다. (NOT x1) AND (NOT x2) gate 는 라는 것은 x1과 x2 모두 0이어야  output이 1이 된다.</p>
 
-<img class="aligncenter  wp-image-389" src="/images/2018/08/no-name-31.png" alt="" width="379" height="302" srcset="/images/2018/08/no-name-31.png 613w, /images/2018/08/no-name-31-300x239.png 300w" sizes="(max-width: 379px) 100vw, 379px" /> 
+<p><img class="aligncenter  wp-image-389" src="/images/2018/08/no-name-31.png" alt="" width="379" height="302" srcset="/images/2018/08/no-name-31.png 613w, /images/2018/08/no-name-31-300x239.png 300w" sizes="(max-width: 379px) 100vw, 379px" /></p>
 
-XNOR gate는 어떻게 만들까? 참고로 XNOR gate는 input 두 개가 서로 같을 때에만 output이 1인 논리소자이다. 답은 이미 나와있다. 위의 세 개를 합치면 된다.
+<p>XNOR gate는 어떻게 만들까? 참고로 XNOR gate는 input 두 개가 서로 같을 때에만 output이 1인 논리소자이다. 답은 이미 나와있다. 위의 세 개를 합치면 된다.</p>
 
-<img class="aligncenter  wp-image-391" src="/images/2018/08/no-name-33.png" alt="" width="637" height="349" srcset="/images/2018/08/no-name-33.png 1203w, /images/2018/08/no-name-33-300x164.png 300w, /images/2018/08/no-name-33-768x421.png 768w, /images/2018/08/no-name-33-1024x561.png 1024w" sizes="(max-width: 637px) 100vw, 637px" /> 
+<p><img class="aligncenter  wp-image-391" src="/images/2018/08/no-name-33.png" alt="" width="637" height="349" srcset="/images/2018/08/no-name-33.png 1203w, /images/2018/08/no-name-33-300x164.png 300w, /images/2018/08/no-name-33-768x421.png 768w, /images/2018/08/no-name-33-1024x561.png 1024w" sizes="(max-width: 637px) 100vw, 637px" /></p>
 
-단지 hidden layer만 하나 추가하였을 뿐인데 XNOR gate를 아주 간단히 모델링하였다. XNOR gate를 classification으로 치면 아래 왼쪽 그림과 같다.
+<p>단지 hidden layer만 하나 추가하였을 뿐인데 XNOR gate를 아주 간단히 모델링하였다. XNOR gate를 classification으로 치면 아래 왼쪽 그림과 같다.</p>
 
-<img class="aligncenter  wp-image-392" src="/images/2018/08/no-name-34.png" alt="" width="367" height="200" srcset="/images/2018/08/no-name-34.png 748w, /images/2018/08/no-name-34-300x164.png 300w" sizes="(max-width: 367px) 100vw, 367px" /> 
+<p><img class="aligncenter  wp-image-392" src="/images/2018/08/no-name-34.png" alt="" width="367" height="200" srcset="/images/2018/08/no-name-34.png 748w, /images/2018/08/no-name-34-300x164.png 300w" sizes="(max-width: 367px) 100vw, 367px" /></p>
 
-XNOR 문제를 modeling 할 수 있다는 것은 오른쪽의 분류문제도 modeling 할 수 있다는 것이다. hidden layer를 추가하거나 node수를 늘려 nonlinearity를 키워주면 된다. <span style="color: #ff0000;"><b>신경망의 hidden layer의 수를 추가할수록 훨씬 더 복잡하고 nonlinear한 학습 알고리즘을 표현할 수 있다.</b></span>
+<p>XNOR 문제를 modeling 할 수 있다는 것은 오른쪽의 분류문제도 modeling 할 수 있다는 것이다. hidden layer를 추가하거나 node수를 늘려 nonlinearity를 키워주면 된다. <span style="color: #ff0000;"><b>신경망의 hidden layer의 수를 추가할수록 훨씬 더 복잡하고 nonlinear한 학습 알고리즘을 표현할 수 있다.</b></span></p>
 
-지금은 인공 신경망 model의 수식적인 형태가 어떻게 생겼는지와 어떤 방식으로 동작을 하는지 설명하였을 뿐이다. 신경망의 parameter 학습의 대표적인 방법은 <span style="color: #ff0000;"><b>back propagation</b></span>이라는 일종의 feedback을 이용한 방법인데 이는 다음에 설명하도록 하겠다.
+<p>지금은 인공 신경망 model의 수식적인 형태가 어떻게 생겼는지와 어떤 방식으로 동작을 하는지 설명하였을 뿐이다. 신경망의 parameter 학습의 대표적인 방법은 <span style="color: #ff0000;"><b>back propagation</b></span>이라는 일종의 feedback을 이용한 방법인데 이는 다음에 설명하도록 하겠다.</p>
+
   </div>
   
   <div class="post">
@@ -10892,13 +10869,13 @@ XNOR 문제를 modeling 할 수 있다는 것은 오른쪽의 분류문제도 mo
   <span style="text-decoration: underline; color: #0000ff; font-size: 14pt;"><strong><a style="color: #0000ff; text-decoration: underline;" href="/images/2018/08/classification-함수파일.zip">classification 함수파일</a></strong></span>
 </p>
 
-UCI machine learning repository는 양질의 다양한 dataset을 무료로 제공한다.
+<p>UCI machine learning repository는 양질의 다양한 dataset을 무료로 제공한다.</p>
 
-<span style="text-decoration: underline; color: #0000ff;"><a style="color: #0000ff; text-decoration: underline;" href="http://archive.ics.uci.edu/ml/datasets/Glass+Identification">http://archive.ics.uci.edu/ml/datasets/Glass+Identification</a></span>
+<p><span style="text-decoration: underline; color: #0000ff;"><a style="color: #0000ff; text-decoration: underline;" href="http://archive.ics.uci.edu/ml/datasets/Glass+Identification">http://archive.ics.uci.edu/ml/datasets/Glass+Identification</a></span></p>
 
-오늘 사용할 dataset은 위의 링크에서 가져왔다.
+<p>오늘 사용할 dataset은 위의 링크에서 가져왔다.</p>
 
-각각의 카테고리에 굴절률, Na함량, Mg함량, Al함량, Si함량, K함량, Ca함량, Ba함량, Fe함량의 총 9개 feature에 따라서 어떻게 분류가 되는지 조사한 것이다.
+<p>각각의 카테고리에 굴절률, Na함량, Mg함량, Al함량, Si함량, K함량, Ca함량, Ba함량, Fe함량의 총 9개 feature에 따라서 어떻게 분류가 되는지 조사한 것이다.</p>
 
 <class>
 
@@ -10965,6 +10942,8 @@ cost function을 구하는 함수이다. linear regression파트에서 이미 �
 100번째 데이터에도 똑같이 적용을 해보니 38%의 확률로 class2에 속할 확률이 가장 높았고 실제로도 class2로 분류된다. 사실 혼자 코드를 만들어서 실제 데이터와 예측 결과를 보니 214개의 데이터 중에서 154개가 맞아떨어지고 60개가 맞아떨어지지 않았다.
 
 썩 좋은 모델은 아니지만 multiclass인 경우에서 classification을 어떻게 하는지 확인한 것으로 만족해야겠다. 사실 알고리즘을 구현하면서 model의 feature도 신중하게 정해야하고 식의 차수나 형태 역시 잘 골라야한다. 그리고 overfit이 일어나는 경우라면 feature의 갯수를 줄이거나 regularization까지 해주어야한다.
+</class>
+
   </div>
   
   <div class="post">
@@ -10976,57 +10955,64 @@ cost function을 구하는 함수이다. linear regression파트에서 이미 �
 
     <span class="post-date">10 Aug 2018</span>
 
-    # 1. MultiClass Classification
+    <h1 id="1-multiclass-classification">1. MultiClass Classification</h1>
 
-* * *
+<hr />
 
-강의 #7에서는 binary classfication 에 대해서 다루었다. class0이냐, class1이냐 두 가지 case밖에 없는 경우에 대해서 다루었다. 그러나 실제로 모든 데이터가 두 가지 클래스로 분류되느냐 하면 그렇지 않다. 예를들면 날씨 예측같은 경우 &#8216;맑음 / 흐림 / 비 / 눈&#8217; 처럼 4가지 경우로 분류할 수 있다. 혹은 사진 패턴인식을 이용한 숫자 분류 같은경우 &#8216;0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9&#8217;와 같이 총 10가지 case로 분류할 수도 있다. 따라서 binary classification을 확장한 multiclass classification 알고리즘에 대해서도 생각하지 않을 수 없다.
+<p>강의 #7에서는 binary classfication 에 대해서 다루었다. class0이냐, class1이냐 두 가지 case밖에 없는 경우에 대해서 다루었다. 그러나 실제로 모든 데이터가 두 가지 클래스로 분류되느냐 하면 그렇지 않다. 예를들면 날씨 예측같은 경우 ‘맑음 / 흐림 / 비 / 눈’ 처럼 4가지 경우로 분류할 수 있다. 혹은 사진 패턴인식을 이용한 숫자 분류 같은경우 ‘0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9’와 같이 총 10가지 case로 분류할 수도 있다. 따라서 binary classification을 확장한 multiclass classification 알고리즘에 대해서도 생각하지 않을 수 없다.</p>
 
-먼저 말하고자 하는것은 multiclass classification을 하기 위해서는 우리가 binary classification에서 다룬 내용만 알고 있으면 된다. 간단한 트릭이 들어갈 뿐 전혀 새로운 내용이 없다.
+<p>먼저 말하고자 하는것은 multiclass classification을 하기 위해서는 우리가 binary classification에서 다룬 내용만 알고 있으면 된다. 간단한 트릭이 들어갈 뿐 전혀 새로운 내용이 없다.</p>
 
-binary classification에 대해 다시 한 번 짚고 넘어가자.
+<p>binary classification에 대해 다시 한 번 짚고 넘어가자.</p>
 
-&nbsp;
+<p> </p>
 
-  1. hypothesis function을 세운다. 형태는 다음과 같다.
+<ol>
+  <li>hypothesis function을 세운다. 형태는 다음과 같다.</li>
+</ol>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=\frac&space;{&space;1&space;}{&space;1+{&space;e&space;}^{&space;-\theta^{T}&space;x&space;}&space;}" alt="{ h }_{ \theta }(x)=\frac { 1 }{ 1+{ e }^{ -\theta^{T} x } }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=\frac&space;{&space;1&space;}{&space;1+{&space;e&space;}^{&space;-\theta^{T}&space;x&space;}&space;}" alt="{ h }_{ \theta }(x)=\frac { 1 }{ 1+{ e }^{ -\theta^{T} x } }" align="absmiddle" /></p>
 
-2. cost function을 계산한다. classfication의 cost function은 다음과 같다.
+<ol>
+  <li>cost function을 계산한다. classfication의 cost function은 다음과 같다.</li>
+</ol>
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;y&space;}^{&space;(i)&space;}\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)&space;}&space;+(1-{&space;y&space;}^{&space;(i)&space;})\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}" alt="J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{ (i) }\log { ({ h }_{ \theta }({ x }^{ (i) }) } ) } +(1-{ y }^{ (i) })\log { (1-{ h }_{ \theta }({ x }^{ (i) })) }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;y&space;}^{&space;(i)&space;}\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)&space;}&space;+(1-{&space;y&space;}^{&space;(i)&space;})\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}" alt="J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{ (i) }\log { ({ h }_{ \theta }({ x }^{ (i) }) } ) } +(1-{ y }^{ (i) })\log { (1-{ h }_{ \theta }({ x }^{ (i) })) }" align="absmiddle" /></p>
 
-3. training dataset을 가지고 parameter(θ)를 학습시킨다. 이 때에는 gradient descent나 octave에서 지원하는 함수를 사용할 수 있다. gradient descent를 사용할 경우 update식은 다음과 같다.
+<ol>
+  <li>training dataset을 가지고 parameter(θ)를 학습시킨다. 이 때에는 gradient descent나 octave에서 지원하는 함수를 사용할 수 있다. gradient descent를 사용할 경우 update식은 다음과 같다.</li>
+</ol>
 
-<img src="https://latex.codecogs.com/gif.latex?\theta&space;:=\theta&space;-\alpha&space;\nabla&space;J(\theta&space;)=\theta&space;-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="\theta :=\theta -\alpha \nabla J(\theta )=\theta -\frac { \alpha }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?\theta&space;:=\theta&space;-\alpha&space;\nabla&space;J(\theta&space;)=\theta&space;-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="\theta :=\theta -\alpha \nabla J(\theta )=\theta -\frac { \alpha }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-결국 위의 과정을 거치고 나면 우리가 가진 training dataset에 가장 최적화된 parameter(θ)가 구해진다. 이 model을 가지고 분류 작업을 할 수 있다.
+<p>결국 위의 과정을 거치고 나면 우리가 가진 training dataset에 가장 최적화된 parameter(θ)가 구해진다. 이 model을 가지고 분류 작업을 할 수 있다.</p>
 
-multiclass classfication은 위의 과정을 여러번 반복하면 될 뿐이다.
+<p>multiclass classfication은 위의 과정을 여러번 반복하면 될 뿐이다.</p>
 
-가령 날씨가 맑음 / 흐림 / 비 / 눈 중 한가지를 예측하는 알고리즘을 만들고 싶다.
+<p>가령 날씨가 맑음 / 흐림 / 비 / 눈 중 한가지를 예측하는 알고리즘을 만들고 싶다.</p>
 
-처음으로 맑음 = class1 , 흐림 / 비 / 눈 = class0으로 나눈다. 그리고 binary classification 학습 알고리즘을 적용하여 model(hypothesis function)을 구한다. 이 때 구한 hypothesis function을 h1\_θ(x)라 하자. 그리고 또다시 흐림 = class1, 맑음 / 비 / 눈 = class0으로 취급하여 동일한 학습을 진행한다. 이 때 구한 hypothesis function을 h2\_θ(x)라 하자. 이렇게 하면 총 4개의 model이 구해질 것이다. 결론은 이렇다.
+<p>처음으로 맑음 = class1 , 흐림 / 비 / 눈 = class0으로 나눈다. 그리고 binary classification 학습 알고리즘을 적용하여 model(hypothesis function)을 구한다. 이 때 구한 hypothesis function을 h1_θ(x)라 하자. 그리고 또다시 흐림 = class1, 맑음 / 비 / 눈 = class0으로 취급하여 동일한 학습을 진행한다. 이 때 구한 hypothesis function을 h2_θ(x)라 하자. 이렇게 하면 총 4개의 model이 구해질 것이다. 결론은 이렇다.</p>
 
-h1_θ(x) : 날씨가 맑을 확률
+<p>h1_θ(x) : 날씨가 맑을 확률</p>
 
-h2_θ(x) : 날씨가 흐릴 확률
+<p>h2_θ(x) : 날씨가 흐릴 확률</p>
 
-h3_θ(x) : 비가 올 확률
+<p>h3_θ(x) : 비가 올 확률</p>
 
-h4_θ(x) : 눈이 올 확률
+<p>h4_θ(x) : 눈이 올 확률</p>
 
-이제 어떠한 data를 넣어서 예측을 하면 h1\_θ(x) ~ h4\_θ(x) 4가지 model의 output이 나오는데, 이 중 가장 높은 값으로 분류되는 것이다.
+<p>이제 어떠한 data를 넣어서 예측을 하면 h1_θ(x) ~ h4_θ(x) 4가지 model의 output이 나오는데, 이 중 가장 높은 값으로 분류되는 것이다.</p>
 
-조금 더 일반적으로 정의해보겠다. 총 n가지 경우로 분류하는 알고리즘의 경우 regression을 총 n번 진행하여 n개의 hypothesis function을 구한다.
+<p>조금 더 일반적으로 정의해보겠다. 총 n가지 경우로 분류하는 알고리즘의 경우 regression을 총 n번 진행하여 n개의 hypothesis function을 구한다.</p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?y\in&space;\{&space;1,&space;2,&space;...,&space;n\}&space;\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(1)&space;}(x)=P(y=1|\theta&space;;x)\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(2)&space;}(x)=P(y=2|\theta&space;;x)\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(3)&space;}(x)=P(y=3|\theta&space;;x)\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(n)&space;}(x)=P(y=n|\theta&space;;x)" alt="y\in \{ 1, 2, ..., n\} \\ { h }_{ \theta }^{ (1) }(x)=P(y=1|\theta ;x)\\ { h }_{ \theta }^{ (2) }(x)=P(y=2|\theta ;x)\\ { h }_{ \theta }^{ (3) }(x)=P(y=3|\theta ;x)\\ \qquad \qquad \cdot \\ \qquad \qquad \cdot \\ \qquad \qquad \cdot \\ { h }_{ \theta }^{ (n) }(x)=P(y=n|\theta ;x)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?y\in&space;\{&space;1,&space;2,&space;...,&space;n\}&space;\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(1)&space;}(x)=P(y=1|\theta&space;;x)\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(2)&space;}(x)=P(y=2|\theta&space;;x)\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(3)&space;}(x)=P(y=3|\theta&space;;x)\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(n)&space;}(x)=P(y=n|\theta&space;;x)" alt="y\in \{ 1, 2, ..., n\} \\ { h }_{ \theta }^{ (1) }(x)=P(y=1|\theta ;x)\\ { h }_{ \theta }^{ (2) }(x)=P(y=2|\theta ;x)\\ { h }_{ \theta }^{ (3) }(x)=P(y=3|\theta ;x)\\ \qquad \qquad \cdot \\ \qquad \qquad \cdot \\ \qquad \qquad \cdot \\ { h }_{ \theta }^{ (n) }(x)=P(y=n|\theta ;x)" align="absmiddle" /></p>
 
-각각의 hypothesis function의 output이 의미하는 것은 해당 class로 분류될 &#8216;확률&#8217;이다. 이 중 가장 높은 확률을 가지는 class로 분류된다.
+<p>각각의 hypothesis function의 output이 의미하는 것은 해당 class로 분류될 ‘확률’이다. 이 중 가장 높은 확률을 가지는 class로 분류된다.</p>
+
   </div>
   
   <div class="post">
@@ -11038,37 +11024,38 @@ h4_θ(x) : 눈이 올 확률
 
     <span class="post-date">09 Aug 2018</span>
 
-    gradient descent의 식을 직접 작성하지 않아도 numerical computing분야의 전문가들이 만들어놓은 최적 parameter를 찾는 함수들이 존재한다. 오늘은 octave에서 지원하는 함수 중 하나를 소개할 것인데, function이 최소값을 가지도록 하는 parameter를 자동으로 계산해준다. 단지 라이브러리에서 가져다가 사용하면 충분하다.
+    <p>gradient descent의 식을 직접 작성하지 않아도 numerical computing분야의 전문가들이 만들어놓은 최적 parameter를 찾는 함수들이 존재한다. 오늘은 octave에서 지원하는 함수 중 하나를 소개할 것인데, function이 최소값을 가지도록 하는 parameter를 자동으로 계산해준다. 단지 라이브러리에서 가져다가 사용하면 충분하다.</p>
 
-어떠한 cost function이 다음과 같이 주어진다고 해보자.
+<p>어떠한 cost function이 다음과 같이 주어진다고 해보자.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)&space;=&space;({&space;{&space;\theta&space;}_{&space;0&space;}-1&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;1&space;}-4&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;2&space;}-6&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;3&space;}-3&space;})^{&space;2&space;}" alt="J(\theta ) = ({ { \theta }_{ 0 }-1 })^{ 2 }+({ { \theta }_{ 1 }-4 })^{ 2 }+({ { \theta }_{ 2 }-6 })^{ 2 }+({ { \theta }_{ 3 }-3 })^{ 2 }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)&space;=&space;({&space;{&space;\theta&space;}_{&space;0&space;}-1&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;1&space;}-4&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;2&space;}-6&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;3&space;}-3&space;})^{&space;2&space;}" alt="J(\theta ) = ({ { \theta }_{ 0 }-1 })^{ 2 }+({ { \theta }_{ 1 }-4 })^{ 2 }+({ { \theta }_{ 2 }-6 })^{ 2 }+({ { \theta }_{ 3 }-3 })^{ 2 }" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-위와같은 함수는 4개의 parameter가 (1,4,6,3)의 값을 가질 때 최소값을 가질것이다. 그럼 이를 octave에서 지원하는 함수를 이용하기 전에 위의 함수를 정의해야겠다.
+<p>위와같은 함수는 4개의 parameter가 (1,4,6,3)의 값을 가질 때 최소값을 가질것이다. 그럼 이를 octave에서 지원하는 함수를 이용하기 전에 위의 함수를 정의해야겠다.</p>
 
-<img class="aligncenter size-full wp-image-363" src="/images/2018/08/no-name-13.png" alt="" width="717" height="209" srcset="/images/2018/08/no-name-13.png 717w, /images/2018/08/no-name-13-300x87.png 300w" sizes="(max-width: 717px) 100vw, 717px" /> 
+<p><img class="aligncenter size-full wp-image-363" src="/images/2018/08/no-name-13.png" alt="" width="717" height="209" srcset="/images/2018/08/no-name-13.png 717w, /images/2018/08/no-name-13-300x87.png 300w" sizes="(max-width: 717px) 100vw, 717px" /></p>
 
-&nbsp;
+<p> </p>
 
-이 함수의 output은 cost function의 값과 이 함수의 gradient(미분)이다.
+<p>이 함수의 output은 cost function의 값과 이 함수의 gradient(미분)이다.</p>
 
-이제 우리가 위에서 작성한 함수의 최소값(혹은 최소값에 근접한 값)과 그 값에서의 parameter를 구하기 위해서 octave에서 지원하는 fminunc() 라는 함수를 사용할 것이다. 더 자세한 내용이 궁금하다면 octave command window에서 help fminunc 라는 명령어를 입력해보자.
+<p>이제 우리가 위에서 작성한 함수의 최소값(혹은 최소값에 근접한 값)과 그 값에서의 parameter를 구하기 위해서 octave에서 지원하는 fminunc() 라는 함수를 사용할 것이다. 더 자세한 내용이 궁금하다면 octave command window에서 help fminunc 라는 명령어를 입력해보자.</p>
 
-&nbsp;
+<p> </p>
 
-<img class="aligncenter size-full wp-image-366" src="/images/2018/08/no-name-15.png" alt="" width="693" height="243" srcset="/images/2018/08/no-name-15.png 693w, /images/2018/08/no-name-15-300x105.png 300w" sizes="(max-width: 693px) 100vw, 693px" /> 
+<p><img class="aligncenter size-full wp-image-366" src="/images/2018/08/no-name-15.png" alt="" width="693" height="243" srcset="/images/2018/08/no-name-15.png 693w, /images/2018/08/no-name-15-300x105.png 300w" sizes="(max-width: 693px) 100vw, 693px" /></p>
 
-&nbsp;
+<p> </p>
 
-위에서 options라는 변수는 우리가 fminunc라는 함수를 사용할 때의 option을 미리 setting하여 저장해둔 것이다. &#8216;GradObj&#8217;, &#8216;on&#8217; 은 함수의 gradient를 사용해 gradient descent를 쓰기 위한 설정이다. 그리고 initialTheta에 theta의 초기값으로 사용할 값을 저장해놓았다. 그리고 fminunc라는 함수를 사용해서 J_Func함수의 값을 최소로 만드는 theta를 찾는다.
+<p>위에서 options라는 변수는 우리가 fminunc라는 함수를 사용할 때의 option을 미리 setting하여 저장해둔 것이다. ‘GradObj’, ‘on’ 은 함수의 gradient를 사용해 gradient descent를 쓰기 위한 설정이다. 그리고 initialTheta에 theta의 초기값으로 사용할 값을 저장해놓았다. 그리고 fminunc라는 함수를 사용해서 J_Func함수의 값을 최소로 만드는 theta를 찾는다.</p>
 
-fminunc의 첫 번째 인자인 @(t)(J\_Func(t))는 J\_Func의 pointer로 J\_Func의 함수가 저장된 메모리공간을 참조한다. 해석을 하자면 @(t)는 t에 대하여인데 theta가 t로 치환된 것이다. 어떠한 함수를 최적화 할 때 그 함수의 variable중 어떤 값에 대하여 최적화를 하고싶은지에 따라 함수 괄호 안에서 그 variale을 t로 바꾸면 된다. 그리고 두 번째 인자는 J\_Func 함수의 theta의 초기값을 initial_theta로 가져다 쓰겠다는 말이다.
+<p>fminunc의 첫 번째 인자인 @(t)(J_Func(t))는 J_Func의 pointer로 J_Func의 함수가 저장된 메모리공간을 참조한다. 해석을 하자면 @(t)는 t에 대하여인데 theta가 t로 치환된 것이다. 어떠한 함수를 최적화 할 때 그 함수의 variable중 어떤 값에 대하여 최적화를 하고싶은지에 따라 함수 괄호 안에서 그 variale을 t로 바꾸면 된다. 그리고 두 번째 인자는 J_Func 함수의 theta의 초기값을 initial_theta로 가져다 쓰겠다는 말이다.</p>
 
-optimize function의 첫 번째 반환값은 J\_Func함수가 최소가 되게하는 theta값이고, 두 번째는 이 theta값에서의 J\_Func의 값, 즉 최소값이다.
+<p>optimize function의 첫 번째 반환값은 J_Func함수가 최소가 되게하는 theta값이고, 두 번째는 이 theta값에서의 J_Func의 값, 즉 최소값이다.</p>
 
-위의 fminunc함수가 반환한 값을 보아라. 우리가 예상한대로 theta = (1,4,6,3)이 된다. 그리고 이 때 J_Func의 값은 거의 0에 가까운 값을 가진다.
+<p>위의 fminunc함수가 반환한 값을 보아라. 우리가 예상한대로 theta = (1,4,6,3)이 된다. 그리고 이 때 J_Func의 값은 거의 0에 가까운 값을 가진다.</p>
+
   </div>
   
   <div class="post">
@@ -11080,99 +11067,100 @@ optimize function의 첫 번째 반환값은 J\_Func함수가 최소가 되게�
 
     <span class="post-date">09 Aug 2018</span>
 
-    # 1. Model의 Bias
+    <h1 id="1-model의bias">1. Model의 Bias</h1>
 
-* * *
+<hr />
 
-결론부터 말하자면 Regularization 은 model의 high variance 를 방지하기 위한 목적으로 쓰인다.
+<p>결론부터 말하자면 Regularization 은 model의 high variance 를 방지하기 위한 목적으로 쓰인다.</p>
 
-hypothesis function을 너무 단순한 형태로 만들거나 feature의 갯수가 너무 적을 때에는 model이 training dataset에서 너무 벗어나있는 underfitting문제가 일어난다. 이를 다른말로 high bias 되었다고 한다.
+<p>hypothesis function을 너무 단순한 형태로 만들거나 feature의 갯수가 너무 적을 때에는 model이 training dataset에서 너무 벗어나있는 underfitting문제가 일어난다. 이를 다른말로 high bias 되었다고 한다.</p>
 
-이와는 반대로 hypothesis function을 모든 training data 하나하나에 억지스럽게 맞추려고 과하게 많은 feature를 사용한다면 overfit되어서 training data에는 엄청나게 잘 맞아떨어지지만 오히려 새로운 data의 output을 잘 예측하지 못하게 된다. 즉, 일반화(generalization)되지 못하여 예측 알고리즘의 질이 엄청나게 떨어지게 된다. 이런 경우를 high variance(과하게 변동적임) 되었다고 한다.
+<p>이와는 반대로 hypothesis function을 모든 training data 하나하나에 억지스럽게 맞추려고 과하게 많은 feature를 사용한다면 overfit되어서 training data에는 엄청나게 잘 맞아떨어지지만 오히려 새로운 data의 output을 잘 예측하지 못하게 된다. 즉, 일반화(generalization)되지 못하여 예측 알고리즘의 질이 엄청나게 떨어지게 된다. 이런 경우를 high variance(과하게 변동적임) 되었다고 한다.</p>
 
-<img class="aligncenter wp-image-358" src="/images/2018/08/no-name-11.png" alt="" width="548" height="216" srcset="/images/2018/08/no-name-11.png 1095w, /images/2018/08/no-name-11-300x118.png 300w, /images/2018/08/no-name-11-768x302.png 768w, /images/2018/08/no-name-11-1024x403.png 1024w" sizes="(max-width: 548px) 100vw, 548px" /> 
+<p><img class="aligncenter wp-image-358" src="/images/2018/08/no-name-11.png" alt="" width="548" height="216" srcset="/images/2018/08/no-name-11.png 1095w, /images/2018/08/no-name-11-300x118.png 300w, /images/2018/08/no-name-11-768x302.png 768w, /images/2018/08/no-name-11-1024x403.png 1024w" sizes="(max-width: 548px) 100vw, 548px" /></p>
 
-이와 같은 상황은 예측, 분류 등의 데이터 마이닝에서 자주 발생하는 중요한 문제다. underfit문제는 data의 trend를 파악하여 적절한 형태의 모델함수를 사용하고 고려해야할 feature를 충분히 수식에 집어넣어서 해결할 수 있고 이는 이미 우리가 알고있는 내용에 포함되어있다.
+<p>이와 같은 상황은 예측, 분류 등의 데이터 마이닝에서 자주 발생하는 중요한 문제다. underfit문제는 data의 trend를 파악하여 적절한 형태의 모델함수를 사용하고 고려해야할 feature를 충분히 수식에 집어넣어서 해결할 수 있고 이는 이미 우리가 알고있는 내용에 포함되어있다.</p>
 
-&nbsp;
+<p> </p>
 
-오늘은 overfit문제를 해결하는 대표적인 방법인 regularization에 대해 설명하려 한다.
+<p>오늘은 overfit문제를 해결하는 대표적인 방법인 regularization에 대해 설명하려 한다.</p>
 
-&nbsp;
+<p> </p>
 
-먼저 model의 hypothesis function이 다음과 같다고 해보자.
+<p>먼저 model의 hypothesis function이 다음과 같다고 해보자.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)={&space;\theta&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}x+{&space;\theta&space;}_{&space;2&space;}{&space;x&space;}^{&space;2&space;}+{&space;\theta&space;}_{&space;3&space;}{&space;x&space;}^{&space;3&space;}+{&space;\theta&space;}_{&space;4&space;}{&space;x&space;}^{&space;4&space;}" alt="{ h }_{ \theta }(x)={ \theta }_{ 0 }+{ \theta }_{ 1 }x+{ \theta }_{ 2 }{ x }^{ 2 }+{ \theta }_{ 3 }{ x }^{ 3 }+{ \theta }_{ 4 }{ x }^{ 4 }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)={&space;\theta&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}x+{&space;\theta&space;}_{&space;2&space;}{&space;x&space;}^{&space;2&space;}+{&space;\theta&space;}_{&space;3&space;}{&space;x&space;}^{&space;3&space;}+{&space;\theta&space;}_{&space;4&space;}{&space;x&space;}^{&space;4&space;}" alt="{ h }_{ \theta }(x)={ \theta }_{ 0 }+{ \theta }_{ 1 }x+{ \theta }_{ 2 }{ x }^{ 2 }+{ \theta }_{ 3 }{ x }^{ 3 }+{ \theta }_{ 4 }{ x }^{ 4 }" align="absmiddle" /></p>
 
-위의 식을 우리는 좀 더 quadratic하게(2차식 스럽게)만들어 굴곡이 더 심한 3차, 4차식보다는 완만하게 만들고싶다. 이러한 경우 (theta\_3)(x^3)과 (theta\_4)(x^4)의 두 term의 영향력을 인위적으로 작게 해 주는 방법이 있다.
+<p>위의 식을 우리는 좀 더 quadratic하게(2차식 스럽게)만들어 굴곡이 더 심한 3차, 4차식보다는 완만하게 만들고싶다. 이러한 경우 (theta_3)(x^3)과 (theta_4)(x^4)의 두 term의 영향력을 인위적으로 작게 해 주는 방법이 있다.</p>
 
-cost function을 다음과 같이 세우는 것이다.
+<p>cost function을 다음과 같이 세우는 것이다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=\frac&space;{&space;1&space;}{&space;2m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}&space;})^{&space;2&space;}&space;}&space;+1000{&space;\cdot&space;{&space;{&space;\theta&space;}_{&space;3&space;}&space;}^{&space;2&space;}&space;}+1000{&space;{&space;\cdot&space;\theta&space;}_{&space;4&space;}&space;}^{&space;2&space;}" alt="J(\theta )=\frac { 1 }{ 2m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) } })^{ 2 } } +1000{ \cdot { { \theta }_{ 3 } }^{ 2 } }+1000{ { \cdot \theta }_{ 4 } }^{ 2 }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=\frac&space;{&space;1&space;}{&space;2m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}&space;})^{&space;2&space;}&space;}&space;+1000{&space;\cdot&space;{&space;{&space;\theta&space;}_{&space;3&space;}&space;}^{&space;2&space;}&space;}+1000{&space;{&space;\cdot&space;\theta&space;}_{&space;4&space;}&space;}^{&space;2&space;}" alt="J(\theta )=\frac { 1 }{ 2m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) } })^{ 2 } } +1000{ \cdot { { \theta }_{ 3 } }^{ 2 } }+1000{ { \cdot \theta }_{ 4 } }^{ 2 }" align="absmiddle" /></p>
 
-이렇게 되면 cost function을 최대한 줄이며 theta를 설정하는 과정에서 theta\_3와 theta\_4의 크기가 자연스레 작아질 것이다. 그리고 이는 곧 hypothesis function에서 (theta\_3)(x^3)과 (theta\_4)(x^4) 두 항의 크기, 즉 영향력이 작아지는 것을 의미한다. 이것이 regularization의 기본 idea이다. 함수를 최소화 시키는 과정에서 그 함수의 parameter은 작아진다. 이와 같은 원리를 이용하는 것이 regularization이다.
+<p>이렇게 되면 cost function을 최대한 줄이며 theta를 설정하는 과정에서 theta_3와 theta_4의 크기가 자연스레 작아질 것이다. 그리고 이는 곧 hypothesis function에서 (theta_3)(x^3)과 (theta_4)(x^4) 두 항의 크기, 즉 영향력이 작아지는 것을 의미한다. 이것이 regularization의 기본 idea이다. 함수를 최소화 시키는 과정에서 그 함수의 parameter은 작아진다. 이와 같은 원리를 이용하는 것이 regularization이다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# <span style="font-size: 18pt;"><b> </b></span>
+<h1><span style="font-size: 18pt;"><b> </b></span></h1>
 
-# 2. Cost Function
+<h1 id="2-cost-function">2. Cost Function</h1>
 
-* * *
+<hr />
 
-regularization이 포함되어있는 일반적인 cost function의 형태는 다음과 같다.
+<p>regularization이 포함되어있는 일반적인 cost function의 형태는 다음과 같다.</p>
 
-<img src="https://latex.codecogs.com/gif.latex?linear\quad&space;regression&space;\\&space;\\&space;J(\theta&space;)=\frac&space;{&space;1&space;}{&space;2m&space;}&space;[\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}&space;})^{&space;2&space;}&space;}&space;+\lambda&space;\sum&space;_{&space;j=1&space;}^{&space;n&space;}{&space;{&space;{&space;\theta&space;}_{&space;j&space;}&space;}^{&space;2&space;}&space;}&space;]" alt="linear\quad regression \\ \\ J(\theta )=\frac { 1 }{ 2m } [\sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) } })^{ 2 } } +\lambda \sum _{ j=1 }^{ n }{ { { \theta }_{ j } }^{ 2 } } ]" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?linear\quad&space;regression&space;\\&space;\\&space;J(\theta&space;)=\frac&space;{&space;1&space;}{&space;2m&space;}&space;[\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}&space;})^{&space;2&space;}&space;}&space;+\lambda&space;\sum&space;_{&space;j=1&space;}^{&space;n&space;}{&space;{&space;{&space;\theta&space;}_{&space;j&space;}&space;}^{&space;2&space;}&space;}&space;]" alt="linear\quad regression \\ \\ J(\theta )=\frac { 1 }{ 2m } [\sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) } })^{ 2 } } +\lambda \sum _{ j=1 }^{ n }{ { { \theta }_{ j } }^{ 2 } } ]" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?classification&space;\\&space;\\&space;J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;y&space;}^{&space;(i)&space;}\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)&space;}&space;+(1-{&space;y&space;}^{&space;(i)&space;})\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}&space;+\frac&space;{&space;\lambda&space;}{&space;2m&space;}&space;\sum&space;_{&space;j=1&space;}^{&space;n&space;}{&space;{&space;{&space;\theta&space;}_{&space;j&space;}&space;}^{&space;2&space;}&space;}" alt="classification \\ \\ J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{ (i) }\log { ({ h }_{ \theta }({ x }^{ (i) }) } ) } +(1-{ y }^{ (i) })\log { (1-{ h }_{ \theta }({ x }^{ (i) })) } +\frac { \lambda }{ 2m } \sum _{ j=1 }^{ n }{ { { \theta }_{ j } }^{ 2 } }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?classification&space;\\&space;\\&space;J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;y&space;}^{&space;(i)&space;}\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)&space;}&space;+(1-{&space;y&space;}^{&space;(i)&space;})\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}&space;+\frac&space;{&space;\lambda&space;}{&space;2m&space;}&space;\sum&space;_{&space;j=1&space;}^{&space;n&space;}{&space;{&space;{&space;\theta&space;}_{&space;j&space;}&space;}^{&space;2&space;}&space;}" alt="classification \\ \\ J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{ (i) }\log { ({ h }_{ \theta }({ x }^{ (i) }) } ) } +(1-{ y }^{ (i) })\log { (1-{ h }_{ \theta }({ x }^{ (i) })) } +\frac { \lambda }{ 2m } \sum _{ j=1 }^{ n }{ { { \theta }_{ j } }^{ 2 } }" align="absmiddle" /></p>
 
-λ를 regularization parameter라고 한다. 위의 식에서는 θ_0을 제외한 모든 θ(parameter)들이 λ만큼의 가중치를 받으며 식에 추가되었다. 목적은 cost를 최소화 시키는 것이다. 이 과정에서 parameter들 자체의 값이 작아지게 된다. 그리고 parameter값들이 작으면 model의 곡선은 더 단순한 형태를 가지게 되어있다. 즉, overfitting이 일어나는 것을 방지할 수 있게된다.
+<p>λ를 regularization parameter라고 한다. 위의 식에서는 θ_0을 제외한 모든 θ(parameter)들이 λ만큼의 가중치를 받으며 식에 추가되었다. 목적은 cost를 최소화 시키는 것이다. 이 과정에서 parameter들 자체의 값이 작아지게 된다. 그리고 parameter값들이 작으면 model의 곡선은 더 단순한 형태를 가지게 되어있다. 즉, overfitting이 일어나는 것을 방지할 수 있게된다.</p>
 
-<img class="aligncenter wp-image-360" src="/images/2018/08/no-name-12.png" alt="" width="515" height="220" srcset="/images/2018/08/no-name-12.png 747w, /images/2018/08/no-name-12-300x128.png 300w" sizes="(max-width: 515px) 100vw, 515px" /> 
+<p><img class="aligncenter wp-image-360" src="/images/2018/08/no-name-12.png" alt="" width="515" height="220" srcset="/images/2018/08/no-name-12.png 747w, /images/2018/08/no-name-12-300x128.png 300w" sizes="(max-width: 515px) 100vw, 515px" /></p>
 
-위 그림의 초록색 곡선은 regularization parameter가 추가된 model을 나타낸다. 이는 기존의 overfit이 일어나는 model보다 theta값들이 작아져 더욱 완만한 곡선을 나타내게 되어 overfit을 막아준다. 하지만 regularization λ를 너무 크게 잡으면 반대로  underfit이 일어난다.
+<p>위 그림의 초록색 곡선은 regularization parameter가 추가된 model을 나타낸다. 이는 기존의 overfit이 일어나는 model보다 theta값들이 작아져 더욱 완만한 곡선을 나타내게 되어 overfit을 막아준다. 하지만 regularization λ를 너무 크게 잡으면 반대로  underfit이 일어난다.</p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-&nbsp;
+<p> </p>
 
-# 3. gradient  descent
+<h1 id="3-gradient-descent">3. gradient  descent</h1>
 
-* * *
+<hr />
 
-gradient descent는 크게 달라지지 않는다. 단순히 regularization term의 미분만 추가될 뿐이다.
+<p>gradient descent는 크게 달라지지 않는다. 단순히 regularization term의 미분만 추가될 뿐이다.</p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?linear\quad&space;regression>>&space;\\&space;\\&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;(\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}_{&space;0&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}+\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;{&space;\theta&space;}_{&space;j&space;})={&space;\theta&space;}_{&space;j&space;}(1-\alpha&space;\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;)-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}_{&space;0&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}" alt="linear\quad regression>> \\ \\ { \theta }_{ j }:={ \theta }_{ j }-\alpha (\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }_{ 0 }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) }+\frac { \lambda }{ m } { \theta }_{ j })={ \theta }_{ j }(1-\alpha \frac { \lambda }{ m } )-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }_{ 0 }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?linear\quad&space;regression&gt;&gt;&space;\\&space;\\&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;(\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}_{&space;0&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}+\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;{&space;\theta&space;}_{&space;j&space;})={&space;\theta&space;}_{&space;j&space;}(1-\alpha&space;\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;)-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}_{&space;0&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;})&space;}&space;}&space;{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}" alt="linear\quad regression&gt;&gt; \\ \\ { \theta }_{ j }:={ \theta }_{ j }-\alpha (\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }_{ 0 }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) }+\frac { \lambda }{ m } { \theta }_{ j })={ \theta }_{ j }(1-\alpha \frac { \lambda }{ m } )-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }_{ 0 }^{ (i) })-{ y }^{ (i) }) } } { x }_{ j }^{ (i) }" align="absmiddle" /></p>
 
-<img src="https://latex.codecogs.com/gif.latex?classfication>>&space;\\&space;\\&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;(\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;[h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}]{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;}&space;+\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;{&space;\theta&space;}_{&space;j&space;})={&space;\theta&space;}_{&space;j&space;}(1-\alpha&space;\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;)-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;(h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}){&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;}" alt="classfication>> \\ \\ { \theta }_{ j }:={ \theta }_{ j }-\alpha (\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { [h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }]{ x }_{ j }^{ (i) } } +\frac { \lambda }{ m } { \theta }_{ j })={ \theta }_{ j }(1-\alpha \frac { \lambda }{ m } )-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { (h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }){ x }_{ j }^{ (i) } }" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?classfication&gt;&gt;&space;\\&space;\\&space;{&space;\theta&space;}_{&space;j&space;}:={&space;\theta&space;}_{&space;j&space;}-\alpha&space;(\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;[h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}]{&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;}&space;+\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;{&space;\theta&space;}_{&space;j&space;})={&space;\theta&space;}_{&space;j&space;}(1-\alpha&space;\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;)-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;(h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})-{&space;y&space;}^{&space;(i)&space;}){&space;x&space;}_{&space;j&space;}^{&space;(i)&space;}&space;}" alt="classfication&gt;&gt; \\ \\ { \theta }_{ j }:={ \theta }_{ j }-\alpha (\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { [h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }]{ x }_{ j }^{ (i) } } +\frac { \lambda }{ m } { \theta }_{ j })={ \theta }_{ j }(1-\alpha \frac { \lambda }{ m } )-\frac { \alpha }{ m } \sum _{ i=1 }^{ m }{ { (h }_{ \theta }({ x }^{ (i) })-{ y }^{ (i) }){ x }_{ j }^{ (i) } }" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-위의 식에서 linear regression과 classification의 식은 완전히 동일하지만 h_theta(x)가 다른 형태의 함수라는 것을 잊으면 안된다.
+<p>위의 식에서 linear regression과 classification의 식은 완전히 동일하지만 h_theta(x)가 다른 형태의 함수라는 것을 잊으면 안된다.</p>
 
-vectorized form은 다음과 같다.
+<p>vectorized form은 다음과 같다.</p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?linear\quad&space;regression>>&space;\\&space;\\&space;\theta&space;:=\theta&space;(1-\alpha&space;\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;)-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;{&space;X&space;}^{&space;T&space;}(X\theta&space;-y)" alt="linear\quad regression>> \\ \\ \theta :=\theta (1-\alpha \frac { \lambda }{ m } )-\frac { \alpha }{ m } { X }^{ T }(X\theta -y)" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?linear\quad&space;regression&gt;&gt;&space;\\&space;\\&space;\theta&space;:=\theta&space;(1-\alpha&space;\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;)-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;{&space;X&space;}^{&space;T&space;}(X\theta&space;-y)" alt="linear\quad regression&gt;&gt; \\ \\ \theta :=\theta (1-\alpha \frac { \lambda }{ m } )-\frac { \alpha }{ m } { X }^{ T }(X\theta -y)" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-<img src="https://latex.codecogs.com/gif.latex?classfication>>&space;\\&space;\\&space;\theta&space;\quad&space;:=\theta&space;(1-\alpha&space;\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;)-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="classfication>> \\ \\ \theta \quad :=\theta (1-\alpha \frac { \lambda }{ m } )-\frac { \alpha }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /> 
+<p><img src="https://latex.codecogs.com/gif.latex?classfication&gt;&gt;&space;\\&space;\\&space;\theta&space;\quad&space;:=\theta&space;(1-\alpha&space;\frac&space;{&space;\lambda&space;}{&space;m&space;}&space;)-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="classfication&gt;&gt; \\ \\ \theta \quad :=\theta (1-\alpha \frac { \lambda }{ m } )-\frac { \alpha }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /></p>
 
-&nbsp;
+<p> </p>
 
-위의 update 식을 보면 θ에 1-α(λ/m)이라는, 1에서 얼마만큼을 뺀 1보다 작은 값을 가진 term이 곱해진다. 그리고 뒤의 나머지 부분은 원래의 update식과 완전히 동일하다. 이로써 regularization이 포함된 update식은 결과적으로 θ가 shrink(줄어들다)하는 효과를 주는것을 다시 한 번 확인할 수 있다.
+<p>위의 update 식을 보면 θ에 1-α(λ/m)이라는, 1에서 얼마만큼을 뺀 1보다 작은 값을 가진 term이 곱해진다. 그리고 뒤의 나머지 부분은 원래의 update식과 완전히 동일하다. 이로써 regularization이 포함된 update식은 결과적으로 θ가 shrink(줄어들다)하는 효과를 주는것을 다시 한 번 확인할 수 있다.</p>
 
-아무튼간에 적절한 λ값만 설정한다면 위의 update식을 사용하여 model이 더욱 완만한 곡선을 가지도록 유도하여 overfit이 일어나는 것을 방지할 수 있다.
+<p>아무튼간에 적절한 λ값만 설정한다면 위의 update식을 사용하여 model이 더욱 완만한 곡선을 가지도록 유도하여 overfit이 일어나는 것을 방지할 수 있다.</p>
 
-&nbsp;
+<p> </p>
+
   </div>
   
 </div>
