@@ -49,12 +49,12 @@ body {
   font-family: "D2Coding", Georgia, "Times New Roman", serif;
 }*/
 
-/*html {*/
-  /*font-family: Georgia, "Times New Roman", serif;*/
-/*}*/
+html {
+  font-family: "Nanum Gothic", Georgia, "Times New Roman", serif;
+}
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Nanum Gothic", "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   color: #313131;
   letter-spacing: -.025rem;
