@@ -19,17 +19,17 @@ author:
 # Custom vars
 version:             1.0.0
 
-markdown: kramdown
-
-kramdown:
-    input: GFM
-    syntax_highlighter: rouge
-incremental: true
-trace: true
-
-plugins: 
-  - jekyll-feed
+plugins:
   - jekyll-paginate
+markdown: kramdown
+kramdown:
+  input: GFM
+excerpt_separator: "<!-- more -->"
+sass:
+  style: compressed
+  sass_dir: _scss    
+paginate: 5
+paginate_path: '/blog/page:num'
 
 # Tag setting
 #collections:
@@ -44,7 +44,30 @@ plugins:
 #    values:
 #      layout: tag
 
-category_dir: category/
-tag_dir: tag/
+#category_dir: category/
+#tag_dir: tag/
 
-excerpt_separator: ""
+nav:
+  Home:           
+    - '/'
+  Blog:           
+    - '/blog/'
+    - { Categories: '/blog/categories/' }
+    - { Tags: '/blog/tags/' }
+  About:          
+    - '/about/'
+  # Github Project: 
+    # - 'http://codinfox.github.io/'
+
+# Where are tags and categories displayed
+tag_page: '/blog/tags/'
+category_page: '/blog/categories/'
+
+hero:
+  image: /public/img/we_will_be_giants_by_yalestewart.jpg
+  caption: Original Artwork &copy; <a href="http://yalestewart.deviantart.com/art/We-Will-Be-Giants-370176475">Yale Stewart</a>
+
+# Puglins
+mathjax: true # whether support mathjax
+google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
+disqus_short_name: 'wkimdev-gitblog' # leave blank if you don't want disqus

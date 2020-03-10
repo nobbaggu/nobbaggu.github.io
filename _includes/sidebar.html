@@ -4,105 +4,87 @@
 
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
-  
-  <!--
   <div class="sidebar-item">
-    <p>{{ site.description }}</p>
-  </div>
-	-->
-  <nav class="sidebar-nav">
-    <!--<a class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}" href="{{ site.url }}/">Home</a>-->
-<!--
-    {% comment %}
-    The code below dynamically generates a sidebar nav of pages with
-    `layout: page` in the front-matter. See readme for usage.
-    {% endcomment %}
+    <div class="sidebar-personal-info">
+      <div class="sidebar-personal-info-section">
+        <!-- <a href="http://gravatar.com/{{ site.author.gravatar }}"> -->
+          <a href="http://gravatar.com/"></a>
+          <!-- <img src="http://www.gravatar.com/avatar/{{ site.author.gravatar }}?s=350" title="View on Gravatar" alt="View on Gravatar" /> -->
+          <!-- <img src="https://s.gravatar.com/avatar/fedd0cb9bf32323502b502a383136608?s=80" title="View on Gravatar" alt="View on Gravatar" style="margin:auto;" /> -->
+          <img src="https://s.gravatar.com/avatar/fedd0cb9bf32323502b502a383136608?s=80" title="View on Gravatar" alt="View on Gravatar" style="margin:auto;" />
+          
 
-    {% assign pages_list = site.pages | sort:"url" %}
-    {% for node in pages_list %}
-    {% if node.title != null %}
-    {% if node.layout == "page" %}
-    <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title
-      }}</a>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-	-->
-    <!--<a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>-->
-  </nav>
-  <div>
-    <div class="sidebar-nav-item">Category</div>
-    <nav class="content-ul">
-      {% for category in site.categories %}
-      <a href="{{ root_url }}/{{ site.category_dir }}#{{ category | first }}"
-         class="sidebar-nav-item pl-3rem">
-                            <span class="name">
-                                {{ category | first }}
-                            </span>
-        <span class="badge">{{ category | last | size }}</span>
-      </a>
-      {% endfor %}
-    </nav>
-  </div>
-  <div>
-  <!--
-    <div class="sidebar-nav-item">Tags</div>
-    <div class="tags-cloud">
-      <div>
-        {% assign first = site.tags.first %}
-        {% assign max = first[1].size %}
-        {% assign min = max %}
-        {% for tag in site.tags offset:1 %}
-        {% if tag[1].size > max %}
-        {% assign max = tag[1].size %}
-        {% elsif tag[1].size < min %}
-        {% assign min = tag[1].size %}
-        {% endif %}
-        {% endfor %}
-
-        {% if max == min %}
-        {% assign diff = 1 %}
-        {% else %}
-        {% assign diff = max | minus: min %}
-        {% endif %}
-
-        {% for tag in site.tags %}
-        {% assign temp = tag[1].size | minus: min | times: 36 | divided_by: diff %}
-        {% assign base = temp | divided_by: 4 %}
-        {% assign remain = temp | modulo: 4 %}
-        {% if remain == 0 %}
-        {% assign size = base | plus: 9 %}
-        {% elsif remain == 1 or remain == 2 %}
-        {% assign size = base | plus: 9 | append: '.5' %}
-        {% else %}
-        {% assign size = base | plus: 10 %}
-        {% endif %}
-        {% if remain == 0 or remain == 1 %}
-        {% assign color = 5 | plus: base %}
-        {% else %}
-        {% assign color = 6 | plus: base %}
-        {% endif %}
-
-        {% assign arr = "a, b, c, d, e, f" | split: ", " %}
-        {% if color > 9 %}
-        {% assign index = color | minus: 10 %}
-        {% assign color = arr[index] %}
-        {% endif %}
-        <a href="{{ root_url }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};">{{ tag[0] }}</a>
-        {% endfor %}
+          
+        </a>
       </div>
+      <div class="sidebar-personal-info-section" >
+        <p>개발자가 되고픈 사람. <br> 제대로 노력해서 1보를 이루자</p>
+      </div>
+      {% if site.author.contact %}
+      {% assign len = site.author.contact | size %}
+      {% assign current_index = 0 %}
+      <div class="sidebar-personal-info-section">
+        <p> Contact: 
+        {% for contact in site.author.contact %}
+        {% assign iconname = contact[0] %}
+        {% if contact[0] == 'email' %}
+        {% assign iconname = 'envelope' %}
+        {% endif %}
+        <a href="{{ contact[1] }}">
+          <i class="fa fa-{{ iconname }} fa-2x" aria-hidden="true"></i>
+        </a>
+        {% assign current_index = current_index | plus: 1 %}
+        {% if current_index != len %}|{% endif %}
+        {% endfor %}
+        </p>
+      </div>
+      {% endif %}
     </div>
-	-->
   </div>
+
+  <nav class="sidebar-nav">
+    {% for nav in site.nav %}
+      {% assign is_relative = nav[1][0] | slice: 0 %}
+      {% assign url = nav[1][0] %}
+      {% if is_relative == '/' %}
+        {% assign url = nav[1][0] | prepend: site.baseurl %}
+      {% endif %}
+
+      {% assign sub_len = nav[1] | size | minus: 1 %}
+
+      <span class="{% if sub_len > 0 %}foldable{% endif %}">
+        <a class="sidebar-nav-item {% if page.url == nav[1][0] %}active{% endif %}" href="{{ url }}">
+          {{ nav[0] }}
+        </a>
+
+        {% for i in (1..sub_len) %}
+          {% for sub_nav in nav[1][i] %}
+            {% assign sub_is_relative = sub_nav[1] | slice: 0 %}
+            {% assign sub_url = sub_nav[1] %}
+            {% if sub_is_relative == '/' %}
+              {% assign sub_url = sub_nav[1] | prepend: site.baseurl %}
+            {% endif %}
+              <a class="sidebar-nav-item sidebar-nav-item-sub {% if page.url == sub_nav[1] %}active{% endif %}" href="{{ sub_url }}">
+                {{ sub_nav[0] }}
+              </a>
+          {% endfor %}
+        {% endfor %}
+      </span>
+
+    {% endfor %}
+
+    <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
+  </nav>
+
   <div class="sidebar-item">
     <p>
-      &copy; {{ site.time | date: '%Y' }}. All rights reserved.
+    &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    </p>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+    Powered by <a href="http://jekyllrb.com">jekyll</a>
     </p>
   </div>
 </div>
-
-<script>
-  window.addEventListener('hashchange', function(){
-    location.reload();
-  });
-</script>

@@ -3,19 +3,44 @@ layout: default
 title: Home
 ---
 
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <span class="post-date">{{ post.date | date_to_string }}</span>
-
-    {{ post.content }}
+<!-- <div class="hero">
+  <img src="{{ site.baseurl }}{{ site.hero.image }}" />
+  <p>{{ site.hero.caption }}</p>
+</div> -->
+<div class="tags-expo">
+  <div class="tags-expo-list">
+    <h2>Categories</h2>
+    {% for tag in site.categories %}
+    <!-- <a href="{{ site.baseurl }}{{ site.category_page }}#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a> -->
+    <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
+    {% endfor %}
   </div>
-  {% endfor %}
+  <hr/>
 </div>
-{% include pagination.html %}
+
+<h2>Posts by date</h2>
+<div class="tags-expo">
+  <div class="tags-expo-section">
+    <ul class="tags-expo-posts">
+      {% for post in site.posts %}
+        <big class="post-date">{{ post.date | date_to_string }}</big>
+        <li>
+            <a class="post-title" href="{{ post.url }}">{{ post.title }} </a>
+        </li>
+      <br>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<hr/>
+<div class="tags-expo">
+  <div class="tags-expo-list">
+    <h2>Tags</h2>
+    {% for tag in site.tags %}
+      <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
+    {% endfor %}
+  </div>
+</div>
+
+<hr/>
