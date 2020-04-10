@@ -6,7 +6,7 @@ permalink: /:year/:month/:day/:title/
 
 # Setup
 title:               공부 기록 블로그
-tagline:             '취미로 개발하자'
+tagline:             '공부 내용 기록하는 블로그'
 url:                 https://nobbaggu.github.io
 baseurl:             ''
 paginate:            5
