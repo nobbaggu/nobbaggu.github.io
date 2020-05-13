@@ -62,9 +62,9 @@ $${ h }_{ \theta }(x)=g(\theta^{T} x)=\frac { 1 }{ 1+{ e }^{ -\theta x } }$$
 
 이 model은 분명 모든 output을 (0, 1)의 범위로 제한한다. 우리는 이 model의 output이 0.5보다 작으면 class 0으로 분류하고 0.5보다 크거나 같으면 class 1로 분류할 것이다. 그렇다는것은 θ&#8217;x 의 값이 0보다 크거나 같으면 class1, 0보다 작으면 class0으로 분류한다는 말과 같다.
 
-$$\dpi{120} { (h }_{ \theta }(x)\ge 0.5\Leftrightarrow \theta x\ge 0)\quad \rightarrow \quad y=1$$ 
+$${ (h }_{ \theta }(x)\ge 0.5\Leftrightarrow \theta x\ge 0)\quad \rightarrow \quad y=1$$ 
 
-$$\dpi{120} { (h }_{ \theta }(x)<0.5\Leftrightarrow \theta x<0)\quad \rightarrow \quad y=0$$ 
+$${ (h }_{ \theta }(x)<0.5\Leftrightarrow \theta x<0)\quad \rightarrow \quad y=0$$ 
 
 &nbsp;
 

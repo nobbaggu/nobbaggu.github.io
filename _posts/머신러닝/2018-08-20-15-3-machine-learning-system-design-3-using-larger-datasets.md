@@ -41,10 +41,10 @@ For breakfast, I ate \_____ eggs.
 
 정리하자면, 충분한 가짓 수의 feature와 parameter가 있는 복잡한 알고리즘은 &#8212; 이런 경우 high variance(overfit)이 일어나기 쉬운데 이러한 알고리즘을 low bias(high variance) 알고리즘이라고 부른다 &#8212; 많은 양의 데이터가 알고리즘의 성능을 개선하는데 도움을 준다.
 
-low bias 알고리즘 : 많은 feature와 parameter로 인해서 $$\dpi{120} J_{train}$$이 매우 낮을 것이다.
+low bias 알고리즘 : 많은 feature와 parameter로 인해서 $$J_{train}$$이 매우 낮을 것이다.
 
 <span style="font-size: 14pt;"><strong>+</strong></span>
 
-large data : low bias(high variance)를 해소시켜$$\dpi{120} J_{test}\approx J_{train}$$  이 되도록 도와준다.
+large data : low bias(high variance)를 해소시켜$$J_{test}\approx J_{train}$$  이 되도록 도와준다.
 
 위 두 가지를 종합하면 <span style="color: #ff0000;"><strong>복잡한 high bias 알고리즘에 large data를 넣어주면 알고리즘의 성능을 개선하는 데 도움이 된다.</strong></span>

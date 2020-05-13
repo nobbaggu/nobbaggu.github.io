@@ -42,7 +42,7 @@ $$\theta \quad = \begin{bmatrix} { \theta }_{ 0 }\\ { \theta }_{ 1 }\\ { \theta 
 
 <span style="font-family: arial, helvetica, sans-serif;">$${ h }_{ \theta }(x)\quad =\quad { \theta }^{ T }\cdot x\quad =\quad \begin{bmatrix} { \theta }_{ 0 }\quad { \theta }_{ 1 }\quad { \theta }_{ 2 }\quad \cdot \quad \cdot \quad \cdot \quad { \theta }_{ n } \end{bmatrix} \begin{bmatrix} { x }_{ 0 }\\ { x }_{ 1 }\\ { x }_{ 2 }\\ .\\ \cdot \\ { x }_{ n } \end{bmatrix}$$</span>
 
-<span style="font-family: arial, helvetica, sans-serif;">θ를 hypothesis function을 결정짓는 <strong>&#8216;parameter&#8217;</strong>라 부르고 데이터의 input인 x를  <strong>&#8216;feature&#8217;</strong>라 부른다. 그리고 feature는 사실 n개인데 편의성을 위해 parameter의 bias term $$\dpi{120} \theta_{0}$$와 matching되는 $$\dpi{120} x_{0}$$를 추가하여 parameter vector와 feature vector의 element 갯수를 맞추었다. 단 $$\dpi{120} x_{0}$$은 항상 값이 1로 고정이다.</span>
+<span style="font-family: arial, helvetica, sans-serif;">θ를 hypothesis function을 결정짓는 <strong>&#8216;parameter&#8217;</strong>라 부르고 데이터의 input인 x를  <strong>&#8216;feature&#8217;</strong>라 부른다. 그리고 feature는 사실 n개인데 편의성을 위해 parameter의 bias term $$\theta_{0}$$와 matching되는 $$x_{0}$$를 추가하여 parameter vector와 feature vector의 element 갯수를 맞추었다. 단 $$x_{0}$$은 항상 값이 1로 고정이다.</span>
 
 &nbsp;
 
@@ -86,7 +86,7 @@ $$\theta \quad = \begin{bmatrix} { \theta }_{ 0 }\\ { \theta }_{ 1 }\\ { \theta 
 
 <span style="font-family: arial, helvetica, sans-serif;">gradient descent 의 기본적인 idea는 Linear Regression with One Variable과 같다. 그래도 다시 한 번 설명하는것이 좋을것 같다.</span>
 
-<span style="font-family: arial, helvetica, sans-serif;"><strong>Gradient Descent 라는 것은 어떠한 함수가 최소값을 가지게하는 point를 찾아가는 일종의 수학 테크닉</strong>이다. gradient descent 를 통해서 모델이 training data set에 가장 일치하는 최적의 $$\dpi{120} [\theta_{0}\quad\theta_{1}\quad\theta_{2}\quad \cdot\cdot\cdot \quad \theta_{n}]$$을 구할 수 있다.</span>
+<span style="font-family: arial, helvetica, sans-serif;"><strong>Gradient Descent 라는 것은 어떠한 함수가 최소값을 가지게하는 point를 찾아가는 일종의 수학 테크닉</strong>이다. gradient descent 를 통해서 모델이 training data set에 가장 일치하는 최적의 $$[\theta_{0}\quad\theta_{1}\quad\theta_{2}\quad \cdot\cdot\cdot \quad \theta_{n}]$$을 구할 수 있다.</span>
 
 <span style="font-family: arial, helvetica, sans-serif;">우리는 일단 무작위로 parameter 값들(θ&#8217;s)을 설정하고 조금씩 변화시켜보면서 cost function 최소값을 찾을 수 있지 않을까 하는 생각을 해본다. 이것이 기본적인 idea다. 하지만 값을 얼마만큼 어떻게 변화시킬것인가? 증가시키며? 감소시키며? 여기에 한 가지 idea가 추가되는데, 이는 벡터 미적분에서 배우는 함수의 gradient가 가지는 기본적인 성질중 한가지로부터 기인한다. cost function( J )는 θ의 함수이다. 그리고 이 함수의 gradient는 다음과 같다.</span>
 
@@ -108,7 +108,7 @@ $$\theta \quad = \begin{bmatrix} { \theta }_{ 0 }\\ { \theta }_{ 1 }\\ { \theta 
 
 <span style="font-family: arial, helvetica, sans-serif;">어느 point에서든지 적당한 α라는 factor를 곱하여 기울기의 반대방향으로 θ를 이동시키면 J값은 local minimum 쪽으로 움직인다. 이 작업을 <strong>cost function이  최소값으로 수렴할 때 까지 충분한 횟수로 반복</strong>해주면 되는것이다. 이 때 <strong>α가 너무 작으면 이 반복 횟수가 너무 크고 α가 너무 크면 수렴하지 못할 수 있다.</strong> α는 반복횟수, 즉 배우는 속도에를 결정하기 때문에<strong> learning rate</strong>라고 부른다. 열전달 함수에서의 열전달상수의 개념과 비슷한 개념이다.</span>
 
-<span style="font-family: arial, helvetica, sans-serif;">다시 위에서 나온 식을 마저 정리해보자. J의 $$\dpi{120} \theta_{0}$$과 $$\dpi{120} \theta_{1}$$에 대한 편미분은 위의 hypothesis function과 cost function의 식을 적용해서 구하면 다음과 같이 정리된다.</span>
+<span style="font-family: arial, helvetica, sans-serif;">다시 위에서 나온 식을 마저 정리해보자. J의 $$\theta_{0}$$과 $$\theta_{1}$$에 대한 편미분은 위의 hypothesis function과 cost function의 식을 적용해서 구하면 다음과 같이 정리된다.</span>
 
 <span style="font-family: arial, helvetica, sans-serif;">$$\frac { \partial J }{ \partial { \theta }_{ 0 } } =\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { ({ \theta }_{ 0 }+{ \theta }_{ 1 }{ x }_{ 1 }^{ (i) }+{ \theta }_{ 2 }{ x }_{ 2 }^{ (i) }+{ \theta }_{ 3 }{ x }_{ 3 }^{ (i) }+\cdot \cdot \cdot +{ \theta }_{ n }{ x }_{ n }^{ (i) }-{ y }^{ (i) }) } } =\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { ({ h }_{ \theta }({ x }_{ 0 }^{ (i) })-{ y }^{ (i) }) } }$$</span>
 

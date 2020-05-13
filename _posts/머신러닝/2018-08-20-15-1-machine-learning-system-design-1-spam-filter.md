@@ -33,7 +33,7 @@ feature vector x는 spam / non-spam을 판단할 수 있는 단어가 e-mail에 
 
 ex ) buy , sale, price 등은 spam으로 판단하게 하는 단어. Andrew(수신자 이름), now, respond 등은 non-spam으로 판단하도록 하는 단어. 그럼 vector x는 다음과 같은 형태이다.
 
-$$\dpi{120} x=\begin{bmatrix}1\\1\\0\\1\\0\\1\\ \cdot \\ \cdot \end{bmatrix} \begin{bmatrix}buy\\sale\\now\\price\\Andrew\\responde\\ \cdot\\ \cdot \end{bmatrix}$$ 
+$$x=\begin{bmatrix}1\\1\\0\\1\\0\\1\\ \cdot \\ \cdot \end{bmatrix} \begin{bmatrix}buy\\sale\\now\\price\\Andrew\\responde\\ \cdot\\ \cdot \end{bmatrix}$$ 
 
 이러한 feature vector를 spam filter 모델에 넣어주면 스팸인지 아닌지 classfy 한다.
 

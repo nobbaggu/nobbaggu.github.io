@@ -42,13 +42,13 @@ false positive(FP) : predicted 1 / actual 0
 
 1) Precision : 1이라고 예측한 환자들 중 정말로 1인 비율
 
-$$\dpi{120} P=\frac{TP}{TP+FP}$$ 
+$$P=\frac{TP}{TP+FP}$$ 
 
 &nbsp;
 
 2) Recall : 실제로 1인 환자들 중 제대로 1로 골라낸 수
 
-$$\dpi{120} R = \frac{TP}{TP+FN}$$ 
+$$R = \frac{TP}{TP+FN}$$ 
 
 &nbsp;
 
@@ -62,13 +62,13 @@ $$\dpi{120} R = \frac{TP}{TP+FN}$$
 
 classification(logistic regression)의 경우를 다시 떠올려보자.
 
-$$\dpi{120} \\ h_{\theta}(x) < 0.5 \rightarrow class0\\ h_{\theta}(x) \geq 0.5 \rightarrow class1$$  hypothesis function의 결과값이 0.5를 기준으로 positive / negative class로 구분한다.
+$$\\ h_{\theta}(x) < 0.5 \rightarrow class0\\ h_{\theta}(x) \geq 0.5 \rightarrow class1$$  hypothesis function의 결과값이 0.5를 기준으로 positive / negative class로 구분한다.
 
 &nbsp;
 
 하지만 위의 threshold를 옮기면 어떻게 될까?
 
-(i)   $$\dpi{120} \\ h_{\theta}(x) < 0.7 \rightarrow class0\\ h_{\theta}(x) \geq 0.7 \rightarrow class1$$                                (ii)  $$\dpi{120} \\ h_{\theta}(x) < 0.3 \rightarrow class0\\ h_{\theta}(x) \geq 0.3 \rightarrow class1$$
+(i)   $$\\ h_{\theta}(x) < 0.7 \rightarrow class0\\ h_{\theta}(x) \geq 0.7 \rightarrow class1$$                                (ii)  $$\\ h_{\theta}(x) < 0.3 \rightarrow class0\\ h_{\theta}(x) \geq 0.3 \rightarrow class1$$
 
 &nbsp;
 
@@ -139,13 +139,13 @@ P와 R의 개념을 봤을 때 둘 모두 높은 것이 좋다. 하지만 하나
 
 위와 같은 표가 있을 때 어떠한 알고리즘이 좋은 알고리즘인지 판단할 수 있겠는가? 물론 감으로 선택할 수 있겠지만 모델의 성능을 평가하는 지표가 하나의 숫자로 되어있다면 판단하기 수월하겠다. 따라서 우리는 다음과 같은 모델 성능의 평가 지표인 F score를 정의할 수도 있다.
 
-$$\dpi{120} F=\frac{P+R}{2}$$ 
+$$F=\frac{P+R}{2}$$ 
 
 하지만 예를들어 우리가 모든 test datad의 결과를 class1로 예측한다 해보자. 그럼 Recall은 1로 아주 높아지고 좋은 F score를 얻을 수 있다. 즉, P와 R의 평균값을 F score로 쓰는 것은 좋지 않아 보인다. 따라서 F score는 다음과 같이 정의한다.
 
 &nbsp;
 
-$$\dpi{120} \mathbf{F=2\frac{PR}{P+R}}$$ 
+$$\mathbf{F=2\frac{PR}{P+R}}$$ 
 
 &nbsp;
 
@@ -163,11 +163,11 @@ $$\dpi{120} \mathbf{F=2\frac{PR}{P+R}}$$
     </td>
     
     <td style="width: 22.3031%; text-align: center;">
-      $$\dpi{120} F=\frac{P+R}{2}$$
+      $$F=\frac{P+R}{2}$$
     </td>
     
     <td style="width: 21.876%; text-align: center;">
-      $$\dpi{120} F=2\frac{PR}{P+R}$$
+      $$F=2\frac{PR}{P+R}$$
     </td>
   </tr>
   
