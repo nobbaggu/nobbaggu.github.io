@@ -33,7 +33,7 @@ Linear Regression with One Variable(단변수 선형)회귀는 **1개의 input(x
 
 <img src="https://latex.codecogs.com/gif.latex?\hat&space;{&space;y&space;}&space;=&space;{&space;h&space;}_{&space;\theta&space;}(x)&space;=&space;{&space;\theta&space;}_{&space;0&space;}+{&space;\theta&space;}_{&space;1&space;}x" alt="\hat { y } = { h }_{ \theta }(x) = { \theta }_{ 0 }+{ \theta }_{ 1 }x" align="absmiddle" /> 
 
-헤헤헷 $$ \hat { y } = { h }_{ \theta }(x) = { \theta }_{ 0 }+{ \theta }_{ 1 }x $$ 헤헤헷
+헤헤헷 $$\hat { y } = { h }_{ \theta }(x) = { \theta }_{ 0 }+{ \theta }_{ 1 }x$$ 헤헤헷
 
 위는 고등학교 때 배운 1차함수식이다. model이 주어진 훈련 dataset을 얼마나 작은 오차로 잘 표현하는지는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{0}" alt="\dpi{120} \theta_{0}" align="absmiddle" />(offset) 와<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{1}" alt="\dpi{120} \theta_{1}" align="absmiddle" /> (기울기)의 값에 달려있다.<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{0}" alt="\dpi{120} \theta_{0}" align="absmiddle" /> **와 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{1}" alt="\dpi{120} \theta_{1}" align="absmiddle" />은 모델을 결정하는 인자로서 parameter라고 한다**.
 
