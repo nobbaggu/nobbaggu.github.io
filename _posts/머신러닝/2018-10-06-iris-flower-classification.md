@@ -133,10 +133,10 @@ print(<span style="color: #14d917;">'RandomForest Accuracy: %.3f'</span> %(Rando
 
 &nbsp;
 
-<img class="aligncenter size-full wp-image-1187" src="/images/2018/10/no-name.jpg" alt="" width="395" height="250" srcset="/images/2018/10/no-name.jpg 395w, /images/2018/10/no-name-300x190.jpg 300w" sizes="(max-width: 395px) 100vw, 395px" /> 
+![image](/images/2018/10/no-name.jpg){: width="50%" height="50%"}
 
 위 그림은 Iris flower 꽃잎의 정보를 담고있는 각 feature의 density plot이다. sep len과 sep wid는 normal distribution을 따른다는 것을 알 수 있다. pet len과 pet wid는 feature의 local optimum이 3개로 나뉜다. 우리 data의 class가 3가지의 꽃의 종류이므로 아무래도 pet len과 pet wid 두 feature가 분류를 하는 데 결정적인 역할을 하는 feature로 보인다. 실제로 KBest feature selection 알고리즘의 결과도 pet len과 pet feature를 뽑는다.
 
-<img class="aligncenter size-full wp-image-1188" src="/images/2018/10/no-name-1.jpg" alt="" width="244" height="55" /> 
+![image](/images/2018/10/no-name-1.jpg){: width="50%" height="50%"}
 
 결과는 위와 같다. 가장 처음으로 구한 LDA model을 사용한 Ensemble(Bagging) 기법과 Random Forest Ensemble 기법 보다도 가장 먼저 구했던 LDA model의 분류 정확도가 가장 높다.

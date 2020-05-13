@@ -44,7 +44,7 @@ tags:
 3) 나와 컴퓨터 모두가 이해할 수 있는 언어를 만든다 → 가능
 
 <div id="quads-ad2" class="quads-location quads-ad2">
-  <a href="https://SWnomad.com/0-c%ec%96%b8%ec%96%b4%eb%9e%80-%eb%ac%b4%ec%97%87%ec%9d%b8%ea%b0%80/1-18/" rel="attachment wp-att-894"><img class="aligncenter size-full wp-image-894" src="/images/2018/09/1-4.jpg" alt="" width="460" height="150" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w" sizes="(max-width: 460px) 100vw, 460px" /></a>
+  ![image](/images/2018/09/1-4.jpg){: width="50%" height="50%"}
 </div>
 
 &nbsp;
@@ -53,7 +53,7 @@ tags:
 
 이렇게 해서 프로그래밍 언어를 통하여 우리와 컴퓨터가 대화를 할 수 있는 겁니다. Java는 이러한 프로그래밍 언어들 중의 하나입니다.
 
-<img class="aligncenter size-full wp-image-894 img-responsive" src="/images/2018/09/1-4.jpg" sizes="(max-width: 460px) 100vw, 460px" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w" alt="" width="460" height="150" /> 
+![image](/images/2018/09/1-4.jpg" sizes="(max-width: 460px) 100vw, 460px" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w){: width="50%" height="50%"}
 
 단, 한 가지 주의할 점이 있습니다.
 

@@ -21,7 +21,7 @@ tags:
 
 오늘은 배열과 포인터가 함수의 인자로 전달되는 과정에 대해 이야기 할겁니다. 이전에 일반적인 변수가 전달인자로서 함수로 전달되는 과정을 다시 한 번 되짚어보겠습니다.
 
-<img class="aligncenter wp-image-995" src="/images/2018/09/11.jpg" alt="" width="320" height="226" srcset="/images/2018/09/11.jpg 594w, /images/2018/09/11-300x212.jpg 300w" sizes="(max-width: 320px) 100vw, 320px" /> 
+![image](/images/2018/09/11.jpg){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -226,7 +226,7 @@ The age is 12<br />
         </p>
         
         <p>
-          <img class="aligncenter wp-image-996" src="/images/2018/09/22.jpg" alt="" width="522" height="237" srcset="/images/2018/09/22.jpg 895w, /images/2018/09/22-300x136.jpg 300w, /images/2018/09/22-768x349.jpg 768w" sizes="(max-width: 522px) 100vw, 522px" />
+          ![image](/images/2018/09/22.jpg){: width="50%" height="50%"}
         </p>
         
         <p>
@@ -234,7 +234,7 @@ The age is 12<br />
         </p>
         
         <p>
-          <img class="aligncenter wp-image-997" src="/images/2018/09/33.jpg" alt="" width="463" height="221" srcset="/images/2018/09/33.jpg 900w, /images/2018/09/33-300x143.jpg 300w, /images/2018/09/33-768x367.jpg 768w" sizes="(max-width: 463px) 100vw, 463px" />
+          ![image](/images/2018/09/33.jpg){: width="50%" height="50%"}
         </p>
         
         <p>

@@ -104,7 +104,7 @@ tags:
 
 <span style="font-family: arial, helvetica, sans-serif;">이 식에 의하면 새로운 θ는 gradient라는 벡터의 성질때문에 cost function이 이전보다 작아지게 한다. 이해를 돕기위해 다음 그림을 보자. 설명을 위해서 그림은 1개의 θ에 대해서만 설명하겠다.</span>
 
-<span style="font-family: arial, helvetica, sans-serif;"><img class="aligncenter  wp-image-241" src="/images/2018/08/1-1.jpg" alt="" width="546" height="215" srcset="/images/2018/08/1-1.jpg 900w, /images/2018/08/1-1-300x118.jpg 300w, /images/2018/08/1-1-768x303.jpg 768w" sizes="(max-width: 546px) 100vw, 546px" /></span>
+<span style="font-family: arial, helvetica, sans-serif;">![image](/images/2018/08/1-1.jpg){: width="50%" height="50%"}
 
 <span style="font-family: arial, helvetica, sans-serif;">어느 point에서든지 적당한 α라는 factor를 곱하여 기울기의 반대방향으로 θ를 이동시키면 J값은 local minimum 쪽으로 움직인다. 이 작업을 <strong>cost function이  최소값으로 수렴할 때 까지 충분한 횟수로 반복</strong>해주면 되는것이다. 이 때 <strong>α가 너무 작으면 이 반복 횟수가 너무 크고 α가 너무 크면 수렴하지 못할 수 있다.</strong> α는 반복횟수, 즉 배우는 속도에를 결정하기 때문에<strong> learning rate</strong>라고 부른다. 열전달 함수에서의 열전달상수의 개념과 비슷한 개념이다.</span>
 
@@ -168,7 +168,7 @@ tags:
 
 <span style="font-family: arial, helvetica, sans-serif;">기말고사 성적을 예측하는 인공지능을 구현하려고 할 때 training data set의 feature가 &#8216;\원&#8217; 단위의 책을 구매하는데 쓴 비용과 공부에 투자한 시간, 그리고 IQ로 이루어져있다고 해보자. 이 때 책의 가격은 절대크기가 [10,000 ~ 1,000,000]의 범위에 분포해있고 IQ는 [80 ~ 150]의 범위, 그리고 공부에 투자한 시간은 [0 ~ 300]으로 이루어져있다고 하자. 이처럼 feature의 scale 차이가 많이 나는 경우에는 cost function의 모양이 다음과 같이 매우 skewed한 모양이 된다.</span>
 
-<span style="font-family: arial, helvetica, sans-serif;"><img class="aligncenter  wp-image-242" src="/images/2018/08/2-1.jpg" alt="" width="313" height="279" srcset="/images/2018/08/2-1.jpg 527w, /images/2018/08/2-1-300x268.jpg 300w" sizes="(max-width: 313px) 100vw, 313px" /></span>
+<span style="font-family: arial, helvetica, sans-serif;">![image](/images/2018/08/2-1.jpg){: width="50%" height="50%"}
 
 <span style="font-family: arial, helvetica, sans-serif;">이런 경우 <strong>절대크기가 큰 feature에 의해 나머지 feature가 휘둘리게 된다</strong>. 이런 경우에는 수렴하는 속도가 느려지고 학습속도가 저하된다. 따라서 feature normalization을 해주어야 한다.</span>
 
@@ -186,13 +186,13 @@ tags:
 
 <span style="font-family: arial, helvetica, sans-serif;">만약 Learning Rate가 너무 크다면 어떻게 될까?</span>
 
-<span style="font-family: arial, helvetica, sans-serif;"><img class=" wp-image-243 aligncenter" src="/images/2018/08/3.jpg" alt="" width="502" height="157" srcset="/images/2018/08/3.jpg 900w, /images/2018/08/3-300x94.jpg 300w, /images/2018/08/3-768x240.jpg 768w" sizes="(max-width: 502px) 100vw, 502px" /></span>
+<span style="font-family: arial, helvetica, sans-serif;">![image](/images/2018/08/3.jpg){: width="50%" height="50%"}
 
 <span style="font-family: arial, helvetica, sans-serif;">위와 같이 <strong>α가 너무 크면 overshoot이 나면서 J가 수렴하지 못한다</strong>.</span>
 
 <span style="font-family: arial, helvetica, sans-serif;">α가 충분히 작기만 하다면 cost function은 항상 최소로 가고 θ는 수렴할 수 있게 된다. 결국 우리가 원하는 그림은 다음과 같다.</span>
 
-<span style="font-family: arial, helvetica, sans-serif;"><img class="aligncenter size-full wp-image-244" src="/images/2018/08/4.jpg" alt="" width="900" height="267" srcset="/images/2018/08/4.jpg 900w, /images/2018/08/4-300x89.jpg 300w, /images/2018/08/4-768x228.jpg 768w" sizes="(max-width: 900px) 100vw, 900px" /></span>
+<span style="font-family: arial, helvetica, sans-serif;">![image](/images/2018/08/4.jpg){: width="50%" height="50%"}
 
 <span style="font-family: arial, helvetica, sans-serif;">하지만 <strong>α가 너무 작으면 수렴은 너무 천천히 일어날 것이고 그것은 학습속도가 너무 느리다는 말이 된다</strong>.</span>
 

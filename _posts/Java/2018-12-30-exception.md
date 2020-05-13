@@ -47,7 +47,7 @@ Throwable 클래스를 상속받는 Exception클래스와 그 하위클래스들
 
 # 
 
-<a href="https://SWnomad.com/%ec%98%88%ec%99%b8%ec%b2%98%eb%a6%ac/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-195/" rel="attachment wp-att-1656"><img class="aligncenter wp-image-1656" src="/images/2018/12/no-name-40.jpg" alt="" width="496" height="240" srcset="/images/2018/12/no-name-40.jpg 738w, /images/2018/12/no-name-40-300x145.jpg 300w" sizes="(max-width: 496px) 100vw, 496px" /></a>
+![image](/images/2018/12/no-name-40.jpg){: width="50%" height="50%"}
 
 모든 예외처리 클래스의 최상위 클래스는 Exception클래스이다. 위 그림에 표시되지 않은 클래스 이외에도 많은 클래스가 있지만 위 클래스들은 사용 빈도가 높은 클래스들이다.
 

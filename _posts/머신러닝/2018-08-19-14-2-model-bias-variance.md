@@ -19,7 +19,7 @@ tags:
 ---
 cross validation에서 model의 hyper-parameter들을 어떻게 fit하여 모델을 개선하는지에 대해 설명한다. 결국 이 parameter들의 값을 조정한다는 것은 high bias(underfit)과 high variance(overfit) 사이에서 어떻게 균형을 맞춰나가는 지에 대한 것이다. 이러한 작업을 하는 것 역시 어느정도 시간을 들여야 하는 작업이지만, 우리가 만든 모델이 생각보다 큰 예측에러를 가지고 있는 경우 대부분은 high bias나 high variance때문인 것을 생각한다면 충분히 가치있는 일이다.
 
-<img class="aligncenter wp-image-549" src="/images/2018/08/no-name-75-1024x364.png" alt="" width="652" height="232" srcset="/images/2018/08/no-name-75-1024x364.png 1024w, /images/2018/08/no-name-75-300x107.png 300w, /images/2018/08/no-name-75-768x273.png 768w, /images/2018/08/no-name-75.png 1259w" sizes="(max-width: 652px) 100vw, 652px" /> 
+![image](/images/2018/08/no-name-75-1024x364.png){: width="50%" height="50%"}
 
 먼저 기호를 한 번 정리하겠다.
 
@@ -39,7 +39,7 @@ high bias와 high variance는 training data의 cost function<img src="https://la
 
 가설함수의 최고차항인 d를 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;d=1,d=2,d=3,\cdot\cdot\cdot" alt="\dpi{120} d=1,d=2,d=3,\cdot\cdot\cdot" align="absmiddle" /> 와 같이 크게하면 모델의 복잡도가 증가해 training dataset에 점점 잘 들어맞게 되면서<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />은 작아질 것이다. 또한 어느 정도까지는 모델이 개선되기 때문에 validation data에 대한 예측 정확도도 증가할 것이다. 하지만 어느 순간을 넘어가면 high variance(overfit)이 일어난다. 이 때부터는 가설함수가 새로운 데이터에 일반화되지 못하고 오히려 validation data에 대한 예측 정확도는 떨어지면서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 증가할 것이다.
 
-<img class="aligncenter size-medium wp-image-551" src="/images/2018/08/no-name-76-300x231.png" alt="" width="300" height="231" srcset="/images/2018/08/no-name-76-300x231.png 300w, /images/2018/08/no-name-76.png 562w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/no-name-76-300x231.png){: width="50%" height="50%"}
 
   * high bias(underfit) : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}\approx&space;J_{cv}" alt="\dpi{120} J_{train}\approx J_{cv}" align="absmiddle" />
   * high variance(overfit) : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}\ll&space;J_{cv}" alt="\dpi{120} J_{train}\ll J_{cv}" align="absmiddle" />1)
@@ -66,7 +66,7 @@ high bias와 high variance는 training data의 cost function<img src="https://la
 
 보통 위와 같이 λ를 3배씩 늘려가면서 확인한다. λ는 hypothesis function의 parameter Θ를 죽여서 overfit을 해결하는 역할이다. λ가 너무 크면 오히려 high bias(underfit)이 일어나고 λ가 너무 작으면 high variance(overfit)이 일어난다.
 
-<img class="aligncenter size-medium wp-image-554" src="/images/2018/08/no-name-77-300x231.png" alt="" width="300" height="231" srcset="/images/2018/08/no-name-77-300x231.png 300w, /images/2018/08/no-name-77.png 562w" sizes="(max-width: 300px) 100vw, 300px" /> 1)<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\lambda=0,&space;\lambda=0.1,&space;\lambda=0.3,&space;\lambda=0.9,&space;\lambda=0.27,\cdot&space;\cdot&space;\cdot" alt="\dpi{120} \lambda=0, \lambda=0.1, \lambda=0.3, \lambda=0.9, \lambda=0.27,\cdot \cdot \cdot" align="absmiddle" />  각각의 λ에 대해 training dataset으로 모델 학습
+![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;\lambda=0,&space;\lambda=0.1,&space;\lambda=0.3,&space;\lambda=0.9,&space;\lambda=0.27,\cdot&space;\cdot&space;\cdot){: width="50%" height="50%"}
 
 2) 위에서 구한 각각의 모델로 cross validation dataset의 error <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 계산
 
@@ -90,13 +90,13 @@ training dataset의 갯수 m에 따른 training data와 validation data의 error
 
 model이 high bias 되어있다고 가정해보자. 이 때 training dataset의 갯수 m을 점점 늘리면 error <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />은 증가할 것이다. training data를 늘려봐야 단순한 모델로는 따라가지 못하기 때문에 error만 쌓이는 것이다. 그리고 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 m을 늘릴수록 그래도 조금씩은 작아질 것이다. 하지만 단순한 모델일수록 data에 둔감하여 새로운 데이터가 들어오더라도 모델이 잘 따라가지 않는다. 따라서 어느 시점부터는 데이터 size m이 많아지더라도 단순한 모델로는 그 데이터 패턴에 일반화되지 못해 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />  curve가 flat하게 되고 더 줄어들지 않는다. 평균적으로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 모두 높다는 것이 high bias의 특징이다.
 
-<img class="aligncenter size-medium wp-image-557" src="/images/2018/08/no-name-79-300x218.png" alt="" width="300" height="218" srcset="/images/2018/08/no-name-79-300x218.png 300w, /images/2018/08/no-name-79.png 522w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/no-name-79-300x218.png){: width="50%" height="50%"}
 
   * <span style="font-size: 14pt;"><strong>high variance(overfit)</strong></span>
 
 모델이 high variance 되어있다면  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />의 차이가 크다. 왜냐하면 overfit이라는 것은 training dataset에는 과하게 들어맞도록 만들어 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />는 작겠지만 새로운 데이터를 예측하는 성능은 오히려 떨어져 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" />는 크기 때문이다. 이 때에는 training data의 갯수 m을 늘려가면 overfit이 조금씩 해결이 되고 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{train}" alt="\dpi{120} J_{train}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{cv}" alt="\dpi{120} J_{cv}" align="absmiddle" /> 사이의 gap이 줄어들 것이다.
 
-<img class="aligncenter size-medium wp-image-558" src="/images/2018/08/3-3-300x209.png" alt="" width="300" height="209" srcset="/images/2018/08/3-3-300x209.png 300w, /images/2018/08/3-3.png 561w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/3-3-300x209.png){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -112,7 +112,7 @@ model이 high bias 되어있다고 가정해보자. 이 때 training dataset의 
 
 인공 신경망은 구조가 단순하고 parameter 갯수가 적을수록 high bias(underfit)이 일어나기 쉽고 구조가 복잡하고 parameter 갯수가 많을수록 high variance(overfit)이 일어나기 쉬운 경향이 있다. 이 때에는 신경망의 node의 갯수를 늘리거나 layer를 추가하는 식으로 high bias를 해결하고 regularization을 통해 high variance를 해결한다.
 
-<img class="aligncenter wp-image-559" src="/images/2018/08/no-name-78-1024x443.png" alt="" width="717" height="310" srcset="/images/2018/08/no-name-78-1024x443.png 1024w, /images/2018/08/no-name-78-300x130.png 300w, /images/2018/08/no-name-78-768x333.png 768w, /images/2018/08/no-name-78.png 1044w" sizes="(max-width: 717px) 100vw, 717px" /> 
+![image](/images/2018/08/no-name-78-1024x443.png){: width="50%" height="50%"}
 
 &nbsp;
 

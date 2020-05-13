@@ -211,7 +211,7 @@ Random Forest 는 Decision Tree를 앙상블 Bagging을 사용하여 만든 알�
 
 아무튼 최종적으로 아래와 같이 여러개(100개)의 decision tree가 만들어진다.
 
-<img class="aligncenter  wp-image-1253" src="/images/2018/10/no-name-8.jpg" alt="" width="669" height="312" srcset="/images/2018/10/no-name-8.jpg 899w, /images/2018/10/no-name-8-300x140.jpg 300w, /images/2018/10/no-name-8-768x359.jpg 768w" sizes="(max-width: 669px) 100vw, 669px" /> 
+![image](/images/2018/10/no-name-8.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

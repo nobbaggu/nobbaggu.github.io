@@ -20,7 +20,7 @@ tags:
   - 서포트 벡터 머신
   - 최대 마진
 ---
-<img class="aligncenter size-medium wp-image-612" src="/images/2018/08/no-name-92-300x187.png" alt="" width="300" height="187" srcset="/images/2018/08/no-name-92-300x187.png 300w, /images/2018/08/no-name-92.png 716w" sizes="(max-width: 300px) 100vw, 300px" />
+![image](/images/2018/08/no-name-92-300x187.png){: width="50%" height="50%"}
 
 위 그림의 classification 문제에서 decision boundary는 3가지 모두 될 수 있다. 하지만 어떤 decision boundary를 사용하는 것이 새로운 test data에 대해서도 더 좋은 예측을 할까? 직관적으로 당연히 boundary 2가 가장 좋은 분류를 할 것이라고 알 수 있다. decision boundary 1과 2는 boundary와 가장 인접한 data가 간신히 정답으로 분류된 느낌을 준다. 조금만 벗어났어도 결과가 달라질 수 있다. 하지만 decision boundary 2는 조금 더 여유로운 느낌을 준다. 이 상황을 margin이 많이 남는다고 한다. <span style="color: #ff0000;"><strong>support vector machine은 margin이 최대가 되는 decision boundary를 찾아내도록 해주며, 아직까지도 분류 알고리즘으로 엄청 많이 쓰이고있다.</strong></span>
 
@@ -60,7 +60,7 @@ classification에서 각 클래스의 cost는 각각 다음과 같았다.
 
 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\y=1:\quad&space;cost_{1}=max(0,k(1-z))\quad\quad&space;z=\theta^{T}x\\&space;y=0:\quad&space;cost_{0}=max(0,k(1+z))\quad\quad&space;z=\theta^{T}x" alt="\dpi{120} \\y=1:\quad cost_{1}=max(0,k(1-z))\quad\quad z=\theta^{T}x\\ y=0:\quad cost_{0}=max(0,k(1+z))\quad\quad z=\theta^{T}x" align="absmiddle" /> 
 
-<img class="aligncenter wp-image-614" src="/images/2018/08/no-name-94.png" alt="" width="593" height="273" srcset="/images/2018/08/no-name-94.png 901w, /images/2018/08/no-name-94-300x138.png 300w, /images/2018/08/no-name-94-768x354.png 768w" sizes="(max-width: 593px) 100vw, 593px" /> 
+![image](/images/2018/08/no-name-94.png){: width="50%" height="50%"}
 
 위와같이 새로운 cost function형태의 함수를 hinge loss function이라 부른다.
 
@@ -92,17 +92,17 @@ SVM의 hypothesis는 logistic regression처럼 class가 1이나 0이 될 확률�
 
 * * *
 
-<img class="aligncenter size-medium wp-image-616" src="/images/2018/08/no-name-93-300x205.png" alt="" width="300" height="205" srcset="/images/2018/08/no-name-93-300x205.png 300w, /images/2018/08/no-name-93.png 587w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/no-name-93-300x205.png){: width="50%" height="50%"}
 
 위 그림에서 가운데 있는 굵은 선을 decision boundary로 잡는다고 해보자. decision boundary이기 때문에 이 선은<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\cdot\cdot\codt+\theta_{n}x_{n}&space;=&space;0" alt="\dpi{120} \theta^{T}x=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\cdot\cdot\codt+\theta_{n}x_{n} = 0" align="absmiddle" />  의 방정식을 만족한다. 그리고 이 경계선에서 벗어나 있는 점들에 θ를 곱하면 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=c&space;\quad&space;(c\neq&space;0)" alt="\dpi{120} \theta^{T}x=c \quad (c\neq 0)" align="absmiddle" />가 된다. 모든 데이터가 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;1" alt="\dpi{120} \left | \theta^{T}x \right |\geq 1" align="absmiddle" />을 만족하도록 decision boundary를 잡아 margin을 크게 하여 안정된 예측을 하는 것이 목표이다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;0" alt="\dpi{120} \left | \theta^{T}x \right |\geq 0" align="absmiddle" />이 아니라 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;1" alt="\dpi{120} \left | \theta^{T}x \right |\geq 1" align="absmiddle" /> 인 것에 주목해야한다. 이것이 support vector machine 알고리즘을 사용하는 목적이기 때문이다. 0이 아닌 1을 기준으로 잡은 이유는 넉넉히 여유를 남기고 예측하고 싶어서이다. 여유를 남긴다는 것은 지금까지 본 적 없는 data에 대한 예측 적중률이 올라가는 것을 의미한다.
 
 이를 다른 관점에서 보자.
 
-<img class="aligncenter size-full wp-image-617" src="/images/2018/08/no-name-95.png" alt="" width="598" height="193" srcset="/images/2018/08/no-name-95.png 598w, /images/2018/08/no-name-95-300x97.png 300w" sizes="(max-width: 598px) 100vw, 598px" /> 
+![image](/images/2018/08/no-name-95.png){: width="50%" height="50%"}
 
 기하학적으로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x" alt="\dpi{120} \theta^{T}x" align="absmiddle" />는 (<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" /> 크기)×(<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" />를 벡터 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />에 projection한 벡터의 크기 )이다.
 
-<img class="aligncenter size-full wp-image-623" src="/images/2018/08/123.png" alt="" width="273" height="291" /> 
+![image](/images/2018/08/123.png){: width="50%" height="50%"}
 
 결국 p가 margin이었다. 즉<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\geq&space;1" alt="\dpi{120} \theta^{T}x\geq 1" align="absmiddle" /> 이라는 조건은<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta&space;\times&space;margin)&space;\geq&space;1" alt="\dpi{120} (\theta \times margin) \geq 1" align="absmiddle" />  와 같이 해석이 된다.
 
@@ -128,7 +128,7 @@ https://SWnomad.com/%ED%8F%89%EB%A9%B4-%EB%B0%A9%EC%A0%95%EC%8B%9D/
 
 한 가지 생각해볼 게 있다.
 
-<img class="aligncenter size-medium wp-image-643" src="/images/2018/08/no-name-99-300x281.png" alt="" width="300" height="281" srcset="/images/2018/08/no-name-99-300x281.png 300w, /images/2018/08/no-name-99.png 462w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/no-name-99-300x281.png){: width="50%" height="50%"}
 
 위의 그림과 같은 dataset의 경우 두 decision boundary 중 어느 것이 더 좋은 선택일까? data 중 1개가 outlier이다. 이런 일반적인 경향에서 벗어나는 data까지 모두 분류하는 것이 좋은 것인가? 1번은 모든 데이터를 완벽히 분류한다. 하지만 이러한 decision boundary는 training dataset은 모두 완벽히 분류할 지 몰라도 2번 decision boundary가 더 일반적인 분류 패턴을 보이기 때문에 처음 보는 data를 예측할 때에는 2번 boundary에 의한 분류가 더 정확도가 높을 것이라 생각된다. C가 크면 overfitting이 일어나 1번과 같은 decision boundary를 가지게 된다. 이런 경우 C를 낮추어 더 일반적인 decision boundary를 찾아야 한다.
 
@@ -140,7 +140,7 @@ https://SWnomad.com/%ED%8F%89%EB%A9%B4-%EB%B0%A9%EC%A0%95%EC%8B%9D/
 
 지금까지의 예시에서는 모든 데이터들이 선형적으로 분류가 가능하여 decision boundary로 평면이 될 수 있었다. 하지만 항상 평면으로 모든 data를 분류할 수 있는것이 아니다. 다음과 같은 경우를 보자.
 
-<img class="aligncenter size-medium wp-image-639" src="/images/2018/08/no-name-96-300x274.png" alt="" width="300" height="274" srcset="/images/2018/08/no-name-96-300x274.png 300w, /images/2018/08/no-name-96.png 323w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/no-name-96-300x274.png){: width="50%" height="50%"}
 
 데이터의 분포가 위와 같을 경우는 non-linear한 decision boundary가 필요하다. SVM에서 non-linear한 classification 문제를 풀기 위해서는 Kernel이란 trick을 사용해야한다.
 
@@ -192,7 +192,7 @@ low  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}
 
 3개의 feature로 부터 얻은 parameter가<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{0}=-0.5,&space;\theta_{1}=1,&space;\theta_{2}=1,&space;\theta_{3}=0" alt="\dpi{120} \theta_{0}=-0.5, \theta_{1}=1, \theta_{2}=1, \theta_{3}=0" align="absmiddle" /> 이라고 해보자. 그리고 새로운 test data가 있다. 이 data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)}" alt="\dpi{120} x^{(1)}" align="absmiddle" />에 근접해있고 다른 데이터에서는 멀다고 해보자. 그렇다면 이 test data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f_{1}\approx&space;1,&space;f_{2}\approx0,f_{3}\approx0" alt="\dpi{120} f_{1}\approx 1, f_{2}\approx0,f_{3}\approx0" align="absmiddle" />이 될 것이다. 그렇다면 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)=\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}\approx&space;-0.5&space;+1&space;+0+0=0.5>&space;0" alt="\dpi{120} h_{\theta}(x)=\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}\approx -0.5 +1 +0+0=0.5> 0" align="absmiddle" /> 따라서 이 data는 class1으로 분류된다. 이처럼 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(2)},x^{(3)}" alt="\dpi{120} x^{(2)},x^{(3)}" align="absmiddle" />에 근접해 있는 test data에서도 예측을 하였는데 2 번째 data는 positive class, 마지막 data는 negative class로 분류되었다고 해보자. 이런 경우 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)}" alt="\dpi{120} x^{(1)},x^{(2)}" align="absmiddle" />근처는 positive class 영역, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(3)}" alt="\dpi{120} x^{(3)}" align="absmiddle" />근처는 negative class 영역인 것처럼 보인다. 따라서 decision boundary는 다음과 비슷하게 그려질 것이다.
 
-<img class="aligncenter size-full wp-image-644" src="/images/2018/08/no-name-100.png" alt="" width="277" height="214" /> 
+![image](/images/2018/08/no-name-100.png){: width="50%" height="50%"}
 
 &nbsp;
 

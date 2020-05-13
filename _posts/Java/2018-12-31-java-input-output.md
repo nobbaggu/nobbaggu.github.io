@@ -31,7 +31,7 @@ tags:
 
 Java는 장치에 의존하지 않는 **일관적인 데이터의 입출력을 위해 스트림이라는 것을 제공**한다. 스트림은 데이터의 이동 통로이다. 스트림은 시냇물, 개울을 뜻한다. 데이터가 이동하는 모습이 물이 흐르는 것과 비슷하다하여 붙여진 이름이다.
 
-<a href="https://SWnomad.com/?attachment_id=1066" rel="attachment wp-att-1066"><img class="aligncenter wp-image-1066" src="/images/2018/09/1-14.jpg" alt="" width="393" height="197" srcset="/images/2018/09/1-14.jpg 519w, /images/2018/09/1-14-300x150.jpg 300w" sizes="(max-width: 393px) 100vw, 393px" /></a>
+![image](/images/2018/09/1-14.jpg){: width="50%" height="50%"}
 
 # 1. 스트림의 세 가지 분류 방식
 

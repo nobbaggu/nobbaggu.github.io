@@ -30,7 +30,7 @@ tags:
 
 그러나 Java는 컴파일 하면 .class 확장자의 파일이 만들어지는데, 이 .class 파일을 '바이트 코드' 라고 부른다. 바이트 코드는 JVM(Java Virtual Machine)이 설치되어있으면 어떤 운영체제의 실행환경에서 바로 실행시킬 수 있다. 이는 무척 편리한 기능이다.
 
-<a href="https://SWnomad.com/java%ec%9d%98-%ed%8a%b9%ec%a7%95/java-compile/" rel="attachment wp-att-1536"><img class="aligncenter size-full wp-image-1536" src="/images/2018/12/java-compile.jpg" alt="" width="1194" height="245" srcset="/images/2018/12/java-compile.jpg 1194w, /images/2018/12/java-compile-300x62.jpg 300w, /images/2018/12/java-compile-768x158.jpg 768w, /images/2018/12/java-compile-1024x210.jpg 1024w" sizes="(max-width: 1194px) 100vw, 1194px" /></a>
+![image](/images/2018/12/java-compile.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

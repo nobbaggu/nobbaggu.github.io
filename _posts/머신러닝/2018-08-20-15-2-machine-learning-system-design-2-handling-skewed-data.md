@@ -78,7 +78,7 @@ classification(logistic regression)의 경우를 다시 떠올려보자.
 
 P와 R의 개념을 봤을 때 둘 모두 높은 것이 좋다. 하지만 하나가 커지면 하나는 작아진다.
 
-<img class="aligncenter size-medium wp-image-590" src="/images/2018/08/no-name-80-300x263.png" alt="" width="300" height="263" srcset="/images/2018/08/no-name-80-300x263.png 300w, /images/2018/08/no-name-80.png 440w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/no-name-80-300x263.png){: width="50%" height="50%"}
 
 <table style="border-collapse: collapse; width: 85.4545%;" border="1">
   <tr>

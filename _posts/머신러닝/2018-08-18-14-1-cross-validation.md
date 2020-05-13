@@ -47,7 +47,7 @@ training data에 대해서 <img src="https://latex.codecogs.com/gif.latex?\dpi{
 
 training data를 가지고 d=1부터 해서 d를 올려가면서 test한다 생각해보자. d가 커질수록 더 높은 차수의 항으로 인해 training dataset의 cost function은 낮아질 것이다. 하지만 어느 순간부터는 d가 커질수록 overfit이 일어나 test data에 대한 예측은 오히려 나빠지고 test data의 cost function은 높아질 것이다.
 
-<img class="aligncenter size-medium wp-image-533" src="/images/2018/08/no-name-74-300x232.png" alt="" width="300" height="232" srcset="/images/2018/08/no-name-74-300x232.png 300w, /images/2018/08/no-name-74.png 548w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/no-name-74-300x232.png){: width="50%" height="50%"}
 
 위 그림에서 포물선 모양의<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J_{test}" alt="\dpi{120} J_{test}" align="absmiddle" /> 가 최소가 되는 점에서 최고차항의 차수인 d를 선택해야한다.
 

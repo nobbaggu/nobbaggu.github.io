@@ -23,7 +23,7 @@ tags:
 
 &nbsp;
 
-<a href="https://SWnomad.com/%ec%bb%ac%eb%a0%89%ec%85%98-%ed%94%84%eb%a0%88%ec%9e%84%ec%9b%8c%ed%81%ac%eb%9e%80/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-194/" rel="attachment wp-att-1638"><img class="aligncenter size-full wp-image-1638" src="/images/2018/12/no-name-39.jpg" alt="" width="433" height="255" srcset="/images/2018/12/no-name-39.jpg 433w, /images/2018/12/no-name-39-300x177.jpg 300w" sizes="(max-width: 433px) 100vw, 433px" /></a>
+![image](/images/2018/12/no-name-39.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

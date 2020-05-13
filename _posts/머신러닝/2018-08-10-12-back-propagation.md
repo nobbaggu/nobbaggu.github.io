@@ -37,7 +37,7 @@ tags:
 
 신경망의 개념이 나온지는 꽤 되었지만 신경망을 학습시키는 방법을 몰라 오랫동안 사장된 이론이었다. 하지만 1970년대 미국의 한 대학원생은 신경망을 학습시킬 방법을 발견했고, 이것이 지금부터 설명할 역전파 이다. 사실 역전파 알고리즘은 우리가 regression 문제에서 이미 보았던 <span style="color: #000000;"><strong>gradient-descent(경사하강법)과 </strong>본질적으로 같다. </span>아무튼 역전파를 아래와 같은 3-2-2 층을 가진 신경망을 예시로 들어 설명하겠다.
 
-<img class="aligncenter size-medium wp-image-435" src="/images/2018/08/no-name-44-300x285.png" alt="" width="300" height="285" srcset="/images/2018/08/no-name-44-300x285.png 300w, /images/2018/08/no-name-44.png 570w" sizes="(max-width: 300px) 100vw, 300px" /> 
+![image](/images/2018/08/no-name-44-300x285.png){: width="50%" height="50%"}
 
 <img src="https://latex.codecogs.com/gif.latex?\\&space;{&space;z&space;}_{&space;1&space;}^{&space;(2)&space;}={&space;\Theta&space;}_{&space;1,0&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,1&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,2&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;1,3&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;3&space;}^{&space;(1)&space;}\\&space;{&space;z&space;}_{&space;2&space;}^{&space;(2)&space;}={&space;\Theta&space;}_{&space;2,0&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;0&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,1&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;1&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,2&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;2&space;}^{&space;(1)&space;}+{&space;\Theta&space;}_{&space;2,3&space;}^{&space;(1)&space;}{&space;a&space;}_{&space;3&space;}^{&space;(1)&space;}" alt="\\ { z }_{ 1 }^{ (2) }={ \Theta }_{ 1,0 }^{ (1) }{ a }_{ 0 }^{ (1) }+{ \Theta }_{ 1,1 }^{ (1) }{ a }_{ 1 }^{ (1) }+{ \Theta }_{ 1,2 }^{ (1) }{ a }_{ 2 }^{ (1) }+{ \Theta }_{ 1,3 }^{ (1) }{ a }_{ 3 }^{ (1) }\\ { z }_{ 2 }^{ (2) }={ \Theta }_{ 2,0 }^{ (1) }{ a }_{ 0 }^{ (1) }+{ \Theta }_{ 2,1 }^{ (1) }{ a }_{ 1 }^{ (1) }+{ \Theta }_{ 2,2 }^{ (1) }{ a }_{ 2 }^{ (1) }+{ \Theta }_{ 2,3 }^{ (1) }{ a }_{ 3 }^{ (1) }" align="absmiddle" /> 
 
@@ -77,7 +77,7 @@ tags:
 
 **   3. 다음 공식에 따라 input layer를 제외한 층까지 역전파한다.  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;{&space;\delta&space;}^{&space;(l)&space;}=({&space;({&space;\Theta&space;}^{&space;(l)&space;})&space;}^{&space;T&space;}{&space;\delta&space;}^{&space;(l+1)&space;}).*{&space;a&space;}^{&space;(l)&space;}.*(1-{&space;a&space;}^{&space;(l)&space;})" alt="\dpi{120} { \delta }^{ (l) }=({ ({ \Theta }^{ (l) }) }^{ T }{ \delta }^{ (l+1) }).*{ a }^{ (l) }.*(1-{ a }^{ (l) })" align="absmiddle" />**
 
-**   4. <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bigtriangleup^{(l)}=\bigtriangleup^{(l)}+\delta^{(l+1)}(a^{(l)})^{T}" alt="\dpi{120} \bigtriangleup^{(l)}=\bigtriangleup^{(l)}+\delta^{(l+1)}(a^{(l)})^{T}" align="absmiddle" />  ←!!주의 : <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta^{(l+1)}" alt="\dpi{120} \delta^{(l+1)}" align="absmiddle" />을 대입할 때 bias unit을 뺀 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta" alt="\dpi{120} \delta" align="absmiddle" />를 적용한다. 왜냐하면 forward propagation을 할 때에 고정된 값(1)인 bias unit에는 영향을 주지 않기 때문이다. 다시 한 번 말하자면 bias unit은 전파를 한 다음 추가하는 node이다. output layer에는 bias node를 애초에 추가하지 않았기 때문에 상관없다. 아무튼 만약 실수로 bias unit까지 넣는다면 행렬곱셈을 할 때에 dimension이 맞지 않아 컴퓨터가 계산 오류를 일으킬 것이다.**
+**   4. ![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;\delta){: width="50%" height="50%"}
 
 **end**
 
@@ -125,7 +125,7 @@ end
 
 지금까지 계산한 것을 그림으로 간단히 나타내면 다음과 같다.
 
-<img class="aligncenter size-medium wp-image-436" src="/images/2018/08/no-name-45-295x300.png" alt="" width="295" height="300" srcset="/images/2018/08/no-name-45-295x300.png 295w, /images/2018/08/no-name-45.png 548w" sizes="(max-width: 295px) 100vw, 295px" /> 
+![image](/images/2018/08/no-name-45-295x300.png){: width="50%" height="50%"}
 
 &nbsp;
 

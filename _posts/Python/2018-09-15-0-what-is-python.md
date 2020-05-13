@@ -72,13 +72,13 @@ a라는 문자가 위 리스트의 항목 중 하나이면 a는 알파벳이다 
 
 이후 launcher를 실행하면 설치를 할 수 있는 화면이 나오는데, **Add Python 3.6 to PATH **부분을 꼭 체크를 해주어야 파이썬이 어느 곳에서든 실행될 수 있고 이해할 수 없는 오류를 방지할 수 있다.
 
-<img class="aligncenter size-full wp-image-750" src="/images/2018/09/1.jpg" alt="" width="665" height="409" srcset="/images/2018/09/1.jpg 665w, /images/2018/09/1-300x185.jpg 300w" sizes="(max-width: 665px) 100vw, 665px" /> 
+![image](/images/2018/09/1.jpg){: width="50%" height="50%"}
 
 이후 Install Now를 누르면 설치가 끝난다.
 
 이후 파이썬을 실행하면 대화형 인터프리터가 뜬다.
 
-<img class="aligncenter size-full wp-image-751" src="/images/2018/09/1-1.jpg" alt="" width="978" height="511" srcset="/images/2018/09/1-1.jpg 978w, /images/2018/09/1-1-300x157.jpg 300w, /images/2018/09/1-1-768x401.jpg 768w" sizes="(max-width: 978px) 100vw, 978px" /> 
+![image](/images/2018/09/1-1.jpg){: width="50%" height="50%"}
 
 위의 대화형 인터프리터를 파이썬 셸(Python shell) 이라고 부른다.
 
@@ -138,7 +138,7 @@ sys.exit()
 > ...  
 > a is 10
 
-<img class=" wp-image-755 alignleft" src="/images/2018/09/1-2.jpg" alt="" width="396" height="139" srcset="/images/2018/09/1-2.jpg 516w, /images/2018/09/1-2-300x105.jpg 300w" sizes="(max-width: 396px) 100vw, 396px" /> 
+![image](/images/2018/09/1-2.jpg){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -208,27 +208,27 @@ Windows, Linux, MacOS 버전이 있는데 자신에게 맞는 것을 받으면 �
 
 &nbsp;
 
-<img class="aligncenter size-full wp-image-756" src="/images/2018/09/1-3.jpg" alt="" width="500" height="386" srcset="/images/2018/09/1-3.jpg 500w, /images/2018/09/1-3-300x232.jpg 300w" sizes="(max-width: 500px) 100vw, 500px" /> 
+![image](/images/2018/09/1-3.jpg){: width="50%" height="50%"}
 
 32-bit launcher만 클릭해제하고 Next를 누르고 Install을 하면 된다.
 
-<img class="aligncenter size-full wp-image-757" src="/images/2018/09/no-name-6.png" alt="" width="470" height="177" srcset="/images/2018/09/no-name-6.png 470w, /images/2018/09/no-name-6-300x113.png 300w" sizes="(max-width: 470px) 100vw, 470px" /> 
+![image](/images/2018/09/no-name-6.png){: width="50%" height="50%"}
 
 그리고 우리는 처음 설치한 것이므로 'Do not import settings'를 클릭하고 OK를 한다.
 
-<img class="aligncenter size-full wp-image-758" src="/images/2018/09/no-name-7.png" alt="" width="808" height="577" srcset="/images/2018/09/no-name-7.png 808w, /images/2018/09/no-name-7-300x214.png 300w, /images/2018/09/no-name-7-768x548.png 768w" sizes="(max-width: 808px) 100vw, 808px" /> 
+![image](/images/2018/09/no-name-7.png){: width="50%" height="50%"}
 
 그럼 위와 같이 첫 화면에서는 UI를 선택할 수 있는데, 자기가 마음에 드는 테마를 고르면 된다.
 
-<img class="aligncenter size-full wp-image-760" src="/images/2018/09/no-name-9.png" alt="" width="780" height="485" srcset="/images/2018/09/no-name-9.png 780w, /images/2018/09/no-name-9-300x187.png 300w, /images/2018/09/no-name-9-768x478.png 768w" sizes="(max-width: 780px) 100vw, 780px" /> 
+![image](/images/2018/09/no-name-9.png){: width="50%" height="50%"}
 
 이후 넘기다가 Create new project를 누르면 위와 같이 디렉토리파일에 프로젝트를 만들 수 있는데 적당한 프로젝트 이름을 설정하고 Create를 누른다. 그리고 project interpreter를 선택하는 화살표를 누른다. 이미 Python 3.7이 설치되어 있으므로 Existing interpreter를 선택하고 Python3.7을 선택한 후 Create를 누르면 프로젝트 생성이 된다.
 
-<img class="aligncenter size-full wp-image-761" src="/images/2018/09/no-name-10.png" alt="" width="856" height="475" srcset="/images/2018/09/no-name-10.png 856w, /images/2018/09/no-name-10-300x166.png 300w, /images/2018/09/no-name-10-768x426.png 768w" sizes="(max-width: 856px) 100vw, 856px" /> 
+![image](/images/2018/09/no-name-10.png){: width="50%" height="50%"}
 
 그리고 프로젝트 이름에서 마우스 오른쪽 버튼을 누르고 New > Python File을 선택하면 드디어 .py 확장자의 python 파일이 만들어진다.
 
-<img class="aligncenter size-full wp-image-762" src="/images/2018/09/no-name-11.png" alt="" width="778" height="153" srcset="/images/2018/09/no-name-11.png 778w, /images/2018/09/no-name-11-300x59.png 300w, /images/2018/09/no-name-11-768x151.png 768w" sizes="(max-width: 778px) 100vw, 778px" /> 
+![image](/images/2018/09/no-name-11.png){: width="50%" height="50%"}
 
 위와 같이 스크립트를 작성해보자.
 
@@ -236,7 +236,7 @@ Windows, Linux, MacOS 버전이 있는데 자신에게 맞는 것을 받으면 �
 
 위와 같이 작성한 후 저장을 하고 cmd 창에서 파일이 있는 디렉토리로 가서 실행을 해보자.
 
-<img class="aligncenter size-full wp-image-763" src="/images/2018/09/no-name-12.png" alt="" width="398" height="205" srcset="/images/2018/09/no-name-12.png 398w, /images/2018/09/no-name-12-300x155.png 300w" sizes="(max-width: 398px) 100vw, 398px" /> 
+![image](/images/2018/09/no-name-12.png){: width="50%" height="50%"}
 
 cmd 창은 window + R 키로 실행창을 띄운 다음 cmd를 입력하고 enter를 치면 된다.
 

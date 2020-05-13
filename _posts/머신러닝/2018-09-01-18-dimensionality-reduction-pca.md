@@ -38,7 +38,7 @@ highly correlated한 여러개의 feature가 있을 때 그 수를 줄여 더 �
 
 * * *
 
-<img class="aligncenter size-full wp-image-669" src="/images/2018/08/no-name-108.png" alt="" width="934" height="306" srcset="/images/2018/08/no-name-108.png 934w, /images/2018/08/no-name-108-300x98.png 300w, /images/2018/08/no-name-108-768x252.png 768w" sizes="(max-width: 934px) 100vw, 934px" /> 
+![image](/images/2018/08/no-name-108.png){: width="50%" height="50%"}
 
 기본적인 idea는 이렇다. feature 2개를 어떠한 벡터에 projection하였을 때 수직 거리(error)들의 합이 가장 작은 벡터를 구한다. 이 새로운 vector에 각각의 data를 projection한 것을 새로운 data로 사용한다. 이렇게 하면  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{1}" alt="\dpi{120} x_{1}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{2}" alt="\dpi{120} x_{2}" align="absmiddle" /> 두 개의 feature가 1개의 feature로 대체된다. 이 방법은 일반적으로 n개의 feature를 그보다 작은 k개의 feature vector <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" alt="\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" align="absmiddle" /> 로 줄이는 데 사용할 수 있다. PCA의 목적은 이 error의 합의 최소값을 찾는 것이다.
 
@@ -87,33 +87,33 @@ PCA 알고리즘을 적용하기 전 먼저 data를 feature normalization을 해
 
 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma&space;=&space;\frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T&space;=&space;\frac{1}{m}X^{T}\cdot&space;X" alt="\dpi{120} \Sigma = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T = \frac{1}{m}X^{T}\cdot X" align="absmiddle" /> 
 
-<img class="alignleft" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma" alt="\dpi{120} \Sigma" align="absmiddle" /> 를 합계 기호와 혼동하지 말아야한다. 하나의 행렬이다.
+![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma){: width="50%" height="50%"}
 
 &nbsp;
 
-<img class="alignleft" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\x^{(i)}&space;:&space;n\times&space;1\qaud\quad\quad&space;\quad(x^{(i)})^{T}:1&space;\times&space;n&space;\\&space;X&space;:&space;m&space;\times&space;n\quad&space;\quad&space;\quad&space;X^{T}:n&space;\times&space;m" alt="\dpi{120} \\x^{(i)} : n\times 1\qaud\quad\quad \quad(x^{(i)})^{T}:1 \times n \\ X : m \times n\quad \quad \quad X^{T}:n \times m" align="absmiddle" /> 
+![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\x^{(i)}&space;:&space;n\times&space;1\qaud\quad\quad&space;\quad(x^{(i)})^{T}:1&space;\times&space;n&space;\\&space;X&space;:&space;m&space;\times&space;n\quad&space;\quad&space;\quad&space;X^{T}:n&space;\times&space;m){: width="50%" height="50%"}
 
-이다. 따라서 covariant matrix는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;n" alt="\dpi{120} n \times n" align="absmiddle" /> 행렬이다.
-
-&nbsp;
-
-<span style="font-size: 14pt;"><strong>b)  covariant matrix </strong></span><span style="font-size: 14pt;"><strong><img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma" alt="\dpi{120} \Sigma" align="absmiddle" /> 의 eigen-vectors&#8217; matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" /> 계산</strong></span>
-
-covariant matrix의 eigen vector들로 이루어진 matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" />를 구하려면 singular value decomposition을 하면된다. 이는 복잡한 수식계산의 과정을 거쳐야 한다. 다양한 머신러닝 라이브러리에서는 이러한 계산을 해주는 함수를 지원한다. octave에서는 svd() 함수를 사용하면 된다. →<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U&space;=&space;svd(\Sigma)" alt="\dpi{120} U = svd(\Sigma)" align="absmiddle" />      <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" /> 는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;n" alt="\dpi{120} n \times n" align="absmiddle" /> 행렬이다. 그리고 바로 이 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" />가 우리의 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />를 projection 할 line과 같은 것이다.
+이다. 따라서 covariant matrix는 ![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;n){: width="50%" height="50%"}
 
 &nbsp;
 
-<span style="font-size: 14pt;"><strong>c) k dimensional vector z들의 matrix <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z" alt="\dpi{120} Z" align="absmiddle" />를 구한다.</strong></span>
+<span style="font-size: 14pt;"><strong>b)  covariant matrix </strong></span><span style="font-size: 14pt;"><strong>![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;U){: width="50%" height="50%"}
 
-먼저 U의 1~k번째 column만으로 이루어진 matrix  <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U_{reduce}" alt="\dpi{120} U_{reduce}" align="absmiddle" />를 구한다. <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U_{reduce}" alt="\dpi{120} U_{reduce}" align="absmiddle" />는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;k" alt="\dpi{120} n \times k" align="absmiddle" /> 행렬이다.
+covariant matrix의 eigen vector들로 이루어진 matrix  ![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;X){: width="50%" height="50%"}
 
-<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}=U_{reduce}^{T}\cdot&space;x^{(i)}\quad&space;\quad&space;\quad&space;Z=X\cdot&space;U_{reduce}" alt="\dpi{120} z^{(i)}=U_{reduce}^{T}\cdot x^{(i)}\quad \quad \quad Z=X\cdot U_{reduce}" align="absmiddle" />  는<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;k" alt="\dpi{120} m \times k" align="absmiddle" />  행렬이다. projection을 하여 새로운 k-dimensional featured data를 얻어내었다.
+&nbsp;
 
-결국 우리는<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;n" alt="\dpi{120} m \times n" align="absmiddle" /> 행렬 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />에서 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;k" alt="\dpi{120} m \times k" align="absmiddle" />행렬 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z" alt="\dpi{120} Z" align="absmiddle" />를 얻어냈다.
+<span style="font-size: 14pt;"><strong>c) k dimensional vector z들의 matrix ![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z){: width="50%" height="50%"}
 
-<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z=\begin{bmatrix}&space;---z^{(1)}---&space;\\---z^{(2)}---\\&space;\cdot&space;\\&space;\cdot&space;\\---z^{(m)}---&space;\end{bmatrix}" alt="\dpi{120} Z=\begin{bmatrix} ---z^{(1)}--- \\---z^{(2)}---\\ \cdot \\ \cdot \\---z^{(m)}--- \end{bmatrix}" align="absmiddle" /> 
+먼저 U의 1~k번째 column만으로 이루어진 matrix  ![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;n&space;\times&space;k){: width="50%" height="50%"}
 
-Z의 각 data example은 k개의 feature를 가지고 있다. 각각의 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}" alt="\dpi{120} z^{(i)}" align="absmiddle" />는 <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />를 vector <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(i)}" alt="\dpi{120} u^{(i)}" align="absmiddle" />에 projection한 data이다.
+![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;m&space;\times&space;k){: width="50%" height="50%"}
+
+결국 우리는![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z){: width="50%" height="50%"}
+
+![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;Z=\begin{bmatrix}&space;---z^{(1)}---&space;\\---z^{(2)}---\\&space;\cdot&space;\\&space;\cdot&space;\\---z^{(m)}---&space;\end{bmatrix}){: width="50%" height="50%"}
+
+Z의 각 data example은 k개의 feature를 가지고 있다. 각각의 ![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(i)}){: width="50%" height="50%"}
 
 이제 이 dataset을 가지고 K-means 알고리즘이나 다른 unsupervised 알고리즘을 적용하면 된다.
 
@@ -132,13 +132,13 @@ Z의 각 data example은 k개의 feature를 가지고 있다. 각각의 <img cl
 
 &nbsp;
 
-<span style="font-size: 18pt;"><strong>2. Reconstruction <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;X" alt="\dpi{150} X" align="absmiddle" /> from <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;Z" alt="\dpi{150} Z" align="absmiddle" /></strong></span>
+<span style="font-size: 18pt;"><strong>2. Reconstruction ![image](https://latex.codecogs.com/gif.latex?\dpi{150}&space;Z){: width="50%" height="50%"}
 
 * * *
 
-<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}=U_{reduce}^{T}\cdot&space;x^{(i)}\quad&space;\quad&space;\quad&space;Z=X\cdot&space;U_{reduce}" alt="\dpi{120} z^{(i)}=U_{reduce}^{T}\cdot x^{(i)}\quad \quad \quad Z=X\cdot U_{reduce}" align="absmiddle" />  의 관계가 되었었다.
+![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(i)}=U_{reduce}^{T}\cdot&space;x^{(i)}\quad&space;\quad&space;\quad&space;Z=X\cdot&space;U_{reduce}){: width="50%" height="50%"}
 
-반대로<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{approx}=U_{reduce}\cdot&space;z^{(i)}\quad&space;\quad&space;\quad&space;X_{approx}=Z\cdot&space;U_{reduce}^{T}" alt="\dpi{120} x^{(i)}_{approx}=U_{reduce}\cdot z^{(i)}\quad \quad \quad X_{approx}=Z\cdot U_{reduce}^{T}" align="absmiddle" /> 의 관계식을 이용하여 Z로부터 X를 복구할 수 있다. 하지만 완벽히 100% 복구되지는 못한다. 이미 근사(approximation)하여 어느정도의 error를 무시해버렸기 때문에 이로부터 복원되는 것도 X의 근사일 뿐이다.
+반대로![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{approx}=U_{reduce}\cdot&space;z^{(i)}\quad&space;\quad&space;\quad&space;X_{approx}=Z\cdot&space;U_{reduce}^{T}){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -152,7 +152,7 @@ Z의 각 data example은 k개의 feature를 가지고 있다. 각각의 <img cl
 
 PCA 알고리즘을 사용하면 n개의 feature를 k개의 feature로 줄일 수 있다 하였다. 이 때 k를 몇으로 정하는 것이 좋을지 생각해보지 않을 수 없다.
 
-  *<img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{average\quad&space;projection\quad&space;error}{total\quad&space;variation}=\frac{\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}-x^{(i)}_{approx}&space;\right&space;\|^{2}}{\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}&space;\right&space;\|^{2}}\leq&space;0.01" alt="\dpi{120} \frac{average\quad projection\quad error}{total\quad variation}=\frac{\frac{1}{m}\sum_{i=1}^{m}\left \| x^{(i)}-x^{(i)}_{approx} \right \|^{2}}{\frac{1}{m}\sum_{i=1}^{m}\left \| x^{(i)} \right \|^{2}}\leq 0.01" align="absmiddle" /> 를 만족하는 가장 작은 k를 선택한다.
+  *![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{average\quad&space;projection\quad&space;error}{total\quad&space;variation}=\frac{\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}-x^{(i)}_{approx}&space;\right&space;\|^{2}}{\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}&space;\right&space;\|^{2}}\leq&space;0.01){: width="50%" height="50%"}
 
 이 때 99%의 variance가 보존된다고 본다. 0.01 이 아니라 0.05를 사용한다면 95%의 variance가 보존되는 것이다. variance가 보존된다는 것은 기존의 data들의 relevant한 position이 유지된다는 말이다. 되도않는 hyperplane을 골라서 projection하면 기존의 class별 classification 되어있던 data들이 오히려 더 섞여 classification이 악화될 소지가 있는 것이다.
 
@@ -185,7 +185,7 @@ PCA 알고리즘을 사용하면 n개의 feature를 k개의 feature로 줄일 �
         </p>
         
         <p>
-          <img class="alignnone" src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\sum_{i=1}^{k}S_{ii}}{\sum_{i=1}^{n}S_{ii}}\geq&space;0.99" alt="\dpi{120} \frac{\sum_{i=1}^{k}S_{ii}}{\sum_{i=1}^{n}S_{ii}}\geq 0.99" align="absmiddle" /> 이 식을 만족한다면 variance가 99%이상 보존되는 것이다. k만 입력해주면 알아서 계산을 해주니 편하고 시간도 절약된다.
+          ![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{\sum_{i=1}^{k}S_{ii}}{\sum_{i=1}^{n}S_{ii}}\geq&space;0.99){: width="50%" height="50%"}
         </p>
         
         <p>

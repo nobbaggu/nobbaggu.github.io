@@ -24,7 +24,7 @@ gradient descent의 식을 직접 작성하지 않아도 numerical computing분
 
 위와같은 함수는 4개의 parameter가 (1,4,6,3)의 값을 가질 때 최소값을 가질것이다. 그럼 이를 octave에서 지원하는 함수를 이용하기 전에 위의 함수를 정의해야겠다.
 
-<img class="aligncenter size-full wp-image-363" src="/images/2018/08/no-name-13.png" alt="" width="717" height="209" srcset="/images/2018/08/no-name-13.png 717w, /images/2018/08/no-name-13-300x87.png 300w" sizes="(max-width: 717px) 100vw, 717px" /> 
+![image](/images/2018/08/no-name-13.png){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -34,7 +34,7 @@ gradient descent의 식을 직접 작성하지 않아도 numerical computing분
 
 &nbsp;
 
-<img class="aligncenter size-full wp-image-366" src="/images/2018/08/no-name-15.png" alt="" width="693" height="243" srcset="/images/2018/08/no-name-15.png 693w, /images/2018/08/no-name-15-300x105.png 300w" sizes="(max-width: 693px) 100vw, 693px" /> 
+![image](/images/2018/08/no-name-15.png){: width="50%" height="50%"}
 
 &nbsp;
 

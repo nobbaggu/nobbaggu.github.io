@@ -125,7 +125,7 @@ print("sentence 3")
 
 두 코드의 다른점은 프로그램의 출력 방법이다. 파일 출력에서는 프로그램의 출력 문장들이 파일에 쓰여지고 두 번째 코드에서는 프로그램의 출력 문장이 모니터를 통해 나오는 것 뿐이다. 아무튼 파일 출력 코드를 실행하면 다음 그림과 같이 파일이 생성되고 내용을 확인할 수 있다.
 
-<img class="aligncenter wp-image-868" src="/images/2018/09/no-name-13.png" alt="" width="533" height="353" srcset="/images/2018/09/no-name-13.png 688w, /images/2018/09/no-name-13-300x198.png 300w" sizes="(max-width: 533px) 100vw, 533px" /> 
+![image](/images/2018/09/no-name-13.png){: width="50%" height="50%"}
 
 &nbsp;
 

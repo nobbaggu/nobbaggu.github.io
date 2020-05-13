@@ -171,7 +171,7 @@ tags:
 
 위의 표는 프로그래밍을 좋아하는지, 수학을 좋아하는지, 그리고 남자인지 여자인지가 나와있는 데이터인데, 이 사람들에게 머신러닝을 좋아하는지 설문조사를 한 결과라고 해보자. 위의 데이터를 가지고 학습시킨 간단한 흐름도 하나는 다음과 같다.
 
-<img class="aligncenter wp-image-1232" src="/images/2018/10/no-name-4.jpg" alt="" width="629" height="340" srcset="/images/2018/10/no-name-4.jpg 939w, /images/2018/10/no-name-4-300x162.jpg 300w, /images/2018/10/no-name-4-768x415.jpg 768w" sizes="(max-width: 629px) 100vw, 629px" /> 
+![image](/images/2018/10/no-name-4.jpg){: width="50%" height="50%"}
 
 의사결정 트리는 위 그림처럼 질문 하나하나의 대답에 따라 경로가 결정되며 마지막 예측 까지 도달한다.
 
@@ -193,7 +193,7 @@ tags:
 
 결론부터 말하자면, 분류의 impurity를 나타내는 Gini계수 라는 것을 계산해 Gini계수가 가장 낮은 질문을 선택한다.
 
-<img class="aligncenter wp-image-1233" src="/images/2018/10/1.jpg" alt="" width="384" height="219" srcset="/images/2018/10/1.jpg 523w, /images/2018/10/1-300x171.jpg 300w" sizes="(max-width: 384px) 100vw, 384px" /> 
+![image](/images/2018/10/1.jpg){: width="50%" height="50%"}
 
 Programming 을 좋아하는 사람들 중 머신러닝을 좋아하거나 그렇지 않은 사람들, 프로그래밍을 좋아하지 않는 사람들 중 머신러닝을 좋아하는 사람과 그렇지 않은 사람의 수는 위와 같이 나타난다.
 
@@ -215,17 +215,17 @@ Gini impurity는 위의 공식에 따라 계산한다. 그럼 각각의 leaf에 
 
 이제 또 남은 응답자 수에 대하여 같은 과정을 거쳐 다음 질문을 선택할 수 있다.
 
-<img class="aligncenter wp-image-1234" src="/images/2018/10/1-1.jpg" alt="" width="484" height="323" srcset="/images/2018/10/1-1.jpg 658w, /images/2018/10/1-1-300x200.jpg 300w" sizes="(max-width: 484px) 100vw, 484px" /> 
+![image](/images/2018/10/1-1.jpg){: width="50%" height="50%"}
 
 &nbsp;
 
 이런 과정을 거쳐 최종적으로 다음과 같은 의사결정 트리가 나왔다.
 
-<img class="aligncenter wp-image-1232" src="/images/2018/10/no-name-4.jpg" alt="" width="629" height="340" srcset="/images/2018/10/no-name-4.jpg 939w, /images/2018/10/no-name-4-300x162.jpg 300w, /images/2018/10/no-name-4-768x415.jpg 768w" sizes="(max-width: 629px) 100vw, 629px" /> 
+![image](/images/2018/10/no-name-4.jpg){: width="50%" height="50%"}
 
 그런데 왼쪽 줄기에서 Like Math?의 응답으로 NO가 나온 경우 거기서 더 이상 Male/Female? 을 묻지 않고 Leaf로 줄기가 끝이 난다. 이러한 경우는 &#8216;Like Math&#8217;만  Gini impurity보다 &#8216;Male/Female&#8217;의 Gini impurity가 더 높기 때문이다. 더 이상 질문을 만들어봐야 오히려 예측 성능이 떨어지는 모델이 나온다는 말이다.
 
-<img class="aligncenter wp-image-1235" src="/images/2018/10/1-2.jpg" alt="" width="716" height="361" srcset="/images/2018/10/1-2.jpg 1082w, /images/2018/10/1-2-300x151.jpg 300w, /images/2018/10/1-2-768x387.jpg 768w, /images/2018/10/1-2-1024x516.jpg 1024w" sizes="(max-width: 716px) 100vw, 716px" /> 
+![image](/images/2018/10/1-2.jpg){: width="50%" height="50%"}
 
 Male/Female로 나누기 전의 Gini impurity는 다음과 같다.
 
@@ -299,4 +299,4 @@ Male/Female로 나누기 전의 Gini impurity는 다음과 같다.
 
 이런 경우 나이별로 정렬을 한 이후 각 구간 사이의 평균을 낸다. 그리고 하나하나 적용해가며 어떤 것을 기준으로 사용했을 때의 Gini impurity를 구한 이후 가장 낮은 기준을 사용하면 된다.
 
-<img class="aligncenter wp-image-1236" src="/images/2018/10/no-name-5.jpg" alt="" width="603" height="317" srcset="/images/2018/10/no-name-5.jpg 997w, /images/2018/10/no-name-5-300x158.jpg 300w, /images/2018/10/no-name-5-768x404.jpg 768w" sizes="(max-width: 603px) 100vw, 603px" />
+![image](/images/2018/10/no-name-5.jpg){: width="50%" height="50%"}

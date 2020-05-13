@@ -155,7 +155,7 @@ int main(void)
 
 이해할 수 없는 문자열이 출력됩니다. 그 이유는 str2에는 NULL문자가 포함되어있지 않기 때문입니다.
 
-<img class="aligncenter wp-image-1043" src="/images/2018/09/zz.jpg" alt="" width="517" height="146" srcset="/images/2018/09/zz.jpg 890w, /images/2018/09/zz-300x85.jpg 300w, /images/2018/09/zz-768x217.jpg 768w" sizes="(max-width: 517px) 100vw, 517px" /> 
+![image](/images/2018/09/zz.jpg){: width="50%" height="50%"}
 
 그래서 항상 우리는 복사된 문자열이 전달이 될 포인터나 배열에 항상 null문자까지 고려하여 전달할 문자열의 길이를 설정해야 합니다. 위의 경우에는 다음과 같이 코드를 수정하면 되겠습니다.
 
@@ -232,7 +232,7 @@ ABCDEF
 
 이 때 NULL 문자의 위치는 자동으로 조정됩니다.
 
-<img class="aligncenter wp-image-1044" src="/images/2018/09/ghg.jpg" alt="" width="449" height="98" srcset="/images/2018/09/ghg.jpg 738w, /images/2018/09/ghg-300x65.jpg 300w" sizes="(max-width: 449px) 100vw, 449px" /> 
+![image](/images/2018/09/ghg.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

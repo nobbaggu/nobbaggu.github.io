@@ -53,7 +53,7 @@ Stochastic Gradient Descent는 각각의 data마다 cost를 미분하여 update�
 
 직관적으로 global minimum으로의 방향의 정확도는 BGD가, speed는 SGD가 더 높을 것이라고 생각된다.
 
-<img class="aligncenter wp-image-730" src="/images/2018/09/no-name-5.png" alt="" width="373" height="195" srcset="/images/2018/09/no-name-5.png 575w, /images/2018/09/no-name-5-300x157.png 300w" sizes="(max-width: 373px) 100vw, 373px" /> 
+![image](/images/2018/09/no-name-5.png){: width="50%" height="50%"}
 
 Stochastic Gradient Descent의 특징은 Global minimum으로 수렴하는 것이 아니라 주변을 맴돈다. 아무래도 하나의 데이터만 이용해서 update하다보니 움직임이 가볍고 정확한 global minimum으로 향하지는 못한다. 하지만 learning rate <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\alpha" alt="\dpi{120} \alpha" align="absmiddle" />를 작게 할 수록 수렴하는 것에 가깝게는 만들 수 있다.
 

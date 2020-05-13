@@ -53,7 +53,7 @@ ex1 ) (재산, 집의 평수)의 data set들을 학습시켜 두 변수의 관�
 
 &nbsp;
 
-<img class="aligncenter  wp-image-224" src="/images/2018/08/no-name.jpg" alt="" width="491" height="194" srcset="/images/2018/08/no-name.jpg 900w, /images/2018/08/no-name-300x119.jpg 300w, /images/2018/08/no-name-768x304.jpg 768w" sizes="(max-width: 491px) 100vw, 491px" /> 
+![image](/images/2018/08/no-name.jpg){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -73,7 +73,7 @@ ex) A(a)~C(c)의 알파벳 패턴을 인식하여 3가지 class로 분류
 
 &nbsp;
 
-<img class="aligncenter  wp-image-225" src="/images/2018/08/no-name-1.png" alt="" width="431" height="137" srcset="/images/2018/08/no-name-1.png 900w, /images/2018/08/no-name-1-300x95.png 300w, /images/2018/08/no-name-1-768x244.png 768w" sizes="(max-width: 431px) 100vw, 431px" /> 
+![image](/images/2018/08/no-name-1.png){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -89,7 +89,7 @@ ex3) 손의 크기와 목소리 톤의 2가지 정보로부터 남자인지 여�
 
 &nbsp;
 
-<img class="aligncenter  wp-image-226" src="/images/2018/08/no-name-1.jpg" alt="" width="348" height="249" srcset="/images/2018/08/no-name-1.jpg 673w, /images/2018/08/no-name-1-300x214.jpg 300w" sizes="(max-width: 348px) 100vw, 348px" /> 
+![image](/images/2018/08/no-name-1.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

@@ -24,7 +24,7 @@ tags:
 
 먼저, 기본적인 idea는 고등 미적분의 local minimum에서의 미분계수가 0이라는 사실에 근거한다.
 
-<img class="aligncenter  wp-image-259" src="/images/2018/08/1-3.jpg" alt="" width="613" height="250" srcset="/images/2018/08/1-3.jpg 900w, /images/2018/08/1-3-300x122.jpg 300w, /images/2018/08/1-3-768x313.jpg 768w" sizes="(max-width: 613px) 100vw, 613px" /> 
+![image](/images/2018/08/1-3.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

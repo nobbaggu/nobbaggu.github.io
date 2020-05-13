@@ -41,9 +41,9 @@ tags:
 
 일단 동물의 신경세포 하나가 신호를 처리하는 과정을 간단히 보자. 수상돌기로 전기적인 신호(입력)이 들어오면 뉴런이 학습한 알고리즘에 따라 신호를 처리하여 축색돌기로 전기적인신호(출력)을 낸다. 이런 뉴런들이 아주 많이 모여서 집합을 이루는 것이 신경망이다.
 
-<img class="aligncenter  wp-image-382" src="/images/2018/08/KakaoTalk_20180722_194509991.png" alt="" width="462" height="236" srcset="/images/2018/08/KakaoTalk_20180722_194509991.png 900w, /images/2018/08/KakaoTalk_20180722_194509991-300x153.png 300w, /images/2018/08/KakaoTalk_20180722_194509991-768x392.png 768w" sizes="(max-width: 462px) 100vw, 462px" /> 
+![image](/images/2018/08/KakaoTalk_20180722_194509991.png){: width="50%" height="50%"}
 
-<img class="aligncenter  wp-image-383" src="/images/2018/08/KakaoTalk_20180722_194509991-1.png" alt="" width="615" height="314" srcset="/images/2018/08/KakaoTalk_20180722_194509991-1.png 900w, /images/2018/08/KakaoTalk_20180722_194509991-1-300x153.png 300w, /images/2018/08/KakaoTalk_20180722_194509991-1-768x392.png 768w" sizes="(max-width: 615px) 100vw, 615px" /> 
+![image](/images/2018/08/KakaoTalk_20180722_194509991-1.png){: width="50%" height="50%"}
 
 우리가 구현할 인공 신경망에서는 <span style="color: #ff0000;"><b>feature들이 입력</b></span>으로 들어와 중간단계를 거치고 마지막으로 계산되어서 나오는 <span style="color: #ff0000;"><b>hypothesis function의 결과값이 출력</b></span>이 된다. 그리고 인공신경망의 중간에 추가적인 몇겹의 층(layer)이 더 있고 몇 층을 더 사용할지는 우리가 결정할 일이다.
 
@@ -61,7 +61,7 @@ tags:
 
 신경망의 시작은 <span style="color: #ff0000;"><b>perceptron(퍼셉트론)</b></span>이다. perceptron은 하나의 신경 세포라고 보면 된다. 아주 많은 신경 세포가 군집을 이룬 것이 신경망 이다. perceptron이 어떻게 동작하는지 알면 인공신경망의 동작도 이해할 수 있다. 수식적인 복잡성만 더해질 뿐이다. perceptron의 동작은 하나의 간단한 알고리즘을 따른다.
 
-<img class="aligncenter  wp-image-384" src="/images/2018/08/no-name-27.png" alt="" width="385" height="245" srcset="/images/2018/08/no-name-27.png 695w, /images/2018/08/no-name-27-300x191.png 300w" sizes="(max-width: 385px) 100vw, 385px" /> 
+![image](/images/2018/08/no-name-27.png){: width="50%" height="50%"}
 
 각각의 입력이 가중치에 의해 곱해져서 나온 값을 다 더한다. 그리고 거기에 어떠한 bias term(DC term)이 더해진다. 그리고 이 sum값이 perceptron에 들어가면 activation function에 의해 활성화된 최종값이 나오게 된다. 이 activation function은 sigmoid function이다. 이러한 activation function은 결과값의 범위를 제한하여 수식적 편의성을 제공한다. 하지만 하나의 간단한 perceptron 알고리즘으로 해결할 수 있는 문제는 너무 제한적이다. 따라서 더 복잡한 알고리즘을 구현하기 위해 perceptron들을 여러 층 쌓은 Multi Layer Perceptron Model이 나왔고 이것이 현재의 신경망 모델이다.
 
@@ -81,7 +81,7 @@ tags:
 
 위 수식이 무엇을 의미하는가? 머신러닝 알고리즘은 결국에는 input x에 대한 출력 <img src="https://latex.codecogs.com/gif.latex?h_{\theta}(x)" alt="h_{\theta}(x)" align="absmiddle" /> 를 얻어내는 것이다. linear regression이든, classification이든 각자만의 알고리즘에 의해 input x에 대한<img src="https://latex.codecogs.com/gif.latex?h_{\theta}(x)" alt="h_{\theta}(x)" align="absmiddle" /> 를 구해냈다. neural network도 마찬가지다. 먼저 modeling을 하기 전 neural network를 직관적으로 표현하는 그림을 보자.
 
-<img class="aligncenter  wp-image-385" src="/images/2018/08/no-name-28.png" alt="" width="334" height="242" srcset="/images/2018/08/no-name-28.png 734w, /images/2018/08/no-name-28-300x218.png 300w" sizes="(max-width: 334px) 100vw, 334px" /> 
+![image](/images/2018/08/no-name-28.png){: width="50%" height="50%"}
 
 퍼셉트론이 여러층을 쌓은 것일 뿐이다. 이 때에는 하나의 layer를 하나의 vector로 보고 node와 node사이의 계산과정에 필요한 parameter들은 하나의 matrix(행렬)로 묶어서 다루면 된다.
 
@@ -145,7 +145,7 @@ output layer로 전파되는 경우에도
 
 위의 수식들을 그림으로 나타내면 다음과 같다.
 
-<img class="aligncenter  wp-image-386" src="/images/2018/08/no-name-29.png" alt="" width="517" height="394" srcset="/images/2018/08/no-name-29.png 679w, /images/2018/08/no-name-29-300x228.png 300w, /images/2018/08/no-name-29-80x60.png 80w" sizes="(max-width: 517px) 100vw, 517px" /> 
+![image](/images/2018/08/no-name-29.png){: width="50%" height="50%"}
 
 hidden layer의 갯수가 2층 이상인 경우는 이 과정의 반복일 뿐이다.
 
@@ -175,21 +175,21 @@ hidden layer의 갯수가 2층 이상인 경우는 이 과정의 반복일 뿐�
 
 간단한 예제를 하나 보자. 전자회로, 디지털공학에서 가장 먼저 배우는 것은 논리 gate이다. 그 중 몇개의 gate를 신경망 알고리즘으로 구현해보겠다.
 
-<img class="aligncenter  wp-image-388" src="/images/2018/08/no-name-30.png" alt="" width="697" height="261" srcset="/images/2018/08/no-name-30.png 1298w, /images/2018/08/no-name-30-300x112.png 300w, /images/2018/08/no-name-30-768x288.png 768w, /images/2018/08/no-name-30-1024x383.png 1024w" sizes="(max-width: 697px) 100vw, 697px" /> 
+![image](/images/2018/08/no-name-30.png){: width="50%" height="50%"}
 
 &nbsp;
 
 두 개의 input이 모두 1일 때에만 output이 1인 AND gate와 하나라도 1이면 output이 1인 OR gate이다. (NOT x1) AND (NOT x2) gate 는 라는 것은 x1과 x2 모두 0이어야  output이 1이 된다.
 
-<img class="aligncenter  wp-image-389" src="/images/2018/08/no-name-31.png" alt="" width="379" height="302" srcset="/images/2018/08/no-name-31.png 613w, /images/2018/08/no-name-31-300x239.png 300w" sizes="(max-width: 379px) 100vw, 379px" /> 
+![image](/images/2018/08/no-name-31.png){: width="50%" height="50%"}
 
 XNOR gate는 어떻게 만들까? 참고로 XNOR gate는 input 두 개가 서로 같을 때에만 output이 1인 논리소자이다. 답은 이미 나와있다. 위의 세 개를 합치면 된다.
 
-<img class="aligncenter  wp-image-391" src="/images/2018/08/no-name-33.png" alt="" width="637" height="349" srcset="/images/2018/08/no-name-33.png 1203w, /images/2018/08/no-name-33-300x164.png 300w, /images/2018/08/no-name-33-768x421.png 768w, /images/2018/08/no-name-33-1024x561.png 1024w" sizes="(max-width: 637px) 100vw, 637px" /> 
+![image](/images/2018/08/no-name-33.png){: width="50%" height="50%"}
 
 단지 hidden layer만 하나 추가하였을 뿐인데 XNOR gate를 아주 간단히 모델링하였다. XNOR gate를 classification으로 치면 아래 왼쪽 그림과 같다.
 
-<img class="aligncenter  wp-image-392" src="/images/2018/08/no-name-34.png" alt="" width="367" height="200" srcset="/images/2018/08/no-name-34.png 748w, /images/2018/08/no-name-34-300x164.png 300w" sizes="(max-width: 367px) 100vw, 367px" /> 
+![image](/images/2018/08/no-name-34.png){: width="50%" height="50%"}
 
 XNOR 문제를 modeling 할 수 있다는 것은 오른쪽의 분류문제도 modeling 할 수 있다는 것이다. hidden layer를 추가하거나 node수를 늘려 nonlinearity를 키워주면 된다. <span style="color: #ff0000;"><b>신경망의 hidden layer의 수를 추가할수록 훨씬 더 복잡하고 nonlinear한 학습 알고리즘을 표현할 수 있다.</b></span>
 

@@ -16,7 +16,7 @@ tags:
 ---
 정상적인 범주 내에 있는 normal한 data들의 분포에서 많이 벗어나는 data를 anomaly 라고 한다. anomaly 는 &#8216;변칙&#8217;이란 뜻을 가지고 있다.
 
-<img class="aligncenter wp-image-694" src="/images/2018/09/no-name-1.png" alt="" width="289" height="243" srcset="/images/2018/09/no-name-1.png 423w, /images/2018/09/no-name-1-300x252.png 300w" sizes="(max-width: 289px) 100vw, 289px" /> 
+![image](/images/2018/09/no-name-1.png){: width="50%" height="50%"}
 
 위와 같은 비이상적 data인 anomaly 를 detect 하는 알고리즘은 제품 공정에서 불량을 찾거나 데이터 센터에서 소자의 이상한 움직임을 감지한다던지 하는데에 적용할 수 있다.
 
@@ -30,7 +30,7 @@ tags:
 
 일반적인 normal 데이터들의 분포는 보통 Gaussian distribution(가우스 분포) &#8211; normal distribution(정규분포)라고도 한다- 를 따른다. 가우스 분포는 다음과 같다.
 
-<img class="aligncenter wp-image-696" src="/images/2018/09/no-name-3.png" alt="" width="533" height="162" srcset="/images/2018/09/no-name-3.png 819w, /images/2018/09/no-name-3-300x91.png 300w, /images/2018/09/no-name-3-768x233.png 768w" sizes="(max-width: 533px) 100vw, 533px" /> 
+![image](/images/2018/09/no-name-3.png){: width="50%" height="50%"}
 
 위는 mean(평균)이 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu" alt="\dpi{120} \mu" align="absmiddle" />이고 variance(분산)이 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" />인 가우스 분포이다.
 

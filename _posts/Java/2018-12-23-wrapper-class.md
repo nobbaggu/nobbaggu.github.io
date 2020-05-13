@@ -23,7 +23,7 @@ tags:
 
 자바는 이런 경우를 위해 기본 자료형과 같은 클래스를 지원하는데, 이러한 클래스들을 두고 Wrapper클래스라고 한다.
 
-<a href="https://SWnomad.com/wrapper-%ed%81%b4%eb%9e%98%ec%8a%a4/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-193/" rel="attachment wp-att-1631"><img class="aligncenter  wp-image-1631" src="/images/2018/12/no-name-38.jpg" alt="" width="365" height="361" srcset="/images/2018/12/no-name-38.jpg 655w, /images/2018/12/no-name-38-300x297.jpg 300w" sizes="(max-width: 365px) 100vw, 365px" /></a>
+![image](/images/2018/12/no-name-38.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

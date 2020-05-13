@@ -165,7 +165,7 @@ dump(models[<span style="color: #993366;">1</span>][<span style="color: #993366;
 
 &nbsp;
 
-<img class="aligncenter size-full wp-image-1202" src="/images/2018/10/no-name-1.jpg" alt="" width="618" height="181" srcset="/images/2018/10/no-name-1.jpg 618w, /images/2018/10/no-name-1-300x88.jpg 300w" sizes="(max-width: 618px) 100vw, 618px" /> 
+![image](/images/2018/10/no-name-1.jpg){: width="50%" height="50%"}
 
 위는 feature의 correlation 정보이다. 절대값이 1이면 완벽한 correlation, 0으로 갈수록 서로 연관이 없단 소리다.
 
@@ -173,7 +173,7 @@ Survived와 깊게 관련된 feature는 Pclass, Sex, Fare 정도로 보인다. �
 
 그런데 Raw Data를 불러오면 Character로 된 feature가 있다. 예를들어 Sex 같은 경우는 남자는 &#8216;male&#8217;, 여자는 &#8216;female&#8217;이라는 문자열로 되어있는데 map 함수를 사용하여 숫자 데이터로 변환해야한다. 또한 NaN 으로 표시되는 정보가 비어있는 데이터가 있는데 이것은 각 feature의 median 값으로 채워넣었다. pandas 라이브러리의 fillna 함수를 사용하면 가능하다.
 
-<img class="aligncenter size-full wp-image-1205" src="/images/2018/10/no-name-3.jpg" alt="" width="431" height="161" srcset="/images/2018/10/no-name-3.jpg 431w, /images/2018/10/no-name-3-300x112.jpg 300w" sizes="(max-width: 431px) 100vw, 431px" /> 
+![image](/images/2018/10/no-name-3.jpg){: width="50%" height="50%"}
 
 아무튼 Logistic Regression, K-Nearest Neighbors, Random Forest 3개의 모델을 사용하여 결과를 구하면 다음과 같다. cross validation 점수와 test data의 예측 결과가 조금 다르다. 단순히 data의 예측 불가능함의 우연에서 온 것인지 bias-variance trade-off에 의한 결과인지는 조금 더 봐야 알겠다.
 

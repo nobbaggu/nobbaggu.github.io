@@ -26,7 +26,7 @@ tags:
 
 &nbsp;
 
-<img class="aligncenter size-full wp-image-1247" src="/images/2018/10/no-name-7.jpg" alt="" width="971" height="464" srcset="/images/2018/10/no-name-7.jpg 971w, /images/2018/10/no-name-7-300x143.jpg 300w, /images/2018/10/no-name-7-768x367.jpg 768w" sizes="(max-width: 971px) 100vw, 971px" /> 
+![image](/images/2018/10/no-name-7.jpg){: width="50%" height="50%"}
 
 물론 Bagging과 마찬가지로 각각의 model은 **중복되는 데이터를 가질 수 있다.**
 
