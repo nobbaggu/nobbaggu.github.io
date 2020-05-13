@@ -46,22 +46,22 @@ feature가 2개인 dataset이 있다고 해보자. 이 dataset을 두 그룹으�
 이 과정을 수식을 사용해서 정량적으로 표현해보자. 그 전에 몇 가지 정의를 하겠다.
 
   * k  :  cluster의 수
-  *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" alt="\dpi{120} x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}" align="absmiddle" />   :  training dataset
-  *<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;c^{(i)}" alt="\dpi{120} c^{(i)}" align="absmiddle" />   :  데이터 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" /> 가 속하는 cluster의 index <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(1,2,3,\cdot\cdot\cdot,k)" alt="\dpi{120} (1,2,3,\cdot\cdot\cdot,k)" align="absmiddle" />
+  *$$\dpi{120} x^{(1)},x^{(2)},\cdot\cdot\cdot,x^{(m)}$$   :  training dataset
+  *$$\dpi{120} c^{(i)}$$   :  데이터 $$\dpi{120} x^{(i)}$$ 가 속하는 cluster의 index $$\dpi{120} (1,2,3,\cdot\cdot\cdot,k)$$
 
 &nbsp;
 
 **1. 랜덤하게 그룹의 수 K만큼 centroid를 초기화한다.**
 
-→  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{1},&space;\mu_{2},\cdot\cdot\cdot,\mu_{k}" alt="\dpi{120} \mu_{1}, \mu_{2},\cdot\cdot\cdot,\mu_{k}" align="absmiddle" />
+→  $$\dpi{120} \mu_{1}, \mu_{2},\cdot\cdot\cdot,\mu_{k}$$
 
-**2. 각각의 데이터 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />마다 가장 가까운 centroid의 index <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;c^{(i)}" alt="\dpi{120} c^{(i)}" align="absmiddle" /> 를 찾아 그룹핑한다.**
+**2. 각각의 데이터 $$\dpi{120} x^{(i)}$$마다 가장 가까운 centroid의 index $$\dpi{120} c^{(i)}$$ 를 찾아 그룹핑한다.**
 
-→ <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;c^{(1)},c^{(2)},\cdot\cdot\cdot,c^{(m)}\quad\quad(c^{(i)}=argmin_{k}\left&space;\|&space;x^{(i)}-\mu_{k}&space;\right&space;\|^{2})" alt="\dpi{120} c^{(1)},c^{(2)},\cdot\cdot\cdot,c^{(m)}\quad\quad(c^{(i)}=argmin_{k}\left \| x^{(i)}-\mu_{k} \right \|^{2})" align="absmiddle" /> 
+→ $$\dpi{120} c^{(1)},c^{(2)},\cdot\cdot\cdot,c^{(m)}\quad\quad(c^{(i)}=argmin_{k}\left \| x^{(i)}-\mu_{k} \right \|^{2})$$ 
 
 **3. 위에서 정해진 그룹마다 포함되는 데이터들 location의 평균을 구해 centroid를 갱신한다.**
 
-→  update <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{1},&space;\mu_{2},\cdot\cdot\cdot,\mu_{k}" alt="\dpi{120} \mu_{1}, \mu_{2},\cdot\cdot\cdot,\mu_{k}" align="absmiddle" />
+→  update $$\dpi{120} \mu_{1}, \mu_{2},\cdot\cdot\cdot,\mu_{k}$$
 
 **4. (2), (3)의 과정을 수렴할 때 까지, 즉 더 이상 data의 group이 변하지 않을 때 까지 <span style="color: #ff0000;">반복</span>한다.**
 
@@ -81,13 +81,13 @@ feature가 2개인 dataset이 있다고 해보자. 이 dataset을 두 그룹으�
 
 우리가 optimization(최적화) 해야 하는 것은 결국 cost function이다. clustering에서 cost function은 다음과 같이 정의된다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(c^{(1)},\cdot\cdot\cdot,c^{(m)},\mu_{1},\cdot\cdot\cdot,\mu_{k})=\frac{1}{m}\sum_{i=1}^{m}\left&space;\|&space;x^{(i)}-\mu_{c^{(i)}}&space;\right&space;\|^{2}" alt="\dpi{120} J(c^{(1)},\cdot\cdot\cdot,c^{(m)},\mu_{1},\cdot\cdot\cdot,\mu_{k})=\frac{1}{m}\sum_{i=1}^{m}\left \| x^{(i)}-\mu_{c^{(i)}} \right \|^{2}" align="absmiddle" /> 
+$$\dpi{120} J(c^{(1)},\cdot\cdot\cdot,c^{(m)},\mu_{1},\cdot\cdot\cdot,\mu_{k})=\frac{1}{m}\sum_{i=1}^{m}\left \| x^{(i)}-\mu_{c^{(i)}} \right \|^{2}$$ 
 
 각각의 [데이터 ~ 데이터가 속한 cluster의 centroid 사이 거리]의 제곱을 모두 더하여 평균을 낸 값이다.
 
-위에서 말한 (2)의 cluster assignment 과정에서는 각 데이터를 가장 가까운 centroid에 할당하는 과정이었다. 이 과정에서는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{1},&space;\mu_{2},\cdot\cdot\cdot,\mu_{k}" alt="\dpi{120} \mu_{1}, \mu_{2},\cdot\cdot\cdot,\mu_{k}" align="absmiddle" />는 고정한 채<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;c^{(1)},c^{(2)},\cdot\cdot\cdot,c^{(m)}" alt="\dpi{120} c^{(1)},c^{(2)},\cdot\cdot\cdot,c^{(m)}" align="absmiddle" /> 를 정하면서 cost function J를 최소화 시켰다.
+위에서 말한 (2)의 cluster assignment 과정에서는 각 데이터를 가장 가까운 centroid에 할당하는 과정이었다. 이 과정에서는 $$\dpi{120} \mu_{1}, \mu_{2},\cdot\cdot\cdot,\mu_{k}$$는 고정한 채$$\dpi{120} c^{(1)},c^{(2)},\cdot\cdot\cdot,c^{(m)}$$ 를 정하면서 cost function J를 최소화 시켰다.
 
-그리고 (3)의 move centroid 과정은 cost function J가 가장 작아지는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{1},&space;\mu_{2},\cdot\cdot\cdot,\mu_{k}" alt="\dpi{120} \mu_{1}, \mu_{2},\cdot\cdot\cdot,\mu_{k}" align="absmiddle" />를 찾는 과정이었다.
+그리고 (3)의 move centroid 과정은 cost function J가 가장 작아지는 $$\dpi{120} \mu_{1}, \mu_{2},\cdot\cdot\cdot,\mu_{k}$$를 찾는 과정이었다.
 
 우리가 실행한 알고리즘 자체가 cost function J를 최소화 하는 과정이었던 것이다.
 

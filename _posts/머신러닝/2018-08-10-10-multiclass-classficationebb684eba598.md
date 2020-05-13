@@ -30,15 +30,15 @@ binary classification에 대해 다시 한 번 짚고 넘어가자.
 
   1. hypothesis function을 세운다. 형태는 다음과 같다.
 
-<img src="https://latex.codecogs.com/gif.latex?{&space;h&space;}_{&space;\theta&space;}(x)=\frac&space;{&space;1&space;}{&space;1+{&space;e&space;}^{&space;-\theta^{T}&space;x&space;}&space;}" alt="{ h }_{ \theta }(x)=\frac { 1 }{ 1+{ e }^{ -\theta^{T} x } }" align="absmiddle" /> 
+$${ h }_{ \theta }(x)=\frac { 1 }{ 1+{ e }^{ -\theta^{T} x } }$$ 
 
 2. cost function을 계산한다. classfication의 cost function은 다음과 같다.
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=-\frac&space;{&space;1&space;}{&space;m&space;}&space;\sum&space;_{&space;i=1&space;}^{&space;m&space;}{&space;{&space;y&space;}^{&space;(i)&space;}\log&space;{&space;({&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;})&space;}&space;)&space;}&space;+(1-{&space;y&space;}^{&space;(i)&space;})\log&space;{&space;(1-{&space;h&space;}_{&space;\theta&space;}({&space;x&space;}^{&space;(i)&space;}))&space;}" alt="J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{ (i) }\log { ({ h }_{ \theta }({ x }^{ (i) }) } ) } +(1-{ y }^{ (i) })\log { (1-{ h }_{ \theta }({ x }^{ (i) })) }" align="absmiddle" /> 
+$$J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{ (i) }\log { ({ h }_{ \theta }({ x }^{ (i) }) } ) } +(1-{ y }^{ (i) })\log { (1-{ h }_{ \theta }({ x }^{ (i) })) }$$ 
 
 3. training dataset을 가지고 parameter(θ)를 학습시킨다. 이 때에는 gradient descent나 octave에서 지원하는 함수를 사용할 수 있다. gradient descent를 사용할 경우 update식은 다음과 같다.
 
-<img src="https://latex.codecogs.com/gif.latex?\theta&space;:=\theta&space;-\alpha&space;\nabla&space;J(\theta&space;)=\theta&space;-\frac&space;{&space;\alpha&space;}{&space;m&space;}&space;\cdot&space;{&space;X&space;}^{&space;T&space;}\cdot&space;(g(X\cdot&space;\theta&space;)-\overrightarrow&space;{&space;y&space;}&space;)" alt="\theta :=\theta -\alpha \nabla J(\theta )=\theta -\frac { \alpha }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )" align="absmiddle" /> 
+$$\theta :=\theta -\alpha \nabla J(\theta )=\theta -\frac { \alpha }{ m } \cdot { X }^{ T }\cdot (g(X\cdot \theta )-\overrightarrow { y } )$$ 
 
 &nbsp;
 
@@ -64,6 +64,6 @@ h4_θ(x) : 눈이 올 확률
 
 &nbsp;
 
-<img src="https://latex.codecogs.com/gif.latex?y\in&space;\{&space;1,&space;2,&space;...,&space;n\}&space;\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(1)&space;}(x)=P(y=1|\theta&space;;x)\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(2)&space;}(x)=P(y=2|\theta&space;;x)\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(3)&space;}(x)=P(y=3|\theta&space;;x)\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;\qquad&space;\qquad&space;\cdot&space;\\&space;{&space;h&space;}_{&space;\theta&space;}^{&space;(n)&space;}(x)=P(y=n|\theta&space;;x)" alt="y\in \{ 1, 2, ..., n\} \\ { h }_{ \theta }^{ (1) }(x)=P(y=1|\theta ;x)\\ { h }_{ \theta }^{ (2) }(x)=P(y=2|\theta ;x)\\ { h }_{ \theta }^{ (3) }(x)=P(y=3|\theta ;x)\\ \qquad \qquad \cdot \\ \qquad \qquad \cdot \\ \qquad \qquad \cdot \\ { h }_{ \theta }^{ (n) }(x)=P(y=n|\theta ;x)" align="absmiddle" /> 
+$$y\in \{ 1, 2, ..., n\} \\ { h }_{ \theta }^{ (1) }(x)=P(y=1|\theta ;x)\\ { h }_{ \theta }^{ (2) }(x)=P(y=2|\theta ;x)\\ { h }_{ \theta }^{ (3) }(x)=P(y=3|\theta ;x)\\ \qquad \qquad \cdot \\ \qquad \qquad \cdot \\ \qquad \qquad \cdot \\ { h }_{ \theta }^{ (n) }(x)=P(y=n|\theta ;x)$$ 
 
 각각의 hypothesis function의 output이 의미하는 것은 해당 class로 분류될 &#8216;확률&#8217;이다. 이 중 가장 높은 확률을 가지는 class로 분류된다.

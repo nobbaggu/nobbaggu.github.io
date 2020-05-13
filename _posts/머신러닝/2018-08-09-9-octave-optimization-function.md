@@ -18,7 +18,7 @@ gradient descent의 식을 직접 작성하지 않아도 numerical computing분
 
 어떠한 cost function이 다음과 같이 주어진다고 해보자.
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)&space;=&space;({&space;{&space;\theta&space;}_{&space;0&space;}-1&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;1&space;}-4&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;2&space;}-6&space;})^{&space;2&space;}+({&space;{&space;\theta&space;}_{&space;3&space;}-3&space;})^{&space;2&space;}" alt="J(\theta ) = ({ { \theta }_{ 0 }-1 })^{ 2 }+({ { \theta }_{ 1 }-4 })^{ 2 }+({ { \theta }_{ 2 }-6 })^{ 2 }+({ { \theta }_{ 3 }-3 })^{ 2 }" align="absmiddle" /> 
+$$J(\theta ) = ({ { \theta }_{ 0 }-1 })^{ 2 }+({ { \theta }_{ 1 }-4 })^{ 2 }+({ { \theta }_{ 2 }-6 })^{ 2 }+({ { \theta }_{ 3 }-3 })^{ 2 }$$ 
 
 &nbsp;
 

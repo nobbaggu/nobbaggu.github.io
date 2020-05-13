@@ -93,7 +93,7 @@ input layer와 output layer의 갯수에 의해 결정되는 ε이라는 작은 
 
 그리고 y\_bin이란 것은 y를 label 벡터화 시킨 것입니다. 예를들어 y가 7이라면 y\_bin은 index 7의 원소만 1이고 나머지는 0인 벡터이죠. 애초에 y는 아래와 같은 형태여야 합니다.
 
-<img src="https://latex.codecogs.com/gif.latex?dpi{120}&space;yin&space;begin&space;{bmatrix}1&space;cdot&space;cdot&space;end{bmatrix},begin&space;{bmatrix}01&space;cdot&space;cdot&space;end{bmatrix},cdotcdotcdot,begin&space;{bmatrix}0&space;cdot&space;cdot1&space;end{bmatrix}" alt="dpi{120} yin begin {bmatrix}1 cdot cdot end{bmatrix},begin {bmatrix}01 cdot cdot end{bmatrix},cdotcdotcdot,begin {bmatrix}0 cdot cdot1 end{bmatrix}" align="absmiddle" /> 
+$$dpi{120} yin begin {bmatrix}1 cdot cdot end{bmatrix},begin {bmatrix}01 cdot cdot end{bmatrix},cdotcdotcdot,begin {bmatrix}0 cdot cdot1 end{bmatrix}$$ 
 
 그리고 parameterVector라는 것은 Theta1과 Theta2의 모든 원소를 일렬로 쭉 풀어놓 것입니다. 하나의 벡터로 말입니다. 이후에 cost function을 자동으로 최적화 시켜주는 fminunc같은 종류의 함수를 사용할 때 함수의 variable로써 벡터는 받을 수 있지만 행렬은 받지 못하기 때문입니다.
 
@@ -101,7 +101,7 @@ input layer와 output layer의 갯수에 의해 결정되는 ε이라는 작은 
 
 그 다음 1번째 training data부터 m번째 training data까지 모두 순전파, 역전파를 거치며 cost function과 각 node의 error들을 누적시킵니다. 이 후 for 반복문이 끝나고 J에 regularization 항을 넣어주고 누적시킨 error인 delta로부터 J의 gradient를 구합니다.
 
-아무튼 위의 함수가 return하는 값은 [J grad] 입니다. J는 계산된 cost값이고, grad는 <img src="https://latex.codecogs.com/gif.latex?dpi{120}&space;frac{partial&space;J}{partial&space;Theta}" alt="dpi{120} frac{partial J}{partial Theta}" align="absmiddle" />를 일렬로 쭉 풀어놓은 벡터입니다.
+아무튼 위의 함수가 return하는 값은 [J grad] 입니다. J는 계산된 cost값이고, grad는 $$dpi{120} frac{partial J}{partial Theta}$$를 일렬로 쭉 풀어놓은 벡터입니다.
 
 아! 참고로 cost function을 계산하는 지금 함수는 전달인자로 regularization parameter λ가 들어오는데 3으로 넣어줄겁니다 . 다음과 같이 말이에요.
 

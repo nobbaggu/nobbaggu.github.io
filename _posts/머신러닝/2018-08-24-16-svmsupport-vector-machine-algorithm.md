@@ -36,15 +36,15 @@ tags:
 
   * <span style="font-size: 14pt;"><strong>classification(logistic regression) hypothesis function & cost function</strong></span>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}" alt="\dpi{120} h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}" align="absmiddle" /> 
+$$\dpi{120} h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$$ 
 
-y=1일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)\approx&space;1" alt="\dpi{120} h_{\theta}(x)\approx 1" align="absmiddle" /> 즉, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\gg&space;0" alt="\dpi{120} \theta^{T}x\gg 0" align="absmiddle" />이 되게하는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 찾는것이 목적
+y=1일 때 $$\dpi{120} h_{\theta}(x)\approx 1$$ 즉, $$\dpi{120} \theta^{T}x\gg 0$$이 되게하는 $$\dpi{120} \theta$$를 찾는것이 목적
 
-y=0일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)\approx&space;0" alt="\dpi{120} h_{\theta}(x)\approx 0" align="absmiddle" /> 즉,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\ll0" alt="\dpi{120} \theta^{T}x\ll0" align="absmiddle" /> 이 되게하는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 찾는것이 목적
+y=0일 때 $$\dpi{120} h_{\theta}(x)\approx 0$$ 즉,$$\dpi{120} \theta^{T}x\ll0$$ 이 되게하는 $$\dpi{120} \theta$$를 찾는것이 목적
 
 &nbsp;
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\J(\theta)=-\frac{1}{m}[y\cdot&space;log(h_{\theta}(x))+(1-y)\cdot&space;log(1-h_{\theta}(x))]\\&space;\\&space;=&space;-\frac{1}{m}[y\cdot&space;log(\frac{1}{1+e^{-\theta^{T}x}})+(1-y)\cdot&space;log(1-\frac{1}{1+e^{-\theta^{T}x}})]" alt="\dpi{120} \\J(\theta)=-\frac{1}{m}[y\cdot log(h_{\theta}(x))+(1-y)\cdot log(1-h_{\theta}(x))]\\ \\ = -\frac{1}{m}[y\cdot log(\frac{1}{1+e^{-\theta^{T}x}})+(1-y)\cdot log(1-\frac{1}{1+e^{-\theta^{T}x}})]" align="absmiddle" /> 
+$$\dpi{120} \\J(\theta)=-\frac{1}{m}[y\cdot log(h_{\theta}(x))+(1-y)\cdot log(1-h_{\theta}(x))]\\ \\ = -\frac{1}{m}[y\cdot log(\frac{1}{1+e^{-\theta^{T}x}})+(1-y)\cdot log(1-\frac{1}{1+e^{-\theta^{T}x}})]$$ 
 
 &nbsp;
 
@@ -54,11 +54,11 @@ y=0일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\t
 
 classification에서 각 클래스의 cost는 각각 다음과 같았다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\y=1:\quad&space;cost_{1}=-log(\frac{1}{1+e^{-\theta^{T}x}})\\&space;y=0:\quad&space;cost_{0}=-log(1-\frac{1}{1+e^{-\theta^{T}x}})" alt="\dpi{120} \\y=1:\quad cost_{1}=-log(\frac{1}{1+e^{-\theta^{T}x}})\\ y=0:\quad cost_{0}=-log(1-\frac{1}{1+e^{-\theta^{T}x}})" align="absmiddle" /> 
+$$\dpi{120} \\y=1:\quad cost_{1}=-log(\frac{1}{1+e^{-\theta^{T}x}})\\ y=0:\quad cost_{0}=-log(1-\frac{1}{1+e^{-\theta^{T}x}})$$ 
 
 하지만 SVM에서는 조금 다른 cost를 사용한다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\y=1:\quad&space;cost_{1}=max(0,k(1-z))\quad\quad&space;z=\theta^{T}x\\&space;y=0:\quad&space;cost_{0}=max(0,k(1+z))\quad\quad&space;z=\theta^{T}x" alt="\dpi{120} \\y=1:\quad cost_{1}=max(0,k(1-z))\quad\quad z=\theta^{T}x\\ y=0:\quad cost_{0}=max(0,k(1+z))\quad\quad z=\theta^{T}x" align="absmiddle" /> 
+$$\dpi{120} \\y=1:\quad cost_{1}=max(0,k(1-z))\quad\quad z=\theta^{T}x\\ y=0:\quad cost_{0}=max(0,k(1+z))\quad\quad z=\theta^{T}x$$ 
 
 ![image](/images/2018/08/no-name-94.png){: width="50%" height="50%"}
 
@@ -66,21 +66,21 @@ classification에서 각 클래스의 cost는 각각 다음과 같았다.
 
 다시 cost function을 하나의 식으로 정리하면,
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=&space;\frac{1}{m}[y\cdot&space;cost_{1}(\theta^{T}x)+(1-y)\cdot&space;cost_{0}(\theta^{T}x)]+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} J(\theta)= \frac{1}{m}[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" /> 
+$$\dpi{120} J(\theta)= \frac{1}{m}[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}$$ 
 
-optimization에 영향이 없으므로 m을 곱하여 식을 간단히 하고 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;C=\frac{1}{\lambda}" alt="\dpi{120} C=\frac{1}{\lambda}" align="absmiddle" />라는 새로운 constant를 곱해주면
+optimization에 영향이 없으므로 m을 곱하여 식을 간단히 하고 $$\dpi{120} C=\frac{1}{\lambda}$$라는 새로운 constant를 곱해주면
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=&space;C[y\cdot&space;cost_{1}(\theta^{T}x)+(1-y)\cdot&space;cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" /> 
+$$\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}$$ 
 
-결국 우리는 위 식이 최소가 되도록 θ를 optimization 하면 된다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\lambda" alt="\dpi{120} \lambda" align="absmiddle" />를 사용하나 C를 사용하나 같다. 결국 어떠한 parameter를 크게 한다는 이 parameter가 곱해진 term의 weight를 올린다는 말이고 이는 최소화 시키는 과정에 더 큰 영향을 받는다는 말이기 때문이다.
+결국 우리는 위 식이 최소가 되도록 θ를 optimization 하면 된다. $$\dpi{120} \lambda$$를 사용하나 C를 사용하나 같다. 결국 어떠한 parameter를 크게 한다는 이 parameter가 곱해진 term의 weight를 올린다는 말이고 이는 최소화 시키는 과정에 더 큰 영향을 받는다는 말이기 때문이다.
 
 &nbsp;
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)=\begin{Bmatrix}&space;1\quad\quad\quad&space;if\quad&space;\theta^{T}x\geq&space;0&space;\\&space;0\quad\quad\quad&space;if\quad&space;\theta^{T}x<0&space;\end{Bmatrix}" alt="\dpi{120} h_{\theta}(x)=\begin{Bmatrix} 1\quad\quad\quad if\quad \theta^{T}x\geq 0 \\ 0\quad\quad\quad if\quad \theta^{T}x<0 \end{Bmatrix}" align="absmiddle" /> 
+$$\dpi{120} h_{\theta}(x)=\begin{Bmatrix} 1\quad\quad\quad if\quad \theta^{T}x\geq 0 \\ 0\quad\quad\quad if\quad \theta^{T}x<0 \end{Bmatrix}$$ 
 
-y=1일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)\approx&space;1" alt="\dpi{120} h_{\theta}(x)\approx 1" align="absmiddle" /> 즉, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\gg&space;0" alt="\dpi{120} \theta^{T}x\gg 0" align="absmiddle" />이 되게하는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 찾는것이 목적
+y=1일 때 $$\dpi{120} h_{\theta}(x)\approx 1$$ 즉, $$\dpi{120} \theta^{T}x\gg 0$$이 되게하는 $$\dpi{120} \theta$$를 찾는것이 목적
 
-y=0일 때 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)\approx&space;0" alt="\dpi{120} h_{\theta}(x)\approx 0" align="absmiddle" /> 즉,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\ll0" alt="\dpi{120} \theta^{T}x\ll0" align="absmiddle" /> 이 되게하는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 찾는것이 목적
+y=0일 때 $$\dpi{120} h_{\theta}(x)\approx 0$$ 즉,$$\dpi{120} \theta^{T}x\ll0$$ 이 되게하는 $$\dpi{120} \theta$$를 찾는것이 목적
 
 &nbsp;
 
@@ -94,17 +94,17 @@ SVM의 hypothesis는 logistic regression처럼 class가 1이나 0이 될 확률�
 
 ![image](/images/2018/08/no-name-93-300x205.png){: width="50%" height="50%"}
 
-위 그림에서 가운데 있는 굵은 선을 decision boundary로 잡는다고 해보자. decision boundary이기 때문에 이 선은<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\cdot\cdot\codt+\theta_{n}x_{n}&space;=&space;0" alt="\dpi{120} \theta^{T}x=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\cdot\cdot\codt+\theta_{n}x_{n} = 0" align="absmiddle" />  의 방정식을 만족한다. 그리고 이 경계선에서 벗어나 있는 점들에 θ를 곱하면 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=c&space;\quad&space;(c\neq&space;0)" alt="\dpi{120} \theta^{T}x=c \quad (c\neq 0)" align="absmiddle" />가 된다. 모든 데이터가 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;1" alt="\dpi{120} \left | \theta^{T}x \right |\geq 1" align="absmiddle" />을 만족하도록 decision boundary를 잡아 margin을 크게 하여 안정된 예측을 하는 것이 목표이다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;0" alt="\dpi{120} \left | \theta^{T}x \right |\geq 0" align="absmiddle" />이 아니라 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x&space;\right&space;|\geq&space;1" alt="\dpi{120} \left | \theta^{T}x \right |\geq 1" align="absmiddle" /> 인 것에 주목해야한다. 이것이 support vector machine 알고리즘을 사용하는 목적이기 때문이다. 0이 아닌 1을 기준으로 잡은 이유는 넉넉히 여유를 남기고 예측하고 싶어서이다. 여유를 남긴다는 것은 지금까지 본 적 없는 data에 대한 예측 적중률이 올라가는 것을 의미한다.
+위 그림에서 가운데 있는 굵은 선을 decision boundary로 잡는다고 해보자. decision boundary이기 때문에 이 선은$$\dpi{120} \theta^{T}x=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\cdot\cdot\codt+\theta_{n}x_{n} = 0$$  의 방정식을 만족한다. 그리고 이 경계선에서 벗어나 있는 점들에 θ를 곱하면 $$\dpi{120} \theta^{T}x=c \quad (c\neq 0)$$가 된다. 모든 데이터가 $$\dpi{120} \left | \theta^{T}x \right |\geq 1$$을 만족하도록 decision boundary를 잡아 margin을 크게 하여 안정된 예측을 하는 것이 목표이다. $$\dpi{120} \left | \theta^{T}x \right |\geq 0$$이 아니라 $$\dpi{120} \left | \theta^{T}x \right |\geq 1$$ 인 것에 주목해야한다. 이것이 support vector machine 알고리즘을 사용하는 목적이기 때문이다. 0이 아닌 1을 기준으로 잡은 이유는 넉넉히 여유를 남기고 예측하고 싶어서이다. 여유를 남긴다는 것은 지금까지 본 적 없는 data에 대한 예측 적중률이 올라가는 것을 의미한다.
 
 이를 다른 관점에서 보자.
 
 ![image](/images/2018/08/no-name-95.png){: width="50%" height="50%"}
 
-기하학적으로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x" alt="\dpi{120} \theta^{T}x" align="absmiddle" />는 (<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" /> 크기)×(<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" />를 벡터 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />에 projection한 벡터의 크기 )이다.
+기하학적으로 $$\dpi{120} \theta^{T}x$$는 ($$\dpi{120} \theta$$ 크기)×($$\dpi{120} x$$를 벡터 $$\dpi{120} \theta$$에 projection한 벡터의 크기 )이다.
 
 ![image](/images/2018/08/123.png){: width="50%" height="50%"}
 
-결국 p가 margin이었다. 즉<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x\geq&space;1" alt="\dpi{120} \theta^{T}x\geq 1" align="absmiddle" /> 이라는 조건은<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(\theta&space;\times&space;margin)&space;\geq&space;1" alt="\dpi{120} (\theta \times margin) \geq 1" align="absmiddle" />  와 같이 해석이 된다.
+결국 p가 margin이었다. 즉$$\dpi{120} \theta^{T}x\geq 1$$ 이라는 조건은$$\dpi{120} (\theta \times margin) \geq 1$$  와 같이 해석이 된다.
 
 &nbsp;
 
@@ -116,11 +116,11 @@ https://SWnomad.com/%ED%8F%89%EB%A9%B4-%EB%B0%A9%EC%A0%95%EC%8B%9D/
 
 정리를 하면 다음과 같다.
 
-우리는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=&space;C[y\cdot&space;cost_{1}(\theta^{T}x)+(1-y)\cdot&space;cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" />가 최소가 되도록 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 최적화 해야한다.
+우리는 $$\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}$$가 최소가 되도록 $$\dpi{120} \theta$$를 최적화 해야한다.
 
-위 식에서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} \sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" /> 가 작아져야 하므로<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=\left&space;|&space;\theta&space;\right&space;|p\geq&space;1" alt="\dpi{120} \theta^{T}x=\left | \theta \right |p\geq 1" align="absmiddle" /> 의 조건을 만족시키는 과정에서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />는 최소화가 되고  p, 즉 마진이 커지게 된다.
+위 식에서 $$\dpi{120} \sum_{j=1}^{n}\theta_{j}^{2}$$ 가 작아져야 하므로$$\dpi{120} \theta^{T}x=\left | \theta \right |p\geq 1$$ 의 조건을 만족시키는 과정에서 $$\dpi{120} \theta$$는 최소화가 되고  p, 즉 마진이 커지게 된다.
 
-**<span style="color: #ff0000; font-size: 14pt;">즉, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x=\left&space;|&space;\theta&space;\right&space;|p\geq&space;1" alt="\dpi{120} \theta^{T}x=\left | \theta \right |p\geq 1" align="absmiddle" />의 조건을 만족하면서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=&space;C[y\cdot&space;cost_{1}(\theta^{T}x)+(1-y)\cdot&space;cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" alt="\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}" align="absmiddle" />를 최소화 시키는 작업은 margin이 최대화 된 decision boundary를 구하는 일인 것이다.</span>**
+**<span style="color: #ff0000; font-size: 14pt;">즉, $$\dpi{120} \theta^{T}x=\left | \theta \right |p\geq 1$$의 조건을 만족하면서 $$\dpi{120} J(\theta)= C[y\cdot cost_{1}(\theta^{T}x)+(1-y)\cdot cost_{0}(\theta^{T}x)]+\frac{1}{2}\sum_{j=1}^{n}\theta_{j}^{2}$$를 최소화 시키는 작업은 margin이 최대화 된 decision boundary를 구하는 일인 것이다.</span>**
 
 &nbsp;
 
@@ -144,53 +144,53 @@ https://SWnomad.com/%ED%8F%89%EB%A9%B4-%EB%B0%A9%EC%A0%95%EC%8B%9D/
 
 데이터의 분포가 위와 같을 경우는 non-linear한 decision boundary가 필요하다. SVM에서 non-linear한 classification 문제를 풀기 위해서는 Kernel이란 trick을 사용해야한다.
 
-Kernel이란 것은 간단히 말해 원래 주어진 feature<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x" alt="\dpi{120} x" align="absmiddle" /> 를 어떠한 정해진 규칙에 따라 가공을 하여 새로운 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f" alt="\dpi{120} f" align="absmiddle" />를 만들어 사용하는 것이다. 그럼 decision boundary의 방정식도 다음과 같이 바뀐다.
+Kernel이란 것은 간단히 말해 원래 주어진 feature$$\dpi{120} x$$ 를 어떠한 정해진 규칙에 따라 가공을 하여 새로운 feature $$\dpi{120} f$$를 만들어 사용하는 것이다. 그럼 decision boundary의 방정식도 다음과 같이 바뀐다.
 
 &nbsp;
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}x&space;\rightarrow&space;\theta^{T}f" alt="\dpi{120} \theta^{T}x \rightarrow \theta^{T}f" align="absmiddle" />                <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;y=1:\theta^{T}f\geq&space;0&space;\\&space;y=0:\theta^{T}f<&space;0" alt="\dpi{120} \\ y=1:\theta^{T}f\geq 0 \\ y=0:\theta^{T}f< 0" align="absmiddle" />
+$$\dpi{120} \theta^{T}x \rightarrow \theta^{T}f$$                $$\dpi{120} \\ y=1:\theta^{T}f\geq 0 \\ y=0:\theta^{T}f< 0$$
 
 아무튼간에 kernel를 통해 feature 변환을 하면 non-linear classifier SVM을 만들 수 있다.
 
-새로운 feature<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f" alt="\dpi{120} f" align="absmiddle" /> 를 구하는 방법을 알아보자.
+새로운 feature$$\dpi{120} f$$ 를 구하는 방법을 알아보자.
 
-총 m개의 training dataset 중 i번째 training data <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}" alt="\dpi{120} x^{(i)}" align="absmiddle" />에 대해 변환을 하여보자.
+총 m개의 training dataset 중 i번째 training data $$\dpi{120} x^{(i)}$$에 대해 변환을 하여보자.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\\&space;f^{(i)}_{1}=similarity(x^{(i)},x^{(1)})=exp({-\frac{\left&space;\|&space;x^{(i)}-x^{(1)}&space;\right&space;\|^{2}}{2\sigma^{2}}})\\&space;f^{(i)}_{2}=similarity(x^{(i)},x^{(2)})=exp({-\frac{\left&space;\|&space;x^{(i)}-x^{(2)}&space;\right&space;\|^{2}}{2\sigma^{2}}})&space;\\&space;\cdot&space;\\&space;\cdot&space;\\f^{(i)}_{m}=similarity(x^{(i)},x^{(m)})=exp({-\frac{\left&space;\|&space;x^{(i)}-x^{(m)}&space;\right&space;\|^{2}}{2\sigma^{2}}})" alt="\dpi{120} \\ f^{(i)}_{1}=similarity(x^{(i)},x^{(1)})=exp({-\frac{\left \| x^{(i)}-x^{(1)} \right \|^{2}}{2\sigma^{2}}})\\ f^{(i)}_{2}=similarity(x^{(i)},x^{(2)})=exp({-\frac{\left \| x^{(i)}-x^{(2)} \right \|^{2}}{2\sigma^{2}}}) \\ \cdot \\ \cdot \\f^{(i)}_{m}=similarity(x^{(i)},x^{(m)})=exp({-\frac{\left \| x^{(i)}-x^{(m)} \right \|^{2}}{2\sigma^{2}}})" align="absmiddle" /> 
+$$\dpi{120} \\ f^{(i)}_{1}=similarity(x^{(i)},x^{(1)})=exp({-\frac{\left \| x^{(i)}-x^{(1)} \right \|^{2}}{2\sigma^{2}}})\\ f^{(i)}_{2}=similarity(x^{(i)},x^{(2)})=exp({-\frac{\left \| x^{(i)}-x^{(2)} \right \|^{2}}{2\sigma^{2}}}) \\ \cdot \\ \cdot \\f^{(i)}_{m}=similarity(x^{(i)},x^{(m)})=exp({-\frac{\left \| x^{(i)}-x^{(m)} \right \|^{2}}{2\sigma^{2}}})$$ 
 
 &nbsp;
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}=(x^{(i)}_{1},x^{(i)}_{2},\cdot\cdot\cdot,x^{(i)}_{n})\quad&space;\rightarrow&space;\quad&space;f^{(i)}=(f^{(i)}_{1},f^{(i)}_{2},\cdot\cdot\cdot,f^{(i)}_{m})" alt="\dpi{120} x^{(i)}=(x^{(i)}_{1},x^{(i)}_{2},\cdot\cdot\cdot,x^{(i)}_{n})\quad \rightarrow \quad f^{(i)}=(f^{(i)}_{1},f^{(i)}_{2},\cdot\cdot\cdot,f^{(i)}_{m})" align="absmiddle" /> 
+$$\dpi{120} x^{(i)}=(x^{(i)}_{1},x^{(i)}_{2},\cdot\cdot\cdot,x^{(i)}_{n})\quad \rightarrow \quad f^{(i)}=(f^{(i)}_{1},f^{(i)}_{2},\cdot\cdot\cdot,f^{(i)}_{m})$$ 
 
 자신을 포함한 다른 모든 training example과의 similarity를 계산하여 하나의 feature로 만든다.
 
-주의해야 할 것은 feature의 갯수가 n에서 m으로 바뀌었다. 따라서 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />의 dimension도 바뀐다.
+주의해야 할 것은 feature의 갯수가 n에서 m으로 바뀌었다. 따라서 $$\dpi{120} \theta$$의 dimension도 바뀐다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}\in&space;\mathbb{R}^{n+1}\quad&space;\rightarrow&space;\quad&space;f^{(i)}&space;\in&space;\mathbb{R}^{m+1}" alt="\dpi{120} x^{(i)}\in \mathbb{R}^{n+1}\quad \rightarrow \quad f^{(i)} \in \mathbb{R}^{m+1}" align="absmiddle" /> 
+$$\dpi{120} x^{(i)}\in \mathbb{R}^{n+1}\quad \rightarrow \quad f^{(i)} \in \mathbb{R}^{m+1}$$ 
 
-We wanted<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left&space;|&space;\theta^{T}x^{(i)}\right&space;|=\left&space;|\theta_{0}+\theta_{1}x^{(i)}_{1}+\theta_{2}x^{(i)}_{2}+\cdot&space;\cdot&space;\cdot+\theta_{n}x^{(i)}_{n}&space;\right&space;|&space;\geq&space;1" alt="\dpi{120} \left | \theta^{T}x^{(i)}\right |=\left |\theta_{0}+\theta_{1}x^{(i)}_{1}+\theta_{2}x^{(i)}_{2}+\cdot \cdot \cdot+\theta_{n}x^{(i)}_{n} \right | \geq 1" align="absmiddle" /> 
+We wanted$$\dpi{120} \left | \theta^{T}x^{(i)}\right |=\left |\theta_{0}+\theta_{1}x^{(i)}_{1}+\theta_{2}x^{(i)}_{2}+\cdot \cdot \cdot+\theta_{n}x^{(i)}_{n} \right | \geq 1$$ 
 
-But now we want <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\left|\theta^{T}f^{(i)}\right&space;|=\left&space;|\theta_{0}+\theta_{1}f^{(i)}_{1}+\theta_{2}f^{(i)}_{2}+\cdot&space;\cdot&space;\cdot+\theta_{m}f^{(i)}_{m}&space;\right&space;|&space;\geq&space;1" alt="\dpi{120} \left|\theta^{T}f^{(i)}\right |=\left |\theta_{0}+\theta_{1}f^{(i)}_{1}+\theta_{2}f^{(i)}_{2}+\cdot \cdot \cdot+\theta_{m}f^{(i)}_{m} \right | \geq 1" align="absmiddle" />
+But now we want $$\dpi{120} \left|\theta^{T}f^{(i)}\right |=\left |\theta_{0}+\theta_{1}f^{(i)}_{1}+\theta_{2}f^{(i)}_{2}+\cdot \cdot \cdot+\theta_{m}f^{(i)}_{m} \right | \geq 1$$
 
 Cost function도 다음과 같이 된다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;J(\theta)=\sum_{i=1}^{m}y^{(i)}cost_{1}(\theta^{T}f^{(i)})+(1-y^{(i)})cost_{0}(\theta^{T}f^{(i)})+\frac{1}{2}\sum_{j=1}^{m}\theta_{j}^{2}" alt="\dpi{120} J(\theta)=\sum_{i=1}^{m}y^{(i)}cost_{1}(\theta^{T}f^{(i)})+(1-y^{(i)})cost_{0}(\theta^{T}f^{(i)})+\frac{1}{2}\sum_{j=1}^{m}\theta_{j}^{2}" align="absmiddle" /> 
+$$\dpi{120} J(\theta)=\sum_{i=1}^{m}y^{(i)}cost_{1}(\theta^{T}f^{(i)})+(1-y^{(i)})cost_{0}(\theta^{T}f^{(i)})+\frac{1}{2}\sum_{j=1}^{m}\theta_{j}^{2}$$ 
 
 최적화 과정에서 기존의 training example 대신 kernel로 변환 된 새로운 dataset을 사용하면 된다.
 
-참고로 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f_{i}" alt="\dpi{120} f_{i}" align="absmiddle" />를 계산할 때 사용한 함수는 Gaussian function이다. 따라서 위의 Kernel을 Gaussian Kernel이라고 한다. Gaussian Kernel 이외에도 여러가지 다양한 Kernel 함수들이 있다.
+참고로 $$\dpi{120} f_{i}$$를 계산할 때 사용한 함수는 Gaussian function이다. 따라서 위의 Kernel을 Gaussian Kernel이라고 한다. Gaussian Kernel 이외에도 여러가지 다양한 Kernel 함수들이 있다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" /> 은 Gaussian Kernel의 중요한 parameter이다.
+$$\dpi{120} \sigma^{2}$$ 은 Gaussian Kernel의 중요한 parameter이다.
 
-higher <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" /> : kernel함수 혹은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f" alt="\dpi{120} f" align="absmiddle" />가 smooth하게 변하며 high bias를 유도한다.
+higher $$\dpi{120} \sigma^{2}$$ : kernel함수 혹은 $$\dpi{120} f$$가 smooth하게 변하며 high bias를 유도한다.
 
-low  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" /> :  kernel함수 혹은 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f" alt="\dpi{120} f" align="absmiddle" />가 rapid하게 변하며 high variance를 유도한다.
+low  $$\dpi{120} \sigma^{2}$$ :  kernel함수 혹은 $$\dpi{120} f$$가 rapid하게 변하며 high variance를 유도한다.
 
 &nbsp;
 
-아무튼 이제 새로운 feature로 분류를 하면 된다. <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}f\geq&space;0" alt="\dpi{120} \theta^{T}f\geq 0" align="absmiddle" />이면 positive class,<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta^{T}f<&space;0" alt="\dpi{120} \theta^{T}f< 0" align="absmiddle" /> 이면 negative class이다.
+아무튼 이제 새로운 feature로 분류를 하면 된다. $$\dpi{120} \theta^{T}f\geq 0$$이면 positive class,$$\dpi{120} \theta^{T}f< 0$$ 이면 negative class이다.
 
-3개의 feature로 부터 얻은 parameter가<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{0}=-0.5,&space;\theta_{1}=1,&space;\theta_{2}=1,&space;\theta_{3}=0" alt="\dpi{120} \theta_{0}=-0.5, \theta_{1}=1, \theta_{2}=1, \theta_{3}=0" align="absmiddle" /> 이라고 해보자. 그리고 새로운 test data가 있다. 이 data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)}" alt="\dpi{120} x^{(1)}" align="absmiddle" />에 근접해있고 다른 데이터에서는 멀다고 해보자. 그렇다면 이 test data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;f_{1}\approx&space;1,&space;f_{2}\approx0,f_{3}\approx0" alt="\dpi{120} f_{1}\approx 1, f_{2}\approx0,f_{3}\approx0" align="absmiddle" />이 될 것이다. 그렇다면 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;h_{\theta}(x)=\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}\approx&space;-0.5&space;+1&space;+0+0=0.5>&space;0" alt="\dpi{120} h_{\theta}(x)=\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}\approx -0.5 +1 +0+0=0.5> 0" align="absmiddle" /> 따라서 이 data는 class1으로 분류된다. 이처럼 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(2)},x^{(3)}" alt="\dpi{120} x^{(2)},x^{(3)}" align="absmiddle" />에 근접해 있는 test data에서도 예측을 하였는데 2 번째 data는 positive class, 마지막 data는 negative class로 분류되었다고 해보자. 이런 경우 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(1)},x^{(2)}" alt="\dpi{120} x^{(1)},x^{(2)}" align="absmiddle" />근처는 positive class 영역, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(3)}" alt="\dpi{120} x^{(3)}" align="absmiddle" />근처는 negative class 영역인 것처럼 보인다. 따라서 decision boundary는 다음과 비슷하게 그려질 것이다.
+3개의 feature로 부터 얻은 parameter가$$\dpi{120} \theta_{0}=-0.5, \theta_{1}=1, \theta_{2}=1, \theta_{3}=0$$ 이라고 해보자. 그리고 새로운 test data가 있다. 이 data는 $$\dpi{120} x^{(1)}$$에 근접해있고 다른 데이터에서는 멀다고 해보자. 그렇다면 이 test data는 $$\dpi{120} f_{1}\approx 1, f_{2}\approx0,f_{3}\approx0$$이 될 것이다. 그렇다면 $$\dpi{120} h_{\theta}(x)=\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}\approx -0.5 +1 +0+0=0.5> 0$$ 따라서 이 data는 class1으로 분류된다. 이처럼 $$\dpi{120} x^{(2)},x^{(3)}$$에 근접해 있는 test data에서도 예측을 하였는데 2 번째 data는 positive class, 마지막 data는 negative class로 분류되었다고 해보자. 이런 경우 $$\dpi{120} x^{(1)},x^{(2)}$$근처는 positive class 영역, $$\dpi{120} x^{(3)}$$근처는 negative class 영역인 것처럼 보인다. 따라서 decision boundary는 다음과 비슷하게 그려질 것이다.
 
 ![image](/images/2018/08/no-name-100.png){: width="50%" height="50%"}
 
@@ -208,7 +208,7 @@ low  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}
 
 &nbsp;
 
-  * parameter C, <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" />과 Kernel function의 종류를 정해야 한다. parameter C는 cross validation set을 사용하여 결정하면 된다.
+  * parameter C, $$\dpi{120} \sigma^{2}$$과 Kernel function의 종류를 정해야 한다. parameter C는 cross validation set을 사용하여 결정하면 된다.
 
 e.g. No kernel = linear kernel : feature의 갯수 n이 크고, training dataset의 갯수 m이 작은 경우 굳이 kernel을 사용할 필요가 없다. data의 수가 적은 경우 kernel을 통해 non-linear classifier를 만들면 high variance(overfitting)문제가 일어날 가능성이 있기 때문이다. kernel을 적용하지 않을 경우, 즉 no kernel인 경우를 linear kernel라고도 부르고 이는 단지 linear classifier일 뿐이다.
 
@@ -222,7 +222,7 @@ e.g. feature들의 scale의 차이가 큰 경우 feature scailing이나 feature 
 
 &nbsp;
 
-  * Gaussian Kernel을 사용할 때 high bias와 high variance의 trade-off 사이에서 적절한 값의 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\sigma^{2}" alt="\dpi{120} \sigma^{2}" align="absmiddle" />을 선택해야한다.
+  * Gaussian Kernel을 사용할 때 high bias와 high variance의 trade-off 사이에서 적절한 값의 $$\dpi{120} \sigma^{2}$$을 선택해야한다.
 
 &nbsp;
 

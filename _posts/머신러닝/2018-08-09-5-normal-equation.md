@@ -28,13 +28,13 @@ tags:
 
 &nbsp;
 
-포물선의 최소값에서는 함수 f의 theta에 대한 미분계수가 0이다. 이 사실을 cost function에 적용하여 cost function의 최소값에서의 <img src="https://latex.codecogs.com/gif.latex?\theta" alt="\theta" align="absmiddle" />를 구하는 것이다. 하지만 보통 cost function은 2개 이상의 feature와 parameter가 있기때문에 vector와 matrix 형태의 선형대수학으로 풀어야한다.
+포물선의 최소값에서는 함수 f의 theta에 대한 미분계수가 0이다. 이 사실을 cost function에 적용하여 cost function의 최소값에서의 $$\theta$$를 구하는 것이다. 하지만 보통 cost function은 2개 이상의 feature와 parameter가 있기때문에 vector와 matrix 형태의 선형대수학으로 풀어야한다.
 
-<img src="https://latex.codecogs.com/gif.latex?\triangledown&space;J({&space;\theta&space;})=(\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;0&space;}&space;}&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;1&space;}&space;}&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;2&space;}&space;}&space;,&space;\cdot&space;\cdot&space;\cdot&space;,&space;\frac&space;{&space;\partial&space;J&space;}{&space;\partial&space;{&space;\theta&space;}_{&space;n&space;}&space;}&space;)=(0,&space;0,&space;0,&space;\cdot&space;\cdot&space;\cdot&space;,&space;0)" alt="\triangledown J({ \theta })=(\frac { \partial J }{ \partial { \theta }_{ 0 } } , \frac { \partial J }{ \partial { \theta }_{ 1 } } , \frac { \partial J }{ \partial { \theta }_{ 2 } } , \cdot \cdot \cdot , \frac { \partial J }{ \partial { \theta }_{ n } } )=(0, 0, 0, \cdot \cdot \cdot , 0)" align="absmiddle" /> 
+$$\triangledown J({ \theta })=(\frac { \partial J }{ \partial { \theta }_{ 0 } } , \frac { \partial J }{ \partial { \theta }_{ 1 } } , \frac { \partial J }{ \partial { \theta }_{ 2 } } , \cdot \cdot \cdot , \frac { \partial J }{ \partial { \theta }_{ n } } )=(0, 0, 0, \cdot \cdot \cdot , 0)$$ 
 
-<img src="https://latex.codecogs.com/gif.latex?J(\theta&space;)=\frac&space;{&space;1&space;}{&space;2m&space;}&space;{&space;(X\theta&space;-y)&space;}^{&space;T&space;}(X\theta&space;-y)" alt="J(\theta )=\frac { 1 }{ 2m } { (X\theta -y) }^{ T }(X\theta -y)" align="absmiddle" />  공식을 위의 방정식에 넣고 정리하면 다음과 같은 결과가 나온다.
+$$J(\theta )=\frac { 1 }{ 2m } { (X\theta -y) }^{ T }(X\theta -y)$$  공식을 위의 방정식에 넣고 정리하면 다음과 같은 결과가 나온다.
 
-<img src="https://latex.codecogs.com/gif.latex?\theta&space;={&space;{&space;(X&space;}^{&space;T&space;}X)&space;}^{&space;-1&space;}{&space;X&space;}^{&space;T&space;}y" alt="\theta ={ { (X }^{ T }X) }^{ -1 }{ X }^{ T }y" align="absmiddle" /> 
+$$\theta ={ { (X }^{ T }X) }^{ -1 }{ X }^{ T }y$$ 
 
 이 θ는 정확히 기울기가 0이 되게하는, 즉 J(θ)가 최소일 때의 θ이다.
 
@@ -46,7 +46,7 @@ normal equation을 사용하면 귀찮게 learning rate를 찾아가며 결정�
 
 &nbsp;
 
-**※<img src="https://latex.codecogs.com/gif.latex?\mathbf{(X^{T}X)^{-1}}" alt="\mathbf{(X^{T}X)^{-1}}" align="absmiddle" /> 가 존재하지 않는다면?**
+**※$$\mathbf{(X^{T}X)^{-1}}$$ 가 존재하지 않는다면?**
 
 만약 X'(X transpose이다.)와 X의 곱인 X&#8217;X가 역행렬을 가지지 않는다면? 선형대수학에서 배웠다면 알겠지만 역행렬을 가지지 않는(non-invertible) 행렬이 있고 이를 degenerate 혹은 singular 하다고 한다. 모든 행렬에 역행렬이 있는 것은 아니다. 가장 대표적인 case로 <span style="color: #ff0000;"><strong>두 개 이상의 row 나 column이 linearly dependent하다면 이 행렬은 역행렬이 존재하지 않는다.</strong></span> 가령 집값을 예측해주는 프로그램에서 x\_1 = feet단위로 표현된 집의 크기이고 x\_2는 m단위의 집의 크기라면 모든 training set 행렬 X에서 x\_2 column은 x\_1 column의 값에 단순히 3.28을 곱한 값이기 때문이다.(1m = 3.28feet)
 

@@ -77,9 +77,9 @@ tags:
 
 * * *
 
-<img src="https://latex.codecogs.com/gif.latex?x\rightarrow&space;[\quad&space;]\rightarrow&space;{&space;h&space;}_{&space;\theta&space;}(x)" alt="x\rightarrow [\quad ]\rightarrow { h }_{ \theta }(x)" align="absmiddle" /> 
+$$x\rightarrow [\quad ]\rightarrow { h }_{ \theta }(x)$$ 
 
-위 수식이 무엇을 의미하는가? 머신러닝 알고리즘은 결국에는 input x에 대한 출력 <img src="https://latex.codecogs.com/gif.latex?h_{\theta}(x)" alt="h_{\theta}(x)" align="absmiddle" /> 를 얻어내는 것이다. linear regression이든, classification이든 각자만의 알고리즘에 의해 input x에 대한<img src="https://latex.codecogs.com/gif.latex?h_{\theta}(x)" alt="h_{\theta}(x)" align="absmiddle" /> 를 구해냈다. neural network도 마찬가지다. 먼저 modeling을 하기 전 neural network를 직관적으로 표현하는 그림을 보자.
+위 수식이 무엇을 의미하는가? 머신러닝 알고리즘은 결국에는 input x에 대한 출력 $$h_{\theta}(x)$$ 를 얻어내는 것이다. linear regression이든, classification이든 각자만의 알고리즘에 의해 input x에 대한$$h_{\theta}(x)$$ 를 구해냈다. neural network도 마찬가지다. 먼저 modeling을 하기 전 neural network를 직관적으로 표현하는 그림을 보자.
 
 ![image](/images/2018/08/no-name-28.png){: width="50%" height="50%"}
 
@@ -99,7 +99,7 @@ tags:
 
 &nbsp;
 
-<img src="https://latex.codecogs.com/gif.latex?\begin{bmatrix}&space;{&space;x&space;}_{&space;0&space;}\\&space;{&space;x&space;}_{&space;1&space;}\\&space;{&space;x&space;}_{&space;2&space;}\\&space;{&space;x&space;}_{&space;3&space;}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;{&space;a&space;}_{&space;0&space;}\\&space;{&space;a&space;}_{&space;1&space;}\\&space;{&space;a&space;}_{&space;2&space;}&space;\end{bmatrix}&space;\rightarrow&space;{&space;h&space;}_{&space;\theta&space;}(x)" alt="\begin{bmatrix} { x }_{ 0 }\\ { x }_{ 1 }\\ { x }_{ 2 }\\ { x }_{ 3 } \end{bmatrix} \rightarrow \begin{bmatrix} { a }_{ 0 }\\ { a }_{ 1 }\\ { a }_{ 2 } \end{bmatrix} \rightarrow { h }_{ \theta }(x)" align="absmiddle" /> 
+$$\begin{bmatrix} { x }_{ 0 }\\ { x }_{ 1 }\\ { x }_{ 2 }\\ { x }_{ 3 } \end{bmatrix} \rightarrow \begin{bmatrix} { a }_{ 0 }\\ { a }_{ 1 }\\ { a }_{ 2 } \end{bmatrix} \rightarrow { h }_{ \theta }(x)$$ 
 
 &nbsp;
 
@@ -107,7 +107,7 @@ tags:
 
 **<span style="color: #ff0000;">모든 layer는 다음 layer로 전파되기 이전에 첫 번째 node로 항상 1을 추가한다</span>**. 이는 가중치 matrix가 w0를 가지기 때문에 행렬의 곱셈을 위한 dimension을 맞추기 위함이다.
 
-<img src="https://latex.codecogs.com/gif.latex?g(\begin{bmatrix}&space;\Theta_{10}^{(1)}&space;&\Theta_{11}^{(1)}&space;&\Theta_{12}^{(1)}&space;&&space;\Theta_{13}^{(1)}\\&space;\Theta_{20}^{(1)}&space;&\Theta_{21}^{(1)}&space;&\Theta_{22}^{(1)}&space;&&space;\Theta_{23}^{(1)}&space;\end{bmatrix}&space;\begin{bmatrix}&space;x_{0}&space;\\&space;x_{1}&space;\\&space;x_{2}&space;\\&space;x_{3}&space;\end{bmatrix})&space;=&space;\begin{bmatrix}&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix}\rightarrow&space;\begin{bmatrix}&space;a_{0}&space;\\&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix}&space;\\&space;sigmoid&space;function&space;:&space;g(z)&space;=&space;\frac{1}{1+e^{-z}}" alt="g(\begin{bmatrix} \Theta_{10}^{(1)} &\Theta_{11}^{(1)} &\Theta_{12}^{(1)} & \Theta_{13}^{(1)}\\ \Theta_{20}^{(1)} &\Theta_{21}^{(1)} &\Theta_{22}^{(1)} & \Theta_{23}^{(1)} \end{bmatrix} \begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ x_{3} \end{bmatrix}) = \begin{bmatrix} a_{1} \\ a_{2} \end{bmatrix}\rightarrow \begin{bmatrix} a_{0} \\ a_{1} \\ a_{2} \end{bmatrix} \\ sigmoid function : g(z) = \frac{1}{1+e^{-z}}" align="absmiddle" /> 
+$$g(\begin{bmatrix} \Theta_{10}^{(1)} &\Theta_{11}^{(1)} &\Theta_{12}^{(1)} & \Theta_{13}^{(1)}\\ \Theta_{20}^{(1)} &\Theta_{21}^{(1)} &\Theta_{22}^{(1)} & \Theta_{23}^{(1)} \end{bmatrix} \begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ x_{3} \end{bmatrix}) = \begin{bmatrix} a_{1} \\ a_{2} \end{bmatrix}\rightarrow \begin{bmatrix} a_{0} \\ a_{1} \\ a_{2} \end{bmatrix} \\ sigmoid function : g(z) = \frac{1}{1+e^{-z}}$$ 
 
 &nbsp;
 
@@ -127,7 +127,7 @@ tags:
 
 위의 과정을 간단히 나타내면 다음과 같이 된다.
 
-<img src="https://latex.codecogs.com/gif.latex?g({&space;\Theta&space;}^{&space;(j)&space;}\cdot&space;{&space;a&space;}^{&space;(j)&space;})={&space;a&space;}^{&space;(j+1)&space;}" alt="g({ \Theta }^{ (j) }\cdot { a }^{ (j) })={ a }^{ (j+1) }" align="absmiddle" /> 
+$$g({ \Theta }^{ (j) }\cdot { a }^{ (j) })={ a }^{ (j+1) }$$ 
 
 &nbsp;
 
@@ -139,7 +139,7 @@ tags:
 
 output layer로 전파되는 경우에도
 
-<img src="https://latex.codecogs.com/gif.latex?g(\begin{bmatrix}&space;\Theta_{10}^{(2)}&space;&\Theta_{11}^{(2)}&space;&\Theta_{12}^{(2)}&space;\end{bmatrix}&space;\begin{bmatrix}&space;a_{0}&space;\\&space;a_{1}&space;\\&space;a_{2}&space;\end{bmatrix})=&space;h_{\Theta}(x)" alt="g(\begin{bmatrix} \Theta_{10}^{(2)} &\Theta_{11}^{(2)} &\Theta_{12}^{(2)} \end{bmatrix} \begin{bmatrix} a_{0} \\ a_{1} \\ a_{2} \end{bmatrix})= h_{\Theta}(x)" align="absmiddle" /> 
+$$g(\begin{bmatrix} \Theta_{10}^{(2)} &\Theta_{11}^{(2)} &\Theta_{12}^{(2)} \end{bmatrix} \begin{bmatrix} a_{0} \\ a_{1} \\ a_{2} \end{bmatrix})= h_{\Theta}(x)$$ 
 
 여기에서는 output의 갯수(k)가 1이고 곱해지는 hidden layer의 성분의 수가 3(j)+1개 이기 때문에 1×4 행렬이 된다. 이렇게 해서 최종적으로 output이 나오는 것이다.
 
@@ -153,13 +153,13 @@ hidden layer의 갯수가 2층 이상인 경우는 이 과정의 반복일 뿐�
 
 사실 항상 hypothesis output의 갯수가 1개이지는 않다. multiclass classification의 경우에는 마지막 output이 class의 갯수만큼 될 것이다.
 
-<img src="https://latex.codecogs.com/gif.latex?\begin{bmatrix}&space;x_{0}&space;\\&space;x_{1}&space;\\&space;x_{2}&space;\\&space;x_{3}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;a_{0}^{(2)}&space;\\&space;a_{1}^{(2)}&space;\\a_{2}^{(2)}&space;\\a_{3}^{(2)}&space;\\a_{4}^{(2)}&space;\end{bmatrix}&space;\rightarrow&space;\begin{bmatrix}&space;a_{0}^{(3)}&space;\\&space;a_{1}^{(3)}&space;\\a_{2}^{(3)}&space;\\a_{3}^{(3)}&space;\end{bmatrix}&space;\rightarrow&space;\cdot&space;\cdot&space;\cdot&space;\rightarrow&space;\begin{bmatrix}&space;h_{\Theta}(x)_{1}&space;\\&space;h_{\Theta}(x)_{2}&space;\\&space;h_{\Theta}(x)_{3}&space;\\&space;h_{\Theta}(x)_{4}\end{bmatrix}" alt="\begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ x_{3} \end{bmatrix} \rightarrow \begin{bmatrix} a_{0}^{(2)} \\ a_{1}^{(2)} \\a_{2}^{(2)} \\a_{3}^{(2)} \\a_{4}^{(2)} \end{bmatrix} \rightarrow \begin{bmatrix} a_{0}^{(3)} \\ a_{1}^{(3)} \\a_{2}^{(3)} \\a_{3}^{(3)} \end{bmatrix} \rightarrow \cdot \cdot \cdot \rightarrow \begin{bmatrix} h_{\Theta}(x)_{1} \\ h_{\Theta}(x)_{2} \\ h_{\Theta}(x)_{3} \\ h_{\Theta}(x)_{4}\end{bmatrix}" align="absmiddle" /> 
+$$\begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ x_{3} \end{bmatrix} \rightarrow \begin{bmatrix} a_{0}^{(2)} \\ a_{1}^{(2)} \\a_{2}^{(2)} \\a_{3}^{(2)} \\a_{4}^{(2)} \end{bmatrix} \rightarrow \begin{bmatrix} a_{0}^{(3)} \\ a_{1}^{(3)} \\a_{2}^{(3)} \\a_{3}^{(3)} \end{bmatrix} \rightarrow \cdot \cdot \cdot \rightarrow \begin{bmatrix} h_{\Theta}(x)_{1} \\ h_{\Theta}(x)_{2} \\ h_{\Theta}(x)_{3} \\ h_{\Theta}(x)_{4}\end{bmatrix}$$ 
 
 위의 식처럼 말이다. 위의 hidden layer의 unit들 위에 붙어있는 (2) (3)같은 위첨자는 hidden layer가 전체 인공신경망에서 몇 번째 layer인지 구분하기 위해 넣은 것이다.
 
 또한 위의 식처럼 class가 총 4개인 경우 실제 output vector y는 다음과 같은 값들을 가질 수 있다.
 
-<img src="https://latex.codecogs.com/gif.latex?y=\begin{bmatrix}&space;1\\&space;0\\&space;0\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;1\\&space;0\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;0\\&space;1\\&space;0&space;\end{bmatrix},&space;\begin{bmatrix}&space;0\\&space;0\\&space;0\\&space;1&space;\end{bmatrix}" alt="y=\begin{bmatrix} 1\\ 0\\ 0\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 1\\ 0\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 1\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 0\\ 1 \end{bmatrix}" align="absmiddle" /> 
+$$y=\begin{bmatrix} 1\\ 0\\ 0\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 1\\ 0\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 1\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 0\\ 1 \end{bmatrix}$$ 
 
 &nbsp;
 

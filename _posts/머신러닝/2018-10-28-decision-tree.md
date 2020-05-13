@@ -199,17 +199,17 @@ Programming 을 좋아하는 사람들 중 머신러닝을 좋아하거나 그�
 
 위의 질문 하나만으로는 완벽히 분류하지 못한다. 만약 위의 질문 하나만으로 ML을 좋아하는 사람과 그렇지 않은 사람이 완벽히 분류된다면 그것을 pure(순수한) 이라 표현한다. 따라서 위 하나의 질문만으로 구성된 의사결정 트리는 impurity(불순도)를 가지고 있으며 이 impurity가 어느정도인지 나타내는 Gini 계수를 계산할 수 있다.
 
-<img src="https://latex.codecogs.com/gif.latex?\\Gini\quad&space;impurity&space;=&space;1-(probability\quad&space;of\quad&space;YES)^{2}-(probability\quad&space;of\quad&space;NO)^{2}" alt="\\Gini\quad impurity = 1-(probability\quad of\quad YES)^{2}-(probability\quad of\quad NO)^{2}" align="absmiddle" /> 
+$$\\Gini\quad impurity = 1-(probability\quad of\quad YES)^{2}-(probability\quad of\quad NO)^{2}$$ 
 
 Gini impurity는 위의 공식에 따라 계산한다. 그럼 각각의 leaf에 대해 Gini impurity를 계산해보겠다.
 
-<img src="https://latex.codecogs.com/gif.latex?Gini\quad&space;of\quad&space;first\quad&space;leaf=1-(\frac{130}{130+47})^{2}-(\frac{47}{130+47})^{2}=0.39" alt="Gini\quad of\quad first\quad leaf=1-(\frac{130}{130+47})^{2}-(\frac{47}{130+47})^{2}=0.39" align="absmiddle" /> 
+$$Gini\quad of\quad first\quad leaf=1-(\frac{130}{130+47})^{2}-(\frac{47}{130+47})^{2}=0.39$$ 
 
-<img src="https://latex.codecogs.com/gif.latex?Gini\quad&space;of\quad&space;second\quad&space;leaf=1-(\frac{21}{21+94})^{2}-(\frac{94}{21+94})^{2}=0.30" alt="Gini\quad of\quad second\quad leaf=1-(\frac{21}{21+94})^{2}-(\frac{94}{21+94})^{2}=0.30" align="absmiddle" /> 
+$$Gini\quad of\quad second\quad leaf=1-(\frac{21}{21+94})^{2}-(\frac{94}{21+94})^{2}=0.30$$ 
 
 첫 번째 leaf의 응답자 수는 130+47 = 177이다. 두 번째 leaf의 응답자 수는 21+94 = 115이다. 따라서 총 응답자의 수는 292이다. 최종 Gini impurity는 다음과 같이 두 leaf의 Gini impurity를 평균내어 계산한다.
 
-<img src="https://latex.codecogs.com/gif.latex?Gini\quad&space;impurity&space;=&space;0.39(\frac{177}{292})+0.30(\frac{115}{292})=0.35" alt="Gini\quad impurity = 0.39(\frac{177}{292})+0.30(\frac{115}{292})=0.35" align="absmiddle" /> 
+$$Gini\quad impurity = 0.39(\frac{177}{292})+0.30(\frac{115}{292})=0.35$$ 
 
 이런 식으로 각각의 질문에 대한 Gini impurity를 구해 Gini impurity가 가장 낮은 질문을 먼저 넣어준다.
 
@@ -229,7 +229,7 @@ Gini impurity는 위의 공식에 따라 계산한다. 그럼 각각의 leaf에 
 
 Male/Female로 나누기 전의 Gini impurity는 다음과 같다.
 
-<img src="https://latex.codecogs.com/gif.latex?1-(\frac{20}{20+66})^{2}-(\frac{66}{20+66})^{2}=0.36" alt="1-(\frac{20}{20+66})^{2}-(\frac{66}{20+66})^{2}=0.36" align="absmiddle" /> 
+$$1-(\frac{20}{20+66})^{2}-(\frac{66}{20+66})^{2}=0.36$$ 
 
 그런데 오히려 Male/Female로 나누고 난 이후의 Gini impurity가 더 높다. 이런 경우에는 더 이상 나누지 않고 Leaf로 둔다.
 

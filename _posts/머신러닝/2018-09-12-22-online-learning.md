@@ -22,15 +22,15 @@ Online Learning 은 실시간으로 흘러들어오는 데이터로 알고리즘
 
 택배사 홈페이지를 예로 들어보자. 그들이 출발지, 도착지, 금액이 feature이고 그들이 서비스를 이용하는지(y=1) 않는지(y=0)이 결과이다.
 
-그럼 머신러닝 알고리즘에 계속 들어오는 data는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x,y)" alt="\dpi{120} (x,y)" align="absmiddle" />이다. 그리고 parameter는 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />이다.
+그럼 머신러닝 알고리즘에 계속 들어오는 data는 $$\dpi{120} (x,y)$$이다. 그리고 parameter는 $$\dpi{120} \theta$$이다.
 
-data <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;(x,y)" alt="\dpi{120} (x,y)" align="absmiddle" />가 들어오는 족족 그 data를 가지고 parameter <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta" alt="\dpi{120} \theta" align="absmiddle" />를 학습시키는 것이다.
+data $$\dpi{120} (x,y)$$가 들어오는 족족 그 data를 가지고 parameter $$\dpi{120} \theta$$를 학습시키는 것이다.
 
 &nbsp;
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\theta_{j}:=\theta_{j}-\alpha(h_{\theta}(x)-y)x_{j}" alt="\dpi{120} \theta_{j}:=\theta_{j}-\alpha(h_{\theta}(x)-y)x_{j}" align="absmiddle" /> 
+$$\dpi{120} \theta_{j}:=\theta_{j}-\alpha(h_{\theta}(x)-y)x_{j}$$ 
 
-우리가 원하는 model은 출발지, 도착지에 따른 금액 조건에서 서비스를 이용할 확률<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;p(y=1|x;\theta)" alt="\dpi{120} p(y=1|x;\theta)" align="absmiddle" />  이다.
+우리가 원하는 model은 출발지, 도착지에 따른 금액 조건에서 서비스를 이용할 확률$$\dpi{120} p(y=1|x;\theta)$$  이다.
 
 한가지 더, 이렇게 한 번 학습에 쓰여진 데이터는 버리고 다시 사용하지 않는다.
 

@@ -20,9 +20,9 @@ tags:
   - svd function
   - svd 함수
 ---
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X&space;=&space;\begin{bmatrix}1&2&7&13&space;\\&space;4&8&9&4\\3&6&11&9&space;\\&space;\end{bmatrix}" alt="\dpi{120} X = \begin{bmatrix}1&2&7&13 \\ 4&8&9&4\\3&6&11&9 \\ \end{bmatrix}" align="absmiddle" />
+$$\dpi{120} X = \begin{bmatrix}1&2&7&13 \\ 4&8&9&4\\3&6&11&9 \\ \end{bmatrix}$$
 
-위 행렬에서 두 번째 열은 첫 번째 열에 단순히 2를 곱하면 나온다. 위의 행렬이 dataset이라면 feature <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{1}" alt="\dpi{120} x_{1}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{2}" alt="\dpi{120} x_{2}" align="absmiddle" />는 완전히 동일한 정보를 담고 있는 것이다. 이처럼 완전히 동일한 정보는 아니더라도, 두 feature가 서로 highly correlated 되어있다면 이 두 feature를 잘 요약해주는 새로운 1개의 feature로 표현하는 것이 효율적이다.
+위 행렬에서 두 번째 열은 첫 번째 열에 단순히 2를 곱하면 나온다. 위의 행렬이 dataset이라면 feature $$\dpi{120} x_{1}$$과 $$\dpi{120} x_{2}$$는 완전히 동일한 정보를 담고 있는 것이다. 이처럼 완전히 동일한 정보는 아니더라도, 두 feature가 서로 highly correlated 되어있다면 이 두 feature를 잘 요약해주는 새로운 1개의 feature로 표현하는 것이 효율적이다.
 
 highly correlated한 여러개의 feature가 있을 때 그 수를 줄여 더 적은 수의 feature로 나타내는 방법들이 있다. 그 중에 많이 쓰이는 방법 중 하나가 PCA(Principal Component Analysis)이다.
 
@@ -40,7 +40,7 @@ highly correlated한 여러개의 feature가 있을 때 그 수를 줄여 더 �
 
 ![image](/images/2018/08/no-name-108.png){: width="50%" height="50%"}
 
-기본적인 idea는 이렇다. feature 2개를 어떠한 벡터에 projection하였을 때 수직 거리(error)들의 합이 가장 작은 벡터를 구한다. 이 새로운 vector에 각각의 data를 projection한 것을 새로운 data로 사용한다. 이렇게 하면  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{1}" alt="\dpi{120} x_{1}" align="absmiddle" />과 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x_{2}" alt="\dpi{120} x_{2}" align="absmiddle" /> 두 개의 feature가 1개의 feature로 대체된다. 이 방법은 일반적으로 n개의 feature를 그보다 작은 k개의 feature vector <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" alt="\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" align="absmiddle" /> 로 줄이는 데 사용할 수 있다. PCA의 목적은 이 error의 합의 최소값을 찾는 것이다.
+기본적인 idea는 이렇다. feature 2개를 어떠한 벡터에 projection하였을 때 수직 거리(error)들의 합이 가장 작은 벡터를 구한다. 이 새로운 vector에 각각의 data를 projection한 것을 새로운 data로 사용한다. 이렇게 하면  $$\dpi{120} x_{1}$$과 $$\dpi{120} x_{2}$$ 두 개의 feature가 1개의 feature로 대체된다. 이 방법은 일반적으로 n개의 feature를 그보다 작은 k개의 feature vector $$\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}$$ 로 줄이는 데 사용할 수 있다. PCA의 목적은 이 error의 합의 최소값을 찾는 것이다.
 
 &nbsp;
 
@@ -50,25 +50,25 @@ highly correlated한 여러개의 feature가 있을 때 그 수를 줄여 더 �
 
 PCA 알고리즘을 적용하기 전 먼저 data를 feature normalization을 해준다.
 
-  * i-th data의 j-th feature를 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}" alt="\dpi{120} x^{(i)}_{j}" align="absmiddle" />라고 할 때, 모든 data example의 j-th feature의 평균을 구한다.
+  * i-th data의 j-th feature를 $$\dpi{120} x^{(i)}_{j}$$라고 할 때, 모든 data example의 j-th feature의 평균을 구한다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_j" alt="\dpi{120} \mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_j" align="absmiddle" /> 
+$$\dpi{120} \mu_{j}=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}_j$$ 
 
 &nbsp;
 
   * 모든 데이터를 다음의 데이터로 바꾼다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}\rightarrow&space;x^{(i)}_j-\mu_{j}" alt="\dpi{120} x^{(i)}_{j}\rightarrow x^{(i)}_j-\mu_{j}" align="absmiddle" /> 
+$$\dpi{120} x^{(i)}_{j}\rightarrow x^{(i)}_j-\mu_{j}$$ 
 
 &nbsp;
 
   * feature마다 scale 차이가 크다면 feature scailing을 해준다. 을 한다.
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;x^{(i)}_{j}\rightarrow&space;\frac{x^{(i)}_j-\mu_{j}}{\sigma_{j}}" alt="\dpi{120} x^{(i)}_{j}\rightarrow \frac{x^{(i)}_j-\mu_{j}}{\sigma_{j}}" align="absmiddle" /> 
+$$\dpi{120} x^{(i)}_{j}\rightarrow \frac{x^{(i)}_j-\mu_{j}}{\sigma_{j}}$$ 
 
 &nbsp;
 
-위의 과정을 거쳐서 얻은 새로운 data matrix  <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;X" alt="\dpi{120} X" align="absmiddle" />를 사용한다.
+위의 과정을 거쳐서 얻은 새로운 data matrix  $$\dpi{120} X$$를 사용한다.
 
 &nbsp;
 
@@ -76,8 +76,8 @@ PCA 알고리즘을 적용하기 전 먼저 data를 feature normalization을 해
 
 먼저 PCA는 다음의 작업을 하는 것이라 할 수 있다.
 
-  * n dimensional feature로 이루어진 n dimensional feature로 이루어진 data를 projection 했을 때 projection error가 가장 작은 k개의 벡터 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" alt="\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}" align="absmiddle" />를 찾는다.
-  * 위의 vector에 data를 projection하여 k dimensional ffeature로 이루어진 새로운 dataset <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;z^{(1)},z^{(2)},\cdot\cdot\cdot,z^{(m)}" alt="\dpi{120} z^{(1)},z^{(2)},\cdot\cdot\cdot,z^{(m)}" align="absmiddle" />을 찾는다.
+  * n dimensional feature로 이루어진 n dimensional feature로 이루어진 data를 projection 했을 때 projection error가 가장 작은 k개의 벡터 $$\dpi{120} u^{(1)},u^{(2)},\cdot\cdot\cdot,u^{(k)}$$를 찾는다.
+  * 위의 vector에 data를 projection하여 k dimensional ffeature로 이루어진 새로운 dataset $$\dpi{120} z^{(1)},z^{(2)},\cdot\cdot\cdot,z^{(m)}$$을 찾는다.
 
 이제 PCA 알고리즘을 사용하여 위의 작업을 해보자.
 
@@ -85,7 +85,7 @@ PCA 알고리즘을 적용하기 전 먼저 data를 feature normalization을 해
 
 <span style="font-size: 14pt;"><strong>a) covariant matrix 계산</strong></span>
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma&space;=&space;\frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T&space;=&space;\frac{1}{m}X^{T}\cdot&space;X" alt="\dpi{120} \Sigma = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T = \frac{1}{m}X^{T}\cdot X" align="absmiddle" /> 
+$$\dpi{120} \Sigma = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T = \frac{1}{m}X^{T}\cdot X$$ 
 
 ![image](https://latex.codecogs.com/gif.latex?\dpi{120}&space;\Sigma){: width="50%" height="50%"}
 
@@ -166,22 +166,22 @@ PCA 알고리즘을 사용하면 n개의 feature를 k개의 feature로 줄일 �
       1) k=1, 2, 3, ··· 순차적으로 늘려가며 PCA를 적용한다.</p> 
       
       <p>
-        2) <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U_{reduce},z^{(i)},x_{approx}^{(i)}" alt="\dpi{120} U_{reduce},z^{(i)},x_{approx}^{(i)}" align="absmiddle" />를 계산한다.
+        2) $$\dpi{120} U_{reduce},z^{(i)},x_{approx}^{(i)}$$를 계산한다.
       </p>
       
       <p>
         3) 99%이상의 variance가 보존되는지 check하여 실패하면 k를 1 늘려서 다시 test한다. 위에서 말한 variance 보존 공식을 적용하는 k 중 가장 작은 값을 찾을 때 까지이다.</td> </tr> </tbody> </table> 
         
         <p>
-          결국은 위와 같은 알고리즘을 짜는 것인데, 비효율적이고 귀찮은 작업이라는 느낌이 든다. 아까 말했던 <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U&space;=&space;svd(\Sigma)" alt="\dpi{120} U = svd(\Sigma)" align="absmiddle" />함수를 기억하는가? 위에서는 U만 썼지만, svd() 함수는 3개의 값을 return 해준다. 코드를 다음과 같이 쓰면 된다.
+          결국은 위와 같은 알고리즘을 짜는 것인데, 비효율적이고 귀찮은 작업이라는 느낌이 든다. 아까 말했던 $$\dpi{120} U = svd(\Sigma)$$함수를 기억하는가? 위에서는 U만 썼지만, svd() 함수는 3개의 값을 return 해준다. 코드를 다음과 같이 쓰면 된다.
         </p>
         
         <p>
-          <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;[U,S,V]&space;=&space;svd(\Sigma)" alt="\dpi{120} [U,S,V] = svd(\Sigma)" align="absmiddle" />
+          $$\dpi{120} [U,S,V] = svd(\Sigma)$$
         </p>
         
         <p>
-          <img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;U" alt="\dpi{120} U" align="absmiddle" />는 covariant matrix의 eigen vectors&#8217; matrix이라고 이미 알고 있다. 두 번째 return value인 S를 통해 variance가 얼마나 보존되는지 check할 수 있다.
+          $$\dpi{120} U$$는 covariant matrix의 eigen vectors&#8217; matrix이라고 이미 알고 있다. 두 번째 return value인 S를 통해 variance가 얼마나 보존되는지 check할 수 있다.
         </p>
         
         <p>
