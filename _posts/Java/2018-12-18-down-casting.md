@@ -1,5 +1,5 @@
 ---
-title: (Java) 다운캐스팅
+title: (Java) 32.다운캐스팅
 date: 2018-12-18T20:06:09+09:00
 author: nobbaggu
 layout: post

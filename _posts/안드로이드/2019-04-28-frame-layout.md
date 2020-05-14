@@ -101,7 +101,7 @@ onButtonClicked 메소드에 changeImage() 메소드를 넣어줌으로써 버�
 
 이렇게 했을 때 앱을 실행하면 다음과 같은 화면이 보인다.
 
-![1](/images/android/10/1.jpg){: width="30%" height="30%"}
-![2](/images/android/10/2.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/10/1.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/10/2.jpg){: width="30%" height="30%"}
 
 버튼을 누를 때 마다 화면이 전환되지만 이는 단순히 두 개의 이미지가 중첩된 상태에서 보이게 하거나 보이지 않게 하는 것일 뿐이다.

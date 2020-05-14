@@ -1,5 +1,5 @@
 ---
-title: (Java) 예외처리
+title: (Java) 50. 예외처리
 date: 2018-12-30T16:16:20+09:00
 author: nobbaggu
 layout: post
@@ -47,7 +47,7 @@ Throwable 클래스를 상속받는 Exception클래스와 그 하위클래스들
 
 # 
 
-![image](/images/2018/12/no-name-40.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/12/no-name-40.jpg){: width="50%" height="50%"}
 
 모든 예외처리 클래스의 최상위 클래스는 Exception클래스이다. 위 그림에 표시되지 않은 클래스 이외에도 많은 클래스가 있지만 위 클래스들은 사용 빈도가 높은 클래스들이다.
 

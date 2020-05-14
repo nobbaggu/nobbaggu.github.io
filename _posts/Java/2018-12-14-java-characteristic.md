@@ -1,5 +1,5 @@
 ---
-title: (Java) Java의 특징
+title: (Java) 1. Java의 특징
 date: 2018-12-14T13:25:40+09:00
 author: nobbaggu
 layout: post
@@ -30,7 +30,7 @@ tags:
 
 그러나 Java는 컴파일 하면 .class 확장자의 파일이 만들어지는데, 이 .class 파일을 '바이트 코드' 라고 부른다. 바이트 코드는 JVM(Java Virtual Machine)이 설치되어있으면 어떤 운영체제의 실행환경에서 바로 실행시킬 수 있다. 이는 무척 편리한 기능이다.
 
-![image](/images/2018/12/java-compile.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/12/java-compile.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

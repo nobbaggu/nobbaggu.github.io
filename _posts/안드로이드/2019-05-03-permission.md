@@ -13,7 +13,7 @@ tags:
 
 위험 권한에는 다음과 같은 것들이 있다.
 
-![1](/images/android/21/1.png){: width="50%" height="50%"}
+![1](https://nobbaggu.github.io/images/android/21/1.png){: width="50%" height="50%"}
 
 위험권한을 부여받기 위해서는 매니페스트 파일에 다음 코드를 등록해야 한다.
 
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하면 다음과 같은 화면이 뜬다.
 
-![2](/images/android/21/2.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/21/2.jpg){: width="30%" height="30%"}
 
 사용자가 허용하거나 거부하면 onRequestPermissionsResult() 메소드에서 결과를 받아서 처리하고 토스트 메시지를 띄운다.
 

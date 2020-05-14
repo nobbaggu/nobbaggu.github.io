@@ -30,7 +30,7 @@ Logistic regression 은 discrete한 여러개의 값으로 분류를 하는 것
 
 사진을 사람 or Not으로 분류하는 문제를 생각해보자. 이 문제를 linear regression을 통해서 사람인 사진은 0보다 큰 값을 내어놓도록 학습시키고 아닌 사진은 0보다 작은 값을 내어놓도록 학습시켜서 model을 사용할 수 있지 않을까 생각해볼 수도 있지다. 하지만 이런 경우에는 일반적으로 output이 feature의 값과 같이 linear하게 움직이지 않는다. 분류문제에 linear regression을 적용하는 예시를 한 번 보자.
 
-![image](/images/2018/08/no-name-5.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-5.png){: width="50%" height="50%"}
 
 위 프로그램은 종양의 크기에 따라 0(양성종양) 혹은 1(악성종양)으로 분류하는 알고리즘이다. 빨간색으로 표시된 데이터들로부터 만들어진 모델이 검은색 직선이다. 이 모델로 파란색 동그라미 데이터의 결과를 예측해보자. 저 크기라면 악성(1)로 분류되어야 할 것 같지만 모델에 따르면 양성에 더 가깝다. 그리고 더욱 큰 종양의 데이터들이 많이 들어갈수록 이러한 잘못된 분류는 더 많이 일어날 것이다. 따라서 위와같은 분류문제에 linear regression 알고리즘을 적용하는것은 적절치 않다.
 
@@ -54,7 +54,7 @@ $$y\in \left \{ 0,1 \right \}$$
 
 0과 1의 두 개의 값만을 가지는 모델을 수식적으로 어떻게 나타내야할지 생각해보아야한다. Logistic Regression 을 이용한  분류 문제에서는 모든 output을 (0,1)의 범위로 제한하기위해 sigmoid function을 사용한다.
 
-![image](/images/2018/08/no-name-6.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-6.png){: width="50%" height="50%"}
 
 sigmoid function은 0보다 작은 구간에서 (0, 0.5)의 범위를, 0보다 큰 구간에서는 (0.5, 1)의 범위를 가진다. 그렇다면 sigmoid function을 이용한 모델의 형태는 다음과 같다.
 
@@ -90,7 +90,7 @@ $$J(\theta )=\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ Cost({ h }_{ \theta }({ x }^{
 
 위의 그래프에서 x 대신에 h_theta(x)가 들어갈 뿐이다. 그럼 위와 같은 형태의 cost function이 정말로 training dataset과 model의 error를 충분히 잘 나타내주는지 보자.
 
-![image](/images/2018/08/no-name-7.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-7.png){: width="50%" height="50%"}
 
 training data의 output이 1인 경우는 model의 예측값이 1로 갈수록 error는 0으로 수렴하고 예측값이 0에 가까워질수록 error는 무한히 커진다.
 
@@ -156,11 +156,11 @@ $${ h }_{ \theta }(x)=g(-12+4{ x }_{ 1 }+3{ x }_{ 2 })<0.5\Leftrightarrow -12+4{
 
 각 식의 마지막 부분에있는 부등식을 풀어보면 x1, x2평면에서 어떠한 직선을 기준으로 class0과 class1로 나뉜다는것을 알 수 있다. 이를 그림으로 나타내면 다음과 같다.
 
-![image](/images/2018/08/no-name-8.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-8.png){: width="50%" height="50%"}
 
 또 한 가지 예를 보자. 아래 그림과 같은 training dataset이 있다.
 
-![image](/images/2018/08/no-name-9.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-9.png){: width="50%" height="50%"}
 
 이러한 data들에 fit하는 model을 구하기위해 hypothesis function의 형태를 세울려고 하는데 단순한 선형식으로는 되지 않을 것 같다. 이 때에는 더 높은 차원의 polynomial term을 추가하는 것이 좋겠다.
 
@@ -176,4 +176,4 @@ $$g(-4+{ { x }_{ 1 } }^{ 2 }+{ { x }_{ 2 } }^{ 2 })<0.5\quad \Leftrightarrow \qu
 
 위의 parameter를 hypothesis function에 적용시키고 결과가 0.5보다 크거나 같으면 class1, 0.5보다 작으면 class0이 된다. 이 때 class0과 class1의 경계는 위의 부등식을 풀어서 구할 수 있다. 위의 부등식을 보았을 때 경계선은 중심이 0이고 반지름이 2인 원이 된다는 것을 고등학교 수학시간에 배운 원의 방정식만 알고있다면 쉽게 알 수 있다. 이를 그림으로 표현하면 다음과 같다.
 
-![image](/images/2018/08/no-name-10.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-10.png){: width="50%" height="50%"}

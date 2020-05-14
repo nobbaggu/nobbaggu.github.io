@@ -205,5 +205,5 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하면 아래와 같은 결과를 볼 수 있다.
 
-![1](/images/android/29/1.jpg){: width="30%" height="30%"}
-![2](/images/android/29/2.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/29/1.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/29/2.jpg){: width="30%" height="30%"}

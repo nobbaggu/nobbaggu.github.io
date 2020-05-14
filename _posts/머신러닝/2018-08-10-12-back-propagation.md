@@ -37,7 +37,7 @@ tags:
 
 신경망의 개념이 나온지는 꽤 되었지만 신경망을 학습시키는 방법을 몰라 오랫동안 사장된 이론이었다. 하지만 1970년대 미국의 한 대학원생은 신경망을 학습시킬 방법을 발견했고, 이것이 지금부터 설명할 역전파 이다. 사실 역전파 알고리즘은 우리가 regression 문제에서 이미 보았던 <span style="color: #000000;"><strong>gradient-descent(경사하강법)과 </strong>본질적으로 같다. </span>아무튼 역전파를 아래와 같은 3-2-2 층을 가진 신경망을 예시로 들어 설명하겠다.
 
-![image](/images/2018/08/no-name-44-300x285.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-44-300x285.png){: width="50%" height="50%"}
 
 $$\\ { z }_{ 1 }^{ (2) }={ \Theta }_{ 1,0 }^{ (1) }{ a }_{ 0 }^{ (1) }+{ \Theta }_{ 1,1 }^{ (1) }{ a }_{ 1 }^{ (1) }+{ \Theta }_{ 1,2 }^{ (1) }{ a }_{ 2 }^{ (1) }+{ \Theta }_{ 1,3 }^{ (1) }{ a }_{ 3 }^{ (1) }\\ { z }_{ 2 }^{ (2) }={ \Theta }_{ 2,0 }^{ (1) }{ a }_{ 0 }^{ (1) }+{ \Theta }_{ 2,1 }^{ (1) }{ a }_{ 1 }^{ (1) }+{ \Theta }_{ 2,2 }^{ (1) }{ a }_{ 2 }^{ (1) }+{ \Theta }_{ 2,3 }^{ (1) }{ a }_{ 3 }^{ (1) }$$ 
 
@@ -125,7 +125,7 @@ $$\\ \frac{\partial J}{\partial\Theta^{(1)}}=\frac{1}{m}\bigtriangleup ^{(1)}\\ 
 
 지금까지 계산한 것을 그림으로 간단히 나타내면 다음과 같다.
 
-![image](/images/2018/08/no-name-45-295x300.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-45-295x300.png){: width="50%" height="50%"}
 
 &nbsp;
 

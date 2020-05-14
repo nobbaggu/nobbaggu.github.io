@@ -130,5 +130,5 @@ findViewById 메소드에 XML 코드에서 만든 뷰의 id를 전달하면 뷰 
 
 changeImage() 메소드에서는 두 이미지를 번갈아가며 보여주기 위한 코드를 설정했다. 그리고 이 메소드를 버튼의 onClick 속성으로 설정한 메소드에 넣어주어 기능을 완성했다.
 
-![1](/images/android/9/1.jpg){: width="30%" height="30%"}
-![2](/images/android/9/2.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/9/1.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/9/2.jpg){: width="30%" height="30%"}

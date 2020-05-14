@@ -53,7 +53,7 @@ ex1 ) (재산, 집의 평수)의 data set들을 학습시켜 두 변수의 관�
 
 &nbsp;
 
-![image](/images/2018/08/no-name.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name.jpg){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -73,7 +73,7 @@ ex) A(a)~C(c)의 알파벳 패턴을 인식하여 3가지 class로 분류
 
 &nbsp;
 
-![image](/images/2018/08/no-name-1.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-1.png){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -89,7 +89,7 @@ ex3) 손의 크기와 목소리 톤의 2가지 정보로부터 남자인지 여�
 
 &nbsp;
 
-![image](/images/2018/08/no-name-1.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-1.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

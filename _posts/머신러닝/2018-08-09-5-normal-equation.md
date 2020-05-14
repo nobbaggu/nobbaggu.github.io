@@ -24,7 +24,7 @@ tags:
 
 먼저, 기본적인 idea는 고등 미적분의 local minimum에서의 미분계수가 0이라는 사실에 근거한다.
 
-![image](/images/2018/08/1-3.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/1-3.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

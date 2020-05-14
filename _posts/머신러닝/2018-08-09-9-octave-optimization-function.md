@@ -24,7 +24,7 @@ $$J(\theta ) = ({ { \theta }_{ 0 }-1 })^{ 2 }+({ { \theta }_{ 1 }-4 })^{ 2 }+({ 
 
 위와같은 함수는 4개의 parameter가 (1,4,6,3)의 값을 가질 때 최소값을 가질것이다. 그럼 이를 octave에서 지원하는 함수를 이용하기 전에 위의 함수를 정의해야겠다.
 
-![image](/images/2018/08/no-name-13.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-13.png){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -34,7 +34,7 @@ $$J(\theta ) = ({ { \theta }_{ 0 }-1 })^{ 2 }+({ { \theta }_{ 1 }-4 })^{ 2 }+({ 
 
 &nbsp;
 
-![image](/images/2018/08/no-name-15.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-15.png){: width="50%" height="50%"}
 
 &nbsp;
 

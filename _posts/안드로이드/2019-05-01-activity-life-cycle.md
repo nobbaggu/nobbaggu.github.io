@@ -21,7 +21,7 @@ tags:
 
 액티비티는 액티비티 스택(Activity Stack)이라는 것으로 관리된다. 새로운 액티비티를 띄우면 이전의 액티비티는 액티비티 스택에 저장된다. 그리고 가장 상위의 액티비티가 없어지면 액티비티 스택에서 가장 상위의 액티비티가 다시 나타나는 구조이다.
 
-![1](/images/android/18/1.jpg){: width="40%" height="40%"}
+![1](https://nobbaggu.github.io/images/android/18/1.jpg){: width="40%" height="40%"}
 
 결과적으로 액티비티의 생성, 실행, 중지, 그리고 해제되는 과정까지의 상태정보는 시스템이 관리한다. 지금까지 보았던 onCreate() 메소드는 액티비티가 생성될 때 자동으로 호출되는 메소드이다. 그런데 생성 뿐만이 아니라 실행, 중지, 해제등의 상태로 들어서면 자동으로 호출되는 메소드들이 있다.
 
@@ -36,7 +36,7 @@ tags:
 |**onStop()**|액티비티를 중지시키고 화면에서 내릴 때 호출|
 |**onDestroy()**|액티비티 메모리에서 해제 시 호출. finish()메소드를 호출할 때|
 
-![2](/images/android/18/2.png){: width="60%" height="60%"}
+![2](https://nobbaggu.github.io/images/android/18/2.png){: width="60%" height="60%"}
 
 위의 생명주기 메소드들은 액티비티의 상태변경에 따라 시스템에 의해 자동으로 호출되는데, 이러한 메소드를 콜백 메소드(Callback method)라고 한다.
 
@@ -268,8 +268,8 @@ public class MainActivity extends AppCompatActivity {
 
 앱에서 간단한 데이터를 저장 및 복원할 때는 SharedPreferences 클래스를 사용하면 된다. SharedPreferences는 앱 내부에 파일을 하나 만들어 읽고 쓴다.
 
-![3](/images/android/18/3.jpg){: width="30%" height="30%"}
-![4](/images/android/18/4.jpg){: width="30%" height="30%"}
-![5](/images/android/18/5.jpg){: width="30%" height="30%"}
+![3](https://nobbaggu.github.io/images/android/18/3.jpg){: width="30%" height="30%"}
+![4](https://nobbaggu.github.io/images/android/18/4.jpg){: width="30%" height="30%"}
+![5](https://nobbaggu.github.io/images/android/18/5.jpg){: width="30%" height="30%"}
 
 버튼을 눌러 앱을 종료했다가 다시 실행했을 때 입력상자의 내용이 복원되어 있는것을 확인할 수 있다.

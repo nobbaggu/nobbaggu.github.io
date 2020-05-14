@@ -1,5 +1,5 @@
 ---
-title: (Java) 프로그래밍 언어란?
+title: (Java) 0. 프로그래밍 언어란?
 date: 2018-12-14T12:43:10+09:00
 author: nobbaggu
 layout: post
@@ -44,7 +44,7 @@ tags:
 3) 나와 컴퓨터 모두가 이해할 수 있는 언어를 만든다 → 가능
 
 <div id="quads-ad2" class="quads-location quads-ad2">
-  ![image](/images/2018/09/1-4.jpg){: width="50%" height="50%"}
+  ![image](https://nobbaggu.github.io/images/2018/09/1-4.jpg){: width="50%" height="50%"}
 </div>
 
 &nbsp;
@@ -53,7 +53,7 @@ tags:
 
 이렇게 해서 프로그래밍 언어를 통하여 우리와 컴퓨터가 대화를 할 수 있는 겁니다. Java는 이러한 프로그래밍 언어들 중의 하나입니다.
 
-![image](/images/2018/09/1-4.jpg" sizes="(max-width: 460px) 100vw, 460px" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/09/1-4.jpg" sizes="(max-width: 460px) 100vw, 460px" srcset="/images/2018/09/1-4.jpg 460w, /images/2018/09/1-4-300x98.jpg 300w){: width="50%" height="50%"}
 
 단, 한 가지 주의할 점이 있습니다.
 

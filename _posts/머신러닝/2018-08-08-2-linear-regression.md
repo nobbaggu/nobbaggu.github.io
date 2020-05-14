@@ -35,7 +35,7 @@ $$\hat { y } = { h }_{ \theta }(x) = { \theta }_{ 0 }+{ \theta }_{ 1 }x$$
 
 위는 고등학교 때 배운 1차함수식이다. model이 주어진 훈련 dataset을 얼마나 작은 오차로 잘 표현하는지는$$\theta_{0}$$(offset) 와$$\theta_{1}$$ (기울기)의 값에 달려있다.$$\theta_{0}$$ **와 $$\theta_{1}$$은 모델을 결정하는 인자로서 parameter라고 한다**.
 
-![image](/images/2018/08/1.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/1.png){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -55,7 +55,7 @@ $$J({ \theta }_{ 0 },{ \theta }_{ 1 })\quad =\quad \frac { 1 }{ 2m } \sum _{ i=1
 
 여기서 m은 훈련시킨 데이터의 총 갯수(size of the training data set)이다. **간단히 말해서 error = 예측값 &#8211; 데이터의 결과값 이라고 했을때 모든 training data sample에 대해서 error의 제곱을 더한 값 $$\sum error^{2}$$ 을 총 훈련 데이터의 갯수 m으로 나눠서 평균값을 구한것이(사실 m이 아니라 2m으로 나누지만) cost function이다.** **cost function의 크기가 작을수록 실제와의 오차가 작은 모델이다.** m이 아닌 1/2m로 나누는 이유는 나중에 미분을 하였을 때 튀어나오는 2를 없애고 수식을 조금이나마 더 간단히 하기위함이다.
 
-![image](/images/2018/08/2.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/2.jpg){: width="50%" height="50%"}
 
 위 그림에는 5개의 데이터 set이 있다. 예측값과 실제 결과값 사이의 에러를 e1, e2, e3, e4, e5라 했을 때 각각의 차이의 제곱을 모두 더한 값이 cost값이다. 이 cost값은$$\theta_{0}$$ 와$$\theta_{1}$$ 에 의해 변한다. 아까 말한 linear regression 방법을 써 최적의 $$\theta_{0}$$ 와$$\theta_{1}$$ 을 찾을 수 있다.
 
@@ -81,7 +81,7 @@ $$({ \theta }_{ 0 },{ \theta }_{ 1 }) := ({ \theta }_{ 0 },{ \theta }_{ 1 })- \a
 
 이 식에 의해 계산된 새로운$$(\theta_{0},\theta_{1})$$ 는 gradient 벡터의 성질때문에 cost function이 작아지는 방향으로 이동한다. 이해를 돕기위해 다음 그림을 보자.
 
-![image](/images/2018/08/3.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/3.png){: width="50%" height="50%"}
 
 적당한 alpha라는 factor를 곱하여 기울기의 반대방향으로 이동시키면 점의 위치는 local minimum 방향으로 이동하게 된다. 어떤$$(\theta_{0},\theta_{1})$$ 을 잡아도 위의 공식에 따르면 local minimum의 방향으로 움직이게 된다. **이 작업을 cost function의 값이 수렴할 때 까지 충분한 횟수로 반복해주면 되는것이다.**
 

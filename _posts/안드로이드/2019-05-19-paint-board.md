@@ -359,8 +359,8 @@ public class ColorPaletteDialog extends Activity {
 
 앱을 실행하면 아래의 결과를 확인할 수 있다.
 
-![1](/images/android/44/1.jpg){: width="30%" height="30%"}
-![2](/images/android/44/2.jpg){: width="30%" height="30%"}
-![3](/images/android/44/3.jpg){: width="30%" height="30%"}
-![4](/images/android/44/4.jpg){: width="30%" height="30%"}
-![5](/images/android/44/5.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/44/1.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/44/2.jpg){: width="30%" height="30%"}
+![3](https://nobbaggu.github.io/images/android/44/3.jpg){: width="30%" height="30%"}
+![4](https://nobbaggu.github.io/images/android/44/4.jpg){: width="30%" height="30%"}
+![5](https://nobbaggu.github.io/images/android/44/5.jpg){: width="30%" height="30%"}

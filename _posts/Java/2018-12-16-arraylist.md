@@ -1,5 +1,5 @@
 ---
-title: (Java) ArrayList 클래스
+title: (Java) 28. ArrayList 클래스
 date: 2018-12-16T19:25:24+09:00
 author: nobbaggu
 layout: post

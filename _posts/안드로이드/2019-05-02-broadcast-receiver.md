@@ -199,4 +199,4 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하고 문자메시지를 받아보면 다음과 같이 내용이 텍스트뷰에 표시된다. 그리고 백그라운드에서도 실행되므로 다른 작업을 하다가 문자가 오면 액티비티가 뜬다.
 
-![1](/images/android/20/1.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/20/1.jpg){: width="30%" height="30%"}

@@ -15,7 +15,7 @@ tags:
 
 아래 그림은 프래그먼트의 상태에 따른 수명주기 메소드의 호출 순서를 보여준다.
 
-![1](/images/android/31/1.png){: width="70%" height="70%"}
+![1](https://nobbaggu.github.io/images/android/31/1.png){: width="70%" height="70%"}
 
 <br>
 ### \<화면에 보이기 전에 호출되는 메소드\>

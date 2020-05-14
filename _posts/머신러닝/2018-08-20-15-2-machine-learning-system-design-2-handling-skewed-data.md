@@ -78,7 +78,7 @@ $$\\ h_{\theta}(x) < 0.5 \rightarrow class0\\ h_{\theta}(x) \geq 0.5 \rightarrow
 
 P와 R의 개념을 봤을 때 둘 모두 높은 것이 좋다. 하지만 하나가 커지면 하나는 작아진다.
 
-![image](/images/2018/08/no-name-80-300x263.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-80-300x263.png){: width="50%" height="50%"}
 
 <table style="border-collapse: collapse; width: 85.4545%;" border="1">
   <tr>

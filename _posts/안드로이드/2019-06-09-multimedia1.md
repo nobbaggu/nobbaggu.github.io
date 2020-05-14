@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하고 재생버튼을 누르면 아래 화면을 확인할 수 있다.
 
-![1](/images/android/55/1.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/55/1.jpg){: width="30%" height="30%"}
 
 <br>
 ## 2. 동영상 재생
@@ -251,4 +251,4 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하고 재생버튼을 누르면 아래 화면을 확인할 수 있다.
 
-![2](/images/android/55/2.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/55/2.jpg){: width="30%" height="30%"}

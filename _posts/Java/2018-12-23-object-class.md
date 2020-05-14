@@ -1,5 +1,5 @@
 ---
-title: (Java) Object 클래스
+title: (Java) 39. Object 클래스
 date: 2018-12-23T00:56:38+09:00
 author: nobbaggu
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: (Java) 람다식
+title: (Java) 48. 람다식
 date: 2018-12-27T23:30:50+09:00
 author: nobbaggu
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: (Java) 자료형(1) - 정수와 실수
+title: (Java) 3. 자료형(1) - 정수와 실수
 date: 2018-12-14T15:41:01+09:00
 author: nobbaggu
 layout: post
@@ -177,7 +177,7 @@ Java에는 아래와 같은 자료형이 있습니다.
 
 char는 문자(character)를 나타내는 데 사용됩니다. 문자가 표현되는 원리를 알려면 ASCII(American Standard Code for Information Interchange)에 에 대해 알아야합니다. 아스키 코드는 미국표준협회(ANSI)에서 만든 표준 코드체계입니다. 아스키 코드에서는 문자를 표현하기 위해서 우리는 문자 하나 하나를 어떠한 정수에 대입시키기로 약속을 하였습니다.
 
-![image](/images/2018/09/ASCII.jpg" sizes="(max-width: 1306px) 100vw, 1306px" srcset="/images/2018/09/ASCII.jpg 1306w, /images/2018/09/ASCII-300x167.jpg 300w, /images/2018/09/ASCII-768x429.jpg 768w, /images/2018/09/ASCII-1024x572.jpg 1024w){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/09/ASCII.jpg" sizes="(max-width: 1306px) 100vw, 1306px" srcset="/images/2018/09/ASCII.jpg 1306w, /images/2018/09/ASCII-300x167.jpg 300w, /images/2018/09/ASCII-768x429.jpg 768w, /images/2018/09/ASCII-1024x572.jpg 1024w){: width="50%" height="50%"}
 
 ~~~ java
 package hello;

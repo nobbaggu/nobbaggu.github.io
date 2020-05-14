@@ -1,5 +1,5 @@
 ---
-title: (Java) Java 입출력
+title: (Java) 52. Java 입출력
 date: 2018-12-31T14:16:26+09:00
 author: nobbaggu
 layout: post
@@ -31,7 +31,7 @@ tags:
 
 Java는 장치에 의존하지 않는 **일관적인 데이터의 입출력을 위해 스트림이라는 것을 제공**한다. 스트림은 데이터의 이동 통로이다. 스트림은 시냇물, 개울을 뜻한다. 데이터가 이동하는 모습이 물이 흐르는 것과 비슷하다하여 붙여진 이름이다.
 
-![image](/images/2018/09/1-14.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/09/1-14.jpg){: width="50%" height="50%"}
 
 # 1. 스트림의 세 가지 분류 방식
 

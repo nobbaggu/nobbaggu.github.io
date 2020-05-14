@@ -15,7 +15,7 @@ tags:
   - 할당
 ---
 
-![1-7](/images/2018/09/1-7.jpg){: width="80%" height="80%"}
+![1-7](https://nobbaggu.github.io/images/2018/09/1-7.jpg){: width="80%" height="80%"}
 
 위 사진에 보이는대로 `GetNum()` 함수를 정의했습니다. `main()`함수에서 `GetNum()`을 호출하여 실행하고 `printf()`함수를 통해 num을 출력해보려 했습니다. 11이 나올거라 예상했는데, 변수 num이 식별이 되지 않는 일이 일어납니다. 이는 **지역변수의 수명**과 관련된 문제입니다.
 
@@ -28,7 +28,7 @@ tags:
 
 <br>
 
-![2-1](/images/2018/09/2-1.jpg){: width="80%" height="80%"}
+![2-1](https://nobbaggu.github.io/images/2018/09/2-1.jpg){: width="80%" height="80%"}
 
 <br>
 
@@ -73,13 +73,13 @@ int main(void)
 
 프로그램이 실행이 되면 main 함수가 실행됩니다. main함수의 1행과 2행을 거치며 메모리에 네 개의 변수가 다음 그림과 같이 할당됩니다.
 
-![3-1](/images/2018/09/3-1.jpg){: width="80%" height="80%"}
+![3-1](https://nobbaggu.github.io/images/2018/09/3-1.jpg){: width="80%" height="80%"}
 
 <br>
 
 그리고 `Add()` 함수가 호출되면서 a,b,c가 메모리에 생성됩니다.
 
-![4-1](/images/2018/09/4-1.jpg){: width="80%" height="80%"}
+![4-1](https://nobbaggu.github.io/images/2018/09/4-1.jpg){: width="80%" height="80%"}
 
 Add 함수는 num1의 값인 10과, num2의 값인 20을 넘겨받으며 a에는 10이, b에는 20이 저장됩니다. 그리고 `Add()` 함수가 종료되면서 메모리에 할당되었던 a,b,c는 소멸 됩니다. `Mul()` 함수가 호출되면서 같은 과정이 한 번 더 일어납니다. 물론 이 때의 a, b, c는 `Add()` 함수의 a,b,c와는 상관없는 변수입니다.
 

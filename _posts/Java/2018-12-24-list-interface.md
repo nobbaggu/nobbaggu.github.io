@@ -1,5 +1,5 @@
 ---
-title: (Java) List 인터페이스
+title: (Java) 43. List 인터페이스
 date: 2018-12-24T18:13:01+09:00
 author: nobbaggu
 layout: post

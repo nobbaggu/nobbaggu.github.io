@@ -26,7 +26,7 @@ tags:
 
 &nbsp;
 
-![image](/images/2018/10/no-name-7.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/10/no-name-7.jpg){: width="50%" height="50%"}
 
 물론 Bagging과 마찬가지로 각각의 model은 **중복되는 데이터를 가질 수 있다.**
 

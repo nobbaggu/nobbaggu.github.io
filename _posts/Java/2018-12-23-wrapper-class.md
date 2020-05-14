@@ -1,5 +1,5 @@
 ---
-title: (Java) Wrapper 클래스
+title: (Java) 41. Wrapper 클래스
 date: 2018-12-23T15:14:04+09:00
 author: nobbaggu
 layout: post
@@ -23,7 +23,7 @@ tags:
 
 자바는 이런 경우를 위해 기본 자료형과 같은 클래스를 지원하는데, 이러한 클래스들을 두고 Wrapper클래스라고 한다.
 
-![image](/images/2018/12/no-name-38.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/12/no-name-38.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

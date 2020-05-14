@@ -19,7 +19,7 @@ tags:
 
 액티비티를 띄울 때 사용하는 인텐트에는 액션과 데이터 이외에도 부가적인 데이터를 넣어서 전달할 수도 있다. 인텐트 안에는 번들(Bundle) 객체가 들어 있는데, 이 객체는 해시 테이블과 유사하여 key-value 쌍으로 데이터를 입력, 출력할 수 있다.
 
-![1](/images/android/17/1.png){: width="60%" height="60%"}
+![1](https://nobbaggu.github.io/images/android/17/1.png){: width="60%" height="60%"}
 
 번들 객체에는 기본 자료형 뿐만 아니라 문자열이나 배열등도 넣어서 전달할 수 있다. 그러나 객체(Object) 자료형은 그냥 전달할 수 없고 바이트 배열로 변환하거나 직렬화(serialization) 한 후 전달할 수 있다. 안드로이드에서는 Serializable 인터페이스와 유사하지만 직렬화한 이후 크기가 작은 Parcelable 인터페이스를 권장한다.
 
@@ -232,6 +232,6 @@ public class MenuActivity extends AppCompatActivity {
 
 getIntent() 메소드를 통해 인텐트를 받는다. 그리고 번들 객체로 부가 데이터를 받는다. 그리고 SimpleData 자료형으로 형변환을 하고 텍스트뷰에 데이터가 보이도록 설정한다.
 
-![2](/images/android/17/2.jpg){: width="30%" height="30%"}
-![3](/images/android/17/3.jpg){: width="30%" height="30%"}
-![4](/images/android/17/4.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/17/2.jpg){: width="30%" height="30%"}
+![3](https://nobbaggu.github.io/images/android/17/3.jpg){: width="30%" height="30%"}
+![4](https://nobbaggu.github.io/images/android/17/4.jpg){: width="30%" height="30%"}

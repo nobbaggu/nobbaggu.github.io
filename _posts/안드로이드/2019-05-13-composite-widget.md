@@ -248,5 +248,5 @@ SimpleDateFormat 클래스는 날짜를 우리가 원하는 포맷으로 표시�
 <br>
 앱을 실행하면 아래의 화면을 확인할 수 있다.
 
-![1](/images/android/40/1.jpg){: width="30%" height="30%"}
-![2](/images/android/40/2.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/40/1.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/40/2.jpg){: width="30%" height="30%"}

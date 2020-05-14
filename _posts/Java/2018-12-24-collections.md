@@ -1,5 +1,5 @@
 ---
-title: (Java) 컬렉션 프레임워크
+title: (Java) 42. 컬렉션 프레임워크
 date: 2018-12-24T15:58:14+09:00
 author: nobbaggu
 layout: post
@@ -23,7 +23,7 @@ tags:
 
 &nbsp;
 
-![image](/images/2018/12/no-name-39.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/12/no-name-39.jpg){: width="50%" height="50%"}
 
 &nbsp;
 

@@ -82,7 +82,7 @@ public class BitmapButton extends AppCompatButton {
 
 앱을 실행하면 아래의 실행결과가 나온다.
 
-![1](/images/android/36/1.jpg){: width="30%" height="30%"}
-![2](/images/android/36/2.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/36/1.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/36/2.jpg){: width="30%" height="30%"}
 
 첫 번째 사진이 노멀 상태이고 두 번째 사진이 버튼을 클릭했을 때이다. 두 가지 터치 이벤트가 발생할 때마다 버튼의 비트맵 이미지가 다시 그려진다.

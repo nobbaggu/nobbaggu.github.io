@@ -45,7 +45,7 @@ regression 문제처럼 모든 parameter를 0으로 초기화시키면 학습이
 
 $$\\ \epsilon=\sqrt{\frac{6}{s^{(input-layer)}+s^{(output-layer)}}}\\ \\ \Theta^{(l)}=2\epsilon \cdot rand(s^{(l+1)},s^{(l)}+1)-\epsilon$$ 
 
-![image](/images/2018/08/no-name-44-300x285.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-44-300x285.png){: width="50%" height="50%"}
 
 위와 같은 신경망의 경우에는
 
@@ -53,7 +53,7 @@ $$\\ \epsilon=\frac{6}{s^{(1)}+s^{(3)}}=\frac{6}{5}=1.2\\ \\ \Theta^{(1)}=2\cdot
 
 rand함수는 octave나 matlab에서 제공한다. python이나 R 등의 다른 프로그래밍 툴 역시 위와 비슷한 함수를 제공할 것이니 manual을 참고하길 바란다.
 
-![image](/images/2018/08/no-name-46.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-46.png){: width="50%" height="50%"}
 
 위와 같이 초기 Theta값을 계산할 수 있다.
 
@@ -93,7 +93,7 @@ output layer의 결과와 실제 data y의 차이를 error로 두고 back propag
 
 역전파로 $$\frac{\partial J}{\partial \Theta}$$를 계산했다고 해도 우리가 제대로 알고리즘을 구현했는지, 혹은 코드를 잘못 짜지는 않았는지 확인할 필요가 있다. 이 때에 쓰는 방법이 gradient check이다. 다음 그림을 보자.
 
-![image](/images/2018/08/no-name-47.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-47.png){: width="50%" height="50%"}
 
 $$\theta-\epsilon$$ 에서$$\theta+\epsilon$$  사이의 함수 f의 평균 변화량은  $$\frac{f(\theta+\epsilon)-f(\theta-\epsilon)}{2\epsilon}$$가 된다. 만약 $$\epsilon$$이 충분히 작다면 이 값은 θ에서의 접선의 기울기와 거의 같을 것이다. 위와 같은 idea를 이용하여 우리가 gradient를 제대로 구했는지 체크할 수 있다. 참고로 여기서의 $$\epsilon$$은 parameter를 초기화 할 때 사용한 $$\epsilon$$과 아무 상관 없는 수이다.
 

@@ -26,7 +26,7 @@ tags:
 
 <br>
 
-![1](/images/android/28/1.png){: width="70%" height="70%"}
+![1](https://nobbaggu.github.io/images/android/28/1.png){: width="70%" height="70%"}
 
 **1. 트윈 애니메이션 동장 방식을 XML 파일로 정의**
 
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
 setAnimationListener() 메소드를 통해 애니메이션 리스너 객체를 설정하여 애니메이션이 시작할 때, 반복될 때, 끝날 때 특정 동작을 정의하여 실행할 수 있다. 버튼을 누르면 텍스트뷰가 애니메이션 동작을 수행한다.
 
-![1](/images/android/28/1.jpg){: width="30%" height="30%"} ![2](/images/android/28/2.jpg){: width="30%" height="30%"} ![3](/images/android/28/3.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/28/1.jpg){: width="30%" height="30%"} ![2](https://nobbaggu.github.io/images/android/28/2.jpg){: width="30%" height="30%"} ![3](https://nobbaggu.github.io/images/android/28/3.jpg){: width="30%" height="30%"}
 
 <br>
 
@@ -293,4 +293,4 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하고 각각의 버튼을 클릭해보면 적용한 애니메이션이 동작하는 것을 볼 수 있다.
 
-![4](/images/android/28/4.jpg){: width="30%" height="30%"}
+![4](https://nobbaggu.github.io/images/android/28/4.jpg){: width="30%" height="30%"}

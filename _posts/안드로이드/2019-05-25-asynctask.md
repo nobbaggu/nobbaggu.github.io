@@ -23,7 +23,7 @@ tags:
 
 AsyncTask의 동작방식을 그림으로 보자.
 
-![1](/images/android/48/1.png){: width="100%" height="100%"}
+![1](https://nobbaggu.github.io/images/android/48/1.png){: width="100%" height="100%"}
 
 각 메소드에 대한 설명을 보자.
 
@@ -220,6 +220,6 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하면 다음의 결과를 볼 수 있다.
 
-![2](/images/android/48/2.jpg){: width="30%" height="30%"}
-![3](/images/android/48/3.jpg){: width="30%" height="30%"}
-![4](/images/android/48/4.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/48/2.jpg){: width="30%" height="30%"}
+![3](https://nobbaggu.github.io/images/android/48/3.jpg){: width="30%" height="30%"}
+![4](https://nobbaggu.github.io/images/android/48/4.jpg){: width="30%" height="30%"}

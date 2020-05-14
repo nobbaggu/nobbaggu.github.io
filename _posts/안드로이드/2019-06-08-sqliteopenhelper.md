@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
 콜백 메소드를 확인하기 위해 토스트 메시지를 만들었다. 위 앱을 실행하면 아래와 같은 화면이 나타난다.
 
-![1](/images/android/54/1.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/54/1.jpg){: width="30%" height="30%"}
 
 <br>
 
@@ -183,7 +183,7 @@ private static final int DB_VERSION = 2; // 데이터베이스 버전
 
 그럼 아래와 같은 화면을 볼 수 있다.
 
-![2](/images/android/54/2.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/54/2.jpg){: width="30%" height="30%"}
 
 <br>
 

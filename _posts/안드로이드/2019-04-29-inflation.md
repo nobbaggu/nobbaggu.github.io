@@ -36,7 +36,7 @@ MainActivity 클래스를 보면 AppCompatActivity 클래스를 상속한다. Ap
 &nbsp;
 __레이아웃 인플레이션 : XML 레이아웃의 화면배치 정보가 메모리에 로딩되어 객체화 되는 과정__
 
-![layout-inflation](/images/android/14/layout-inflation.jpg){: width="70%" height="70%"}
+![layout-inflation](https://nobbaggu.github.io/images/android/14/layout-inflation.jpg){: width="70%" height="70%"}
 
 &nbsp;
 Java에서는 객체로 메모리에 존재하지 않는 것을 참조할 수 없다. 만약에 존재하지 않는 것을 참조하려 하면 Null Pointer Exception 에러가 일어나고 프로그램이 중지되는 심각한 오류가 발생한다.
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
 위 Java 코드에서는 setContentView 메소드를 통해 레이아웃 파일을 메모리에 로딩하여 객체로 만들기 전에 레이아웃에 정의 된 Button을 참조하려 한다.
 
-![2](/images/android/14/2.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/14/2.jpg){: width="30%" height="30%"}
 
 앱을 실행하자마자 오류가 나며 프로그램이 종료된다. 앱이 실행되고 findViewById 메소드를 통해 Button을 참조하려는데 메모리에 존재하지 않아 참조하지 못하는 것이다.
 
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ~~~
 
-![3](/images/android/14/3.jpg){: width="30%" height="30%"}
+![3](https://nobbaggu.github.io/images/android/14/3.jpg){: width="30%" height="30%"}
 
 확실히 Null Pointer Exception이 발생하였다.
 
@@ -147,7 +147,7 @@ getSystemService(Context.LAYOUT_INFLATER_SERVICE)
 
 다시 본론으로 돌아와, 부분화면을 XML 레이아웃으로 정의한 후 화면에 띄워주는 과정은 다음의 그림으로 요악된다.
 
-![4](/images/android/14/4.png){: width="70%" height="70%"}
+![4](https://nobbaggu.github.io/images/android/14/4.png){: width="70%" height="70%"}
 
 부분화면을 정의한 XML 레이아웃을 LayoutInflater를 통해 인플레이션 시켜 뷰 그룹으로 객체화 시킨다. 이 뷰 그룹을 일반 뷰처럼 메인 레이아웃에 추가하여 사용하면 된다.
 
@@ -273,6 +273,6 @@ public class MainActivity extends AppCompatActivity {
 
 메인 화면의 버튼을 클릭하면 부분화면 레이아웃이 인플레이트(객체화)되어 메모리에 로딩되고, 이를 container 객체에 설정한다. 그럼 부분화면이 나타난다. 부분화면에 정의된 텍스트뷰와 버튼은 메모리에 인플레이션이 되었기 때문에 사용할 수 있게 되었다. 다만 container 객체에 설정되었기 때문에 container 객체의 findViewById() 메소드를 사용해야 한다. 아무튼 부분화면의 버튼을 누르면 부분화면의 텍스트뷰의 텍스트가 바뀔 것이다.
 
-![5](/images/android/14/5.jpg){: width="30%" height="30%"}
-![6](/images/android/14/6.jpg){: width="30%" height="30%"}
-![7](/images/android/14/7.jpg){: width="30%" height="30%"}
+![5](https://nobbaggu.github.io/images/android/14/5.jpg){: width="30%" height="30%"}
+![6](https://nobbaggu.github.io/images/android/14/6.jpg){: width="30%" height="30%"}
+![7](https://nobbaggu.github.io/images/android/14/7.jpg){: width="30%" height="30%"}

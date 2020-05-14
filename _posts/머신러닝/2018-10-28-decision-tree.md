@@ -171,7 +171,7 @@ tags:
 
 위의 표는 프로그래밍을 좋아하는지, 수학을 좋아하는지, 그리고 남자인지 여자인지가 나와있는 데이터인데, 이 사람들에게 머신러닝을 좋아하는지 설문조사를 한 결과라고 해보자. 위의 데이터를 가지고 학습시킨 간단한 흐름도 하나는 다음과 같다.
 
-![image](/images/2018/10/no-name-4.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/10/no-name-4.jpg){: width="50%" height="50%"}
 
 의사결정 트리는 위 그림처럼 질문 하나하나의 대답에 따라 경로가 결정되며 마지막 예측 까지 도달한다.
 
@@ -193,7 +193,7 @@ tags:
 
 결론부터 말하자면, 분류의 impurity를 나타내는 Gini계수 라는 것을 계산해 Gini계수가 가장 낮은 질문을 선택한다.
 
-![image](/images/2018/10/1.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/10/1.jpg){: width="50%" height="50%"}
 
 Programming 을 좋아하는 사람들 중 머신러닝을 좋아하거나 그렇지 않은 사람들, 프로그래밍을 좋아하지 않는 사람들 중 머신러닝을 좋아하는 사람과 그렇지 않은 사람의 수는 위와 같이 나타난다.
 
@@ -215,17 +215,17 @@ $$Gini\quad impurity = 0.39(\frac{177}{292})+0.30(\frac{115}{292})=0.35$$
 
 이제 또 남은 응답자 수에 대하여 같은 과정을 거쳐 다음 질문을 선택할 수 있다.
 
-![image](/images/2018/10/1-1.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/10/1-1.jpg){: width="50%" height="50%"}
 
 &nbsp;
 
 이런 과정을 거쳐 최종적으로 다음과 같은 의사결정 트리가 나왔다.
 
-![image](/images/2018/10/no-name-4.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/10/no-name-4.jpg){: width="50%" height="50%"}
 
 그런데 왼쪽 줄기에서 Like Math?의 응답으로 NO가 나온 경우 거기서 더 이상 Male/Female? 을 묻지 않고 Leaf로 줄기가 끝이 난다. 이러한 경우는 &#8216;Like Math&#8217;만  Gini impurity보다 &#8216;Male/Female&#8217;의 Gini impurity가 더 높기 때문이다. 더 이상 질문을 만들어봐야 오히려 예측 성능이 떨어지는 모델이 나온다는 말이다.
 
-![image](/images/2018/10/1-2.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/10/1-2.jpg){: width="50%" height="50%"}
 
 Male/Female로 나누기 전의 Gini impurity는 다음과 같다.
 
@@ -299,4 +299,4 @@ $$1-(\frac{20}{20+66})^{2}-(\frac{66}{20+66})^{2}=0.36$$
 
 이런 경우 나이별로 정렬을 한 이후 각 구간 사이의 평균을 낸다. 그리고 하나하나 적용해가며 어떤 것을 기준으로 사용했을 때의 Gini impurity를 구한 이후 가장 낮은 기준을 사용하면 된다.
 
-![image](/images/2018/10/no-name-5.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/10/no-name-5.jpg){: width="50%" height="50%"}

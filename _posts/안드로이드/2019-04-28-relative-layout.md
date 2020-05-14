@@ -50,4 +50,4 @@ layout_width와 layout_height 속성이 모두 match_parent인 button1은 layout
 
 앱의 화면은 아래와 같이 나타난다.
 
-![1](/images/android/7/1.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/7/1.jpg){: width="30%" height="30%"}

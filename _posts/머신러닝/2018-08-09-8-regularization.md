@@ -28,7 +28,7 @@ hypothesis function을 너무 단순한 형태로 만들거나 feature의 갯�
 
 이와는 반대로 hypothesis function을 모든 training data 하나하나에 억지스럽게 맞추려고 과하게 많은 feature를 사용한다면 overfit되어서 training data에는 엄청나게 잘 맞아떨어지지만 오히려 새로운 data의 output을 잘 예측하지 못하게 된다. 즉, 일반화(generalization)되지 못하여 예측 알고리즘의 질이 엄청나게 떨어지게 된다. 이런 경우를 high variance(과하게 변동적임) 되었다고 한다.
 
-![image](/images/2018/08/no-name-11.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-11.png){: width="50%" height="50%"}
 
 이와 같은 상황은 예측, 분류 등의 데이터 마이닝에서 자주 발생하는 중요한 문제다. underfit문제는 data의 trend를 파악하여 적절한 형태의 모델함수를 사용하고 고려해야할 feature를 충분히 수식에 집어넣어서 해결할 수 있고 이는 이미 우리가 알고있는 내용에 포함되어있다.
 
@@ -68,7 +68,7 @@ $$classification \\ \\ J(\theta )=-\frac { 1 }{ m } \sum _{ i=1 }^{ m }{ { y }^{
 
 λ를 regularization parameter라고 한다. 위의 식에서는 θ_0을 제외한 모든 θ(parameter)들이 λ만큼의 가중치를 받으며 식에 추가되었다. 목적은 cost를 최소화 시키는 것이다. 이 과정에서 parameter들 자체의 값이 작아지게 된다. 그리고 parameter값들이 작으면 model의 곡선은 더 단순한 형태를 가지게 되어있다. 즉, overfitting이 일어나는 것을 방지할 수 있게된다.
 
-![image](/images/2018/08/no-name-12.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-12.png){: width="50%" height="50%"}
 
 위 그림의 초록색 곡선은 regularization parameter가 추가된 model을 나타낸다. 이는 기존의 overfit이 일어나는 model보다 theta값들이 작아져 더욱 완만한 곡선을 나타내게 되어 overfit을 막아준다. 하지만 regularization λ를 너무 크게 잡으면 반대로  underfit이 일어난다.
 

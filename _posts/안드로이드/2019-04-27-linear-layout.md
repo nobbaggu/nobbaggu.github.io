@@ -49,7 +49,7 @@ tags:
 
 위 xml 코드에서는 리니어 레이아웃의 방향(orientation) 속성 값으로 vertical을 설정하였다. 그리고 버튼을 3개 배치하였다. 앱을 실행하면 다음과 같은 화면을 볼 수 있다.
 
-![1](/images/android/6/1.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/6/1.jpg){: width="30%" height="30%"}
 
 우리가 만든 레이아웃은 자바 코드를 통해 액티비티의 화면으로 설정된 것이다. MainActivity.java 소스코드를 보자.
 
@@ -131,7 +131,7 @@ public class LayoutCodeActivity extends AppCompatActivity {
 
 그리고 앱을 실행하면 다음과 같은 화면이 만들어진다.
 
-![2](/images/android/6/2.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/6/2.jpg){: width="30%" height="30%"}
 
 여기에서는 자바 소스 코드상으로 뷰그룹 객체인 mainLayout을 만들고 거기에 3개의 뷰(버튼)을 추가하였다. 마지막으로 setContentView 메소드로 뷰그룹 객체를 전달함으로써 액티비티 화면으로 뷰그룹 객체를 띄울 수 있었다.
 
@@ -193,7 +193,7 @@ public class LayoutCodeActivity extends AppCompatActivity {
 </LinearLayout>
 ~~~
 
-![3](/images/android/6/3.jpg){: width="30%" height="30%"}
+![3](https://nobbaggu.github.io/images/android/6/3.jpg){: width="30%" height="30%"}
 
 vertical 속성의 리니어 레이아웃에 버튼을 4개 추가하였다. 처음 3개의 버튼은 각각 layout_gravity 속성이 left, center, right 이므로 레이아웃 안에서 뷰의 위치가 각각 왼쪽, 중간, 오른쪽으로 설정되었다. 그리고 4번째 버튼은 layout_width 속성값이 match_parent라서 가로방향으로 공간이 많이 남는다. 이 버튼의 gravity 속성값으로 right를 주었으므로 버튼 안의 내용물, 즉 텍스트가 오른쪽으로 정렬된다.
 
@@ -242,7 +242,7 @@ vertical 속성의 리니어 레이아웃에 버튼을 4개 추가하였다. 처
 
 마진과 패딩은 위 코드처럼 4 방향을 한꺼번에 설정할 수도 있고 특정 방향만 설정할 수도 있다.
 
-![4](/images/android/6/4.jpg){: width="30%" height="30%"}
+![4](https://nobbaggu.github.io/images/android/6/4.jpg){: width="30%" height="30%"}
 
 &nbsp;
 ### 5. 여유공간 분할
@@ -327,5 +327,5 @@ vertical 속성의 리니어 레이아웃에 버튼을 4개 추가하였다. 처
 
 수직방향 리니어 레이아웃 안에 수평방향 리니어 레이아웃을 3개 추가하였다. 그리고 각각의 수평방향 레이아웃에는 두 개의 텍스트뷰(TextView)를 추가하고 layout_weight 속성을 각각 1:1, 1:2, 1:3으로 주었다.
 
-![5](/images/android/6/5.jpg){: width="30%" height="30%"}
+![5](https://nobbaggu.github.io/images/android/6/5.jpg){: width="30%" height="30%"}
 

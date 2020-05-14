@@ -149,6 +149,6 @@ public class MainActivity extends AppCompatActivity {
 
 버튼1을 누르면 incrementProgressBy() 메소드를 사용하여 프로그레스바 진행률을 10 증가시킨다. 버튼2를 클릭하면 프로그레스 대화상자 객체를 생성하고 띄운 후 3초 이후에 닫는다. 앱을 실행시키면 아래 화면을 확인할 수 있다.
 
-![1](/images/android/26/1.jpg){: width="30%" height="30%"}
-![2](/images/android/26/2.jpg){: width="30%" height="30%"}
-![3](/images/android/26/3.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/26/1.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/26/2.jpg){: width="30%" height="30%"}
+![3](https://nobbaggu.github.io/images/android/26/3.jpg){: width="30%" height="30%"}

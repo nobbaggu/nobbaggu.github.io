@@ -73,7 +73,7 @@ C언어에서는 아래와 같은 자료형이 있습니다.
 
 <br>
 
-![ASCII](/images/2018/09/ASCII.jpg){: width="100%" height="100%"}
+![ASCII](https://nobbaggu.github.io/images/2018/09/ASCII.jpg){: width="100%" height="100%"}
 
 ~~~ c
 int main(void)

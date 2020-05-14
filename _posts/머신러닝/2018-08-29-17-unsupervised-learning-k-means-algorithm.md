@@ -19,7 +19,7 @@ tags:
 ---
 이번에는 비지도학습(unsupervised learning)에 대해서 알아보자.
 
-![image](/images/2018/08/no-name-101.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-101.png){: width="50%" height="50%"}
 
 지도학습에서의 classification 문제에서는 각각의 데이터가 어떤 class에 해당 하는지 미리 답을 가지고 있는 training dataset으로 학습을 시켰다. training dataset의 feature x와 label y의 관계를 잘 따라가는 model을 얻어서 지금까지 보지 못한 data의 feature x를 가지고 label y를 예측하는 것이었다.
 
@@ -31,15 +31,15 @@ tags:
 
 * * *
 
-![image](/images/2018/08/no-name-102.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-102.png){: width="50%" height="50%"}
 
 feature가 2개인 dataset이 있다고 해보자. 이 dataset을 두 그룹으로 분류한다고 해보자. 일단 위와 같이 랜덤하게 두 개의 centroid를 정한다. 그리고 각각의 데이터가 두 centroid 중 어떤 곳에 가까운지에 따라 grouping을 한다. 그럼 일단 위와 같이 두 개의 그룹으로 나뉜다. 이렇게 나뉘고 나면 각각의 그룹에 있는 데이터들의 평균을 구해 그 곳으로 centroid를 옮긴다.
 
-![image](/images/2018/08/no-name-106.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-106.png){: width="50%" height="50%"}
 
 위의 새로운 각각의 데이터를 새로운 centroid에 가까운 그룹으로 다시 배정한다.
 
-![image](/images/2018/08/no-name-103-300x266.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-103-300x266.png){: width="50%" height="50%"}
 
 다시 그룹핑을 하고 위와 같이 각 그룹의 데이터의 평균을 다시 구해 또다시 centroid를 구한다. 이렇게 되면 위와 같이 그룹이 나눠지고 각 그룹이 얼추 적당한 centroid를 가지게 된다. 위와 같은 작업을 계속 반복해서 하다보면 알맞은 centorid에 대해 알맞게 그룹핑이 된다. 각 group을 cluster(클러스터)라 부르고 이러한 clustering 알고리즘이 바로 K-means 알고리즘이다.
 
@@ -109,7 +109,7 @@ $$J(c^{(1)},\cdot\cdot\cdot,c^{(m)},\mu_{1},\cdot\cdot\cdot,\mu_{k})=\frac{1}{m}
 
 K-Means 알고리즘을 쓰다보면 참 운이 없게도 좋지 않은 centroid initialization으로 local optima에 걸려 버릴 수가 있다.
 
-![image](/images/2018/08/no-name-109.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-109.png){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -125,7 +125,7 @@ K-Means 알고리즘을 쓰다보면 참 운이 없게도 좋지 않은 centroid
 
 클러스터의 갯수 k를 몇 으로 해야할지 애매할 수 있다. 클러스터의 수를 정하는 확실한 통용되는 방법이 있지는 않다. 한 가지 방법이 있기는한데, cluster를 2개부터 점점 늘리며 cost function J를 계산해 본다.
 
-![image](/images/2018/08/no-name-105-300x204.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-105-300x204.png){: width="50%" height="50%"}
 
 cluster의 수를 늘리다 보면 더 이상 cost function이 거의 줄어들지 않는 시점이 올 것이다. 이 때의 k를 클러스터의 수로 정하는 것이 하나의 방법이다. 위의 iteration 횟수에 대한 cost function J의 그래프를 보면 사람의 팔을 닮았다. 그리고 위에서 빨간색 화살표로 표시한 곳이 팔꿈치이다. 따라서 이런식으로 cluster의 수를 정하는 방법을 elbow method라고 한다.
 

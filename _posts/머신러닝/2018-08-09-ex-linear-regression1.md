@@ -30,7 +30,7 @@ tags:
 
 x01.txt 파일은 포유동물의 뇌와 몸무게 데이터를 담고있다. dataset을 복사하여 .txt파일의 형태로 저장한다.
 
-![image](/images/2018/08/1-1.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/1-1.png){: width="50%" height="50%"}
 
 가장 앞의 column은 index일 뿐이다. 두 번째 줄은 뇌의 무게, 세 번째 줄은 몸무게인데 뇌의 무게에 따른 몸무게를 예측하는 프로그램이므로 뇌의 무게를 feature로, 몸무게를 output으로 설정하자. 그렇다면 feature 가 1개이므로 모델의 식의 형태는 다음과 같이 될 것이다.
 
@@ -48,33 +48,33 @@ $${ h }_{ \theta }(x)=X\theta \\ J(\theta ) = \frac { 1 }{ 2m } { (X\theta - y) 
 
 &nbsp;
 
-![image](/images/2018/08/2.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/2.png){: width="50%" height="50%"}
 
 2열이 feature고 3열이 output이다. m = length(y) 는 데이터의 갯수이다. theta_0에 match되는 1로 구성된 벡터를 한 줄 추가해서 feature matrix X를 만들었다. parameter 초기값은 (0,0)으로 설정했다. 그리고나서 공식에 따라 cost function을 구해보았는데 엄청 크다.
 
-![image](/images/2018/08/s.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/s.png){: width="50%" height="50%"}
 
 learning rate인 alpha를 0.00001로 set을하고 theta를 update시키면서 gradient descent를 두 번 해보았는데. 오히려 cost function이 커진다. alpha가 너무 큰것이다. 계속 이렇게 하려니 귀찮다. 아예 함수를 외부에서 따로 정의하고 계속 불러들이면서 사용해야겠다.
 
-![image](/images/2018/08/3-2.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/3-2.png){: width="50%" height="50%"}
 
 위의 두 함수를 불러서 실행해보자.
 
-![image](/images/2018/08/4.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/4.png){: width="50%" height="50%"}
 
 처음에 theta를 [0; 0]으로 set하고 cost를 계산해보니 엄청 크다. 그 다음 alpha를 0.000001로 설정하고 graD함수를 이용해서 gradient descent를 해보았다. 함수를 보면 gradient descent를 총 100번 하게 되어있다. 그리고 마지막에는 그 100번동안 어떻게 cost function J가 변하는지 그래프로 띄우도록 하였다. 수렴한다. 그것도 아주 빠르게 10번도 안되는 iteration동안 다 수렴해버린다. 그런데도 cost function이 아주 크다는 생각이 든다. 실제 training data들과 현재 수렴한 parameter로 세워진 model을 비교해보겠다.
 
-![image](/images/2018/08/5.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/5.png){: width="50%" height="50%"}
 
 figure1에서 보면 다른 training sample들에서 아주 크게 벗어나는 양상을 띄는 2개의 outlier가 있다. 저놈들이 범인인 것 같다. 하여간 쟤들은 여기에서 좋지 않은 data인 것 같다. 사실 대부분의 sample들은 작은 포유동물인 것을 알 수 있는데 거기에 한 두놈 저런애들이 껴있는 것이다. 쟤들을 없애고 작은 포유동물들의 뇌의 크기에 따른 실제 몸무게를 예측하는 프로그램으로 만들어야겠다.
 
 19번과 32, 33번 sample data를 빼고 다시 해보겠다.
 
-![image](/images/2018/08/6.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/6.png){: width="50%" height="50%"}
 
 아까보단 scale이 10^1만큼이나 cost function이 작아졌지만 아직도 차이가 많이 나는 것 같다. sample data들을 더 쳐내보자. 아예 뇌의 무게가 20 이하인 것들만 남겨둬보겠다.
 
-![image](/images/2018/08/7.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/7.png){: width="50%" height="50%"}
 
 이번엔 alpha를 0.005로 해보았다. 스크린 샷 찍기전에 시행착오 거치면서 정한 것이다. 이번에는 cost가 좀 더 작아졌다. 사실 무게가 g 단위라서 절대숫자가 10, 100 단위씩이나 돼서 cost가 저렇게 큰 것이다. 아무튼 이렇게 linear regression을 한 번 해보았다. gradient descent를 하면서 cost function이 줄어드는것도 직접 관찰해보면서 최종 theta를 정하였다. 그리고 그렇게 정해진 model과 training dataset을 같은 그래프상에 올려놓고 잘 맞아떨어지는지도 보았다.
 

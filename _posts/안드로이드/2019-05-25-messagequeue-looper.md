@@ -169,5 +169,5 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하고 입력상자1에 내용을 적어넣고 버튼을 클릭하면 입력상자2에 " from SubThread"라는 문자열이 덧붙여져서 설정될 것이다.
 
-![1](/images/android/47/1.jpg){: width="30%" height="30%"}
-![2](/images/android/47/1.jpg){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/47/1.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/47/1.jpg){: width="30%" height="30%"}

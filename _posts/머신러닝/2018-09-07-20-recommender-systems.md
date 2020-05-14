@@ -15,7 +15,7 @@ tags:
 ---
 Recommender System은 머신러닝 알고리즘의 적용이 가장 활발한 분야들 중 하나이다. 어떠한 사용자의 시청기록, 평점부여 기록을 토대로 그 사람에게 관련영화를 추천해 주는 시스템이 있다.
 
-![image](/images/2018/09/no-name-4.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/09/no-name-4.png){: width="50%" height="50%"}
 
 방법 하나는 각 영화마다 로맨스정도, 액션정도, 코믹 정도등을 feature로 정량화 시키는 것이다.
 

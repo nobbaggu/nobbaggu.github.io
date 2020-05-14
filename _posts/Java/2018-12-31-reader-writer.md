@@ -1,5 +1,5 @@
 ---
-title: (Java) Reader와 Writer
+title: (Java) 55. Reader와 Writer
 date: 2018-12-31T16:40:56+09:00
 author: nobbaggu
 layout: post

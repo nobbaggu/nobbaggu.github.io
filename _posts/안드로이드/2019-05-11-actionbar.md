@@ -15,7 +15,7 @@ tags:
 
 안드로이드 액션바(ActionBar)는 기본적으로 앱의 타이틀을 보여주는 곳이다. 또한 여러가지 옵션 메뉴(Option Menu)들을 표시할 수도 있다.
 
-![1](/images/android/32/1.png){: width="30%" height="30%"}
+![1](https://nobbaggu.github.io/images/android/32/1.png){: width="30%" height="30%"}
 
 <br>
 액션바를 보이거나 감추고 싶다면 다음의 메소드를 사용하면 된다.
@@ -116,4 +116,4 @@ public class MainActivity extends AppCompatActivity {
 
 앱을 실행하면 아래의 결과를 확인할 수 있다.
 
-![2](/images/android/32/2.jpg){: width="30%" height="30%"}
+![2](https://nobbaggu.github.io/images/android/32/2.jpg){: width="30%" height="30%"}

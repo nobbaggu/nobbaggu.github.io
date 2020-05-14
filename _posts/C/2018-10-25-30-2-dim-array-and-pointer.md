@@ -34,7 +34,7 @@ tags:
 
 **2차원 배열의 이름은 index \[0\]\[0\] 원소를 가르킵니다.**
 
-![image](/images/2018/09/111-1.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/09/111-1.jpg){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -100,7 +100,7 @@ arr1은 +1 연산에서 16씩 증가하는 것을 보면 16byte 만큼씩의 메
 
 **2차원배열의 이름은 한 번에 한 행씩 참조합니다. 따라서 +1연산을 하면 바로 다음 행을 가르키게 됩니다. 즉, 2차원 배열의 이름은 포인터형이 sizeof(원소의 자료형) × 한 행의 원소의 갯수(배열의 열의 갯수)가 됩니다. int형, double형 처럼 깔끔한 이름을 가지지는 않습니다.**
 
-![image](/images/2018/09/222-1.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/09/222-1.jpg){: width="50%" height="50%"}
 
 &nbsp;
 
@@ -177,7 +177,7 @@ int main(void)
 
 arr는 3×4 배열이므로 포인터형은 4×sizeof(int)  입니다. 이 배열을 함수의 전달인자로 주려면 int형 데이터를 가르키면서 한 번에 4 칸씩 가르키는 곳의 위치를 변경하는 포인터가 필요합니다. int (*ptr) [4]; 와 같이 선언하면 됩니다. 2차원 배열을 위한 포인터는 일반적으로 다음과 같은 선언 형태를 가집니다.
 
-![image](/images/2018/09/333-1.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/09/333-1.jpg){: width="50%" height="50%"}
 
 이같은 포인터를 '**배열포인터' **라고 합니다.
 

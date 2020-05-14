@@ -18,31 +18,31 @@ tags:
 &nbsp;
 ### 1. Start a new Project 클릭
 
-![start_new_project](/images/android/1/start_new_project.png){: width="70%" height="70%"}
+![start_new_project](https://nobbaggu.github.io/images/android/1/start_new_project.png){: width="70%" height="70%"}
 
 &nbsp;
 ### 2. empty_activity 선택
 
-![empty_activity](/images/android/1/empty_activity.png){: width="70%" height="70%"}
+![empty_activity](https://nobbaggu.github.io/images/android/1/empty_activity.png){: width="70%" height="70%"}
 
 &nbsp;
 ### 3. 앱 이름 설정
  
-![application_name](/images/android/1/app_name.png){: width="70%" height="70%"}
+![application_name](https://nobbaggu.github.io/images/android/1/app_name.png){: width="70%" height="70%"}
 
 프로젝트 이름은 앱의 이름이 된다. 패키지 명은 다른 앱과 구분되는 고유한 값으로 유일해야 한다. 보통 도메인 이름 형식을 사용한다.
 
 &nbsp;
 ### 4. 프로젝트 sync
 
-![syncing](/images/android/1/syncing.png){: width="70%" height="70%"}
+![syncing](https://nobbaggu.github.io/images/android/1/syncing.png){: width="70%" height="70%"}
 
 프로젝트를 생성하면 구성하는데 몇초 가량의 시간이 걸린다.
 
 &nbsp;
 ### 5. 프로젝트 생성
 
-![hello_android](/images/android/1/hello_android.png){: width="70%" height="70%"}
+![hello_android](https://nobbaggu.github.io/images/android/1/hello_android.png){: width="70%" height="70%"}
 
 프로젝트가 완성된 화면이다.
 
@@ -64,6 +64,6 @@ http://local.sec.samsung.com/comLocal/support/down/kies_main.do?kind=usb
 
 다시 Shift+F10을 눌러 실행하면 다음과 같이 내 디바이스가 등록이 된 것을 볼 수 있다.
 
-![hello_android](/images/android/1/device_connect.png){: width="60%" height="60%"}
+![hello_android](https://nobbaggu.github.io/images/android/1/device_connect.png){: width="60%" height="60%"}
 
 OK를 누르면 단말기에 앱이 자동으로 설치되고 실행된다.

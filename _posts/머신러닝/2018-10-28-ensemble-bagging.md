@@ -23,7 +23,7 @@ tags:
 
 ** 여러개의 모델을 <span style="text-decoration: underline;">같은 알고리즘</span>으로 <span style="text-decoration: underline;">서로 다른 dataset</span>을 이용해서 학습시켜 합치는 것**이다.
 
-![image](/images/2018/10/no-name-6.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/10/no-name-6.jpg){: width="50%" height="50%"}
 
 각각의 model은 training dataset이 n개 중 랜덤으로 n'(<n)개를 뽑아 모델을 학습 시킨다. 이 때 중요한 것이 있다.
 

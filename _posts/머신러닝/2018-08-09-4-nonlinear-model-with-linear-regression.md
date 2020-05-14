@@ -20,7 +20,7 @@ tags:
 ---
 Linear Regression 이라고 해서 선형적인 데이터로 알고리즘을 학습 시킬 때에만 사용 할 것이라는 착각을 할 수도 있다. 오늘은 비선형적인 데이터로 선형회귀 알고리즘을 학습시킬 수 있다는 것을 공부해 볼 것이다.
 
-![image](/images/2018/08/1-2.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/1-2.jpg){: width="50%" height="50%"}
 
 집의 가격을 예측하는 프로그램을 만들려고 한다. feature는 집의 가로폭(length)과 세로폭(depth) 이다. 이 때 hypothesis function은 다음과 같이 세운다.
 
@@ -30,7 +30,7 @@ $${ h }_{ \theta }(x) = { \theta }_{ 0 } + { \theta }_{ 1 }{ x }_{ 1 } + { \thet
 
 그런데 사실 집값은 길이보다는 면적으로 결정되는 게 일반적이다. 그럼 집의 평수(size)를 feature로 가지는 모델을 찾기 전에 먼저 집의 평수에 따른 가격의 분포를 보자.
 
-![image](/images/2018/08/2-2.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/2-2.jpg){: width="50%" height="50%"}
 
 위의 training data set이 보이는 분포는 선형 모델로 나타내기에는 무리가 있어보인다. 2차식으로 나타내려하니 뒤집힌 포물선 모양처럼 집값이 크기가 커지는데 가격이 내려갈 리는 없을 것 같다. 따라서 항을 하나 더 추가해서 3차식으로 표현해보려한다.
 

@@ -47,7 +47,7 @@ $$\\ h_{\theta}(x) = \theta_{0}+\theta_{1}x \rightarrow d=1 \\ h_{\theta}(x) = \
 
 training data를 가지고 d=1부터 해서 d를 올려가면서 test한다 생각해보자. d가 커질수록 더 높은 차수의 항으로 인해 training dataset의 cost function은 낮아질 것이다. 하지만 어느 순간부터는 d가 커질수록 overfit이 일어나 test data에 대한 예측은 오히려 나빠지고 test data의 cost function은 높아질 것이다.
 
-![image](/images/2018/08/no-name-74-300x232.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-74-300x232.png){: width="50%" height="50%"}
 
 위 그림에서 포물선 모양의$$J_{test}$$ 가 최소가 되는 점에서 최고차항의 차수인 d를 선택해야한다.
 

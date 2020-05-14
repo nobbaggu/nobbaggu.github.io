@@ -1,5 +1,5 @@
 ---
-title: (Java) 예외 throws
+title: (Java) 51. 예외 throws
 date: 2018-12-30T17:26:45+09:00
 author: nobbaggu
 layout: post
@@ -67,7 +67,7 @@ public class ThrowsException {
 
 위 코드에서는 ThrowsException 클래스에서 두 개의 예외를 던졌다. 이후 main()메소드에서 객체를 만들어 getClass() 메소드를 호출하므로 main메소드에서 예외를 처리해야 한다. 이 때에는 두 가지 방법이 있다.
 
-![image](/images/2018/12/no-name-41.jpg){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/12/no-name-41.jpg){: width="50%" height="50%"}
 
 처리하는 방법은 3가지이다. 첫 번째는 다시 던지는 것인데 이는 JVM으로 던져버리므로 프로그램의 비정상적 종료를 불러일으킬 것이므로 아래 두 가지 방법을 선택하는 것이 좋다.
 

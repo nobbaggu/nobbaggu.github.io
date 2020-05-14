@@ -20,7 +20,7 @@ tags:
   - 서포트 벡터 머신
   - 최대 마진
 ---
-![image](/images/2018/08/no-name-92-300x187.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-92-300x187.png){: width="50%" height="50%"}
 
 위 그림의 classification 문제에서 decision boundary는 3가지 모두 될 수 있다. 하지만 어떤 decision boundary를 사용하는 것이 새로운 test data에 대해서도 더 좋은 예측을 할까? 직관적으로 당연히 boundary 2가 가장 좋은 분류를 할 것이라고 알 수 있다. decision boundary 1과 2는 boundary와 가장 인접한 data가 간신히 정답으로 분류된 느낌을 준다. 조금만 벗어났어도 결과가 달라질 수 있다. 하지만 decision boundary 2는 조금 더 여유로운 느낌을 준다. 이 상황을 margin이 많이 남는다고 한다. <span style="color: #ff0000;"><strong>support vector machine은 margin이 최대가 되는 decision boundary를 찾아내도록 해주며, 아직까지도 분류 알고리즘으로 엄청 많이 쓰이고있다.</strong></span>
 
@@ -60,7 +60,7 @@ $$\\y=1:\quad cost_{1}=-log(\frac{1}{1+e^{-\theta^{T}x}})\\ y=0:\quad cost_{0}=-
 
 $$\\y=1:\quad cost_{1}=max(0,k(1-z))\quad\quad z=\theta^{T}x\\ y=0:\quad cost_{0}=max(0,k(1+z))\quad\quad z=\theta^{T}x$$ 
 
-![image](/images/2018/08/no-name-94.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-94.png){: width="50%" height="50%"}
 
 위와같이 새로운 cost function형태의 함수를 hinge loss function이라 부른다.
 
@@ -92,17 +92,17 @@ SVM의 hypothesis는 logistic regression처럼 class가 1이나 0이 될 확률�
 
 * * *
 
-![image](/images/2018/08/no-name-93-300x205.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-93-300x205.png){: width="50%" height="50%"}
 
 위 그림에서 가운데 있는 굵은 선을 decision boundary로 잡는다고 해보자. decision boundary이기 때문에 이 선은$$\theta^{T}x=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\cdot\cdot\codt+\theta_{n}x_{n} = 0$$  의 방정식을 만족한다. 그리고 이 경계선에서 벗어나 있는 점들에 θ를 곱하면 $$\theta^{T}x=c \quad (c\neq 0)$$가 된다. 모든 데이터가 $$\left | \theta^{T}x \right |\geq 1$$을 만족하도록 decision boundary를 잡아 margin을 크게 하여 안정된 예측을 하는 것이 목표이다. $$\left | \theta^{T}x \right |\geq 0$$이 아니라 $$\left | \theta^{T}x \right |\geq 1$$ 인 것에 주목해야한다. 이것이 support vector machine 알고리즘을 사용하는 목적이기 때문이다. 0이 아닌 1을 기준으로 잡은 이유는 넉넉히 여유를 남기고 예측하고 싶어서이다. 여유를 남긴다는 것은 지금까지 본 적 없는 data에 대한 예측 적중률이 올라가는 것을 의미한다.
 
 이를 다른 관점에서 보자.
 
-![image](/images/2018/08/no-name-95.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-95.png){: width="50%" height="50%"}
 
 기하학적으로 $$\theta^{T}x$$는 ($$\theta$$ 크기)×($$x$$를 벡터 $$\theta$$에 projection한 벡터의 크기 )이다.
 
-![image](/images/2018/08/123.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/123.png){: width="50%" height="50%"}
 
 결국 p가 margin이었다. 즉$$\theta^{T}x\geq 1$$ 이라는 조건은$$(\theta \times margin) \geq 1$$  와 같이 해석이 된다.
 
@@ -128,7 +128,7 @@ https://SWnomad.com/%ED%8F%89%EB%A9%B4-%EB%B0%A9%EC%A0%95%EC%8B%9D/
 
 한 가지 생각해볼 게 있다.
 
-![image](/images/2018/08/no-name-99-300x281.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-99-300x281.png){: width="50%" height="50%"}
 
 위의 그림과 같은 dataset의 경우 두 decision boundary 중 어느 것이 더 좋은 선택일까? data 중 1개가 outlier이다. 이런 일반적인 경향에서 벗어나는 data까지 모두 분류하는 것이 좋은 것인가? 1번은 모든 데이터를 완벽히 분류한다. 하지만 이러한 decision boundary는 training dataset은 모두 완벽히 분류할 지 몰라도 2번 decision boundary가 더 일반적인 분류 패턴을 보이기 때문에 처음 보는 data를 예측할 때에는 2번 boundary에 의한 분류가 더 정확도가 높을 것이라 생각된다. C가 크면 overfitting이 일어나 1번과 같은 decision boundary를 가지게 된다. 이런 경우 C를 낮추어 더 일반적인 decision boundary를 찾아야 한다.
 
@@ -140,7 +140,7 @@ https://SWnomad.com/%ED%8F%89%EB%A9%B4-%EB%B0%A9%EC%A0%95%EC%8B%9D/
 
 지금까지의 예시에서는 모든 데이터들이 선형적으로 분류가 가능하여 decision boundary로 평면이 될 수 있었다. 하지만 항상 평면으로 모든 data를 분류할 수 있는것이 아니다. 다음과 같은 경우를 보자.
 
-![image](/images/2018/08/no-name-96-300x274.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-96-300x274.png){: width="50%" height="50%"}
 
 데이터의 분포가 위와 같을 경우는 non-linear한 decision boundary가 필요하다. SVM에서 non-linear한 classification 문제를 풀기 위해서는 Kernel이란 trick을 사용해야한다.
 
@@ -192,7 +192,7 @@ low  $$\sigma^{2}$$ :  kernel함수 혹은 $$f$$가 rapid하게 변하며 h
 
 3개의 feature로 부터 얻은 parameter가$$\theta_{0}=-0.5, \theta_{1}=1, \theta_{2}=1, \theta_{3}=0$$ 이라고 해보자. 그리고 새로운 test data가 있다. 이 data는 $$x^{(1)}$$에 근접해있고 다른 데이터에서는 멀다고 해보자. 그렇다면 이 test data는 $$f_{1}\approx 1, f_{2}\approx0,f_{3}\approx0$$이 될 것이다. 그렇다면 $$h_{\theta}(x)=\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}\approx -0.5 +1 +0+0=0.5> 0$$ 따라서 이 data는 class1으로 분류된다. 이처럼 $$x^{(2)},x^{(3)}$$에 근접해 있는 test data에서도 예측을 하였는데 2 번째 data는 positive class, 마지막 data는 negative class로 분류되었다고 해보자. 이런 경우 $$x^{(1)},x^{(2)}$$근처는 positive class 영역, $$x^{(3)}$$근처는 negative class 영역인 것처럼 보인다. 따라서 decision boundary는 다음과 비슷하게 그려질 것이다.
 
-![image](/images/2018/08/no-name-100.png){: width="50%" height="50%"}
+![image](https://nobbaggu.github.io/images/2018/08/no-name-100.png){: width="50%" height="50%"}
 
 &nbsp;
 
