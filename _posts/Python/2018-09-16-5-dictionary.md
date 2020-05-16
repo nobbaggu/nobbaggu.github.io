@@ -1,5 +1,5 @@
 ---
-title: (Python) 5. 자료형(5) -딕셔너리(Dictionary)
+title: (Python) 5 - 자료형(5) -딕셔너리(Dictionary)
 date: 2018-09-16T18:20:36+09:00
 author: nobbaggu
 layout: post

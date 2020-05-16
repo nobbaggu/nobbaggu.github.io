@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 13. 신경망 학습
+title: (머신러닝) 13 - 신경망 학습
 date: 2018-08-14T20:09:22+09:00
 author: nobbaggu
 layout: post

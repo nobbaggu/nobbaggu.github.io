@@ -1,5 +1,5 @@
 ---
-title: (Java) 51. 예외 throws
+title: (Java) 51 - 예외 throws
 date: 2018-12-30T17:26:45+09:00
 author: nobbaggu
 layout: post

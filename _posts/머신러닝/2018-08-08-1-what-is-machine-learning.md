@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 1. 머신러닝이란?
+title: (머신러닝) 1 - 머신러닝이란?
 date: 2018-08-08T20:12:22+09:00
 author: nobbaggu
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: (안드로이드) 54. SQLiteOpenHelper 클래스
+title: (안드로이드) 54 - SQLiteOpenHelper 클래스
 date: 2019-06-08T15:00:00+09:00
 author: nobbaggu
 layout: post

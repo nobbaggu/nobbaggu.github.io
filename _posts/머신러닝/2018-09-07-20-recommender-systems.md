@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 20. Recommender Systems
+title: (머신러닝) 20 - Recommender Systems
 date: 2018-09-07T20:29:58+09:00
 author: nobbaggu
 layout: post

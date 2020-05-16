@@ -1,5 +1,5 @@
 ---
-title: (안드로이드) 21. 위험권한 부여
+title: (안드로이드) 21 - 위험권한 부여
 date: 2019-05-03T19:00:00+09:00
 author: nobbaggu
 layout: post

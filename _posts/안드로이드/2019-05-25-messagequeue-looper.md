@@ -1,5 +1,5 @@
 ---
-title: (안드로이드) 47. 메시지 큐(Message Queue)와 루퍼(Looper)
+title: (안드로이드) 47 - 메시지 큐(Message Queue)와 루퍼(Looper)
 date: 2019-05-25T13:00:00+09:00
 author: nobbaggu
 layout: post

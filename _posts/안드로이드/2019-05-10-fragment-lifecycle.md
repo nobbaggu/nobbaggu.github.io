@@ -1,5 +1,5 @@
 ---
-title: (안드로이드) 31. 프래그먼트 수명주기(Fragment LifeCycle)
+title: (안드로이드) 31 - 프래그먼트 수명주기(Fragment LifeCycle)
 date: 2019-05-10T21:00:00+09:00
 author: nobbaggu
 layout: post

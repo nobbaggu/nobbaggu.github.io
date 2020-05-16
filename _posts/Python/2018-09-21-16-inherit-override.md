@@ -1,5 +1,5 @@
 ---
-title: (Python) 16. 클래스 상속과 메소드 오버라이딩
+title: (Python) 16 - 클래스 상속과 메소드 오버라이딩
 date: 2018-09-21T19:48:43+09:00
 author: nobbaggu
 layout: post

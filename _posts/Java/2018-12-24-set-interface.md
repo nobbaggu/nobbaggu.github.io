@@ -1,5 +1,5 @@
 ---
-title: (Java) 45. Set 인터페이스
+title: (Java) 45 - Set 인터페이스
 date: 2018-12-24T21:03:32+09:00
 author: nobbaggu
 layout: post

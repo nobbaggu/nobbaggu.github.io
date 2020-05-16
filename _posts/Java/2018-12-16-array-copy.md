@@ -1,5 +1,5 @@
 ---
-title: (Java) 27. 배열 복사
+title: (Java) 27 - 배열 복사
 date: 2018-12-16T18:54:18+09:00
 author: nobbaggu
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: (Java) 3. 자료형(1) - 정수와 실수
+title: (Java) 3 - 자료형(1) - 정수와 실수
 date: 2018-12-14T15:41:01+09:00
 author: nobbaggu
 layout: post

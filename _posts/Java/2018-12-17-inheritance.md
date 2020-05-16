@@ -1,5 +1,5 @@
 ---
-title: (Java) 29. 상속
+title: (Java) 29 - 상속
 date: 2018-12-17T20:55:13+09:00
 author: nobbaggu
 layout: post

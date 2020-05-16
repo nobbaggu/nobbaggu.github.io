@@ -1,5 +1,5 @@
 ---
-title: (Java) 5. 자료형(3) - 형 변환
+title: (Java) 5 - 자료형(3) - 형 변환
 date: 2018-12-14T16:56:59+09:00
 author: nobbaggu
 layout: post

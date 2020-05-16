@@ -1,5 +1,5 @@
 ---
-title: (Java) 21. 객체 지향 예제 - 학생, 버스, 지하철 프로그램
+title: (Java) 21 - 객체 지향 예제 - 학생, 버스, 지하철 프로그램
 date: 2018-12-15T16:19:27+09:00
 author: nobbaggu
 layout: post

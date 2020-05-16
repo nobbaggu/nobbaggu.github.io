@@ -1,5 +1,5 @@
 ---
-title: (C언어) 41. 구조체의 함수 전달
+title: (C언어) 41 - 구조체의 함수 전달
 date: 2018-11-03T23:35:40+09:00
 author: nobbaggu
 layout: post

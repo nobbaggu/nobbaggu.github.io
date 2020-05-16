@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 6. octave 기초
+title: (머신러닝) 6 - octave 기초
 date: 2018-08-09T08:18:57+09:00
 author: nobbaggu
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: (안드로이드) 14. 인플레이션(Inflation)
+title: (안드로이드) 14 - 인플레이션(Inflation)
 date: 2019-04-29T19:00:00+09:00
 author: nobbaggu
 layout: post

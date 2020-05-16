@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 3. multivariate linear regression
+title: (머신러닝) 3 - multivariate linear regression
 date: 2018-08-09T01:00:40+09:00
 author: nobbaggu
 layout: post

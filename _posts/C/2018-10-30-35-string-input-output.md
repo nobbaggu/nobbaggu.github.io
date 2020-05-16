@@ -1,5 +1,5 @@
 ---
-title: (C언어) 35. 문자열 입출력 함수들
+title: (C언어) 35 - 문자열 입출력 함수들
 date: 2018-10-30T22:52:24+09:00
 author: nobbaggu
 layout: post

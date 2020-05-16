@@ -1,5 +1,5 @@
 ---
-title: (Java) 41. Wrapper 클래스
+title: (Java) 41 - Wrapper 클래스
 date: 2018-12-23T15:14:04+09:00
 author: nobbaggu
 layout: post

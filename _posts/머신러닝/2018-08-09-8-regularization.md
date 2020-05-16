@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 8. Regularization
+title: (머신러닝) 8 - Regularization
 date: 2018-08-09T20:00:14+09:00
 author: nobbaggu
 layout: post

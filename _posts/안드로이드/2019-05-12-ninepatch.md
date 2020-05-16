@@ -1,5 +1,5 @@
 ---
-title: (안드로이드) 35. 나인패치(9-Patch) 이미지
+title: (안드로이드) 35 - 나인패치(9-Patch) 이미지
 date: 2019-05-12T15:00:00+09:00
 author: nobbaggu
 layout: post

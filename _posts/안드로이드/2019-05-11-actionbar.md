@@ -1,5 +1,5 @@
 ---
-title: (안드로이드) 32. 액션바(ActionBar)
+title: (안드로이드) 32 - 액션바(ActionBar)
 date: 2019-05-11T11:00:00+09:00
 author: nobbaggu
 layout: post

@@ -1,5 +1,5 @@
 ---
-title: (Java) 38. 인터페이스 활용
+title: (Java) 38 - 인터페이스 활용
 date: 2018-12-21T17:46:22+09:00
 author: nobbaggu
 layout: post

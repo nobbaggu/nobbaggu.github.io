@@ -1,5 +1,5 @@
 ---
-title: (Java) 35. 인터페이스
+title: (Java) 35 - 인터페이스
 date: 2018-12-19T21:32:44+09:00
 author: nobbaggu
 layout: post

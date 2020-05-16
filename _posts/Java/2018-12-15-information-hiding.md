@@ -1,5 +1,5 @@
 ---
-title: (Java) 19. 정보 은닉
+title: (Java) 19 - 정보 은닉
 date: 2018-12-15T12:18:42+09:00
 author: nobbaggu
 layout: post

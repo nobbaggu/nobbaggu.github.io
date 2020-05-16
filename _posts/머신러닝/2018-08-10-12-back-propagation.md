@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 12. 역전파 (back propagation)
+title: (머신러닝) 12 - 역전파 (back propagation)
 date: 2018-08-10T11:37:14+09:00
 author: nobbaggu
 layout: post

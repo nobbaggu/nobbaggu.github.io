@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 2. Linear Regression
+title: (머신러닝) 2 - Linear Regression
 date: 2018-08-08T22:00:49+09:00
 author: nobbaggu
 layout: post

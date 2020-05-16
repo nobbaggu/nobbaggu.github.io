@@ -1,5 +1,5 @@
 ---
-title: (Java) 1. Java의 특징
+title: (Java) 1 - Java의 특징
 date: 2018-12-14T13:25:40+09:00
 author: nobbaggu
 layout: post

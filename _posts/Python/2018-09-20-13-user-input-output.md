@@ -1,5 +1,5 @@
 ---
-title: (Python) 13. 사용자 입출력
+title: (Python) 13 - 사용자 입출력
 date: 2018-09-20T20:37:26+09:00
 author: nobbaggu
 layout: post

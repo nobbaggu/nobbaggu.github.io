@@ -1,5 +1,5 @@
 ---
-title: (Java) 50. 예외처리
+title: (Java) 50 - 예외처리
 date: 2018-12-30T16:16:20+09:00
 author: nobbaggu
 layout: post

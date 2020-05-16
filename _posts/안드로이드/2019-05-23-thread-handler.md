@@ -1,5 +1,5 @@
 ---
-title: (안드로이드) 46. 스레드(Thread)와 핸들러(Handler)
+title: (안드로이드) 46 - 스레드(Thread)와 핸들러(Handler)
 date: 2019-05-23T17:00:00+09:00
 author: nobbaggu
 layout: post

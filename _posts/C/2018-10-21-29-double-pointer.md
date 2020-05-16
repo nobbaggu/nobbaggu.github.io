@@ -1,5 +1,5 @@
 ---
-title: (C언어) 29. 더블 포인터
+title: (C언어) 29 - 더블 포인터
 date: 2018-10-21T22:12:38+09:00
 author: nobbaggu
 layout: post

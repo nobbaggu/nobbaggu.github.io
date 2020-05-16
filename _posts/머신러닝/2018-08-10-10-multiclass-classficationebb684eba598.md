@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 10. Multiclass Classfication
+title: (머신러닝) 10 - Multiclass Classfication
 date: 2018-08-10T02:00:10+09:00
 author: nobbaggu
 layout: post

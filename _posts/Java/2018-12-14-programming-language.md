@@ -1,5 +1,5 @@
 ---
-title: (Java) 0. 프로그래밍 언어란?
+title: (Java) 0 - 프로그래밍 언어란?
 date: 2018-12-14T12:43:10+09:00
 author: nobbaggu
 layout: post

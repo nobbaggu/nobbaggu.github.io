@@ -1,5 +1,5 @@
 ---
-title: (Java) 33. 추상 클래스
+title: (Java) 33 - 추상 클래스
 date: 2018-12-18T21:10:27+09:00
 author: nobbaggu
 layout: post

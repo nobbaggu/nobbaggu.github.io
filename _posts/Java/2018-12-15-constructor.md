@@ -1,5 +1,5 @@
 ---
-title: (Java) 17. 생성자
+title: (Java) 17 - 생성자
 date: 2018-12-15T11:26:27+09:00
 author: nobbaggu
 layout: post

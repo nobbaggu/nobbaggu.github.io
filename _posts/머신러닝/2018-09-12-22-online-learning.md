@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 22. Online Learning
+title: (머신러닝) 22 - Online Learning
 date: 2018-09-12T21:08:12+09:00
 author: nobbaggu
 layout: post

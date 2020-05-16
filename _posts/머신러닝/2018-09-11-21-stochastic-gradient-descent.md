@@ -1,5 +1,5 @@
 ---
-title: (머신러닝) 21. Stochastic Gradient Descent
+title: (머신러닝) 21 - Stochastic Gradient Descent
 date: 2018-09-11T22:43:27+09:00
 author: nobbaggu
 layout: post
