@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://nobbaggu.github.io/sitemap.xml
+Disallow: /
