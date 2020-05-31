@@ -1,0 +1,125 @@
+I"�1<p>웹뷰는 앱 안에 웹페이지를 부분화면으로 보여줄 때 사용한다. 인텐트를 통해 웹 브라우저를 띄우는 것과 다르게 부분화면에 웹페이지를 보여줌으로써 웹페이지가 앱의 일부분이 된 것같은 자연스러운 느낌을 준다.</p>
+
+<p>웹뷰를 사용하면 인터넷에 접속하게 되므로 매니페스트 파일에 인터넷 권한을 등록해줘야한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p><br />
+웹뷰는 XML 레이아웃에서 &lt;WebView&gt; 태그를 사용해 추가할 수 있다. 그럼 웹뷰를 사용해 앱 내에서 웹피이지를 볼 수 있는 앱을 만들어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/urlInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:layout_marginLeft=</span><span class="s">"10dp"</span>
+            <span class="na">android:layout_marginRight=</span><span class="s">"10dp"</span>
+            <span class="na">android:hint=</span><span class="s">"url을 입력하세요"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/loadButton"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"열기"</span>
+            <span class="na">android:padding=</span><span class="s">"4dp"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;WebView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/webView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/WebView&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>웹페이지 URL을 입력할 수 있는 입력상자하나와 클릭하면 해당 사이트로 이동하는 버튼을 하나 만들었다. 이제 자바 소스코드를 통해서 이 기능들을 만들어보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplewebview</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.webkit.WebChromeClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.webkit.WebSettings</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.webkit.WebView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.webkit.WebViewClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">WebView</span> <span class="n">webView</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">urlInput</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">webView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">webView</span><span class="o">);</span>
+
+        <span class="nc">WebSettings</span> <span class="n">webSettings</span> <span class="o">=</span> <span class="n">webView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span> <span class="c1">//웹뷰 설정 정보 가져오기</span>
+        <span class="n">webSettings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">//자바스크림트 허용</span>
+        <span class="n">webSettings</span><span class="o">.</span><span class="na">setLoadWithOverviewMode</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">//컨텐츠가 웹뷰 사이즈를 넘어갈 경우 스크린 크기에 맞춤</span>
+
+        <span class="n">webView</span><span class="o">.</span><span class="na">setWebChromeClient</span><span class="o">(</span><span class="k">new</span> <span class="nc">WebChromeClient</span><span class="o">());</span> <span class="c1">//웹뷰에서 크롬 실행 가능하도록 추가</span>
+        <span class="n">webView</span><span class="o">.</span><span class="na">setWebViewClient</span><span class="o">(</span><span class="k">new</span> <span class="nc">MyWebViewClient</span><span class="o">());</span>
+
+        <span class="n">urlInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">urlInput</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">loadButton</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">loadButton</span><span class="o">);</span>
+
+        <span class="n">loadButton</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="n">urlInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">url</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"https://"</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">url</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"http://"</span><span class="o">)){</span>
+                    <span class="n">url</span> <span class="o">=</span> <span class="s">"https://"</span><span class="o">+</span><span class="n">url</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">webView</span><span class="o">.</span><span class="na">loadUrl</span><span class="o">(</span><span class="n">url</span><span class="o">);</span> <span class="c1">//웹뷰에 웹페이지 로드</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/* 새 창이 아닌 앱 안에서 웹페이지를 띄우기 위해 WebViewClient 상속받은 클래스를 정의하고
+ * shouldOverrideUrlLoading() 메소드를 재정의해준다. */</span>
+<span class="kd">class</span> <span class="nc">MyWebViewClient</span> <span class="kd">extends</span> <span class="nc">WebViewClient</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">shouldOverrideUrlLoading</span><span class="o">(</span><span class="nc">WebView</span> <span class="n">view</span><span class="o">,</span> <span class="nc">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">loadUrl</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br />
+먼저 <code class="highlighter-rouge">findViewById()</code> 메소드를 통해 웹뷰를 참조하였다. 그리고 웹뷰에서 <code class="highlighter-rouge">getSettings()</code> 메소드를 호출하여 웹뷰의 설정을 가져와 webSettings 변수로 참조하였다. 이 변수를 통해서 자바스크립트를 허용하고 컨텐츠가 웹뷰 사이즈를 넘어갈 경우 자동으로 맞추도록 하였다. 참고로 요새는 대부분의 사이트에서 자바스크립트를 사용하므로 이 설정은 꼭 하는 것이 좋다.</p>
+
+<p>웹뷰에 설정한 MyWebViewClient 클래스는 WebViewClient 클래스를 상속하고 <code class="highlighter-rouge">shouldOverrideUrlLoading()</code> 메소드를 재정의하여 앱 내에서 웹페이지를 불러올 수 있도록 하였다. 이 설정을 하지 않으면 버튼을 클릭했을때 웹 브라우저를 실행하게 된다.</p>
+
+<p>앱을 실행하면 다음의 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/34/1.jpg" alt="1" width="30%" height="30%" /></p>
+:ET

@@ -1,0 +1,56 @@
+I"�<p> </p>
+<h3 id="1-레이아웃의-종류">1. 레이아웃의 종류</h3>
+
+<p>레이아웃에는 다음과 같은 종류들이 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>레이아웃</strong></th>
+      <th><strong>설명</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>제약 레이아웃(ConstraintLayout)</strong></td>
+      <td>제약 조건을 사용한 화면 구성</td>
+    </tr>
+    <tr>
+      <td><strong>리니어 레이아웃(LinearLayout)</strong></td>
+      <td>한 쪽 방향(가로 or 세로)으로 차례로 뷰 추가</td>
+    </tr>
+    <tr>
+      <td><strong>상대 레이아웃(RelativeLayout)</strong></td>
+      <td>부모 컨테이너, 다른 뷰와의 상대적 위치로 화면 구성</td>
+    </tr>
+    <tr>
+      <td><strong>프레임 레이아웃(FrameLayout)</strong></td>
+      <td>여러 개의 뷰를 중첩 후 가장 상위의 뷰 혹은 뷰그룹만 보여줌. 이후 각 뷰를 전환하여 보여주는 방식</td>
+    </tr>
+    <tr>
+      <td><strong>테이블 레이아웃(TableLayout)</strong></td>
+      <td>격자 형태로 뷰를 배치. 거의 사용하지 않음</td>
+    </tr>
+  </tbody>
+</table>
+
+<p> </p>
+<h3 id="2-뷰의-영역">2. 뷰의 영역</h3>
+
+<p>뷰는 자신만의 공간을 가지고 있다.</p>
+
+<p><strong>마진(Margin)</strong> : 뷰 테두리의 바깥 영역. 마진은 뷰의 영역이므로 다른 뷰가 침범할 수 없다.
+<strong>패딩(Padding)</strong> : 뷰 테두리의 안쪽 영역. 뷰의 내용물(텍스트, 이미지 등)과 뷰 테두리 사이의 공간</p>
+
+<p><img src="/images/android/5/1.png" alt="1" width="40%" height="40%" /></p>
+
+<p> 
+ </p>
+
+<h3 id="3-뷰-배경색background">3. 뷰 배경색(background)</h3>
+
+<p>뷰의 배경색은 6개의 16진수 값으로 지정한다. 앞에 16진수 2개를 추가로 붙여 알파값을 조정하면 투명도 역시 조정할 수 있다. 투명도는 00~ff 사이 값인데, 00이 완전 투명이고 ff는 투명도가 아예 없는 것이다. 예를 들면 빨간색은 다음과 같이 쓸 수 있다.</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:background="#ff0000" //빨강
+android:background="#88ff0000" //반투명 빨강
+</code></pre></div></div>
+:ET

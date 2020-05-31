@@ -1,0 +1,405 @@
+I"��<p>이 글은 이후에 캘린더 관련 기능을 추가할 때 스스로 참고하기 위해 만든 글이다. 코드의 주석과 간단한 설명은 있지만 자세한 내요은 없다.</p>
+
+<p><br /></p>
+
+<p>&lt;MonthItem.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplecalendar</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MonthItem</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">dayValue</span><span class="o">;</span>
+
+    <span class="nc">MonthItem</span><span class="o">(</span><span class="kt">int</span> <span class="n">dayValue</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dayValue</span> <span class="o">=</span> <span class="n">dayValue</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getDay</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">dayValue</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>아이템의 데이터를 위한 클래스이다. 달력이므로 간단하게 날짜 값 하나만을 멤버로 가진다.</p>
+
+<p><br /></p>
+
+<p>&lt;MonthItemView.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplecalendar</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Color</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.widget.AppCompatTextView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.Gravity</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MonthItemView</span> <span class="kd">extends</span> <span class="nc">AppCompatTextView</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">MonthItem</span> <span class="n">item</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MonthItemView</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">MonthItemView</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">AttributeSet</span> <span class="n">attrs</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">MonthItem</span> <span class="nf">getItem</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">item</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setItem</span><span class="o">(</span><span class="nc">MonthItem</span> <span class="n">item</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">item</span> <span class="o">=</span> <span class="n">item</span><span class="o">;</span>
+
+        <span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getDay</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">day</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">setText</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">day</span><span class="o">));</span>
+            <span class="n">setGravity</span><span class="o">(</span><span class="nc">Gravity</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+            <span class="n">setTextColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">);</span>
+            <span class="n">setTextSize</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            <span class="n">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>그리드뷰의 각 아이템의 뷰를 위한 코드이다. 단지 텍스트뷰로 충분하므로 XML 레이아웃 파일은 따로 만들지 않았다.</p>
+
+<p><br /></p>
+
+<p>&lt;MonthAdapter.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplecalendar</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Color</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.ViewGroup</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.BaseAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.GridView</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Calendar</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MonthAdapter</span> <span class="kd">extends</span> <span class="nc">BaseAdapter</span> <span class="o">{</span>
+        <span class="nc">Calendar</span> <span class="n">cal</span><span class="o">;</span>
+
+        <span class="nc">Context</span> <span class="n">mContext</span><span class="o">;</span>
+
+        <span class="nc">MonthItem</span><span class="o">[]</span> <span class="n">items</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">curYear</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">curMonth</span><span class="o">;</span>
+
+        <span class="nc">MonthAdapter</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">){</span>
+            <span class="kd">super</span><span class="o">();</span>
+            <span class="n">mContext</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+            <span class="n">init</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nc">MonthAdapter</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">AttributeSet</span> <span class="n">attrs</span><span class="o">){</span>
+            <span class="kd">super</span><span class="o">();</span>
+            <span class="n">mContext</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+            <span class="n">init</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+            <span class="n">cal</span> <span class="o">=</span> <span class="nc">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span> <span class="c1">//Calendar 객체 가져오기</span>
+            <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MonthItem</span><span class="o">[</span><span class="mi">7</span><span class="o">*</span><span class="mi">6</span><span class="o">];</span> <span class="c1">//아이템 크기 결정</span>
+
+            <span class="n">calculate</span><span class="o">();</span><span class="c1">//날짜 계산해서 items[] 배열 값 설정</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">calculate</span><span class="o">(){</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">items</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span> <span class="c1">//items[] 모든 값 0으로 초기화</span>
+                <span class="n">items</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MonthItem</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="n">cal</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">DAY_OF_MONTH</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="c1">//1일로 설정</span>
+
+            <span class="kt">int</span> <span class="n">startDay</span> <span class="o">=</span> <span class="n">cal</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">DAY_OF_WEEK</span><span class="o">);</span> <span class="c1">//현재 달 1일의 요일 (1: 일요일, . . . 7: 토요일)</span>
+            <span class="kt">int</span> <span class="n">lastDay</span> <span class="o">=</span> <span class="n">cal</span><span class="o">.</span><span class="na">getActualMaximum</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">DATE</span><span class="o">);</span> <span class="c1">//달의 마지막 날짜</span>
+
+            <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">startDay</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">startDay</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="n">lastDay</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span> <span class="cm">/* 1일의 요일에 따라 시작위치 다르고 마지막 날짜까지 값 지정*/</span>
+                <span class="n">items</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MonthItem</span><span class="o">(</span><span class="n">cnt</span><span class="o">);</span>
+                <span class="n">cnt</span><span class="o">++;</span>
+            <span class="o">}</span>
+
+            <span class="n">curYear</span> <span class="o">=</span> <span class="n">cal</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">YEAR</span><span class="o">);</span>
+            <span class="n">curMonth</span> <span class="o">=</span> <span class="n">cal</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">MONTH</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPreviousMonth</span><span class="o">(){</span> <span class="c1">//한 달 앞으로 가고 다시 계산</span>
+            <span class="n">cal</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">MONTH</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">calculate</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNextMonth</span><span class="o">(){</span>
+            <span class="n">cal</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">MONTH</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="c1">//한 달 뒤로가고 다시 계산</span>
+            <span class="n">calculate</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">items</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="nc">View</span> <span class="nf">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="nc">View</span> <span class="n">convertView</span><span class="o">,</span> <span class="nc">ViewGroup</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">MonthItemView</span> <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MonthItemView</span><span class="o">(</span><span class="n">mContext</span><span class="o">);</span>
+            <span class="nc">MonthItem</span> <span class="n">item</span> <span class="o">=</span> <span class="n">items</span><span class="o">[</span><span class="n">position</span><span class="o">];</span>
+            <span class="n">view</span><span class="o">.</span><span class="na">setItem</span><span class="o">(</span><span class="n">item</span><span class="o">);</span> <span class="c1">//날짜 값이 0이면 ""으로, 아니면 날짜값으로 TextView의 Text 지정</span>
+
+            <span class="k">if</span><span class="o">(</span><span class="n">position</span><span class="o">%</span><span class="mi">7</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span> <span class="c1">//일요일은 날짜 색 빨간색으로</span>
+                <span class="n">view</span><span class="o">.</span><span class="na">setTextColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">GridView</span><span class="o">.</span><span class="na">LayoutParams</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GridView</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">(</span> <span class="nc">GridView</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">.</span><span class="na">MATCH_PARENT</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
+            <span class="n">view</span><span class="o">.</span><span class="na">setLayoutParams</span><span class="o">(</span><span class="n">params</span><span class="o">);</span>
+
+            <span class="k">return</span> <span class="n">view</span><span class="o">;</span> <span class="c1">//뷰 뿌려주기</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">getItem</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">items</span><span class="o">[</span><span class="n">position</span><span class="o">];</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getItemId</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCurYear</span><span class="o">(){</span>
+            <span class="k">return</span> <span class="n">curYear</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCurMonth</span><span class="o">(){</span>
+            <span class="k">return</span> <span class="n">curMonth</span><span class="o">;</span>
+        <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+<p>가장 중요한 어댑터 클래스이다. 생성자가 만들어질 때 <code class="highlighter-rouge">init()</code> 메소드를 통해 초기화를 해준다.</p>
+
+<p><code class="highlighter-rouge">init()</code> 메소드는 <code class="highlighter-rouge">Calendar.getInstance()</code> 메소드를 통해서 캐린더 객체를 참조해주고 items[] 배열의 크기를 초기화한다. 그리고 처음으로 <code class="highlighter-rouge">calculate()</code> 메소드를 통해 달력 화면 초기화를 해주어야한다.</p>
+
+<p><code class="highlighter-rouge">calculate()</code> 메소드의 구성은 아래와 같다.</p>
+
+<blockquote>
+  <ol>
+    <li>어댑터의 데이터 자료인 items[] 배열의 모든 값을 0으로 초기화</li>
+    <li>달의 1일의 요일과 달의 마지막 날짜를 가져와서 계산을 통해 배열에 날짜를 집어넣는다.</li>
+  </ol>
+</blockquote>
+
+<p>나름대로 머리를 써서 만든 날짜 계산 방식인데, 더 효율적인 방법을 찾아보면 최적화가 더 될 것 같다.</p>
+
+<p>그리고 <code class="highlighter-rouge">setPreviousMonth()</code> 메소드와 <code class="highlighter-rouge">setNextMonth()</code> 메소드는 이전달과 다음달로 달력의 화면을 전환시키는 메소드이다. 코드 내부를 보면 달을 넘기는 <code class="highlighter-rouge">Calendar.add()</code> 메소드가 호출된다. 이어서 <code class="highlighter-rouge">calculate()</code> 메소드를 통해 넘어온 달에서 다시 날짜를 계산한다.</p>
+
+<p>위에서 계산된 날짜를 토대로 <code class="highlighter-rouge">getView()</code> 메소드에서는 뷰를 구성하여 화면에 뿌린다. 이 메소드 내에서 뷰의 <code class="highlighter-rouge">setItem()</code> 메소드를 호출하는데 이 메소드는 날짜가 0이냐 아니냐에 따라 텍스트를 설정한다.</p>
+
+<p>그리고 텍스트뷰의 크기를 세팅하고 일요일은 빨간색으로 표시하기위한 코드도 추가되었다.</p>
+
+<p><br /></p>
+
+<p>&lt;activity_main.xml&gt;</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;RelativeLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:background=</span><span class="s">"#ffffffff"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/monthPrevious"</span>
+            <span class="na">android:layout_width=</span><span class="s">"100dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"30dp"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span>
+            <span class="na">android:layout_alignParentLeft=</span><span class="s">"true"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/back"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/monthText"</span>
+            <span class="na">android:layout_width=</span><span class="s">"200dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"MonthView"</span>
+            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span>
+            <span class="na">android:layout_centerInParent=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/monthNext"</span>
+            <span class="na">android:layout_width=</span><span class="s">"100dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"30dp"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span>
+            <span class="na">android:layout_alignParentRight=</span><span class="s">"true"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/next"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/RelativeLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+        <span class="na">android:background=</span><span class="s">"#22000000"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"일"</span>
+            <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"월"</span>
+            <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"화"</span>
+            <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"수"</span>
+            <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"목"</span>
+            <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"금"</span>
+            <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"토"</span>
+            <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+    <span class="nt">&lt;GridView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/monthView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:numColumns=</span><span class="s">"7"</span>
+        <span class="na">android:stretchMode=</span><span class="s">"columnWidth"</span>
+        <span class="na">android:horizontalSpacing=</span><span class="s">"1dp"</span>
+        <span class="na">android:verticalSpacing=</span><span class="s">"1dp"</span>
+        <span class="na">android:background=</span><span class="s">"#ffbbbbbb"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/GridView&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>가장 상위에는 양옆에 이전달과 다음달로 넘어가기 위한 버튼 2개가 있고 가운데에는 현재 년도와 달을 표시하는 텍스트뷰가 있다. 그리고 요일을 표시하기 위한 텍스트뷰 7개, 마지막으로 가장 중요한 그리드뷰가 있다.</p>
+
+<p><br /></p>
+
+<p>이제 이 그리드뷰에 어댑터를 설정하여 화면을 구성하기 위한 코드를 보겠다.</p>
+
+<p>&lt;MainActivity.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplecalendar</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.GridView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">GridView</span> <span class="n">monthView</span><span class="o">;</span>
+    <span class="nc">TextView</span> <span class="n">monthText</span><span class="o">;</span>
+    <span class="nc">MonthAdapter</span> <span class="n">adt</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">monthView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">monthView</span><span class="o">);</span> <span class="c1">//그리드뷰 객체 참조</span>
+        <span class="n">adt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MonthAdapter</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">//어댑터 객체 생성</span>
+        <span class="n">monthView</span><span class="o">.</span><span class="na">setAdapter</span><span class="o">(</span><span class="n">adt</span><span class="o">);</span> <span class="c1">//그리드뷰에 어댑터 설정</span>
+
+        <span class="n">monthText</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">monthText</span><span class="o">);</span>
+        <span class="n">setMonthText</span><span class="o">();</span>
+
+        <span class="nc">Button</span> <span class="n">monthPrevious</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">monthPrevious</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">monthNext</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">monthNext</span><span class="o">);</span>
+
+        <span class="c1">// 뒤로가기 버튼 이벤트 리스너 설정</span>
+        <span class="n">monthPrevious</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">adt</span><span class="o">.</span><span class="na">setPreviousMonth</span><span class="o">();</span>
+                <span class="n">adt</span><span class="o">.</span><span class="na">notifyDataSetChanged</span><span class="o">();</span> <span class="c1">//어댑터 데이터 갱신하고 뷰 다시 뿌리기</span>
+                <span class="n">setMonthText</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="c1">// 앞으로 가기 버튼에 이벤트 리스너 설정</span>
+        <span class="n">monthNext</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">adt</span><span class="o">.</span><span class="na">setNextMonth</span><span class="o">();</span>
+                <span class="n">adt</span><span class="o">.</span><span class="na">notifyDataSetChanged</span><span class="o">();</span> <span class="c1">//어댑터 데이터 갱신하고 뷰 다시 뿌리기</span>
+                <span class="n">setMonthText</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMonthText</span><span class="o">(){</span>
+        <span class="kt">int</span> <span class="n">curYear</span> <span class="o">=</span> <span class="n">adt</span><span class="o">.</span><span class="na">getCurYear</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">curMonth</span> <span class="o">=</span> <span class="n">adt</span><span class="o">.</span><span class="na">getCurMonth</span><span class="o">();</span>
+        <span class="n">monthText</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">curYear</span><span class="o">+</span><span class="s">"년 "</span><span class="o">+(</span><span class="n">curMonth</span><span class="o">+</span><span class="mi">1</span><span class="o">)+</span><span class="s">"월"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>그리드 뷰에 어댑터를 설정했다. 이어서 이전 달과 다음 달로 넘어가기 위한 버튼에 클릭 이벤트 리스너 객체를 설정해주었다. 버튼을 누르면 달을 넘기는 메소드가 호출이 된다. 이어서 <code class="highlighter-rouge">notifyDataSetChanged()</code> 메소드가 호출된다. 이 메소드는 어댑터의 데이터를 최신으로 갱신하고 다시 그리드뷰에 뷰를 뿌려주는 메소드이다. 이것을 하지 않으면 새로 갱신된 달력의 데이터와 그에따른 새로운 화면을 가져올 수 없으므로 꼭 추가해주어야한다. 마지막으로 <code class="highlighter-rouge">setTextMonth()</code> 메소드를 통해 위에있는 텍슽뷰에 현재의 년도와 달을 표시해준다.</p>
+
+<p>아래는 앱의 실행 화면이다.</p>
+
+<p><img src="/images/android/41/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/41/2.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

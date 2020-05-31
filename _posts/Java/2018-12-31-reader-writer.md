@@ -15,8 +15,8 @@ tags:
   - 자바
   - 파일
 ---
-# 1. FileReader 클래스
 
+# 1. FileReader 클래스
 * * *
 
 FileInputStream과 FileOutputStream은 byte 단위로 데이터를 전송한다. 그런데 한글같은 경우는 표현하기 위해 2byte를 사용해야 한다. "hello.txt"파일에 한글로 내용을 적고 읽어보면 다음과 같이 된다.
@@ -53,7 +53,7 @@ public class FileInputStreamTest {
 
 문자가 깨진다.
 
-이런경우에 사용하는 것이 문자 단위로 데이터를 읽는 스트림의 최사위 클래스인 Reader 클래스이다. 가장 대표적인 하위클래스인 FileReader를 통해 다시 파일 내용을 읽어보겠다.
+이런경우에 사용하는 것이 문자 단위로 데이터를 읽는 스트림의 최상위 클래스인 Reader 클래스이다. 가장 대표적인 하위클래스인 FileReader를 통해 다시 파일 내용을 읽어보겠다.
 
 ~~~ java
 package stream;

@@ -1,0 +1,41 @@
+I"<p>객체란 간단히 말해 어떠한 사물이나 대상을 뜻한다. 눈에 보이는 사람, 자동차 등 부터 눈에 보이지 않는 마우스 클릭, 쇼핑 등도 객체가 될 수 있다.</p>
+
+<p>객체지향 프로그래밍이란 이러한 객체들 사이에 일어나는 유기적인 일들을 구현하여 프로그램을 만드는 것이다.</p>
+
+<p>객체지향 프로그래밍은 클래스를 기반으로 모든게 일어나기 시작한다.</p>
+
+<p>클래스란 객체의 속성이나 행동이 정의되는 하나의 모듈 단위이다. 객체를 만든다는 것은 바로 클래스를 정의한다는 것이다.</p>
+
+<p>클래스는 객체의 <span style="text-decoration: underline;"><strong>속성, 특성</strong>을 나타내는 부분과 하나의 기능을 수행하는 <span style="text-decoration: underline;"><strong>메서드</strong>를 가진다.</span></span></p>
+
+<p>가령 사람이라는 객체에 대해 정의한다고 해보자.</p>
+
+<p>속성, 특성에는 나이, 이름, 주소 등이 있을 것이다. 그리고 기능에는 나이를 먹는다, 이름을 개명한다 등이 있을 것이다.</p>
+
+<p>이러한 것을 클래스로 구현하는 것을 간단히 맛보자면 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="c1">// Person 클래스의 속성</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+
+    <span class="c1">// 나이 먹는 행위</span>
+    <span class="kt">void</span> <span class="nf">IncreaseAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">++;</span>
+    <span class="o">}</span>
+    <span class="c1">// 차타기</span>
+    <span class="kt">void</span> <span class="nf">rideCar</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"부릉부릉~"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이러한 클래스를 한 번 정의하면 여러 사람이라는 객체를 찍어내며 만들 수 있다. 이것이 객체지향 프로그래밍의 생산성을 높여주는 부분이다.</p>
+
+<p> </p>
+
+<p>이처럼 클래스를 기반으로 다양한 객체를 만들어 그들 사이에 일어나는 상호작용을 구현하고 프로그래밍 하는것이다.</p>
+:ET

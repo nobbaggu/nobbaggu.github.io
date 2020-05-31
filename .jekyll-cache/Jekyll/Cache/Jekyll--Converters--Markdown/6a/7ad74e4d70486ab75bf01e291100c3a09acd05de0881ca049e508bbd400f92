@@ -1,0 +1,41 @@
+I"<p>while문과 for문은 조건을 만족하지 않으면 반복문 내의 코드가 한 번도 실행되지 않습니다. 최소 한 번은 반복문을 실행하고 그 이후에 조건에 따라 실행 여부를 결정하고 싶을 때 사용하는 것이 do-while 반복문입니다.</p>
+
+<p> </p>
+
+<h1 id="1-do-while-반복문-구조">1. do while 반복문 구조</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span>
+<span class="o">{</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="o">}</span><span class="k">while</span><span class="o">(.</span> <span class="o">.</span> <span class="o">.)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>do- while 반복문이 실행되면 처음으로 do를 통해 {. . .}를 한 번 실행합니다. 그 이후 (. . .)의 조건식을 판단합니다. 이 조건식이 맞다면 다시 한 번 {. . .}를 실행하고 다시 (. . .)의 조건식을 판단합니다. while문과의 차이점은 최초 실행 여부입니다.</p>
+
+<p>사실 do-while문은 while문에 비해서 활용빈도가 그리 높지 않습니다. 그리고 do-while문으로 구현가능한 코드는 while문이 100% 대체 가능할 수 있기도 합니다. 그럼에도 불구하고 do-while문이 while문보다 더 적절한 경우도 있습니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">do</span><span class="o">{</span>
+            <span class="n">sum</span><span class="o">+=</span><span class="n">sum</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">while</span><span class="o">(</span><span class="n">sum</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sum</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>16</p>
+:ET

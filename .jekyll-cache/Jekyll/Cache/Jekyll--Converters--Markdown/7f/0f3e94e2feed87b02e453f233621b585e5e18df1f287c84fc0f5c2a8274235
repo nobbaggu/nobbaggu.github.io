@@ -1,0 +1,378 @@
+I"J�<p>안드로이드는 기본적으로 표준 Java의 Thread를 그대로 사용할 수 있다. 그러나 안드로이드에서는 메인 스레드만 UI요소에 접근 가능하며, 서브 스레드에서 UI에 접근하려면 핸들러(Handler)와 메시지 큐(Queue)를 사용해야한다. 여기서부터 표준 Java와 안드로이드의 처리방식이 달라지기 시작한다.</p>
+
+<p><br /></p>
+<h2 id="1-표준-java-스레드-사용하기">1. 표준 Java 스레드 사용하기</h2>
+<hr />
+
+<p>먼저 안드로이드에서 표준 Java의 스레드를 사용 가능한지 화인해보자.</p>
+
+<p><br /></p>
+
+<p>&lt;activity_main.xml&gt;</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;RelativeLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"320dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_centerHorizontal=</span><span class="s">"true"</span>
+        <span class="na">android:layout_centerVertical=</span><span class="s">"true"</span>
+        <span class="na">android:text=</span><span class="s">"스레드에서 받은 값 : "</span>
+        <span class="na">android:textSize=</span><span class="s">"18dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/showBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_centerHorizontal=</span><span class="s">"true"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span>
+        <span class="na">android:text=</span><span class="s">"보여주기"</span>
+        <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+        <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</code></pre></div></div>
+
+<p>버튼을 클릭하면 스레드에서 받은 값을 읽어오도록 할 것이다.</p>
+
+<p><br /></p>
+
+<p>&lt;MainActivity.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//출력할 값</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isRun</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">//스레드의 실행여부를 위한 boolean 변수 선언</span>
+
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">showBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">showBtn</span><span class="o">);</span>
+
+        <span class="n">showBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"스레드에서 받은 값 : "</span> <span class="o">+</span> <span class="n">value</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+
+        <span class="cm">/* 스레드 실행 */</span>
+        <span class="nc">BackgroundThread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BackgroundThread</span><span class="o">();</span>
+        <span class="n">isRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+
+        <span class="cm">/* 스레드 중지 */</span>
+        <span class="n">isRun</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//value값 다시 0으로 초기화</span>
+    <span class="o">}</span>
+
+    <span class="kd">class</span> <span class="nc">BackgroundThread</span> <span class="kd">extends</span> <span class="nc">Thread</span><span class="o">{</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">isRun</span><span class="o">){</span> <span class="c1">// isRun 변수가 true가 되면</span>
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span> <span class="c1">//1초 지연</span>
+                    <span class="n">value</span><span class="o">++;</span> <span class="c1">//value 값 1 증가</span>
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="k">try</span><span class="o">{</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">join</span><span class="o">();</span> <span class="c1">// 스레드를 메인 스레드와 합치기</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="cm">/* isRun이 true인 동안은 계속해서 1초마다 value 값을 1씩 증가시킨다.
+        * 그러다가 isRun이 false가 되면 스레드가 메인 스레드와 합쳐지고 끝이난다.*/</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>버튼을 클릭하면 갱신된 value값을 가져와 텍스트뷰에 표시한다. value값을 증가시키는 작업은 새로운 Thread 클래스를 상속받아 새로운 스레드를 만들어서 처리하도록 했다. isRun변수가 false가 되면 <code class="highlighter-rouge">while()</code>문을 빠져나와서 스레드의 <code class="highlighter-rouge">join()</code> 메소드를 호출하여 스레드를 다시 메인 스레드와 합친다.</p>
+
+<p><br /></p>
+
+<p><br /></p>
+<h2 id="2-핸들러handler와-메시지-큐message-queue">2. 핸들러(Handler)와 메시지 큐(Message Queue)</h2>
+<hr />
+
+<p>안드로이드 정책상 데드락(메모리 자원을 여러곳에서 동시에 참조하는 것)을 피하기 위해 애플리케이션의 UI 구성요소에는 메인 스레드만 접근할 수 있다. 그런데 메인 스레드가 아닌 하나의 서브스레드에서 UI 구성요소를 변경해야 하는 경우가 있을 수 있다. 이런 경우에 사용하는 것이 핸들러이다. 핸들러를 사용하면 서브스레드에서 메인 스레드로 UI 처리작업을 요청하는 메시지를 보낼 수 있다.</p>
+
+<p><img src="/images/android/46/2.png" alt="2" width="100%" height="100%" /></p>
+
+<p><br /></p>
+
+<p>위 사진은 핸들러를 통해 서브스레드에서 메인 스레드로 UI 처리작업을 요청하는 3단계를 보여준다.</p>
+
+<blockquote>
+  <ol>
+    <li><code class="highlighter-rouge">obtainMessage()</code> 메소드로 메인스레드의 메시지 객체 가져오기</li>
+    <li>가져온 메시지에 정보를 넣고 <code class="highlighter-rouge">sendMessage()</code> 메소드로 다시 메인 스레드로 보내기</li>
+    <li>메인 스레드가 <code class="highlighter-rouge">handleMessage()</code> 메소드로 메시지 처리하기</li>
+  </ol>
+</blockquote>
+
+<p>스레드 내부에서 생성자를 통해 핸들러 객체를 만들면 핸들러를 사용할 수 있게 된다. 핸들러는 메시지큐(Message Queue)와 루퍼(Looper) 없이는 아무 의미가 없다. 메시지큐는 메시지를 저장해두고 하나씩 꺼내 작업할 장소라고 생각하자. 이름에서 볼 수 있듯이 메시지큐는 FIFO(First In First Out)을 따르므로 먼저 들어온 메시지를 더 먼저 처리하게 된다. 루퍼(Looper)는 메시지큐를 돌면서 처리할 메시지가 있으면 하나씩 꺼내어 핸들러로 전달하는 역할을 한다.</p>
+
+<p><br /></p>
+
+<p>아래 사진은 안드로이드 개발 공식 API 문서의 Handler 페이지 앞부분의 설명이다.</p>
+
+<p><img src="/images/android/46/1.png" alt="1" width="100%" height="100%" /></p>
+
+<p><br /></p>
+
+<p>핵심 내용은 이렇다.</p>
+
+<blockquote>
+  <ol>
+    <li>핸들러는 자신이 포함된 메시지큐의 메시지를 처리하거나 다른 스레드의 메시지큐로 메시지를 보낼 수 있다.</li>
+    <li>핸들러객체는 생성자를 통해 생성된 스레드와 그 스레드의 메시지큐에 연결된다.</li>
+  </ol>
+</blockquote>
+
+<p><br /></p>
+
+<p>그러면 코드를 통해 서브 스레드에서 UI를 처리하는 과정을 확인해보자.</p>
+
+<p><br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">android:gravity=</span><span class="s">"center_vertical|center_horizontal"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"50dp"</span>
+        <span class="na">android:hint=</span><span class="s">"무슨동물?"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>텍스트뷰가 하나 있다. 이 텍스트뷰의 내용을 메인 스레드가 아닌 서브 스레드를 통해서 설정하는 코드를 작성해보자.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+
+    <span class="kd">final</span> <span class="kt">int</span> <span class="no">MESSAGE_ID_CAT</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="no">MESSAGE_ID_DOG</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+
+    <span class="nc">Handler</span> <span class="n">handler</span><span class="o">;</span>
+    <span class="nc">Thread</span> <span class="n">thread</span><span class="o">;</span>
+
+    <span class="kt">boolean</span> <span class="n">isRun</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+
+        <span class="cm">/* 핸들러 객체 생성
+        * 메인스레드에서 생성되었으므로 메인스레드의 핸들러이다.*/</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">(){</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="nc">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">switch</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">what</span><span class="o">){</span>
+
+                    <span class="k">case</span> <span class="nl">MESSAGE_ID_CAT:</span> <span class="c1">//msg.what == MESSAGE_ID_CAT 인 경우</span>
+                        <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">obj</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span> <span class="c1">//텍스트뷰 내용 설정</span>
+                        <span class="k">break</span><span class="o">;</span>
+
+                    <span class="k">case</span> <span class="nl">MESSAGE_ID_DOG:</span> <span class="c1">//msg.what == MESSAGE_ID_DOG 인 경우</span>
+                        <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">obj</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span> <span class="c1">//텍스트뷰 내용 설정</span>
+                        <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+
+        <span class="cm">/* 스레드 객체 생성 */</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                <span class="k">try</span><span class="o">{</span>
+
+                    <span class="cm">/* while문이 실행될 동안 3초마다 반복적으로 두 메시지 번갈아 보내기*/</span>
+                    <span class="k">while</span><span class="o">(</span><span class="n">isRun</span><span class="o">){</span>
+                        <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">3000</span><span class="o">);</span> <span class="c1">// 3초간 시간 지연</span>
+                        <span class="nc">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="na">obtainMessage</span><span class="o">();</span> <span class="c1">//메인스레드 핸들러의 메시지 객체 가져오기</span>
+                        <span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">=</span> <span class="no">MESSAGE_ID_CAT</span><span class="o">;</span> <span class="c1">// 메시지 아이디 설정</span>
+                        <span class="n">msg</span><span class="o">.</span><span class="na">obj</span> <span class="o">=</span> <span class="s">"고양이 입니다."</span><span class="o">;</span> <span class="c1">// 메시지 내용 설정</span>
+                        <span class="n">handler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span> <span class="c1">// 메인스레드 핸들러로 메시지 보내기</span>
+
+                        <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">3000</span><span class="o">);</span> <span class="c1">//3초간 시간 지연</span>
+                        <span class="n">msg</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="na">obtainMessage</span><span class="o">();</span> <span class="c1">//메인스레드 핸들러의 메시지 객체 가져오기</span>
+                        <span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">=</span> <span class="no">MESSAGE_ID_DOG</span><span class="o">;</span> <span class="c1">//메시지 아이디 설정</span>
+                        <span class="n">msg</span><span class="o">.</span><span class="na">obj</span> <span class="o">=</span> <span class="s">"개 입니다."</span><span class="o">;</span> <span class="c1">// 메시지 내용 설정</span>
+                        <span class="n">handler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span> <span class="c1">// 메인스레드 핸들러로 메시지 보내기</span>
+                    <span class="o">}</span>
+
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+        <span class="n">isRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//스레드 시작</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="n">isRun</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// 서브 스레드의 while문 탈출</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">thread</span><span class="o">.</span><span class="na">join</span><span class="o">();</span> <span class="c1">// 스레드를 메인 스레드와 합치기</span>
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>먼저 핸들러 객체를 생성하고 <code class="highlighter-rouge">handleMessage()</code> 메소드를 재정의한다. 이 메소드는 스레드가 루퍼를 통해 메시지큐에서 메시지를 가져오면 처리하는 역할을 한다. <code class="highlighter-rouge">msg.what</code>을 통해 메시지 ID를 확인하여 텍스트뷰의 내용을 설정하게 된다.</p>
+
+<p>그리고 스레드를 만들어 <code class="highlighter-rouge">run()</code> 메소드를 재정의한다. <code class="highlighter-rouge">isRun</code> 변수가 <code class="highlighter-rouge">true</code>일 동안 3초마다 번갈아가면서 두 개의 메시지를 번갈아 보내도록 했다. 여기서 <code class="highlighter-rouge">msg.what</code>과 <code class="highlighter-rouge">msg.obj</code>를 통해 메시지 ID와 내용을 넣어서 <code class="highlighter-rouge">handler.sendMessage()</code> 메소드를 통해 메인 스레드의 핸들러로 메시지를 보낸다. 그러면 메인스레드의 핸들러가 이 메시지를 확인해서 텍스트뷰의 내용을 확인한다.</p>
+
+<p>앱을 실행하면 “고양이 입니다.” 문자열과 “개 입니다.” 문자열이 3초마다 번갈아가면서 출력된다.</p>
+
+<p><img src="/images/android/46/3.jpg" alt="3" width="30%" height="30%" />
+<img src="/images/android/46/4.jpg" alt="4" width="30%" height="30%" />
+<img src="/images/android/46/5.jpg" alt="5" width="30%" height="30%" /></p>
+
+<p>이 코드에서는 UI 요소에 접근하지 못하도록 되어있는 서브 스레드를 통해 UI를 변경하는 것을 확인해보았다.</p>
+
+<p><br /></p>
+<h2 id="3-핸들러로-runnable-객체-처리하기">3. 핸들러로 Runnable 객체 처리하기</h2>
+<hr />
+
+<p>위의 예제에서는 아래의 과정을 통해서 UI 요소를 변경했다.</p>
+
+<blockquote>
+  <ol>
+    <li>서브스레드에서 메인 스레드의 메시지 객체 참조</li>
+    <li>메시지 객체에 메시지 저장 및 메인 스레드로 전송</li>
+    <li>핸들러의 <code class="highlighter-rouge">handleMessage()</code> 메소드에서 메시지 정보 획득 및 처리(UI 업데이트)</li>
+  </ol>
+</blockquote>
+
+<p>그런데 위의 과정은 코드가 약간 복잡해지는 단점이 존재한다.</p>
+
+<p><br />
+위의 단점을 해결하는 간단한 방법이 있다. 바로 Runnable 객체를 이용하는 것이다. 스레드의 핸들러는 메시지만 주고받고 처리할 수 있는것이 아니다. Runnable 객체도 처리할 수 있다. 즉, 메시지 큐에는 메시지 객체 이외에 Runnable 객체도 들어갈 수 있다. 서브 스레드에서 <code class="highlighter-rouge">handler.post()</code> 메소드를 사용하여 메인 스레드로 러너를 객체를 전송해주면 러너블 객체의 <code class="highlighter-rouge">run()</code> 메소드가 메인 스레드에서 실행된다. 따라서 UI 구성요소 역시 변경할 수 있다.</p>
+
+<p>위에서 작성한 예제를 Runnable 객체를 사용한 것으로 바꾸려면 아래와 같이 하면된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+
+    <span class="nc">Handler</span> <span class="n">handler</span><span class="o">;</span>
+    <span class="nc">Thread</span> <span class="n">thread</span><span class="o">;</span>
+
+    <span class="kt">boolean</span> <span class="n">isRun</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+
+        <span class="cm">/* 핸들러 객체 생성
+        * 메인스레드에서 생성되었으므로 메인스레드의 핸들러이다.*/</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">();</span>
+
+        <span class="cm">/* 스레드 객체 생성 */</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+
+            <span class="nc">Runnable</span> <span class="n">catRunnable</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Runnable</span><span class="o">(){</span> <span class="c1">// Runnable 객체 생성</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"고양이 입니다."</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">};</span>
+
+            <span class="nc">Runnable</span> <span class="n">dogRunnable</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Runnable</span><span class="o">(){</span> <span class="c1">// Runable 객체 생성</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"개 입니다."</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">};</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="cm">/* while문이 실행될 동안 3초마다 반복적으로 두 메시지 번갈아 보내기*/</span>
+                    <span class="k">while</span><span class="o">(</span><span class="n">isRun</span><span class="o">){</span>
+                        <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">3000</span><span class="o">);</span> <span class="c1">// 3초간 시간 지연</span>
+                        <span class="n">handler</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">catRunnable</span><span class="o">);</span> <span class="c1">// 메인 스레드로 catRunnable 객체 전송</span>
+
+                        <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">3000</span><span class="o">);</span> <span class="c1">// 3초간 시간 지연</span>
+                        <span class="n">handler</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">dogRunnable</span><span class="o">);</span> <span class="c1">// 메인 스레드로 dogRunnable 객체 전송</span>
+                    <span class="o">}</span>
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+        <span class="n">isRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//스레드 시작</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="n">isRun</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// 서브 스레드의 while문 탈출</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">thread</span><span class="o">.</span><span class="na">join</span><span class="o">();</span> <span class="c1">// 스레드를 메인 스레드와 합치기</span>
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이로서 핸들러 객체를 생성하면서 <code class="highlighter-rouge">handleMessage()</code> 메소드를 재정의하여 메시지를 처리하는 부분이 사라졌다. 또한 <code class="highlighter-rouge">run()</code> 메소드 내부에서 메시지를 구성하여 보내는 코드도 사라졌다. 대신 Runnable 객체를 만들고 <code class="highlighter-rouge">run()</code> 메소드를 재정의하는 부분이 대신해서 생겼지만 오히려 한 눈에 서브 스레드에서 실행시키고자 하는 코드를 한 눈에 확인할 수 있어 가독성 측면에서 더 좋아진것 같은 느낌이다.</p>
+:ET

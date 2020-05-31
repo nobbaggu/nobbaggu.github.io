@@ -1,0 +1,106 @@
+I"i)<p>자바8 이전에는 인터페이스는 상수와 추상메소드 이외의 요소는 가질 수 없었다. 그러나 인터페이스를 구현한 클래스들에 공통적으로 사용할 수 있는 메소드가 필요한 경우 혹은 객체를 만들지 않고도 호출 간으한 메소드가 필요한 경우가 있다.</p>
+
+<p>이러한 경우 편의성을 제공하기 위해 Java8부터는 디폴트 메소드와 정적 메소드 기능을 추가하게 된다.</p>
+
+<p> </p>
+
+<h1 id="1-default-메소드">1. default 메소드</h1>
+
+<hr />
+
+<p>디폴트 메소드는 인터페이스에서 코드를 구현한 메소드이다. 추상 메소드만 가질 수 있던 자바8 이전에는 인터페이스를 구현한 여러 클래스에서 공통된 기능의 메소드가 필요하면 각 클래스마다 같은 코드를 여러 번 구현해야했다. 그러나 디폴트 메소드는 인터페이스를 구현한 모든 클래스가 상속받은 것과 같이 기본적으로 사용할 수 있는 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Calc</span> <span class="o">{</span>
+   
+   <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="no">ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999999999</span><span class="o">;</span>
+   
+   <span class="k">default</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="k">default</span> <span class="kt">int</span> <span class="nf">subtract</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">-</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+   <span class="kt">double</span> <span class="nf">div</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>add(), subtract() 두 메소드는 default 예약어를 통해 선언되었다. 인터페이스의 메소드이지만 코드가 구현되어 있다. 그리고 Calc 인터페이스를 구현한 모든 클래스에서는 add(), subtract() 메소드를 기본적으로 사용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCalc</span> <span class="kd">implements</span> <span class="nc">Calc</span><span class="o">{</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">*</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">double</span> <span class="nf">div</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="o">(</span><span class="n">num2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="no">ERROR</span> <span class="o">:</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">num1</span><span class="o">/</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>인터페이스의 추상 메소드 mul()과 div()의 코드를 정의 하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalcTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MyCalc</span> <span class="n">cal</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyCalc</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">mul</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cal</span><span class="o">.</span><span class="na">div</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>mul(), div()와 같이 인터페이스를 구현한 클래스에서 만든 메소드뿐만 아니라 인터페이스에서 만든 default 메소드 역시 사용 가능하다.</p>
+
+<p>추가적으로, <strong>디폴트 메소드는 인터페이스를 구현한 클래스에서 재정의(오버라이딩) 가능하다.</strong></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-static-메소드">2. static 메소드</h1>
+
+<hr />
+
+<p>정적 메소드는 static 선언을 하여 만든 메소드이다. 클래스 내에서 static 변수와 static 메소드는 인스턴스의 생성 여부와 상관 없이 사용 가능 하였다.</p>
+
+<p>인터페이스에서도 같다. 인스턴스를 만들지 않고도 호출 가능한 메소드의 사용을 위해 Java8부터 인터페이스에서도 static 메소드 기능을 지원하는 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Calc</span> <span class="o">{</span>
+   
+   <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="no">ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999999999</span><span class="o">;</span>
+   
+   <span class="kd">static</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">num1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalcTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Calc</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+:ET

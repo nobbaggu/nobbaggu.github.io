@@ -1,0 +1,105 @@
+I"n<p> </p>
+
+<h1 id="1-집합-표현방식">1. 집합 표현방식</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {1,2,3}
+</span><span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'python'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># {'t','o','y','n','p','h'}   집합의 특징1 : 순서가 없다.
+</span><span class="n">s3</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'apple'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span> <span class="c1"># {'e','l','a','p'}   집합의 특징2 : 중복이 안된다.
+</span></code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>순서가 없다는 것은 index가 없다는 말이다. 따라서 인덱싱이나 슬라이싱을 통해서 값을 얻을 수 없다.</li>
+  <li>리스트, 튜플 자료형은 순서가 있어 인덱싱,슬라이싱이 되었다. 딕셔너리, 집합 자료형은 순서가 없으므로 인덱싱, 슬라이싱이 되지 않는다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># 집합 s1을 리스트형으로 변환
+</span><span class="k">print</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="c1"># [1,2,3]
+</span><span class="n">t1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># 집합 s1을 튜플형으로 변환
+</span><span class="k">print</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="c1"># (1,2,3)
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-집합-활용방법">2. 집합 활용방법</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>1) 교집합</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">&amp;</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># {4,5}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c1"># {4,5}
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p><strong>2) 합집합</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">|</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># {1,2,3,4,5,6,7,8}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c1"># {1,2,3,4,5,6,7,8}
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p><strong>3) 차집합</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">-</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># {1,2,3}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="o">-</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {6,7,8}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c1"># {1,2,3}
+</span><span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span> <span class="c1"># {6,7,8}
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-집합-관련-함수">3. 집합 관련 함수</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>1) 값 1개 추가</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 4 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {1,2,3,4}
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p><strong>2) 값 여러개 추가</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span> <span class="c1"># {5,6,7} 집합 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {1,2,3,4,5,6,7}
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p><strong>3) 값 제거</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># 3 제거
+</span><span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># {1,2,4,5,6,7}
+</span></code></pre></div></div>
+
+:ET

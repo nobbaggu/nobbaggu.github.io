@@ -1,0 +1,102 @@
+I"�<p>클래스, 메소드, 멤버변수 등을 정의할 때 public 이외에도 다른 접근 제어자들이 있다. 접근 제어자는 이 객체에 접근할 수 있는 권한을 설정하는 명령어이다.</p>
+
+<p> </p>
+
+<h1 id="1-정보-은닉">1. 정보 은닉</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">stuID</span><span class="o">;</span> <span class="c1">// private 접근제어자</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">stuName</span><span class="o">;</span> <span class="c1">// private 접근제어자</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">addr</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>stuID와 stuName 멤버변수는 외부 클래스에서 접근을 할 수 없게 되었다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">stuID</span><span class="o">;</span> <span class="c1">// private 접근제어자</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">stuName</span><span class="o">;</span> <span class="c1">// private 접근제어자</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">addr</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">stuName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">stuName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getStuID</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">stuID</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>외부 클래스에서 직접 stuName과 stuID에 접근할 수 없게 된 대신에 setName() 메소드와 getName()메소드를 제공하여 이름을 설정하고 읽을 수 있게 해두었다. 하지만 stuID는 학번이기 때문에 바뀔 수 없어 읽기밖에 제공하지 않는다.</p>
+
+<p>위 코드에는 추가하지 않았지만 애초에 생성자에 매개변수로 stuID를 넣어두고 인스턴스를 만들 때 정해지도록 하면 된다.</p>
+
+<p> </p>
+
+<h1 id="2-getter와-setter">2. getter와 setter</h1>
+
+<hr />
+
+<p>일반적으로 멤버 변수는 get()메소드와 set()메소드를 통해서 접근할 수 있도록 하는 것이 일반적이다. 이 메소드들을 getter, setter라고 부른다.</p>
+
+<p>이클립스 IDE는 멤버 변수들에 대해 자동으로 getter와 setter를 만들어주는 기능도 제공한다.</p>
+
+<p>외부 클래스에서 멤버 변수에 접근을 허용하는 것. 접근을 제한하고 setter를 제공하는 것. 둘에는 차이가 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">stuName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">char</span> <span class="n">gender</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getStuName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">stuName</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStuName</span><span class="o">(</span><span class="nc">String</span> <span class="n">stuName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">stuName</span> <span class="o">=</span> <span class="n">stuName</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">char</span> <span class="nf">getGender</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">gender</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGender</span><span class="o">(</span><span class="kt">char</span> <span class="n">gender</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">((</span><span class="n">gender</span> <span class="o">==</span> <span class="sc">'M'</span><span class="o">)</span> <span class="o">||</span> <span class="o">(</span><span class="n">gender</span> <span class="o">==</span> <span class="sc">'F'</span><span class="o">)){</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">gender</span> <span class="o">=</span> <span class="n">gender</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"invalid gender!!"</span><span class="o">);</span> <span class="c1">// 에러 구문 출력</span>
+            <span class="k">return</span><span class="o">;</span> <span class="c1">// setGender() 함수 종료</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드를 보면 성별을 설정하는 setGender 메소드를 제공할 때 매개변수를 M(Male) 혹은 F(Female)로 제한을 걸어둔다. 둘 중 하나가 아니면 오류 구문을 출력하고 함수를 종료하도록 한다. 하지만 성별을 public 접근 제어자를 사용해서 선언했으면 어떤 것이든 char 자료형에 맞는 자료는 저장될 수 있었을 것이다.</p>
+
+<p> </p>
+
+<p>#접근 제어자 접근 허용범위#</p>
+
+<p>public : 모든 외부 클래스</p>
+
+<p>protected : 같은 패키지 내부 클래스 혹은 상속 클래스</p>
+
+<p>아무것도 없는 경우(default) : 같은 패키지 내부 클래스</p>
+
+<p>private : 같은 클래스 내부</p>
+
+<p> </p>
+:ET

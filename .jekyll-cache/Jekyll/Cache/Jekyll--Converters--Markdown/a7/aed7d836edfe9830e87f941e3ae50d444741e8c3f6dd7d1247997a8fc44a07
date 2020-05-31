@@ -1,0 +1,37 @@
+I"�<p>클래스는 하나의 자료형이 될 수 있다.</p>
+
+<p>우리가 문자열을 선언할 때 흔히 쓰는 String 자료형도 int, char, double처럼 기본 자료형이 아닌 참조 자료형이다. 누군가 JDK에 만들어 놓은것을 사용할 뿐이다.</p>
+
+<p>아무튼 클래스가 하나의 자료형이 될 수 있고 그것을 참조 자료형이라고 부른다는 것이 중요하다. 여기에서 객체지향 프로그래밍의 맛보기를 알 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Subject</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">midScore</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">finScore</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Subject</span><span class="o">(</span><span class="kt">int</span> <span class="n">mid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">fin</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">midScore</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+        <span class="n">finScore</span> <span class="o">=</span> <span class="n">fin</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">stuID</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">stuName</span><span class="o">;</span>
+   <span class="nc">Subject</span> <span class="n">math</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span><span class="mi">90</span><span class="o">);</span>
+   <span class="nc">Subject</span> <span class="n">physics</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="o">(</span><span class="mi">80</span><span class="o">,</span><span class="mi">40</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>어떤 학생의 학번, 이름, 수강과목의 중간,기말 점수를 저장하고 싶을 때 Student 클래스안에 모두 선언하면 복잡할 것이다. 이렇게 할 경우 수학의 중간,기말과 물리의 중간,기말 총 4개를 더 추가해야한다. 하지만 수강과목을 하나의 클래스로 외부에 선언하고 Student 클래스에 Subject 참조 자료형의 변수를 선언하고 객체를 만들어주면 편리하다.</p>
+
+<p>이처럼 객체 상호간의 유기작용을 프로그래밍 하는것이 객체지향 프로그래밍의 핵심이다.</p>
+:ET

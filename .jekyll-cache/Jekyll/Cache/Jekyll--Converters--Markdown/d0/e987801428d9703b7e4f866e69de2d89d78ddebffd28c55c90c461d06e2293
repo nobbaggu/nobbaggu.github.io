@@ -1,0 +1,286 @@
+I"kv<p>이번에는 텍스트 파일과 바이너리 파일을 대상으로 각각 데이터를 어떻게 저장하고 읽어들이는지 설명 드리겠습니다.</p>
+
+<p>먼저 텍스트 파일에 대해 설명드릴건데 이 때에는 우리가 이전에 공부했던 문자와 문자열 관련 함수들을 사용해서 데이터를 저장하고 읽을 수 있습니다.</p>
+
+<p>먼저 문자와 문자열 관련 함수들을 다시 한 번 정리해볼게요.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">fputc</span><span class="p">(</span><span class="kt">int</span> <span class="n">ch</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">//문자 출력(쓰기)</span>
+<span class="kt">int</span> <span class="nf">fgetc</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">//문자 입력(읽기)</span>
+<span class="kt">int</span> <span class="nf">fputs</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">//문자열 출력(쓰기)</span>
+</code></pre></div></div>
+
+<p>이전에는 위의 함수들의 전달인자 중 스트림에다가 stdin이나 stdout의 표준입출력 스트림을 전달하고 모니터를 통해 콘솔출력을 해왔었는데, 이번에는 파일에 대한 입출력을 해야하기때문에 표준입출력이 아닌 이전시간에 배운 개방모드의 스트림을 넣어주어야합니다.</p>
+
+<p> </p>
+<h4 id="1-텍스트-쓰기">1. 텍스트 쓰기</h4>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wt</span><span class="err">”</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">f0</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Failed</span> <span class="n">to</span> <span class="n">open</span> <span class="n">the</span> <span class="n">file</span> <span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">);</span>
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">fputc</span><span class="p">(</span><span class="err">‘</span><span class="n">N</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘N’ 전달</span>
+	<span class="n">fputc</span><span class="p">(</span><span class="err">‘</span><span class="n">i</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘i’ 전달</span>
+	<span class="n">fputc</span><span class="p">(</span><span class="err">‘</span><span class="n">c</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘c’ 전달</span>
+	<span class="n">fputc</span><span class="p">(</span><span class="err">‘</span><span class="n">e</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘e’ 전달</span>
+	<span class="n">fputc</span><span class="p">(</span><span class="err">‘\</span><span class="n">n</span><span class="err">’</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0 스트림을 통해 문자 ‘\n’ 전달</span>
+	<span class="n">fputs</span><span class="p">(</span><span class="err">“</span><span class="n">I</span> <span class="n">love</span> <span class="err">“</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0스트림을 통해 문자열 “I love ” 전달</span>
+	<span class="n">fputs</span><span class="p">(</span><span class="err">“</span><span class="n">C</span> <span class="n">language</span><span class="err">”</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span> <span class="c1">//f0스트림을 통해 문자열 “C language” 전달</span>
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p><img src="/images/2018/09/11-2.jpg" alt="11-2" width="70%" height="70%" /></p>
+
+<p>잘 저장 되었습니다. 별로 어려울건 없는것같네요.</p>
+
+<p> </p>
+<h4 id="2-텍스트-읽기">2. 텍스트 읽기</h4>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">f0</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Failed</span> <span class="n">to</span> <span class="n">open</span> <span class="n">the</span> <span class="n">file</span> <span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">);</span>
+		
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="n">ch</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">ch</span><span class="p">);</span><span class="c1">//N 출력</span>
+
+	<span class="n">ch</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">ch</span><span class="p">);</span><span class="c1">//i출력</span>
+	
+	<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span> <span class="n">f0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">s</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span><span class="c1">//ce출력</span>
+
+	<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span> <span class="n">f0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">s</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span><span class="c1">//I love C language출력</span>
+
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Nice</p>
+
+<p>I love C language계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>파일에 들은 문자와 문자열들을 위의 함수들을 이용해서 읽어들였는데, 아직 헷갈리시는 부분이 많으실겁니다. 문자 하나를 출력하고 또 하나를 출력하면 이전에 출력되었던 건 알아서 제외하고 다음 문자가 출력된다는 사실. 어디까지 출력했는지 프로그램이 기억하고 있는걸까요? 이는 다음시간에 위치지시자(커서)에 대해서 배우면 이해가 가실겁니다.</p>
+
+<p>그리고 N과 i만 문자로 출력하고 이 다음에는 문자열 형태로 출력했더니 알아서 ce까지 잘 출력되고 또 한 문장인 “I love C language”까지만 출력이 됩니다. 하지만 우리는 N,i,c,e를 각각 파일에 저장할때에 NULL문자는 저장해주지 않았습니다. 무엇을 기준으로 출력을 하는 걸까요? 사실 <strong><u>문자열이 파일에 저장될때에는 NULL문자가 저장되지 않습니다. 파일은 문장과 문장을 개행문자 '\n'으로 구분합니다.  따라서 우리가 fgets함수를 사용하면 '\n'을 만날 때 까지 문자열을 읽어들입니다.</u></strong></p>
+
+<p>그리고 우리가 위에서 텍스트파일을 읽어들이는 코드를 작성할 때에 끝까지 읽어들여 내용이 끝이나면 그만해야합니다. 우리가 파일을 다 읽어들였는지 아닌지 알 수 있게 도와주는 함수가 있어요. 바로 feof함수라는 겁니다.</p>
+
+<p>int feof(FILE * stream);
+//파일이 끝이 나지 않았으면 0, 끝에 도달했을 경우 0이아닌 값을 return(반환)</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">f0</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Failed</span> <span class="n">to</span> <span class="n">open</span> <span class="n">the</span> <span class="n">file</span> <span class="n">practice</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">);</span>
+		
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">while</span><span class="p">(</span><span class="n">feof</span><span class="p">(</span><span class="n">f0</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="c1">//파일의 끝에 도달하면 출력 중지</span>
+	<span class="p">{</span>
+		<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span> <span class="n">f0</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">s</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+	<span class="n">flose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="err">“\</span><span class="n">n</span><span class="err">”</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Nice</p>
+
+<p>I love C language</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>우리는 while문을 써서 feof가 0이 아닌 값을 반환할 때 까지 문자열을 출력하고 0이 되면 프로그램이 종료되도록 했어요. 실행결과를 보시면 의도한대로 나왔습니다.</p>
+
+<p> </p>
+<h4 id="3-바이너리-읽기">3. 바이너리 읽기</h4>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span> <span class="nf">fread</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">arr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>첫 번째 전달인자 : 읽어들인 데이터를 저장할 포인터 혹은 배열</p>
+
+<p>두 번째 전달인자 : 한 번에 읽어들일 데이터의 byte 크기</p>
+
+<p>세 번째 전달인자 : 두 번째 전달인자에 해당하는 크기만큼을 한 번으로 카운트하는 데이터를 읽어들일 횟수</p>
+
+<p>네 번째 전달인자 : 스트림 개방모드</p>
+
+<p>fread함수는 2번째 전달인자와 3번째 전달인자의 곱 size * count 만큼의 데이터를 한 번에 읽어들여요. 그리고 다 읽어들이면 size_t 반환형의 값을 반환하는데 이는 count입니다. 읽어들이라고 명령한 횟수 만큼 다 읽어들이면 그 횟수인 count를 반환하고 오류가나거나 다 읽지 못하면 count보다 작은 수를 반환합니다.</p>
+
+<p>가령 fread(arr, sizeof(int), 10, “rb”); 라고 하면 sizeof(int) = 4byte크기의 데이터를 스트림 rb로 개방된 파일에서 10번 읽어들여서 배열 arr에 저장하라는 의미입니다.</p>
+
+<p> </p>
+<h4 id="4-바이너리-쓰기">4. 바이너리 쓰기</h4>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span> <span class="nf">fwrite</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">arr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">sze_t</span> <span class="n">count</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>fread함수와 형태가 비슷하지 않나요?</p>
+
+<p>예를들어 fwrite(arr, sizeof(int), 10, “wb”); 라고 하면 sizeof(int) = 4byte크기의 데이터를 배열 arr에서 읽어들여 스트림 wb로 개방된 파일에 저장하라는 의미입니다.</p>
+
+<p>그럼 fread함수와 fwrite함수를 사용하는 예제코드를 한 번 보겠습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">src</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">bird</span><span class="p">.</span><span class="n">jpg</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rb</span><span class="err">”</span><span class="p">);</span>
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">cpy</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">copy</span><span class="p">.</span><span class="n">jpg</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wb</span><span class="err">”</span><span class="p">);</span>
+
+	<span class="kt">char</span> <span class="n">arr</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
+	
+	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">cnt</span> <span class="o">=</span> <span class="n">fread</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">arr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="n">src</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">cnt</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">//cnt가 100보다 작은 경우 : 1. 파일의 끝에 도달 혹은 2.오류</span>
+		<span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">feof</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="c1">//파일의 끝에 도달</span>
+			<span class="p">{</span>
+				<span class="n">fwrite</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">arr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">cpy</span><span class="p">);</span>
+				<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Copy</span> <span class="n">Complete</span><span class="err">”</span><span class="p">);</span>
+				<span class="k">break</span><span class="p">;</span> <span class="c1">// while문 탈출</span>
+			<span class="p">}</span>
+			<span class="k">else</span> <span class="c1">//파일 읽기 실패</span>
+			<span class="p">{</span>
+				<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Copy</span> <span class="n">Failed</span><span class="err">”</span><span class="p">);</span>
+			<span class="p">}</span>
+			
+			<span class="k">break</span><span class="p">;</span> <span class="c1">//반복문 탈출</span>
+		<span class="p">}</span>
+		<span class="k">else</span> <span class="c1">//파일을 덜 읽은 경우 일단 저장된 일부분을 복사 파일에 저장</span>
+		<span class="p">{</span>
+			<span class="n">fwrite</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">arr</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">),</span> <span class="n">cpy</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="n">fclose</span><span class="p">(</span><span class="n">src</span><span class="p">);</span>
+	<span class="n">fclose</span><span class="p">(</span><span class="n">cpy</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p><img src="/images/2018/09/22.png" alt="22" width="70%" height="70%" /></p>
+
+<p><img src="/images/2018/09/33-1.jpg" alt="33-1" width="70%" height="70%" /></p>
+
+<p>bird.jpg 파일이 복사되어 copy.jpg라는 파일이 생성되었어요. 방금 실행한 코드는 파일 입출력의 대부분의 내용에 대해 담고있어요. 스트림을 생성하고 읽기와 쓰기, 그리고 파일의 끝에 도달했음을 알려주는 feof함수 등. 이 코드를 제대로 이해하신다면 파일입출력에 관해서는 기본적인 사용법을 알고계신거니 충분히 이해하고 넘어가시기 바랍니다.</p>
+
+<p> </p>
+<h4 id="5-텍스트와-바이너리-데이터를-함께-입출력-하는-방법--fprintf함수--fscanf함수">5. 텍스트와 바이너리 데이터를 함께 입출력 하는 방법 : fprintf함수 / fscanf함수</h4>
+
+<p>fprintf함수와 fscanf함수가 printf함수와 scanf함수와 다른점은 가장 첫 번째 전달인자로 데이터를 읽거나 쓸 스트림을 지정해줄 수 있다는 점입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fprintf</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="err">“</span><span class="o">%</span><span class="n">s</span> <span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+<span class="n">fscanf</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="err">“</span><span class="o">%</span><span class="n">c</span> <span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>두 함수는 위와 같이 쓰입니다. 눈에 띄는 것은 서식을 따로 지정해서 텍스트와 바이너리 데이터를 한 번에 파일에 입출력 할 수 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">hello</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wt</span><span class="err">”</span><span class="p">);</span>
+	<span class="n">fprintf</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="err">“</span><span class="n">name</span> <span class="o">:</span> <span class="o">%</span><span class="n">s</span><span class="p">,</span> <span class="n">age</span> <span class="o">:</span> <span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">Kelly</span><span class="err">”</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+	<span class="n">fprintf</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="err">“</span><span class="n">name</span> <span class="o">:</span> <span class="o">%</span><span class="n">s</span><span class="p">,</span> <span class="n">age</span> <span class="o">:</span> <span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">John</span><span class="err">”</span><span class="p">,</span> <span class="mi">31</span><span class="p">);</span>
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p><img src="/images/2018/09/44.png" alt="44" width="70%" height="70%" /></p>
+
+<p>printf함수를 사용해서 텍스트 데이터인 이름과 바이너리 데이터인 나이를 저장했습니다.</p>
+
+<p>fscanf함수를 저장하기 위해서 hello.txt의 데이터를 다음과 같이 고쳐보세요.</p>
+
+<p><img src="/images/2018/09/55.png" alt="55" width="70%" height="70%" /></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="nf">Clear</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">getchar</span><span class="p">()</span><span class="o">!=</span><span class="err">’\</span><span class="n">n</span><span class="err">’</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">hello</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
+	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">num</span> <span class="o">=</span> <span class="n">fscanf</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="err">“</span><span class="o">%</span><span class="n">s</span> <span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">age</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">==</span><span class="n">EOF</span><span class="p">)</span> <span class="p">{</span><span class="k">break</span><span class="p">;}</span>
+
+		<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">name</span> <span class="o">:</span> <span class="o">%</span><span class="n">s</span> <span class="p">,</span> <span class="n">age</span> <span class="o">:</span> <span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>name : Kelly , age : 20</p>
+
+<p>name : John , age : 41</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>fscanf함수를 이용해서 %s형식의 이름과 %d형식의 나이를 불러와서 각각 name과 age 변수에 저장했습니다. 그리고 파일이 끝이 나서 fscanf함수가 더 이상 불러들일 데이터가 없으면 EOF를 반환하기때문에 그걸 이용해서 while문을 탈출하고 있습니다. 그리고 마지막으로 저장된 데이터를 printf함수를 이용해서 콘솔출력으로 확인합니다.</p>
+:ET

@@ -1,0 +1,278 @@
+I"�_<p>내부 클래스는 클래스 안에 있는 클래스이다. 중첩 클래스라고도 부른다.</p>
+
+<p>변수에는 인스턴스 변수(멤버 변수), static 변수, 지역 변수(메소드 내부 변수)가 있다. 이와 같이 내부 클래스에도 인스턴스 내부 클래스, static 내부 클래스, 지역 내부 클래스 등이 있다. 여기에 추가적으로 익명 클래스도 있다.</p>
+
+<p> </p>
+
+<h1 id="1-인스턴스-내부클래스">1. 인스턴스 내부클래스</h1>
+
+<hr />
+
+<p>인스턴스 변수의 선언 위치와 같은 곳에 선언한다.</p>
+
+<p>인스턴스 내부 클래스는 이 클래스를 감싸고 있는 클래스에서만 사용하기 위해 만드는 것이 보통이다. 따라서 감싸고 있는 클래스 이외의 다른 클래스에서의 사용을 막기 위해서 내부 클래스를 private로 선언하는 것이 일반적이다.</p>
+
+<p>또한 인스턴스 내부클래스는 외부클래스 생성 후 사용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">OutClass</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+   
+   <span class="kd">private</span> <span class="nc">InClass</span> <span class="n">inClass</span><span class="o">;</span> <span class="c1">//내부 클래스 참조 변수 선언만 해놓은 후</span>
+   
+   <span class="kd">public</span> <span class="nf">OutClass</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">inClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">InClass</span><span class="o">();</span> <span class="c1">//외부 클래스 생성자 만들어진 이후 생성</span>
+   <span class="o">}</span>
+   
+   <span class="kd">class</span> <span class="nc">InClass</span><span class="o">{</span>
+      <span class="kt">int</span> <span class="n">inNum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+      <span class="c1">//static int sInNum = 200; //외부클래스 객체가 먼저 만들어져야 InClass객체가 만들어질 수 있으므로 static변수는 불가능</span>
+      
+      <span class="kt">void</span> <span class="nf">inTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass num = "</span><span class="o">+</span><span class="n">num</span><span class="o">+</span> <span class="s">"(instance variable of outer class"</span><span class="o">);</span> <span class="c1">//외부 클래스 인스턴스 변수 사용 가능</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span> <span class="s">"(static variable of outer class"</span><span class="o">);</span> <span class="c1">//외부 클래스 static 변수 사용 가능</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//외부 클래스에서는 내부클래스의 메소드 호출 가능</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">usingClass</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">inClass</span><span class="o">.</span><span class="na">inTest</span><span class="o">();</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InnerTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="nc">OutClass</span> <span class="n">outClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OutClass</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Call inner class method using outter class"</span><span class="o">);</span>  
+      <span class="n">outClass</span><span class="o">.</span><span class="na">usingClass</span><span class="o">();</span>
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Call inner class method using outter class</p>
+
+<p>OutClass num = 10(instance variable of outer class</p>
+
+<p>OutClass sNum = 20(static variable of outer class</p>
+
+<p>실행결과를 보면 알 수 있듯 내부 클래스 내부에서는 외부 클래스의 인스턴스 변수와 정적 변수 모두 사용할 수 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-static-내부클래스">2. static 내부클래스</h1>
+
+<hr />
+
+<p>인스턴스 내부클래스는 외부클래스 생성 이전에 사용할 수 없고 static변수의 선언도 불가능했다.</p>
+
+<p>외부클래스 생성 이전에도 사용이 필요한 경우 static 내부클래스를 사용하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">OutClass</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+   
+   <span class="kd">static</span> <span class="kd">class</span> <span class="nc">InStaticClass</span><span class="o">{</span>
+      <span class="kt">int</span> <span class="n">inNum</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+      <span class="kd">static</span> <span class="kt">int</span> <span class="n">sInNum</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span>
+      
+      <span class="kt">void</span> <span class="nf">inTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass inNum = "</span><span class="o">+</span><span class="n">inNum</span><span class="o">+</span><span class="s">"(instance variable of inner class)"</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass sInNum = "</span><span class="o">+</span><span class="n">sInNum</span><span class="o">+</span><span class="s">"(static variable of inner class)"</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span><span class="s">"(static variable of outer class)"</span><span class="o">);</span>
+         
+         <span class="c1">//내부클래스 객체가 외부클래스 객체와 num보다 빨리 생성 가능하므로 외부 인스턴스 변수 사용 불가능</span>
+         <span class="c1">//System.out.println("OutClass sNum = "+num+"(instance variable of outer class)");</span>
+      <span class="o">}</span>
+      
+      <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="c1">//static 메소드 이므로 외부클래스, 내부클래스 static변수 사용 가능</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"InStaticClass sInNum = "</span><span class="o">+</span><span class="n">sInNum</span><span class="o">+</span><span class="s">"(static variable of inner class)"</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"OutClass sNum = "</span><span class="o">+</span><span class="n">sNum</span><span class="o">+</span><span class="s">"(static variable of outer class)"</span><span class="o">);</span>
+      <span class="o">}</span>
+      
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InnerTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="c1">//외부클래스 객체 생성 없이 static 내부클래스 객체 생성</span>
+      <span class="nc">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span> <span class="n">sInClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span><span class="o">();</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=====Call method of InStaticClass====="</span><span class="o">);</span>
+      <span class="n">sInClass</span><span class="o">.</span><span class="na">inTest</span><span class="o">();</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=====Call static method of InStaticClass====="</span><span class="o">);</span>
+      <span class="c1">//클래스 이름으로 static메소드 사용 가능</span>
+      <span class="nc">OutClass</span><span class="o">.</span><span class="na">InStaticClass</span><span class="o">.</span><span class="na">sTest</span><span class="o">();</span>
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>=====Call method of InStaticClass=====</p>
+
+<p>InStaticClass inNum = 100(instance variable of inner class)</p>
+
+<p>InStaticClass sInNum = 200(static variable of inner class)</p>
+
+<p>OutClass sNum = 20(static variable of outer class)</p>
+
+<p>=====Call static method of InStaticClass=====</p>
+
+<p>InStaticClass sInNum = 200(static variable of inner class)</p>
+
+<p>OutClass sNum = 20(static variable of outer class)</p>
+
+<p>static 내부클래스의 일반 메소드는 외부 클래스의 일반 변수를 사용할 수 없다. 왜냐하면 static 내부클래스의 인스턴스가 만들어지면 일반 메소드를 사용할 수 있는데 이 시기가 외부클래스의 생성, 그에 따른 외부 클래스의 멤버변수의 생성 시기보다 빠를 수 있기 때문이다.</p>
+
+<p>당연히 static 내부클래스의 static메소드는 클래스 생성 이전부터 메모리에 로드되므로 외부, 내부클래스에 상관없이 오직 static변수만 사용할 수 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-지역-내부클래스">3. 지역 내부클래스</h1>
+
+<hr />
+
+<p>지역변수는 함수(메소드)내에서만 정의하여 사용하는 변수이다. 지역 내부클래스는 이름대로 메소드 내부에 선언한다. 당연히 메소드 내부에서만 사용 가능하다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.Runnable</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Outer</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">outNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+   <span class="kd">static</span> <span class="kt">int</span> <span class="n">sNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+   
+   <span class="nc">Runnable</span> <span class="nf">getRunnable</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+      
+      <span class="c1">//getRunnable 메소드 내부에 Runnable 인터페이스를 구현하는 MyRunnable 클래스 정의</span>
+      <span class="kd">class</span> <span class="nc">MyRunnable</span> <span class="kd">implements</span> <span class="nc">Runnable</span><span class="o">{</span>
+         <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+         
+         <span class="nd">@Override</span>
+         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="c1">//num = 200; //오류</span>
+            <span class="c1">//i = 20;  //오류</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"i = "</span> <span class="o">+</span><span class="n">i</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="nc">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      
+      <span class="k">return</span> <span class="k">new</span> <span class="nf">MyRunnable</span><span class="o">();</span> <span class="c1">//getRunnable 메소드의 반환값(객체)</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">innerclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocalInnerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Outer</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Outer</span><span class="o">();</span> <span class="c1">//외부 클래스 객체 생성</span>
+      <span class="nc">Runnable</span> <span class="n">runner</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="na">getRunnable</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">//getRunnable()호출이 끝</span>
+      <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">();</span> <span class="c1">//여기서 getRunnable(1)의 매개변수 1이 사용(출력)됨</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>i = 1</p>
+
+<p>num = 100</p>
+
+<p>localNum = 10</p>
+
+<p>outNum= 10</p>
+
+<p>Outer.sNum =20</p>
+
+<p>Runnable 인터페이스는 스레드를 구현하는 인터페이스이다. Runnable 인터페이스를 구현한 모든 클래스는 run() 추상메소드를 구현하여야 한다. 위 예제에서는 MyRunnable이라는 클래스를 getRunnable() 메소드 내부에 정의하고 이 메소드가 MyRunnable 클래스를 반환한다.</p>
+
+<p>위에서 눈여겨 볼 점은 getRunnable() 메소드는 MyRunnable() 객체를 반환하면서 호출이 끝난다. 그런데 원래대로라면 매개변수 i도 메모리에서 같이 사라져야한다. 그런데 출력이 된다는 것은 아직 메모리에 남아있단 것이다.</p>
+
+<p>그 이유는 i가 컴파일러에의해 상수로 변했기 때문이다. 하나 기억해 둘 것은 <strong>지역 내부클래스에서 사용되는 지역변수는 상수로 처리된다</strong>는 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-익명-내부클래스">4. 익명 내부클래스</h1>
+
+<hr />
+
+<p>지역 내부클래스를 다시보면 MyRunnable이라는 클래스 이름을 getRunnable() 메소드가 객체를 반환할 때 밖에 사용하지 않는다. 이럴 경우 이름을 생략하고 익명 클래스로 정의할 수 있는데, 2가지 방법이 있다.</p>
+
+<h3 id="방법1--myrunnable-클래스-이름-생략하고-클래스-바로-생성">방법1) : MyRunnable 클래스 이름 생략하고 클래스 바로 생성</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="k">new</span> <span class="nc">Runnable</span><span class="o">(){</span> <span class="c1">//익명 내부클래스로 Runnable 인터페이스 구현</span>
+         <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+         
+         <span class="nd">@Override</span>
+         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"i = "</span> <span class="o">+</span><span class="n">i</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="nc">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">};</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<h3 id="방법2-인터페이스형-참조변수에-클래스-객체를-생성해-대입">방법2) 인터페이스형 참조변수에 클래스 객체를 생성해 대입</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Runnable</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Runnable</span><span class="o">(){</span> <span class="c1">//익명 내부클래스로 Runnable 인터페이스 구현</span>
+   <span class="kt">int</span> <span class="n">localNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num = "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localNum = "</span><span class="o">+</span><span class="n">localNum</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"outNum= "</span><span class="o">+</span><span class="n">outNum</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Outer.sNum ="</span><span class="o">+</span><span class="nc">Outer</span><span class="o">.</span><span class="na">sNum</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">};</span>
+</code></pre></div></div>
+
+<p>익명 내부클래스는 지역 내부클래스와 성질이 같으므로 비슷하게 사용할 수 있다. 지역변수 또한 지역 내부클래스에서 상수화 되었듯이 익명 내부클래스 내에서도 상수화 된다.</p>
+:ET

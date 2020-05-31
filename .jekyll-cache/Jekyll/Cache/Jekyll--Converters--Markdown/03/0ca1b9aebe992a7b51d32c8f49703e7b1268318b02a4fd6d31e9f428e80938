@@ -1,0 +1,124 @@
+I"�0<p>상위 클래스로 형 변환된 인스턴스는 상위 클래스에 없는 멤버변수와 메소드는 사용할 수 없다. 다만 같은 메소드가 재정의 된 경우 가상 메소드에 의해 자신의 메소드를 사용할 뿐이었다. 그런데 필요에 의해 다시 하위 자료형으로 형 변환되어 멤버변수나 메소드를 사용해야 할 경우가 있을 수 있다. 다시 하위 자료형으로 형 변환하는 것을 다운 캐스팅(down casting)이라고 한다.</p>
+
+<p> </p>
+
+<h1 id="1-다운-캐스팅">1. 다운 캐스팅</h1>
+
+<hr />
+
+<p>상위 클래스를 상속받는 하위 클래스가 여러개인 경우 다시 하위 클래스로 돌아오기 전에 하위 클래스들 중 어떤 클래스의 객체인지 확인해야 한다. 예를 들어 고객이라는 상위 클래스를 상속받은 VIP고객, Gold고객, Silver고객이 있다고 하자. 고객 자료형으로 선언된 VIP고객의 인스턴스가 다시 하위 자료형으로 갈 때 Gold 고객이나 Silver고객 자료형으로 다운캐스팅이 되어서는 안된다. 따라서 어떤 클래스의 인스턴스인지 확인해야 하는데 이를 해주는 것이 instanceof 예약어이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"animal moves"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Human</span> <span class="kd">extends</span> <span class="nc">Animal</span><span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"human walks"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">readBook</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"human reads a book"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tiger</span> <span class="kd">extends</span> <span class="nc">Animal</span><span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"tiger runs"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hunting</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"tiger hunts"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">inheritance</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Eagle</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"eagle flys"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">spreadWings</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"eagle spreads wings"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Animal 상위 클래스를 상속받는 Human, Tiger, Eagle 클래스가 있다. 각 클래스는 Animal의 move() 메소드를 재정의하고 추가적으로 자신만의 메소드를 하나 더 만들었다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">inheritance</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnimalTest</span> <span class="o">{</span>
+
+   <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Animal</span><span class="o">&gt;</span> <span class="n">aniList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Animal</span><span class="o">&gt;();</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">AnimalTest</span> <span class="n">aTest</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AnimalTest</span><span class="o">();</span>
+      <span class="n">aTest</span><span class="o">.</span><span class="na">addAnimal</span><span class="o">();</span>
+      <span class="n">aTest</span><span class="o">.</span><span class="na">testCasting</span><span class="o">();</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addAnimal</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">aniList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Human</span><span class="o">());</span>
+      <span class="n">aniList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Tiger</span><span class="o">());</span>
+      <span class="n">aniList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Eagle</span><span class="o">());</span>
+      
+      <span class="k">for</span><span class="o">(</span><span class="nc">Animal</span> <span class="n">ani</span> <span class="o">:</span> <span class="n">aniList</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">ani</span><span class="o">.</span><span class="na">move</span><span class="o">();</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testCasting</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">aniList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">Animal</span> <span class="n">ani</span> <span class="o">=</span> <span class="n">aniList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">ani</span> <span class="k">instanceof</span> <span class="nc">Human</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Human</span> <span class="n">h</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Human</span><span class="o">)</span><span class="n">ani</span><span class="o">;</span>
+            <span class="n">h</span><span class="o">.</span><span class="na">readBook</span><span class="o">();</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">ani</span> <span class="k">instanceof</span> <span class="nc">Tiger</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Tiger</span> <span class="n">t</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Tiger</span><span class="o">)</span><span class="n">ani</span><span class="o">;</span>
+            <span class="n">t</span><span class="o">.</span><span class="na">hunting</span><span class="o">();</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">ani</span> <span class="k">instanceof</span> <span class="nc">Eagle</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Eagle</span> <span class="n">e</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Eagle</span><span class="o">)</span><span class="n">ani</span><span class="o">;</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">spreadWings</span><span class="o">();</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"No such a type!"</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>AnimalTest라는 클래스를 하나 만들고 Animal자료형을 요소로 가지는 ArrayList를 하나 만들었다. 그리고 세 가지 하위클래스 각각의 객체를 생성하는 add()메소드와 참조변수가 참조하는 객체의 참조자료형을 확인한 후 맞는 자료형으로 변경한 후 각 하위 클래스만이 가지는 고유의 메소드를 호출한다. 이 때 if else 문을 사용했다.</p>
+
+<p>실행결과</p>
+
+<p>human walks</p>
+
+<p>tiger runs</p>
+
+<p>eagle flys</p>
+
+<p>human reads a book</p>
+
+<p>tiger hunts</p>
+
+<p>eagle spreads wings</p>
+
+<p>instanceof 예약어를 사용하여 참조변수가 어떤 하위 클래스의 객체를 참조하는지 매칭하여 다운캐스팅을 하였다. 다운캐스팅 된 객체를 새로운 참조변수에 저장하고 이 참조변수를 통해서 각 객체의 고유 메소드를 호출할 수 있었다.</p>
+:ET

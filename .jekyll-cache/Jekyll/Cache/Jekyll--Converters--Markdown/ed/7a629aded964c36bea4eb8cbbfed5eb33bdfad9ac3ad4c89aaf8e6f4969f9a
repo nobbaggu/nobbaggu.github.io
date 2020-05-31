@@ -1,0 +1,235 @@
+I"�h<p>리스트뷰와 그리드뷰를 만들 때 하나의 아이템이 표시되는 레이아웃을 하나의 위젯으로 만들어 사용했었다. 이와 같이 뷰를 상속하여 재정의 하는 방식으로 안드로이드에서 제공하는 기본 위젯을 조합하면 더 복잡한 위젯을 만들 수 있고, 재사용성이 높아지고 코드도 간결해진다.</p>
+
+<p><br />
+안드로이드 API는 날짜선택 위젯과 시간선택 위젯을 각각 제공한다. 두 위젯을 한 번에 보여주는 복합위젯을 만들어보겠다.</p>
+
+<p><br /></p>
+<h3 id="1-복합-위젯-레이아웃">1. 복합 위젯 레이아웃</h3>
+
+<p>&lt;picker.xml&gt;</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">android:gravity=</span><span class="s">"center"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;DatePicker</span>
+        <span class="na">android:id=</span><span class="s">"@+id/datePicker"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/DatePicker&gt;</span>
+
+    <span class="nt">&lt;CheckBox</span>
+        <span class="na">android:id=</span><span class="s">"@+id/enableTimeCheckBox"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"시간 보이기"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;TimePicker</span>
+        <span class="na">android:id=</span><span class="s">"@+id/timePicker"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/TimePicker&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="2-복합위젯-컨트롤-코드">2. 복합위젯 컨트롤 코드</h3>
+
+<p>&lt;DateTimePicker.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampledatetimepicker</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.LayoutInflater</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.CheckBox</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.CompoundButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.DatePicker</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.LinearLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TimePicker</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Calendar</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DateTimePicker</span> <span class="kd">extends</span> <span class="nc">LinearLayout</span> <span class="o">{</span>
+
+    <span class="c1">//OnDateChangedListener 리스너와 OnTimeChangedListener 리스너의 이벤트 처리를 한 번에 하기위한 새로운 인터페이스 정의</span>
+    <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">OnDateTimeChangedListener</span><span class="o">{</span>
+        <span class="kt">void</span> <span class="nf">onDateTimeChanged</span><span class="o">(</span><span class="nc">DateTimePicker</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">monthOfYear</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dayOfYear</span><span class="o">,</span> <span class="kt">int</span> <span class="n">hourOfDay</span><span class="o">,</span> <span class="kt">int</span> <span class="n">minute</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">OnDateTimeChangedListener</span> <span class="n">listener</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">DatePicker</span> <span class="n">datePicker</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">TimePicker</span> <span class="n">timePicker</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">CheckBox</span> <span class="n">enableTimeCheckBox</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">DateTimePicker</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="o">);</span> <span class="c1">//객체 초기화</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">DateTimePicker</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">AttributeSet</span> <span class="n">attrs</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">){</span>
+        <span class="c1">//레이아웃 인플레이션</span>
+        <span class="nc">LayoutInflater</span> <span class="n">inflater</span> <span class="o">=</span> <span class="o">(</span><span class="nc">LayoutInflater</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="nc">Context</span><span class="o">.</span><span class="na">LAYOUT_INFLATER_SERVICE</span><span class="o">);</span>
+        <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">picker</span><span class="o">,</span> <span class="k">this</span>  <span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">//Calendar 객체를 사용해 시간 정보 참조</span>
+        <span class="nc">Calendar</span> <span class="n">calendar</span> <span class="o">=</span> <span class="nc">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">curYear</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">YEAR</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">curMonth</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">MONDAY</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">curDay</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">DAY_OF_MONTH</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">curHour</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">HOUR_OF_DAY</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">curMinute</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">MINUTE</span><span class="o">);</span>
+
+        <span class="c1">//날짜 선택 위젯 초기화 및 이벤트 처리 리스너 설정</span>
+        <span class="n">datePicker</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">datePicker</span><span class="o">);</span>
+        <span class="n">datePicker</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">curYear</span><span class="o">,</span> <span class="n">curMonth</span><span class="o">,</span> <span class="n">curDay</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DatePicker</span><span class="o">.</span><span class="na">OnDateChangedListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDateChanged</span><span class="o">(</span><span class="nc">DatePicker</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">monthOfYear</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dayOfMonth</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">listener</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span> <span class="c1">//새로 정의한 OnDateTimeChangedListener 리스너로 이벤트 전달</span>
+                    <span class="n">listener</span><span class="o">.</span><span class="na">onDateTimeChanged</span><span class="o">(</span><span class="nc">DateTimePicker</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">year</span><span class="o">,</span> <span class="n">monthOfYear</span><span class="o">,</span> <span class="n">dayOfMonth</span><span class="o">,</span>
+                            <span class="n">timePicker</span><span class="o">.</span><span class="na">getCurrentHour</span><span class="o">(),</span> <span class="n">timePicker</span><span class="o">.</span><span class="na">getCurrentMinute</span><span class="o">());</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="c1">//체크박스 이벤트 처리 리스너 설정</span>
+        <span class="n">enableTimeCheckBox</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">enableTimeCheckBox</span><span class="o">);</span>
+        <span class="n">enableTimeCheckBox</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="nc">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">timePicker</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="n">isChecked</span><span class="o">);</span> <span class="c1">//체크 되어있으면 TimePicker 동작</span>
+                <span class="n">timePicker</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">isChecked</span> <span class="o">?</span> <span class="nc">View</span><span class="o">.</span><span class="na">VISIBLE</span> <span class="o">:</span> <span class="nc">View</span><span class="o">.</span><span class="na">INVISIBLE</span><span class="o">);</span> <span class="c1">//체크 되어있으면 TimePicker 보이기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">timePicker</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">timePicker</span><span class="o">);</span>
+
+        <span class="c1">//시간 선택 위젯 초기화</span>
+        <span class="n">timePicker</span><span class="o">.</span><span class="na">setCurrentHour</span><span class="o">(</span><span class="n">curHour</span><span class="o">);</span>
+        <span class="n">timePicker</span><span class="o">.</span><span class="na">setCurrentMinute</span><span class="o">(</span><span class="n">curMinute</span><span class="o">);</span>
+        <span class="n">timePicker</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="nc">View</span><span class="o">.</span><span class="na">GONE</span><span class="o">);</span>
+
+        <span class="c1">//시간 선택 위젯 이벤트 처리 리스너 설정</span>
+        <span class="n">timePicker</span><span class="o">.</span><span class="na">setOnTimeChangedListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">TimePicker</span><span class="o">.</span><span class="na">OnTimeChangedListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onTimeChanged</span><span class="o">(</span><span class="nc">TimePicker</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">hourOfDay</span><span class="o">,</span> <span class="kt">int</span> <span class="n">minute</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">listener</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span><span class="c1">//새로 정의한 OnDateTimeChangedListener 리스너로 이벤트 전달</span>
+                    <span class="n">listener</span><span class="o">.</span><span class="na">onDateTimeChanged</span><span class="o">(</span><span class="nc">DateTimePicker</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">datePicker</span><span class="o">.</span><span class="na">getYear</span><span class="o">(),</span> <span class="n">datePicker</span><span class="o">.</span><span class="na">getMonth</span><span class="o">(),</span>
+                            <span class="n">datePicker</span><span class="o">.</span><span class="na">getDayOfMonth</span><span class="o">(),</span> <span class="n">hourOfDay</span><span class="o">,</span> <span class="n">minute</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 이 클래스의 객체에 날짜,시간 변경 이벤트 리스너를 설정하기 위한 메소드 정의</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOnDateTimeChangedListener</span><span class="o">(</span><span class="nc">OnDateTimeChangedListener</span> <span class="n">listener</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">listener</span> <span class="o">=</span> <span class="n">listener</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Calendar 객체를 사용하면 현재 년도, 월, 일, 시간, 분 정보를 가져올 수 있다. 이것들을 가지고 날짜선택 위젯과 시간선택 위젯을 초기화하였다.</p>
+
+<p>그리고 체크박스의 선택 여부에따라 시간선택 위젯을 보이거나 보이지 않게 하였다.</p>
+
+<p>이 코드에서 중요한 부분은 DatePicker와 TimePicker의 날짜/시간 변경 이벤트 리스너가 호출되면 직접 정의한 OnDateTimeChangedLister 리스너로 전달해주는 것이다. 이렇게 하면 날짜와 시간 이벤트를 함께 처리할 수 있다.</p>
+
+<p><br /></p>
+
+<p>이제 MainActivity에서 이 복합 위젯을 화면에 띄워보겠다.</p>
+
+<p><br />
+&lt;activity_main.xml&gt;</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;io.swnomad.sampledatetimepicker.DateTimePicker</span>
+            <span class="na">android:id=</span><span class="s">"@+id/picker"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/ScrollView&gt;</span>
+
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>텍스트뷰는 DateTimePicker의 날짜/시간을 텍스트로 표시해주기 위해 만들었다.</p>
+
+<p><br />
+&lt;MainActivity.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampledatetimepicker</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Calendar</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kd">final</span> <span class="nc">SimpleDateFormat</span> <span class="n">dateFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleDateFormat</span><span class="o">(</span><span class="s">"yyyy년 MM월 dd일 HH시 mm분"</span><span class="o">);</span>
+
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+    <span class="nc">DateTimePicker</span> <span class="n">picker</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+        <span class="n">picker</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">picker</span><span class="o">);</span>
+
+        <span class="c1">//텍스트뷰 표시 시간 초기화</span>
+        <span class="nc">Calendar</span> <span class="n">calendar</span> <span class="o">=</span> <span class="nc">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+        <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">dateFormat</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">calendar</span><span class="o">.</span><span class="na">getTime</span><span class="o">()));</span>
+
+        <span class="c1">//날짜, 시간 변경 이벤트 처리 리스너 설정</span>
+        <span class="n">picker</span><span class="o">.</span><span class="na">setOnDateTimeChangedListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">DateTimePicker</span><span class="o">.</span><span class="na">OnDateTimeChangedListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDateTimeChanged</span><span class="o">(</span><span class="nc">DateTimePicker</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">monthOfYear</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dayOfYear</span><span class="o">,</span> <span class="kt">int</span> <span class="n">hourOfDay</span><span class="o">,</span> <span class="kt">int</span> <span class="n">minute</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Calendar</span> <span class="n">calendar</span> <span class="o">=</span> <span class="nc">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+                <span class="n">calendar</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">year</span><span class="o">,</span> <span class="n">monthOfYear</span><span class="o">,</span> <span class="n">dayOfYear</span><span class="o">,</span> <span class="n">hourOfDay</span><span class="o">,</span> <span class="n">minute</span><span class="o">);</span>
+
+                <span class="c1">//설정한 시간 텍스트뷰에 표시</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">dateFormat</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">calendar</span><span class="o">.</span><span class="na">getTime</span><span class="o">()));</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>SimpleDateFormat 클래스는 날짜를 우리가 원하는 포맷으로 표시해주는 역할을 한다. 날짜,시간 변경 이벤트 리스너로 이벤트가 전달되면 텍스트뷰에 우리가 정의한 포맷으로 날짜, 시간이 표시되도록 하였다.</p>
+
+<p><br />
+앱을 실행하면 아래의 화면을 확인할 수 있다.</p>
+
+<p><img src="/images/android/40/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/40/2.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

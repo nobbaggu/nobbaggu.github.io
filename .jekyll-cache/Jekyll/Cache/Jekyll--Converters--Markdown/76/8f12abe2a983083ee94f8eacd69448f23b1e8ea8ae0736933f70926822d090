@@ -1,0 +1,113 @@
+I"j,<p>시크바(seekBar)도 프로그레스바를 상속받은 상태표시 위젯이다. 추가적으로 사용자가 직접 상태값을 조정할 수 있다. 음악이나 동영상 플레이어의 재생 구간 조절이 대표적인 사용 예이다. 상태값이 조정되었을 때의 이벤트를 처리하기 위해 OnSeekBarChangeListener 리스너를 설정할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">OnSeekBarChangeListener</span>
+</code></pre></div></div>
+
+<p>OnSeekBarChangeListener 리스너 객체 내부에서는 아래 세 가지의 메소드를 재정의하여 사용할 수 있다.</p>
+
+<p> </p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">onStartTrackingTouch</span><span class="o">(</span><span class="nc">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="c1">//시크바의 핸들러 움직이기 시작할 때</span>
+<span class="kt">void</span> <span class="nf">onStopTrackingTouch</span><span class="o">(</span><span class="nc">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="c1">// 시크바의 핸들러 움직임 멈췄을 때</span>
+<span class="kt">void</span> <span class="nf">onProgressChanged</span><span class="o">(</span><span class="nc">SeekBar</span> <span class="n">seekBar</span><span class="o">,</span> <span class="kt">int</span> <span class="n">progress</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">fromUser</span><span class="o">)</span> <span class="c1">//시크바의 값이 바뀌었을 때</span>
+</code></pre></div></div>
+
+<p>시크바를 사용해서 화면 밝기를 조정하는 기능을 적용해보겠다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"시크바를 사용해 화면밝기 조정하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;SeekBar</span>
+        <span class="na">android:id=</span><span class="s">"@+id/seekBar"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span>
+        <span class="na">android:background=</span><span class="s">"#22000000"</span>
+        <span class="na">android:max=</span><span class="s">"100"</span>
+        <span class="na">android:min=</span><span class="s">"10"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>시크바의 최대값은 100, 최소값은 10으로 설정하였다. 시크바의 값을 설정하면 아래에 있는 텍스트뷰에 그 값을 표시할 것이다.</p>
+
+<p> </p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleseekbar</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.WindowManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.SeekBar</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="nc">SeekBar</span> <span class="n">seekBar</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">seekBar</span><span class="o">);</span>
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+
+        <span class="n">seekBar</span><span class="o">.</span><span class="na">setOnSeekBarChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">SeekBar</span><span class="o">.</span><span class="na">OnSeekBarChangeListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onProgressChanged</span><span class="o">(</span><span class="nc">SeekBar</span> <span class="n">seekBar</span><span class="o">,</span> <span class="kt">int</span> <span class="n">progress</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">fromUser</span><span class="o">)</span> <span class="o">{</span>
+
+                <span class="c1">//윈도우 밝기 값 10% ~ 100% 사이로 제한</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">progress</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">){</span>
+                    <span class="n">progress</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+                <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">progress</span><span class="o">&gt;</span><span class="mi">100</span><span class="o">){</span>
+                    <span class="n">progress</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                    <span class="c1">//NOP</span>
+                <span class="o">}</span>
+				
+				<span class="nc">WindowManager</span><span class="o">.</span><span class="na">LayoutParams</span> <span class="n">params</span> <span class="o">=</span> <span class="n">getWindow</span><span class="o">().</span><span class="na">getAttributes</span><span class="o">();</span> <span class="c1">//윈도우 관련정보 참조</span>
+                <span class="n">params</span><span class="o">.</span><span class="na">screenBrightness</span> <span class="o">=</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="n">progress</span> <span class="o">/</span> <span class="mi">100</span><span class="o">;</span>
+                <span class="n">getWindow</span><span class="o">().</span><span class="na">setAttributes</span><span class="o">(</span><span class="n">params</span><span class="o">);</span> <span class="c1">//설정한 밝기 값 적용</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"현재 화면 밝기(%) : "</span> <span class="o">+</span> <span class="n">progress</span><span class="o">);</span> <span class="c1">//텍스트뷰에 현재 밝기 %단위로 설정</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStartTrackingTouch</span><span class="o">(</span><span class="nc">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStopTrackingTouch</span><span class="o">(</span><span class="nc">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>OnSeekBarChangeListener 리스너 객체 내부의 onProgressChanged() 메소드는 시크바의 상태값이 변경되었을 때 호출된다. 이 때 전달인자로 들어오는 progress는 시크바의 상태값인데 이 값이 10보다 작거나 100보다 크면 각각 10과 100으로 재설정하였다.</p>
+
+<p>그리고 getWindow().getAttributes() 메소드를 통해서 현재 윈도우 설정 파라미터 정보를 참조했다. 이 파라미터에서 screenBrightness로 화면 밝기값을 참조할 수 있는데, 0~1 사이의 값을 가지므로 progress를 100으로 나눈 값으로 설정한다.</p>
+
+<p>앱을 실행하여 시크바를 통해 화면 밝기를 설정할 수 있다.</p>
+
+<p><img src="/images/android/27/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/27/2.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

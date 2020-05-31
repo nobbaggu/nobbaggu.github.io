@@ -1,0 +1,191 @@
+I"�I<h1 id="1-예외-던지기">1. 예외 던지기</h1>
+
+<hr />
+
+<p>예외를 해당 메소드의 코드에서 처리하지 않고 이후 객체의 메소드를 호출하여 사용하는 부분에서 처리하도록 미루는 것이 있는데, 이를 예외 던지기, 예외 미루기 라고 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayException</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">FileNotFoundException</span> <span class="o">{</span>
+      
+      <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"a.txt"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서는 FileNotFoundException 예외를 main() 메소드를 호출하여 사용하는 부분으로 넘긴다. 그런데 main()메소드는 운영체제의 자바 가상머신(JVM)에서 호출하므로 프로그램이 비정상 종료된다. 따라서 예외를 main() 메소드까지 미루는것은 좋지 않다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThrowsException</span> <span class="o">{</span>
+    
+   <span class="c1">// FileNotFoundException, ClassNotFoundException 예외 처리 미루기</span>
+   <span class="kd">public</span> <span class="nc">Class</span> <span class="nf">getClass</span><span class="o">(</span><span class="nc">String</span> <span class="n">filename</span><span class="o">,</span> <span class="nc">String</span> <span class="n">className</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">FileNotFoundException</span><span class="o">,</span> <span class="nc">ClassNotFoundException</span> <span class="o">{</span>
+      <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">filename</span><span class="o">);</span>
+      <span class="nc">Class</span> <span class="n">myClass</span> <span class="o">=</span> <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">className</span><span class="o">);</span>
+      
+      <span class="k">return</span> <span class="n">myClass</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">ThrowsException</span> <span class="n">te</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ThrowsException</span><span class="o">();</span>
+      <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span> <span class="c1">//에러 발생</span>
+
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서는 ThrowsException 클래스에서 두 개의 예외를 던졌다. 이후 main()메소드에서 객체를 만들어 getClass() 메소드를 호출하므로 main메소드에서 예외를 처리해야 한다. 이 때에는 두 가지 방법이 있다.</p>
+
+<p><a href="https://SWnomad.com/%ec%98%88%ec%99%b8-throws/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-196/" rel="attachment wp-att-1661"><img class="aligncenter size-full wp-image-1661" src="/images/2018/12/no-name-41.jpg" alt="" width="524" height="150" srcset="/images/2018/12/no-name-41.jpg 524w, /images/2018/12/no-name-41-300x86.jpg 300w" sizes="(max-width: 524px) 100vw, 524px" /></a></p>
+
+<p>처리하는 방법은 3가지이다. 첫 번째는 다시 던지는 것인데 이는 JVM으로 던져버리므로 프로그램의 비정상적 종료를 불러일으킬 것이므로 아래 두 가지 방법을 선택하는 것이 좋다.</p>
+
+<h3 id="1-surround-with-trymulti-catch">1) Surround with try/multi-catch</h3>
+
+<p>이 방법에서는 하나의 catch문에서 여러개의 예외를 처리하도록 할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+         <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="o">|</span> <span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//두 예외 중 한 가지 발생하면 블록 실행</span>
+         <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+      <span class="o">}</span>
+</code></pre></div></div>
+
+<p>OR 조건 연산자를 사용하여 여러 예외를 하나의 블록문으로 처리할 수 있다.</p>
+
+<p> </p>
+
+<h3 id="2-surround-with-trycatch">2) Surround with try/catch</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+         <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Can not find the file"</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Can not find the class"</span><span class="o">);</span>
+      <span class="o">}</span>
+</code></pre></div></div>
+
+<p>이 방법은 각각의 예외를 다른 방식으로 처리해야 할 경우 사용할 수 있다.</p>
+
+<p>어떤 방식을 선택할지는 상황에따라, 그리고 만드는 프로그램의 특성에 따라 달리할 수 있다. 예를들어 같은 예외라도 여러곳에서 호출하면서 호출하여 사용하는 부분에 따라 다른 방식의 처리가 필요하다면 일단 throws를 통해 예외를 던진 후 호출하는 부분에서 상황에 맞게 예외를 처리하면 된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-다중-예외처리">2. 다중 예외처리</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+   <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>어떤 예외가 발생할 지 파악할 수 없는 경우에 위와 같이 마지막에 모든 예외 클래스의 최상위 클래스인 Exception 클래스로 예외처리를 해줄 수 있다. 이 경우 어떤 예외가 들어오더라도 Exception으로 자동 형변환 되어 예외가 처리된다.</p>
+
+<p>그런데 이런 상황에서 최상위 클래스인 Exception 클래스는 항상 마지막 catch문에 넣어주어야한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+   <span class="nc">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="s">"myfile.txt"</span><span class="o">,</span> <span class="s">"myClass.class"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위와 같이 Exception클래스를 가장 위의 catch문에 놓을 경우 어떤 예외가 들어오더라도 첫 번째 catch문에 닿기 때문에 이후에 있는 예외에는 도달할 일이 없어 오류가 나게된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-사용자-정의-예외처리">3. 사용자 정의 예외처리</h1>
+
+<hr />
+
+<p>어떤 사이트에서 회원가입 기능을 구현할 때 아이디를 입력받으면 적합성 체크를 한다. 아이디가 비어있거나 길이 제한을 만족하지 않을 때 예외를 발생시켜야 하는데, 이러한 클래스는 자바에서 제공하지 않으므로 직접 만들어 사용해야 한다.</p>
+
+<p>예외처리를 만들어 사용할 경우는 가장 비슷한 예외 클래스를 상속받으면 되는데, 잘 모를 경우는 최상위 클래스인 Exception 클래스를 상속받아도 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDException</span> <span class="kd">extends</span> <span class="nc">Exception</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="nf">IDException</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>IDException은 Exception 클래스를 상속받았다. IDException 객체를 생성하면서 예외 메세지를 같이 넣어주도록 만들었다. 이제 테스트를 해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">exception</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDTest</span> <span class="o">{</span>
+
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+      
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IDException</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">id</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">IDException</span><span class="o">(</span><span class="s">"ID cannot be empty"</span><span class="o">);</span> <span class="c1">//강제 예외 발생</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="o">||</span> <span class="n">id</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">IDException</span><span class="o">(</span><span class="s">"ID length can be only in 8~20"</span><span class="o">);</span> <span class="c1">//강제 예외 발생</span>
+      <span class="o">}</span>
+      
+      <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+   <span class="o">}</span>
+
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">IDTest</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IDTest</span><span class="o">();</span>
+      
+      <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="n">test</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IDException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+      <span class="o">}</span>
+      
+      <span class="nc">String</span> <span class="n">id2</span> <span class="o">=</span> <span class="s">"abcd"</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="n">test</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id2</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">IDException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>exception.IDException: ID cannot be empty</p>
+
+<p>exception.IDException: ID length can be only in 8~20</p>
+
+<p>직접 정의한 대로 예외 메세지가 출력된다.</p>
+:ET

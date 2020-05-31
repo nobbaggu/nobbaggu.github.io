@@ -1,0 +1,126 @@
+I"�<p>패키지는 모듈들을 모아놓은 디렉토리 또는 그 디렉토리들은 모아놓은 상위 디렉토리 이다. 패키지는 많은 수의 모듈을 적절히 분류하여 계층적 구조로 만든 것으로 모듈을 효율적으로 관리할 수 있게 해준다.</p>
+
+<p><img class="aligncenter wp-image-883" src="/images/2018/09/no-name-14.png" alt="" width="167" height="284" srcset="/images/2018/09/no-name-14.png 237w, /images/2018/09/no-name-14-176x300.png 176w" sizes="(max-width: 167px) 100vw, 167px" /></p>
+
+<p>.py 확장자의 모듈이 있고 모듈을 포함하는 sound, graphic, play 디렉토리가 있다. game 디렉토리가 패키지의 루트 디렉토리다.</p>
+
+<p>패키지를 이용하면 프로그램의 구조를 한눈에 파악하기 쉽고 공동유지나 보수가 쉬워지는 장점이 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="1-패키지-내부-함수-실행하기">1. 패키지 내부 함수 실행하기</h1>
+
+<hr />
+
+<p>C:/Python/game/<strong>init</strong>.py</p>
+
+<p>C:/Python/game/sound/<strong>init</strong>.py</p>
+
+<p>C:/Python/game/sound/echo.py</p>
+
+<p>C:/Python/game/graphic/<strong>init</strong>.py</p>
+
+<p>C:/Python/game/graphic/render.py</p>
+
+<p>먼저 위와 같은 디렉토리 구조를 만들어서 테스트 해보려한다.</p>
+
+<p>그리고 __init__.py 모듈들은 일단 비워두고 echo.py와 render.py 모듈 안에 다음의 함수를 작성한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># echo.py
+</span><span class="k">def</span> <span class="nf">echo_test</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"echo"</span><span class="p">)</span>
+    
+<span class="c1"># render.py
+</span><span class="k">def</span> <span class="nf">render_test</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"render"</span><span class="p">)</span>
+
+<span class="err">이제</span> <span class="err">어떤</span> <span class="err">파이썬</span> <span class="err">파일에서</span> <span class="err">위의</span> <span class="err">디렉토리를</span> <span class="err">이용하려면</span> <span class="err">먼저</span> <span class="n">path</span> <span class="err">형성을</span> <span class="err">해주어야한다</span><span class="o">.</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"C:/Python"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이제 import를 할 때 C:/Python 디렉토리가 인식이 될 것이다.</p>
+
+<p> </p>
+
+<p>패키지의 함수를 실행하는 방법 3가지는 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 패키지 내부 함수 실행하기 1
+# 모듈 까지 import
+</span><span class="kn">import</span> <span class="nn">game.graphic.render</span>
+<span class="kn">import</span> <span class="nn">game.sound.echo</span>
+<span class="n">game</span><span class="o">.</span><span class="n">graphic</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">render_test</span><span class="p">()</span>
+<span class="n">game</span><span class="o">.</span><span class="n">sound</span><span class="o">.</span><span class="n">echo</span><span class="o">.</span><span class="n">echo_test</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 패키지 내부 함수 실행하기 2
+# 모듈이 있는 디렉토리까지 from 하고 모듈 import
+</span><span class="kn">from</span> <span class="nn">game.graphic</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">game.sound</span> <span class="kn">import</span> <span class="n">echo</span>
+<span class="n">render</span><span class="o">.</span><span class="n">render_test</span><span class="p">()</span>
+<span class="n">echo</span><span class="o">.</span><span class="n">echo_test</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 패키지 내부 함수 실행하기 3
+# 모듈 까지 from 하고 함수 import
+</span><span class="kn">from</span> <span class="nn">game.graphic.render</span> <span class="kn">import</span> <span class="n">render_test</span>
+<span class="kn">from</span> <span class="nn">game.sound.echo</span> <span class="kn">import</span> <span class="n">echo_test</span>
+<span class="n">render_test</span><span class="p">()</span>
+<span class="n">echo_test</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-__init__py">2. __init__.py</h1>
+
+<hr />
+
+<p>__init__.py 모듈은 이 파일이 존재하는 디렉토리가 패키지의 일부임을 알려준다.</p>
+
+<p>하지만 python 3.3 부터는 __init__.py가 없어도 패키지로 인식이 된다. 그러나 하위 버전 프로그램들과의 호환을 위해 __init__.py 모듈을 포함시켜 주는 것이 좋다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-__all__">3. __all__</h1>
+
+<hr />
+
+<p>앞서 import * 는 ‘모든 것을 가져와라’ 정도로 해석이 된다고 했다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#practice.py
+</span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"C:/Python"</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">game.sound</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">echo</span><span class="o">.</span><span class="n">echo_test</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>‘NameError: name ‘echo’ is not defined’ 와 같은 에러가 난다. echo 모듈이 정의되지 않았다는 것이다.</p>
+
+<p>사실 import *을 했을 때 가져오는 것은 __init__.py 내부에 정의된 모듈들이다. 하지만 지금은 sound 디렉토리 안의 __init__.py 파일에 아무것도 작성이 되어있지 않아 오류가 난 것이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># __init__.py
+</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">'echo'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>sound 디렉토리의 __init__.py 에 위와 같이 코드를 작성하면 echo 모듈이 포함이 된다. 이후 다시 실행 시켜보면 오류가 나지않고 ‘echo’가 출력된다.</p>
+
+<p> </p>
+:ET

@@ -1,0 +1,312 @@
+I"7<<p> </p>
+
+<ul>
+  <li>if문은 해당 조건의 ‘참’ ‘거짓’ 을 판별 후 결과에 따라 다른 코드를 실행한다.</li>
+  <li>if문과 같은 조건문은 조건 판단 후 상황에 맞는 프로그램의 처리가 필요할 경우 사용한다.</li>
+  <li>예) 센서 데이터를 읽어 if문에 넣어 사람인식이 ‘참’ 이면 자동문 열기, ‘거짓’ 이면 자동문 ‘닫기’</li>
+</ul>
+
+<p> </p>
+
+<h1 id="1-if문-구조">1. if문 구조</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"True Statement1"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"True Statement2"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"False Statement1"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"False Statement2"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>조건이 참인 경우 if 아래의 모든 명령 실행</li>
+  <li>조건이 거짓인 경우 else 아래의 모든 명령 실행</li>
+  <li>if 혹은 else 다음 콜론(:) 필수</li>
+  <li>콜론(:) 다음 enter를 친 이후 들여쓰기(tab 혹은 spacebar 4번) 필수 - PyCharm을 이용한다면 자동으로 들여쓰기를 해준다.</li>
+  <li>들여쓰기를 하지 않으면 Syntax Error를 일으켜 프로그램이 실행되지 않는다.</li>
+  <li>들여쓰기는 모든 명령을 같은 깊이로 해야한다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"True1"</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"True2"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"False1"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"False2"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>위의 코드는 들여쓰기 깊이가 서로 달라 Identation Error를 일으킨다.</p>
+
+<p> </p>
+
+<h1 id="2-비교-연산자">2. 비교 연산자</h1>
+
+<hr />
+
+<ul>
+  <li>비교 연산자는 조건문과 관련이 깊다.</li>
+  <li>두 값을 비교해 그 결과로 ‘참’ 혹은 ‘거짓’을 판단하는 경우가 많기 때문이다.</li>
+</ul>
+
+<p> </p>
+
+<table style="border-collapse: collapse; width: 45.1435%;" border="1">
+  <tr>
+    <td style="width: 10%;">
+      <strong>x&lt;y</strong>
+    </td>
+    
+    <td style="width: 34.9466%;">
+      x가 y보다 작다
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 10%;">
+      <strong>x&gt;y</strong>
+    </td>
+    
+    <td style="width: 34.9466%;">
+      x가 y보다 크다
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 10%;">
+      <strong>x==y</strong>
+    </td>
+    
+    <td style="width: 34.9466%;">
+      x와 y가 같다
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 10%;">
+      <strong>x!=y</strong>
+    </td>
+    
+    <td style="width: 34.9466%;">
+      x와 y가 같지않다
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 10%;">
+      <strong>x&gt;=y</strong>
+    </td>
+    
+    <td style="width: 34.9466%;">
+      x가 y보다 크거나 같다
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 10%;">
+      <strong>x&lt;=y</strong>
+    </td>
+    
+    <td style="width: 34.9466%;">
+      x가 y보다 작거나 같다
+    </td>
+  </tr>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">y</span><span class="o">=</span><span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="n">y</span><span class="p">)</span> <span class="c1"># True
+</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="n">y</span><span class="p">)</span> <span class="c1"># False
+</span>
+<span class="k">if</span> <span class="n">x</span><span class="o">&gt;</span><span class="n">y</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"x is greater than y"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"x is not greater than y"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<p>위의 조건은 참(True)이므로 if 아래의 print문이 실행된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="n">y</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"x is same to y"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"x is not same to y"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<p>위의 조건은 거짓(False)이므로 else 아래의 print문이 실행된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-논리연산자">3. 논리연산자</h1>
+
+<hr />
+
+<p> </p>
+
+<table style="border-collapse: collapse; width: 55.3939%;" border="1">
+  <tr>
+    <td style="width: 16.7879%;">
+      <strong>x and y</strong>
+    </td>
+    
+    <td style="width: 38.606%;">
+      x와 y 모두 참이어야 참
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 16.7879%;">
+      <strong>x or y</strong>
+    </td>
+    
+    <td style="width: 38.606%;">
+      x와 y 둘 중 하나만 참이면 참
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="width: 16.7879%;">
+      <strong>not x</strong>
+    </td>
+    
+    <td style="width: 38.606%;">
+      x가 거짓이면 참
+    </td>
+  </tr>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">y</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">y</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># false
+</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">y</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># true
+</span>
+<span class="k">if</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">y</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"big"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"small"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>x가 5보다 작으므로 False. 따라서 “small”을 출력</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">5</span> <span class="ow">or</span> <span class="n">y</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"big"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"small"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>y가 5보다 크므로 True. 따라서 “big” 출력</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"True"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"False"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>x는 1이므로 True. 따라서 not x 는 False를 리턴한다.</p>
+
+<p> </p>
+
+<h1 id="4-in-연산자">4. in 연산자</h1>
+
+<hr />
+
+<p>파이썬은 in 연산자라는 재미있는 연산자를 제공하는데, 다음과 같이 사용한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">3</span> <span class="ow">in</span> <span class="n">a</span><span class="p">)</span> <span class="c1"># True
+</span><span class="k">if</span> <span class="mi">3</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"3 is in set a"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"3 is not in set a"</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="s">"python"</span>
+<span class="k">if</span> <span class="s">'z'</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"character 'z' is in 'python'"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"character 'z' is not in 'python'"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="s">'p'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"character 'p' is not in 'python'"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"character 'p' is in 'python'"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>파이썬에서는 리스트,문자열,튜플,집합 등과 in 연산자를 함께 쓰는 경우가 많으므로 기억해두면 유용하다.</p>
+
+<h1 id="5-pass">5. pass</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">if</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Where is 1?"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>pass 명령문은 아무런 조건문 내에서 아무런 일도 일어나지 않게 할 때 사용한다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="6-elif">6. elif</h1>
+
+<hr />
+
+<p>if와 else를 사용하면 한 가지의 조건에 관해서만 판단을 할 수 있었다. 하지만 조건을 꼭 두 가지로만 나누란 법은 없고 이 때 사용하는 것이 elif 이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="k">if</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a is negative"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a is positive"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a is zero"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>위의 코드를 if와 else만으로 나타내려면 다음과 같이 하면 된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="k">if</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a is negative"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"a is positive"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"a is negative"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>중첩된 if else 문을 사용하면 되는데, 조금은 혼란스러울 수도 있다. 코드가 길어지면 더 그럴 것이다.</p>
+
+<p>if의 조건이 거짓일 때 elif로 넘어와 판단을 하여 ‘참’이면 elif 아래 문장을 실행하고 ‘거짓’이면 다음 elif나 elif가 없다면 else로 넘어간다. 참고로 elif의 갯수에는 제한이 없다.</p>
+:ET

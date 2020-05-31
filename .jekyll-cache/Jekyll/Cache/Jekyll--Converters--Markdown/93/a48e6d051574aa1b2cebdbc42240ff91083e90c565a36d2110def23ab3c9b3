@@ -1,0 +1,280 @@
+I"g<p>Set 인터페이스는 Collection 인터페이스의 하위 인터페이스이다. 중고등학교 수학시간에 배운 집합을 생각하면 된다. 어떠한 요소가 있는지가 중요하고 순서는 중요하지 않다. 그리고 중복을 허용하지 않는다.</p>
+
+<p>오늘은 Set 인터페이스를 구현한 클래스인 HashSet과 TreeSet 클래스에 대해 알아본다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="1-hashset">1. HashSet</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span>
+   
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="c1">// 멤버ID가 같은 경우 같은 객체로 인식시키기 위해 hashCode() 재정의</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">// TODO Auto-generated method stub</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="c1">// 멤버 ID가 같은 경우 논리적으로 같은 객체라고 인식시키기 위한 equals() 재정의</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="nc">Member</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Member</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span>
+         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">==</span> <span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.hashset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashSet</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">hashSet</span><span class="o">;</span>
+   
+   <span class="c1">//MemberHashSet 객체가 생성되는 동시에 HashSet 저장소 생성</span>
+   <span class="nc">MemberHashSet</span><span class="o">(){</span>
+      <span class="n">hashSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//멤버 추가</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">hashSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//멤버 삭제</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">hashSet</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="c1">//hashSet의 요소를 순회</span>
+      
+      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span> <span class="c1">//hasNext()는 다음 요소가 있으면 true, 없으면 false 반환</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span> <span class="c1">//다음 요소 있으면 다음 용소를 member에 대입</span>
+         <span class="kt">int</span> <span class="n">tempId</span> <span class="o">=</span> <span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">();</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">tempId</span> <span class="o">==</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">hashSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span><span class="o">+</span><span class="s">" does not exists"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//모든 멤버 출력</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span> <span class="o">:</span> <span class="n">hashSet</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>ArrayList, LinkedList 클래스와 메소드 사용법이 거의 일치한다. 다만 집합은 index가 없어서 Iterator 클래스를 활용해서 HashSet의 요소를 하나씩 순회탐색하여 비교한 이후 삭제하는 removeMember()메소드를 정의하였다.</p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.hashset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashSetTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="nc">MemberHashSet</span> <span class="n">memberHashSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberHashSet</span><span class="o">();</span>
+      
+      <span class="nc">Member</span> <span class="n">mem1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Lim"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">2222</span><span class="o">,</span> <span class="s">"KongKong"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Kang"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem5</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Jung"</span><span class="o">);</span> <span class="c1">//mem3와 같은 ID</span>
+      
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem1</span><span class="o">);</span>
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem2</span><span class="o">);</span>
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem3</span><span class="o">);</span>
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem4</span><span class="o">);</span>
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem5</span><span class="o">);</span>
+      
+      <span class="n">memberHashSet</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>Lim’s ID is 1001<br />
+Choi’s ID is 1003<br />
+Kang’s ID is 1004<br />
+KongKong’s ID is 2222</p>
+
+<p>Member 클래스에서 hashCode()메소드와 equals()메소드를 재정의 하여 ID가 같으면 같은 객체로 인식하도록 하였다. 따라서 mem5는 mem4와 같은 ID인 1004를 가지므로 추가되지 않았고 이는 Set인터페이스를 구현한 HashSet은 중복객체를 허용하지 않는다는 것을 보여준다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-treeset">2. TreeSet</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="o">{</span>
+   
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">// TODO Auto-generated method stub</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="nc">Member</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Member</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span>
+         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">==</span> <span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="c1">//compareTo 메소드 재정의 하여 정렬방식 선택</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">-</span><span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span> <span class="c1">// 0보다 크므로 오름차순 정렬</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.treeset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.TreeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberTreeSet</span> <span class="o">{</span>
+   <span class="nc">TreeSet</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">treeSet</span><span class="o">;</span>
+   
+   <span class="nc">MemberTreeSet</span><span class="o">(){</span>
+      <span class="n">treeSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeSet</span><span class="o">&lt;&gt;();</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">treeSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">treeSet</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+      
+      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+         <span class="kt">int</span> <span class="n">tempId</span> <span class="o">=</span> <span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">();</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">tempId</span> <span class="o">==</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">treeSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span><span class="o">+</span><span class="s">" does not exists"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span> <span class="o">:</span> <span class="n">treeSet</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>TreeSet은 HashSet과 사용법은 같다. 그러나 주의해야 할 것은 TreeSet을 사용할 때에는 요소로 추가되는 참조 자료형 클래스가 Comparable 인터페이스를 구현해야 한다는 것이다. Comparable 인터페이스를 구현하면 compareTo() 메소드를 재정의 해야한다. 이 메소드는 TreeSet이 ‘오름차순’ 혹은 ‘내림차순’ 중 어떤 규칙으로 자료를 정리할 것인지 정해주는 것이며, 0보다 크면 오름차순, 작으면 내림차순, 0이면 자료를 추가하지 않는다.</p>
+
+<p>위 코드에서 this.memberId는 새로 추가되는 멤버의 ID이다. 이것과 이미 TreeSet에 있는 자료의 memberId를 하나하나 탐색비교해가며 새로 추가되는 자료의 위치를 찾아 정렬시킨다. 이유는 기본적으로 TreeSet은 이진탐색 알고리즘을 사용하기 때문이다.</p>
+
+<p> </p>
+:ET

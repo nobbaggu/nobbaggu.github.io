@@ -1,0 +1,40 @@
+I"<p> 
+상대 레이아웃은 부모 컨테이너, 그리고 뷰 사이의 상대적 위치관계를 정의하여 화면을 배치하는 레이아웃이다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;RelativeLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:text=</span><span class="s">"Button1"</span>
+        <span class="na">android:layout_below=</span><span class="s">"@+id/button3"</span>
+        <span class="na">android:layout_above=</span><span class="s">"@+id/button2"</span>
+        <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"Button2"</span>
+        <span class="na">android:layout_alignParentBottom=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button3"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"Button3"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</code></pre></div></div>
+
+<p>layout_width와 layout_height 속성이 모두 match_parent인 button1은 layout_below 속성과 layout_above 속성값으로 각각 button3과 button2의 id를 넣어주어 두 버튼의 사이에 위치하게 된다. 다만, 뷰를 만들면 default로 화면의 윗쪽에 자리잡으므로 button2는 layout_alignParentBottom 속성의 값을 true로 해주어 부모 컨테이너의 아랫쪽에 붙여야 한다.</p>
+
+<p>앱의 화면은 아래와 같이 나타난다.</p>
+
+<p><img src="/images/android/7/1.jpg" alt="1" width="30%" height="30%" /></p>
+:ET

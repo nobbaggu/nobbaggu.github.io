@@ -1,0 +1,141 @@
+I"!(<p>일반적인 이미지 파일은 크기를 늘리거나 줄일 때 이미지의 가장자리 부분에 왜곡이 생긴다.</p>
+
+<p><img src="/images/android/35/1.png" alt="1" width="100%" height="100%" /></p>
+
+<p>위 그림에서 이미지를 늘릴수록 곡선형태인 모서리 부분이 가장 심하게 왜곡이 된다. 예를 들면 이미지 버튼에 자신이 구성한 UI를 적용할 때 디바이스마다 다른 해상도로 인해 이미지 크기가 자동으로 늘어나거나 줄어드는 일이 발생할 수 있다.</p>
+
+<p>나인패치는 이러한 이미지의 왜곡을 해결하는 방법을 정의한 것이다.</p>
+
+<p><br /></p>
+<h4 id="나인패치-이미지의-동작-원리">나인패치 이미지의 동작 원리</h4>
+
+<p>나인패치 이미지는 크게 두 영역으로 구분할 수 있다.</p>
+
+<blockquote>
+  <ol>
+    <li>크기가 늘어나도 되는 영역</li>
+    <li>크기가 늘어나지 말아야 할 영역</li>
+  </ol>
+</blockquote>
+
+<p>나인패치 이미지는 두 영역을 구분하기위해 기본적으로 9개의 영역으로 분할하여 저장하는 방식이다.</p>
+
+<p><img src="/images/android/35/2.png" alt="2" width="100%" height="100%" /></p>
+
+<p><br />
+나인패치에서는 이미지가 늘어나야 할 영역에 대한 정보를 저장하기 위해 원본이미지 크기에서 왼쪽/오른쪽/위/아래 각각 1픽셀씩 늘린 이미지를 새로 만든다. 그리고 위 1픽셀 라인에는 가로로 늘어날 영역을 기록하고, 왼쪽 1픽셀 라인에는 세로로 늘어날 영역을 기록한다.</p>
+
+<p><img src="/images/android/35/3.png" alt="3" width="100%" height="100%" /></p>
+
+<p>이렇게 저장된 나인패치 이미지는 크기가 변할 때 기록된 정보를 토대로 크기 변환을 한다.</p>
+
+<p>안드로이드는 이름에 ‘.9’가 붙은 이미지 파일을 나인패치 이미지로 인식한다.</p>
+
+<p><br />
+일반이미지와 나인패치 이미지의 비교를 위해 각각에 대해 버튼을 3개씩 다른 크기로 만들어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+        <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:background=</span><span class="s">"#ffffff00"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"일반 이미지"</span>
+            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ff000000"</span>
+            <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"small"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ffffffff"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/button_image_01"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"30dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"mediummediummeduim"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ffffffff"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/button_image_01"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"40dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"longlonglonglonglonglonglonglonglong"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ffffffff"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/button_image_01"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"40dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+        <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:background=</span><span class="s">"#ffff00ff"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"나인패치 이미지"</span>
+            <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ff000000"</span>
+            <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"small"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ffffffff"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/button_image_02"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"30dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"mediummediummeduim"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ffffffff"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/button_image_02"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"40dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"longlonglonglonglonglonglonglonglong"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ffffffff"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/button_image_02"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"40dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>일반 이미지 3개, 나인패치 이미지 3개를 각각 다른 크기로 만들어서 앱을 실행해보면 다음과 같은 결과가 나온다.</p>
+
+<p><img src="/images/android/35/4.jpg" alt="4" width="30%" height="30%" /></p>
+
+<p>버튼의 배경으로 설정한 이미지가 텍스트의 크기에 따라 자동으로 변한다. 이 때 일반 이미지는 이미지 왜곡이 심하게 일어난다. 그러나 나인패치로 변형한 이미지는 더욱 깔끔하게 크기를 변형하는 것을 알 수 있다.</p>
+:ET

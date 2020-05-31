@@ -1,0 +1,227 @@
+I"�O<p>버튼이 여러 개 있고 각 버튼을 클릭할 때 마다 아랫부분의 화면 전환이 이루어지는 기능이 필요한 경우가 있다. 간단하게 레이아웃으로 버튼을 만들고 아랫부분에 프레임 레이아웃이나 프래그먼트를 넣어 버튼을 클릭할 때 마다 화면의 전환을 처리하는 방식으로 구현할 수 있다. 또한 안드로이드에서는 액션바에 탭 기능을 넣어 보여주는 방법을 제공하므로 이 기능을 사용하여도 된다. 따라서 탭 위젯을 어떻게 만드는지 간단히 방법만 살펴보겠다.</p>
+
+<p>먼저 탭의 구성요소에는 탭 호스트, 탭 위젯, 프레임 레이아웃 3가지가 있다.</p>
+
+<p><img src="/images/android/33/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p><br /></p>
+
+<p>탭 기능을 사용해서 화면 전환을 구성해보겠다.</p>
+
+<p><br /></p>
+
+<p>먼저 우리는 직접 만든 액션바를 사용할 것이므로 /res/values/styles.xml 파일을 열어서 액티비티의 스타일을 액션바가 없는 스타일로 변경한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">"AppTheme"</span> <span class="na">parent=</span><span class="s">"Theme.AppCompat.Light.NoActionBar"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p><br />
+이제 프래그먼트를 2개 만든다.</p>
+
+<p>&lt;fragment1.xml&gt;</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">android:background=</span><span class="s">"#ffff0000"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"200dp"</span>
+        <span class="na">android:text=</span><span class="s">"화면1"</span>
+        <span class="na">android:textSize=</span><span class="s">"50dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold|italic"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>&lt;Fragment1.java&gt;</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampletab</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.annotation.NonNull</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.annotation.Nullable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.app.Fragment</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.LayoutInflater</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.ViewGroup</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">io.swnomad.sampletab.R</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fragment1</span> <span class="kd">extends</span> <span class="nc">Fragment</span> <span class="o">{</span>
+    <span class="nd">@Nullable</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="nc">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="nc">ViewGroup</span> <span class="n">container</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ViewGroup</span> <span class="n">rootView</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ViewGroup</span><span class="o">)</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">fragment1</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">rootView</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>프래그먼트는 텍스트뷰가 한 개 있는 화면으로 단순하게 구성하였고 자바 코드에서는 <code class="highlighter-rouge">onCreateView()</code> 메소드 안에서 인플레이션하는 코드를 추가해주면 된다.</p>
+
+<p><br />
+메인 액티비티의 XML파일과 Java 소스코드는 다음과 같다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;RelativeLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;android.support.design.widget.CoordinatorLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;android.support.design.widget.AppBarLayout</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:theme=</span><span class="s">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;android.support.v7.widget.Toolbar</span>
+                <span class="na">android:id=</span><span class="s">"@+id/toolbar"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:background=</span><span class="s">"@color/colorPrimaryDark"</span>
+                <span class="na">android:theme=</span><span class="s">"@style/ThemeOverlay.AppCompat.Dark"</span>
+                <span class="na">android:elevation=</span><span class="s">"1dp"</span><span class="nt">&gt;</span>
+
+                <span class="nt">&lt;TextView</span>
+                    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                    <span class="na">android:textAppearance=</span><span class="s">"@style/TextAppearance.AppCompat.Widget.ActionBar.Title"</span>
+                    <span class="na">android:text=</span><span class="s">"타이틀"</span><span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;/android.support.v7.widget.Toolbar&gt;</span>
+
+            <span class="nt">&lt;android.support.design.widget.TabLayout</span>
+                <span class="na">android:id=</span><span class="s">"@+id/tabs"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">app:tabMode=</span><span class="s">"fixed"</span>
+                <span class="na">app:tabGravity=</span><span class="s">"fill"</span>
+                <span class="na">app:tabTextColor=</span><span class="s">"@color/colorPrimary"</span>
+                <span class="na">app:tabSelectedTextColor=</span><span class="s">"@color/colorAccent"</span>
+                <span class="na">android:elevation=</span><span class="s">"1dp"</span>
+                <span class="na">android:background=</span><span class="s">"@android:color/background_light"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;/android.support.design.widget.AppBarLayout&gt;</span>
+
+        <span class="nt">&lt;FrameLayout</span>
+            <span class="na">android:id=</span><span class="s">"@+id/container"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;/FrameLayout&gt;</span>
+
+    <span class="nt">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span>
+
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<blockquote>
+  <ol>
+    <li><strong>CoordinatorLayout</strong> : 액션바 영역을 포함한 전체 화면의 위치를 잡아주는 역할을 한다.</li>
+    <li><strong>AppBarLayout</strong> : 액션바 영역과 탭 레이아웃을 포함하면서 간격을 알아서 조정해준다.</li>
+    <li><strong>Toolbar</strong> : 직접 만든 액션바의 구성</li>
+    <li><strong>TabLayout</strong> : 탭 버튼을 배치</li>
+  </ol>
+</blockquote>
+
+<p><br />
+액션바와 탭을 설정하고 디자인을 원하는대로 꾸며준다. 그리고 앱바 아래쪽에는 프래그먼트 화면을 보여줄 프레임 레이아웃을 추가해준다. 이제 탭 버튼을 클릭할 때 마다 화면이 전환되도록 처리하는 Java 소스코드를 작성하면 된다.</p>
+
+<p><br /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampletab</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.design.widget.TabLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.app.Fragment</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.ActionBar</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.widget.Toolbar</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+    <span class="nc">Toolbar</span> <span class="n">toolbar</span><span class="o">;</span>
+
+    <span class="nc">Fragment1</span> <span class="n">fragment1</span><span class="o">;</span>
+    <span class="nc">Fragment2</span> <span class="n">fragment2</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="cm">/* 액션바로 직접 만든 toolbar를 적용 */</span>
+        <span class="n">toolbar</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">toolbar</span><span class="o">);</span>
+        <span class="n">setSupportActionBar</span><span class="o">(</span><span class="n">toolbar</span><span class="o">);</span>
+
+        <span class="cm">/* 액션바 타이틀 가림 */</span>
+        <span class="nc">ActionBar</span> <span class="n">actionBar</span> <span class="o">=</span> <span class="n">getSupportActionBar</span><span class="o">();</span>
+        <span class="n">actionBar</span><span class="o">.</span><span class="na">setDisplayShowTitleEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+
+        <span class="n">fragment1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Fragment1</span><span class="o">();</span>
+        <span class="n">fragment2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Fragment2</span><span class="o">();</span>
+
+        <span class="cm">/* 첫 번째 프래그먼트가 보이도록 설정 */</span>
+        <span class="n">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">container</span><span class="o">,</span> <span class="n">fragment1</span><span class="o">).</span><span class="na">commit</span><span class="o">();</span>
+
+        <span class="cm">/* 탭 레이아웃 객체 참조하여 탭 메뉴 추가 */</span>
+        <span class="nc">TabLayout</span> <span class="n">tabs</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tabs</span><span class="o">);</span>
+        <span class="n">tabs</span><span class="o">.</span><span class="na">addTab</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">newTab</span><span class="o">().</span><span class="na">setText</span><span class="o">(</span><span class="s">"탭 1"</span><span class="o">));</span>
+        <span class="n">tabs</span><span class="o">.</span><span class="na">addTab</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">newTab</span><span class="o">().</span><span class="na">setText</span><span class="o">(</span><span class="s">"탭 2"</span><span class="o">));</span>
+
+        <span class="cm">/* 탭 선택 리스너 객체 추가 */</span>
+        <span class="n">tabs</span><span class="o">.</span><span class="na">setOnTabSelectedListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">TabLayout</span><span class="o">.</span><span class="na">OnTabSelectedListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onTabSelected</span><span class="o">(</span><span class="nc">TabLayout</span><span class="o">.</span><span class="na">Tab</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">position</span> <span class="o">=</span> <span class="n">tab</span><span class="o">.</span><span class="na">getPosition</span><span class="o">();</span> <span class="c1">//탭 버튼의 index 참조</span>
+
+                <span class="nc">Fragment</span> <span class="n">selected</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+                <span class="cm">/* 선택된 탭에 따라 화면에 보이는 프래그먼트 변경 */</span>
+                <span class="k">switch</span><span class="o">(</span><span class="n">position</span><span class="o">){</span>
+                    <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+                        <span class="n">selected</span> <span class="o">=</span> <span class="n">fragment1</span><span class="o">;</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+                        <span class="n">selected</span> <span class="o">=</span> <span class="n">fragment2</span><span class="o">;</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">default</span><span class="o">:</span>
+                        <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+
+                <span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">container</span><span class="o">,</span> <span class="n">selected</span><span class="o">).</span><span class="na">commit</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onTabUnselected</span><span class="o">(</span><span class="nc">TabLayout</span><span class="o">.</span><span class="na">Tab</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onTabReselected</span><span class="o">(</span><span class="nc">TabLayout</span><span class="o">.</span><span class="na">Tab</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>탭을 선택하면 자동으로 호출되는 탭 레이아웃에 <code class="highlighter-rouge">OnTabSelectedListener()</code> 객체를 설정하고 <code class="highlighter-rouge">OnTabSelected()</code> 메소드에서 탭 버튼 클릭 이벤트가 발생할 때 원하는 로직을 작성하면 된다. 리스너가 설정된 탭의 버튼의 index는 탭의 <code class="highlighter-rouge">getPosition()</code> 메소드를 통해서 가져올 수 있다. 이 index별로 프래그먼트를 설정해주어 탭 버튼을 눌러 화면의 전환을 구현하였다.</p>
+
+<p>앱을 실행하면 아래의 결과화면을 확인할 수 있다.</p>
+
+<p><img src="/images/android/33/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/33/3.jpg" alt="3" width="30%" height="30%" /></p>
+:ET

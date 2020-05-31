@@ -1,0 +1,174 @@
+I"71<h1 id="1-여러-인터페이스를-구현한-클래스">1. 여러 인터페이스를 구현한 클래스</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Buy</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buy</span><span class="o">();</span>
+   
+   <span class="k">default</span> <span class="kt">void</span> <span class="nf">order</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"buy order"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Sell</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sell</span><span class="o">();</span>
+   
+   <span class="k">default</span> <span class="kt">void</span> <span class="nf">order</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"sell order"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="kd">implements</span> <span class="nc">Buy</span><span class="o">,</span> <span class="nc">Sell</span><span class="o">{</span>
+
+   <span class="nd">@Override</span> <span class="c1">//Sell인터페이스의 sell()메소드 구현</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sell</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I sell!"</span><span class="o">);</span>
+      
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span> <span class="c1">//Buy인터페이스의 buy()메소드 구현</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buy</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I buy!"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span> <span class="c1">//Buy, Sell 인터페이스에 있는 order()메소드 오버라이딩</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">order</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"customer order"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>그럼 이제 위의 인터페이스, 클래스로 프로그램을 만들어 실행시켜보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomerTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Customer</span> <span class="n">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Customer</span><span class="o">();</span> <span class="c1">//customer타입 객체 생성</span>
+      
+      <span class="nc">Buy</span> <span class="n">buyer</span> <span class="o">=</span> <span class="n">customer</span><span class="o">;</span> <span class="c1">//객체를 Buy형으로 변환</span>
+      <span class="nc">Sell</span> <span class="n">seller</span> <span class="o">=</span> <span class="n">customer</span><span class="o">;</span> <span class="c1">//객체를 Sell형으로 변환</span>
+      
+      <span class="n">buyer</span><span class="o">.</span><span class="na">buy</span><span class="o">();</span> <span class="c1">//Customer에서 구현한 buy()메소드</span>
+      <span class="n">buyer</span><span class="o">.</span><span class="na">order</span><span class="o">();</span> <span class="c1">//Buy의 default메소드 order() ????</span>
+      
+      <span class="n">seller</span><span class="o">.</span><span class="na">sell</span><span class="o">();</span> <span class="c1">//Customer에서 구현한 sell()메소드</span>
+      <span class="n">seller</span><span class="o">.</span><span class="na">order</span><span class="o">();</span> <span class="c1">//Sell의 default메소드 order() ????</span>
+      
+      <span class="n">customer</span><span class="o">.</span><span class="na">order</span><span class="o">();</span> <span class="c1">//Customer에서 재정의한 order() 메소드</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>I buy!</p>
+
+<p>customer order</p>
+
+<p>I sell!</p>
+
+<p>customer order</p>
+
+<p>customer order</p>
+
+<p>buy.order(), sell.order(), customer.order() 모두 같은 실행결과가 나온다. 모든 메소드가 Customer 클래스에서 재정의한 order() 메소드를 호출한다.</p>
+
+<p>가상 메소드 원리를 생각하면 이는 당연한 결과이다. buyer, seller 참조변수의 자료형이 Buy, Sell형이라고 해도 두 참조변수는 customer 참조변수를 형 변환한 것일 뿐이다. 따라서 buyer, seller, customer 세 참조변수 모두 customer가 참조하는 객체를 참조하며, 그 객체는 new Customer()이다. 따라서 세 참조변수를 통해서 order() 메소드를 호출하면 모두 Customer의 order() 메소드가 실행되는 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-인터페이스-상속">2. 인터페이스 상속</h1>
+
+<hr />
+
+<p>클래스가 다른 클래스를 상속하는 것 처럼 인터페이스도 인터페이스를 상속할 수 있다.</p>
+
+<p>클래스의 상속과는 다르게 인터페이스에서 상속받는 것은 메소드의 기능이 아닌 형태일 뿐이다. 따라서 인터페이스는 여러개의 인터페이스를 상속받을 수 있다.</p>
+
+<p>이 때 두 인터페이스를 상속받은 하위 인터페이스도 자신만의 가상메소드를 가진다고 해보자. 이 인터페이스를 구현한 클래스는 상위 인터페이스 2개, 하위1터페이스 1개에 있는 모든 추상 메소드를 구현해야한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Tiger</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tigerAttack</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Lion</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lionAttack</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Liger</span> <span class="kd">extends</span> <span class="nc">Tiger</span><span class="o">,</span> <span class="nc">Lion</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">superAttack</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pocketmon</span> <span class="kd">implements</span> <span class="nc">Liger</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tigerAttack</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"tiger attack~!"</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lionAttack</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"lion attack~!"</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">superAttack</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"super attack!~!~~!"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Pocketmon클래스는 Liger인터페이스를 구현하였고 총 세 개의 추상메소드를 구현해야 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">interfaceprac</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PocketmonTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Pocketmon</span> <span class="n">pokemon</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pocketmon</span><span class="o">();</span>
+      
+      <span class="n">pokemon</span><span class="o">.</span><span class="na">tigerAttack</span><span class="o">();</span>
+      <span class="n">pokemon</span><span class="o">.</span><span class="na">lionAttack</span><span class="o">();</span>
+      <span class="n">pokemon</span><span class="o">.</span><span class="na">superAttack</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+:ET

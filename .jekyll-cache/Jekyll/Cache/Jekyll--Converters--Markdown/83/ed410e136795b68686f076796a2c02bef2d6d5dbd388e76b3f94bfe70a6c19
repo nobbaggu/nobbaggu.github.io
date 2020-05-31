@@ -1,0 +1,62 @@
+I"]<p>스낵바(SnackBar)는 토스트 메시지처럼 간단한 정보를 사용자에게 보여줄 때 사용한다. 스낵바 클래스는 외부 라이브러리에서 가져와 사용해야 한다.</p>
+
+<p>안드로이드 스튜디오 상단의 [File -&gt; Project Structure] 메뉴를 클릭하면 아래의 대화상자가 뜬다. 아래 사진에 나온대로 들어가서 com.android.support:design을 찾아서 추가하면 된다.</p>
+
+<p><img src="/images/android/24/1.png" alt="1" width="70%" height="70%" />
+<img src="/images/android/24/2.png" alt="2" width="70%" height="70%" /></p>
+
+<p>이제 스낵바를 사용할 수 있다.</p>
+
+<p>버튼을 눌러 스낵바를 띄울 수 있도록 앱을 만들어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">tools:context=</span><span class="s">".MainActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"스낵바 띄우기"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintLeft_toLeftOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintRight_toRightOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplesnackbar</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.design.widget.Snackbar</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+       <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+       <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+           <span class="nd">@Override</span>
+           <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+               <span class="nc">Snackbar</span><span class="o">.</span><span class="na">make</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="s">"스낵바 입니다."</span><span class="o">,</span> <span class="nc">Snackbar</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+           <span class="o">}</span>
+       <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/24/3.jpg" alt="3" width="30%" height="30%" /></p>
+:ET

@@ -1,0 +1,75 @@
+I"�<p>printf함수와 scanf함수 이외에도 문자열 입출력 함수들이 있습니다. 특히 scanf함수는 띄어쓰기를 포함하는 문자열을 표현하지 못했는데 이제는 공백까지도 표현할 수 있는 문자열 입력함수도 알아보겠습니다.</p>
+
+<p> </p>
+
+<h1 id="1-문자열-출력-함수">1. 문자열 출력 함수</h1>
+
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">puts</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">);</span> <span class="c1">// 문자열의 주소값을 전달인자로 받아  표준 출력 스트림을 통해 전송</span>
+<span class="kt">int</span> <span class="nf">fputs</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span><span class="err"> </span><span class="c1">// 문자열의 주소값을 전달인자로 받아 지정된 출력 스트림을 통해 전송</span>
+</code></pre></div></div>
+
+<p>**<br />
+위의 두 함수는 호출을 성공하면 양수를, 실패하면 EOF == -1 을 반환합니다.**</p>
+
+<p>puts함수와 fputs함수에는 출력스트림 지정 이외에도 하나의 차이점이 또 있습니다. <strong>puts함수는 출력을 한 이후 자동으로 줄이 바뀌지만 fputs함수는 자동으로 줄을 바꿔주지 않아 ‘\n’을 사용해 직접 줄을 바꿔주어야 합니다.</strong></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-문자열-입력-함수">2. 문자열 입력 함수</h1>
+
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="o">*</span> <span class="nf">gets</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">);</span> <span class="c1">// 문자열을 표준 입력 스트림을 통해 전달받아 str에 저장</span>
+<span class="kt">char</span> <span class="o">*</span> <span class="nf">fgets</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="err"> </span><span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">// 문자열을 지정된 입력 스트림을 통해 전달받아 str에 저장. 입력받는 문자열의 길이도 포함해야 함</span>
+</code></pre></div></div>
+
+<p><strong>위의 두 함수는 호출을 실패하거나 파일의 끝에 도달하여 더 이상 읽어들일 값이 없을시에 널 포인터(null pointer)를 반환합니다. 그래서 반환형이 포인터형 변수로 선언이 된 것입니다.</strong> 널 포인터란 말 그대로 포인터가 없다는 뜻입니다. 가르키는 곳이 없다는 것은 호출이 실패하거나 더 이상 읽어들일 주소값이 없는 경우 입니다.</p>
+
+<p>fgets 함수는 gets함수와는 다른 두드러지는 특징이 두 개 있습니다.</p>
+
+<p><strong>1) 입력받을 문자열의 길이를 지정해야 합니다.</strong></p>
+
+<p>이 특징은 설정한 길이보다 많은 문자열을 입력하더라도 알아서 걸러내기 때문에 메모리공간을 넘어서 침범하는 것을 방지할 수 있습니다.</p>
+
+<p> </p>
+
+<p><strong>2) 엔터 키(‘\n’)까지도 하나의 문자로 읽어들입니다.</strong></p>
+
+<p>fgets 함수는 scanf함수와 다르게 개행(‘\n’)을 기준으로 문자열을 인식하는데, 이 때 개행(‘\n’)까지도 문자로 인식하여 입력으로 받아들입니다. 따라서 굳이 따로 개행을 넣어 줄 필요가 없습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+    <span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과1</p>
+
+<p>Hello</p>
+
+<p>Hello //출력 후 문자로 입력된 ‘\n’에 의한 첫 번째 개행 - fgets함수가 ‘\n’도 하나의 문자로 읽어들이기 때문</p>
+
+<p>//printf함수에 삽인된 ‘\n’에 의한 두 번째 개행</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>실행결과2</p>
+
+<p>abcdefghijklmnopqrstu</p>
+
+<p>abcdefghi</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>fgets 함수의 특징으로 인해 NULL문자를 포함하여 총 10개의 문자만 출력이 되었습니다.</p>
+:ET

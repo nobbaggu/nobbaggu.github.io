@@ -1,0 +1,126 @@
+I"�(<p>일반적인 안드로이드 멀티미디어 패키지에 포함된 비디오뷰로는 유튜브 미디어 플레이어를 가져올 수 없다. 물론 웹뷰를 사용할 수도 있겠지만 구글 개발자 사이트에서는 유튜브 동영상 재생을 위한 성능 좋은 공식 API를 제공한다.</p>
+
+<p><br /></p>
+
+<p>↓↓↓ 구글 개발자 사이트 YouTubeAndroidPlayerApi 링크</p>
+
+<p><a href="https://developers.google.com/youtube/android/player/" target="_blank">YouTubeAndroidPlayerApi</a></p>
+
+<p><br /></p>
+
+<p>API를 사용하는 간단한 앱을 만들어보려한다. 그 전에 위 링크를 따라가 Download 탭에서 API를 다운받는다.</p>
+
+<p>이제 아래 절차대로 API를 프로젝트에 추가하고 API 키를 발급받으면 라이브러리를 사용할 수 있다.
+<br /></p>
+
+<ul>
+  <li>압축을 푼 이후 \YouTubeAndroidPlayerApi-1.2.2\libs 폴더에 있는 YouTubeAndroidPlayerApi.jar 파일을 안드로이드 스튜디오에서 프로젝트 파일의 /app/libs 폴더에 끌어다가 복사한다.
+<img src="/images/android/58/1.png" alt="1" width="100%" height="100%" /></li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li>안드로이드 스튜디오 상단 메뉴의 [File] - [Project Structure] 을 클릭하여 Dependencies 탭의 App으로 가서 + 버튼을 클릭하여 Jar Dependency를 클릭한다.
+<img src="/images/android/58/2.png" alt="2" width="100%" height="100%" /></li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li>libs/YouTubeAndroidPlayerApi.jar 을 입력하고 OK버튼을 누른다.
+<img src="/images/android/58/3.png" alt="3" width="100%" height="100%" /></li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li>gradle 폴더가 아닌 app 폴더의 build.gradle 파일을 열어보면 아래와 같이 dependencies에 라이브러리가 추가된 것이 보인다.
+<img src="/images/android/58/4.png" alt="4" width="100%" height="100%" /></li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li><a href="https://console.developers.google.com/apis/credentials?hl=ko" target="_blank">API키 발급 사이트</a> ← 링크를 타고 들어가서 API키 발급받기를 클릭한다. 그러면 API 키카 생성된다.
+<img src="/images/android/58/5.png" alt="5" width="100%" height="100%" /></li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li>AndroidManifest.xml 파일에서 패키지 이름을 복사해서 패키지 이름 입력란에 붙여넣는다. 그리고 SHA-1키를 입력해야 하는데, 이 키는 안드로이드 스튜디오의 오른쪽 벽에 붙어있는 Gradle을 클릭하면 [App] - [Tasks] - [android] - [signingReport]를 더블클릭하면 실행이 되면서 안드로이드 스튜디오 아래부분에 나타난다. 이 키를 복사해서 붙여넣고 저장을 하면 된다.
+<img src="/images/android/58/6.png" alt="6" width="100%" height="100%" />
+<img src="/images/android/58/7.png" alt="7" width="100%" height="100%" /></li>
+</ul>
+
+<p><br /></p>
+
+<p>이제 API를 사용하기 위해 아래 코드를 입력한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;com.google.android.youtube.player.YouTubePlayerView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/youtubeViewer"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/playBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"재생"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+<p>레이아웃에 동영상을 재생시킬 영역을 위해 YouTubePlayerView를 추가하고 재생을 위한 버튼을 추가한다.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">YouTubeBaseActivity</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">YouTubePlayerView</span> <span class="n">youtubeViewer</span><span class="o">;</span>
+    <span class="nc">YouTubePlayer</span><span class="o">.</span><span class="na">OnInitializedListener</span> <span class="n">listener</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="nc">Button</span> <span class="n">playBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">((</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">playBtn</span><span class="o">));</span>
+        <span class="n">youtubeViewer</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">youtubeViewer</span><span class="o">);</span>
+
+        <span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">YouTubePlayer</span><span class="o">.</span><span class="na">OnInitializedListener</span><span class="o">(){</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInitializationSuccess</span><span class="o">(</span><span class="nc">YouTubePlayer</span><span class="o">.</span><span class="na">Provider</span> <span class="n">provider</span><span class="o">,</span> <span class="nc">YouTubePlayer</span> <span class="n">youTubePlayer</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 초기화 성공하면 유튜브 동영상 ID를 전달하여 동영상 재생*/</span>
+                <span class="n">youTubePlayer</span><span class="o">.</span><span class="na">loadVideo</span><span class="o">(</span><span class="s">"SGWohw86Xk8"</span><span class="o">);</span> <span class="c1">// 동영상 ID는 URL 상단의 마지막 부분이다.</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInitializationFailure</span><span class="o">(</span><span class="nc">YouTubePlayer</span><span class="o">.</span><span class="na">Provider</span> <span class="n">provider</span><span class="o">,</span> <span class="nc">YouTubeInitializationResult</span> <span class="n">youTubeInitializationResult</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"재생 실패"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+
+        <span class="n">playBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 파라미터1: API키
+                 * 파라미터2: 리스너 객체 */</span>
+                <span class="n">youtubeViewer</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="s">"AIzaSyB2-ytj3SHdTEmUrf2LTUuA0J6gynwCXJs"</span><span class="o">,</span> <span class="n">listener</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>아까 signingReport를 실행한 것 때문에 앱이 아닌 signingReport가 또다시 실행될 수 있으므로 Alt+Shift+F10을 눌러 액티비티를 실행한다. 그리고 앱을 실행하면 아래와 같이 유튜브 플레이어가 실행된다.</p>
+
+<p><img src="/images/android/58/8.jpg" alt="8" width="40%" height="40%" /></p>
+:ET

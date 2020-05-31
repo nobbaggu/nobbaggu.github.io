@@ -1,0 +1,260 @@
+I"�b<p>리스트는 데이터의 집합이다. 홀수의 집합 [1,3,4,…] 라던지 소수 집합 [2,3,5,7,11,…] 등은 리스트이다.</p>
+
+<p> </p>
+
+<h1 id="1-리스트-표현방식">1. 리스트 표현방식</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">odd</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># 1,2,3,4,5의 숫자 모음 리스트
+</span><span class="n">game</span> <span class="o">=</span> <span class="p">[</span><span class="s">'star craft'</span><span class="p">,</span><span class="s">'battle ground'</span><span class="p">,</span> <span class="s">'sudden attack'</span><span class="p">,</span> <span class="s">'crazy arcade'</span><span class="p">]</span> <span class="c1"># 추천게임 리스트
+</span><span class="n">hello</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s">'hi'</span><span class="p">,[</span><span class="s">'world'</span><span class="p">,</span><span class="s">'Korea'</span><span class="p">]]</span> <span class="c1"># 숫자와 문자, 리스트를 포함하는 리스트
+</span></code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>리스트는 대괄호 []로 감싸고 쉼표 , 로 요소를 구분해준다.</li>
+  <li>리스트를 요소값으로 가지는 리스트도 정의할 수 있다.</li>
+  <li>리스트는 어떤 자료형이라도 포함할 수 있다.</li>
+</ul>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-리스트-인덱싱indexing">2. 리스트 인덱싱(indexing)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># list num의 첫 번째 요소(1)
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># list num의 세 번째 요소(3)
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># list num의 뒤에서 첫 번째 요소(3)
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 1+2 = 3
+</span>
+<span class="n">double_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 1
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1">#['a','b','c']
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 'a'
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 'c'
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 'c'
+</span>
+<span class="n">triple_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,[</span><span class="s">'dog'</span><span class="p">,</span><span class="s">'cat'</span><span class="p">]]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">triple_list</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 'dog'
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-리스트-슬라이싱slicing">3. 리스트 슬라이싱(slicing)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># [1,2,3] = [num[0], num[1], num[2]]   문자열 슬라이싱처럼 num[3]은 포함되지 않는다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 처음 ~ num[1] = [1,2]
+</span><span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="c1"># num[2] ~ 끝 = [2,3,4,5]
+</span>
+<span class="n">double_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">],</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># double_list[2] ~ double_list[4] = [3,['a','b','c'],4]
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># ['a','b','c']
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 'b'
+</span><span class="k">print</span><span class="p">(</span><span class="n">double_list</span><span class="p">[</span><span class="mi">3</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span> <span class="c1">#['a','b']
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-리스트-연산">4. 리스트 연산</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="mi">1</span><span class="p">)</span> <span class="err">리스트</span> <span class="err">더하기</span><span class="p">(</span><span class="err">이어붙이기</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="c1"># [1,2,3,4,5,6]
+</span>
+<span class="mi">2</span><span class="p">)</span> <span class="err">리스트</span> <span class="err">곱하기</span><span class="p">(</span><span class="err">반복</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># [1,2,3,1,2,3,1,2,3,1,2,3] 4번 반복
+#print(a[2]+'hello') # 3hello가 나올것으로 기대하지만 숫자+문자열 은 자료형 오류를 일으킨다.
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="5-리스트-수정삭제">5. 리스트 수정,삭제</h1>
+
+<hr />
+
+<p> </p>
+
+<p><strong>1) 리스트 수정</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4]
+</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,10,3,4]
+</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">]</span> <span class="c1"># a[1:2]는 a[1]=10 하나만 해당한다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,11,12,13,3,4]
+</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">]</span> <span class="c1">#a[1] = 11
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,[15,16,17],12,13,3,4]&lt;code&gt;&lt;/code&gt;
+</span></code></pre></div></div>
+
+<ul>
+  <li>a[1:2]를 바꾸는것과 a[1]을 바꾸는 것은 다르다.</li>
+  <li>슬라이싱을 사용해 리스트를 수정하면 새로 넣어주는 리스트의 값들이 자연스럽게 추가된다.</li>
+  <li>인덱싱을 사용해 리스트를 수정하면 새로 넣어주는 리스트 자체가 리스트 안에 포함된다.</li>
+</ul>
+
+<p> </p>
+
+<p><strong>2) 리스트 삭제</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># a[2]~a[3] 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,'b','c']
+</span>
+<span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># a[2] = 'b' 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,'c']&lt;code&gt;&lt;/code&gt;
+</span></code></pre></div></div>
+
+<p>자료 삭제 방법은 위와 같이 2가 모두 사용 가능하다. 자료 = [] 혹은 del 자료</p>
+
+<p> </p>
+
+<h1 id="6-리스트-관련함수">6. 리스트 관련함수</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p><strong>1) 추가</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># 리스트 a 마지막에 5 추가
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4,5]
+</span><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4,5,['a','b']]
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>2) 정렬</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span> <span class="c1"># a를 요소 크기순으로 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,4,7]
+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'e'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'d'</span><span class="p">,</span><span class="s">'c'</span><span class="p">,</span><span class="s">'a'</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span> <span class="c1"># a를 알파벳 순으로 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># ['a','b','c','d','e']
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p><strong>3) 뒤집기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'dog'</span><span class="p">,</span><span class="s">'cat'</span><span class="p">,</span><span class="s">'pig'</span><span class="p">,</span><span class="s">'man'</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c1"># a의 순서를 역순으로 뒤집기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># ['man','pig','cat','dog']
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>4) 위치 반환</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 요소 3의 index 반환. 3 = a[2] 이므로 2 반환
+#print(a.index(5)) # 5라는 요소는 리스트에 존재하지 않으므로 값 오류(ValueError) 발
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>5) 삽입</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c1">#a[0] 위치에 5를 삽입
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [5,1,2,3,4]   a[0] = 5
+</span><span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c1">#a[4] 위치에 6을 삽입
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [5,1,2,3,6,4]
+</span></code></pre></div></div>
+
+<p>a[n]의 위치에 x를 삽입하면 a[n]=x가 되고 원래 a[n]은 뒤로 한 칸 밀린다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>6) 삭제</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 4라는 요소를 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,5]
+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">'dog'</span><span class="p">,</span><span class="s">'cat'</span><span class="p">,</span><span class="s">'pig'</span><span class="p">,</span><span class="s">'man'</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'cat'</span><span class="p">)</span> <span class="c1"># 'cat' 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># ['dog','pig','man']
+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,3,1,2,3,1,2,3]
+</span></code></pre></div></div>
+
+<p>지우려는 요소값이 여러개인 경우 첫 번째로 나오는 요소만 삭제</p>
+
+<p> </p>
+
+<p><strong>7) 끄집어내기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1">#마지막 요소를 return 시키면서 삭제. 리턴값이 있다는 것을 명심해야한다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span> <span class="c1"># a.pop() = 5 리턴값이 있으므로 출력 가능
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4]   5가 삭제되었다.
+</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># a[1]=2를 return 시키면서 삭제
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,3,4]
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>8) 포함 된 요소의 갯수 세기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># '3이 포함된 횟수 return값' = 2 출력
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p><strong>9) 리스트 확장</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c1"># 리스트 a에 리스트 [4,5,6] 덧붙이며 확장
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2,3,4,5,6]
+</span></code></pre></div></div>
+
+:ET

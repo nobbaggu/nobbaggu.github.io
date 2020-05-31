@@ -1,0 +1,126 @@
+I"�$<p><br /></p>
+<h3 id="1-자동-형변환">1. 자동 형변환</h3>
+<hr />
+
+<p>다음과 같이 변수를 선언합니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//int형 리터럴상수를 float형 변수에 저장</span>
+</code></pre></div></div>
+
+<p>10은 int형 리터럴 상수이므로 float형 변수에 저장되기 위해 float형 실수 10.0으로 바뀝니다. 이게 형 변환입니다. <strong>형 변환은 대입연산자(=)의 왼쪽에 있는 자료형을 기준으로 일어납니다.</strong> 대입연산자(=)의 오른쪽에 있는 숫자의 자료형이 왼쪽에 있는 변수의 자료형으로 자동으로 변합니다. 이런 경우 자동으로 자료형이 변한다 하여 <strong>자동 형변환</strong>이라고 합니다.</p>
+
+<p>하지만 형 변환에 관해서 주의해야할 점이 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">charnum</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">intnum</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">413</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"charnum is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">charnum</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"intnum is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">intnum</span><span class="p">);</span>
+
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>charnum is -56</p>
+
+<p>intnum is 1</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>왜 이런 어처구니 없는 결과가 나왔을까요?</p>
+
+<p>200은 정수형 리터럴상수이기때문에 기본적으로 int형으로 저장됩니다. int형 정수는 4byte의 메모리를 차지합니다.</p>
+
+<p>00000000 00000000 00000000 11001000 ← 10진수 200의 2진수 표현</p>
+
+<p>자, 그럼 이 200이라는 정수형 리터럴상수가 char형으로 형변환되면서 어떻게 바뀔까요? 더 작은 크기의 자료형으로 형변환이 될 때는 상위 비트들을 날리고 하위 비트들을 남겨놓습니다. 그럼 char는 1byte 크기의 자료형이므로 11001000만 남게됩니다. 그런데 가장 최상위비트 0은 양의 정수, 1은 음의 정수를 표현할 때 씁니다. 그렇다면 11001000 = -128 + 64 + 8 = -56이 됩니다.</p>
+
+<p><strong>더 작은 크기의 자료형으로 형 변환을 할 때는 데이터 자체가 변해버릴 가능성이 있다</strong>는 것입니다. 따라서 막무가내로 자료형을 정하기보다는 최소한 저장하려는 수를 표현할 수 있는 자료형으로 선언해 주어야합니다.</p>
+
+<p>두 번째로, intnum의 값이 1이 나온 이유는 간단합니다. <strong>실수 자료형을 정수 자료형으로 형변환 할 때에는 소수점 이하 부분을 날려버린다</strong>는 간단한 규칙입니다.</p>
+
+<p>그리고 형 변환이 일어나는 또다른 경우가 있습니다. 다음의 코드를 보세요.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">short</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위의 코드에서 우리는 short형 정수와 int형 정수를 연산하고 있습니다. 이럴 때에는 short 자료형이 int 자료형으로 형 변환되어서 int 자료형끼리 더하여 num3에 담기게 됩니다.</p>
+
+<p>하나 더 봅시다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">short</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="kt">short</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>이런 경우에는 어떻게 될까요? short 자료형 num1이 int 자료형으로 변환되어 num2와의 연산이 일어나고 그 결과가 다시 short 타입으로 형 변환되어 num3에 저장됩니다.</p>
+
+<p>이 두 가지 코드에서 공통적으로 말하고자 하는것은 <strong>연산과정에서 자료형의 불일치는 더 큰 범위를 가지는 자료형으로의 형변환을 일으킨다</strong>는 사실입니다.</p>
+
+<p><br /></p>
+<h3 id="2-강제--형변환">2. 강제  형변환</h3>
+<hr />
+
+<p>강제로 자료형을 변환시킬 수도 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The result is %f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>참고로 %f는 실수의 출력을 담당하는 서식문자입니다.</p>
+
+<p>위 코드의 실행결과는 다음과 같습니다.</p>
+
+<p>“The result is 0.000000”</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>1과 2는 각각 정수형 리터럴상수이므로 int형일것입니다. int형끼리 연산이 일어날 때에는 서로 자료형이 같기때문에 형 변환은 일어나지 않습니다. 그리고 그 결과값 역시 같은 int형이라는 겁니다. 따라서 소수점 이하를 날려버리고 0이 되는겁니다. 이후 double형 변수 result에  저장되면서 0.000000이 되는 것입니다. 이럴 때 쓰는 방법이 바로 강제형변환입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">num1</span><span class="o">/</span><span class="n">num2</span><span class="p">;</span> <span class="c1">// 혹은 double result = num1/(double)num2;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>간단히 형 변환을 하려는 대상앞에 ‘변환시키고자 하는 자료형’을 쓰면 됩니다. 그럼 위 코드의 실행순서는 num1이 double형인 1.0으로 바뀌고 연산을 위해 num2도 자동형변환에 의해 2.0으로 바뀌어 연산이 되고 결과값이 double형이 되는것입니다.</p>
+
+<p><br /></p>
+
+<p>정리해보겠습니다.</p>
+
+<blockquote>
+  <ol>
+    <li>형 변환은 대입연산자(=)의 왼쪽에 있는 자료형을 기준으로 일어난다.</li>
+    <li>더 작은 크기의 자료형으로 형 변환 시킬때에는 데이터 손실에 대한 주의가 필요하다.</li>
+    <li>연산과정에서 자료형의 불일치는 더 큰 범위를 가지는 자료형으로의 형변환을 일으킨다.</li>
+    <li>우리가 원하는 결과값을 얻기위해 강제 형변환을 할 수 있다.</li>
+  </ol>
+</blockquote>
+:ET

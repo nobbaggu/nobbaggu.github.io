@@ -1,0 +1,162 @@
+I"�(<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"no file.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="c1"># FileNotFoundError: [Errno 2] No such file or directory: 'no file.txt'
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># ZeroDivisionError: division by zero
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="c1"># IndexError: list index out of range
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p>위와 같은 에러들은 파이썬 프로그래밍에서 빈번하게 일어난다. 단순한 실수로 인해 프로그램 전체가 돌아가지 않아버린다. 이럴 때 이 오류가 난 부분을 무시하고 넘어가기 위해서 예외처리를 사용한다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="1-try-except">1. try, except</h1>
+
+<hr />
+
+<p>try : 시도하다,  ~를 해보다</p>
+
+<p>except : ~를 제외하고, 예외로</p>
+
+<p>try와 except 단어의 의미는 위와 같이 해석이 된다. 이제 try except 구문을 사용한 예외 처리를 한 번 보자.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"no file.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Error!!!"</span><span class="p">)</span>
+
+
+</code></pre></div></div>
+
+<p>위 코드는 ‘no file.txt’를 읽기 모드로 열어봐. 그런데 오류가 나면 ‘Error!!!’ 라는 문장을 출력해 라고 해석된다.</p>
+
+<p>이렇게 하면 오류가 나도 우리가 미리 명령한 행동을 실행하고 계속해서 프로그램의 다음 명령을 실행한다.</p>
+
+<p>이런 식으로 오류 처리를 하는 방법은 3 가지가 있는데, 각각 조금씩 다르다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>1) try, except</strong></span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"no file.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Error!!!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드는 발생하는 모든 에러에 대해 except 구문을 실행한다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>2) try, except + 발생 오류</strong></span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"no file.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">FileNotFoundError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"File Not Found Error!!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드는 FileNotFoundError에 대해서만 except 구문을 실행하고 다른 에러에 대해서는 오류를 발생시키고 프로그램을 중지시킨다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>3) try, except + 발생 오류 + 오류 메세지 변수</strong></span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"no file.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드에서는 FileNotFoundError를 변수 e에 저장한다. 그리고 except 구문에서 변수 e를 출력한다. 그럼 FileNotFoundError의 에러 메시지가 출력된다.</p>
+
+<p>[Errno 2] No such file or directory: ‘no file.txt’</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-else절--finally절">2. else절 / finally절</h1>
+
+<hr />
+
+<p><span style="font-size: 14pt;"><strong>1) else절</strong></span></p>
+
+<p>else 문은 if 문과 같이 쓰이는게 보통이다. 하지만 try 예외처리문도 else절을 가질 수 있다. else절은 다음의 두 가지 특징을 가지고 있다.</p>
+
+<ul>
+  <li>예외로 처리한 에러가 발생하지 않는 경우에 실행된다.</li>
+  <li>except절 바로 다음에만 올 수 있다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"no file.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>‘no file.txt’를 열어라. 그런데, FileNotFoundError가 발생하면 에러 메시지를 출력해주고 FileNotFoundError가 발생지 않으면 내용을 읽어 data 변수에 저장하고 파일을 닫아. 그리고 data를 출력해</p>
+
+<p>흐름을 쭉 따라가면 굳이 이해할 것도 없다. 또 한 번 파이썬 문법의 직관성과 간결함에 감탄을 한다.</p>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>2) finally절</strong></span></p>
+
+<p>try문은 finally절도 지원한다.</p>
+
+<p>finally는 ‘결국’이라는 의미처럼 예외의 발생 유무와 상관없이 try문의 마지막에 항상 실행이 된다. 따라서 무조건 실행시켜야 하는 중요한 명령을 실행하기 위해 쓰이는 경우가 많다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"no file.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># 예외 발생 여부에 상관없이 마지막에는 항상 파일을 닫는다.
+</span></code></pre></div></div>
+
+<p>위 코드에서는 예외가 발생하던지 말던지간에 결국은 finally절이 실행되어 열려있던 파일이 닫히게 된다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-에러-강제발생">3. 에러 강제발생</h1>
+
+<hr />
+
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">" 10 divided by what? : "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">' '</span><span class="p">)</span>
+<span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span> <span class="c1">#input 함수는 문자열을 받기 위한 입력함수므로 숫자로 형변환
+</span><span class="k">if</span> <span class="n">num</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="n">num</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="nb">ZeroDivisionError</span>
+</code></pre></div></div>
+
+<p>위 코드에서는 10을 나눌 숫자를 하나 입력받는다. 그리고 그 숫자가 0이 아니면 10/num의 결과를 출력해주고 0이 입력되면 ZeroDivisionError를 일으킨다. 위 처럼 rasie 구문을 사용하여 강제로 에러를 발생시킬 수 있다.</p>
+:ET

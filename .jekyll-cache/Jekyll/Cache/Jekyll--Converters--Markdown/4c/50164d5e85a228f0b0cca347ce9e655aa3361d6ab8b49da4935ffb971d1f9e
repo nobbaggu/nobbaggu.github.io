@@ -1,0 +1,92 @@
+I"�<h1 id="1-변수란">1. 변수란?</h1>
+
+<hr />
+
+<p>변수(variable)가 무엇일까요? 변수는 여러분이 가지고있는 <strong>이름</strong>과 같습니다. 여러분의 실제적인 물리적 데이터(키, 피부색, 치아의 갯수, 심장의 크기 등등)는 여러분의 몸에 담겨 있어요. 그리고 우리는 그 물리적 데이터를 담고있는 여러분 자체에 이름을 붙여서 부릅니다.</p>
+
+<p>컴퓨터도 같습니다. 실제적인 메모리 공간에 데이터를 담으며 이름을 붙입니다. 위에서 예로 든 상황에서는 [여러분의 이름 = 변수명, 여러분 자체 = 메모리공간, 여러분에 대한 물리적 정보 = 데이터] 입니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-변수의-선언과-초기화">2. 변수의 선언과 초기화</h1>
+
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span><span class="p">;</span> <span class="c1">//변수의 선언</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//변수의 초기화</span>
+</code></pre></div></div>
+
+<p>위와 같이 변수의 선언을 하는 순간 컴파일러는 특정한 메모리 공간을 할당하고 거기에 a라는 이름을 붙입니다. 그리고 우리는 거기에 a라는 변수명을 붙였기 때문에 이후에는 a라는 문자를 써서 그 메모리 공간의 데이터에 접근할 수 있습니다. 그리고 a에 10을 대입했습니다. 만약 변수를 선언하고 초기화를 하기 전에 printf()함수를 써서 a를 출력해보면 의미가 없는 아무 숫자(쓰레기값)이 나옵니다.</p>
+
+<p> </p>
+
+<p>아래와 같이 변수 선언과 동시에 초기화도 가능합니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span><span class="c1">// 변수의 선언, 초기화</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>변수 명 앞의 int는 무엇일까요? int는 자료형(data type) 중의 하나입니다. 여기서 int는 4byte의 메모리 공간을 차지하여 정수를 표현할 수 있는 자료형이라는 것만 기억하시면 됩니다. 변수를 선언할 때는 자료형을 명시해 주어야 합니다. 그래야 컴파일러가 변수를 저장하기 위해 얼마만큼의 메모리 공간을 할당할 지 알 수 있기 때문입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//변수 a를 선언하고 10으로 초기화  </span>
+   <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//변수 b를 선언하고 20으로 초기화</span>
+   
+   <span class="n">printf</span><span class="p">(</span><span class="s">"a = %d, b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+   
+   <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//a에 100을 대입  </span>
+   <span class="n">b</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span> <span class="c1">//b에 100을 대입</span>
+   
+   <span class="n">printf</span><span class="p">(</span><span class="s">"a = %d, b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+   
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>a = 10, b = 20</p>
+
+<p>a = 100, b = 200</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>위의 코드에서 우리는 int형 변수 a,b를 정의함과 동시에 각각 10,20의 데이터를 담았어요. 그리고 출력을 하면 a = 10, b = 20의 결과가 나옵니다.</p>
+
+<p>그리고 이제는 변수명 a,b를 사용해서 a,b라는 변수에 100,200을 대입해요. 그리고 출력을 해보면 a = 100, b = 200의 결과가 나옵니다.</p>
+
+<p>변수를 한번 선언하고 나면 자료형 없이 변수명만을 이용해서 데이터를 다룰 수 있다는 겁니다.</p>
+
+<p>그리고 <strong>printf()함수를 사용하여 모니터를 통해 출력을 할 수 있다</strong> 라는 정도만 알아두셔도 무방합니다!</p>
+
+<p>정리를 해볼까요?</p>
+
+<p>변수란 어떠한 물리적 데이터를 담을 수 있는 <strong>메모리공간에 붙이는 이름</strong>이다. 그리고 변수를 선언할 때에는 필히 그 변수의 <strong>자료형을 명시</strong>해주어야한다. 그래야지 컴파일러가 해석을 하며 얼만큼의 메모리 크기를 할당할지 알 수 있기 때문이다. 그리고 이후에는 우리는 변수명을 사용하여 데이터를 다룰 수 있다.</p>
+
+<p> </p>
+
+<p>주의해야할 건, 변수의 선언은 항상 함수 내에서 가장 먼저 해 주는게 좋습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//변수 a 선언과 동시에 10으로 초기화</span>
+   <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//a에 100 대입</span>
+   
+   <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span><span class="c1">// 변수 b 선언</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 코드는 실행을 시키면 오류가 날 수도 있고 아닐 수도 있습니다. 컴파일러에 따라 변수의 선언이 무조건 함수 내에서 가장 먼저 와야되는 컴파일러도 있고 아닌 컴파일러도 있습니다. 사실 현재의 ANSI 표준은 변수의 선언이 가장 먼저 앞에 오지 않아도 됩니다. 하지만 일반적으로 변수의 선언은 함수의 시작부분에서 해주는 게 맞습니다.</p>
+:ET

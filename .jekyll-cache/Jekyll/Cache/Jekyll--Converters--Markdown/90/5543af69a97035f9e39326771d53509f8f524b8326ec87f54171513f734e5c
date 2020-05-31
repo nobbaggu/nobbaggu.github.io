@@ -1,0 +1,93 @@
+I"�<p> </p>
+
+<ul>
+  <li>튜플 자료형은 리스트와 거의 비슷하다.a</li>
+  <li>리스트는 대괄호 [ ]로 둘러쌓여있지만 튜플은 소괄호 ( )로 둘러쌓여있다.</li>
+  <li>리스트와 튜플의 가장 중요한 차이는 리스트는 요소의 추가,삭제,수정이 가능하지만 튜플은 불가능하다. C나 JAVA의 상수와 비슷한 개념이다.</li>
+  <li>따라서 프로그램에서 바뀌면 안되는 데이터는 튜플로 정의하고 수시로 값이 바뀌어야하는 데이터는 리스트로 정의한다.</li>
+</ul>
+
+<h1 id="1-튜플-표현방식">1. 튜플 표현방식</h1>
+
+<hr />
+
+<p>#</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tu1</span> <span class="o">=</span> <span class="p">()</span> <span class="c1"># 공백 튜플
+</span><span class="n">tu2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="c1"># 요소가 1개인 경우는 요수 뒤에 콤마(,)를 반드시 붙여야한다.
+</span><span class="n">tu3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">tu4</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span> <span class="c1"># 괄호를 생략할 수 있다. 자동으로 (4,5,6)으로 치환되어 저장된다.
+</span><span class="n">tu5</span> <span class="o">=</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,(</span><span class="s">'c'</span><span class="p">,</span><span class="s">'d'</span><span class="p">,</span><span class="s">'hello'</span><span class="p">))</span> <span class="c1"># 튜플 내부에 또다른 튜플을 포함할 수 있다.
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">)</span> <span class="c1"># ()
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu2</span><span class="p">)</span> <span class="c1"># (1,)
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu3</span><span class="p">)</span> <span class="c1"># (1,2,3)
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu4</span><span class="p">)</span> <span class="c1"># (4,5,6)
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu5</span><span class="p">)</span> <span class="c1"># ('a','b',('c','d','hello'))
+</span>
+<span class="n">tu6</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 요소가 1개인데 콤마(,)를 붙이지 않은 경우는 숫자 자료형 1로 저장된다.
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu6</span><span class="p">)</span> <span class="c1"># 1
+</span><span class="nb">type</span><span class="p">(</span><span class="n">tu6</span><span class="p">)</span> <span class="c1"># &lt;class 'int'&gt;    type 함수를 사용하여 class 확인 가능
+</span>
+<span class="k">del</span> <span class="n">t1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># TypeError : 'tuple' object does not support item deletion 오류 발생
+</span><span class="n">t1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># TypeError : 'tuple' object does not support item assignment 오류 발생
+</span></code></pre></div></div>
+
+<p>#</p>
+
+<p> </p>
+
+<h1 id="2-튜플-연산">2. 튜플 연산</h1>
+
+<hr />
+
+<p><strong>1) 튜플 더하기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tu1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">tu2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="o">+</span><span class="n">tu2</span><span class="p">)</span> <span class="c1"># (1,2,3,4,5,6)
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>2) 튜플 곱하기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># (1,2,3,1,2,3,1,2,3)  3번 반복
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-튜플-인덱싱">3. 튜플 인덱싱</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tu1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 3
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># 'c'
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-튜플-슬라이싱">4. 튜플 슬라이싱</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tu1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># tu1[2] ~ tu1[3] = (3,'a')
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># tu1[0] ~ tu1[2] = (1,2,3)
+</span><span class="k">print</span><span class="p">(</span><span class="n">tu1</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="c1"># (3,'a','b','c')
+</span></code></pre></div></div>
+
+:ET

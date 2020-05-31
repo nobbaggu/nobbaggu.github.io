@@ -1,0 +1,391 @@
+I"_h<h1 id="1-2차원-배열의-선언-방법">1. 2차원 배열의 선언 방법</h1>
+
+<hr />
+
+<p>2차원 이상의 정보도 1차원 배열에 저장할 수는 있습니다. 하지만 index를 두 개 사용한다면 2차원 배열을 저장하는 데 훨씬 효과적일 겁니다.</p>
+
+<p><img class="aligncenter wp-image-1008" src="/images/2018/09/1-13.jpg" alt="" width="402" height="212" srcset="/images/2018/09/1-13.jpg 628w, /images/2018/09/1-13-300x158.jpg 300w" sizes="(max-width: 402px) 100vw, 402px" /></p>
+
+<p>C언어에서는 index를 2개 이용하는 2차원 배열을 지원합니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">8</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"arr[%d][%d] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>arr[0][0] = -858993460</p>
+
+<p>arr[0][1] = -858993460</p>
+
+<p>arr[0][2] = -858993460</p>
+
+<p>arr[0][3] = -858993460</p>
+
+<p>arr[0][4] = -858993460</p>
+
+<p>arr[0][5] = -858993460</p>
+
+<p>arr[0][6] = -858993460</p>
+
+<p>arr[0][7] = -858993460</p>
+
+<p>arr[1][0] = -858993460</p>
+
+<p>arr[1][1] = -858993460</p>
+
+<p>arr[1][2] = -858993460</p>
+
+<p>arr[1][3] = -858993460</p>
+
+<p>arr[1][4] = -858993460</p>
+
+<p>arr[1][5] = -858993460</p>
+
+<p>arr[1][6] = -858993460</p>
+
+<p>arr[1][7] = -858993460</p>
+
+<p>arr[2][0] = -858993460</p>
+
+<p>arr[2][1] = -858993460</p>
+
+<p>arr[2][2] = -858993460</p>
+
+<p>arr[2][3] = -858993460</p>
+
+<p>arr[2][4] = -858993460</p>
+
+<p>arr[2][5] = -858993460</p>
+
+<p>arr[2][6] = -858993460</p>
+
+<p>arr[2][7] = -858993460</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><strong>1차원 배열을 선언하는 형태 int arr[ ]와는 다르게 2차원 배열을 선언할 때에는 배열의 행의 갯수와 열의 갯수의 정보가 필요합니다. 따라서 index가 2개 필요합니다.</strong></p>
+
+<p><img class="aligncenter wp-image-1010" src="/images/2018/09/2-6.jpg" alt="" width="317" height="143" srcset="/images/2018/09/2-6.jpg 415w, /images/2018/09/2-6-300x135.jpg 300w" sizes="(max-width: 317px) 100vw, 317px" /></p>
+
+<p>먼저 배열을 선언할 때에는 다음의 세 가지 정보를 주어야 합니다.</p>
+
+<p><strong>1. 자료형 : 배열에 담을 데이터들의 자료형</strong></p>
+
+<p><strong>2. 이름 : 배열의 데이터가 들어간 메모리공간에 접근하기 위한 배열의 이름</strong></p>
+
+<p><strong>3. 배열의 크기 : 행의 갯수와 열의 갯수</strong></p>
+
+<p>2차원 배열을 선언하는 방법에는 여러가지가 있습니다. 아래 그림의 데이터를 여러가지 방법의 2차원 배열을 사용해서 저장해보겠습니다.</p>
+
+<p><img class="aligncenter wp-image-1011" src="/images/2018/09/3-5.jpg" alt="" width="267" height="165" srcset="/images/2018/09/3-5.jpg 376w, /images/2018/09/3-5-300x185.jpg 300w" sizes="(max-width: 267px) 100vw, 267px" /></p>
+
+<p> </p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr1</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">},{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">},{</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}};</span> <span class="c1">//각 행마다 중괄호 { } 사용</span>
+    <span class="kt">int</span> <span class="n">arr2</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">},{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">},{</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">}};</span> <span class="c1">// 각 행의 원소를 몇 개 빠뜨리면 앞에서부터 채우고 나머지는 0으로 초기화</span>
+    <span class="kt">int</span> <span class="n">arr3</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">};</span> <span class="c1">// 행의 구분없이 원소를 넣으면 1번행부터 차례대로 초기화</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"arr1[%d][%d] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+        
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"arr2[%d][%d] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"arr3[%d][%d] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>arr1[0][0] = 1</p>
+
+<p>arr1[0][1] = 2</p>
+
+<p>arr1[0][2] = 3</p>
+
+<p>arr1[0][3] = 4</p>
+
+<p>arr1[1][0] = 5</p>
+
+<p>arr1[1][1] = 6</p>
+
+<p>arr1[1][2] = 7</p>
+
+<p>arr1[1][3] = 8</p>
+
+<p>arr1[2][0] = 9</p>
+
+<p>arr1[2][1] = 10</p>
+
+<p>arr1[2][2] = 11</p>
+
+<p>arr1[2][3] = 12</p>
+
+<p>arr2[0][0] = 1</p>
+
+<p>arr2[0][1] = 0</p>
+
+<p>arr2[0][2] = 0</p>
+
+<p>arr2[0][3] = 0</p>
+
+<p>arr2[1][0] = 5</p>
+
+<p>arr2[1][1] = 6</p>
+
+<p>arr2[1][2] = 7</p>
+
+<p>arr2[1][3] = 0</p>
+
+<p>arr2[2][0] = 9</p>
+
+<p>arr2[2][1] = 10</p>
+
+<p>arr2[2][2] = 0</p>
+
+<p>arr2[2][3] = 0</p>
+
+<p>arr3[0][0] = 1</p>
+
+<p>arr3[0][1] = 2</p>
+
+<p>arr3[0][2] = 3</p>
+
+<p>arr3[0][3] = 4</p>
+
+<p>arr3[1][0] = 5</p>
+
+<p>arr3[1][1] = 6</p>
+
+<p>arr3[1][2] = 7</p>
+
+<p>arr3[1][3] = 8</p>
+
+<p>arr3[2][0] = 9</p>
+
+<p>arr3[2][1] = 10</p>
+
+<p>arr3[2][2] = 11</p>
+
+<p>arr3[2][3] = 12</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>2차원 배열의 선언과 초기화에는 위처럼 대표적으로 3가지 방법이 있습니다.</p>
+
+<ol>
+  <li>
+    <p>각 행을 구분하며 모든 칸을 초기화</p>
+  </li>
+  <li>
+    <p>각 행을 구분하며 몇개만 초기화 : 앞에서부터 채우고 초기화되지 않은 부분은 0으로 초기화</p>
+  </li>
+  <li>
+    <p>각 행을 구분하지 않으며 초기화 : 1행1열의 칸부터 하나의 행을 채우고 다음행을 채움</p>
+  </li>
+</ol>
+
+<p> </p>
+
+<p>그리고 2차원 배열도 1차원 배열과 접근법은 같습니다. 2차원 배열 역시 index는 [0] 부터 시작합니다.</p>
+
+<p><img class="aligncenter wp-image-1012" src="/images/2018/09/4-2.jpg" alt="" width="380" height="206" srcset="/images/2018/09/4-2.jpg 644w, /images/2018/09/4-2-300x163.jpg 300w" sizes="(max-width: 380px) 100vw, 380px" /></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-index-범위-초과">2. index 범위 초과</h1>
+
+<hr />
+
+<p>예제를 하나 보겠습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">},{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">},{</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}};</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+    
+    <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//1행 1열의 데이터 100 증가</span>
+    <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//3행 4열의 데이터 100 증가</span>
+    <span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//??????</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"arr[%d][%d] = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">]);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>위 예제에서는 배열의 index 범위를 초과했습니다. 그러나 에러는 나지 않습니다. <strong>C언어의 컴파일러들은 배열에 대해서 유효성 검사를 진행하지 않기 때문에 오류를 잡아주지 않습니다. 따라서 위의 코드처럼 잘못된 메모리공간에 접근하지 않도록 조심해야 합니다.</strong> 별로 중요한 메모리공간이 아니라면 괜찮겠지만 만약 그 메모리공간에 중요한 데이터가 있을 시에는 치명적인 문제로 이어질 수 있기 때문입니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-크기-정보를-생략한-2차원-배열-선언">3. 크기 정보를 생략한 2차원 배열 선언</h1>
+
+<hr />
+
+<p>1차원 배열은 배열의 크기 정보를 주지 않고 원소로 초기화를 시키면 원소의 갯수에 맞는 배열 크기로 자동 정의 되었습니다. 2차원 배열은 어떨까요? int arr[ ][ ] = {1,2,3,4,5,6,7,8,9,10,11,12}; 컴파일러는 생각할겁니다. ‘int형의 데이터가 12개인 배열이군. 하지만 이것이 12×1인지, 1×12인지 혹은 2×6인지 6×2인지, 아니면 3×4, 4×3 인지 모르겠다.’ 하고 에러를 내버립니다. 그렇다면 int arr[ ][6] = {1,2,3,4,5,6,7,8,9,10,11,12}; 은 어떨까요? ‘int형의 정수가 12개이고 열의 갯수가 6개인 2차원 배열’ 이라면 행의 갯수는 2개로 자동으로 정해질 수 밖에 없습니다. 그렇습니다. 우리는 배열이 선언되기에 충분한 정보를 준거에요. 하지만 아쉽게도 int [2][ ] = {1,2,3,4,5,6,7,8,9,10,11,12}; 의 선언은 안됩니다. 충분한 정보를 주었는데요 말입니다.</p>
+
+<p> </p>
+
+<p><img class="aligncenter size-full wp-image-1013" src="/images/2018/09/5.jpg" alt="" width="784" height="465" srcset="/images/2018/09/5.jpg 784w, /images/2018/09/5-300x178.jpg 300w, /images/2018/09/5-768x456.jpg 768w" sizes="(max-width: 784px) 100vw, 784px" /></p>
+
+<p>원소의 갯수와 행,열의 갯수 중 하나만 알면 배열이 형태를 가지고 초기화되는데 문제가 없습니다. 하지만 우리가 생략 가능한 것은 오직 행의 갯수입니다. 정리하자면, ‘<strong>배열은 행의 갯수를 생략된 형태의 선언이 가능하다. 하지만 열의 갯수는 생략할 수 없다’ 입니다</strong>.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-3차원-배열">3. 3차원 배열</h1>
+
+<hr />
+
+<p><strong>3차원 배열은 2차원 배열이 여러 층 있는 것이라고 생각하면 좋습니다.</strong><img class="aligncenter wp-image-1014" src="/images/2018/09/6.jpg" alt="" width="336" height="349" srcset="/images/2018/09/6.jpg 447w, /images/2018/09/6-289x300.jpg 289w" sizes="(max-width: 336px) 100vw, 336px" /></p>
+
+<p>3차원 배열의 크기정보는 다음과 같습니다.</p>
+
+<p><img class="aligncenter size-full wp-image-1015" src="/images/2018/09/7.jpg" alt="" width="492" height="183" srcset="/images/2018/09/7.jpg 492w, /images/2018/09/7-300x112.jpg 300w" sizes="(max-width: 492px) 100vw, 492px" /></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">},</span>
+          <span class="p">{</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">}</span> <span class="p">}</span>
+    <span class="p">};</span>
+    
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">;</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">for</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"arr[%d][%d][%d] = %d   "</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>arr[0][0][0] = 1   arr[0][0][1] = 2</p>
+
+<p>arr[0][1][0] = 3   arr[0][1][1] = 4</p>
+
+<p>arr[0][2][0] = 5   arr[0][2][1] = 6</p>
+
+<p>arr[0][3][0] = 7   arr[0][3][1] = 8</p>
+
+<p>arr[1][0][0] = 9   arr[1][0][1] = 10</p>
+
+<p>arr[1][1][0] = 11   arr[1][1][1] = 12</p>
+
+<p>arr[1][2][0] = 13   arr[1][2][1] = 14</p>
+
+<p>arr[1][3][0] = 15   arr[1][3][1] = 16</p>
+
+<p>arr[2][0][0] = 17   arr[2][0][1] = 18</p>
+
+<p>arr[2][1][0] = 19   arr[2][1][1] = 20</p>
+
+<p>arr[2][2][0] = 21   arr[2][2][1] = 22</p>
+
+<p>arr[2][3][0] = 23   arr[2][3][1] = 24</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p> </p>
+
+<p>정리하자면 다음과 같습니다.</p>
+
+<p>사실 3차원 배열은 사용할 일이 많이 없습니다. 2차원 이상의 배열을 다차원배열이라고 하는데 다차원 배열 중에서는 2차원이 가장 많이 쓰이고 대표적입니다.</p>
+:ET

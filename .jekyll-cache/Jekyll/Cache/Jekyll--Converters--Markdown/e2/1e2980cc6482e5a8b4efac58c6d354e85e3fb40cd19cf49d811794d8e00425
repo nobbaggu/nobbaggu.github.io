@@ -1,0 +1,287 @@
+I"�<<p>조건문이란 어떠한 조건이 ‘참’인 경우 코드를 실행시킬 때 사용합니다. if 는 가장 대표적인 조건문입니다.</p>
+
+<p><br /></p>
+<h2 id="1-if문-구조">1. if문 구조</h2>
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="err">조건</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>if문이 실행되면 조건식을 판단합니다. 결과가 ‘참’이면 {. . .}을 실행하고 ‘거짓’이면 아무것도 실행하지 않고 다음 코드로 넘어갑니다.</p>
+
+<p><br /></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>  
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과 1</p>
+
+<p>Inser a integer number : 3</p>
+
+<p>The number is larger than 0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>실행결과 2</p>
+
+<p>Inser a integer number : -2</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>num이라는 변수를 선언하고 정수를 입력받아 num에 저장합니다. 이후 if문에서 num의 값이 0보다 큰지 판단한 후 ‘참’이면 “The numebr is larger than 0\n”을 모니터로 출력해줍니다. 만약 0보다 작은수를 입력하면 아무것도 수행하지 않고 프로그램이 종료됩니다.</p>
+
+<p><br /></p>
+<h2 id="2-ifelse">2. if~else</h2>
+<hr />
+
+<p>else는 if의 조건이 ‘거짓’인 경우 실행됩니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is not larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Inser a integer number : -5</p>
+
+<p>The number is not larger than 0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+<h2 id="3-ifelse-if">3. if~else if</h2>
+<hr />
+
+<p>여러 개의 조건을 판단하여 실행을 분기시키고 싶은 경우에는 else if문을 사용합니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is smaller than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The number is 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br />
+실행결과</p>
+
+<p>Inser a integer number : 0</p>
+
+<p>The number is 0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+<h2 id="4-항상-참--항상-거짓">4. 항상 참 / 항상 거짓</h2>
+<hr />
+
+<p>만약 if나 else if의 조건문 안에 ‘참(true)’와 ‘거짓(false)’ 를 넣으면 어떻게 될까요?</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Inser a integer number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"1 is always true</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"1 is not true</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"0 is always false</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>    
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"0 is not false</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br />
+실행결과</p>
+
+<p>Inser a integer number : 1231</p>
+
+<p>1 is always true</p>
+
+<p>0 is not false</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>if문에 1을 넣으면 항상 if문의 코드가 실행이 되고 0을 넣으면 if가 실행이 되지 않아 else가 있다면 바로 else가 실행 됩니다. 참고로 0이 아닌 모든 수는 ‘참’으로 인식됩니다.</p>
+
+<p><br /></p>
+<h2 id="5-else-if의-정체">5. else if의 정체</h2>
+<hr />
+
+<p>짚고 넘어가야 할 부분이 있습니다. 조건문은 하나가 만족이 되면 그것을 실행하고 나머지 남은 조건문들은 실행시키지 않습니다. 말하자면 else if가 2개 있을 때, 첫 번째 else if가 만족이 되면 두 번째 else if는 실행하지 않습니다. 코드가 이런 식으로 실행이 되는것은 if~else문의 구조를 알면 쉽게 이해됩니다.</p>
+
+<p>else if라는 것은 사실 else 내부에서 또다시 if와 else로 나뉘는 것일 뿐입니다. if와 else문을 <strong>중첩</strong> 시킨것일 뿐인겁니다. 다음 코드는 if와 else가 중첩된 경우입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 2</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"num is larger than 3</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"num is same or smaller than 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br />
+실행결과</p>
+
+<p>num is larger than 0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+<h2 id="6-break">6. break</h2>
+<hr />
+
+<p>break를 씀으로써 우리는 반복문을 강제로 탈출할 수 있습니다. break를 쓰면 break이 포함된 가장 가까운 반복문을 탈출합니다. 조건문이 아니라 반복문이라는 점을 명심하셔야합니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"Insert a number to sum : "</span><span class="p">);</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+
+		<span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// 0을 입력하면 while문 탈출</span>
+		<span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">sum</span><span class="o">+=</span><span class="n">num</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">"The sum is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Insert a number to sum : 102</p>
+
+<p>Insert a number to sum : 392</p>
+
+<p>Insert a number to sum : -32</p>
+
+<p>Insert a number to sum : 31</p>
+
+<p>Insert a number to sum : -129</p>
+
+<p>Insert a number to sum : 93</p>
+
+<p>Insert a number to sum : 60</p>
+
+<p>Insert a number to sum : 0</p>
+
+<p>The sum is 517</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>0을 입력하는 순간 if(num==0)의 조건이 만족되어 <code class="highlighter-rouge">break;</code> 구문이 실행되고 while문을 빠져나오게 됩니다. 위의 코드에서 break문이 if문 안에 들어있다고 해서 헷갈리시면 안됩니다. break에 의해서 탈출하는 것은 while문입니다. 다시 한 번 강조드리자면 <strong>break는 포함된 가장 내부의 반복문에서 탈출합니다.</strong></p>
+:ET

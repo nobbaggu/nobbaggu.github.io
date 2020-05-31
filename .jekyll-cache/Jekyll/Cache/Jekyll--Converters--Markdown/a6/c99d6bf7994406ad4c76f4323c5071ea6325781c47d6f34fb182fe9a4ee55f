@@ -1,0 +1,157 @@
+I"�I<p><br /></p>
+<h3 id="1-화면에-그래픽-그리기">1. 화면에 그래픽 그리기</h3>
+<hr />
+
+<p>안드로이드에서 뷰(View) 혹은 뷰(View)를 상속하여 만드는 화면 구성 요소는 정해진 과정을 거친 후에 화면에 표시된다. 이 과정에 대해 알기위해서 뷰가 화면에 표시되기 이전에 그래픽으로 그려지는 방법을 이해해야한다.</p>
+
+<p><br />
+먼저 간단한 예제를 통해서 뷰를 상속받은 CustomView 클래스를 만들어 간단한 그래픽을 그려준 후 화면에 표시하면서 과정을 이해해보자.</p>
+
+<p>&lt;CustomView.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomView</span> <span class="kd">extends</span> <span class="nc">View</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">CustomView</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDraw</span><span class="o">(</span><span class="nc">Canvas</span> <span class="n">canvas</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onDraw</span><span class="o">(</span><span class="n">canvas</span><span class="o">);</span>
+
+        <span class="nc">Paint</span> <span class="n">paint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Paint</span><span class="o">();</span> <span class="c1">//페인트 객체 생성</span>
+        <span class="n">paint</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span> <span class="c1">//페인트 색 지정</span>
+
+        <span class="cm">/*왼쪽 위 꼭짓점이 (100, 100)이고 오른쪽 아래 꼭지점이 (200, 200)인 사각형
+        * Paint 객체의 Style은 default 값이 Style.FILL이므로 내부가 채워지도록 그려진다*/</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="na">drawRect</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="n">paint</span><span class="o">);</span>
+
+        <span class="cm">/* 중심이 (150, 400)이고 지름이 100인 원을 내부가 비워진 형태로 그리기 */</span>
+        <span class="n">paint</span><span class="o">.</span><span class="na">setStyle</span><span class="o">(</span><span class="nc">Paint</span><span class="o">.</span><span class="na">Style</span><span class="o">.</span><span class="na">STROKE</span><span class="o">);</span> <span class="c1">//STROKE 스타일로 그리기</span>
+        <span class="n">paint</span><span class="o">.</span><span class="na">setStrokeWidth</span><span class="o">(</span><span class="mf">2.0</span><span class="no">F</span><span class="o">);</span> <span class="c1">//STROKE 두께 지정</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="na">drawCircle</span><span class="o">(</span><span class="mi">150</span><span class="o">,</span> <span class="mi">400</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="n">paint</span><span class="o">);</span> <span class="c1">//원 그리기</span>
+
+        <span class="cm">/* 텍스트 그리기 */</span>
+        <span class="n">paint</span><span class="o">.</span><span class="na">setTextSize</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+        <span class="n">paint</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">MAGENTA</span><span class="o">);</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="na">drawText</span><span class="o">(</span><span class="s">"안드로이드"</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">800</span><span class="o">,</span> <span class="n">paint</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>모든 View 객체는 화면에 보이기 전에 <code class="highlighter-rouge">onDraw(Canvas canvas)</code> 메소드가 호출된다. 이 때 파라미터로 전달되는 <code class="highlighter-rouge">Canvas</code> 객체의 여러가지 메소드를 이용해 <code class="highlighter-rouge">Canvas</code>객체 위에 그래픽을 그릴 수 있다. 이 때 Paint 객체도 정의해주어야한다. Canvas는 그림을 그릴 도화지와 같고 Paint는 물감과 같은 개념인 것이다.</p>
+
+<p><br /></p>
+
+<p>이제 직접 그래픽을 그린 뷰를 화면에 보이도록 하기위해 메인 액티비티에서 <code class="highlighter-rouge">setContentView()</code> 메소드로 전달되는 뷰를 방금 정의한 뷰 클래스로 지정해준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setContentView</span><span class="o">(</span><span class="k">new</span> <span class="nc">CustomView</span><span class="o">(</span><span class="k">this</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>이렇게 하고 앱을 실행하면 아래와 같이 빨간색 사각형이 그려진 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/42/1.jpg" alt="1" width="30%" height="30%" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p>위의 예제에서는 그래픽을 그리기위한 과정이 단계별로 적용되어 있다.</p>
+
+<blockquote>
+  <ol>
+    <li>View 클래스 상속하여 커스텀뷰 만들기</li>
+    <li>페인트 객체 생성</li>
+    <li><code class="highlighter-rouge">onDraw()</code> 메소드 재정의</li>
+    <li>뷰 객체 로드하여 화면에 띄우기</li>
+  </ol>
+</blockquote>
+
+<p><br />
+<br /></p>
+
+<h3 id="2-그리기-객체drawable">2. 그리기 객체(Drawable)</h3>
+<hr />
+
+<p>모든 그래픽 요소는 <strong>그리기 객체</strong>의 형태로 만들어서 그릴 수 있다. Canvas의 그리기 메소드들을 사용하면 사각형, 원 등부터 심지어 비트맵 이미지도 그릴 수 있는데, 굳이 그리기 객체를 만드는 이유는 무엇일까? 그리기 객체를 만들어 페인트부터 그래픽의 모양, 범위 등등의 속성들을 지정하여 하나의 그리기 객체로 만들어두면 독립적인 객체로 관리할 수 있기 때문이다.</p>
+
+<p>이번에도 그리기 객체를 직접 만들어 사용해보며 과정을 이해하자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomViewDrawables</span> <span class="kd">extends</span> <span class="nc">View</span>  <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">ShapeDrawable</span> <span class="n">upperDrawable</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">ShapeDrawable</span> <span class="n">lowerDrawable</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">CustomViewDrawables</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+
+        <span class="cm">/* 이 코드는 디바이스 스크린 크기정보를 가져오는 일반적인 방법이다.*/</span>
+        <span class="nc">WindowManager</span> <span class="n">manager</span> <span class="o">=</span> <span class="o">(</span><span class="nc">WindowManager</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="nc">Context</span><span class="o">.</span><span class="na">WINDOW_SERVICE</span><span class="o">);</span>
+        <span class="nc">Display</span> <span class="n">display</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="na">getDefaultDisplay</span><span class="o">();</span>
+        <span class="nc">Point</span> <span class="n">sizePoint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">();</span>
+        <span class="n">display</span><span class="o">.</span><span class="na">getSize</span><span class="o">(</span><span class="n">sizePoint</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="n">sizePoint</span><span class="o">.</span><span class="na">x</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">height</span> <span class="o">=</span> <span class="n">sizePoint</span><span class="o">.</span><span class="na">y</span><span class="o">;</span>
+
+        <span class="cm">/* /res/values/color.xml 파일에 정의 된 색 정보 가져오기*/</span>
+        <span class="nc">Resources</span> <span class="n">curRes</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">blackColor</span> <span class="o">=</span> <span class="n">curRes</span><span class="o">.</span><span class="na">getColor</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">color</span><span class="o">.</span><span class="na">color01</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">grayColor</span> <span class="o">=</span> <span class="n">curRes</span><span class="o">.</span><span class="na">getColor</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">color</span><span class="o">.</span><span class="na">color02</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">darkGrayColor</span> <span class="o">=</span> <span class="n">curRes</span><span class="o">.</span><span class="na">getColor</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">color</span><span class="o">.</span><span class="na">color03</span><span class="o">);</span>
+
+        <span class="cm">/*upperDrawable객체를 사각형모양으로, 범위는 화면의 2/3로 지정*/</span>
+        <span class="n">upperDrawable</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ShapeDrawable</span><span class="o">();</span>
+        <span class="nc">RectShape</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RectShape</span><span class="o">();</span>
+        <span class="n">rectangle</span><span class="o">.</span><span class="na">resize</span><span class="o">(</span><span class="n">width</span><span class="o">,</span> <span class="n">height</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">);</span>
+        <span class="n">upperDrawable</span><span class="o">.</span><span class="na">setShape</span><span class="o">(</span><span class="n">rectangle</span><span class="o">);</span>
+        <span class="n">upperDrawable</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">width</span><span class="o">,</span> <span class="n">height</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">);</span>
+
+        <span class="cm">/*grad 객체를 upperDrawable 객체의 페인트 쉐이더로 지정*/</span>
+        <span class="nc">LinearGradient</span> <span class="n">grad</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinearGradient</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">height</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">,</span> <span class="n">grayColor</span><span class="o">,</span> <span class="n">blackColor</span><span class="o">,</span> <span class="nc">Shader</span><span class="o">.</span><span class="na">TileMode</span><span class="o">.</span><span class="na">CLAMP</span><span class="o">);</span>
+        <span class="nc">Paint</span> <span class="n">paint</span> <span class="o">=</span> <span class="n">upperDrawable</span><span class="o">.</span><span class="na">getPaint</span><span class="o">();</span>
+        <span class="n">paint</span><span class="o">.</span><span class="na">setShader</span><span class="o">(</span><span class="n">grad</span><span class="o">);</span>
+
+        <span class="cm">/*lowerDrawable객체를 사각형모양으로, 범위는 화면의 1/3로 지정*/</span>
+        <span class="n">lowerDrawable</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ShapeDrawable</span><span class="o">();</span>
+        <span class="nc">RectShape</span> <span class="n">rectangle2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RectShape</span><span class="o">();</span>
+        <span class="n">rectangle2</span><span class="o">.</span><span class="na">resize</span><span class="o">(</span><span class="n">width</span><span class="o">,</span> <span class="n">height</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">);</span>
+        <span class="n">lowerDrawable</span><span class="o">.</span><span class="na">setShape</span><span class="o">(</span><span class="n">rectangle2</span><span class="o">);</span>
+        <span class="n">lowerDrawable</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">height</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">,</span> <span class="n">width</span><span class="o">,</span> <span class="n">height</span><span class="o">);</span>
+
+        <span class="cm">/*grad2 객체를 lowerDrawable 객체의 페인트 쉐이더로 지정*/</span>
+        <span class="nc">LinearGradient</span> <span class="n">grad2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinearGradient</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">height</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">,</span> <span class="n">blackColor</span><span class="o">,</span> <span class="n">darkGrayColor</span><span class="o">,</span> <span class="nc">Shader</span><span class="o">.</span><span class="na">TileMode</span><span class="o">.</span><span class="na">CLAMP</span><span class="o">);</span>
+        <span class="nc">Paint</span> <span class="n">paint2</span> <span class="o">=</span> <span class="n">lowerDrawable</span><span class="o">.</span><span class="na">getPaint</span><span class="o">();</span>
+        <span class="n">paint2</span><span class="o">.</span><span class="na">setShader</span><span class="o">(</span><span class="n">grad2</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDraw</span><span class="o">(</span><span class="nc">Canvas</span> <span class="n">canvas</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onDraw</span><span class="o">(</span><span class="n">canvas</span><span class="o">);</span>
+        <span class="n">upperDrawable</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">canvas</span><span class="o">);</span> <span class="c1">//upperDrawable 객체 그리기</span>
+        <span class="n">lowerDrawable</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">canvas</span><span class="o">);</span> <span class="c1">//lowerDrawable 객체 그리기</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br />
+ShapeDrawable은 도형을 정의할 때 사용하는 <code class="highlighter-rouge">Shape</code> 객체를 그릴 때 사용하는 Drawable 객체이다. 위 코드에서는 ShapeDrawable 객체를 두 개 만들었다. 각각의 Drawable 그리기 객체는 아래의 과정을 통해 정의되었다.</p>
+
+<blockquote>
+  <ol>
+    <li>휴대전화의 크기 정보를 가져와 width, height 변수로 참조한다.</li>
+    <li>리소스에 직접 정의한 컬러 정보를 가져와서 blackColor, grayColor, darkGrayColor 변수로 참조한다.</li>
+    <li>Shape객체를 만들어 도형 정보를 정의하고 upperDrawable 객체의 모양으로 설정한다. 그리고 그리기 객체의 Bound를 설정해준다.</li>
+    <li>LinearGradient 객체를 사용해 쉐이더 정보를 설정한다.</li>
+    <li>upperDrawable의 페인트 객체를 가져와 LinearGradient 객체를 쉐이더로 설정한다.</li>
+  </ol>
+</blockquote>
+
+<p><br /></p>
+
+<p>이제 위에서 정의한 그리기 객체를 <code class="highlighter-rouge">onDraw()</code> 메소드 안에서 캔버스 위에 그린다. 이후 메인액티비티에서 <code class="highlighter-rouge">setContentView()</code> 메소드를 사용해서 화면에 나타내고 앱을 실행해보면 다음의 화면을 확인할 수 있다.</p>
+
+<p><img src="/images/android/42/2.jpg" alt="2" width="30%" height="30%" /></p>
+
+<p>그리기 객체는 한 번 만들어놓으면 독립적으로 관리를 할 수 있고 몇 번이고 가져다가 쓸 수 있다.</p>
+:ET

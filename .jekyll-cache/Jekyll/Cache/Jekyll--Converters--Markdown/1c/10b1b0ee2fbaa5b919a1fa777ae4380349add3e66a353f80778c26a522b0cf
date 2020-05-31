@@ -1,0 +1,496 @@
+I"�x<h2 id="목차">목차</h2>
+<hr />
+
+<ul>
+  <li><a href="#1">들어가면서</a></li>
+  <li><a href="#2">의도를 분명히 밝혀라</a></li>
+  <li><a href="#3">그릇된 정보를 피하라</a></li>
+  <li><a href="#4">의미 있게 구분하라</a></li>
+  <li><a href="#5">발음하기 쉬운 이름을 사용하라</a></li>
+  <li><a href="#6">검색하기 쉬운 이름을 사용하라</a></li>
+  <li><a href="#7">인코딩을 피하라</a></li>
+  <li><a href="#8">자신의 기억력을 자랑하지마라</a></li>
+  <li><a href="#9">클래스 이름</a></li>
+  <li><a href="#10">메소드 이름</a></li>
+  <li><a href="#11">기발한 이름은 피하라</a></li>
+  <li><a href="#12">한 개념에 한 단어를 사용하라</a></li>
+  <li><a href="#13">말장난을 하지마라</a></li>
+  <li><a href="#14">해법 영역에서 가져온 이름을 사용하라</a></li>
+  <li><a href="#15">문제 영역에서 가져온 이름을 사용하라</a></li>
+  <li><a href="#16">의미 있는 맥락을 ㅊ추가하라</a></li>
+  <li><a href="#17">불필요한 맥락을 없애라</a></li>
+  <li><a href="#18">마치면서</a></li>
+</ul>
+
+<p><br />
+<a name="1"></a></p>
+<h2 id="들어가면서">들어가면서</h2>
+
+<p>클래스, 변수, 함수, 패키지 등의 이름을 지을 때 적용되는 몇 가지 규칙을 소개한다.</p>
+
+<p><br />
+<a name="2"></a></p>
+<h2 id="의도를-분명히-밝혀라">의도를 분명히 밝혀라</h2>
+
+<p>좋은 이름을 짓는데 고민이 필요하지만 이로인해 절약되는 시간이 훨씬 많다.</p>
+
+<p>변수, 클래스, 메소드 이름은 다음의 질문들에 모두 답해야한다.</p>
+
+<ul>
+  <li>변수, 클래스, 메소드의 존재 이유는?</li>
+  <li>수행하는 기능은?</li>
+  <li>사용 방법은?</li>
+</ul>
+
+<p>만약 따로 주석이 필요하다면 의도를 분명히 드러내지 못한것이다.</p>
+
+<p><br />
+&lt;bad&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">d</span><span class="o">;</span> <span class="c1">//경과 시간(단위: 날짜)</span>
+</code></pre></div></div>
+
+<p>&lt;good&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">elapsedTimeInDays</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">daySinceCreation</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">daySinceModification</span>
+</code></pre></div></div>
+
+<p>d에 비해 아래의 변수들은 어떤 시간을 의미하는지 뜻이 명확히 들어난다. 따라서 코드 이해와 변경이 쉬워진다.</p>
+
+<p><br />
+&lt;bad&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="nf">getThem</span><span class="o">()</span> <span class="o">{</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;();</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">theList</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="mi">4</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">list1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="k">return</span> <span class="n">list1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>코드가 하는일을 짐작하기 어렵다. 문제는 코드의 <strong>함축성</strong>이다. 코드의 맥락이 변수, 메소드, 리스트 이름에서 전혀 드러나지 않는다.</p>
+
+<ul>
+  <li>
+    <p>theList에는 무엇이 들어있는가?</p>
+  </li>
+  <li>
+    <p>0번째 값(x[0])은 무엇이고 그것이 4인 것이 어떤 의미인가?</p>
+  </li>
+  <li>
+    <p>반환하는 list1은 어떻게 사용되는가?</p>
+  </li>
+</ul>
+
+<p>사실 위 코드는 지뢰찾기 게임을 만드는 코드의 일부이고 theList가 게임판이다. 배열은 각 칸이다. 0번째 값은 칸의 상태를 뜻한다. 4는 깃발이 꽂힌 상태를 나타낸다. 아래는 개념의 이름을 붙여 재구성한 코드이다.</p>
+
+<p>&lt;good&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="nf">getFlaggedCells</span><span class="o">()</span> <span class="o">{</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">flaggedCells</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;();</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">cell</span> <span class="o">:</span> <span class="n">gameBoard</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">cell</span><span class="o">[</span><span class="no">STATUS_VALUE</span><span class="o">]</span> <span class="o">==</span> <span class="no">FLAGGED</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">flaggedCells</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cell</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="k">return</span> <span class="n">flaggedCells</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이름만 바꾸었을 뿐인데 어떤 기능을 위해 만든 코드인지 주석이 없어도 알기 쉽다. 0과 4를 상수로 지정해 더욱 명확하게 표현한 것도 포인트이다.</p>
+
+<p>아래처럼 셀을 배열로 표현하는 대신 클래스로 만드는 것도 좋겠다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Cell</span><span class="o">&gt;</span> <span class="nf">getFlaggedCells</span><span class="o">()</span> <span class="o">{</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Cell</span><span class="o">&gt;</span> <span class="n">flaggedCells</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Cell</span><span class="o">&gt;();</span>
+	<span class="k">for</span><span class="o">(</span><span class="nc">Cell</span> <span class="n">cell</span> <span class="o">:</span> <span class="n">gameBoard</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">cell</span><span class="o">.</span><span class="na">isFlagged</span><span class="o">())</span> <span class="o">{</span>
+			<span class="n">flaggedCells</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cell</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="k">return</span> <span class="n">flaggedCells</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이번에는 isFlagged() 좀 더 명시적인 메소드를 사용해 FLAGGED 상수를 감추어주었다.</p>
+
+<p>이처럼 변수, 메소드의 좋은 이름을 통해 의도를 명확히 밝힘으로써 주석이 없이도 코드가 술술 읽힐 수 있다.</p>
+
+<p><br />
+<a name="3"></a></p>
+<h2 id="그릇된-정보를-피하라">그릇된 정보를 피하라</h2>
+
+<ul>
+  <li>널리 쓰이는 의미가 있는 단어를 변수 이름으로 사용하지마라
+    <ul>
+      <li>ex) hp, aix, sco는 유닉스 플랫폼이나 유닉스 변종을 가리키는 이름이다.</li>
+    </ul>
+  </li>
+  <li>여러 자료를 그룹으로 묶을 때 실제로 사용한 자료형이 아닌것을 이름에 포함시키지마라
+    <ul>
+      <li>ex) 계정을 담는 컨테이너가 List 자료형이 아니라면 accountList와 같은 이름을 피해라. 차라리 groupOfAccounts 혹은 accounts 같은 이름을 사용하라</li>
+    </ul>
+  </li>
+  <li>서로 흡사한 이름을 사용하지 마라
+    <ul>
+      <li>ex) XYZControllerForEfficientHandlingOfStrings, XYZControllerForEfficientStorageOfStrings 두 개의 차이가 짐작이 가는가?</li>
+    </ul>
+  </li>
+  <li>유사한 개념은 유사한 표기법을 사용해라(일관성을 지켜라)
+    <ul>
+      <li>ex) String studentNames, String teacherNames</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="4"></a></p>
+<h2 id="의미-있게-구분하라">의미 있게 구분하라</h2>
+
+<ul>
+  <li>
+    <p>컴파일러나 인터프리터만 통과하는것을 목적으로 변수나 메소드명을 막 짓지마라.</p>
+  </li>
+  <li>
+    <p>연속적인 숫자를 덧붙인 이름은 최악이다.</p>
+    <ul>
+      <li>ex) a1, a2, a3, …</li>
+      <li>이러한 이름은 아무런 정보도 제공하지 못한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>&lt;bad&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">copyChars</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">a1</span><span class="o">,</span> <span class="kt">char</span><span class="o">[]</span> <span class="n">a2</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">a2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a1</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br />
+&lt;good&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">copyChars</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">source</span><span class="o">,</span> <span class="kt">char</span><span class="o">[]</span> <span class="n">destination</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">source</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">destination</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">source</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>불용어를 사용한 구분을 피해라.
+    <ul>
+      <li>ex) ProductInfo, ProductData 두 클래스의 차이를 알겠는가?</li>
+      <li>ex) NameString -&gt; Name으로 충분히 String임을 알 수 있다. 부동소수점 같은 것일리는 없지 않은가?</li>
+      <li>ex) Customer와 CustomerObjcect, money와 moneyAmount, accountData와 account 이들이 서로 구분이 되는가? Object, Amount, Data라는 단어는 두 개 사이의 구분을 지을 수 없는 불용어이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="5"></a></p>
+<h2 id="발음하기-쉬운-이름을-사용하라">발음하기 쉬운 이름을 사용하라</h2>
+
+<ul>
+  <li>프로그래밍은 사회활동이고 토론이 필요하다. 발음하기 어려운 이름은 대화를 어렵게한다.
+    <ul>
+      <li>ex) genymdhms(generate year month day hour minute second라는 의미) 메소드를 “젠와이엠디에이치엠에스” 라고 부를 것인가?</li>
+    </ul>
+  </li>
+</ul>
+
+<p>&lt;bad&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">DtaRcrd102</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">genymdhms</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">modymdhms</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">pszqint</span> <span class="o">=</span> <span class="s">"102"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br />
+&lt;good&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">generationTimestamp</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">modificationTimestamp</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">recordId</span> <span class="o">=</span> <span class="s">"102"</span><span class="o">;</span>
+<span class="o">}</span>	
+</code></pre></div></div>
+
+<p><br />
+<a name="6"></a></p>
+<h2 id="검색하기-쉬운-이름을-사용하라">검색하기 쉬운 이름을 사용하라</h2>
+
+<ul>
+  <li>문자 하나를 사용하는 이름, 상수 등은 코드에서 눈에 잘 띄지않아 찾기가 어렵다.
+    <ul>
+      <li>ex) int a, String s에서 a혹은 s는 거의 모든 문장에서 등장한다.</li>
+      <li>같은 의미로 숫자를 그대로 사용하기보다는 상수를 사용한다.(7 대신 MAX_CLASSES_PER_STUDENT)</li>
+    </ul>
+  </li>
+  <li>MAX_CLASSES_PER_STUDENT와 같은 상수는 찾기가 쉽다.</li>
+</ul>
+
+<p><br />
+<a name="7"></a></p>
+<h2 id="인코딩쓸데없는-부가정보을-피하라">인코딩(쓸데없는 부가정보)을 피하라</h2>
+
+<ul>
+  <li>헝가리식 표기법을 사용하지마라
+    <ul>
+      <li>헝가리식 표기법은 프로그래밍 언어에서 변수 및 함수 이름 앞에 데이터 타입을 명시하는 코딩 규칙이다.</li>
+      <li>ex) iNum, sName</li>
+      <li>요즘 IDE는 컴파일 하지 않고도 타입 오류를 감지할 정도로 발전했으므로 헝가리식 표기법은 코드 리딩에 방해만 될 뿐이다.</li>
+    </ul>
+  </li>
+  <li>멤버변수 접두어
+    <ul>
+      <li>멤버변수의 이름앞에 m_를 붙이는 관례가 있었지만 이미 구닥다리가 된지 오래다.</li>
+      <li>ex) private String m_dsc -&gt; private String description</li>
+    </ul>
+  </li>
+  <li>인터페이스 접두어
+    <ul>
+      <li>도형을 생성하는 팩토리를 만들기 위해 인터페이스를 IShapeFactory, 구현클래스를 ShapeFactory로 하는 것은 좋지않다. -&gt; 인터페이스, 구현클래스를 나타내는 접두어는 피해라</li>
+      <li>주의를 흐트리고 과도한 정보를 제공할 뿐이다.</li>
+      <li>둘 중 하나를 인코딩해야한다면 ShapeFactory 인터페이스와 ShapeFactoryImp가 낫다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="8"></a></p>
+<h2 id="자신의-기억력을-자랑하지마라">자신의 기억력을 자랑하지마라</h2>
+
+<ul>
+  <li>
+    <p>내가 만든 한글자 변수 r이 url을 의미한다는 사실을 언제나 기억할것이라 자만하지마라.</p>
+  </li>
+  <li>
+    <p>쉽고 명료한게 최고다.</p>
+  </li>
+  <li>
+    <p>반복문에서의 반복횟수를 카운트하는 i,j,k 정도는 괜찮다.</p>
+  </li>
+</ul>
+
+<p><br />
+<a name="9"></a></p>
+<h2 id="클래스-이름">클래스 이름</h2>
+
+<ul>
+  <li>클래스나 객체 이름은 명사 혹은 명사구가 적합하다.
+    <ul>
+      <li>good ex) Customer, WikiPage, Account, AddressParser</li>
+      <li>bad ex) Manager, Processor, Data, Info와 같은 불분명한 명사는 피하고 동사는 사용하지 마라.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="10"></a></p>
+<h2 id="메소드-이름">메소드 이름</h2>
+
+<ul>
+  <li>메소드 이름은 동사구가 적합하다.
+    <ul>
+      <li>ex) postPayment, deletePage, save</li>
+    </ul>
+  </li>
+  <li>접근자, 변경자, 조건자는 javabean 표준에 따라 이름앞에 get, set, is를 붙인다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Strirng</span> <span class="n">name</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+<span class="n">customer</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"mike"</span><span class="o">);</span>
+<span class="k">if</span><span class="o">(</span><span class="n">paycheck</span><span class="o">.</span><span class="na">isPosted</span><span class="o">())</span> <span class="o">{...};</span>
+</code></pre></div></div>
+
+<ul>
+  <li>생성자를 오버로딩 할 경우 정적(static) 팩토리 메소드를 사용한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Complex</span> <span class="n">fulcrumPoint</span> <span class="o">=</span> <span class="nc">Complex</span><span class="o">.</span><span class="na">FromRealNumber</span><span class="o">(</span><span class="mf">23.0</span><span class="o">);</span> <span class="o">(</span><span class="no">O</span><span class="o">)</span>
+<span class="nc">Complex</span> <span class="n">fulcrumPoint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Complex</span><span class="o">(</span><span class="mf">23.0</span><span class="o">);</span> <span class="o">(</span><span class="no">X</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p><br />
+<a name="11"></a></p>
+<h2 id="기발한-이름은-피하라">기발한 이름은 피하라</h2>
+
+<ul>
+  <li>
+    <p>예를 들어 특정 문화권에서만 이해할 수 있는 이름은 피하라.</p>
+  </li>
+  <li>
+    <p>구어나 속어체를 피하라.</p>
+    <ul>
+      <li>ex) whack(X) -&gt; kill(O)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="12"></a></p>
+<h2 id="한-개념에-한-단어를-사용하라">한 개념에 한 단어를 사용하라</h2>
+
+<ul>
+  <li>추상적 개념들은 비슷한 단어를 사용하라.
+    <ul>
+      <li>fetch(), retrieve(), get() 등의 메소드가 비슷한 기능을 한다면 한 단어로 통일하라.</li>
+      <li>DeviceManager와 ProtocolController는 어떻게 다른가? Controller, Manager 둘 중 하나만 사용해라.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="13"></a></p>
+<h2 id="말장난을-하지마라">말장난을 하지마라</h2>
+
+<ul>
+  <li>한 단어를 두가지 목적으로 사용하지마라.
+    <ul>
+      <li>리스트에 element를 추가하는 add와 두 값을 더하는 add는 구분해라. 예를들어 리스트에 element를 추가하는 이름은 insert나 append로 바꾸는게 좋다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="14"></a></p>
+<h2 id="해법-영역에서-가져온-이름을-사용하라">해법 영역에서 가져온 이름을 사용하라</h2>
+
+<ul>
+  <li>코드를 읽을 사람도 프로그래머다.
+    <ul>
+      <li>전산용어, 알고리즘 이름, 패턴 이름, 수학 용어 등을 사용해도 괜찮다.</li>
+    </ul>
+  </li>
+  <li>모든 이름을 문제(domain - 분야) 영역에서 가져오는 것은 좋지않다.</li>
+</ul>
+
+<p><br />
+<a name="15"></a></p>
+<h2 id="문제-영역에서-가져온-이름을-사용하라">문제 영역에서 가져온 이름을 사용하라</h2>
+
+<ul>
+  <li>적절한 프로그래머 용어(해법 영역 이름)이 없다면 문제 영역에서 이름을 가져온다.
+    <ul>
+      <li>코드를 보수하는 프로그래머가 문제(분야) 전문가에게 의미를 물어 파악할 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="16"></a></p>
+<h2 id="의미있는-맥락을-추가하라">의미있는 맥락을 추가하라</h2>
+
+<ul>
+  <li>이름이 스스로 분명한 의미를 가지도록 한다.
+    <ul>
+      <li>firstname, lastName, street, houseNumber, city, state, zipcode 변수들이 있으면 주소라는 것을 금방 알아챈다.</li>
+      <li>하지만 state 변수 하나만 있다면? 주소의 일부라는 것을 알기 힘들다.</li>
+      <li>addrFirstName, addrLastName을 사용하면 두 변수가 좀 더 큰 구조(주소)에 속한다는 사실이 좀 더 분명해진다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>&lt;bad&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kt">void</span> <span class="nf">printGuessStatistics</span><span class="o">(</span><span class="kt">char</span> <span class="n">candidate</span><span class="o">,</span> <span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">number</span><span class="o">;</span>
+	<span class="nc">String</span> <span class="n">verb</span><span class="o">;</span>
+	<span class="nc">String</span> <span class="n">pluraModifier</span><span class="o">;</span>
+	
+	<span class="k">if</span><span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">number</span> <span class="o">=</span> <span class="s">"no"</span><span class="o">;</span>
+		<span class="n">verb</span> <span class="o">=</span> <span class="s">"are"</span><span class="o">;</span>
+		<span class="n">pluraModifier</span> <span class="o">=</span> <span class="s">"s"</span><span class="o">;</span>
+	<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">number</span> <span class="o">=</span> <span class="s">"1"</span><span class="o">;</span>
+		<span class="n">verb</span> <span class="o">=</span> <span class="s">"is"</span><span class="o">;</span>
+		<span class="n">pluraModifier</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+	<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+		<span class="n">number</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+		<span class="n">verb</span> <span class="o">=</span> <span class="s">"are"</span><span class="o">;</span>
+		<span class="n">pluraModifier</span> <span class="o">=</span> <span class="s">"s"</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="nc">String</span> <span class="n">guessMessage</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span>
+		<span class="s">"There %s %s %s%s"</span><span class="o">,</span> <span class="n">verb</span><span class="o">,</span> <span class="n">number</span><span class="o">,</span> <span class="n">candidate</span><span class="o">,</span> <span class="n">pluraModifier</span>
+	<span class="o">);</span>
+	
+	<span class="n">print</span><span class="o">(</span><span class="n">guessMessage</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>분석을 해보면 candidate 매개변수로 들어온 문자가 몇 개 있는지 출력해주는 함수라는 것을 알 수 있다.</p>
+
+<p>예를들어 candidate가 ‘a’이고 count가 3이면 “There are 3as”가 출력된다.</p>
+
+<p>불행하게도 메소드 내용을 끝까지 읽어봐야 파악할 수 있다.</p>
+
+<p>&lt;good&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuessStatisticsMessage</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">number</span><span class="o">;</span>
+	<span class="nc">String</span> <span class="n">verb</span><span class="o">;</span>
+	<span class="nc">String</span> <span class="n">pluraModifier</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">make</span><span class="o">(</span><span class="kt">char</span> <span class="n">candidate</span><span class="o">,</span> <span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">createPluraDependentMessagerParts</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+		<span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span>
+			<span class="s">"There %s %s %s%s"</span><span class="o">,</span> <span class="n">verb</span><span class="o">,</span> <span class="n">number</span><span class="o">,</span> <span class="n">candidate</span><span class="o">,</span> <span class="n">pluraModifier</span>
+		<span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">createPluraDependentMessageParts</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">thereAreNoLeggers</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">)</span> <span class="o">{</span>
+			<span class="n">thereIsOneLetter</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="nc">ThereAreManyLetters</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">thereAreNoLetters</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">number</span> <span class="o">=</span> <span class="s">"no"</span><span class="o">;</span>
+		<span class="n">verb</span> <span class="o">=</span> <span class="s">"are"</span><span class="o">;</span>
+		<span class="n">pluraModifer</span> <span class="o">=</span> <span class="s">"s"</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">thereIsOneLetter</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">number</span> <span class="o">=</span> <span class="s">"1"</span><span class="o">;</span>
+		<span class="n">verb</span> <span class="o">=</span> <span class="s">"is"</span><span class="o">;</span>
+		<span class="n">pluraModifier</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">thereAreManyLetters</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">number</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+		<span class="n">verb</span> <span class="o">=</span> <span class="s">"are"</span><span class="o">;</span>
+		<span class="n">pluraModifier</span> <span class="o">=</span> <span class="s">"s"</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>클래스를 따로 만들어 메소드를 쪼개고 이름을 붙여주어 맥락을 확실히 해주었다. 알고리즘도 더 명확해진다.</p>
+
+<p><br />
+<a name="17"></a></p>
+<h2 id="불필요한-맥락을-없애라">불필요한 맥락을 없애라</h2>
+
+<ul>
+  <li>주유소(Gas Station Deluxe) 애플리케이션을 개발할 때 모든 클래스를 GSD로 시작하지는 마라.
+    <ul>
+      <li>긴 이름보다는 짧은 이름이 좋다. 단, 의미가 분명한 경우에 한해서다.</li>
+      <li>주유소 앱에서 클래스 앞의 GSD는 불필요한 정보일 뿐이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<a name="18"></a></p>
+<h2 id="마치면서">마치면서</h2>
+
+<p>좋은 이름을 붙이는 이유는 개발자는 자신이 짠 클래스 이름과 메소드 이름을 모두 기억하지 못한다. 따라서 잘 읽히는 코드를 짜야한다. 다른사람이 읽기 쉽도록 하는 목적도 있다.</p>
+:ET

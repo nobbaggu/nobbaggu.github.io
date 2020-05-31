@@ -1,0 +1,146 @@
+I"�(<p>변수의 선언, 메소드의 반환형, 매개변수의 자료형 등 모든 것은 자료형을 가진다. 이미 한 번 정의 된 자료형은 상속 관계의 상위 자료형의 형 변환이 아니면 바꿀 수 없다. 하지만 제네릭이란 기술을 사용하면 여러 참조 자료형을 유연하게 대입할 수 있다.</p>
+
+<p>제네릭은 객체가 생성되는 순간 자료형이 정해지게 한다.</p>
+
+<p> </p>
+
+<h1 id="1-제네릭">1. 제네릭</h1>
+
+<hr />
+
+<p>제네릭은 다이아몬드 연산자 &lt;&gt; 안에 자료형을 명시해주면서 객체를 생성한다. 3D 프린터 클래스와 프린팅 재료를 예로 들어 사용법을 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
+
+<span class="c1">//파우더 재료 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Powder</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doPrinting</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"use powder to print"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="s">"The material is powder"</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
+
+<span class="c1">//플라스틱 재료 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Plastic</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doPrinting</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"use plastic to print"</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="s">"The material is plastic"</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+   <span class="kd">private</span> <span class="no">T</span> <span class="n">material</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="no">T</span> <span class="nf">getMaterial</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">material</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMaterial</span><span class="o">(</span><span class="no">T</span> <span class="n">material</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">material</span> <span class="o">=</span> <span class="n">material</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+
+      <span class="k">return</span> <span class="n">material</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>클래스를 선언하면서 오른쪽에 <T>라고 썼다. T를 자료형 매개변수라고 한다. 이제부터 클래스 안의 멤버변수, 메소드의 반환형, 혹은 메소드의 매개변수의 자료형으로 T를 사용할 수 있다. 그리고 나중에 객체를 생성할 때 정해준 자료형이 T를 대체하며 컴파일 된다.</T></p>
+
+<p>이로써 클래스를 선언할 때에는 어떠한 참조자료형이 들어갈 지 몰라 제네릭 프로그래밍을 해주어서 유연하게 자료형이 변환될 수 있다.</p>
+
+<p>이제 실행을 시켜보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericPrinterTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="nc">Powder</span><span class="o">&gt;</span> <span class="n">powderPrinter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericPrinter</span><span class="o">&lt;&gt;();</span>
+      <span class="n">powderPrinter</span><span class="o">.</span><span class="na">setMaterial</span><span class="o">(</span><span class="k">new</span> <span class="nc">Powder</span><span class="o">());</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">powderPrinter</span><span class="o">);</span>
+      
+      
+      <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="nc">Plastic</span><span class="o">&gt;</span> <span class="n">plasticPrinter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericPrinter</span><span class="o">&lt;&gt;();</span>
+      <span class="n">plasticPrinter</span><span class="o">.</span><span class="na">setMaterial</span><span class="o">(</span><span class="k">new</span> <span class="nc">Plastic</span><span class="o">());</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">plasticPrinter</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>The material is powder</p>
+
+<p>The material is plastic</p>
+
+<p> </p>
+
+<h1 id="2-자료형-매개변수의-자료형-제한">2. 자료형 매개변수의 자료형 제한</h1>
+
+<hr />
+
+<p>예를 들어 프린터를 하려는데 누가 재료로 물을 넣어주려 한다고 해보자. 물로는 프린팅을 할 수 없다. 이런 경우처럼 자료형 매개변수를 특정 타입으로 재한하려 하는 경우 T를 extends 예약어로 상속받을 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">Material</span><span class="o">&gt;</span> <span class="o">{</span>
+   <span class="o">...</span>    
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>여기서 Material이라는 추상 클래스를 상속 받았다. Material 추상클래스에는 Powder, Plastic 클래스에 구현된 메소드들이 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Material</span> <span class="o">{</span>
+   
+   <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">doPrinting</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>이후 T에 Material을 상속받은 클래스가 들어오는 경우가 아니면 컴파일 오류가 난다.</p>
+
+<p>그리고 T는 Material을 상속받았으므로 Material 추상클래스에 정의 된 모든 메소드를 사용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">genericex</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericPrinter</span><span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">Material</span><span class="o">&gt;</span> <span class="o">{</span>
+      
+      <span class="o">...</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printing</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">material</span><span class="o">.</span><span class="na">doPrinting</span><span class="o">();</span> <span class="c1">//T 자료형인 material은 Material클래스의 doPrinting()메소드 사용 가능</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+:ET

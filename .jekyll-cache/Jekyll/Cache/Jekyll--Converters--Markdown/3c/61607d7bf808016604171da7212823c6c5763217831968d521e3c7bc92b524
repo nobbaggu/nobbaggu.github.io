@@ -1,0 +1,194 @@
+I"xF<p>애니메이션(Animation) 기능을 사용한 UI를 다이나믹하게 구성할 수 있는 여러 방법이 있는데, 그 중 하나가 페이지 슬라이딩이다. 가령 ‘메뉴’버튼을 눌렀을 때 메뉴 창이 위에서 내려오는 경우가 대표적이다. 여러 개의 뷰를 한 번에 하나씩 보여주는 프레임 레이아웃(FrameLayout)과 애니메이션 기능을 동시에 적용하면 페이지 슬라이딩을 구현할 수 있다.</p>
+
+<p>페이지 슬라이딩을 구현하기 위해 먼저 레이아웃을 만든다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;FrameLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+        <span class="na">android:background=</span><span class="s">"#ff5555ff"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Base Area"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ffffffff"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:id=</span><span class="s">"@+id/page"</span>
+        <span class="na">android:layout_width=</span><span class="s">"200dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"right"</span>
+        <span class="na">android:background=</span><span class="s">"#ffffff66"</span>
+        <span class="na">android:visibility=</span><span class="s">"gone"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"Area #1"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ff000000"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"Area #2"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ff000000"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"열기"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"right|bottom"</span>
+        <span class="na">android:layout_marginRight=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/FrameLayout&gt;</span>
+</code></pre></div></div>
+
+<p>첫 번째 리니어 레이아웃은 화면 전체를 채우도록 하였다. 두 번째 리니어 레이아웃이 바로 슬라이딩을 효과를 넣어줄 레이아웃인데, layout_width 속성값을 “200dp”로 지정해주어 화면의 가로길이를 다 채우지 않도록 한다. 그리고 원하는 시점에 보여야 하므로 visibility 속성을 “gone”으로 설정한다.</p>
+
+<p> 
+그 다음으로 페이지가 오른쪽에서 나오는 애니메이션(translate_left.xml)과 들어가는 애니메이션(translate_right.xml)을 정의한다.</p>
+
+<p>&lt;translate_left.xml&gt;</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;set</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;translate</span>
+        <span class="na">android:fromXDelta=</span><span class="s">"100%p"</span>
+        <span class="na">android:toXDelta=</span><span class="s">"0%p"</span>
+        <span class="na">android:duration=</span><span class="s">"500"</span>
+        <span class="na">android:repeatCount=</span><span class="s">"0"</span>
+        <span class="na">android:fillAfter=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/set&gt;</span>
+</code></pre></div></div>
+
+<p>&lt;translate_right.xml&gt;</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;set</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;translate</span>
+        <span class="na">android:fromXDelta=</span><span class="s">"0%p"</span>
+        <span class="na">android:toXDelta=</span><span class="s">"100%p"</span>
+        <span class="na">android:duration=</span><span class="s">"500"</span>
+        <span class="na">android:repeatCount=</span><span class="s">"0"</span>
+        <span class="na">android:fillAfter=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/set&gt;</span>
+</code></pre></div></div>
+
+<p> 
+이제 페이지 슬라이딩 기능을 구현할 코드를 작성한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplepagesliding</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.animation.Animation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.animation.AnimationUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.LinearLayout</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kt">boolean</span> <span class="n">isPageOpen</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="nc">Animation</span> <span class="n">translateLeft</span><span class="o">;</span>
+    <span class="nc">Animation</span> <span class="n">translateRight</span><span class="o">;</span>
+    <span class="nc">LinearLayout</span> <span class="n">page</span><span class="o">;</span>
+    <span class="nc">Button</span> <span class="n">button</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">page</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">page</span><span class="o">);</span>
+
+        <span class="cm">/* 왼쪽, 오른쪽으로 슬라이딩하는 애니메이션 객체 로딩 */</span>
+        <span class="n">translateLeft</span> <span class="o">=</span> <span class="nc">AnimationUtils</span><span class="o">.</span><span class="na">loadAnimation</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">anim</span><span class="o">.</span><span class="na">translate_left</span><span class="o">);</span>
+        <span class="n">translateRight</span> <span class="o">=</span> <span class="nc">AnimationUtils</span><span class="o">.</span><span class="na">loadAnimation</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">anim</span><span class="o">.</span><span class="na">translate_right</span><span class="o">);</span>
+
+        <span class="c1">//페이지 열기 리스너 설정</span>
+        <span class="n">translateLeft</span><span class="o">.</span><span class="na">setAnimationListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">Animation</span><span class="o">.</span><span class="na">AnimationListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationStart</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">page</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="nc">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span> <span class="c1">// 슬라이딩 시작할 때 페이지 보이게</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationEnd</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 페이지 다 열리고 버튼 글자 변경 및 isPageOpen 변수 값 변경</span>
+                <span class="n">button</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"닫기"</span><span class="o">);</span>
+                <span class="n">isPageOpen</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationRepeat</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="c1">//페이지 닫기 리스너 설정</span>
+        <span class="n">translateRight</span><span class="o">.</span><span class="na">setAnimationListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">Animation</span><span class="o">.</span><span class="na">AnimationListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationStart</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationEnd</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">page</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="nc">View</span><span class="o">.</span><span class="na">INVISIBLE</span><span class="o">);</span> <span class="c1">//페이지 슬라이딩 끝난 후 페이지 안보이게</span>
+                <span class="c1">//페이지 다 닫기고 버튼 글자 변경 및 isPageOpen 변수 값 변경</span>
+                <span class="n">button</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"열기"</span><span class="o">);</span>
+                <span class="n">isPageOpen</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationRepeat</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+
+        <span class="c1">// 버튼 클릭 이벤트 처리</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">isPageOpen</span><span class="o">){</span> <span class="c1">//페이지 열려있으면</span>
+                    <span class="n">page</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">(</span><span class="n">translateRight</span><span class="o">);</span> <span class="c1">//오른쪽으로 닫기 애니메이션 실행</span>
+                <span class="o">}</span><span class="k">else</span><span class="o">{</span> <span class="c1">//페이지 닫혀있으면</span>
+                    <span class="n">page</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">(</span><span class="n">translateLeft</span><span class="o">);</span> <span class="c1">//왼쪽으로 열기 애니메이션 실행</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>페이지가 열리는 애니메이션과 닫히는 애니메이션 객체를 각각 설정하고 AnimationListener 객체를 각각 달았다. 페이지가 왼쪽으로 열리는 리스너에서는 열리기 전에 보이기 시작해야하므로 onAnimationStart() 메소드안에서 visibility 속성을 보이도록 변경하고 닫히는 리스너에서는 닫히고 안보이도록 해야하므로 onAnimationEnd() 메소드에서 visibility 속성을 안보이도록 바꾸었다.</p>
+
+<p>버튼을 클릭했을 때의 이벤트는 isPageOpen 변수의 값에 따라 다르게 처리하면 된다.</p>
+
+<p>앱을 실행하면 아래와 같은 결과를 볼 수 있다.</p>
+
+<p><img src="/images/android/29/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/29/2.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

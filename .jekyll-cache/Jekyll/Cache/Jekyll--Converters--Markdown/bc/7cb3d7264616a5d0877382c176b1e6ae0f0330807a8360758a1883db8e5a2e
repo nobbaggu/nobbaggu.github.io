@@ -1,0 +1,98 @@
+I"�-<p><br /></p>
+<h3 id="1-비트맵bitmap이란">1. 비트맵(Bitmap)이란?</h3>
+<hr />
+
+<p>비트맵(Bitmap)은 <strong>안드로이드에서 이미지를 표현하기 위해 사용되는 객체</strong>이다. 메모리에 만들어지는 모든 이미지는 비트맵 객체로 관리된다. 메모리에 로딩된 비트맵 객체를 통해서 이미지를 우리가 원하는대로 조작할 수도 있다.</p>
+
+<p><br /></p>
+
+<p>코드를 통해서 비트맵을 메모리에 만들고 비트맵 위에 그림을 그려보자.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomViewImage</span> <span class="kd">extends</span> <span class="nc">View</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Bitmap</span> <span class="n">mBitmap</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Canvas</span> <span class="n">mCanvas</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Paint</span> <span class="n">mPaint</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">CustomViewImage</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+        <span class="n">mPaint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Paint</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSizeChanged</span><span class="o">(</span><span class="kt">int</span> <span class="n">w</span><span class="o">,</span> <span class="kt">int</span> <span class="n">h</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldw</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldh</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mBitmap</span> <span class="o">=</span> <span class="nc">Bitmap</span><span class="o">.</span><span class="na">createBitmap</span><span class="o">(</span><span class="n">w</span><span class="o">,</span> <span class="n">h</span><span class="o">,</span> <span class="nc">Bitmap</span><span class="o">.</span><span class="na">Config</span><span class="o">.</span><span class="na">ARGB_8888</span><span class="o">);</span> <span class="c1">// 비트맵 객체 생성</span>
+        <span class="n">mCanvas</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Canvas</span><span class="o">();</span> <span class="c1">//캔버스 객체 생성</span>
+        <span class="n">mCanvas</span><span class="o">.</span><span class="na">setBitmap</span><span class="o">(</span><span class="n">mBitmap</span><span class="o">);</span> <span class="c1">//캔버스를 비트맵에 붙이기 -&gt; 이후 캔버스에 그리는 그래픽은 모두 mBitap에 적용된다.</span>
+
+        <span class="n">mPaint</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+        <span class="n">mCanvas</span><span class="o">.</span><span class="na">drawRect</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="n">mPaint</span><span class="o">);</span> <span class="c1">//캔버스에 빨간 사각형 그리기</span>
+    <span class="o">}</span>
+
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDraw</span><span class="o">(</span><span class="nc">Canvas</span> <span class="n">canvas</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mBitmap</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+            <span class="n">canvas</span><span class="o">.</span><span class="na">drawBitmap</span><span class="o">(</span><span class="n">mBitmap</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">onSizeChanged()</code>가 호출될 때 이미 비트맵 객체를 메모리에 생성하고 캔버스를 달아서 그림을 그려준다. 이렇게 미리 정의된 비트맵 객체가 <code class="highlighter-rouge">onDraw</code> 메소드가 호출되면 화면에 표시될 뿐이다.</p>
+
+<p>이렇게 메모리에 미리 그래픽을 그려놓고 뷰가 화면에 표시될 때 미리 그려진 그래픽을 표시하는 방법을 <strong>더블 버퍼링(Double Buffering)</strong> 이라고 부른다. 더블 버퍼링은 화면에 그래픽을 그리는 그래픽 연산을 미리 해놓는다. 따라서 더블 버퍼링을 사용하면 한꺼번에 화면에 많은 그래픽을 그려야 할 때 큰 힘을 발휘한다.</p>
+
+<p>위 코드를 실행하면 화면에 빨간색 사각형이 하나 보일 것이다.</p>
+
+<p><br /></p>
+<h3 id="2-bitmapfactory-클래스">2. BitmapFactory 클래스</h3>
+<hr />
+
+<p><code class="highlighter-rouge">BitmapFactory</code> 클래스는 비트맵 객체를 만들어주는 여러가지 유용한 메소드를 제공한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="nc">Bitmap</span> <span class="nf">decodeFile</span><span class="o">(</span><span class="nc">String</span> <span class="n">pathName</span><span class="o">)</span> <span class="c1">//파일 경로의 이미지 파일을 읽어 비트맵 객체로 리턴</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Bitmap</span> <span class="nf">decodeResource</span><span class="o">(</span><span class="nc">Resources</span> <span class="n">res</span><span class="o">,</span> <span class="kt">int</span> <span class="nc">Id</span><span class="o">)</span> <span class="c1">// 리로스의 이미지 파일을 읽어 비트맵 객체로 리턴</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Bitmap</span> <span class="nf">decodeByteArray</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span><span class="o">,</span> <span class="kt">int</span> <span class="n">offset</span><span class="o">,</span> <span class="kt">int</span> <span class="n">length</span><span class="o">)</span> <span class="c1">// 바이트 배열의 이미지파일을 읽어 비트맵 객체로 리턴</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Bitmap</span> <span class="nf">decodeStream</span><span class="o">(</span><span class="nc">InputStream</span> <span class="n">inStr</span><span class="o">)</span> <span class="c1">//입력 스트림의 이미지파일을 읽어 비트맵 객체로 리턴</span>
+</code></pre></div></div>
+
+<p><br />
+<code class="highlighter-rouge">decodeResource(0</code> 메소드를 이용해서 /res/drawable 폴더에 있는 이미지를 비트맵으로 만들어 그려보자.</p>
+
+<p><br /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleImageView</span> <span class="kd">extends</span> <span class="nc">View</span> <span class="o">{</span>
+
+    <span class="nc">Bitmap</span> <span class="n">image</span><span class="o">;</span>
+    <span class="nc">Paint</span> <span class="n">mPaint</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">SampleImageView</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+        <span class="n">mPaint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Paint</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDraw</span><span class="o">(</span><span class="nc">Canvas</span> <span class="n">canvas</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="cm">/* 리소스 폴더의 이미지를 가져와서 비트맵 객체로 생성한 이후 캔버스에 그리기*/</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="nc">BitmapFactory</span><span class="o">.</span><span class="na">decodeResource</span><span class="o">(</span><span class="n">getResources</span><span class="o">(),</span> <span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">face</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">image</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+            <span class="n">canvas</span><span class="o">.</span><span class="na">drawBitmap</span><span class="o">(</span><span class="n">image</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="n">mPaint</span><span class="o">);</span> <span class="c1">//(10, 10) 좌표에 비트맵 그리기</span>
+
+            <span class="nc">Matrix</span> <span class="n">matrix</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Matrix</span><span class="o">();</span> <span class="c1">//매트릭스 객체 생성</span>
+            <span class="n">matrix</span><span class="o">.</span><span class="na">postTranslate</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span><span class="c1">//매트릭스 좌표 (300, 10)으로 설정</span>
+            <span class="n">canvas</span><span class="o">.</span><span class="na">drawBitmap</span><span class="o">(</span><span class="n">image</span><span class="o">,</span> <span class="n">matrix</span><span class="o">,</span> <span class="n">mPaint</span><span class="o">);</span> <span class="c1">//매트릭스 정보 이용해 그리기</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서 사용한 Matrix 객체는 이미지 변환을 해주는 클래스이다. Matrix 클래스는 이미지의 확대/축소, 이동, 회전 등의 많은 이미지 변환 메소드를 제공한다. 위 코드에서는 매트릭스를 이용해서 좌표를 설정하고 캔버스에 비트맵을 한 번 더 그려주었다.</p>
+
+<p>위 코드를 실행하면 다음과 같은 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/43/1.jpg" alt="1" width="30%" height="30%" /></p>
+:ET

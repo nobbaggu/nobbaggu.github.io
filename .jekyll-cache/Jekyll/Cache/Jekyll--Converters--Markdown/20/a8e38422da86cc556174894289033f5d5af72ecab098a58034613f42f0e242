@@ -1,0 +1,159 @@
+I"�-<p>기본 자료형은 정수, 실수, 문자를 지원한다. 그런데 정수나 실수, 문자의 객체형이 필요한 경우가 있다. 정수 객체의 매개변수 전달이나 반환형이 필요한 경우등이 있다.</p>
+
+<p>자바는 이런 경우를 위해 기본 자료형과 같은 클래스를 지원하는데, 이러한 클래스들을 두고 Wrapper클래스라고 한다.</p>
+
+<p><a href="https://SWnomad.com/wrapper-%ed%81%b4%eb%9e%98%ec%8a%a4/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-193/" rel="attachment wp-att-1631"><img class="aligncenter  wp-image-1631" src="/images/2018/12/no-name-38.jpg" alt="" width="365" height="361" srcset="/images/2018/12/no-name-38.jpg 655w, /images/2018/12/no-name-38-300x297.jpg 300w" sizes="(max-width: 365px) 100vw, 365px" /></a></p>
+
+<p> </p>
+
+<p>대표적으로 Integer 클래스로 Wrapper클래스의 사용법을 파헤쳐 본다. 다른 Wrapper클래스의 사용법도 거의 같으며 궁금한 것은 JavaDoc을 찾아보면 된다.</p>
+
+<p>#</p>
+
+<h1 id="1-wrapper-클래스-사용법">1. Wrapper 클래스 사용법</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Integer</span> <span class="n">intValue1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="nc">Integer</span> <span class="n">intValue2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="s">"200"</span><span class="o">);</span> 
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intValue1</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intValue2</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100</p>
+
+<p>200</p>
+
+<p>Integer 클래스의 객체를 만들 때 생성자의 매개변수로는 정수형이나 문자열이 올 수 있다. <strong>JavaDoc</strong>에서 Integer.class 파일에서 클래스의 생성자를 찾아보면 어떤 식으로 객체를 생성해야할 지 알 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="kd">public</span> <span class="nf">Integer</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Integer 클래스에는 value가 final int 형으로 선언되어 있어서 한 번 선언되면 그 값을 바꿀 수 없다. 우리가 생성자의 매개변수로 정수를 넣어주면 value에 저 값이 저장된다. Integer클래스의 intValue() 메소드는 value 값을 반환해주는 메소드이다. 지금부터 Integer 클래스의 대표적인 메소드들에 대해 살펴본다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-integer클래스의-주요-메소드">2. Integer클래스의 주요 메소드</h1>
+
+<hr />
+
+<h2 id="1-int-intvalue">1) int intValue()</h2>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Integer</span> <span class="n">iValue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">theValue</span> <span class="o">=</span> <span class="n">iValue</span><span class="o">.</span><span class="na">intValue</span><span class="o">();</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100</p>
+
+<p>intValue 메소드로 클래스의 상수인 value 값을 불러왔다.</p>
+
+<p> </p>
+
+<p>참고로 intValue() 메소드의 반환형은 기본 자료형 int이다.</p>
+
+<p> </p>
+
+<h2 id="2-integer-valueof">2) Integer valueOf()</h2>
+
+<p>valueOf() 메소드는 매개변수로 정수나 문자열이 들어오면 정수형으로 다시 되돌려주는 메소드이다. 이 메소드는 static으로 정의되어 있어 클래스 메소드이다. 따라서 객체를 생성하지 않고도 사용 가능하다. 그리고 메소드의 반환형은 Integer클래스 형이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">theValue1</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">theValue2</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">"200"</span><span class="o">);</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue1</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue2</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100</p>
+
+<p>200</p>
+
+<p>정수를 문자열 형태로 넣어줘도 정수형으로 변환하여 돌려준다. 사실 이 메소드 안에서는 정수를 return해줄 때 parseInt라는 메소드를 사용한다. parseInt 메소드는 문자열을 정수로 돌려주는 메소드이다.</p>
+
+<p> </p>
+
+<h2 id="3-int-parseint">3) int parseInt()</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">theValue</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">theValue</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>100</p>
+
+<p> </p>
+
+<h1 id="3-언박싱--오토박싱">3. 언박싱 / 오토박싱</h1>
+
+<hr />
+
+<p>Integer와 int 자료형 사이의 연산이 일어날 때는 언박싱, 오토박싱이 일어난다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">wrapperclass</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WrapperTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Integer</span> <span class="n">num1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span>
+
+      <span class="kt">int</span> <span class="n">sum1</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="o">;</span> <span class="c1">// int에 저장되어야 하므로 num1이 num1.intValue()메소드를 통하여 Integer -&gt; int (&lt;strong&gt;언박싱&lt;/strong&gt;)</span>
+      <span class="nc">Integer</span> <span class="n">sum2</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="o">;</span> <span class="c1">// Integer에 저장되어야 하므로 num2가 Integer.valueOf(num2)를 통하여 int -&gt; Integer (&lt;strong&gt;오토박싱&lt;/strong&gt;)</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Integer 자료형이 int 자료형으로 변환되는 것을 언박싱, 그 반대를 오토박싱이라고 한다. 이 과정은 컴파일러가 해주므로 사실 프로그래머는 Integer자료형과 int자료형을 구분 없이 편하게 사용할 수 있다.</p>
+:ET

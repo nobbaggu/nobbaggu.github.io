@@ -1,0 +1,122 @@
+I"�8<p>스크롤뷰는 뷰가 한 화면에 다 보이지 않을 때 사용하며, 스크롤 기능을 지원한다. 단지 뷰를 스크롤뷰 안에 넣는 것 만으로 스크롤 기능이 자동으로 적용되기 때문에 무척 편리하다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:text=</span><span class="s">"이미지 바꾸기"</span>
+        <span class="na">android:onClick=</span><span class="s">"onButtonClicked"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;HorizontalScrollView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/horScrollView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;ScrollView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/scrollView"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;ImageView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/imageView"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;/ScrollView&gt;</span>
+    <span class="nt">&lt;/HorizontalScrollView&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>이미지를 번갈아가면서 보여주기 위해 버튼을 하나 만들었다. 그리고 스크롤뷰는 기본적으로 수직 방향을 지원하기 때문에 HorizontalScrollView도 하나 만들어 수직, 수평 방향 모두 스크롤을 할 수 있도록 하였다. 마지막으로 스크롤뷰 안에 이미지를 보여주기 위한 ImageView를 넣었다. 이제 자바 소스코드를 통해서 이미지를 바꾸어 보여주는 앱을 만들어보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplescrollview</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.res.Resources</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Bitmap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.drawable.BitmapDrawable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ImageView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ScrollView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">ScrollView</span> <span class="n">scrollView</span><span class="o">;</span>
+    <span class="nc">ImageView</span> <span class="n">imageView</span><span class="o">;</span>
+    <span class="nc">BitmapDrawable</span> <span class="n">bitmap</span><span class="o">;</span>
+
+    <span class="kt">int</span> <span class="n">imageNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">//현재 imageView의 그림 번호</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">scrollView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">scrollView</span><span class="o">);</span> <span class="c1">//스크롤뷰 참조</span>
+        <span class="n">imageView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView</span><span class="o">);</span> <span class="c1">//이미지뷰 참조</span>
+
+        <span class="n">scrollView</span><span class="o">.</span><span class="na">setHorizontalScrollBarEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span><span class="c1">// 수평 스크롤바 사용 가능하게</span>
+
+        <span class="cm">/* drawable 폴더에 있는 image01 그림을 bitmap 변수에 저장 */</span>
+        <span class="nc">Resources</span> <span class="n">res</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">();</span>
+        <span class="n">bitmap</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BitmapDrawable</span><span class="o">)</span> <span class="n">res</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">image01</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">bitmapWidth</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicWidth</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">bitmapHeight</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicHeight</span><span class="o">();</span>
+
+        <span class="n">imageView</span><span class="o">.</span><span class="na">setImageDrawable</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span> <span class="c1">//ImageView 그림 설정</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">width</span> <span class="o">=</span> <span class="n">bitmapWidth</span><span class="o">;</span> <span class="c1">//ImageView 가로 크기 설정</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">height</span> <span class="o">=</span> <span class="n">bitmapHeight</span><span class="o">;</span> <span class="c1">//ImageView 세로 크기 설정</span>
+    <span class="o">}</span>
+
+    <span class="cm">/* button의 onClick 속성으로 설정한 메소드 */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onButtonClicked</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">){</span>
+        <span class="n">changeImage</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/* imageView의 그림을 바꾸는 메소드 */</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">changeImage</span><span class="o">(){</span>
+        <span class="nc">Resources</span> <span class="n">res</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">imageNumber</span><span class="o">==</span><span class="mi">1</span><span class="o">){</span> <span class="c1">//imageNumber 변수 값이 1이면</span>
+
+            <span class="cm">/* imageView에 image02 그림 설정 */</span>
+            <span class="n">bitmap</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BitmapDrawable</span><span class="o">)</span> <span class="n">res</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">image02</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">bitmapWidth</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicWidth</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">bitmapHeight</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicHeight</span><span class="o">();</span>
+
+            <span class="n">imageView</span><span class="o">.</span><span class="na">setImageDrawable</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">width</span> <span class="o">=</span> <span class="n">bitmapWidth</span><span class="o">;</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">height</span> <span class="o">=</span> <span class="n">bitmapHeight</span><span class="o">;</span>
+            <span class="n">imageNumber</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">//imageNumber 변수 값 2로 설정</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span> <span class="c1">//imageNumber 변수 값이 1이 아니면</span>
+
+            <span class="cm">/* imageView에 image01 그림 설정 */</span>
+            <span class="n">bitmap</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BitmapDrawable</span><span class="o">)</span> <span class="n">res</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">image01</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">bitmapWidth</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicWidth</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">bitmapHeight</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="na">getIntrinsicHeight</span><span class="o">();</span>
+
+            <span class="n">imageView</span><span class="o">.</span><span class="na">setImageDrawable</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">width</span> <span class="o">=</span> <span class="n">bitmapWidth</span><span class="o">;</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">().</span><span class="na">height</span> <span class="o">=</span> <span class="n">bitmapHeight</span><span class="o">;</span>
+            <span class="n">imageNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">//imageNumber 변수 값 1로 설정</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>findViewById 메소드에 XML 코드에서 만든 뷰의 id를 전달하면 뷰 객체를 참조할 수 있다. 그리고 /res 파일에 있는 리소스들은 getResources() 메소드를 통해서 참조할 수 있다. getResources()로 참조한 Rescources 객체에서 getDrawable 메소드를 사용하여 image01 혹은 image02를 불러와 BitmapDrawable객체로 강제 형변환을 하여 변수에 저장했다. BitmapDrawable 객체는 getIntrinsicWidth(), getIntrinsicHeight() 메소드를 통해서 크기를 참조할 수 있다. 이후 imageView에 setImageDrawable 메소드를 통해 이미지를 설정하고, getLayoutParams().width, getLayoutParams().height를 통해 이미지뷰의 크기를 설정할 수 있다.</p>
+
+<p>changeImage() 메소드에서는 두 이미지를 번갈아가며 보여주기 위한 코드를 설정했다. 그리고 이 메소드를 버튼의 onClick 속성으로 설정한 메소드에 넣어주어 기능을 완성했다.</p>
+
+<p><img src="/images/android/9/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/9/2.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

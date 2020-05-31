@@ -1,0 +1,152 @@
+I"X9<p>이전 포스팅에서는 스레드와 핸들러, 메시지 큐에 대해 공부했었다. 그리고 서브 스레드에서 메인 스레드로 메시지나 러너블 객체를 전달해서 UI 구성요소를 변경하는 방법을 알았다. 그런데 역으로 메인 스레드에서도 서브 스레드로 메시지나 러너블 객체를 전달할 수 있다.</p>
+
+<p>단, 다른 점은 서브 스레드에서 핸들러를 사용하기 위해서는 루퍼를 따로 생성해주어고 실행시켜 주어야 한다는 것이다. 메인 스레드에서는 이런 과정이 생략되더라도 자동으로 루퍼가 생성되고 메시지큐를 모니터링하면서 새로운 메시지나 러너블 객체가 전달되면 그것을 가져와서 실행했었다.</p>
+
+<p>루퍼는 다음의 코드 두 줄만으로 생성할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Looper</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span>
+<span class="nc">Looper</span><span class="o">.</span><span class="na">loop</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>이번에는 단순히 서브 스레드에서 루퍼를 만들어 메인 스레드와 서브 스레드간에 메시지를 주고받는 간단한 예제를 하나 보면서 루퍼를 생성하는 방법을 알아보겠다.</p>
+
+<p><br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span>
+        <span class="nt">&gt;</span>
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/textView1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"메인 스레드에서 받은 데이터 : "</span>
+            <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+            <span class="nt">/&gt;</span>
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/editText1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"Hello"</span>
+            <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+            <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span>
+        <span class="nt">&gt;</span>
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/textView2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"스레드 #1 에서 받은 데이터 : "</span>
+            <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+            <span class="nt">/&gt;</span>
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/editText2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">""</span>
+            <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+            <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span>
+        <span class="na">android:text=</span><span class="s">"시작하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"18dp"</span>
+        <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>버튼을 클릭하면 입력상자1의 텍스트를 가져와서 메인 스레드에서 서브 스레드로 메시지 객체에 담아서 전송을 한다. 그리고 서브 스레드에서는 이 메시지 객체에 “ from SubThread”라는 문자열을 덧붙여 다시 메인스레드로 전송한다. 그러면 메인스레드에서는 입력상자2의 텍스트를 설정하도록 할 것이다.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">EditText</span> <span class="n">editText1</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">editText2</span><span class="o">;</span>
+
+    <span class="nc">Handler</span> <span class="n">handler</span><span class="o">;</span>
+    <span class="nc">Handler</span> <span class="n">subHandler</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">editText1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText1</span><span class="o">);</span>
+        <span class="n">editText2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText2</span><span class="o">);</span>
+
+        <span class="cm">/* 메인 스레드 핸들러 객체 생성
+        * 메시지를 받으면 입려상자2의 텍스트로 설정*/</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">(){</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="nc">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="na">obj</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+                <span class="n">editText2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 메인 스레드에서 서브 스레드로 메시지 보내기 */</span>
+                <span class="nc">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="nc">Message</span><span class="o">.</span><span class="na">obtain</span><span class="o">();</span>
+                <span class="n">msg</span><span class="o">.</span><span class="na">obj</span> <span class="o">=</span> <span class="n">editText1</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+                <span class="n">subHandler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="nc">Thread</span> <span class="n">subThread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SubThread</span><span class="o">();</span> <span class="c1">//서브스레드 생성</span>
+        <span class="n">subThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span><span class="c1">//서브스레드 시작</span>
+    <span class="o">}</span>
+
+    <span class="cm">/* 스레드 상송받아 서브스레드 클래스 정의 */</span>
+    <span class="kd">class</span> <span class="nc">SubThread</span> <span class="kd">extends</span> <span class="nc">Thread</span><span class="o">{</span>
+
+        <span class="cm">/* 서브스레드 생성될 때 핸들러 생성*/</span>
+        <span class="kd">public</span> <span class="nf">SubThread</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">subHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">(){</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="nc">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="cm">/*  메시지 받자마자 입력상자1 텍스트로 설정
+                     * 이어서 "Mike!!" 문자열 덧붙여서 메인 스레드로 전송*/</span>
+                    <span class="nc">Message</span> <span class="n">resultMsg</span> <span class="o">=</span> <span class="nc">Message</span><span class="o">.</span><span class="na">obtain</span><span class="o">();</span>
+                    <span class="n">resultMsg</span><span class="o">.</span><span class="na">obj</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="na">obj</span> <span class="o">+</span> <span class="s">" from SubThread"</span><span class="o">;</span>
+                    <span class="n">handler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">resultMsg</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">};</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">Looper</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span> <span class="c1">//루퍼 생성</span>
+            <span class="nc">Looper</span><span class="o">.</span><span class="na">loop</span><span class="o">();</span> <span class="c1">//루퍼 돌리기</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이 코드에서 봐야할 건 <code class="highlighter-rouge">Looper.prepare()</code> 부분과 <code class="highlighter-rouge">Looper.loop()</code> 메소드 부분이다. 이 메소드를 통해 루퍼를 생성하고 실행시켜주지 않으면 서브 스레드의 핸들러와 메시지큐를 사용할 수 없다.</p>
+
+<p>앱을 실행하고 입력상자1에 내용을 적어넣고 버튼을 클릭하면 입력상자2에 “ from SubThread”라는 문자열이 덧붙여져서 설정될 것이다.</p>
+
+<p><img src="/images/android/47/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/47/1.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

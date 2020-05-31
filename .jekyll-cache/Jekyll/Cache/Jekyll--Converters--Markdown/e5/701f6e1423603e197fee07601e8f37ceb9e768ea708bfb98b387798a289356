@@ -1,0 +1,100 @@
+I"_&<p>입력상자는 사용자의 입력을 받는 역할을 한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/userNameInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:inputType=</span><span class="s">"textCapWords"</span>
+        <span class="na">android:hint=</span><span class="s">"이름을 입력하세요"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span>
+        <span class="na">android:background=</span><span class="s">"#11000000"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/userAgeInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:inputType=</span><span class="s">"number"</span>
+        <span class="na">android:hint=</span><span class="s">"나이를 입력하세요"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span>
+        <span class="na">android:background=</span><span class="s">"#11000000"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:text=</span><span class="s">"제출"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>2개의 입력상자와 1개의 버튼을 넣었다.</p>
+
+<p>hint 속성은 사용자에게 어떤 것을 입력해야할 지 알려주는 역할을 하는데, 입력상자를 클릭하면 사라진다. 그리고 inputType 속성으로 입력할 텍스트의 종류를 알 수 있다. textCapWords는 영어나 한글 같은 키패드를 띄워주고, number를 값으로 주면 숫자를 입력하기 편리하도록 알아서 키패드를 띄워준다.</p>
+
+<p>간단한 앱을 만들어보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplewidget</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.CheckBox</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.CompoundButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.RadioButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">EditText</span> <span class="n">userNameInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">userAgeInput</span><span class="o">;</span>
+    <span class="nc">Button</span> <span class="n">button</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="cm">/* XML 레이아웃에 정의 된 뷰 객체 참조 */</span>
+        <span class="n">userNameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">userNameInput</span><span class="o">);</span>
+        <span class="n">userAgeInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">userAgeInput</span><span class="o">);</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+
+        <span class="cm">/* 버튼 클릭 이벤트 발생 시 처리부 코드 */</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 입력상자의 문자열 읽어와 저장 */</span>
+                <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">userNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">userAgeInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+
+                <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"이름 : "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"   나이 : "</span> <span class="o">+</span> <span class="n">age</span><span class="o">;</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">str</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>버튼을 클릭하면 입력상자의 내용을 읽어와 토스트 메시지로 띄워주는 간단한 기능을 만들어보았다. getText() 메소드를 사용하면 입력상자의 내용을 읽어올 수 있다. 앱을 실행하면 다음과 같은 화면이 나온다.</p>
+
+<p><img src="/images/android/13/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/13/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/13/3.jpg" alt="3" width="30%" height="30%" /></p>
+
+<p>실제로 두 입력상자의 inputType 속성을 어떻게 설정했느냐에 따라 다른 모양의 키패드를 띄워주는 것을 확인할 수 있다.</p>
+:ET

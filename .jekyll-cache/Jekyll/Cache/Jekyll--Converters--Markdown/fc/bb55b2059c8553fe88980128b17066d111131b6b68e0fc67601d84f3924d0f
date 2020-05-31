@@ -1,0 +1,102 @@
+I"�+<p>대화상자는 사용자에게 간단한 메시지를 전달 후 “예”, “아니오”와 같은 입력을 선택지로 준다. 대화상자를 띄우려면 AlertDialog.Builder 클래스로 대화상자 빌더 객체를 만든 후 타이틀 설정, 메시지 설정 및 각각의 버튼을 설정하고 클릭 이벤트 처리 리스너를 달아주면 된다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"버튼을 누르면 대화상자가 뜹니다."</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/btn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"띄우기"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>버튼을 누르면 대화상자가 뜬다. 텍스트뷰의 내용은 대화상자에서 어떤 버튼을 클릭했는지 표시하기 위한 용도로 만들었다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampledialog</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.DialogInterface</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AlertDialog</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">btn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn</span><span class="o">);</span>
+        <span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">showMessage</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">showMessage</span><span class="o">(){</span>
+        <span class="nc">AlertDialog</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">//대화상자를 만들기 위한 빌더 객체 생성</span>
+        <span class="n">builder</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"안내"</span><span class="o">);</span> <span class="c1">//대화상자 제목 설정</span>
+        <span class="n">builder</span><span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="s">"종료하시겠습니까?"</span><span class="o">);</span>
+        <span class="n">builder</span><span class="o">.</span><span class="na">setIcon</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">ic_dialog_alert</span><span class="o">);</span>
+
+        <span class="c1">//예 버튼 추가</span>
+        <span class="n">builder</span><span class="o">.</span><span class="na">setPositiveButton</span><span class="o">(</span><span class="s">"예"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DialogInterface</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"\"예\" 버튼이 눌렸습니다."</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="c1">//아니오 버튼 추가</span>
+        <span class="n">builder</span><span class="o">.</span><span class="na">setNeutralButton</span><span class="o">(</span><span class="s">"취소"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DialogInterface</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"\"취소\" 버튼이 눌렸습니다."</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="c1">//취소 버튼 추가</span>
+        <span class="n">builder</span><span class="o">.</span><span class="na">setNegativeButton</span><span class="o">(</span><span class="s">"아니오"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DialogInterface</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"\"아니오\" 버튼이 눌렸습니다."</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="nc">AlertDialog</span> <span class="n">dialog</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">create</span><span class="o">();</span> <span class="c1">//대화상자 생성</span>
+        <span class="n">dialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">//대화상자 띄우기</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>앱을 실행하면 아래의 화면을 확인할 수 있다.</p>
+
+<p><img src="/images/android/25/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/25/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/25/3.jpg" alt="3" width="30%" height="30%" /></p>
+:ET

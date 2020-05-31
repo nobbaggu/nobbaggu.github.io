@@ -1,0 +1,251 @@
+I"�R<p>이번에는 구조체 자료형으로도 배열을 만들 수 있다는 사실과 구조체 변수의 주소값을 포인터변수에 저장할 수 있다는 사실을 보여드리겠습니다.</p>
+
+<p>먼저 우리가 구조체를 정의하고 거기에 따라 여러사람의 정보를 담는다고 해봅시다. 10명의 정보를 저장하려면 구조체변수를 10개, 100명의 정보를 저장하려면 구조체변수를 100개 선언해야하겠죠. 하지만 그 수가 커질수록 이는 번거로운 작업이 될 것입니다. 이 때에 간단하게 길이가 10이나 100인 구조체 자료형의 배열을 선언하고 거기에 구조체변수를 저장하면 됩니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="nf">clear</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">//입력버퍼에서 "\n" 비우기 함수 </span>
+<span class="p">{</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">getchar</span><span class="p">()</span><span class="o">!=</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+	<span class="p">{</span>
+	
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">person</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">blood_type</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+	<span class="c1">// 입력 받기</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"arr[%d] age : "</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">age</span><span class="p">));</span>
+		<span class="n">clear</span><span class="p">();</span>
+		
+		<span class="n">printf</span><span class="p">(</span><span class="s">"arr[%d] blood_type : "</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">blood_type</span><span class="p">));</span>
+		<span class="n">clear</span><span class="p">();</span>
+	<span class="p">}</span>
+	
+	<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	
+	<span class="c1">// 배열 정보 출력</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"arr[%d] name : %2s, age : %2d, blood_type : %2c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">age</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">blood_type</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>arr[0] name : John</p>
+
+<p>arr[0] age : 20</p>
+
+<p>arr[0] blood_type : A</p>
+
+<p>arr[1] name : Harry</p>
+
+<p>arr[1] age : 40</p>
+
+<p>arr[1] blood_type : B</p>
+
+<p>arr[2] name : Victor</p>
+
+<p>arr[2] age : 50</p>
+
+<p>arr[2] blood_type : O</p>
+
+<p>arr[0] name : John, age : 20, blood_type : A</p>
+
+<p>arr[1] name : Harry, age : 40, blood_type : B</p>
+
+<p>arr[2] name : Victor, age : 50, blood_type : O</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>구조체 타입의 배열을 선언하고 데이터를 저장해봤습니다. int형 배열이 원소로 int형 변수들을 가지는것처럼 구조체로 정의한 person타입의 배열은 person타입의 변수들을 원소로 가집니다.</p>
+
+<p>초기화 역시 배열의 선언과 동시에 할 수 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">struct</span> <span class="n">person</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">blood_type</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="err">\</span><span class="p">{</span><span class="s">"John"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="sc">'A'</span><span class="p">},</span> <span class="p">{</span><span class="s">"Harry"</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="sc">'B'</span><span class="p">},</span> <span class="p">{</span><span class="s">"Keynn"</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="sc">'O'</span><span class="p">}</span><span class="err">\</span><span class="p">};</span>
+	
+	<span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"arr[%d] name : %2s, age : %2d, blood_type : %2c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">age</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">blood_type</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>arr[0] name : John, age : 20, blood_type : A</p>
+
+<p>arr[1] name : Harry, age : 41, blood_type : B</p>
+
+<p>arr[2] name : Keynn, age : 32, blood_type : O</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>구조체 타입의 배열도 기본자료형의 배열들과 별반 다르지 않습니다.</p>
+
+<p>그리고 우리는 포인터를 선언할 때 int형, double형처럼 포인터형을 지정해주었고 이 포인터형이라는것은 포인터가 가르키는 변수의 자료형이고 포인터연산을 할 때 참조할 메모리공간의 크기를 알려주는 역할을 한다 했습니다. 구조체형의 포인터 역시 같습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">struct</span> <span class="n">person</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">blood_type</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">per1</span> <span class="o">=</span> <span class="p">{</span><span class="s">"John"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="sc">'B'</span><span class="p">};</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">per2</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Kelly"</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="sc">'A'</span><span class="p">};</span>
+	
+	<span class="k">struct</span> <span class="n">person</span> <span class="o">*</span><span class="n">ptr1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">per1</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="o">*</span><span class="n">ptr2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">per2</span><span class="p">;</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%s %d %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr1</span><span class="p">).</span><span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr1</span><span class="p">).</span><span class="n">age</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr1</span><span class="p">).</span><span class="n">blood_type</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%s %d %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr2</span><span class="p">).</span><span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr2</span><span class="p">).</span><span class="n">age</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr2</span><span class="p">).</span><span class="n">blood_type</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>John 20 B</p>
+
+<p>Kelly 41 A</p>
+
+<p>계속하려면 아무 키나 누르십시오…</p>
+
+<p>구조체의 멤버 역시 일반 변수처럼 포인터의 * 연산자를 사용해서 접근도 가능하고 데이터의 저장도 가능하다는 사실을 확인했습니다. 그리고 구조체형의 포인터변수를 다룰때에는 * 연산자와 . 연산자를 합쳐서 -&gt; 연산자로 바꿔쓸 수 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">struct</span> <span class="n">person</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">blood_type</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">per1</span> <span class="o">=</span> <span class="p">{</span><span class="s">"John"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="sc">'B'</span><span class="p">};</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="n">per2</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Kelly"</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="sc">'A'</span><span class="p">};</span>
+	
+	<span class="k">struct</span> <span class="n">person</span> <span class="o">*</span><span class="n">ptr1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">per1</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">person</span> <span class="o">*</span><span class="n">ptr2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">per2</span><span class="p">;</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%s %d %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr1</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">ptr1</span><span class="o">-&gt;</span><span class="n">age</span><span class="p">,</span> <span class="n">ptr1</span><span class="o">-&gt;</span><span class="n">blood_type</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%s %d %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr2</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">ptr2</span><span class="o">-&gt;</span><span class="n">age</span><span class="p">,</span> <span class="n">ptr2</span><span class="o">-&gt;</span><span class="n">blood_type</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>John 20 B</p>
+
+<p>Kelly 41 A</p>
+
+<p>계속하려면 아무 키나 누르십시오…</p>
+
+<p>실행결과는 같습니다.</p>
+
+<p>포인터변수가 구조체의 멤버로 선언될 수도 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">struct</span> <span class="n">nums</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="o">*</span> <span class="n">a</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+	
+	<span class="k">struct</span> <span class="n">nums</span> <span class="n">myNums</span> <span class="o">=</span> <span class="p">{</span><span class="o">&amp;</span><span class="n">num1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num2</span><span class="p">};</span>
+	
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">myNums</span><span class="p">.</span><span class="n">a</span><span class="p">),</span> <span class="o">*</span><span class="p">(</span><span class="n">myNums</span><span class="p">.</span><span class="n">b</span><span class="p">));</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>계속하려면 아무 키나 누르십시오…</p>
+
+<p>구조체의 멤버인 포인터 변수에 num1과 num2의 주소값을 저장하고 *와 . 연산자를 사용해서 데이터에 접근했습니다. 이정도쯤 되면 구조체가 기본 자료형과 별반 다르지 않은 하나의 자료형이라는 것을 알 수 있습니다.</p>
+
+<p>한 가지 중요한 사실이 하나 더 있습니다. 배열의 주소는 배열의 첫 번째 원소의 주소와 동일한 것 처럼, 구조체 변수의 주소값은 구조체 변수의 첫 번째 멤버의 주소와 동일하다는 사실입니다. 이를 확인하기 위해 다음 코드를 봅시다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">struct</span> <span class="n">nums</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">nums</span> <span class="o">*</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">nums</span> <span class="n">myNums</span><span class="p">;</span>
+	<span class="n">myNums</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="n">myNums</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+	<span class="n">myNums</span><span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">myNums</span><span class="p">;</span>
+	
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">myNums</span><span class="p">.</span><span class="n">a</span><span class="p">,</span> <span class="n">myNums</span><span class="p">.</span><span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">myNums</span><span class="p">.</span><span class="n">c</span><span class="p">));</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>10 20 10</p>
+
+<p>계속하려면 아무 키나 누르십시오…</p>
+
+<p>구조체를 가르키는 포인터 변수로 메모리에서 데이터를 읽었는데 10이 나왔습니다. 즉, 구조체를 가르키는 포인터 변수가 a를 가르킨다는 겁니다.</p>
+
+<p>결론 : 구조체 변수의 주소값은 구조체 변수의 첫 번째 멤버의 주소값이다.</p>
+:ET

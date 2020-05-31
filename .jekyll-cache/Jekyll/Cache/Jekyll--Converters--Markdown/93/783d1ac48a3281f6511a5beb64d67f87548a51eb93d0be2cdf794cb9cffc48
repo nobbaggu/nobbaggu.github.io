@@ -1,0 +1,259 @@
+I"�N<p>C언어는 <em>“함수에서 시작해서 함수에서 끝난다”</em> 라는 말이 있습니다.</p>
+
+<p>함수는 일반적으로 기능별로 묶습니다. 예를들어, 2개 이상의 수가 들어왔을 때 모든 수의 합을 계산해주는 ‘덧셈함수’라던지 2개 이상의 수가 들어왔을 때 가장 큰 수를 가려내주는 ‘최대값 선별 함수’를 예로 들 수 있습니다. 함수를 너무 다양한 기능을 가진 짬뽕처럼 만들지도 않고, 말도 안되게 작은 일처리만 하는 쓸모없는 함수로 만들지도 않기위해 함수를 잘 정의해야해합니다.</p>
+
+<p><br /></p>
+<h2 id="1-함수의-구조">1. 함수의 구조</h2>
+<hr />
+
+<p>지금까지 항상 써온 main함수를 예로 들어보겠습니다.</p>
+
+<p><img src="/images/2018/09/66.jpg" alt="123" width="80%" height="80%" /></p>
+
+<p><br /></p>
+<h3 id="1-반환형">1) 반환형</h3>
+
+<p>main함수는 조금은 특별하지만 다른 함수들과 당연히 함수가 갖추어야할 구조를 갖추고 있습니다. int가 main함수의 반환형(return type) 입니다. main함수는 마지막에 정수값을 반환(return) 합니다. <strong>반환은 자기자신을 호출(call)한 대상에게 합니다.</strong> main함수는 조금 특별해서 운영체제가 호출하기 때문에 프로그램이 종료되면서 0을 운영체제로 반환합니다. 0은 정상적인 프로그램의 종료를 의미합니다.</p>
+
+<p><br /></p>
+<h3 id="2-이름">2) 이름</h3>
+
+<p>main은 함수의 이름입니다. 보통 함수의 이름은 우리가 임의로 짓습니다만, 이 main함수만큼은 항상 정해져 있습니다.</p>
+
+<p><br /></p>
+<h3 id="3-전달인자">3) 전달인자</h3>
+
+<p>함수 이름 옆의 ( ) 안에는 전달인자가 들어갑니다. 파라미터라고도 부릅니다. 전달인자를 받아 함수는 요리를 합니다. 하지만 main함수는 전달인자가 필요없어서 아무것도 받지 않습니다. 이처럼 전달인자가 없을때에는 void를 써주거나 비워두면 됩니다. 전달인자에 예를들어 num값이 전달이 되고 우리는 코드를 통해 그 num을 값을 1 증가시킨다던가, 10으로 재정의한다던가 하는식으로 요리를 합니다. 그렇다고해서 num 자체의 값이 바뀌지 않습니다.
+<strong>전달인자 전달되는 것은 실제값이 아닌 복사값 입니다. 기본적으로 함수 내부에서는 함수 외부에 선언된 변수나 함수에 접근할 수 없습니다.</strong></p>
+
+<p><br /></p>
+<h3 id="4-몸체">4) 몸체</h3>
+
+<p>{ }에는 실행할 코드가 들어갑니다.</p>
+
+<p><br /></p>
+<h2 id="2-함수의-4가지-형태">2. 함수의 4가지 형태</h2>
+<hr />
+
+<p>함수는 간단하게 4가지 종류로 구분할 수 있습니다.</p>
+
+<p>1) 반환형 o, 전달인자 o</p>
+
+<p>2) 반환형 o, 전달인자 x</p>
+
+<p>3) 반환형 x, 전달인자 o</p>
+
+<p>4) 반환형 x, 전달인자 x</p>
+
+<p><br /></p>
+
+<p>각각의 유형을 가지는 함수를 정의해서 사용해보겠습니다.</p>
+
+<p><br /></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">Mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="c1">//반환형 o, 전달인자 o</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">GetNum</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">//반환형 o, 전달인자 x</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Give me a number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">ShowResult</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s">"color: #ff0000;"</span><span class="o">&gt;</span><span class="c1">//반환형 x, 전달인자 o</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The result is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">CalStart</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s">"color: #ff0000;"</span><span class="o">&gt;</span><span class="c1">//반환형 x, 전달인자 x</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"You can give me any two numbers. Then, you can get the result</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="n">result</span><span class="p">;</span>
+    
+    <span class="n">CalStart</span><span class="p">();</span>
+    <span class="n">num1</span> <span class="o">=</span> <span class="n">GetNum</span><span class="p">();</span>
+    <span class="n">num2</span> <span class="o">=</span> <span class="n">GetNum</span><span class="p">();</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">Mul</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="n">num2</span><span class="p">);</span>
+    <span class="n">ShowResult</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>실행결과</p>
+
+<p>You can give me any two numbers. Then, you can get the result</p>
+
+<p>Give me a number : 4</p>
+
+<p>Give me a number : 9</p>
+
+<p>The result is 36</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>Mul 함수는 전달인자를 받으면서 두 값의 곱을 반환합니다.</p>
+
+<p>GetNum 함수는 전달인자는 없고 사용자로부터 입력받은 값을 반환합니다.</p>
+
+<p>ShowResult는 전달인자로 들어온 값을 출력해주지만 아무런 값도 반환하지 않습니다.</p>
+
+<p>Cal함수는 전달인자와 반환형 둘 다 가지고있지 않습니다.</p>
+
+<p>참고로, 반환형이 void인 함수는 반환값이 없기 때문에 return을 사용할 수 없다고 생각할 수 있습니다. 하지만 아무런 값도 반환하지 않도록 return만 단독으로 사용할 수 있습니다. return은 어떠한 값을 반환한다는 의미도 있지만, <strong>함수를 종료하는 역할을 합니다.</strong></p>
+
+<p><br /></p>
+<h1 id="3-함수의-위치">3. 함수의 위치</h1>
+<hr />
+
+<p>위 예제에서 보면 우리는 함수들을 main함수 위에서 정의를 했습니다. 저 함수들을 main함수보다 아래로 내리면 컴파일 오류가 납니다. 컴파일러는 위에서부터 순서대로 실행을 합니다. main함수를 실행하다가 어떠한 함수를 만났는데 본 적이 없는 함수라면, 컴파일러는 “이런거 본 적 없어” 하며 오류를 내버립니다.</p>
+
+<p>이 때에는 main함수 앞에서는 함수를 ‘선언’만 하고, 정의는 뒤에서 하는 방법이 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">Mul</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">GetNum</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">ShowResult</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">CalStart</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="n">result</span><span class="p">;</span>
+    
+    <span class="n">CalStart</span><span class="p">();</span>
+    <span class="n">num1</span> <span class="o">=</span> <span class="n">GetNum</span><span class="p">();</span>
+    <span class="n">num2</span> <span class="o">=</span> <span class="n">GetNum</span><span class="p">();</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">Mul</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="n">num2</span><span class="p">);</span>
+    <span class="n">ShowResult</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">Mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">GetNum</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Give me a number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">ShowResult</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The result is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">CalStart</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"You can give me any two numbers. Then, you can get the result</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>You can give me any two numbers. Then, you can get the result</p>
+
+<p>Give me a number : 3</p>
+
+<p>Give me a number : 8</p>
+
+<p>The result is 24</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>위와 같이 코드를 작성하면 컴파일러에게 “이러한 형태의 함수를 사용할건데, 뒤에서 정의되어 있으니 찾아 쓰면 돼”라고 미리 정보를 주는겁니다. <strong>함수의 선언에는 전달인자의 갯수와 자료형만 포함되어 있다면 컴파일이 됩니다.</strong></p>
+
+<p>함수를 사용하여 세 개의 실수를 사용자로부터 입력받아 가장 큰 숫자와 세 숫자의 평균을 알려주는 프로그램을 만들어봅시다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">double</span> <span class="nf">GetNum</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">double</span> <span class="nf">Max</span><span class="p">(</span><span class="kt">double</span> <span class="p">,</span> <span class="kt">double</span> <span class="p">,</span> <span class="kt">double</span><span class="p">);</span>
+<span class="kt">double</span> <span class="nf">Avg</span><span class="p">(</span><span class="kt">double</span> <span class="p">,</span> <span class="kt">double</span> <span class="p">,</span> <span class="kt">double</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num3</span><span class="p">;</span> <span class="c1">//각각의 실수형 변수에 GetNum()함수를 통해 값 저장</span>
+    
+    <span class="n">num1</span> <span class="o">=</span> <span class="n">GetNum</span><span class="p">();</span>
+    <span class="n">num2</span> <span class="o">=</span> <span class="n">GetNum</span><span class="p">();</span>
+    <span class="n">num3</span> <span class="o">=</span> <span class="n">GetNum</span><span class="p">();</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The maximum number is %f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">Max</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num3</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The average is %f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">Avg</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num3</span><span class="p">));</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">GetNum</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">//사용자로부터 정수를 입력받아 그 값을 반환</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Give me a number : "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Max</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">,</span> <span class="kt">double</span> <span class="n">c</span><span class="p">)</span> <span class="c1">//세 개의 실수를 입력받아 크기를 비교하고 가장 큰 값 반환</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">max</span><span class="p">;</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">c</span> <span class="o">?</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="p">)</span> <span class="o">:</span> <span class="n">c</span><span class="p">;</span> <span class="c1">//조건연산자 사용</span>
+    
+    <span class="k">return</span> <span class="n">max</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Avg</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">,</span> <span class="kt">double</span> <span class="n">c</span><span class="p">)</span> <span class="c1">//세 개의 실수를 입력받아 평균을 계산하고 반환</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">avg</span><span class="p">;</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">avg</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>출력결과</p>
+
+<p>Give me a number : 123.2</p>
+
+<p>Give me a number : 82.4</p>
+
+<p>Give me a number : 312.5</p>
+
+<p>The maximum number is 312.500000</p>
+
+<p>The average is 172.700000</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>주의할게 있습니다. 바로 scanf 함수가 실수를 입력받을 때에는 f, lf, Lf 를 잘 구분해서 서식문자를 사용해야 한다는 것입니다. printf 함수에서 실수를 출력할 때 서식문자 %f, %e, %g를 사용했습니다. 하지만 scanf 함수에서는 %f는 float형, %lf는 double형, %Lf는 long double형 데이터를 입력받을 때 사용합니다. 따라서 위의 코드에서 scanf 안에 %f를 넣으면 이상한 결과가 나옵니다. printf와 scanf에서 %f는 다르다는 점은 헷갈리지만 기억해두셔야합니다.</p>
+
+<p>위의 출력결과를 똑같이 내는 코드를 함수를 사용하지 않고 main함수 안에서 모두 해결할 수 있습니다. 물론, 위의 코드정도는 크게 무리없이도 할 수 있을겁니다. 하지만 코드가 방대해질수록 main함수 안에서 모두 해결하는 것은 거의 미친짓입니다. 효율성도 떨어지고 에러가 난 경우 디버깅도 어려워집니다.</p>
+:ET

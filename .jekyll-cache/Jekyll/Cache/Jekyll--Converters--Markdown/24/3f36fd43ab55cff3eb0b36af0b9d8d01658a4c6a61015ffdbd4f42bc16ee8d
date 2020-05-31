@@ -1,0 +1,102 @@
+I"�<p>#</p>
+
+<h1 id="1-정수형integer">1. 정수형(Integer)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=-</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<h1 id="2-실수형floating-point">2. 실수형(Floating-point)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mf">1.2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=-</span><span class="mf">3.45</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=</span><span class="mf">1.2e10</span> <span class="c1">#컴퓨터식 지수 표현 방식 1.2e10 = 1.2*10^10
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">=</span><span class="mf">1.2e-10</span> <span class="c1">#1.2e-10 = 1.2*10^-10
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-8진수octal--16진수hexadecimal">3. 8진수(octal) / 16진수(hexadecimal)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mo">0o123</span> <span class="c1">#10진수로 8^2*1 + 8^1*2 + 8^0*3 = 64 + 16 + 3 = 83
+</span><span class="n">b</span> <span class="o">=</span> <span class="mh">0x1ff</span> <span class="c1">#10진수로 16^2*1 + 16^1*15 + 16^0*15 = 256 + 240 + 15 = 511
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="4-복소수complex-number">4. 복소수(Complex Number)</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mf">3j</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="o">-</span><span class="mf">5j</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<ul>
+  <li>복소수와 관련한 파이썬 내장함수</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="c1">#실수부 return
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="c1">#허수부 return
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span> <span class="c1">#복소수의 켤레 return
+</span><span class="k">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c1"># 복소수의 크기 return
+</span></code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p>#</p>
+
+<h1 id="5-사칙연산">5. 사칙연산</h1>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 더하기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 빼기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 곱하기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 나누기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 나머지
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 승수 a^b
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">//</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 소수점 아래자리 버림
+</span></code></pre></div></div>
+
+:ET

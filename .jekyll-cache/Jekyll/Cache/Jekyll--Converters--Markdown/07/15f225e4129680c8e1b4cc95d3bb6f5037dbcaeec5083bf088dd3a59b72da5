@@ -1,0 +1,147 @@
+I"�8<h1 id="1-arraycopy-메소드">1. arraycopy 메소드</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arraycopy</span><span class="o">(</span><span class="n">src</span><span class="o">,</span> <span class="n">srcPos</span><span class="o">,</span> <span class="n">dest</span><span class="o">,</span> <span class="n">destPos</span><span class="o">,</span> <span class="n">length</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>src : 복사할 배열</p>
+
+<p>srsPos : 복사할 시작 index</p>
+
+<p>dest : 붙여넣을 배열</p>
+
+<p>destPos : 붙여넣을 시작 index</p>
+
+<p>length : 붙여넣을 갯수</p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+       
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1001</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1002</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Paul"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1003</span><span class="o">);</span>
+       
+       <span class="c1">//stus1을 stus2에 복사</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">stus1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">stus2</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">stus1</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+       
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="o">}</span>
+       
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+       
+       <span class="c1">//stus1의 첫 번째 객체 정보 변경</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Mac"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">9999</span><span class="o">);</span>
+       
+       <span class="c1">//stus2의 모든 객체 정보 출력</span>
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>1001, John</p>
+
+<p>1002, Kelly</p>
+
+<p>1003, Paul</p>
+
+<p>9999, Mac</p>
+
+<p>1002, Kelly</p>
+
+<p>1003, Paul</p>
+
+<p>stus1의 첫 번째 요소가 가르키는 객체 정보를 변경했는데 stus2의 첫 번째 요소의 객체 정보도 변경되었다.</p>
+
+<p>arraycopy() 메소드의 원리를 보면 이유를 알 수 있다.</p>
+
+<p>어차피 객체 배열에 요소로 저장되어있는 것은 객체의 주소 정보이다. arraycopy() 메소드는 객체의 주소값을 복사해서 넘겨주는 메소드이다. 따라서 stus1과 stus2의 각 요소는 같은 객체를 가르키고 있는 참조변수인 것이다. 그래서 stus1로 객체에 접근해 정보를 변경하면 stus2를 통해 출력해도 바뀐 정보가 나오는 것이다.</p>
+
+<p>이를 얕은 복사라고 한다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-깊은-복사">2. 깊은 복사</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1001</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1002</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Paul"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1003</span><span class="o">);</span>
+
+       <span class="n">stus2</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus2</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus2</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="n">stus1</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">());</span>
+          <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="n">stus1</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getStudentID</span><span class="o">());</span>
+       <span class="o">}</span>
+
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="o">}</span>
+
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Assy"</span><span class="o">);</span>
+       <span class="n">stus1</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">10000</span><span class="o">);</span>
+
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">stus2</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>         
+       <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>1001, John</p>
+
+<p>1002, Kelly</p>
+
+<p>1003, Paul</p>
+
+<p>1001, John</p>
+
+<p>1002, Kelly</p>
+
+<p>1003, Paul</p>
+
+<p>stus2 인스턴스도 따로 만들고 stus1의 get() 메소드로 정보만 출력해서 저장하였다. 이 경우는 stus1과 stus2의 각 요소가 서로 다른 인스턴스를 가르키기 때문에 stus1을 통해 객체 정보를 변경한다고 해서 stus2가 참조하는 객체는 영향을 받지 않는다.</p>
+:ET

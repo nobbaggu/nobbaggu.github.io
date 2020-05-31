@@ -1,0 +1,47 @@
+I"�<p>Scanner 클래스는 java.util 패키지의 클래스로 입력 스트림을 제공한다. Scanner 클래스로 만든 입력 스트림은 정수, 실수, 문자 등 다양한 자료를 읽어들일 수 있다. 간편하게 사용할 수 있어 자주 사용하는 클래스이므로 알아두면 편리하다.</p>
+
+<p> </p>
+
+<h1 id="1-scanner-클래스">1. Scanner 클래스</h1>
+
+<hr />
+
+<p>Scanner 클래스의 참조자료에 객체를 만들어 저장해두고 다양한 메소드를 호출하여 사용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SystemInTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span> <span class="c1">//System.in = 표준 입력 스트림 -&gt;키보드 입력을 받기위해 System.in을 생성자 매개변수로 전달</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Name: "</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">//문자열 입력 메소드</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Address: "</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">//문자열 입력 메소드</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Age: "</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span> <span class="c1">//정수 입력 메소드</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Name: "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span> <span class="s">", Age: "</span><span class="o">+</span><span class="n">age</span><span class="o">+</span> <span class="s">", Address: "</span><span class="o">+</span><span class="n">addr</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Name: John</p>
+
+<p>Address: Seoul</p>
+
+<p>Age: 29</p>
+
+<p>Name: John, Age: 29, Address: Seoul</p>
+
+<p>Scanner 객체를 만들 때 생성자의 매개변수로 System.in, 즉 표준 입력 스트림을 전달해주었는데, 이는 키보드로 입력을 하기 위해서이다. 이외에도 파일이나 문자열 입력도 받을 수 있다.</p>
+
+<p>이것을 하기위해 System.in 표준입력스트림의 read() 메소드를 사용했다면 while문을 써서 읽어들여야 했을 것이다. 또한 예외처리까지 해주어야 해서 코드가 더 복잡해지고 과정이 번거로울 것이다.</p>
+:ET

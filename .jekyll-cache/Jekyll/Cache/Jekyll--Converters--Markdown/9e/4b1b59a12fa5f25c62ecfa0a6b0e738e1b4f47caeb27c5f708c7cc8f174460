@@ -1,0 +1,107 @@
+I"�*<h1 id="1-객체-배열">1. 객체 배열</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">studentID</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Student</span><span class="o">()</span> <span class="o">{};</span>
+   
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getStudentID</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">studentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStudentID</span><span class="o">(</span><span class="kt">int</span> <span class="n">studentID</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">studentID</span> <span class="o">=</span> <span class="n">studentID</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="o">()</span> <span class="o">{</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">studentID</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위와 같이 Student 클래스를 생성했다.</p>
+
+<p>멤버 변수로는 이름과 학번이 있고 각각에 대해 get(), set() 메소드를 지원한다. 또한 학생 정보를 출력해주는 showInfo()메소드를 만들었다.</p>
+
+<p>이제 Student를 하나의 참조 자료형으로 사용한 Student 자료형 배열을 만들어보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span> <span class="c1">//Student형의 인스턴스를 저장할 배열공간만 확보했을 뿐 아직 인스턴스가 만들어지지 않았다.</span>
+       
+       <span class="c1">//배열 요소마다 인스턴스 생성</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       
+       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1001</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1002</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setName</span><span class="o">(</span><span class="s">"Faul"</span><span class="o">);</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">setStudentID</span><span class="o">(</span><span class="mi">1003</span><span class="o">);</span>
+       
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showInfo</span><span class="o">();</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>가장 처음에 Student[] stus = new Student[3]; 를 써서 Student 타입의 길이가 3인 배열 stus를 만들었다.</p>
+
+<p>주의해야 할 건 아직 인스턴스가 만들어지지 않았단 것이다. stus배열의 각각의 요소는 아직 아무런 객체의 주소값도 가지고 있지 않다. 출력해보면 null이 나온다.</p>
+
+<p>따라서 이후에 각각의 요소마다 인스턴스를 생성해주고 이후의 코드를 진행해야한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Student</span><span class="o">[]</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span> <span class="c1">//Student형의 인스턴스를 저장할 배열 공간만 확보했을 뿐 아직 인스턴스가 만들어지지 않았다.</span>
+       
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+       <span class="o">}</span>
+       <span class="c1">//배열 요소마다 인스턴스 생성</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       <span class="n">stus</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">();</span>
+       
+       <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">stus</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stus</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>null</p>
+
+<p>null</p>
+
+<p>null</p>
+
+<p>classpart.Student@15db9742</p>
+
+<p>classpart.Student@6d06d69c</p>
+
+<p>classpart.Student@7852e922</p>
+
+<p>결과를 보면 각각의 배열요소마다 인스턴스를 생성하여 저장하기 전 아무런 객체도 참조하지 않는 null 상태이다. 혹시나 실수로 인스턴스 생성을 까먹으면 NullPointException 컴파일 오류가 난다.</p>
+
+<p> </p>
+:ET

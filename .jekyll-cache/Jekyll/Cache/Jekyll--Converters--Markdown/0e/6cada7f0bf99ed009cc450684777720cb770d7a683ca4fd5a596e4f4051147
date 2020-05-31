@@ -1,0 +1,129 @@
+I"�$<p>클래스 내부에서 특정 기능을 수행하는 부분인 메소드는 다른 말로 멤버 함수 라고도 한다. 함수는 많은 프로그래밍 언어에서 지원하는 중요한 기능이다. 자바에서는 클래스에 기능을 불어넣기 위해 함수를 사용한다. 이처럼 클래스 내부에서 정의되어 객체지향의 개념이 포함된 개념의 함수를 메소드라고 한다.</p>
+
+<p> </p>
+
+<h1 id="1-함수의-구성-요소">1. 함수의 구성 요소</h1>
+
+<hr />
+
+<h3 id="1-반환형">1) 반환형</h3>
+
+<p><strong>반환형(return type)</strong>은 함수가 뱉어내는 결과값의 자료형이다. <strong>반환은</strong> <strong>자기자신을 호출(call)한 대상에게 한다. </strong>함수의 반환은 return 예약어를 써서 수행한다. 반환형이 없다고 함수의 이름앞을 비워두면 안된다. 이 때에는 ‘비어있다’는 뜻을 가지는 void를 써주면 된다.</p>
+
+<p>##</p>
+
+<h3 id="2-이름">2) 이름</h3>
+
+<p>함수의 이름은 우리가 임의로 짓는다. 다만 자바 프로그램이 실행되면 가장 먼저 실행되는 함수인 main함수만큼은 항상 정해져 있다.</p>
+
+<p>통상적으로 함수의 이름은 함수의 기능을 유추할 수 있도록 짓는다.</p>
+
+<p>##</p>
+
+<h3 id="3-매개변수">3) 매개변수</h3>
+
+<p>함수 이름 옆의 ( ) 안에는 매개변수가 들어간다. 매개변수가 없다면 비워두면 된다.</p>
+
+<p>함수를 호출할 때 함수를 정의할 때 선언된 매개변수의 자료형에 맞는 변수를 전달해야한다.</p>
+
+<p>주의해야 할 것은 <strong>매개변수에 어떤 변수명을 넣었을 때 실제로 전달되는 것은 그 변수의 복사값이다. 다시 말해 함수를 통해서 외부에 있는 변수의 데이터를 직접 조작할 수 없다.</strong></p>
+
+<p> </p>
+
+<h3 id="4-몸체">4) 몸체</h3>
+
+<p>{ }에는 실행할 코드가 들어간다.</p>
+
+<p> </p>
+
+<p>무슨 말인지는 직접 함수를 만들어보면 바로 파악될 것이다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-함수의-종류">2. 함수의 종류</h1>
+
+<hr />
+
+<p>함수는 위에서 말한 요소들에 따라 크게 4가지로 분류 가능하다.</p>
+
+<p>1) 반환형 o, 전달인자 o</p>
+
+<p>2) 반환형 o, 전달인자 x</p>
+
+<p>3) 반환형 x, 전달인자 o</p>
+
+<p>4) 반환형 x, 전달인자 x</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//반환형 o, 매개변수 o</span>
+       <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">;</span>
+       <span class="k">return</span> <span class="n">c</span><span class="o">;</span>
+   <span class="o">}</span><span class="c1">//두 매개변수를 곱하여 반환</span>
+
+   <span class="kt">int</span> <span class="nf">getNum</span><span class="o">()</span> <span class="o">{</span><span class="c1">//반환형 o, 전달인자 x</span>
+       <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>        
+       <span class="k">return</span> <span class="n">num</span><span class="o">;</span>
+   <span class="o">}</span> <span class="c1">//숫자 10을 반환</span>
+
+   <span class="kt">void</span> <span class="nf">showResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span><span class="c1">//반환형 x, 매개변수 o</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The result is "</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+   <span class="o">}</span> <span class="c1">//매개변수를 출력</span>
+
+   <span class="kt">void</span> <span class="nf">sayHello</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//반환형 x, 매개변수 x</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+   <span class="o">}</span> <span class="c1">//"hello" 문자열 출력</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>우리가 어떤 기능이 필요하여 함수를 어떻게 만들지 구상하면 반환형과 전달인자는 자동으로 정해진다.</p>
+
+<p>참고로, 반환형이 void인 함수에서도 return을 사용할 수 있다. return은 어떠한 값을 반환한다는 의미도 있지만, <strong>‘함수를 종료한다’</strong>는 의미도 같이 가지고 있기 때문이다. 함수 내부의 코드가 수행되다가 return을 만나면 함수가 종료된다.</p>
+
+<p>직접 함수를 호출해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        
+        <span class="kt">int</span> <span class="n">mulResult</span> <span class="o">=</span> <span class="n">mul</span><span class="o">(</span><span class="n">num1</span><span class="o">,</span> <span class="n">num2</span><span class="o">);</span> <span class="c1">// mul함수 호출</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">mulResult</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">mul</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="c1">// 반환형 o, 매개변수 o</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">c</span><span class="o">;</span>
+    <span class="o">}</span> <span class="c1">// 두 매개변수를 곱하여 반환</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>200</p>
+
+<h1 id="3-함수의-호출과-스택-메모리">3. 함수의 호출과 스택 메모리</h1>
+
+<hr />
+
+<p>함수가 호출되면 함수의 매개변수와 지역변수 등을 저장하기 위해 메모리 공간이 할당되어야 한다. 이 메모리 공간을 스택 메모리(stack memory)라고 부른다. 스택 메모리는 가장 나중에 들어온 데이터가 가장 먼저 소멸되는 Last In First Out(LIFO) 구조이다.</p>
+
+<p>위에서 코드에서 main함수가 mul함수를 호출(call)하는 과정의 메모리 공간의 차지와 할당을 살펴보자.</p>
+
+<p><a href="https://SWnomad.com/%eb%a9%94%ec%86%8c%eb%93%9c/%ec%a0%9c%eb%aa%a9-%ec%97%86%ec%9d%8c-192/" rel="attachment wp-att-1574"><img class="aligncenter size-full wp-image-1574" src="/images/2018/12/no-name-37.jpg" alt="" width="269" height="183" /></a></p>
+
+<p>먼저 main함수가 호출되므로 main함수의 변수인 num1과 num2 mulResult가 메모리공간에 할당된다. mulResult에 mul함의 결과를 대입하는 과정에서 mul함수가 호출되면서 스택메모리에 a,b와 c가 할당된다. 함수의 호출이 끝나면서 mul함수와 관련된 데이터가 먼저 메모리공간에서 해제되고 프로그램이 끝나면서 main함수와 관련된 데이터가 스택 메모리에서 소멸한다.</p>
+
+<p> </p>
+
+<p>함수를 사용하는 이유는 기능을 한 번 구현해놓으면 같은 상황에서 얼마든지 가져다 쓰기만 하면 되기 때문에 재사용성이 높아서이다.</p>
+
+<p>또한 기능별로 나누어 함수로 정의하면 코드의 가독성이 높아진다. 모든 기능을 main함수안에 때려넣으면 코드가 복잡해질 것이다.</p>
+:ET

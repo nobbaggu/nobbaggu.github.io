@@ -1,0 +1,241 @@
+I"�Z<p>안드로이드에서는 오디오나 동영상 재생 및 녹음, 녹화를 위한 API인 android.media 패키지를 제공한다. 그 중 핵심은 MediaPlayer 클래스로 오디오와 동영상의 재생에 관련된 부분을 담당한다.</p>
+
+<p><br /></p>
+<h2 id="1-오디오-재생">1. 오디오 재생</h2>
+<hr />
+
+<p>MediaPlayer를 사용한 오디오의 재생을 위해서는 크게 3가지 단계가 필요하다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setDataSource</span><span class="o">()</span> <span class="c1">//재생 대상 설정</span>
+<span class="n">prepare</span><span class="o">()</span> <span class="c1">// 재생 준비</span>
+<span class="n">start</span><span class="o">();</span> <span class="c1">// 재생 시작</span>
+</code></pre></div></div>
+
+<p><br />
+재생 대상을 지정하는 방법에는 크게 3가지가 있다.</p>
+
+<blockquote>
+  <ol>
+    <li>온라인 URL 지정</li>
+    <li>프로젝트 assets 폴더에 저장 후 지정</li>
+    <li>디바이스 SD카드에 저장 후 지정</li>
+  </ol>
+</blockquote>
+
+<p>일반적으로는 단말에 있는 소스를 재생하는 일이 많으므로 3번째 방법이 자주 쓰인다. 그러나 여기에서는 온라인의 샘플 오디오 재생을 위한 URL을 지정할 것이다.</p>
+
+<p><code class="highlighter-rouge">prepare()</code> 메소드를 실행하면 지정된 소스의 몇 프레임을 미리 읽어들이고 정보를 확인한다. 마지막으로 <code class="highlighter-rouge">start()</code> 메소드를 호출하면 지정된 대상 오디오를 재생한다.</p>
+
+<p><br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/playBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"재생"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/pauseBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"중지"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/restartBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"재시작"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>재생, 중지, 재시작을 위한 3가지 버튼을 만들었다.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">AUDIO_URL</span> <span class="o">=</span> <span class="s">"https://sites.google.com/site/ubiaccessmobile/sample_audio.amr"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">MediaPlayer</span> <span class="n">mediaPlayer</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">playbackPosition</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//재생위치를 저장할 변수</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="nc">Button</span> <span class="n">playBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">playBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">pauseBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">pauseBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">restartBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">restartBtn</span><span class="o">);</span>
+
+        <span class="n">playBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">playAudio</span><span class="o">(</span><span class="no">AUDIO_URL</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">pauseBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">pauseAudio</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">restartBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">restartAudio</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">playAudio</span><span class="o">(</span><span class="nc">String</span> <span class="n">url</span><span class="o">){</span>
+        <span class="cm">/* 애플리케이션 내에서 미디어플레이어는 하나만 사용가능하므로
+        이미 사용되고 있을 경우 미디어 플레이어 리소스를 해제해주어야한다. */</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mediaPlayer</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span> <span class="c1">// 미디어 플레이어가 사용되고 있을경우</span>
+            <span class="k">try</span><span class="o">{</span>
+                <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">release</span><span class="o">();</span> <span class="c1">//미디어 플레이어 리소스 해제</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">mediaPlayer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MediaPlayer</span><span class="o">();</span><span class="c1">//미디어 플레이어 객체 생성</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setDataSource</span><span class="o">(</span><span class="n">url</span><span class="o">);</span> <span class="c1">//대상 재생파일 지정</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span> <span class="c1">//재생 준비</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//재생 시작</span>
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+
+
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"재생 시작"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">pauseAudio</span><span class="o">(){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mediaPlayer</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">isPlaying</span><span class="o">()){</span>
+            <span class="n">playbackPosition</span> <span class="o">=</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">getCurrentPosition</span><span class="o">();</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"일시중지"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">restartAudio</span><span class="o">(){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mediaPlayer</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">mediaPlayer</span><span class="o">.</span><span class="na">isPlaying</span><span class="o">()){</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">seekTo</span><span class="o">(</span><span class="n">playbackPosition</span><span class="o">);</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"재시작"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span> <span class="c1">// 액티비티 종료 시 미디어 플레이어 리소스 해제</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mediaPlayer</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="k">try</span><span class="o">{</span>
+                <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>여기서 눈여겨 볼 점은 중지를 할 때 <code class="highlighter-rouge">getCurrentPosition()</code> 메소드를 사용해서 중지될 때의 재생 위치를 가져와서 저장한다는 것이다. 그리고 재시작 버튼을 눌렀을 때 <code class="highlighter-rouge">seekTo()</code> 메소드를 통해 이전에 재생 중지 했던 위치로 찾아가도록 하는 것을 볼 수 있다. 그리고 액티비티의 <code class="highlighter-rouge">onDestroy()</code> 메소드를 재정의하여 액티비티가 종료될 때 미디어 리소스를 해제해준다.</p>
+
+<p>앱을 실행하고 재생버튼을 누르면 아래 화면을 확인할 수 있다.</p>
+
+<p><img src="/images/android/55/1.jpg" alt="1" width="30%" height="30%" /></p>
+
+<p><br /></p>
+<h2 id="2-동영상-재생">2. 동영상 재생</h2>
+<hr />
+
+<p>동영상 재생은 레이아웃에 VideoView 객체를 추가하는 것으로 매우 간단하게 구현할 수 있다.</p>
+
+<p>&lt; br&gt;</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/startBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span>
+        <span class="na">android:width=</span><span class="s">"180dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:text=</span><span class="s">"재생"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;VideoView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/videoView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>재생버튼과 동영상 디스플레이 영역을 위한 VideoView 위젯 두 개만 있다.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">VideoView</span> <span class="n">videoView</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">VIDEO_URL</span> <span class="o">=</span> <span class="s">"https://sites.google.com/site/ubiaccessmobile/sample_video.mp4"</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">videoView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">videoView</span><span class="o">);</span>
+        <span class="nc">MediaController</span> <span class="n">mc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MediaController</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">//미디어 컨트롤러 객체 생성</span>
+        <span class="n">videoView</span><span class="o">.</span><span class="na">setMediaController</span><span class="o">(</span><span class="n">mc</span><span class="o">);</span> <span class="c1">//비디오뷰에 미디어 컨트롤러 설정</span>
+
+        <span class="n">videoView</span><span class="o">.</span><span class="na">setVideoURI</span><span class="o">(</span><span class="nc">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="no">VIDEO_URL</span><span class="o">));</span> <span class="c1">//비디오 재생 대상 URI 설정</span>
+        <span class="n">videoView</span><span class="o">.</span><span class="na">requestFocus</span><span class="o">();</span>
+
+        <span class="nc">Button</span> <span class="n">startBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">startBtn</span><span class="o">);</span>
+
+        <span class="n">startBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">videoView</span><span class="o">.</span><span class="na">seekTo</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">//재생 위치 처음으로</span>
+                <span class="n">videoView</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//재생 시작</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>비디오뷰에 미디어 컨트롤러 객체를 설정하면 비디오뷰 영역을 터치했을 때 동영상 재생을 제어할 수 있는 위젯이 나타난다.</p>
+
+<p>앱을 실행하고 재생버튼을 누르면 아래 화면을 확인할 수 있다.</p>
+
+<p><img src="/images/android/55/2.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

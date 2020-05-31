@@ -1,0 +1,110 @@
+I"�!<h1 id="1-filereader-클래스">1. FileReader 클래스</h1>
+
+<hr />
+
+<p>FileInputStream과 FileOutputStream은 byte 단위로 데이터를 전송한다. 그런데 한글같은 경우는 표현하기 위해 2byte를 사용해야 한다. “hello.txt”파일에 한글로 내용을 적고 읽어보면 다음과 같이 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileInputStreamTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="k">try</span><span class="o">(</span><span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"hello.txt"</span><span class="o">))</span> <span class="o">{</span>
+         
+         <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
+         <span class="k">while</span><span class="o">((</span><span class="n">i</span> <span class="o">=</span> <span class="n">fis</span><span class="o">.</span><span class="na">read</span><span class="o">())!=-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="n">i</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>”??¹?¸???¹?¶?”</p>
+
+<p>문자가 깨진다.</p>
+
+<p>이런경우에 사용하는 것이 문자 단위로 데이터를 읽는 스트림의 최사위 클래스인 Reader 클래스이다. 가장 대표적인 하위클래스인 FileReader를 통해 다시 파일 내용을 읽어보겠다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileInputStreamTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="k">try</span><span class="o">(</span><span class="nc">FileReader</span> <span class="n">fr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"hello.txt"</span><span class="o">))</span> <span class="o">{</span>
+         
+         <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
+         <span class="k">while</span><span class="o">((</span><span class="n">i</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="na">read</span><span class="o">())!=-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="n">i</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>“자바를자바라”</p>
+
+<p>한글이 깨지지않고 잘 출력되는 것을 볼 수 있다.</p>
+
+<p> </p>
+
+<h1 id="2-filewriter-클래스">2. FileWriter 클래스</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileOutputStreamTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">try</span><span class="o">(</span><span class="nc">FileWriter</span> <span class="n">fw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileWriter</span><span class="o">(</span><span class="s">"test.txt"</span><span class="o">))</span> <span class="o">{</span>
+         
+         <span class="kt">char</span><span class="o">[]</span> <span class="n">buf</span> <span class="o">=</span> <span class="o">{</span><span class="sc">'B'</span><span class="o">,</span> <span class="sc">'C'</span><span class="o">,</span> <span class="sc">'D'</span><span class="o">};</span>
+         
+         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="sc">'A'</span><span class="o">);</span>
+         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="sc">'가'</span><span class="o">);</span>
+         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"자바를자바라"</span><span class="o">);</span>
+         <span class="n">fw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="mi">65</span><span class="o">);</span>
+         
+         
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>배열, 문자, 문자열은 물론 한글도 잘 써진다.</p>
+
+<p>실행결과</p>
+
+<p>A가CD자바를자바라A</p>
+
+<p> </p>
+:ET

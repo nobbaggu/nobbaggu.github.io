@@ -1,0 +1,155 @@
+I"g8<p>프로그레스바(ProgressBar)란 사용자에게 어떠한 작업이 진행중이라는 것을 알려줄 때 사용한다. 추가적으로 작업의 진행 정도까지 알려줄 수 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>막대 모양</td>
+      <td>작업의 진행 정도를 알려줌</td>
+    </tr>
+    <tr>
+      <td>원 모양</td>
+      <td>작업이 진행 중임을 알려줌</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>XML 레이아웃에서 <ProgressBar> 태그로 추가할 수 있다. max 속성은 프로그레스바 값의 최대치이며 progress 속성은 현재 값을 의미한다. 그러나 진행률은 계속해서 변하는 값이므로 Java 코드에서 아래 두 메소드를 사용해서 업데이트 해주어야한다.</ProgressBar></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">setPogress</span><span class="o">(</span><span class="kt">int</span> <span class="n">progress</span><span class="o">)</span>
+<span class="kt">void</span> <span class="nf">incrementProgressBy</span><span class="o">(</span><span class="kt">int</span> <span class="n">diff</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>실제 예제를 보면서 프로그레스바에 대해서 이해해보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ProgressBar</span>
+        <span class="na">style=</span><span class="s">"?android:attr/progressBarStyleHorizontal"</span>
+        <span class="na">android:id=</span><span class="s">"@+id/progressBar"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:indeterminateOnly=</span><span class="s">"false"</span>
+        <span class="na">android:minHeight=</span><span class="s">"20dp"</span>
+        <span class="na">android:minWidth=</span><span class="s">"20dp"</span>
+        <span class="na">android:max=</span><span class="s">"100"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:gravity=</span><span class="s">"start"</span>
+            <span class="na">android:textSize=</span><span class="s">"15dp"</span>
+            <span class="na">android:text=</span><span class="s">"0%"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:gravity=</span><span class="s">"end"</span>
+            <span class="na">android:textSize=</span><span class="s">"15dp"</span>
+            <span class="na">android:text=</span><span class="s">"100%"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:text=</span><span class="s">"증가하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"150dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:text=</span><span class="s">"제출하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>프로그레스바를 하나 만들고 버튼을 두 개 만들었다. “증가하기” 버튼은 프로그레스바의 진행률을 올리기위해서 사용할 것이고 “제출하기” 버튼은 원형 프로그레스 대화상자를 띄우기 위해 사용할 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleprogressbar</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.app.ProgressDialog</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.DialogInterface</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Handler</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ProgressBar</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">ProgressBar</span> <span class="n">progressBar</span><span class="o">;</span> <span class="c1">//막대 프로그레스바</span>
+    <span class="nc">ProgressDialog</span> <span class="n">dialog</span><span class="o">;</span> <span class="c1">//원형 프로그레스바</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">progressBar</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">progressBar</span><span class="o">);</span>
+        <span class="n">progressBar</span><span class="o">.</span><span class="na">setProgress</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span> <span class="c1">//프로그레스바 초기값 50</span>
+
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">progressBar</span><span class="o">.</span><span class="na">incrementProgressBy</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> <span class="c1">//프로그레스바 진행률 10 증가</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="nc">Button</span> <span class="n">button2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button2</span><span class="o">);</span>
+        <span class="n">button2</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ProgressDialog</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">);</span> <span class="c1">//프로그레스 대화상자 객체 생성</span>
+                <span class="n">dialog</span><span class="o">.</span><span class="na">setProgressStyle</span><span class="o">(</span><span class="nc">ProgressDialog</span><span class="o">.</span><span class="na">STYLE_SPINNER</span><span class="o">);</span> <span class="c1">//프로그레스 대화상자 스타일 원형으로 설정</span>
+                <span class="n">dialog</span><span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="s">"제출 중입니다."</span><span class="o">);</span> <span class="c1">//프로그레스 대화상자 메시지 설정</span>
+                <span class="n">dialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">//프로그레스 대화상자 띄우기</span>
+
+                <span class="cm">/* 안드로이드 OS 핸들러 객체 사용하여 3초 시간지연 후 대화상자 닫기*/</span>
+                <span class="nc">Handler</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Handler</span><span class="o">();</span>
+                <span class="n">handler</span><span class="o">.</span><span class="na">postDelayed</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">(){</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                        <span class="n">dialog</span><span class="o">.</span><span class="na">dismiss</span><span class="o">();</span> <span class="c1">// 3초 시간지연 후 프로그레스 대화상자 닫기</span>
+                        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"제출되었습니다."</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                    <span class="o">}</span>
+                <span class="o">},</span> <span class="mi">3000</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>버튼1을 누르면 incrementProgressBy() 메소드를 사용하여 프로그레스바 진행률을 10 증가시킨다. 버튼2를 클릭하면 프로그레스 대화상자 객체를 생성하고 띄운 후 3초 이후에 닫는다. 앱을 실행시키면 아래 화면을 확인할 수 있다.</p>
+
+<p><img src="/images/android/26/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/26/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/26/3.jpg" alt="3" width="30%" height="30%" /></p>
+:ET

@@ -1,0 +1,310 @@
+I"�`<p><br /></p>
+<h2 id="1-트윈-애니메이션-사용-방법">1. 트윈 애니메이션 사용 방법</h2>
+<hr />
+
+<p>레이아웃의 모든 뷰에는 애니메이션(Animation) 기능을 설정할 수 있다. 애니메이션 구현방법 중 트윈 애니메이션(Tweened Animation)이라는 방법이 가장 간단하면서도 일반적으로 사용한다. 트윈 애니메이션은 이동, 확대 및 축소, 회전과 같은 일정한 패턴으로 움직이는 애니메이션 기능을 지원한다.</p>
+
+<p><br /></p>
+
+<p>트윈 애니메이션을 구현하는 방법은 아래와 같다.</p>
+
+<p><br /></p>
+
+<p><img src="/images/android/28/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p><strong>1. 트윈 애니메이션 동장 방식을 XML 파일로 정의</strong></p>
+
+<p><strong>2. loadAnimation() 메소드 사용하여 애니메이션 객체 메모리 로딩</strong></p>
+
+<p><strong>3. startAnimation() 메소드 사용하여 애니메이션 동작</strong></p>
+
+<p><br /></p>
+
+<p>애니메이션을 정의하는 XML 파일은 /res/anim 폴더에 저장해야 한다. 안드로이드는 /res/anim 폴더에 들어있는 XML 파일을 애니메이션이 정의된 리소스로 인식한다.</p>
+
+<p><br /></p>
+
+<p>아래는 애니메이션 액션정보를 정의한 XML 리소스 파일이다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;set</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;translate</span>
+        <span class="na">android:fromXDelta=</span><span class="s">"100%p"</span>
+        <span class="na">android:toXDelta=</span><span class="s">"0%p"</span>
+        <span class="na">android:duration=</span><span class="s">"6000"</span>
+        <span class="na">android:repeatCount=</span><span class="s">"3"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;alpha</span>
+        <span class="na">android:fromAlpha=</span><span class="s">"0.5"</span>
+        <span class="na">android:toAlpha=</span><span class="s">"1"</span>
+        <span class="na">android:duration=</span><span class="s">"6000"</span>
+        <span class="na">android:repeatCount=</span><span class="s">"3"</span><span class="nt">/&gt;</span>
+    
+<span class="nt">&lt;/set&gt;</span>
+</code></pre></div></div>
+
+<p>&lt;translate&gt; 태그는 뷰 등의 구성요소의 위치이동 방식을 정의하기 위한 액션 정보 속성이 들어간다. 애니메이션은 fromXDelta 에서 toXDelta 속성까지 이동한다. 위 코드에서는 100%p 부터 0%p 까지이므로 오른쪽 끝에서 왼쪽 끝으로 이동하도록 되어있는 것이다. duration은 애니메이션의 지속시간(ms)이다. repeatCount는 애니메이션의 반복 횟수를 지정한다. 위 코드에서는 1번 + 3번반복으로 총 4번 실행된다.</p>
+
+<p>&lt;alpha&gt; 태그는 투명도에 관한 속성을 정의한다. 위 코드에서는 투명도 0.5부터 1까지 6초에 걸쳐 3번 반복하도록 정의했다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+    <span class="nc">Button</span> <span class="n">button</span><span class="o">;</span>
+    <span class="nc">Animation</span> <span class="n">flowAnim</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+
+        <span class="n">flowAnim</span> <span class="o">=</span> <span class="nc">AnimationUtils</span><span class="o">.</span><span class="na">loadAnimation</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">anim</span><span class="o">.</span><span class="na">flow</span><span class="o">);</span> <span class="c1">//애니메이션 XML 파일 메모리에 로딩</span>
+        <span class="n">flowAnim</span><span class="o">.</span><span class="na">setAnimationListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">Animation</span><span class="o">.</span><span class="na">AnimationListener</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//애니메이션에 리스너 설정(필요할 때만)</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationStart</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"애니메이션 시작"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationEnd</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"애니메이션 종료"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAnimationRepeat</span><span class="o">(</span><span class="nc">Animation</span> <span class="n">animation</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">(</span><span class="n">flowAnim</span><span class="o">);</span> <span class="c1">//텍스트뷰로 flowAnim 애니메이션 객체 시작</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>setAnimationListener() 메소드를 통해 애니메이션 리스너 객체를 설정하여 애니메이션이 시작할 때, 반복될 때, 끝날 때 특정 동작을 정의하여 실행할 수 있다. 버튼을 누르면 텍스트뷰가 애니메이션 동작을 수행한다.</p>
+
+<p><img src="/images/android/28/1.jpg" alt="1" width="30%" height="30%" /> <img src="/images/android/28/2.jpg" alt="2" width="30%" height="30%" /> <img src="/images/android/28/3.jpg" alt="3" width="30%" height="30%" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+<h2 id="2-트윈-애니메이션의-종류">2. 트윈 애니메이션의 종류</h2>
+<hr />
+
+<p>트윈 애니메이션에는 여러가지 종류가 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>애니메이션</th>
+      <th>태그</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>위치이동</td>
+      <td>translate</td>
+    </tr>
+    <tr>
+      <td>확대/축소</td>
+      <td>scale</td>
+    </tr>
+    <tr>
+      <td>회전</td>
+      <td>rotate</td>
+    </tr>
+    <tr>
+      <td>투명도</td>
+      <td>alpha</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<blockquote>
+  <ol>
+    <li>위치이동</li>
+  </ol>
+</blockquote>
+
+<p>위치 이동은 &lt;translate&gt; 태그로 지정한다. fromXDelta와 fromYDelta는 애니메이션의 시작위치이고, toXDelta와 toYDelta는 애니메이션의 종료 위치이다. 그리고 duration 속성을 통해 애니메이션의 실행 시간을 지정할 수 있다.</p>
+
+<p><br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;set</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;translate</span>
+        <span class="na">android:fromXDelta=</span><span class="s">"0%p"</span>
+        <span class="na">android:toXDelta=</span><span class="s">"-100%p"</span>
+        <span class="na">android:duration=</span><span class="s">"2000"</span>
+        <span class="na">android:repeatCount=</span><span class="s">"3"</span>
+        <span class="na">android:fillAfter=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/set&gt;</span>
+</code></pre></div></div>
+
+<p>fromXDelta가 0%p이므로 뷰의 원래 위치의 X좌표이다. toXDelta가 -100%p이므로 화면에서 뷰의 크기만큼 왼쪽으로 사라진다. duration은 ms 단위이므로 2초간 애니메이션이 지속된다. repeatCount는 반복횟수를 의미하는데, 3이므로 3회 추가반복을 한다. fillAfter 속성이 true이므로 애니메이션이 끝나고 원래의 위치로 되돌아온다.</p>
+
+<p><br /></p>
+
+<blockquote>
+  <ol>
+    <li>확대/축소</li>
+  </ol>
+</blockquote>
+
+<p>확대/축소는 &lt;rotate&gt; 태그로 지정한다. pivotX, pivotY는 확대, 축소의 중심이 되는 위치를 의미하며 fromXScale과 fromYScale은 애니메이션의 시작 크기, toXScale과 toYScale은 애니메이션의 종료 크기를 의미한다.</p>
+
+<p><br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;set</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;scale</span>
+        <span class="na">android:duration=</span><span class="s">"2500"</span>
+        <span class="na">android:pivotY=</span><span class="s">"50%"</span>
+        <span class="na">android:pivotX=</span><span class="s">"50%"</span>
+        <span class="na">android:toYScale=</span><span class="s">"2.0"</span>
+        <span class="na">android:toXScale=</span><span class="s">"2.0"</span>
+        <span class="na">android:fromYScale=</span><span class="s">"1.0"</span>
+        <span class="na">android:fromXScale=</span><span class="s">"1.0"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;scale</span>
+        <span class="na">android:startOffset=</span><span class="s">"2500"</span>
+        <span class="na">android:duration=</span><span class="s">"2500"</span>
+        <span class="na">android:pivotY=</span><span class="s">"50%"</span>
+        <span class="na">android:pivotX=</span><span class="s">"50%"</span>
+        <span class="na">android:toYScale=</span><span class="s">"0.5"</span>
+        <span class="na">android:toXScale=</span><span class="s">"0.5"</span>
+        <span class="na">android:fromYScale=</span><span class="s">"1.0"</span>
+        <span class="na">android:fromXScale=</span><span class="s">"1.0"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/set&gt;</span>
+</code></pre></div></div>
+
+<p>뷰를 중심으로 X, Y방향 모두 원래의 크기부터 2배까지 늘린다. 두 번째 태그에서는 startOffset이 2500이기 때문에 2.5초부터 시작한다. 정리하자면 이 뷰는 2.5초동안 2배로 커졌다가 2.5초동안 다시 원래의 크기로 돌아온다.</p>
+
+<p><br /></p>
+
+<blockquote>
+  <ol>
+    <li>회전</li>
+  </ol>
+</blockquote>
+
+<p>회전은 &lt;rotate&gt; 태그로 지정한다. fromDegrees와 toDegrees 속성은 각각 시작 각도와 종료 각도를 의미한다. 여기서도 pivotX, pivotY를 통해 회전의 중심축을 지정할 수 있다.</p>
+
+<p><br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;set</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;rotate</span>
+        <span class="na">android:pivotX=</span><span class="s">"50%"</span>
+        <span class="na">android:pivotY=</span><span class="s">"50%"</span>
+        <span class="na">android:fromDegrees=</span><span class="s">"0"</span>
+        <span class="na">android:toDegrees=</span><span class="s">"360"</span>
+        <span class="na">android:duration=</span><span class="s">"2000"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/set&gt;</span>
+</code></pre></div></div>
+
+<p>위 회전 속성은 뷰의 중앙을 중심축으로 하여 0도(원래의 뷰)에서 360도(한 바퀴) 회전한다.</p>
+
+<p><br /></p>
+
+<blockquote>
+  <ol>
+    <li>투명도</li>
+  </ol>
+</blockquote>
+
+<p>투명도는 &lt;alpha&gt; 태그로 지정한다. fromAlpha는 시작 투명도, toAlpha는 종료 투명도이다. 0은 완전투명, 1은 완전 불투명을 의미한다.</p>
+
+<p><br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;set</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;alpha</span>
+        <span class="na">android:fromAlpha=</span><span class="s">"0.2"</span>
+        <span class="na">android:toAlpha=</span><span class="s">"1"</span>
+        <span class="na">android:duration=</span><span class="s">"3000"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/set&gt;</span>
+</code></pre></div></div>
+
+<p>위 코드는 투명도를 0.2부터 1.0까지 3초동안 변화시킨 것이다.</p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p>버튼을 4개 만들고 위에서 정의한 4가지 서로다른 애니메이션 속성을 적용해보자.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="cm">/* 위치이동 애니메이션 */</span>
+        <span class="nc">Button</span> <span class="n">buttonTranslate</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">buttonTranslate</span><span class="o">);</span>
+        <span class="n">buttonTranslate</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Animation</span> <span class="n">translateAnim</span> <span class="o">=</span> <span class="nc">AnimationUtils</span><span class="o">.</span><span class="na">loadAnimation</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">anim</span><span class="o">.</span><span class="na">translate</span><span class="o">);</span>
+                <span class="n">v</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">(</span><span class="n">translateAnim</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 확대, 축소 애니메이션 */</span>
+        <span class="nc">Button</span> <span class="n">buttonScale</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">buttonScale</span><span class="o">);</span>
+        <span class="n">buttonScale</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Animation</span> <span class="n">scaleAnim</span> <span class="o">=</span> <span class="nc">AnimationUtils</span><span class="o">.</span><span class="na">loadAnimation</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">anim</span><span class="o">.</span><span class="na">scale</span><span class="o">);</span>
+                <span class="n">v</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">(</span><span class="n">scaleAnim</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 회전 애니메이션 */</span>
+        <span class="nc">Button</span> <span class="n">buttonRotate</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">buttonRotate</span><span class="o">);</span>
+        <span class="n">buttonRotate</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Animation</span> <span class="n">rotateAnim</span> <span class="o">=</span> <span class="nc">AnimationUtils</span><span class="o">.</span><span class="na">loadAnimation</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">anim</span><span class="o">.</span><span class="na">rotate</span><span class="o">);</span>
+                <span class="n">v</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">(</span><span class="n">rotateAnim</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 투명도 애니메이션 */</span>
+        <span class="nc">Button</span> <span class="n">buttonAlpha</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">buttonAlpha</span><span class="o">);</span>
+        <span class="n">buttonAlpha</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Animation</span> <span class="n">alphaAnim</span> <span class="o">=</span> <span class="nc">AnimationUtils</span><span class="o">.</span><span class="na">loadAnimation</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">anim</span><span class="o">.</span><span class="na">alpha</span><span class="o">);</span>
+                <span class="n">v</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">(</span><span class="n">alphaAnim</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>앱을 실행하고 각각의 버튼을 클릭해보면 적용한 애니메이션이 동작하는 것을 볼 수 있다.</p>
+
+<p><img src="/images/android/28/4.jpg" alt="4" width="30%" height="30%" /></p>
+:ET

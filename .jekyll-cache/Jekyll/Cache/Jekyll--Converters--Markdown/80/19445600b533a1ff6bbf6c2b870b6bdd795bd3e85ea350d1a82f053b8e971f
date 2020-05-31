@@ -1,0 +1,77 @@
+I"/<p>텍스트뷰(TextView)는 화면에 텍스트를 보여주는 역할을 한다. 아래는 텍스트뷰의 주요 속성들에 대한 내용이다.</p>
+
+<p> 
+*text</p>
+
+<p>텍스트뷰의 문자열을 설정한다.직접 문자열을 넣어줄수도 있고, /res/values/strings.xml 파일에 있는 문자열을 지정할 수도 있다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"app_name"</span><span class="nt">&gt;</span>SampleWidget<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"hello"</span><span class="nt">&gt;</span>안녕, 안드로이드!<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></div></div>
+
+<p>app_name은 이 프로젝트의 이름으로 원래부터 있던 것이고, hello는 방금 추가한 것이다. 아무튼 <string> 태그에 있는 문자열은 다른 곳에서 name 속성값을 통해 참조할 수 있다. @string/hello 이런 식으로 말이다. 아래 코드를 참고하면 된다.</string></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;TextView</span>
+	<span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+	<span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+	<span class="na">android:text=</span><span class="s">"@string/hello"</span>
+	<span class="na">android:textSize=</span><span class="s">"24dp"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p> 
+*textColor</p>
+
+<p>“#AARRGGBB” 포맷으로 텍스트의 색상을 지정할 수 있다. 여기서 A는 Alphacode(투명도), R은 Red(빨강), G는 Green(초록), B는 Black(검정)을 의미한다. AA는 00~FF 사이의 값을 가지며 00에 가까울수록 투명해지다가 00이 되면 아예 보이지 않게 된다. RR, GG, BB 값은 00~FF 사이의 값을 가지며 클수록 해당 색의 농도가 짙어진다.</p>
+
+<p> 
+*textSize</p>
+
+<p>폰트 크기를 지정한다. 크기 단위는 dp, sp, px 등으로 다양하다.</p>
+
+<p> 
+*textStyle</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>문자열의 스타일을 지정한다. “normal”, “bold”, “italic” 등의 값을 가질 수 있다. ‘</td>
+      <td>’ 기호를 사용하여 여러개의 값을 동시에 적용시킬 수도 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p> 
+*typeface</p>
+
+<p>폰트(글꼴)를 지정한다. “normal”, “sans”, “serif”, “monospace” 등의 값을 가질 수 있다.</p>
+
+<p> 
+*maxLines
+문자열의 최대 줄 수를 지정한다. 예를 들면 값을 2로 설정하면 두 줄을 넘어가는 부분은 표시되지 않는다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"@string/hello"</span>
+        <span class="na">android:textColor=</span><span class="s">"#50ff0000"</span>
+        <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold|italic"</span>
+        <span class="na">android:typeface=</span><span class="s">"serif"</span>
+        <span class="na">android:maxLines=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/11/1.jpg" alt="1" width="30%" height="30%" /></p>
+
+<p>RRGGBB 에서 ff0000은 빨간색인데, AA 값을 50으로 설정해서 투명도가 생겼다. 또한 text 속성의 값으로 @string/hello를 넣어주었는데, maxLines 값이 1이라 뒷부분이 잘려나갔다.</p>
+:ET

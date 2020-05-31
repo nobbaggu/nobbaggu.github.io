@@ -1,0 +1,279 @@
+I"�j<p>액티비티는 액티비티 스택(Activity Stack)이라는 것으로 관리된다. 새로운 액티비티를 띄우면 이전의 액티비티는 액티비티 스택에 저장된다. 그리고 가장 상위의 액티비티가 없어지면 액티비티 스택에서 가장 상위의 액티비티가 다시 나타나는 구조이다.</p>
+
+<p><img src="/images/android/18/1.jpg" alt="1" width="40%" height="40%" /></p>
+
+<p>결과적으로 액티비티의 생성, 실행, 중지, 그리고 해제되는 과정까지의 상태정보는 시스템이 관리한다. 지금까지 보았던 onCreate() 메소드는 액티비티가 생성될 때 자동으로 호출되는 메소드이다. 그런데 생성 뿐만이 아니라 실행, 중지, 해제등의 상태로 들어서면 자동으로 호출되는 메소드들이 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>메소드</th>
+      <th>호출</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>onCreate()</strong></td>
+      <td>액티비티 생성 시 호출</td>
+    </tr>
+    <tr>
+      <td><strong>onStart()</strong></td>
+      <td>액티비티가 화면에 보이기 바로 전에 호출</td>
+    </tr>
+    <tr>
+      <td><strong>onResume()</strong></td>
+      <td>액티비티가 사용자와 상호작용하기 바로 전에 호출</td>
+    </tr>
+    <tr>
+      <td><strong>onRestart()</strong></td>
+      <td>액티비티가 중지 되었다가 재시작 되기 직전에 호출. 다음에는 항상 onStart()가 호출됨</td>
+    </tr>
+    <tr>
+      <td><strong>onPause()</strong></td>
+      <td>다른 액티비티 시작할 때 호출. 화면에 보이나 상위 액티비티 때문에 포커스는 받지못함. 상태 정보가 저장됨</td>
+    </tr>
+    <tr>
+      <td><strong>onStop()</strong></td>
+      <td>액티비티를 중지시키고 화면에서 내릴 때 호출</td>
+    </tr>
+    <tr>
+      <td><strong>onDestroy()</strong></td>
+      <td>액티비티 메모리에서 해제 시 호출. finish()메소드를 호출할 때</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/images/android/18/2.png" alt="2" width="60%" height="60%" /></p>
+
+<p>위의 생명주기 메소드들은 액티비티의 상태변경에 따라 시스템에 의해 자동으로 호출되는데, 이러한 메소드를 콜백 메소드(Callback method)라고 한다.</p>
+
+<p>앱을 키면 onCreate() - onStart() - onResume() 순서대로 메소드가 호출된다. 그리고 다른 액티비티를 띄울때는 onPause() - onStop() 순서로 메소드가 호출된다. 액티비티가 종료될 때는 onDestroy() 메소드가 호출된다.</p>
+
+<p>액티비티의 생명주기를 확인하기 위한 액티비티를 만들어본다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"메뉴화면 띄우기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"300dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/buttonFinish"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"종료하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplelifecycle</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onCreate() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="nc">MenuActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">//메뉴 액티비티를 띄우기 위한 인텐트 생성</span>
+                <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span><span class="c1">//액티비티 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="nc">Button</span> <span class="n">buttonFinish</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">buttonFinish</span><span class="o">);</span>
+        <span class="n">buttonFinish</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">finish</span><span class="o">();</span> <span class="c1">//액티비티 종료</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 생명주기 메소드가 호출되었는지 알아보기 위해 토스트 메시지 띄우도록 재정의 하기</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onStart</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onStart</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onStart() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onRestart</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onRestart</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onRestart() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onStop</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onStop</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onStop() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onDestroy() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onPause() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onResume() 호출"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>MenuActivity 액티비티를 하나 만들고, 첫 번째 버튼을 누르면 MenuActivity 액티비티를 띄운다. 두 번째 버튼을 클릭하면 액티비티를 종료한다. 앱을 실행하여 실행해보면 생명주기 메소드가 호출될 때 띄우는 토스트 메시지를 확인할 수 있다.</p>
+
+<p>특히 onResume() 메소드와 onPause() 메소드는 화면이 보일 때와 보이지 않을 때 항상 호출된다. 따라서 데이터의 저장과 복원을 위해서도 아주 중요한 메소드가 된다. 예를 들어 게임을 하다가 전화가 오면 onPause() 메소드가 항상 먼저 호출된다. onPause() 메소드 안에서 데이터를 저장하면, 전화를 끊고 다시 게임 화면으로 돌아올 때 호출되는 onResume() 메소드 안에서 데이터를 복원하는 코드를 구현하면 된다.</p>
+
+<p>입력상자에 입력 된 내용이 앱을 껐다 켜도 다시 복원되도록 하는 앱을 만들어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/nameInput"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:hint=</span><span class="s">"내용을 입력하세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"300dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"종료하기"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>버튼을 누르면 애플리케이션이 종료된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplelifecycle</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.app.Activity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.SharedPreferences</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">EditText</span> <span class="n">nameInput</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">nameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">nameInput</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">finish</span><span class="o">();</span> <span class="c1">// 버튼을 누르면 액티비티 종료</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onPause() 호출됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="n">saveState</span><span class="o">();</span> <span class="c1">// 액티비티 중지 전 상태 저장</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onResume() 호출됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="n">restoreState</span><span class="o">();</span> <span class="c1">// 액티비티 재시작 전 상태 복원</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">saveState</span><span class="o">(){</span>
+        <span class="cm">/* 1. "pref"라는 이름의 저장소 생성
+           2. "pref" 저장소의 에디터 생성
+           3. 에디터를 통해 key:"name", value: 입력상자의 문자열 데이터 저장
+           4. 에디터 제출*/</span>
+        <span class="nc">SharedPreferences</span> <span class="n">pref</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="o">(</span><span class="s">"pref"</span><span class="o">,</span> <span class="nc">Activity</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">);</span>
+        <span class="nc">SharedPreferences</span><span class="o">.</span><span class="na">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">pref</span><span class="o">.</span><span class="na">edit</span><span class="o">();</span>
+        <span class="n">editor</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">nameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">editor</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">restoreState</span><span class="o">(){</span>
+        <span class="cm">/* 1. "pref" 저장소 참조
+           2. 저장소가 비어있지 않고 key가 "name"인 데이터가 있으면
+           3. "name" key로 문자열 데이터 얻어와 저장
+           4. 얻어온 데이터를 입력상자의 텍스트로 지정 */</span>
+        <span class="nc">SharedPreferences</span> <span class="n">pref</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="o">(</span><span class="s">"pref"</span><span class="o">,</span> <span class="nc">Activity</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">pref</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">pref</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"name"</span><span class="o">)){</span>
+            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">pref</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+            <span class="n">nameInput</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 저장소 비우기</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">ClearMyPrefs</span><span class="o">(){</span>
+        <span class="nc">SharedPreferences</span> <span class="n">pref</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="o">(</span><span class="s">"pref"</span><span class="o">,</span> <span class="nc">Activity</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">);</span>
+        <span class="nc">SharedPreferences</span><span class="o">.</span><span class="na">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">pref</span><span class="o">.</span><span class="na">edit</span><span class="o">();</span>
+        <span class="n">editor</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">editor</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>앱에서 간단한 데이터를 저장 및 복원할 때는 SharedPreferences 클래스를 사용하면 된다. SharedPreferences는 앱 내부에 파일을 하나 만들어 읽고 쓴다.</p>
+
+<p><img src="/images/android/18/3.jpg" alt="3" width="30%" height="30%" />
+<img src="/images/android/18/4.jpg" alt="4" width="30%" height="30%" />
+<img src="/images/android/18/5.jpg" alt="5" width="30%" height="30%" /></p>
+
+<p>버튼을 눌러 앱을 종료했다가 다시 실행했을 때 입력상자의 내용이 복원되어 있는것을 확인할 수 있다.</p>
+:ET

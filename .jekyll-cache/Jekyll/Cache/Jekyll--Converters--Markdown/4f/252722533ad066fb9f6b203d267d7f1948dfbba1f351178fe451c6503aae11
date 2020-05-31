@@ -1,0 +1,74 @@
+I"I<p>객체지향 프로그래밍에서 클래스의 인스턴스를 단 한 개만 만들어서 사용하는 디자인 패턴이다. 학교 객체와 학생들 객체가 있을 때, 학교는 1개이므로 인스턴스를 한 개만 만들면 된다. 이럴 경우 싱글톤 패턴을 사용한다.</p>
+
+<p>싱글톤 패턴을 단계적으로 프로그래밍 해보자.</p>
+
+<p> </p>
+
+<h2 id="1-private-생성자-생성">1. private 생성자 생성</h2>
+
+<p>생성자가 없을 경우 컴파일러가 넣어주는 default 생성자는 항상 public이다. 싱글톤 패턴에서는 외부에서 인스턴스를 생성할 수 없도록 항상 private 생성자를 선언해준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<h2 id="2-static을-사용하여-유일한-인스턴스-생성">2. static을 사용하여 유일한 인스턴스 생성</h2>
+
+<p>단계1에서 private 생성자를 만들어놓았으므로 외부에서는 인스턴스를 생성할 수 없게 되었다. 따라서 미리 클래스 내부에서 인스턴스를 하나 만들어 주는 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="nc">School</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">School</span><span class="o">();</span> <span class="c1">// 클래스의 유일한 인스턴스</span>
+   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<h2 id="3-외부에-공개되는-메소드-생성">3. 외부에 공개되는 메소드 생성</h2>
+
+<p>클래스 내부에서 생성한 private 인스턴스를 외부에서 사용 가능하도록 메소드를 만들어준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">School</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="nc">School</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">School</span><span class="o">();</span> <span class="c1">// 클래스의 유일한 인스턴스</span>
+   <span class="kd">private</span> <span class="nf">School</span><span class="o">()</span> <span class="o">{}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="nc">School</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">School</span><span class="o">();</span>
+      <span class="o">}</span>
+      <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>getInstance() 메소드는 static 메소드로 선언했다. 왜냐하면 인스턴스가 만들어지기 전부터 사용할 수 있어야 하기 때문이다.</p>
+
+<h2 id="4-사용하기">4. 사용하기</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">School</span> <span class="n">school1</span> <span class="o">=</span> <span class="nc">School</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+       <span class="nc">School</span> <span class="n">school2</span> <span class="o">=</span> <span class="nc">School</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+       
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">school1</span><span class="o">==</span><span class="n">school2</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>true</p>
+
+<p>school1 참조변수와 school2 참조변수 모두 같은 인스턴스를 참조한다.</p>
+:ET

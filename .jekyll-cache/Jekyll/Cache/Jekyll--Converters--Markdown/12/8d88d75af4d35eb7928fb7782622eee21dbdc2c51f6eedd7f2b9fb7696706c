@@ -1,0 +1,244 @@
+I",I<p><br /></p>
+<h2 id="1-변수와-메모리">1. 변수와 메모리</h2>
+<hr />
+
+<p>char형 변수 ‘A’, ‘H’ 2개와 int형 정수 100이 선언이 되었다고 해봅시다. 이들이 할당된 메모리공간을 그림으로 나타내면 다음과 같습니다.</p>
+
+<p><img src="/images/2018/09/1-10.jpg" alt="1-10" width="80%" height="80%" /></p>
+
+<p>물론 주소값은 임의로 정한 것입니다. <strong>메모리 공간은 1byte 단위로 주소값을 가지고 있습니다.</strong> 변수의 메모리 주소는 변수가 차지하는 첫 번째 byte의 주소를 말합니다. 따라서 위 그림에서 정수 100은 0x11bb32번지에 있다고 말합니다. 어차피 변수를 선언할 때 자료형을 명시해주기 때문에 시작 번지만 알면 그 변수가 할당된 메모리공간 전체를 알 수 있습니다.</p>
+
+<p><br /></p>
+<h2 id="2-포인터-변수">2. 포인터 변수</h2>
+<hr />
+
+<p><strong>포인터변수는 것은 메모리의 주소를 저장하는 변수</strong>입니다. 일반 변수는 정수나 실수 데이터 자체를 저장하는데 사용되지만 포인터변수는 메모리의 주소를 저장하는데 사용됩니다.</p>
+
+<p>포인터 변수는 다음과 같이 선언, 초기화 됩니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">;</span> <span class="c1">//num의 주소값을 포인터변수 pnum에 저장</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">);</span> <span class="c1">//메모리공간의 주소는 보통 16진수(hex)로 표시</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum</span><span class="p">);</span> <span class="c1">//메모리공간의 주소는 보통 16진수(hex)로 표시</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>0x135fab4</p>
+
+<p>0x135fab4</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>포인터 변수라는것을 알리기 위해서 선언을 할 때에 *를 붙입니다. &amp; 연산자는 변수의 주소를 반환시켜주는 연산자입니다. &amp;num은 num변수의 주소값을 반환합니다. 이제 pnum 포인터 변수는 변수 num이 저장되어있는 메모리의 주소값을 저장하고 있습니다(혹은 주로 가르킨다고 표현합니다). num은 int형 변수이므로 총 4byte의 메모리공간을 차지하는데, pnum은 그 첫 번째 바이트의 주소를 가르킵니다.</p>
+
+<p>위의 출력결과를 보세요. 먼저 변수 num의 주소값을 출력하기 위해 주소값을 반환하는 연산자 &amp;을 써서 &amp;num을 출력했습니다. 그리고 다른 하나는 pnum의 값을 출력했습니다. 둘 모두 16진수(hex) 형태로 출력했습니다. 두 개의 출력결과가 같은건 당연한 결과입니다. &amp;num과 pnum 모두 num의 주소값을 나타내기 때문입니다.</p>
+
+<p>다시 돌아가서 포인터의 선언과 초기화식을 자세히 살펴봅시다.</p>
+
+<p><img src="/images/2018/09/2-3.jpg" alt="2-3" width="50%" height="50%" /></p>
+
+<p><br /></p>
+
+<p>포인터 변수를 선언할 때 필수적인 요소는 다음과 같습니다.</p>
+
+<p><strong>1. 포인터 형 : 포인터가 가르킬 변수의 자료형</strong></p>
+
+<p><strong>2. 이름 : 포인터 변수 이름</strong></p>
+
+<p><strong>3. 초기값 : &amp;연산자를 써서 변수의 주소로 초기화.</strong></p>
+
+<p>* 연산자는 <strong>“~의 메모리공간에 접근해서”</strong> 혹은 <strong>“~가 가르키는 곳으로 가서”</strong> 정도로 해석할 수 있습니다.</p>
+
+<p><br /></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">;</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span> <span class="c1">//num값 출력</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"pnum : %#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum</span><span class="p">);</span><span class="c1">//(pnum값 = num의 주소) 출력</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"*pnum : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">pnum</span><span class="p">);</span> <span class="c1">//(pnum이 가르키는 곳에 저장된 값 = num값) 출력</span>
+    
+    <span class="n">num</span><span class="o">++</span><span class="p">;</span> <span class="c1">//num 1 증가</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+    
+    <span class="p">(</span><span class="o">*</span><span class="n">pnum</span><span class="p">)</span><span class="o">++</span><span class="p">;</span> <span class="c1">//(pnum이 가르키는 곳에 저장된 값 = num값) 1 증가</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>num : 10</p>
+
+<p>pnum : 0x97f910</p>
+
+<p>*pnum : 10</p>
+
+<p>num : 11</p>
+
+<p>num : 12</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>num과 *pnum의 출력결과가 같습니다. 변수 num이 가진 값을 출력하던지, * 연산자를 통해 pnum이 가르키는 주소로 메모리에 접근해서 저장된 값을 출력하던지 같은겁니다. 그리고 num++을 하여 num값을 1 증가시킬수도있고, (*pnum)++로 pnum이 가진 주소값에 접근해서 그 데이터를 1 증가시킬수도 있는겁니다.</p>
+
+<p>포인터변수는 메모리공간에 직접 접근이 가능하다는 점에서 유용하기도 하고 때로는 위험하기도 한 변수입니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">pnum</span><span class="p">;</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num1 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num2 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    
+    <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num1</span><span class="p">;</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">pnum</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
+    
+    <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num2</span><span class="p">;</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">pnum</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num1 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"num2 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>num1 : 10</p>
+
+<p>num2 : 20</p>
+
+<p>num1 : 11</p>
+
+<p>num2 : 21</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>pnum이 num1을 가르키도록 했다가 num2를 가르키도록 했습니다. 포인터 변수 역시 일반 변수처럼 가르키는 주소값이 재정의 될 수 있습니다. 물론 여러개의 포인터변수가 하나의 주소값도 담을 수 있습니다. 가령 변수 num이 있고 포인터변수 pnum1, pnum2이 num을 가르키도록 하면 num의 메모리공간에는 pnum1과 pnum2 중 무엇을 사용해도 접근이 가능합니다.</p>
+
+<p><br /></p>
+<h2 id="3-포인터-연산">3. 포인터 연산</h2>
+<hr />
+
+<p>포인터변수를 연산하면 어떻게 되는지 알아봅시다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">14</span><span class="p">;</span>
+    
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">pnum1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num1</span><span class="p">;</span> <span class="c1">//num1 주소 저장</span>
+    <span class="kt">double</span> <span class="o">*</span> <span class="n">pnum2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num2</span><span class="p">;</span> <span class="c1">//num2 주소 저장</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">);</span>
+    <span class="n">pnum1</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">);</span>
+    <span class="n">pnum1</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">);</span>
+    <span class="n">pnum1</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">,</span> <span class="n">pnum1</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">);</span>
+    <span class="n">pnum2</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">);</span>
+    <span class="n">pnum2</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">);</span>
+    <span class="n">pnum2</span><span class="o">++</span><span class="p">;</span> <span class="c1">//포인터 증가연산</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x, %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">,</span> <span class="n">pnum2</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>0x73f8b8, 7600312</p>
+
+<p>0x73f8bc, 7600316</p>
+
+<p>0x73f8c0, 7600320</p>
+
+<p>0x73f8c4, 7600324</p>
+
+<p>0x73f8a8, 7600296</p>
+
+<p>0x73f8b0, 7600304</p>
+
+<p>0x73f8b8, 7600312</p>
+
+<p>0x73f8c0, 7600320</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>포인터 변수를 ++연산시키니 pnum1은 4씩 커지고 pnum2는 8씩 커집니다. 포인터가 가르키는 자료형 때문입니다. pnum1은 4byte 크기의 int형 변수를 가르키므로 4번지씩 증가합니다. 반면 pnum2는 8byte크기의 double형 변수를 가르키므로 8번지씩 증가하는겁니다.</p>
+
+<p>방금 코드의 실행 결과는 <strong>포인터형이 존재하는 이유</strong>에 대한 힌트를 줍니다. <strong>포인터가 가르키는 데이터의 자료형을 알아야 포인터가 가르키는 시작 번지부터 얼마만큼의 메모리공간을 읽어들여야 하는지 알 수 있기 때문입니다. 포인터에 자료형이 없다면 얼마만큼의 크기를 참조해야하는지알 수없습니다.</strong></p>
+
+<p><br /></p>
+<h1 id="4-null-포인터">4. NULL 포인터</h1>
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">ptr2</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%#x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr2</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>0xcccccccc</p>
+
+<p>0</p>
+
+<p>0</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /></p>
+
+<p>위와 같이 포인터변수를 선언하면서 초기화를 하지 않으면 아무런 의미가 없는 쓰레기값으로 초기화가 됩니다. 초기화 없이 포인터변수를 선언하면 랜덤한 곳을 가르키기 때문에 건드려서는 안 될 메모리 주소를 건드리게 될 수 있습니다. 따라서 이후에 사용하기 위해 미리 포인터변수를 선언하는 경우에는 0이나 NULL로 초기화를 시켜줘야 합니다. <strong>여기서 0은 ASCILL CODE 값 NULL을 의미합니다. 0이나 NULL이나 똑같은 표현입니다. 여기서 0과 NULL이 의미하는 것은 0번지가 아닙니다. ‘어느곳도 가르키지 않는다’는 뜻입니다.</strong></p>
+:ET

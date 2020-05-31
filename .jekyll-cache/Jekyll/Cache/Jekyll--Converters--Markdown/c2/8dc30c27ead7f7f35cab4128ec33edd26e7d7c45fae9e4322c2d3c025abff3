@@ -1,0 +1,292 @@
+I"�w<p> </p>
+<h2 id="1-프래그먼트란">1. 프래그먼트란?</h2>
+<hr />
+
+<p>아래 사진은 휴대용 단말과 태블릿의 화면 크기 차이로부터 오는 UI 구성의 차이를 보여준다.</p>
+
+<p><img src="/images/android/30/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p>위 사진에서 휴대용 단말은 크기가 작아 글 목록에서 하나를 터치하여 내용을 볼 때마다 액티비티간의 전환이 이루어져야하지만, 태블릿의 경우는 글 목록은 놔두고 오른쪽의 부분화면만 전환 시켜 사용자 편의성이 증대되었다.</p>
+
+<p>이러한 일을 하기위한 다양한 방법들이 있다. 예를들어 액티비티 그룹(ActivityGroup)을 사용하면 하나의 레이아웃 안에 두 개의 액티비티를 동시에 보여줄 수도 있다. 그러나 액티비티가 많아지면 시스템에서 관리해야하는 요소가 많아지므로 리소스를 낭비하게 된다. 아니면 레이아웃 안에 여러개의 레이아웃을 넣어 각각의 레잉웃마다 다른 뷰를 설정하여 각 뷰를 전환하는 것도 방법이다. 그러나 이 방법은 분할화면의 수가 증가될수록 코드가 복잡해진다. 그리고 다른 액티비티에서도 이 분할화면을 보여야 할 경우 같은 코드를 두 번 작성해주어야한다.</p>
+
+<p>위 방법들이 가지는 문제를 해결하기 위해 나온것이 프래그먼트(Fragment)이다. 프래그먼트는 하나의 액티비티(Activity)에 포함시킬 수 있는 분할화면이다. 처음 태블릿이 나왔을 당시 큰 화면을 분할하여 사용할 수 있도록하여 사용자 편의성을 증가시키기 위해 사용했지만, 현재는 일반적으로 널리 쓰일만큼 중요한 기능이 되었다.</p>
+
+<p>프래그먼트는 다음의 중요한 특성을 가진다.</p>
+
+<blockquote>
+  <ol>
+    <li>액티비티에 올려야만 사용할 수 있다.</li>
+    <li>액티비티와 같이 레이아웃, 생명주기, 동작 처리부를 가지는 <strong>독립적인 객체</strong>이다.</li>
+    <li>여러 액티비티에서 동시에 사용할 수 있어 재사용성이 뛰어나다.</li>
+  </ol>
+</blockquote>
+
+<p> 
+2번 특성을 보면 프래그먼트가 액티비티와 상당히 비슷하다는 느낌을 받는다. 그 이유는 프래그먼트의 동작방식을 액티비티의 동작방식을 본따 만들었기 때문이다. 액티비티는 앱 구성요소이므로 안드로이드 시스템에서 관리한다. 구체적으로는 액티비티 매니저(Activity Manager)에 의해 독립적으로 동작할 수 있다. 프래그먼트 입장에서는 액티비티가 시스템 역할을 한다. 액티비티에서 프래그먼트 매니저(Fragment Manager)라는 것을 만들어 프래그먼트를 독립적으로 관리한다. 따라서 프래그먼트를 액티비티에 올려야 사용할 수 있는 것이다.</p>
+
+<p><img src="/images/android/30/2.png" alt="2" width="70%" height="70%" /></p>
+
+<p><br />
+액티비티간의 명령이나 데이터는 시스템이 이해할 수 있는 인텐트 객체를 통해 전달되었다. 하지만 프래그먼트에서는 인텐트를 사용할 수 없으므로 데이터 전달을 할 때는 메소드를 만들어 사용하는 방식을 취한다.</p>
+
+<p>이제 프래그먼트를 사용하면 액티비티 전환을 하지 않고도 가볍게 화면전환 효과를 낸다던지 화면의 일부분만 전환하는 등의 일을 할 수 있다.</p>
+
+<p> </p>
+<h2 id="2-프래그먼트-사용법">2. 프래그먼트 사용법</h2>
+<hr />
+
+<p>하나의 액티비티는 XML 레이아웃으로 화면을 구성하고 Java 소스코드로 뷰 객체로 메모리에 로딩하고 추가적인 기능을 만든 것처럼, 프래그먼트 역시 XML 레이아웃 하나와 Java 소스파일 하나로 구성한다.</p>
+
+<p><img src="/images/android/30/3.png" alt="3" width="70%" height="70%" /></p>
+
+<p><br />
+프래그먼트는 Fragment 클래스를 상속하여 만들 수 있다. 프래그먼트 클래스를 만들었으면 프래그먼트 XML 레이아웃을 인플레이션하여 클래스에서 사용할 수 있다. 인플레이션하여 메모리에 로딩하는 부분의 코드는 <code class="highlighter-rouge">onCreateView()</code> 메소드 안에 정의해야한다. 이 메소드는 인플레이션이 필요한 시점에 자동으로 호출된다. 인플레이션 되면 프래그먼트는 하나의 뷰 객체로서 동작한다.</p>
+
+<p>프래그먼트는 액티비티의 XML 레이아웃 코드에 &lt;Fragment&gt; 태그로 추가할 수도 있고, 액티비티의 Java 소스코드에서 프래그먼트 인스턴스 객체를 만들어 프래그먼트 매니저의 <code class="highlighter-rouge">add()</code> 메소드를 사용해 추가할 수도 있다.</p>
+
+<p>다음은 프래그먼트먼트 클래스의 주요 메소드들이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="nc">Activity</span> <span class="nf">getActivity</span><span class="o">()</span> <span class="c1">//프래그먼트가 올려진 액티비티를 리턴</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="nc">FragmentManager</span> <span class="nf">getFragmentManager</span><span class="o">()</span> <span class="c1">// 프래그먼트가 올려진 액티비티에서 프래그먼트 매니저 리턴</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="nc">Fragment</span> <span class="nf">getParentFragment</span><span class="o">()</span> <span class="c1">// 프래그먼트가 포함된 부모 프래그먼트를 리턴. 액티비티면 null 리턴</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="nf">getId</span><span class="o">()</span> <span class="c1">// 프래그먼트의 ID를 리턴</span>
+</code></pre></div></div>
+
+<p><br />
+프래그먼트 매니저는 액티비티 내에서 <code class="highlighter-rouge">getFragmentManager()</code> 메소드를 사용해 참조할 수 있다. 프래그먼트 매니저를 사용하면 프래그먼트를 액티비티에 추가하거나 변경 또는 삭제할 수 있다. 다음은 프래그먼트 매니저의 주요 메소드들이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">FragmentTransaction</span> <span class="nf">beginTransaction</span><span class="o">()</span> <span class="c1">//프래그먼트 화면을 변경하기 위한 트랜젝션</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Fragment</span> <span class="nf">findFragmentById</span><span class="o">(</span><span class="kt">int</span> <span class="nc">Id</span><span class="o">)</span> <span class="c1">// ID를 이용해 프래그먼트 객체를 찾음</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Fragment</span> <span class="nf">findFragmentByTag</span><span class="o">(</span><span class="nc">String</span> <span class="n">tag</span><span class="o">)</span> <span class="c1">// 태그를 이용해 프래그먼트 객체를 찾음</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">boolean</span> <span class="nf">executePendingTransactions</span><span class="o">()</span> <span class="c1">// 트랜젝션을 즉시 시작하고 싶을 때 commit() 메소드 대신 사용</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+프래그먼트는 액티비티처럼 하나의 화면을 구성하기도 하고, 뷰 객체처럼 액티비티 화면에 추가될 수도 있다. 이는 프래그먼트가 액티비티와 뷰의 특성을 모두 가지고 있다는 의미이다. 아래 표는 프래그먼트의 이러한 특성을 정리한 것이다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>뷰 특성</strong></td>
+      <td>뷰그룹이나 레이아웃에 추가할 수 있음(뷰를 상속하지는 않음)</td>
+    </tr>
+    <tr>
+      <td><strong>액티비티 특성</strong></td>
+      <td>액티비티처럼 동작하며 수명주기도 가짐(컨텍스트 객체는 아님)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p> </p>
+<h2 id="3-실습">3. 실습</h2>
+<hr />
+
+<p>한식, 중식, 일식 세 개의 메뉴 중 하나를 클릭하면 부분화면으로 세부 메뉴를 보여주도록 하는 앱을 만든다.</p>
+
+<p>먼저 한식의 세부 메뉴를 보여줄 프래그먼트의 화면은 아래의 XML 코드로 작성한다.</p>
+
+<p><strong>&lt;fragment_korean.xml&gt;</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">android:id=</span><span class="s">"@+id/koreanFragment"</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">android:gravity=</span><span class="s">"center_horizontal|center_vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"김치찌개\n\n된장찌개\n\n삼계탕\n\n육개장\n\n불고기"</span>
+        <span class="na">android:textSize=</span><span class="s">"50dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold|italic"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>텍스트뷰 하나에 5개의 메뉴를 텍스트로 보여주는 아주 단순한 구성이다. 그리고 이 xml을 인플레이션하는 자바 코드는 아래와 같다.</p>
+
+<p><strong>&lt;KoreanFragment.java&gt;</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplefragment</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.annotation.NonNull</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.annotation.Nullable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.app.Fragment</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.LayoutInflater</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.ViewGroup</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">KoreanFragment</span> <span class="kd">extends</span> <span class="nc">Fragment</span> <span class="o">{</span>
+    <span class="nd">@Nullable</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="nc">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="nc">ViewGroup</span> <span class="n">container</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ViewGroup</span> <span class="n">rootView</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ViewGroup</span><span class="o">)</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">fragment_korean</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">rootView</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">onCreateView()</code> 메소드는 프래그먼트를 설정할 때 자동으로 호출된다. 여기에는 프래그먼트 화면을 구성하는 XML 레이아웃을 인플레이션하는 코드를 넣어주면 된다.</p>
+
+<p>중식, 일식의 경우도 위와 같으므로 생략하겠다.</p>
+
+<p><br />
+이제 메인 액티비티를 통해서 화면을 전환해보도록 하자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+        <span class="na">android:background=</span><span class="s">"#330000ff"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"메뉴"</span>
+            <span class="na">android:textSize=</span><span class="s">"30dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"한식"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"50dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"일식"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button3"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"중식"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:id=</span><span class="s">"@+id/container"</span>
+        <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>최상위 레이아웃 안에 2개의 레이아웃을 추가하고 화면 넓이 비율을 1:2로 지정한다. 왼쪽의 레이아웃은 메뉴 버튼, 오른쪽은 세부메뉴를 보여줄 프래그먼트를 구성할 것이다. 이제 자바 소스코드를 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplefragment</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.graphics.Color</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+    <span class="nc">Button</span> <span class="n">button1</span><span class="o">;</span>
+    <span class="nc">Button</span> <span class="n">button2</span><span class="o">;</span>
+    <span class="nc">Button</span> <span class="n">button3</span><span class="o">;</span>
+    <span class="nc">KoreanFragment</span> <span class="n">koFrag</span><span class="o">;</span>
+    <span class="nc">ChineseFragment</span> <span class="n">chFrag</span><span class="o">;</span>
+    <span class="nc">JapaneseFragment</span> <span class="n">jaFrag</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="cm">/* 메뉴별 프래그먼트 객체 생성 */</span>
+        <span class="n">koFrag</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">KoreanFragment</span><span class="o">();</span>
+        <span class="n">chFrag</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChineseFragment</span><span class="o">();</span>
+        <span class="n">jaFrag</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JapaneseFragment</span><span class="o">();</span>
+
+        <span class="c1">// 앱이 실행되자마자 처음으로 화면에 보일 프래그먼트 설정</span>
+        <span class="n">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">container</span><span class="o">,</span> <span class="n">koFrag</span><span class="o">).</span><span class="na">commit</span><span class="o">();</span>
+
+        <span class="n">button1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button1</span><span class="o">);</span>
+        <span class="n">button2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button2</span><span class="o">);</span>
+        <span class="n">button3</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button3</span><span class="o">);</span>
+
+        <span class="n">button1</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">container</span><span class="o">,</span> <span class="n">koFrag</span><span class="o">).</span><span class="na">commit</span><span class="o">();</span>
+                <span class="c1">//클릭된 버튼의 배경색은 빨강, 나머지 버튼의 배경색은 회색으로 설정</span>
+                <span class="n">button1</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+                <span class="n">button2</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GRAY</span><span class="o">);</span>
+                <span class="n">button3</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GRAY</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">button2</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">container</span><span class="o">,</span> <span class="n">chFrag</span><span class="o">).</span><span class="na">commit</span><span class="o">();</span>
+                <span class="n">button1</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GRAY</span><span class="o">);</span>
+                <span class="n">button2</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+                <span class="n">button3</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GRAY</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">button3</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">container</span><span class="o">,</span> <span class="n">jaFrag</span><span class="o">).</span><span class="na">commit</span><span class="o">();</span>
+                <span class="n">button1</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GRAY</span><span class="o">);</span>
+                <span class="n">button2</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GRAY</span><span class="o">);</span>
+                <span class="n">button3</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>가장 먼저 각각의 프래그먼트에 대해 new 연산자를 사용해서 객체를 만든다. 그리고 앱을 실행했을 때 보일 프래그먼트를 설정하기 위해 다음 코드를 사용했다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">container</span><span class="o">,</span> <span class="n">koFrag</span><span class="o">).</span><span class="na">commit</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">getSupportFragmentManager()</code> 메소드를 통해 프래그먼트 매니저를 참조하였다. <code class="highlighter-rouge">replace()</code> 메소드의 첫 번째 파라미터로는 프래그먼트를 담을 레이아웃의 id를 넣어주어야하므로 레이아웃의 오른쪽 레이아웃의 id인 “container”를 넣어주었다. 두 번째 전달인자로는 설정할 프래그먼트 객체를 넣어주면 된다. 마지막으로 <code class="highlighter-rouge">commit()</code> 메소드를 이어서 호출하면 container에 프래그먼트의 설정이 끝난다.</p>
+
+<p>그리고 주의해야할 건 각 버튼의 <code class="highlighter-rouge">onClick()</code> 메소드 안에서 프래그먼트 매니저를 참조할 때 <code class="highlighter-rouge">MainActivity.this</code>를 앞에 붙였다는 것이다. 지금 코드가 작성되는 곳은 <code class="highlighter-rouge">OnClickListener</code> 익명객체이므로 MainActivity 클래스 외부이다. 그런데 프래그먼트 매니저는 액티비티에서 제공하므로 <code class="highlighter-rouge">MainActivity.this</code>를 참조해야 하는것이다.</p>
+
+<p>앱을 실행하면 다음과 같은 화면이 나온다.</p>
+
+<p><img src="/images/android/30/4.jpg" alt="4" width="30%" height="30%" />
+<img src="/images/android/30/5.jpg" alt="5" width="30%" height="30%" />
+<img src="/images/android/30/6.jpg" alt="6" width="30%" height="30%" /></p>
+:ET

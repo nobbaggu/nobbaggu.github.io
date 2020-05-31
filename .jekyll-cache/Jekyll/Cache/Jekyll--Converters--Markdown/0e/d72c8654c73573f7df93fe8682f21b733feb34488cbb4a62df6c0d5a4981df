@@ -1,0 +1,146 @@
+I"�#<p>조건문이란 어떠한 조건이 ‘참’인 경우 코드를 실행시킬 때 사용합니다. if 는 가장 대표적인 조건문입니다.</p>
+
+<p> </p>
+
+<h1 id="1-if문-구조">1. if문 구조</h1>
+
+<hr />
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="o">(</span><span class="n">조건</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>if문이 실행되면 ( ) 안의 조건식을 판단합니다. 결과가 true면 {. . .}을 실행하고 flase면 아무것도 실행하지 않고 다음 코드로 넘어갑니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is larger than 0"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>num is largerthan 0</p>
+
+<p>num은 10이므로 10&gt;0은 true가 되어 if문 블록 안의 내용이 실행됩니다.</p>
+
+<p> </p>
+
+<h1 id="2-ifelse">2. if~else</h1>
+
+<hr />
+
+<p>else문은 if문의 조건이 false인 경우 실행됩니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is smaller than 0"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span><span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is larger than 0"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>조건 10&lt;0이 false이므로 else문 안의 내용이 실행된다.</p>
+
+<p>실행결과</p>
+
+<p>num is larger than 0</p>
+
+<p> </p>
+
+<h1 id="3-ifelse-if">3. if~else if</h1>
+
+<hr />
+
+<p>여러 개의 조건을 판단하여 실행을 분기시키고 싶은 경우에는 else if문을 사용합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is smaller than 0"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">((</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">num</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">)){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is between 0 and 10"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span><span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"num is larger than 10"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">실행결과</span>
+<span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">num</span> <span class="n">is</span> <span class="n">between</span> <span class="mi">0</span> <span class="n">and</span> <span class="mi">10</span>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-break">4. break</h1>
+
+<hr />
+
+<p>break를 씀으로써 우리는 <span style="text-decoration: underline;"><strong>반복문</strong>을 강제로 탈출할 수 있습니다. break를 쓰면 break가 포함되어있는 가장 하위단의 반복문을 벗어나게 됩니다. 조건문이 아니라 반복문이라는 점을 명심하셔야합니다.</span></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">){</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">num</span><span class="o">+=</span><span class="mi">2</span><span class="o">;</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>2</p>
+
+<p>4</p>
+
+<p>6</p>
+
+<p>8</p>
+
+<p>10</p>
+
+<p>12</p>
+
+<p>다시 한 번 강조드리지만 <strong>break은 break을 포함하는 가장 하위단의 반복문을 탈출하게 해줍니다.</strong></p>
+
+<p>break와 반대되는 continue라는 것도 있는데 이는 아래의 반복문 이내의 아래의 코드를 무시하고 다시 조건 판단 구문으로 돌아가도록 합니다.</p>
+:ET

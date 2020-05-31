@@ -1,0 +1,119 @@
+I"�)<p>우리가 파일에서 데이터를 읽을 때 일정부분을 읽어오고 다음에 또다시 읽어오면 읽지 않은 부분부터 알아서 읽어왔습니다. 이것은 FILE 구조체의 멤버에는 파일 위치 지시자란것이 있기 때문인데요, 이 <strong>파일위치 지시자는 fgets나 fputs 등의 데이터를 읽거나 쓰는 함수가 호출될때마다 그 값을 참조해서 현재 위치를 저장해둡니다.</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">fseek</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="p">,</span> <span class="kt">int</span> <span class="n">wherefrom</span><span class="p">);</span>
+<span class="c1">//전달인자 1 : 파일에 연결된 스트림</span>
+<span class="c1">//전달인자 2 : 파일위치 지시자를 얼마만큼 이동시킬지 결정하는 byte수</span>
+<span class="c1">//전달인자 3 : 파일위치지시자가 이동되기 전에 이동을 시작할 위치</span>
+</code></pre></div></div>
+
+<p>파일위치지시자의 이동 성공 시 0, 실패 시 0이 아닌 값 반환</p>
+
+<p>파일위치 지시자의 3번째 전달인자인 wherefrom에 전달할 수 있는 상수가 몇 개 정의되어있는데 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>wherefrom</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SEEK_SET</td>
+      <td>파일의 처음</td>
+    </tr>
+    <tr>
+      <td>SEEK_CUR</td>
+      <td>파일의 현재 위치</td>
+    </tr>
+    <tr>
+      <td>SEEK_END</td>
+      <td>파일의 끝</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>그림으로 예를 들어서 설명해보겠습니다.</p>
+
+<p><img src="/images/2018/09/file-cursor.jpg" alt="file-cursor" width="70%" height="70%" /></p>
+
+<p>첫 번째 fseek함수는 파일구조체 포인터변수 f0가 가르키는 파일을 SEEK_SET(파일의 처음)부터 뒤로 두 칸 이동시켜라 라는 의미에요. 나머지도 그림을 보며 해석해보시면 충분히 이해가 되실겁니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wt</span><span class="err">”</span><span class="p">);</span>
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
+
+	<span class="n">fputs</span><span class="p">(</span><span class="err">“</span><span class="mi">123456789</span><span class="err">”</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span>
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+
+	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span> <span class="c1">//1-&gt;4</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f1</span><span class="p">));</span> <span class="c1">//4읽어서 출력하고 5로 이동</span>
+
+	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span><span class="c1">//5-&gt;6</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f1</span><span class="p">));</span><span class="c1">//6 읽어서 출력하고 7로 이동</span>
+
+	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span><span class="c1">//7-&gt;4 </span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">c</span><span class="err">”</span><span class="p">,</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f1</span><span class="p">));</span><span class="c1">//4 읽어서 출력하고 5로 이동</span>
+
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>464</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>주석에 설명을 달아놓았으므로 추가설명은 드리지 않겠습니다. <strong>fseek함수를 사용해서 위치를 설정하고 앞이나 뒤로 이동할 수 있다는 사실과 문자 입출력함수를 사용해서 파일의 데이터를 읽으면 위치 지시자는 읽은 만큼 뒤로 이동한다는 사실이 중요합니다.</strong></p>
+
+<p>그리고 현재 파일 위치 지시자를 알려주는 함수가 있습니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">long</span> <span class="nf">ftell</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">);</span> <span class="c1">//stream으로 연결된 파일의 현재 위치 반환</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wt</span><span class="err">”</span><span class="p">);</span>
+	<span class="kt">FILE</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="err">“</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rt</span><span class="err">”</span><span class="p">);</span>
+
+	<span class="kt">int</span> <span class="n">cur_pos</span><span class="p">;</span>
+	
+	<span class="n">fputs</span><span class="p">(</span><span class="err">“</span><span class="mi">123456789</span><span class="err">”</span><span class="p">,</span> <span class="n">f0</span><span class="p">);</span>
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f0</span><span class="p">);</span>
+
+	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span> <span class="c1">//9</span>
+	<span class="n">cur_pos</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="n">cur_pos</span><span class="p">);</span>
+
+	<span class="n">fseek</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span> <span class="c1">// 6</span>
+	<span class="n">cur_pos</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="n">cur_pos</span><span class="p">);</span>
+
+	<span class="n">fclose</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>9</p>
+
+<p>6</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p>test라는 .txt 파일을 만들고 123456789의 내용을 썼습니다. 처음 fseek함수에 의해 파일의 끝인 9로 이동시켜서 ftell함수로 현재위치를 cur_pos에 담아서 출력해봤는데 정상적으로 9가 나왔습니다. 또다시 fseek함수로 현재위치(9)에서 앞으로 3만큼이동시켜 6을 가르키게 만들고 동일한 방식으로 ftell함수를 이용해서 cur_pos에 현재위치를 담고 출력했는데 정상적으로 6이 나왔습니다.</p>
+
+<p>파일위치 지시자는 우리가 현재 파일에서 어디까지 읽어들였는지, 혹은 썼는지 확인할 때 유용하게 사용할 수 있습니다.</p>
+:ET

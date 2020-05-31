@@ -1,0 +1,75 @@
+I"+<p>앱을 만들때는 기본 위젯이 아닌 직접 만든 버튼을 사용하는 경우가 많다. 단순히 배경만 사진으로 해주는 것도 있는데, 이 때는 클릭 이벤트가 발생해도 버튼에 변화가 없어 사용자가 버튼의 상태를 알아채기 힘들다. 따라서 그래픽 이미지로 된 버튼을 직접 만들어서 사용해야 한다. 이 버튼이 바로 <strong>비트맵 버튼</strong>이다.</p>
+
+<p>비트맵은 메모리에 만들어진 이미지 객체라고 생각하면 된다. 일반적으로 버튼 클래스를 상속받아서 만들게 된다.</p>
+
+<p>비트맵에 대해 제대로 이해하기 위해서는 Canvas아 Bitmap, BitmapFactory 클래스에 대해 자세히 다루어야하는데 이는 그래픽 부분에서 자세히 다룰 것이므로 이번에는 비트맵 버튼을 사용하는 방법만 간단하게 알아본다.</p>
+
+<p>먼저 버튼을 상속받아 클래스를 정의한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplebitmapwidget</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Color</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Typeface</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.widget.AppCompatButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.MotionEvent</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BitmapButton</span> <span class="kd">extends</span> <span class="nc">AppCompatButton</span> <span class="o">{</span>
+
+    <span class="kt">int</span> <span class="n">iconNormal</span> <span class="o">=</span> <span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">bitmap_button_normal</span><span class="o">;</span> <span class="c1">//노멀 상태의 비트맵 이미지</span>
+    <span class="kt">int</span> <span class="n">iconClicked</span> <span class="o">=</span> <span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">bitmap_button_clicked</span><span class="o">;</span> <span class="c1">//클릭 상태의 비트맵 이미지</span>
+
+    <span class="kd">public</span> <span class="nf">BitmapButton</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">();</span> <span class="c1">//객체 생성 후 초기화</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">BitmapButton</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">AttributeSet</span> <span class="n">attrs</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">();</span><span class="c1">//객체 생성 후 초기화</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">setBackgroundResource</span><span class="o">(</span><span class="n">iconNormal</span><span class="o">);</span> <span class="c1">//비트맵 버튼 노말 상태</span>
+        <span class="n">setTextColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">);</span> <span class="c1">//텍스트 색상 흰색</span>
+        <span class="n">setTypeface</span><span class="o">(</span><span class="nc">Typeface</span><span class="o">.</span><span class="na">DEFAULT_BOLD</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTouchEvent</span><span class="o">(</span><span class="nc">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onTouchEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">action</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getAction</span><span class="o">();</span>
+
+        <span class="k">switch</span><span class="o">(</span><span class="n">action</span><span class="o">){</span>
+            <span class="k">case</span> <span class="nc">MotionEvent</span><span class="o">.</span><span class="na">ACTION_DOWN</span><span class="o">:</span> <span class="c1">// 버튼 눌렀을 때는 클릭 상태 비트맵 이미지 설정</span>
+                <span class="n">setBackgroundResource</span><span class="o">(</span><span class="n">iconClicked</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+
+            <span class="k">case</span> <span class="nc">MotionEvent</span><span class="o">.</span><span class="na">ACTION_UP</span><span class="o">:</span> <span class="c1">// 버튼에서 손 떼면 노멀 상태 비트맵 이미지 설정</span>
+                <span class="n">setBackgroundResource</span><span class="o">(</span><span class="n">iconNormal</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">invalidate</span><span class="o">();</span> <span class="c1">//다시 그리기</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br />
+객체를 생성 후 초기화하기 위해 생성자 안에 <code class="highlighter-rouge">init()</code> 메소드를 넣어주었다. <code class="highlighter-rouge">init()</code> 메소드 내에서는 버튼의 비트맵 이미지를 노멀 상태의 이미지로 설정하고 텍스트 색상을 흰색, 스타일을 굵은 글씨로 설정한다.</p>
+
+<p>그리고 버튼이 눌리고 떼어질 때의 이벤트 처리를 위해서 <code class="highlighter-rouge">onTouchEvent()</code> 메소드를 재정의하였다. 각각의 이벤트별로 비트맵 이미지를 다르게 설정하면 된다.</p>
+
+<p><code class="highlighter-rouge">invalidate()</code> 메소드는 <code class="highlighter-rouge">View class</code>의 메소드로 그래픽 설정후 레이아웃에 다시 그릴 때 사용한다.</p>
+
+<p>앱을 실행하면 아래의 실행결과가 나온다.</p>
+
+<p><img src="/images/android/36/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/36/2.jpg" alt="2" width="30%" height="30%" /></p>
+
+<p>첫 번째 사진이 노멀 상태이고 두 번째 사진이 버튼을 클릭했을 때이다. 두 가지 터치 이벤트가 발생할 때마다 버튼의 비트맵 이미지가 다시 그려진다.</p>
+:ET

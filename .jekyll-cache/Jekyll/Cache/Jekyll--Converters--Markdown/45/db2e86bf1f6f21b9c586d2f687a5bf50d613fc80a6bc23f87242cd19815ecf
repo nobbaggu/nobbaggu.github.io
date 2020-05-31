@@ -1,0 +1,141 @@
+I"�1<p>보조 스트림이란 입출력을 직접 하지 않고 기반 스트림에 추가적인 기능을 부여하는 스트림이다. 사용 방법은 보조스트림 객체를 만들 때 생성자로 기반스트림을 전달해주는 것이다.</p>
+
+<p>보조 스트림은 2개 이상을 사용할 수도 있다. 이 때에는 보조스트림에 생성자로 보조스트림을 전달해주면서 전달된 보조스트림의 생성자에 매개변수로 기반스트림을 주는 식으로 할 수 있다.</p>
+
+<p>보조 스트림의 최상위 클래스는 FilterInputStream과 FilterOutputStream이다. 두 추상클래스의 생성자는 스트림 1개를 매개변수로 전달받는다. 다른 생성자는 지원하지 않는다.</p>
+
+<p> </p>
+
+<h1 id="1-inputstreamreader--outputstreamwriter">1. InputStreamReader / OutputStreamWriter</h1>
+
+<hr />
+
+<p>데이터를 바이트 단위로만 전송할 수 있을 때 한글과 같이 2byte가 필요한 데이터가 있다. 이런 경우에 사용할 수 있는 보조스트림이 InputStreamReader와 OutputStreamWriter이다. 이 두 스트림은 byte단위 데이터를 문자로 변환해주는 보조 스트림이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputStreamReaderTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="k">try</span><span class="o">(</span><span class="nc">InputStreamReader</span> <span class="n">isr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"hello.txt"</span><span class="o">))){</span>
+         
+         <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
+         <span class="k">while</span><span class="o">((</span><span class="n">i</span> <span class="o">=</span> <span class="n">isr</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="n">i</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>“자바를자바라”</p>
+
+<p>원래같은 경우라면 FileInputStream은 byte단위로 데이터를 읽기 때문에 한글 문자를 제대로 읽어들일 수 없다. 따라서 보조스트림으로 InputStreamReader 클래스를 사용하였다.</p>
+
+<p> </p>
+
+<p>OutputStreamWriter의 사용법 역시 이와 비슷하다.</p>
+
+<p> </p>
+
+<h1 id="2-bufferedinputstream--bufferedoutputstream">2. BufferedInputStream / BufferedOutputStream</h1>
+
+<hr />
+
+<p>BufferedInputStream과 BufferedOutputStream은 버퍼링 기능을 제공하는 보조 스트림이다. 따라서 1byte씩 데이터를 전송하는 스트림보다 더 빨리 입출력을 실행한다. 내부적으로 8192byte 크기의 배열을 가지고 있다.</p>
+
+<p>BufferedInputStream은 생성자의 매개변수로 InputStream 하위클래스를, BufferedOutputStream은 OutputStream 하위클래스를 받는다. 또한 BufferedReader는 Reader, BufferedWriter은 Writer 의 하위 클래스를 생성자의 매개변수로 받는다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StreamReaderWriterTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">try</span> <span class="o">(</span><span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"test.jpg"</span><span class="o">)){</span>
+         <span class="nc">FileOutputStream</span> <span class="n">fos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="s">"copy.jpg"</span><span class="o">);</span>
+         
+         <span class="kt">long</span> <span class="n">t1</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span> <span class="c1">//시간 측정 시작</span>
+         
+         <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
+         <span class="k">while</span><span class="o">((</span><span class="n">i</span> <span class="o">=</span> <span class="n">fis</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//FileInputStream으로 읽어서</span>
+            <span class="n">fos</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="c1">//FileOutputStream으로 쓰기</span>
+         <span class="o">}</span>
+         
+         <span class="kt">long</span> <span class="n">t2</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span> <span class="c1">//시간 측정 끝</span>
+         
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="o">);</span>
+         
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+      <span class="o">}</span>
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>5584</p>
+
+<p>byte단위 스트림으로 파일을 읽어 내용을 쓰는 방식으로 복사하였는데 5.584초가 걸린다.</p>
+
+<p>Buffered 스트림 하위 클래스를 사용하여 속도가 개선되는지 확인해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.BufferedInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StreamReaderWriterTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedInputStream</span> <span class="n">bis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedInputStream</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"test.jpg"</span><span class="o">))){</span>
+         <span class="nc">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedOutputStream</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="s">"copy.jpg"</span><span class="o">))</span> <span class="o">;</span>
+         
+         <span class="kt">long</span> <span class="n">t1</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span> <span class="c1">//시간 측정 시작</span>
+         
+         <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
+         <span class="k">while</span><span class="o">((</span><span class="n">i</span> <span class="o">=</span> <span class="n">bis</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//BufferedInputStream으로 읽어서</span>
+            <span class="n">bos</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="c1">//BufferedOutputStream으로 복사</span>
+         <span class="o">}</span>
+         
+         <span class="kt">long</span> <span class="n">t2</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span> <span class="c1">//시간 측정 끝</span>
+         
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="o">);</span>
+         
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+      <span class="o">}</span>
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>39</p>
+
+<p>0.039초가 걸린다. 아주 심하게 차이가 난다.</p>
+:ET

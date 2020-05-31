@@ -1,0 +1,182 @@
+I"�#<p>for문은 반복문 중 활용빈도가 가장 높습니다.</p>
+
+<p><br /></p>
+<h2 id="1-for-반복문-구조">1. for 반복문 구조</h2>
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="err">초기식</span><span class="p">;</span> <span class="err">조건식</span><span class="p">;</span> <span class="err">증감식</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>초기식
+for문을 돌리기 위해 사용할 변수를 <strong>초기화</strong>를 시킵니다. 가령, num = 0; 같은 식으로 말입니다. 초기식은 for 반복문에 들어와서 딱 한 번 시행만 시행되고 더 이상 쓰이지 않습니다.</p>
+  </li>
+  <li>
+    <p>조건식
+조건식에 따라서 { } 구문을 실행할지 말지 결정을 합니다. 조건식이 ‘참(true)’ 이면 { }를 실행, ‘거짓(false)’ 이면 for 반복문을 탈출합니다.</p>
+  </li>
+  <li>
+    <p>증감식
+for문을 돌리기 위한 변수의 증가 혹은 감소를 담당하는 식입니다. 예를 들면, num++ 혹은 num- 혹은 num+=5 와 같이 증감식을 한 번 거치고나서 다시 조건식을 판단하여 { } 구문을 또 한 번 실행할지 말지 결정이 됩니다.</p>
+  </li>
+</ul>
+
+<p>정리하면 다음 그림과 같습니다.</p>
+
+<p><img src="/images/2018/09/1-6.jpg" alt="123" width="80%" height="80%" /></p>
+
+<p>조건식이 ‘참’일 동안은 2 → 3 → 4 → 2 의 순서로 계속 실행이 되다가, 조건식이 거짓이 되면 for 반복문을 탈출합니다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cnt</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">cnt</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The count is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>The count is 0</p>
+
+<p>The count is 1</p>
+
+<p>The count is 2</p>
+
+<p>The count is 3</p>
+
+<p>The count is 4</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br />
+현재의 ANSI C 표준은 for 반복문의 초기식에서 변수를 선언하는 것을 허용합니다. 하지만 위의 코드에서는 cnt 변수를 for문 외부에서 선언했습니다. 왜냐하면 제가 사용하는 컴파일러는 for문의 초기식에서 변수를 선언하는 것이 지원이 안되기 때문입니다. Visual Studio를 업데이트를 안해서 그렇습니다.. 위의 코드를 int cnt;를 지우고 for의 초기식에서 cnt = 0; 을 int cnt = 0; 으로 바꿔서 실행을 해보세요. 잘 실행이 된다면 현재 사용중인 컴파일러가 for문의 초기식에서 변수의 선언을 지원하는 겁니다.</p>
+
+<p>위의 코드를 while 반복문을 사용해서 짜려면 어떻게 해야할까요?</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">while</span><span class="p">(</span><span class="n">cnt</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The count is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+        <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br />
+실행결과는 for문을 사용했을때와 같습니다. 하지만 for문과는 다르게 변수를 밖에서 선언하고 초기화까지 시켜야하며 while문의 { } 안에서 cnt 변수를 증가시켜줘야 합니다.</p>
+
+<p>for문과 while을 언제 사용해야 할지는 정해져 있지 않지만, 대체적으로는 아래의 경우로 나뉩니다.</p>
+
+<blockquote>
+  <ol>
+    <li>for문은 정해진 반복횟수가 있는 경우에 사용하는 것이 좋습니다.</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>while 문은 어떤 변수의 값이 특정한 조건이 될 경우 특정 코드를 실행시킬 때 사용하기 좋습니다.</li>
+  </ol>
+</blockquote>
+
+<p><br /></p>
+<h2 id="2-조건식--증감식이-없는-for문">2. 조건식 / 증감식이 없는 for문</h2>
+<hr />
+
+<p><br /></p>
+<h3 id="1-조건식이-없는-경우">1) 조건식이 없는 경우</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">;</span><span class="n">cnt</span><span class="o">+=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"The count is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>The count is 0</p>
+
+<p>The count is 2</p>
+
+<p>The count is 4</p>
+
+<p>The count is 6</p>
+
+<p>The count is 8</p>
+
+<p>The count is 10</p>
+
+<p>.</p>
+
+<p>.</p>
+
+<p>.</p>
+
+<p>printf 함수의 출력이 멈추지 않습니다.</p>
+
+<p><strong>조건식이 비어있는 경우는 항상 ‘참’으로 간주하여 무한루프가 되어버립니다.</strong></p>
+
+<p><br /></p>
+<h3 id="2-증감식이-없는-경우">2) 증감식이 없는 경우</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cnt</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+        <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>0</p>
+
+<p>1</p>
+
+<p>2</p>
+
+<p>3</p>
+
+<p>4</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . .</p>
+
+<p><br /> 
+위와 같이 for문에서 초기식과 증감식을 비워두어도 됩니다. 하지만 이는 for 구문의 이점을 잘 활용한거라고 말할 수 없습니다. for문의 초기식, 조건식, 증감식을 비워 두는 일은 흔하지 않습니다.</p>
+:ET

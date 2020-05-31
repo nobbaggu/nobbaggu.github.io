@@ -1,0 +1,95 @@
+I"'<p>스피너도 리스트뷰처럼 여러개의 아이템을 보여주고 하나를 선택할 수 있도록 하는 선택 위젯이다. 스피너를 클릭하면 아래쪽에 창이 나오면서 항목을 쭉 보여준다.</p>
+
+<p>스피너를 사용하기 위한 코드를 작성해보자.</p>
+
+<p>먼저 메인 액티비티의 XML 코드를 아래와 같이 작성한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"30dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Spinner</span>
+        <span class="na">android:id=</span><span class="s">"@+id/spinner"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"10dp"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/Spinner&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>텍스트뷰는 선택된 아이템을 알려주기 위한것이다.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.spinner</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.AdapterView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ArrayAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Spinner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+    <span class="nc">String</span><span class="o">[]</span> <span class="n">items</span> <span class="o">=</span> <span class="o">{</span><span class="s">"John"</span><span class="o">,</span> <span class="s">"Hangbae"</span><span class="o">,</span> <span class="s">"Panho"</span><span class="o">,</span> <span class="s">"Michael"</span><span class="o">,</span> <span class="s">"Henrry"</span><span class="o">,</span> <span class="s">"Kelly"</span><span class="o">};</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+
+        <span class="cm">/* 스피너를 위한 어댑터 구성 */</span>
+        <span class="nc">ArrayAdapter</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayAdapter</span><span class="o">&lt;&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_spinner_item</span><span class="o">,</span> <span class="n">items</span><span class="o">);</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">setDropDownViewResource</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_spinner_dropdown_item</span><span class="o">);</span>
+
+        <span class="cm">/* 스피너 객체 참조하여 어댑터 설정 */</span>
+        <span class="nc">Spinner</span> <span class="n">spinner</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">spinner</span><span class="o">);</span>
+        <span class="n">spinner</span><span class="o">.</span><span class="na">setAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
+
+        <span class="cm">/* 아이템이 선택되었을 때의 이벤트 처리 리스너 설정 */</span>
+        <span class="n">spinner</span><span class="o">.</span><span class="na">setOnItemSelectedListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">AdapterView</span><span class="o">.</span><span class="na">OnItemSelectedListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onItemSelected</span><span class="o">(</span><span class="nc">AdapterView</span><span class="o">&lt;?&gt;</span> <span class="n">parent</span><span class="o">,</span> <span class="nc">View</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">items</span><span class="o">[</span><span class="n">position</span><span class="o">]+</span><span class="s">"이 선택되었습니다."</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onNothingSelected</span><span class="o">(</span><span class="nc">AdapterView</span><span class="o">&lt;?&gt;</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"아이템을 선택하세요"</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>스피너도 선택 위젯이므로 어댑터 패턴을 사용한다. 따라서 데이터를 어댑터에 설정하였다. 여기서는 <code class="highlighter-rouge">ArrayAdapter</code> 클래스를 사용했다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">ArrayAdapter</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="kt">int</span> <span class="n">textViewResourceId</span><span class="o">,</span> <span class="no">T</span><span class="o">[]</span> <span class="n">objects</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>첫 번째 전달인자는 컨텍스트이다. 두 번째 전달인자는 뷰를 초기화할 때 사용되는 레이아웃의 리소스 ID값이다. 여기서 전달된 <code class="highlighter-rouge">android.R.layout.simple_spinner_item</code>은 안드로이드 API에 미리 정의된 값으로 문자열을 아이템으로 보여주는 스피너를 위한 레이아웃이다. 세 번째 전달인자는 아이템으로 보여줄 문자열 배열이다.</p>
+
+<p>이제 스피너에 어댑터를 설정해주고 선택 이벤트 처리 리스너를 설정해준다.</p>
+
+<p>앱을 실행하면 아래와 같은 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/38/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/38/2.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

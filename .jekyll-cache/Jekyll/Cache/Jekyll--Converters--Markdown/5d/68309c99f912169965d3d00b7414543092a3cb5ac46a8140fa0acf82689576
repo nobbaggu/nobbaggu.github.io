@@ -1,0 +1,269 @@
+I"�\<p>Map 인터페이스는 ‘자료 쌍’을 다루는 데 용이한 라이브러리이다. 흔히 key-value로 이루어진 자료를 다룬다. 이 자료구조에서 key값은 유일하고, value값은 중복이 허용된다.</p>
+
+<p>자료 쌍의 예로는 학번-이름, 고객번호-이름 등이 있을 수 있다.</p>
+
+<p>Map인터페이스를 구현한 HashMap클래스와 TreeMap 클래스에 대해 알아본다.</p>
+
+<p> </p>
+
+<h1 id="1-hashmap-클래스">1. HashMap 클래스</h1>
+
+<hr />
+
+<p>HashMap 클래스를 활용하여 회원관리 프로그램을 만든다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span>
+   
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">// TODO Auto-generated method stub</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="nc">Member</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Member</span><span class="o">)</span><span class="n">obj</span><span class="o">;</span>
+         <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">==</span> <span class="n">member</span><span class="o">.</span><span class="na">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+         <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.hashmap</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashMap</span> <span class="o">{</span>
+
+   <span class="c1">//HashMap은 key, value 각각을 위한 제네릭 자료형 2개를 사용</span>
+   <span class="kd">private</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Member</span><span class="o">&gt;</span> <span class="n">hashMap</span><span class="o">;</span> <span class="c1">//key : 회원ID,  value : 회원</span>
+   
+   <span class="kd">public</span> <span class="nf">MemberHashMap</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//객체를 만드는 동시에 hashMap 저장소도 같이 생성</span>
+      <span class="n">hashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Member</span><span class="o">&gt;();</span>
+   <span class="o">}</span>
+   
+   <span class="c1">// 회원 추가 - put(key, value) 메소드 사용</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">hashMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">(),</span> <span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="c1">// 회원 삭제 - 회원탐색할 때 containsKey(key)메소드 사용</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">hashMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">memberId</span><span class="o">))</span> <span class="o">{</span>
+         <span class="n">hashMap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+      <span class="o">}</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span> <span class="o">+</span> <span class="s">" does not exist"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//모든 멤버 출력</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span> <span class="c1">//keySet() 메소드는 해쉬맵의 모든 key값들을 Set 객체로 반환</span>
+      
+      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+         <span class="kt">int</span> <span class="n">memberId</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+         
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>HashMap을 사용하여 자료를 관리하는 프로그램을 만들 때 key값으로는 중복이 안되는 자료를 해주어야 한다.</p>
+
+<p>HashMap의 keySet() 메소드는 모든 key값들을 Set 자료로 반환해주어 중복이 안된다. 반면 values()메소드는 모든 value값들을 list 자료형으로 반환해주며 list 자료형은 중복을 허용한다.</p>
+
+<p> </p>
+
+<p>이제 테스트를 해볼 차례다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.hashmap</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberHashMapTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MemberHashMap</span> <span class="n">memberHashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberHashMap</span><span class="o">();</span>
+      
+      <span class="nc">Member</span> <span class="n">member1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Son"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">);</span>
+      
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member1</span><span class="o">);</span>
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member2</span><span class="o">);</span>
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member3</span><span class="o">);</span>
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member4</span><span class="o">);</span>
+      
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+      
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">removeMember</span><span class="o">(</span><span class="n">member2</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">());</span>
+      
+      <span class="n">memberHashMap</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+      
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Kim’s ID is 1001</p>
+
+<p>Lee’s ID is 1002</p>
+
+<p>Son’s ID is 1003</p>
+
+<p>Choi’s ID is 1004</p>
+
+<p>Kim’s ID is 1001</p>
+
+<p>Son’s ID is 1003</p>
+
+<p>Choi’s ID is 1004</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-treemap클래스">2. TreeMap클래스</h1>
+
+<hr />
+
+<p>TreeMap은 TreeSet과 마찬가지로 이진 검색 트리 알고리즘이 구현되어있다. TreeMap은 key값으로 정렬을 한다. 따라서 key값에 해당하는 클래스는 Comparable이나 Comparator 인터페이스를 구현해야한다. 하지만 memberId의 자료형인 Integer 클래스는 이미 Comparable 인터페이스를 구현해놓아서 따로 여기서 할 필요는 없다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.treemap</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.TreeMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberTreeMap</span> <span class="o">{</span>
+   <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Member</span><span class="o">&gt;</span> <span class="n">memberTreeMap</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">MemberTreeMap</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">memberTreeMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Member</span><span class="o">&gt;();</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">(),</span> <span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">memberTreeMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">memberId</span><span class="o">))</span> <span class="o">{</span>
+         <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+      <span class="o">}</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span><span class="o">+</span><span class="s">" does not exist"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">ir</span> <span class="o">=</span> <span class="n">memberTreeMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+      
+      <span class="k">while</span><span class="o">(</span><span class="n">ir</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+         <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberTreeMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.treemap</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberTreeMapTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MemberTreeMap</span> <span class="n">mems</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberTreeMap</span><span class="o">();</span>
+      
+      <span class="nc">Member</span> <span class="n">member1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Son"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">member4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">);</span>
+      
+      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member1</span><span class="o">);</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member2</span><span class="o">);</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member3</span><span class="o">);</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">member4</span><span class="o">);</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+      
+      <span class="n">mems</span><span class="o">.</span><span class="na">removeMember</span><span class="o">(</span><span class="n">member2</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">());</span>
+      <span class="n">mems</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Son’s ID is 1001</p>
+
+<p>Kim’s ID is 1002</p>
+
+<p>Choi’s ID is 1003</p>
+
+<p>Lee’s ID is 1004</p>
+
+<p>Son’s ID is 1001</p>
+
+<p>Kim’s ID is 1002</p>
+
+<p>Choi’s ID is 1003</p>
+
+<p>TreeMap클래스는 Key값에 대해 이진트리를 구현한다. Key에 해당하는 클래스인 Integer는 Comparable인터페이스를 이미 구현하고 있기에 따로 무언가를 할 필요는 없었다.</p>
+:ET

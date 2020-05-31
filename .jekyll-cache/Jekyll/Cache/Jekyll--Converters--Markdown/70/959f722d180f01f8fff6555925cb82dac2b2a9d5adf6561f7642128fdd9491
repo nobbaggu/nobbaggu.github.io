@@ -1,0 +1,216 @@
+I"�X<p> </p>
+<h2 id="1-토스트toast-메시지-위치-설정하기">1. 토스트(Toast) 메시지 위치 설정하기</h2>
+<hr />
+
+<p>토스트 메시지나 대화상자는 사용자에게 간단한 정보를 알려주는 역할을 하는 위젯이다. 간단한 메시지를 뿌려줌으로써 간단한 디버깅을 하는데에도 사용할 수 있다.</p>
+
+<p>토스트 메시지는 Toast 클래스를 사용하여 아래와 같이 만들어낼 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">String</span> <span class="n">msg</span><span class="o">,</span> <span class="kt">int</span> <span class="n">duration</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>아래의 두 메소드는 각각 토스트의 위치와 외부 여백을 지정할 때 사용한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGravity</span><span class="o">(</span><span class="kt">int</span> <span class="n">gravity</span><span class="o">,</span> <span class="kt">int</span> <span class="n">xOffset</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yOffset</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMargin</span><span class="o">(</span><span class="kt">float</span> <span class="n">horizontalMargin</span><span class="o">,</span> <span class="kt">float</span> <span class="n">verticalMargin</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>예제를 보면 바로 이해될 것이다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/editText1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:hint=</span><span class="s">"X 위치"</span>
+            <span class="na">android:inputType=</span><span class="s">"numberSigned"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/editText2"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+            <span class="na">android:hint=</span><span class="s">"Y 위치"</span>
+            <span class="na">android:inputType=</span><span class="s">"numberSigned"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/button"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:text=</span><span class="s">"토스트"</span>
+            <span class="na">android:textSize=</span><span class="s">"20dp"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>입력상자 2개는 각각 토스트 메시지의 X위치와 Y위치를 결정하기위해서 사용하고 버튼을 누르면 토스트 메시지를 띄우려 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampletoast</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.Gravity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">EditText</span> <span class="n">editText1</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">editText2</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">editText1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText1</span><span class="o">);</span>
+        <span class="n">editText2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText2</span><span class="o">);</span>
+
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Toast</span> <span class="n">toast</span> <span class="o">=</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"토스트 메시지"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">);</span>
+                <span class="kt">int</span> <span class="n">xOffset</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">editText1</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span><span class="c1">// xOffset</span>
+                <span class="kt">int</span> <span class="n">yOffset</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">editText2</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span><span class="c1">// yOffset</span>
+
+                <span class="n">toast</span><span class="o">.</span><span class="na">setGravity</span><span class="o">(</span><span class="nc">Gravity</span><span class="o">.</span><span class="na">CENTER</span><span class="o">,</span> <span class="n">xOffset</span><span class="o">,</span> <span class="n">yOffset</span><span class="o">);</span> <span class="c1">//토스트 메시지 위치 설정</span>
+                <span class="n">toast</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">//토스트 메시지 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>setGravity() 메소드의 첫 번째 전달인자는 토스트 메시지의 기본 위치를 설정할 때 사용한다. Gravity.CENTER 상수는 화면의 수평 중앙, 수직 중앙을 의미한다. 이 위치로부터 x위치로 xOffset, y위치로 yOffset 만큼 움직이는 것이다.</p>
+
+<p><img src="/images/android/23/1.jpg" alt="1" width="30%" height="30%" />
+<img src="/images/android/23/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/23/3.jpg" alt="3" width="30%" height="30%" /></p>
+
+<p>xOffset의 값이 500, 1000으로 설정되어있는데 x 위치가 같다. 결과를 통해서 xOffset, yOffset의 값이 화면의 범위를 넘어가더라도 토스트 메시지는 화면 이내에서만 표시해준다는걸 알 수 있다.</p>
+
+<p> </p>
+<h2 id="1-토스트toast-메시지-모양-설정하기">1. 토스트(Toast) 메시지 모양 설정하기</h2>
+<hr />
+
+<p>토스트 메시지는 기본적으로 검은 바탕에 흰색 글씨로 구성되어있다. 그러나 우리가 직접 레이아웃을 만들어 토스트 메시지의 모양을 바꿀 수가 있다.</p>
+
+<p>먼저 /drawable 폴더에 다음의 toast.xml 파일을 넣는다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="nt">&lt;shape</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:shape=</span><span class="s">"rectangle"</span>
+    <span class="nt">&gt;</span>
+    <span class="nt">&lt;stroke</span>
+        <span class="na">android:width=</span><span class="s">"10dp"</span>
+        <span class="na">android:color=</span><span class="s">"#ff0000ff"</span>
+        <span class="nt">/&gt;</span>
+    <span class="nt">&lt;solid</span>
+        <span class="na">android:color=</span><span class="s">"#ffff0000"</span>
+        <span class="nt">/&gt;</span>
+    <span class="nt">&lt;padding</span>
+        <span class="na">android:left=</span><span class="s">"10dp"</span>
+        <span class="na">android:top=</span><span class="s">"10dp"</span>
+        <span class="na">android:right=</span><span class="s">"10dp"</span>
+        <span class="na">android:bottom=</span><span class="s">"10dp"</span>
+        <span class="nt">/&gt;</span>
+    <span class="nt">&lt;corners</span>
+        <span class="na">android:radius=</span><span class="s">"10dp"</span>
+        <span class="nt">/&gt;</span>
+<span class="nt">&lt;/shape&gt;</span>
+</code></pre></div></div>
+
+<p>그리고 /layout 폴더에 toastborder.xml 레이아웃 파일을 정의한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:id=</span><span class="s">"@+id/toast_layout_root"</span>
+    <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:padding=</span><span class="s">"10dp"</span>
+    <span class="nt">&gt;</span>
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/text"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:padding=</span><span class="s">"20dp"</span>
+        <span class="na">android:textSize=</span><span class="s">"32dp"</span>
+        <span class="na">android:background=</span><span class="s">"@drawable/toast"</span>
+        <span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>이제 토스트 위치 바꾸기 예제에서 사용했던 코드에 레이아웃 인플레이터 객체를 만들어 방금 정의한 레이아웃을 메모리에 로딩한다. 그리고 토스트 클래스의 setView() 메소드를 사용해서 우리가 직접 정의한 레이아웃을 토스트 메시지의 모양으로 설정할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampletoast</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.Gravity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.LayoutInflater</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.ViewGroup</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">EditText</span> <span class="n">editText1</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">editText2</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">editText1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText1</span><span class="o">);</span>
+        <span class="n">editText2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText2</span><span class="o">);</span>
+
+        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+
+        <span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">LayoutInflater</span> <span class="n">inflater</span> <span class="o">=</span> <span class="n">getLayoutInflater</span><span class="o">();</span> <span class="c1">//레이아웃 인플레이터 객체 생성</span>
+                <span class="nc">View</span> <span class="n">layout</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">toastborder</span><span class="o">,</span> <span class="o">(</span><span class="nc">ViewGroup</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">toast_layout_root</span><span class="o">));</span> <span class="c1">//toastborder.xml 레이아웃 인플레이트</span>
+                <span class="nc">TextView</span> <span class="n">text</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">text</span><span class="o">);</span> <span class="c1">//레이아웃의 TextView 객체 참조</span>
+                <span class="n">text</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"토스트 메시지"</span><span class="o">);</span> <span class="c1">// TextView의 내용 설정</span>
+
+                <span class="nc">Toast</span> <span class="n">toast</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Toast</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span> <span class="c1">//토스트 객체 생성</span>
+                <span class="kt">int</span> <span class="n">xOffset</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">editText1</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span><span class="c1">// xOffset</span>
+                <span class="kt">int</span> <span class="n">yOffset</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">editText2</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span><span class="c1">// yOffset</span>
+
+                <span class="n">toast</span><span class="o">.</span><span class="na">setGravity</span><span class="o">(</span><span class="nc">Gravity</span><span class="o">.</span><span class="na">CENTER</span><span class="o">,</span> <span class="n">xOffset</span><span class="o">,</span> <span class="n">yOffset</span><span class="o">);</span> <span class="c1">//토스트 메시지 위치 설정</span>
+                <span class="n">toast</span><span class="o">.</span><span class="na">setView</span><span class="o">(</span><span class="n">layout</span><span class="o">);</span> <span class="c1">//토스트 메시지 뷰 설정</span>
+                <span class="n">toast</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">//토스트 메시지 띄우기</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/23/4.jpg" alt="4" width="30%" height="30%" /></p>
+:ET

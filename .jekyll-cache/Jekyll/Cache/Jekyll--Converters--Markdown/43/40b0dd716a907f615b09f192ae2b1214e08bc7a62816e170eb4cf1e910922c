@@ -1,0 +1,262 @@
+I"PY<p>List 인터페이스는 Collection 인터페이스의 하위 인터페이스이다. 순차적인 자료를 관리할 때 사용하고 중복을 허용한다. List 인터페이스를 구현한 활용도 높은 클래스 몇 가지에 대해 알아본다.</p>
+
+<p> </p>
+
+<h1 id="1-arraylist">1. ArrayList</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span>
+   
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMemberId</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberId</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMemberName</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">=</span> <span class="n">memberName</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">memberName</span> <span class="o">+</span> <span class="s">"'s ID is "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">memberId</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>먼저 Member 클래스를 정의하였다. 멤버변수는 Id와 이름 두 개 뿐이고 각각에 대한 getter와 setter 메소드를 지원한다.</p>
+
+<p> </p>
+
+<p>이제 위에서 정의한 Member클래스로 회원을 생성하고 관리하기 위해서 ArrayList를 활용할 것이다.</p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.arraylist</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span> <span class="c1">//ArrayList 클래스 활용을 위한 import문</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span> <span class="c1">//Member 클래스를 다루기 위한 import문</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberArrayList</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">arrayList</span><span class="o">;</span> <span class="c1">//ArrayList로 Member 배열 생성</span>
+   
+   <span class="c1">//MemberArrayList 객체 생성과 동시에 arrayList 배열 생성</span>
+   <span class="kd">public</span> <span class="nf">MemberArrayList</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">arrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//멤버 추가 메소드</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">arrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   
+   <span class="c1">//멤버ID로 멤버 삭제 메소드</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arrayList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">arrayList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+         <span class="kt">int</span> <span class="n">tempId</span> <span class="o">=</span> <span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">();</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">tempId</span> <span class="o">==</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">arrayList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span> <span class="o">+</span> <span class="s">" does not exist in list"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//모든 멤버 정보 출력 메소드</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span> <span class="o">:</span> <span class="n">arrayList</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>arrayList는 명단을 저장하기 위한 ArrayList클래스의 객체 배열이다. 외부 프로그램에서 직접적인 접근을 막기위해 private로 선언하였다. 그러나 addMember(), removeMember(), showAllMember() 메소드로 회원을 추가/삭제 및 열람 기능을 제공하도록 한다.</p>
+
+<p>이제 위에서 ArrayList로 구현한 회원관리 프로그램이 잘 작동하는지 테스트 해보아야한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.arraylist</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberArrayListTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">MemberArrayList</span> <span class="n">memberArrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberArrayList</span><span class="o">();</span>
+      
+      
+      <span class="nc">Member</span> <span class="n">mem1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kelly"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Sam"</span><span class="o">);</span>
+      
+      <span class="c1">//멤버 3명 추가</span>
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem1</span><span class="o">);</span>
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem2</span><span class="o">);</span>
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem3</span><span class="o">);</span>
+      
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+      
+      <span class="c1">//멤버 1명 삭제</span>
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">removeMember</span><span class="o">(</span><span class="n">mem2</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">());</span>
+      
+      <span class="n">memberArrayList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>멤버를 추가 및 삭제하고 열람하는 메소드를 호출해보았다.</p>
+
+<p>실행결과</p>
+
+<p>Kelly’s ID is 1001</p>
+
+<p>John’s ID is 1002</p>
+
+<p>Sam’s ID is 1003</p>
+
+<p>Kelly’s ID is 1001</p>
+
+<p>Sam’s ID is 1003</p>
+
+<p>테스트 결과가 예상, 의도한 대로 나온걸로 보아 실제 회원관리 프로그램 클래스가 적절하게 작성되었음을 알 수 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-linkedlist">2. LinkedList</h1>
+
+<hr />
+
+<p>LinkedList 클래스는 하나의 요소에 ‘<strong>자료 + 다음 요소의 주소</strong>’ 두 가지를 동시에 가진다. 따라서 메모리공간의 물리적인 자료 주소가 연결되어있지 않더라도 논리적으로 앞뒤 순서가 있을 수 있다.</p>
+
+<p>ArrayList는 배열의 자료를 이동시켜서 빈 공간을 만들어 추가하고, 자료를 삭제하면 뒤 요소들을 한칸씩 당겨 빈 공간을 삭제한다. 그러나 LinkedList는 애초에 배열의 순서를 요소가 가진 ‘다음 요소의 주소’를 가지고 판단한다. 따라서 메모리 어딘가에 저장되어있는 요소를 추가할 때는 앞 index위치 요소의 ‘다음 요소의 주소’값만 바꿔주면 된다. 삭제할 때도 마찬가지다.</p>
+
+<p>그러나 배열은 요소의 index를 가지고 위치를 추적한다던가 하는 경우에는 ArrayList가 유리하다.</p>
+
+<p>자료의 삽입/삭제 같은 구조의 변경이 많은 자료는 LinkedList로, 그렇지 않은 경우는 ArrayList로 관리하는게 효율적이다.</p>
+
+<p>이번에는 같은 Member 클래스를 LinkedList 클래스를 활용해서 관리하는 프로그램을 작성해본다. 미리 말하자면 ArrayList보다 몇 개의 메소드를 더 지원할 뿐 거의 ArrayList활용방법과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.linkedlist</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberLinkedList</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">linkedList</span><span class="o">;</span>
+   
+   <span class="nc">MemberLinkedList</span><span class="o">(){</span>
+      <span class="n">linkedList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//멤버 추가</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">linkedList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//제일 앞에 멤버 추가</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMemberToFirst</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">linkedList</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//멤버 ID로 멤버 삭제</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeMember</span><span class="o">(</span><span class="kt">int</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">linkedList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="n">linkedList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+         <span class="kt">int</span> <span class="n">tempId</span> <span class="o">=</span> <span class="n">member</span><span class="o">.</span><span class="na">getMemberId</span><span class="o">();</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">tempId</span> <span class="o">==</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">linkedList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">memberId</span> <span class="o">+</span> <span class="s">" does not exist"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//가장 마지막 멤버 삭제</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeLastMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">linkedList</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>
+   <span class="o">}</span>
+   
+   <span class="c1">//모든 멤버 정보 출력</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllMember</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">for</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span> <span class="o">:</span> <span class="n">linkedList</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">collection.linkedlist</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">collection.Member</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">collection.arraylist.MemberArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberLinkedListTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="nc">MemberLinkedList</span> <span class="n">memberLinkedList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberLinkedList</span><span class="o">();</span>
+      
+      <span class="nc">Member</span> <span class="n">mem1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="s">"Kelly"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1002</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+      <span class="nc">Member</span> <span class="n">mem3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1003</span><span class="o">,</span> <span class="s">"Sam"</span><span class="o">);</span>
+      
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem1</span><span class="o">);</span>
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem2</span><span class="o">);</span>
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">addMember</span><span class="o">(</span><span class="n">mem3</span><span class="o">);</span>  
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+      
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">removeLastMember</span><span class="o">();</span>
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+      
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">addMemberToFirst</span><span class="o">(</span><span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="mi">1004</span><span class="o">,</span> <span class="s">"NewMan"</span><span class="o">));</span>
+      <span class="n">memberLinkedList</span><span class="o">.</span><span class="na">showAllMember</span><span class="o">();</span>
+      
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>Kelly’s ID is 1001</p>
+
+<p>John’s ID is 1002</p>
+
+<p>Sam’s ID is 1003</p>
+
+<p>Kelly’s ID is 1001</p>
+
+<p>John’s ID is 1002</p>
+
+<p>NewMan’s ID is 1004</p>
+
+<p>Kelly’s ID is 1001</p>
+
+<p>John’s ID is 1002</p>
+:ET

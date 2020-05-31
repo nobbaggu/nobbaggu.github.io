@@ -1,0 +1,120 @@
+I"�'<p>인스턴스 정보를 전송하기 위해 직렬화를 시킨다. 이후 전송받아 내용을 복원하는 것을 역직렬화라고 한다. 즉, 직렬화란 인스턴스 참조변수를 스트림을 통해 전송하기 위해 하는 일이다.</p>
+
+<p>이 때 사용하는 클래스가 ObjectInputStream과 ObjectOutputStream이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ObjectInputStream</span><span class="o">(</span><span class="nc">InputStream</span> <span class="n">in</span><span class="o">)</span>
+<span class="nc">ObjectOutputStream</span><span class="o">(</span><span class="nc">OutputStream</span> <span class="n">out</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>ObjectInputStream은 InputStream 객체를 생성자의 매개변수로 받는다. ObjectOutputStream은 OutputStream 객체를 생성자의 매개변수로 받는다.</p>
+
+<p> </p>
+
+<h1 id="1-직렬화--역직렬화">1. 직렬화 / 역직렬화</h1>
+
+<hr />
+
+<p>Person 클래스를 정의하고 인스턴스를 만들어 직렬화를 시킨다음 스트림으로 출력하여 파일에 저장하고 다시 읽어보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="nc">Serializable</span> <span class="o">{</span> <span class="c1">//직렬화를 해야하므로 Serializable 인터페이스 구현</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Person</span><span class="o">()</span> <span class="o">{}</span>
+   
+   <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">+</span><span class="s">","</span><span class="o">+</span><span class="n">age</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ObjectInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ObjectOutputStream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SerializationTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ClassNotFoundException</span> <span class="o">{</span> <span class="c1">//역직렬화 과정에서 Class 찾지 못할 수 있으므로 ClassNotFoundException 던지기</span>
+      
+      <span class="nc">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="mi">23</span><span class="o">);</span>
+      <span class="nc">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">,</span> <span class="mi">39</span><span class="o">);</span>
+      
+      <span class="k">try</span><span class="o">(</span><span class="nc">FileOutputStream</span> <span class="n">fos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="s">"serial.out"</span><span class="o">)){</span>
+         
+         <span class="nc">ObjectOutputStream</span> <span class="n">oos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectOutputStream</span><span class="o">(</span><span class="n">fos</span><span class="o">);</span> <span class="c1">//생성자 매개변수로 FileOutputStream 객체 전달</span>
+         <span class="n">oos</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">per1</span><span class="o">);</span> <span class="c1">//ObjectOutputStream을 통해 "serial.out" 파일에 쓰기</span>
+         <span class="n">oos</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">per2</span><span class="o">);</span>
+         
+      <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
+      
+      <span class="k">try</span><span class="o">(</span><span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"serial.out"</span><span class="o">)){</span>
+         
+         <span class="nc">ObjectInputStream</span> <span class="n">ois</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectInputStream</span><span class="o">(</span><span class="n">fis</span><span class="o">);</span> <span class="c1">//생성자 매개변수로 FileInputStream 객체 전달</span>
+         
+         <span class="nc">Person</span> <span class="n">p1</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Person</span><span class="o">)</span><span class="n">ois</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span> <span class="c1">//반환형이 Object형이므로 Person으로 강제 형변환</span>
+         <span class="nc">Person</span> <span class="n">p2</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Person</span><span class="o">)</span><span class="n">ois</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+         
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p1</span><span class="o">);</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p2</span><span class="o">);</span>
+         
+      <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
+            
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>John,23</p>
+
+<p>Kelly,39</p>
+
+<p>“serial.out” 파일을 열어보면 우리가 알 수 없는 형태로 객체가 저장되어 있는 것을 볼 수 있다. 우리가 다시 이것을 문자 형태로 읽으려면 역질렬화를 해야하는데, 이것을 ObjectInputStream 클래스를 통해 할 수 있다.</p>
+
+<p> </p>
+
+<h1 id="2-직렬화-제외">2. 직렬화 제외</h1>
+
+<hr />
+
+<p>직렬화 과정에서는 모든 인스턴스 변수가 직렬화된다. 직렬화에서 제외하고 싶은 변수는 앞에 transient 예약어를 붙이면 된다. 이 예약어가 붙은 변수는 저장될 때 그 자료형의 기본값으로 저장된다. 가령 int형 멤버변수는 0, String 참조변수 값은 null로 저장되는 것이다.</p>
+
+<p>위에서 사용한 코드에서 String name을 transient String name으로 변경하고 다시 실행시켜보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">transient</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>null,23</p>
+
+<p>null,39</p>
+
+<p>이름이 자동으로 null로 저장된다.</p>
+
+<p> </p>
+
+<p> </p>
+:ET

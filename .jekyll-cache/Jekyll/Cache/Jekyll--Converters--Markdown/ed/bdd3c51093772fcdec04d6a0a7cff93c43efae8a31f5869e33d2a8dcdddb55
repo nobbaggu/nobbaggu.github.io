@@ -1,0 +1,101 @@
+I"�(<p>안드로이드 액션바(ActionBar)는 기본적으로 앱의 타이틀을 보여주는 곳이다. 또한 여러가지 옵션 메뉴(Option Menu)들을 표시할 수도 있다.</p>
+
+<p><img src="/images/android/32/1.png" alt="1" width="30%" height="30%" /></p>
+
+<p><br />
+액션바를 보이거나 감추고 싶다면 다음의 메소드를 사용하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ActionBar</span> <span class="n">actionbar</span> <span class="o">=</span> <span class="n">getActionBar</span><span class="o">();</span> <span class="c1">//액션바 객체 참조</span>
+<span class="n">actionbar</span><span class="o">.</span><span class="na">hide</span><span class="o">();</span> <span class="c1">//액션바 숨기기</span>
+<span class="n">actionbar</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">//액션바 보이기</span>
+</code></pre></div></div>
+
+<p><br />
+옵션 메뉴는 각각의 액티비티마다 설정할 수 있다. 옵션 메뉴를 설정하려면 아래의 메소드를 사용하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="nc">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="c1">//액티비티가 만들어지면서 호출</span>
+<span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="nc">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="c1">//메뉴의 아이템을 클릭했을 때 호출</span>
+</code></pre></div></div>
+
+<p>이 메소드는 액티비티가 생성될 때 자동으로 호출되어 액티비티에 메뉴를 추가한다.</p>
+
+<p>먼저 메뉴를 위한 XML 레이아웃을 만들어야 한다. /res 폴더에 ‘menu’ 폴더를 추가하고 /res/menu 폴더에 메뉴를 위한 XML 레이아웃 리소스 파일을 생성하고 각각의 메뉴를 위한 &lt;item&gt; 태그를 추가하면 된다. 이 XML 파일을 <code class="highlighter-rouge">onCreateOptionsMenu()</code> 메소드 안에서 인플레이션 한다. 그러면 액티비티가 만들어질 때 액션바에 자동으로 메뉴가 포함된다. 그리고 각각의 메뉴 아이템을 클릭했을 때 나타나기를 원하는 기능은 <code class="highlighter-rouge">onOptionsItemSelected()</code> 메소드에서 처리하면 된다.</p>
+
+<p><br /></p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;menu</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_refresh"</span>
+        <span class="na">android:title=</span><span class="s">"새로고침"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/menu_refresh"</span>
+        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_search"</span>
+        <span class="na">android:title=</span><span class="s">"새로고침"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/menu_search"</span>
+        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;item</span> <span class="na">android:id =</span> <span class="s">"@+id/menu_settings"</span>
+        <span class="na">android:title=</span><span class="s">"새로고침"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/menu_settings"</span>
+        <span class="na">app:showAsAction=</span><span class="s">"always"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/menu&gt;</span>
+</code></pre></div></div>
+
+<p>메뉴를 정의한 XML에는 ‘새로고침’, ‘찾기’, ‘설정’ 3개의 아이템을 만들었다. 이제 이 레이아웃을 인플레이션하고 아이템을 클릭했을 때 처리하는 코드를 작성해보자.</p>
+
+<p><br /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleoptionmenu</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.Menu</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.MenuItem</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="nc">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">getMenuInflater</span><span class="o">().</span><span class="na">inflate</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">menu</span><span class="o">.</span><span class="na">menu_main</span><span class="o">,</span> <span class="n">menu</span><span class="o">);</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="nc">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">curId</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getItemId</span><span class="o">();</span>
+
+        <span class="k">switch</span><span class="o">(</span><span class="n">curId</span><span class="o">){</span>
+            <span class="k">case</span> <span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_refresh</span><span class="o">:</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"새로고침"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_search</span><span class="o">:</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"찾기"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">menu_settings</span><span class="o">:</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"설정"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onOptionsItemSelected</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">onCreateOptionsMenu()</code> 메소드와 <code class="highlighter-rouge">onOptionsItemSelected()</code> 메소드를 재정의 해주었다. 각 아이템이 클릭되면 간단하게 토스트 메시지를 띄우도록 하였다.</p>
+
+<p>앱을 실행하면 아래의 결과를 확인할 수 있다.</p>
+
+<p><img src="/images/android/32/2.jpg" alt="2" width="30%" height="30%" /></p>
+:ET

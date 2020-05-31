@@ -1,0 +1,70 @@
+I"�<p><img src="/images/2018/09/1-7.jpg" alt="1-7" width="80%" height="80%" /></p>
+
+<p>위 사진에 보이는대로 <code class="highlighter-rouge">GetNum()</code> 함수를 정의했습니다. <code class="highlighter-rouge">main()</code>함수에서 <code class="highlighter-rouge">GetNum()</code>을 호출하여 실행하고 <code class="highlighter-rouge">printf()</code>함수를 통해 num을 출력해보려 했습니다. 11이 나올거라 예상했는데, 변수 num이 식별이 되지 않는 일이 일어납니다. 이는 <strong>지역변수의 수명</strong>과 관련된 문제입니다.</p>
+
+<p><br /></p>
+<h2 id="1-지역변수의-수명">1. 지역변수의 수명</h2>
+<hr />
+
+<p><strong>중괄호 { } 안에서 선언된 변수를 지역변수라고 합니다. 지역변수의 수명은 중괄호 { }를 벗어나는 순간 끝이납니다.</strong> 위 코드에서는 GetNum함수가 호출되면서 메모리공간에 변수 num이 할당됩니다. 그리고 GetNum함수의 호출이 끝이 나면서 메모리에서 사라집니다. 굳이 num을 사용하려면 GetNum함수를 num을 return하는 형태로 정의한 이후 main함수에서 return값을 다른 변수에 받아서 사용해야 합니다. for나 if 같은 반복문과 조건문의 중괄호 내에서 선언된 변수도 당연히 지역변수입니다.</p>
+
+<p><br /></p>
+
+<p><img src="/images/2018/09/2-1.jpg" alt="2-1" width="80%" height="80%" /></p>
+
+<p><br /></p>
+
+<p>위의 코드를 보시면 지역변수는 { } 안에서만 존재하기 때문에 서로 다른 지역에서는 이름이 같아도 상관이 없습니다.</p>
+
+<p>정확하게 정리를 하자면, <strong>지역변수는 선언이 되는 동시에 메모리공간에 할당이 되었다가 자신이 속한 중괄호를 빠져나가면서 메모리에서 소멸됩니다.</strong></p>
+
+<p><br /></p>
+<h2 id="2-지역변수의-메모리-할당과-소멸">2. 지역변수의 메모리 할당과 소멸</h2>
+<hr />
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">Mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num1</span><span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> 
+    <span class="kt">int</span> <span class="n">add_result</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mul_result</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="n">add_result</span> <span class="o">=</span> <span class="n">Add</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    <span class="n">mul_result</span> <span class="o">=</span> <span class="n">Mul</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"The results of two functions are %d and %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">add_result</span><span class="p">,</span> <span class="n">mul_result</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>프로그램이 실행이 되면 main 함수가 실행됩니다. main함수의 1행과 2행을 거치며 메모리에 네 개의 변수가 다음 그림과 같이 할당됩니다.</p>
+
+<p><img src="/images/2018/09/3-1.jpg" alt="3-1" width="80%" height="80%" /></p>
+
+<p><br /></p>
+
+<p>그리고 <code class="highlighter-rouge">Add()</code> 함수가 호출되면서 a,b,c가 메모리에 생성됩니다.</p>
+
+<p><img src="/images/2018/09/4-1.jpg" alt="4-1" width="80%" height="80%" /></p>
+
+<p>Add 함수는 num1의 값인 10과, num2의 값인 20을 넘겨받으며 a에는 10이, b에는 20이 저장됩니다. 그리고 <code class="highlighter-rouge">Add()</code> 함수가 종료되면서 메모리에 할당되었던 a,b,c는 소멸 됩니다. <code class="highlighter-rouge">Mul()</code> 함수가 호출되면서 같은 과정이 한 번 더 일어납니다. 물론 이 때의 a, b, c는 <code class="highlighter-rouge">Add()</code> 함수의 a,b,c와는 상관없는 변수입니다.</p>
+
+<p>마지막으로, main함수가 끝이 나면서 나머지 4개의 변수도 소멸됩니다.</p>
+
+<p>함수의 전달인자는 지역변수일까요? 함수의 전달인자는 해당 함수에서만 사용이 되고 해당 함수를 벗어나면 소멸되기 때문에 전달인자 역시 지역변수 입니다.</p>
+:ET

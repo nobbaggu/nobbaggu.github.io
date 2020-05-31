@@ -1,0 +1,20 @@
+I"�<p>앙상블이란 새로운 머신러닝 알고리즘이 아닌 여러개의 모델을 합쳐서 예측 결과를 평균내는 것이다. 이러한 학습법은 서로 다른 dataset을 사용하기 때문에 overfitting을 막아주고 평균적으로 더 좋은 예측 성능을 낸다. 오늘은 Ensemble 방법 중 Bagging 에 대해 다룬다.</p>
+
+<p> </p>
+
+<h1 id="1-bagging">1. Bagging</h1>
+
+<hr />
+
+<p><strong> 여러개의 모델을 <span style="text-decoration: underline;">같은 알고리즘</span>으로 <span style="text-decoration: underline;">서로 다른 dataset</span>을 이용해서 학습시켜 합치는 것</strong>이다.</p>
+
+<p><img class="aligncenter wp-image-1242" src="/images/2018/10/no-name-6.jpg" alt="" width="750" height="358" srcset="/images/2018/10/no-name-6.jpg 971w, /images/2018/10/no-name-6-300x143.jpg 300w, /images/2018/10/no-name-6-768x367.jpg 768w" sizes="(max-width: 750px) 100vw, 750px" /></p>
+
+<p>각각의 model은 training dataset이 n개 중 랜덤으로 n’(&lt;n)개를 뽑아 모델을 학습 시킨다. 이 때 중요한 것이 있다.</p>
+
+<p><strong>n’개의 데이터에는 중복되는 데이터가 포함될 수 있다.</strong> n개 중 중복을 허용하여 n’개의 데이터를 선정하여 모델을 학습시키는 것이다.</p>
+
+<p>각각의 model이 예측한 결과를 평균을 내어 최종 예측 결과가 나온다.</p>
+
+<p>Bagging을 사용하면 서로 다른 dataset으로 학습을 시키기 때문에 overfitting을 막을 수 있다.</p>
+:ET

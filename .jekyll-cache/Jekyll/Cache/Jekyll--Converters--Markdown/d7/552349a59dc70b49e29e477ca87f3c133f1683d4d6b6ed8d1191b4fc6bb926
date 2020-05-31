@@ -1,0 +1,360 @@
+I"3�<p><br /></p>
+
+<p>SQLite는 MySQL과 같은 데이터베이스 관리 시스템으로 안드로이드 운영체제에서 기본적으로 제공한다. 그러나 DB를 위한 서버를 따로 두지않고 애플리케이션에 파일 구조로 넣어서 사용하며, 무게가 가벼워 간편하게 사용하기 좋다. 또한 SQLite API의 메소드 호출을 통해 비교적 간단하게 사용할 수 있다.</p>
+
+<p><br /></p>
+<h2 id="1-db생성-table생성-및-data-추가-제거">1. DB생성, Table생성 및 Data 추가, 제거</h2>
+<hr />
+
+<ul>
+  <li>DB 생성 및 삭제 메소드</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">SQLiteDatabase</span> <span class="nf">openOrCreateDatabase</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">mode</span><span class="o">,</span> <span class="nc">CursorFactory</span> <span class="n">factory</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">deleteDatabase</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>DB생성 메소드의 첫 번째 파라미터는 DB의 이름, 두 번째는 사용 모드이다. 사용 모드에 따라 앱에서 데이터베이스로의 접근 권한이나 읽기,쓰기 권한 등을 설정할 수 있다. 세 번째 파라미터는 데이터베이스 커서를 만들어낼 객체를 전달할 수 있는데, 일반적인 안드로이드 개발에서 커서 팩토리를 새로 작성해서 사용할 일은 거의 없으므로 대부분 null을 전달한다.</p>
+
+<p><br /></p>
+
+<ul>
+  <li>Table 생성 query문 실행</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"create table employee(_id integer PRIMARY KEY autoincrement, name text, age integer);"</span><span class="o">;</span>
+<span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">//sql문 실행</span>
+</code></pre></div></div>
+
+<p>테이블을 생성하기 위한 SQL문을 문자열 형태로 작성하고 데이터베이스의 <code class="highlighter-rouge">execSQL()</code> 메소드에 전달해서 실행하면 된다. 위 예시에서는 employee라는 테이블을 만들었는데 이 테이블은 id, 이름, 나이 3개의 column을 가지고 있다. 또한 id값은 데이터가 추가될 때 마다 자동으로 1씩 증가하도록 한 것이다.</p>
+
+<p><br /></p>
+
+<ul>
+  <li>데이터 추가 및 삭제</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//데이터 추가</span>
+<span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into employee(name, age) values('John', 20);"</span><span class="o">;</span>
+<span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+<span class="c1">//데이터 삭제</span>
+<span class="nc">String</span><span class="o">[]</span> <span class="n">whereArgs</span> <span class="o">=</span> <span class="o">{</span><span class="s">"John"</span><span class="o">,</span> <span class="s">"Kelly"</span><span class="o">};</span>
+<span class="kt">int</span> <span class="n">rowAffected</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="s">"name = ?"</span><span class="o">,</span> <span class="n">whereArgs</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>데이터 추가는 일반 SQL문을 작성하고 데이터베이스의 <code class="highlighter-rouge">execSQL()</code> 메소드 호출을 통해 실행해주면 된다. 또한 데이터 삭제는 데이터베이스의 ‘delete()` 메소드 호출을 통해 실행하는데, 이 때 2번째 파라미터의 ?를 대체할 문자열로 3번째 파라미터인 whereArgs배열을 같이 전달해줄 수 있다. 마지막으로 영향을 받은, 즉 삭제된 데이터의 갯수를 return한다.</p>
+
+<p><br /></p>
+<h2 id="2-예제">2. 예제</h2>
+<hr />
+
+<p>먼저 앱의 전체적인 화면은 아래의 구조로 만들 것이다.</p>
+
+<p><img src="/images/android/53/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p><br /></p>
+
+<p>이를 위해 아래와 같이 XML 코드를 작성한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/dbNameInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:hint=</span><span class="s">"데이터베이스 이름"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/createDbBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:text=</span><span class="s">"DB 생성"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/tableNameInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:hint=</span><span class="s">"테이블 이름"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/createTableBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:text=</span><span class="s">"테이블 생성"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/nameToAddInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:textSize=</span><span class="s">"14dp"</span>
+            <span class="na">android:layout_marginHorizontal=</span><span class="s">"3dp"</span>
+            <span class="na">android:hint=</span><span class="s">"이름"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/ageToAddInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+            <span class="na">android:textSize=</span><span class="s">"14dp"</span>
+            <span class="na">android:layout_marginHorizontal=</span><span class="s">"3dp"</span>
+            <span class="na">android:hint=</span><span class="s">"나이"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/addBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"14dp"</span>
+            <span class="na">android:text=</span><span class="s">"추가"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/nameToDelInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:hint=</span><span class="s">"삭제할 사람 이름"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/delBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:text=</span><span class="s">"삭제"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:id=</span><span class="s">"@+id/dataViewBtn"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"조회"</span>
+        <span class="na">android:textSize=</span><span class="s">"14dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/status"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:background=</span><span class="s">"#33000000"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/ScrollView&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/dataView"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:background=</span><span class="s">"#33000000"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/ScrollView&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>실행코드를 위한 코드를 아래와 같이 작성한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">;</span>
+
+    <span class="nc">EditText</span> <span class="n">dbNameInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">tableNameInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">nameToDelInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">nameToAddInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">ageToAddInput</span><span class="o">;</span>
+
+    <span class="nc">TextView</span> <span class="n">status</span><span class="o">;</span>
+    <span class="nc">TextView</span> <span class="n">dataView</span><span class="o">;</span>
+
+    <span class="nc">String</span> <span class="n">dbName</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">tableName</span><span class="o">;</span>
+
+    <span class="nc">StringBuilder</span> <span class="n">sb_status</span><span class="o">;</span>
+    <span class="nc">StringBuilder</span> <span class="n">sb_data</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="cm">/* ********** XML에 정의된 UI객체 참조 ************ */</span>
+        <span class="n">dbNameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dbNameInput</span><span class="o">);</span>
+        <span class="n">tableNameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tableNameInput</span><span class="o">);</span>
+
+        <span class="n">nameToAddInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">nameToAddInput</span><span class="o">);</span>
+        <span class="n">ageToAddInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">ageToAddInput</span><span class="o">);</span>
+        <span class="n">nameToDelInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">nameToDelInput</span><span class="o">);</span>
+
+        <span class="n">status</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">status</span><span class="o">);</span>
+        <span class="n">dataView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dataView</span><span class="o">);</span>
+
+        <span class="nc">Button</span> <span class="n">createDbBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">createDbBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">createTableBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">createTableBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">delBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">delBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">addBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">addBtn</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">dataViewBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dataViewBtn</span><span class="o">);</span>
+        <span class="cm">/* ************************************************* */</span>
+
+        <span class="n">sb_status</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span> <span class="c1">// 상태 메시지를 나타내기 위한 스트링빌더 객체 생성</span>
+
+        <span class="cm">/* 데이터베이스 생성 버튼 클릭 이벤트 */</span>
+        <span class="n">createDbBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 데이터베이스 생성 */</span>
+                <span class="n">dbName</span> <span class="o">=</span> <span class="n">dbNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="n">db</span> <span class="o">=</span> <span class="n">openOrCreateDatabase</span><span class="o">(</span><span class="n">dbName</span><span class="o">,</span> <span class="no">MODE_ENABLE_WRITE_AHEAD_LOGGING</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+                <span class="n">sb_status</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"데이터베이스 "</span> <span class="o">+</span> <span class="n">dbName</span> <span class="o">+</span> <span class="s">"가 생성되었습니다.\n"</span><span class="o">);</span> <span class="c1">//상태 메세지 추가</span>
+                <span class="n">status</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_status</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 테이블 생성 버튼 클릭 이벤트 */</span>
+        <span class="n">createTableBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="n">tableName</span> <span class="o">=</span> <span class="n">tableNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                    <span class="cm">/* 테이블 생성을 위한 SQL문 작성 */</span>
+                    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"create table "</span> <span class="o">+</span> <span class="n">tableName</span> <span class="o">+</span> <span class="s">"(_id integer PRIMARY KEY autoincrement, name text, age integer);"</span><span class="o">;</span>
+                    <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">//sql문 실행</span>
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+
+                <span class="n">sb_status</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"테이블 "</span> <span class="o">+</span> <span class="n">tableName</span> <span class="o">+</span> <span class="s">"가 생성되었습니다.\n"</span><span class="o">);</span>
+                <span class="n">status</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_status</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 데이터 추가 버튼 클릭 이벤트 */</span>
+        <span class="n">addBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">nameToAddInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">ageToAddInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+                <span class="cm">/* 테이블에 데이터 추가하기를 위한 SQL문 작성 */</span>
+                <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into "</span> <span class="o">+</span> <span class="n">tableName</span> <span class="o">+</span> <span class="s">"(name, age) values("</span> <span class="o">+</span> <span class="s">"'"</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">"'"</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span> <span class="s">");"</span><span class="o">;</span>
+                <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">//sql문 실행</span>
+
+                <span class="n">sb_status</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"데이터가 추가되었습니다.(이름: "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">", 나이: "</span><span class="o">+</span><span class="n">age</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="n">status</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_status</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 데이터 삭제 버튼 클릭 이벤트 */</span>
+        <span class="n">delBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">nameToDelInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="nc">String</span><span class="o">[]</span> <span class="n">whereArgs</span> <span class="o">=</span> <span class="o">{</span><span class="n">name</span><span class="o">};</span>
+                <span class="kt">int</span> <span class="n">rowAffected</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="s">"name = ?"</span><span class="o">,</span> <span class="n">whereArgs</span><span class="o">);</span>
+
+                <span class="n">sb_status</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"이름이 "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">" 인 데이터가 모두 삭제되었습니다.(삭제된 데이터 수: "</span><span class="o">+</span><span class="n">rowAffected</span><span class="o">+</span><span class="s">")\n"</span><span class="o">);</span>
+                <span class="n">status</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_status</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="cm">/* 데이터 조회 버튼 클릭 이벤트 */</span>
+        <span class="n">dataViewBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="cm">/* 테이블의 이름과 나이 column을 가르키는 커서 객체 생성 */</span>
+                <span class="nc">Cursor</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">rawQuery</span><span class="o">(</span><span class="s">"SELECT name, age FROM "</span> <span class="o">+</span> <span class="n">tableName</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getCount</span><span class="o">();</span> <span class="c1">//데이터의 갯수</span>
+
+                <span class="n">sb_data</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+                <span class="n">sb_data</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"데이터 갯수 : "</span><span class="o">+</span> <span class="n">count</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+                    <span class="n">cursor</span><span class="o">.</span><span class="na">moveToNext</span><span class="o">();</span> <span class="c1">// 다음 데이터로 이동</span>
+                    <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">// 커서가 가르키는 column0(이름) 받기</span>
+                    <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// 커서가 가르키는 column1(나이) 받기</span>
+                    <span class="n">sb_data</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"data#"</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s">") 이름= "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">", 나이= "</span><span class="o">+</span><span class="n">age</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span> <span class="c1">// 스트링빌더에 출력문 추가</span>
+                <span class="o">}</span>
+                <span class="n">dataView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb_data</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span> <span class="c1">// 텍스트뷰에 표시</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>아까 설명한 메소드를 사용하여 간단하게 DB 및 테이블을 생성했고 데이터를 추가 및 삭제했다. 이 때, 순수 SQL문을 <code class="highlighter-rouge">execSQL()</code> 메소드로 실행한 부분도 있고, 데이터 삭제처럼 파라미터를 전달하여 SQL문을 실행한 경우도 있다. 실무에서는 SQL문을 <code class="highlighter-rouge">execSQL()</code> 메소드를 통해 실행하는것이 관리가 편해서 대부분 이 방법을 사용한다고 한다. 데이터를 추가 및 삭제 할 때마다 상태 표시창에 결과가 조회된다. 또한 조회 버튼을 클릭하면 현재 테이블의 모든 데이터가 조회된다. 앱을 실행화면 아래와 같은 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/53/2.jpg" alt="2" width="30%" height="30%" />
+<img src="/images/android/53/3.jpg" alt="3" width="30%" height="30%" /></p>
+
+<p><br /></p>
+
+<p>데이터베이스를 사용하기 위한 내용을 정리하면 아래와 같다.</p>
+
+<blockquote>
+  <ol>
+    <li>DB생성 : openOrCreateDatabase()</li>
+    <li>테이블 생성 : execSQL(“create table …”);</li>
+    <li>레코드 추가 : execSQL(“insert into … “);</li>
+    <li>데이터 조회 : Cursor cursor = rawQuery(“select … from …”);</li>
+  </ol>
+</blockquote>
+:ET

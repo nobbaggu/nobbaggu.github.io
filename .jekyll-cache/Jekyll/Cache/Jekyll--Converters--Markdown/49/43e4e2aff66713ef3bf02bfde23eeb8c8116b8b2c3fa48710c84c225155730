@@ -1,0 +1,119 @@
+I"�)<p>배열은 같은 자료형을 여러 개 묶어서 관리할 수 있는 자료구조이다.</p>
+
+<p> </p>
+
+<h1 id="1-선언-초기화">1. 선언, 초기화</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+<span class="c1">//자료형[] 이름 = new 자료형[길이];</span>
+</code></pre></div></div>
+
+<p>위와 같이 선언하면 배열이 생성된다. 아무런 초기화가 없는 경우 정수는 0, 실수는 0.0, 객체는 null로 초기화 된다.</p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span> <span class="c1">//길이가 5인 배열 선언과 동시에 초기화</span>
+<span class="c1">//int[] myNums = new int[5]{1,2,3,4,5}; //오류 발생</span>
+</code></pre></div></div>
+
+<p>선언과 동시에 초기화 시킬 수 있다. 이 경우는 배열의 길이정보를 빼 주어야 한다.</p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span> <span class="c1">//new int[] 생략 가능</span>
+</code></pre></div></div>
+
+<p>new int[]를 생략하여도 배열을 선언하는 데에는 충분한 모든 정보가 포함되어 있다.</p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span> <span class="c1">//배열 선언</span>
+<span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span> <span class="c1">//초기화</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-배열-자료-사용">2. 배열 자료 사용</h1>
+
+<hr />
+
+<p>배열에 저장된 자료에 접근할 때에는 index 연산자 []를 사용한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="o">{</span>  
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span>
+      <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]);</span>
+      
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      <span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]+=</span><span class="mi">10</span><span class="o">;</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">3</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="mi">4</span><span class="o">]);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>1</p>
+
+<p>2</p>
+
+<p>3</p>
+
+<p>4</p>
+
+<p>5</p>
+
+<p>11</p>
+
+<p>12</p>
+
+<p>13</p>
+
+<p>14</p>
+
+<p>15</p>
+
+<p>주의해야 할 건 <strong>배열의 index는 0부터 시작</strong>한다는 것이다.</p>
+
+<p>배열 객체는 length라는 변수를 가지고 있다. length는 배열의 길이 정보를 반환해준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="o">{</span>  
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">myNums</span><span class="o">;</span>
+      <span class="n">myNums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
+      
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">myNums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myNums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>myNums.length는 myNums배열의 길이인 5를 반환한다. length속성을 사용해서 for문으로 myNums의 모든 요소를 한 번에 출력할 수 있다.</p>
+:ET

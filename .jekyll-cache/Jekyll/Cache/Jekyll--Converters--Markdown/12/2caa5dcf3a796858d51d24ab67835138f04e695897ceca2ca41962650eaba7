@@ -1,0 +1,148 @@
+I"�<p>반복문 중 활용빈도가 가장 높은 for 반복문입니다. for문으로 구현할 수 있는 모든 것은 while 반복문으로 대체 가능합니다. 반대로도 마찬가지입니다. 상황에 따라서 while과 for 반복문 중 어떤 것을 사용하는 것이 편할지 판단하는 것은 자신의 몫입니다.</p>
+
+<p> </p>
+
+<h1 id="1-for-반복문-구조">1. for 반복문 구조</h1>
+
+<hr />
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="o">(</span><span class="n">초기식</span><span class="o">;</span> <span class="n">조건식</span><span class="o">;</span> <span class="n">증감식</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<h2 id="1-초기식">(1) 초기식</h2>
+
+<p>for문을 돌리기 위해 사용할 변수를 <strong>초기화</strong>를 시킵니다. 가령, num = 0; 같은 식으로 말입니다. 초기식은 for 반복문에 들어와서 딱 한 번 시행만 시행되고 더 이상 쓰이지 않습니다.</p>
+
+<h2 id="2-조건식">(2) 조건식</h2>
+
+<p>조건식에 따라서 { } 구문을 실행할지 말지 결정을 합니다. 조건식이 ‘참(true)’ 이면 { }를 실행, ‘거짓(false)’ 이면 for 반복문을 탈출합니다.</p>
+
+<h2 id="3-증감식">(3) 증감식</h2>
+
+<p>for문을 돌리기 위한 변수의 증가 혹은 감소를 담당하는 식입니다. 예를 들면, num++ 혹은 num- 혹은 num+=5 와 같이 증감식을 한 번 거치고나서 다시 조건식을 판단하여 { } 구문을 또 한 번 실행할지 말지 결정이 됩니다.</p>
+
+<p>정리하면 다음 그림과 같습니다.</p>
+
+<p><img class="aligncenter wp-image-937" src="/images/2018/09/1-6.jpg" alt="" width="310" height="266" srcset="/images/2018/09/1-6.jpg 455w, /images/2018/09/1-6-300x257.jpg 300w" sizes="(max-width: 310px) 100vw, 310px" /></p>
+
+<p>조건식이 ‘참’일 동안은 ② → ③ → ④ → ② 의 순서로 계속 실행이 되다가, 조건식이 거짓이 되면 for 반복문을 탈출합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">count</span><span class="o">++){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"count is "</span><span class="o">+</span><span class="n">count</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<p>실행결과</p>
+
+<p>The count is 0</p>
+
+<p>The count is 1</p>
+
+<p>The count is 2</p>
+
+<p>The count is 3</p>
+
+<p>The count is 4</p>
+
+<p>계속하려면 아무 키나 누르십시오 . . . </p>
+
+<p> </p>
+
+<p>while문과 다르게 for문은 초기식에서 변수의 선언이 가능하고 증감식에서 변수의 증가 혹은 감소가 가능합니다.</p>
+
+<p>위의 코드를 while 반복문을 사용해서 짜려면 어떻게 해야할까요?</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"count is "</span><span class="o">+</span><span class="n">count</span><span class="o">);</span>
+            <span class="n">count</span><span class="o">++;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>위의 코드의 실행결과는 for문을 사용했을때와 같습니다. 하지만 for문과는 다르게 변수를 밖에서 선언하고 초기화까지 시켜야하며 while문의 { } 안에서 cnt 변수를 증가시켜줘야 합니다.</p>
+
+<p>for문은 정해진 반복횟수가 있는 경우에 사용하는 것이 좋습니다.</p>
+
+<p>while 문은 어떤 변수의 값이 특정한 조건이 될 경우 특정 코드를 실행시킬 때 사용하기 좋습니다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-조건식--증감식이-없는-for문">2. 조건식 / 증감식이 없는 for문</h1>
+
+<hr />
+
+<p> </p>
+
+<h2 id="1-조건식이-없는-경우">1) 조건식이 없는 경우</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="o">;</span><span class="n">cnt</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The count is "</span><span class="o">+</span><span class="n">cnt</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<p>실행결과</p>
+
+<p>The count is 0</p>
+
+<p>The count is 2</p>
+
+<p>The count is 4</p>
+
+<p>The count is 6</p>
+
+<p>The count is 8</p>
+
+<p>The count is 10</p>
+
+<p>.</p>
+
+<p>.</p>
+
+<p>.&lt;/pre&gt;</p>
+
+<p>println함수의 출력이 멈추지 않습니다.</p>
+
+<p><strong>조건식이 비어있는 경우는 항상 true로 간주하여 무한루프가 되어버립니다.</strong></p>
+
+<p>증감식이 비워져도 아무런 문제가 없습니다.</p>
+:ET

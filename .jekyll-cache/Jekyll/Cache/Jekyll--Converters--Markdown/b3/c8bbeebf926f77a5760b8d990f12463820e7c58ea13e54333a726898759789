@@ -1,0 +1,588 @@
+I"�<p> </p>
+<h2 id="1-안드로이드의-이벤트-처리-방식">1. 안드로이드의 이벤트 처리 방식</h2>
+<hr />
+
+<p>GUI(Graphic User Interface)를 제공하는 프로그램은 화면과 사용자간의 상호작용에 대해 처리하는 방식을 내부적으로 정의하고 있다. 이 상호작용을 이벤트라고 부르는데, 이벤트에는 터치 이벤트(Touch Event), 클릭 이벤트(Click Event), 키 입력(Key Event) 등이 있다.</p>
+
+<p>크게 안드로이드에서 이벤트를 처리하는 방식은 2가지로 나뉜다.</p>
+
+<h4 id="1-델리게이션-모델delegation-model">1) 델리게이션 모델(Delegation Model)</h4>
+
+<ul>
+  <li>레이아웃에 정의된 뷰 객체에 발생하는 이벤트를 처리하는 모델. 위임모델 이라고도 한다.</li>
+</ul>
+
+<p>기본적인 구조는 이벤트 소스(뷰 객체)와 이벤트 핸들러(이벤트 처리방식이 정의된 객체)를 리스너로 연결하는 구조이다. 이 구조는 이벤트를 뷰 객체에 전달한 후 이후의 처리과정을 뷰 객체에 위임한다. 이렇게 하면 각각의 뷰마다 이벤트 처리 루틴이 할당되어 이벤트 루프에서 받아 처리할 때보다 과정이 간소화되고 코드가 더욱 객체지향적이 된다.</p>
+
+<h4 id="2-하이어라키-모델hierachy-model">2) 하이어라키 모델(Hierachy Model)</h4>
+
+<ul>
+  <li>액티비티에 발생하는 이벤트를 처리하는 모델</li>
+</ul>
+
+<p>델리게이션 모델처럼 리스너를 사용하는 구조가 아니다. 특정 액티비티 내에서 터치 이벤트 등이 발생하면 자동으로 호출되는 콜백 메소드만 재정의 해주면 된다.</p>
+
+<p> 
+ </p>
+<h2 id="2-이벤트-종류">2. 이벤트 종류</h2>
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>터치 이벤트</td>
+      <td>화면을 손가락으로 터치</td>
+    </tr>
+    <tr>
+      <td>키 이벤트</td>
+      <td>키패트, 하드웨어 버튼을 누름</td>
+    </tr>
+    <tr>
+      <td>제스처 이벤트</td>
+      <td>터치 이벤트 도중 일정 패턴의 움직임</td>
+    </tr>
+    <tr>
+      <td>포커스</td>
+      <td>뷰 객체가 포커스를 받거나 잃음</td>
+    </tr>
+    <tr>
+      <td>화면 방향 변경</td>
+      <td>화변 방향(가로,세로)가 변경</td>
+    </tr>
+  </tbody>
+</table>
+
+<p> </p>
+
+<p>안드로이드에서 자주 사용하는 이벤트는 터치 이벤트, 키 이벤트이며 이벤트가 발생되면 다음의 메소드가 자동으로 호출된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">onTouchEvent</span><span class="o">(</span><span class="nc">MotionEvent</span> <span class="n">event</span><span class="o">)</span>
+<span class="kt">boolean</span> <span class="nf">onKey</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span>
+<span class="kt">boolean</span> <span class="nf">onKeyUp</span><span class="o">(</span><span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span>
+<span class="kt">boolean</span> <span class="nf">onKeyDown</span><span class="o">(</span><span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>특정 뷰 객체에서 위 메소드들을 사용하려면 뷰를 상속하는 클래스를 따로 만들어 메소드를 재정의하는 방법, 혹은 리스너 객체를 설정하는 방식이 있다. 따라서 특정 뷰 객체에서 위 메소드들을 사용하려면 델리게이션 모델로 리스너를 달아주는 것이 간편한 사용법이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">View</span><span class="o">.</span><span class="na">OnTouchListener</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="nf">onTouch</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="nc">MotionEvent</span> <span class="n">event</span><span class="o">)</span>
+<span class="nc">View</span><span class="o">.</span><span class="na">OnKeyListener</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="nf">onKey</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span>
+<span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span> <span class="o">:</span> <span class="kt">void</span> <span class="nf">OnClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span>
+<span class="nc">View</span><span class="o">.</span><span class="na">OnFocusChangeListener</span> <span class="o">:</span> <span class="kt">void</span> <span class="nf">onFocusChange</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">hasFocus</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>실제로 예제를 만들어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;View</span>
+        <span class="na">android:id=</span><span class="s">"@+id/view1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+        <span class="na">android:background=</span><span class="s">"#ffff0000"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;View</span>
+        <span class="na">android:id=</span><span class="s">"@+id/view2"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+        <span class="na">android:background=</span><span class="s">"#ff00ff00"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ScrollView&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>뷰 2개와 텍스트뷰 하나를 만들었다. 각각의 뷰는 리스너 객체를 달아 터치 이벤트를 처리하기 위함이고 텍스트뷰는 우리가 이벤트 처리를 눈으로 확인하기 위해 만든 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleevent</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.MotionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+        <span class="nc">View</span> <span class="n">view1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">view1</span><span class="o">);</span>
+        <span class="nc">View</span> <span class="n">view2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">view2</span><span class="o">);</span>
+
+        <span class="c1">//view1 객체에 터치 이벤트 발생 시 처리하는 코드</span>
+        <span class="n">view1</span><span class="o">.</span><span class="na">setOnTouchListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnTouchListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTouch</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="nc">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">action</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getAction</span><span class="o">();</span> <span class="c1">// 액션 정보 획득</span>
+                <span class="kt">float</span> <span class="n">curX</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getX</span><span class="o">();</span> <span class="c1">// X좌표</span>
+                <span class="kt">float</span> <span class="n">curY</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getY</span><span class="o">();</span> <span class="c1">// Y좌표</span>
+
+                <span class="k">if</span><span class="o">(</span><span class="n">action</span><span class="o">==</span><span class="nc">MotionEvent</span><span class="o">.</span><span class="na">ACTION_DOWN</span><span class="o">){</span><span class="c1">// 화면 누르기</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"[view1] 손가락 눌림: "</span><span class="o">+</span><span class="n">curX</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">curY</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">action</span><span class="o">==</span><span class="nc">MotionEvent</span><span class="o">.</span><span class="na">ACTION_MOVE</span><span class="o">){</span><span class="c1">// 움직임</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"[view1] 손가락 움직임: "</span><span class="o">+</span><span class="n">curX</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">curY</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">action</span><span class="o">==</span><span class="nc">MotionEvent</span><span class="o">.</span><span class="na">ACTION_UP</span><span class="o">){</span><span class="c1">// 화면에서 손 떼기</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"[view1] 손가락 떼짐: "</span><span class="o">+</span><span class="n">curX</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">curY</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span>
+
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="c1">//view2 객체에 터치 이벤트 발생 시 처리하는 코드</span>
+        <span class="n">view2</span><span class="o">.</span><span class="na">setOnTouchListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnTouchListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTouch</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="nc">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">action</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getAction</span><span class="o">();</span> <span class="c1">// 액션 정보 획득</span>
+                <span class="kt">float</span> <span class="n">curX</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getX</span><span class="o">();</span> <span class="c1">// X좌표</span>
+                <span class="kt">float</span> <span class="n">curY</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getY</span><span class="o">();</span> <span class="c1">// Y좌표</span>
+
+                <span class="k">if</span><span class="o">(</span><span class="n">action</span><span class="o">==</span><span class="nc">MotionEvent</span><span class="o">.</span><span class="na">ACTION_DOWN</span><span class="o">){</span><span class="c1">// 화면 누르기</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"[view2] 손가락 눌림: "</span><span class="o">+</span><span class="n">curX</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">curY</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">action</span><span class="o">==</span><span class="nc">MotionEvent</span><span class="o">.</span><span class="na">ACTION_MOVE</span><span class="o">){</span><span class="c1">// 움직임</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"[view2] 손가락 움직임: "</span><span class="o">+</span><span class="n">curX</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">curY</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">action</span><span class="o">==</span><span class="nc">MotionEvent</span><span class="o">.</span><span class="na">ACTION_UP</span><span class="o">){</span><span class="c1">// 화면에서 손 떼기</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"[view2] 손가락 떼짐: "</span><span class="o">+</span><span class="n">curX</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">curY</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span>
+
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/22/1.jpg" alt="1" width="30%" height="30%" /></p>
+
+<p> </p>
+<h2 id="3-제스처gesture-이벤트">3. 제스처(Gesture) 이벤트</h2>
+<hr />
+
+<p>터치 이벤트 중에 발생하는 일정한 패턴을 가지는 움직임을 제스처(Gesture)라고 한다. 대표적으로 화면 스크롤 등의 움직임이 있다. 제스처 이벤트는 터치 이벤트를 받은 후 추가적인 확인을 거쳐 만들어지며, 일반적인 터치 이벤트보다 간단하게 처리할 수 있다.</p>
+
+<p>다음은 제스처 이벤트를 처리할 수 있는 메소드들이다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>메소드</th>
+      <th>이벤트 유형</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>onDown()</td>
+      <td>화면이 눌림</td>
+    </tr>
+    <tr>
+      <td>onShowPress()</td>
+      <td>화면이 눌렸다 떼어짐</td>
+    </tr>
+    <tr>
+      <td>onSingleTapUp()</td>
+      <td>화면이 한 손가락으로 눌렸다 떼어짐</td>
+    </tr>
+    <tr>
+      <td>onSingleTapConfirmed()</td>
+      <td>화면이 한 손가락으로 눌림</td>
+    </tr>
+    <tr>
+      <td>onDoubleTap()</td>
+      <td>화면이 두 손가락으로 눌림</td>
+    </tr>
+    <tr>
+      <td>onScroll()</td>
+      <td>화면이 눌린 채 일정 속도와 방향으로 움직임</td>
+    </tr>
+    <tr>
+      <td>onFling()</td>
+      <td>화면이 눌린 채 가속도를 붙여 손가락을 움직였다 뗌</td>
+    </tr>
+    <tr>
+      <td>onLongPress()</td>
+      <td>화면이 오랫동안 눌림</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>제스처 이벤트를 처리하려면 GestureDetector 객체를 만들고 여기에 터치 이벤트를 전달해주면 된다. 그러면 제스처 디텍터가 제스처가 일어나면 이를 감지하고 적당한 메소드를 호출하여 이벤트를 처리해준다.</p>
+
+<p>예제를 보면서 이해해보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;View</span>
+        <span class="na">android:id=</span><span class="s">"@+id/view"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+        <span class="na">android:background=</span><span class="s">"#ff0000ff"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ScrollView&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleevent</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.GestureDetector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.MotionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+    <span class="nc">View</span> <span class="n">view</span><span class="o">;</span>
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+    <span class="nc">GestureDetector</span> <span class="n">detector</span><span class="o">;</span>
+
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+
+        <span class="c1">//GestureDetector 객체 생성하고 메소드 재정의</span>
+        <span class="n">detector</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GestureDetector</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="k">new</span> <span class="nc">GestureDetector</span><span class="o">.</span><span class="na">OnGestureListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onDown</span><span class="o">(</span><span class="nc">MotionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\nonDown() 호출됨"</span><span class="o">);</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onShowPress</span><span class="o">(</span><span class="nc">MotionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\nonShowPress() 호출됨"</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onSingleTapUp</span><span class="o">(</span><span class="nc">MotionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\nonSingleTapUp() 호출됨"</span><span class="o">);</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onScroll</span><span class="o">(</span><span class="nc">MotionEvent</span> <span class="n">e1</span><span class="o">,</span> <span class="nc">MotionEvent</span> <span class="n">e2</span><span class="o">,</span> <span class="kt">float</span> <span class="n">distanceX</span><span class="o">,</span> <span class="kt">float</span> <span class="n">distanceY</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\nonScroll 호출됨 : ("</span> <span class="o">+</span> <span class="n">distanceX</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">distanceY</span><span class="o">+</span><span class="s">")"</span><span class="o">);</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onLongPress</span><span class="o">(</span><span class="nc">MotionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\nonLongPress() 호출됨"</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onFling</span><span class="o">(</span><span class="nc">MotionEvent</span> <span class="n">e1</span><span class="o">,</span> <span class="nc">MotionEvent</span> <span class="n">e2</span><span class="o">,</span> <span class="kt">float</span> <span class="n">velocityX</span><span class="o">,</span> <span class="kt">float</span> <span class="n">velocityY</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">textView</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\nonFling() 호출됨 : ("</span> <span class="o">+</span> <span class="n">velocityX</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="n">velocityY</span><span class="o">+</span><span class="s">")"</span><span class="o">);</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+
+        <span class="n">view</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">view</span><span class="o">);</span>
+
+        <span class="n">view</span><span class="o">.</span><span class="na">setOnTouchListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnTouchListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTouch</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="nc">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">detector</span><span class="o">.</span><span class="na">onTouchEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span> <span class="c1">//GestureDetector 객체의 onTouchEvent() 메소드 호출하면서 MotionEvent 객체 전달</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/22/2.jpg" alt="2" width="30%" height="30%" /></p>
+
+<p>제스처 이벤트 중에서 대표적인 것이 스크롤(Scroll)과 플링(Fling)이다. 스크롤은 일정한 속도의 스크롤이고 플링은 빠른 속도의 스크롤을 의미한다. 그리고 각각의 제스쳐가 발생했을 때 호출되는 메소드에는 터치의 위치와 속도가 각각 전달된다.</p>
+
+<p> </p>
+<h2 id="4-키key-이벤트">4. 키(Key) 이벤트</h2>
+<hr />
+
+<p>키 입력 이벤트는 아래의 메소드들을 재정의하여 처리할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">onKey</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span> <span class="c1">// onKeyListener 리스너를 설정할 때 사용</span>
+<span class="kt">boolean</span> <span class="nf">onKeyDown</span><span class="o">(</span><span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span> <span class="c1">//액티비티 내에서 메소드를 재정의하여 사용</span>
+</code></pre></div></div>
+
+<p>메소드로 전달되는 파라미터 중에서 keyCode 는 키를 구별할 때 사용한다. 그리고 KeyEvent는 키 입력에 대한 정보를 가지고 있는 객체이다.</p>
+
+<p>아래 링크를 따라가면 모든 keyCode에 대한 내용이 나와있다.</p>
+
+<p><a href="https://developer.android.com/reference/android/view/KeyEvent">keyCode</a></p>
+
+<p>예제로 시스템의 ‘뒤로가기’ 버튼이 눌렸을 때 이벤트를 처리하는 앱을 만들어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:text=</span><span class="s">"뒤로가기 버튼을 눌러보세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"24dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">"350dp"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleevent</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.KeyEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onKeyDown</span><span class="o">(</span><span class="kt">int</span> <span class="n">keyCode</span><span class="o">,</span> <span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 시스템 [BACK] 버튼이 눌린 경우 토스트 메시지 보여주기</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">keyCode</span><span class="o">==</span><span class="nc">KeyEvent</span><span class="o">.</span><span class="na">KEYCODE_BACK</span><span class="o">){</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"뒤로가기 버튼이 눌렸습니다"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/22/3.jpg" alt="3" width="30%" height="30%" /></p>
+
+<p> </p>
+<h2 id="5-포커스focus-이벤트">5. 포커스(Focus) 이벤트</h2>
+<hr />
+
+<p>포커스란 화면상의 어떠한 뷰 객체가 키 입력 이벤트를 받는지를 나타내는 것이다. 예를 들면 붙여넣기를 한다던지, 키보드로 텍스트 입력을 한다던지 할 때 현재 포커스를 받고있는 뷰에서 그 입력이 일어난다는 것이다. 입력상자가 포커스를 받고 있으면 커서가 깜빡이는 것 또한 예시가 된다. 뷰 객체는 포커스를 받거나 잃거나 하는 변화가 일어나면 onFocusChange() 메소드가 호출된다. 예제를 통해 알아보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/editText1"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:hint=</span><span class="s">"텍스트를 입력하세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:id=</span><span class="s">"@+id/editText2"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:hint=</span><span class="s">"텍스트를 입력하세요"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/textView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"20dp"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>입력상자를 2개 만들고 텍스트뷰를 하나 만든다. 텍스트뷰에는 두 입력상자 중 어떠한 입력상자가 포커스를 받고있는지 나타내기 위한 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplefocus</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">TextView</span> <span class="n">textView</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">textView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView</span><span class="o">);</span>
+        <span class="nc">EditText</span> <span class="n">editText1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText1</span><span class="o">);</span>
+        <span class="nc">EditText</span> <span class="n">editText2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editText2</span><span class="o">);</span>
+
+        <span class="n">editText1</span><span class="o">.</span><span class="na">setOnFocusChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnFocusChangeListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFocusChange</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">hasFocus</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">hasFocus</span><span class="o">){</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"현재 포커스 : 입력상자1"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">editText2</span><span class="o">.</span><span class="na">setOnFocusChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnFocusChangeListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFocusChange</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">hasFocus</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">hasFocus</span><span class="o">){</span>
+                    <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"현재 포커스 : 입력상자2"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/android/22/4.jpg" alt="4" width="30%" height="30%" />
+<img src="/images/android/22/5.jpg" alt="5" width="30%" height="30%" /></p>
+
+<p> </p>
+<h2 id="6-단말-방향-전환-이벤트">6. 단말 방향 전환 이벤트</h2>
+<hr />
+
+<p>안드로이드에서 휴대폰의 방향을 가로/세로 전환할 때는 단말 방향 전환 이벤트가 발생한다. 이 때 화면 레이아웃이 달리 보여야 하므로 메모리에서 액티비티를 없앤 후 새로 만든다.</p>
+
+<p>단말의 방향이 세로일 때는 /res/layout 폴더의 xml 파일이, 단말의 방향이 가로일 때는 /res/layout-land 폴더의 xml 파일이 자동으로 사용된다. 따라서 각각의 폴더에 xml 레이아웃 파일을 만들어야한다. 만약 /res/layout-land 폴더가 존재하지 않으면 단말의 방향이 가로일때와 세로일 때 모두 /res/layout 폴더의 xml 파일이 사용된다.</p>
+
+<p>먼저 예제 앱을 만들기 위해 각각의 폴더를 만들고 activity_main.xml 파일을 각각 만든다. /res/layout/activity_main.xml 파일의 TextView의 text는 “세로방향”, /res/layout-land/activity_main.xml 파일의 TextView의 text는 “가로방향”으로 설정한다. 그리고 MainActivity.java 파일에는 다음 코드를 입력해준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleorientation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onCreate() 호출됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>onCreate() 메소드의 토스트 메시지는 액티비티 객체가 새로 메모리에 만들어지는 것을 확인하기 위함이다.</p>
+
+<p>앱을 실행하면 다음과 같은 화면을 확인할 수 있다.</p>
+
+<p><img src="/images/android/22/6.jpg" alt="6" width="30%" height="30%" />
+<img src="/images/android/22/7.jpg" alt="7" width="40%" height="40%" /></p>
+
+<p>그런데 단말의 방향이 달라져도 액티비티가 다를 필요가 없는 경우에는 굳이 액티비티를 다시 만들 필요가 없다. 이 경우에는 매니페스트 파일의 &lt;activity&gt; 태그에 다음의 속성을 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="orientation|screenSize|keyboardHidden"
+</code></pre></div></div>
+
+<p>이 속성이 설정되면 시스템은 단말의 방향전환이 일어날 때 액티비티를 다시 만들지 않고 애플리케이션쪽으로 단말 방향 전환 이벤트가 발생했다고 알려주기만 한다. 그리고 onConfigurationChanged() 메소드를 자동으로 호출한다. 이 메소드안에서 개발자가 직접 처리하는 코드를 작성하면 된다.</p>
+
+<p>위에서 만든 앱에서 MainActivity.java 클래스의 코드만 다음과 같이 바꿔준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.sampleorientation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.res.Configuration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"onCreate() 호출됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onConfigurationChanged</span><span class="o">(</span><span class="nc">Configuration</span> <span class="n">newConfig</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onConfigurationChanged</span><span class="o">(</span><span class="n">newConfig</span><span class="o">);</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">newConfig</span><span class="o">.</span><span class="na">orientation</span><span class="o">==</span><span class="nc">Configuration</span><span class="o">.</span><span class="na">ORIENTATION_LANDSCAPE</span><span class="o">){</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"가로방향"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">newConfig</span><span class="o">.</span><span class="na">orientation</span><span class="o">==</span><span class="nc">Configuration</span><span class="o">.</span><span class="na">ORIENTATION_PORTRAIT</span><span class="o">){</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"세로방향"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제는 액티비티가 다시 만들어지지 않기때문에 onCreate() 메소드가 새로 호출되지 않는다.</p>
+
+<p><img src="/images/android/22/8.jpg" alt="8" width="30%" height="30%" />
+<img src="/images/android/22/9.jpg" alt="9" width="40%" height="40%" /></p>
+
+<p>두 화면의 텍스트가 모두 “세로방향” 인걸로 미루어보아 액티비티를 새로 만들지 않은 것을 알 수 있다. 이 때에는 onConfigurationChanged() 메소드 안에서 레이아웃을 각각 따로 설정해주는 코드를 추가하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>이렇게 하면 단말의 방향이 세로일 때는 layout 폴더의 activity_main.xml 파일이, 가로일 때는 layout-land 폴더의 activity_main.xml 파일이 사용된다.</p>
+
+<h4 id="tip-화면의-방향을-고정시키고-싶다면">Tip. 화면의 방향을 고정시키고 싶다면?</h4>
+
+<p>매니페스트 파일의 &lt;activity&gt; 태그에 screenOrientation 속성을 설정하면 된다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:screenOrientation="landscape"
+android:screenOrientation="portrait"
+</code></pre></div></div>
+:ET

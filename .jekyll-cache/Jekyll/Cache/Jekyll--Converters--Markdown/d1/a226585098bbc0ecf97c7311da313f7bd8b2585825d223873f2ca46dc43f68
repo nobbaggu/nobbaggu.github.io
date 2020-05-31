@@ -1,0 +1,289 @@
+I"�u<p>리스트뷰(ListView)는 안드로이드에서 가장 많이 사용되는 위젯(widget)들 중의 하나이다. 리스트뷰와 같이 여러 아이템들 중 하나를 선택하는 위젯을 선택위젯이라 부른다. 그리고 선택 위젯은 다른 위젯들과 사용하는 방식이 다르다. 일반 위젯은 데이터를 위젯 위에 바로 표시하지만 선택 위젯은 일반적으로 <strong>어댑터(Adapter)</strong> 패턴을 사용하며 데이터를 위젯이 아닌 어댑터에 설정하고 뷰도 어댑터에서 만든다.</p>
+
+<p><img src="/images/android/37/1.png" alt="1" width="70%" height="70%" /></p>
+
+<p>어댑터에서는 데이터를 설정하고 뷰를 구성하여 <code class="highlighter-rouge">getView()</code> 메소드를 통해 뷰 객체를 return 한다.</p>
+
+<p><br />
+리스트뷰는 사용 패턴이 정해져있어 한 번 익혀두면 계속 쓸 수 있다. 리스트뷰를 사용하는 과정을 설명하면서 간단한 앱을 하나 만들어보자.</p>
+
+<p><br /></p>
+
+<h3 id="1-각-아이템을-보여줄-레이아웃-정의하기">1. 각 아이템을 보여줄 레이아웃 정의하기</h3>
+
+<p>리스트뷰에는 몇 개의 아이템이 있던지간에 각 아이템이 표시되는 레이아웃은 동일하다. 예를들면 전화번호부는 왼쪽에 사진이 있고, 오른쪽에 이름과 전화번호, 나이가 있는 형식일 수 있다. 이 단계에서는 이 레이아웃을 정의한다.</p>
+
+<p><br /></p>
+
+<p>&lt;person_item.xml&gt;</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ImageView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/imageView"</span>
+        <span class="na">android:layout_width=</span><span class="s">"80dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"80dp"</span>
+        <span class="na">android:src=</span><span class="s">"@drawable/panho"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+        <span class="na">android:layout_marginLeft=</span><span class="s">"10dp"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/textView1"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:text=</span><span class="s">"New Text"</span>
+            <span class="na">android:textSize=</span><span class="s">"40dp"</span>
+            <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+            <span class="na">android:textColor=</span><span class="s">"#ff5805"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;RelativeLayout</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;TextView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/textView2"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_alignParentLeft=</span><span class="s">"true"</span>
+                <span class="na">android:text=</span><span class="s">"New Text"</span>
+                <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+                <span class="na">android:textColor=</span><span class="s">"#0223e0"</span>
+                <span class="na">android:layout_marginTop=</span><span class="s">"6dp"</span><span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;TextView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/textView3"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_alignParentRight=</span><span class="s">"true"</span>
+                <span class="na">android:text=</span><span class="s">"New Text"</span>
+                <span class="na">android:textSize=</span><span class="s">"20dp"</span>
+                <span class="na">android:textColor=</span><span class="s">"#4902d6"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;/RelativeLayout&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<p>이 레이아웃은 왼쪽에 사진을 넣고 오른쪽에는 수직 리니어 레이아웃을 넣어 윗쪽에는 이름을, 아랫쪽에는 휴대폰 번호와 나이를 넣기위해 구성하였다.</p>
+
+<p>형태는 아래 사진과 같이 나온다.</p>
+
+<p><img src="/images/android/37/2.png" alt="2" width="70%" height="70%" /></p>
+
+<p>구성된 레이아웃을 메모리에 인플레이션하고 컨트롤 하기위한 Java 클래스도 정의해야 한다.</p>
+
+<p><br />
+&lt;PersonItemView.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplelistview</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.LayoutInflater</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ImageView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.LinearLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PersonItemView</span> <span class="kd">extends</span> <span class="nc">LinearLayout</span> <span class="o">{</span>
+
+    <span class="nc">TextView</span> <span class="n">textView1</span><span class="o">;</span>
+    <span class="nc">TextView</span> <span class="n">textView2</span><span class="o">;</span>
+    <span class="nc">TextView</span> <span class="n">textView3</span><span class="o">;</span>
+    <span class="nc">ImageView</span> <span class="n">imageView</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">PersonItemView</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">PersonItemView</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">AttributeSet</span> <span class="n">attrs</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+        <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">){</span>
+
+        <span class="cm">/* 아이템 보여줄 뷰를 객체로 인플레이션 */</span>
+        <span class="nc">LayoutInflater</span> <span class="n">inflater</span> <span class="o">=</span> <span class="o">(</span><span class="nc">LayoutInflater</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="nc">Context</span><span class="o">.</span><span class="na">LAYOUT_INFLATER_SERVICE</span><span class="o">);</span>
+        <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">person_item</span><span class="o">,</span> <span class="k">this</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+
+        <span class="n">textView1</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView1</span><span class="o">);</span>
+        <span class="n">textView2</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView2</span><span class="o">);</span>
+        <span class="n">textView3</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView3</span><span class="o">);</span>
+        <span class="n">imageView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setImage</span><span class="o">(</span><span class="kt">int</span> <span class="n">resId</span><span class="o">){</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="na">setImageResource</span><span class="o">(</span><span class="n">resId</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">){</span>
+        <span class="n">textView1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMobile</span><span class="o">(</span><span class="nc">String</span> <span class="n">mobile</span><span class="o">){</span>
+        <span class="n">textView2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">mobile</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">){</span>
+        <span class="n">textView3</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">age</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="2-실제-데이터를-위한-클래스-정의하기">2. 실제 데이터를 위한 클래스 정의하기</h3>
+
+<p>각 아이템을 위한 뷰를 구성했기때문에 이제 각 아이템에 추가할 데이터를 위한 클래스를 정의해야한다.</p>
+
+<p><br />
+&lt;PersonItem.java&gt;</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.swnomad.samplelistview</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PersonItem</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">mobile</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">resId</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">PersonItem</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">mobile</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resId</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span>  <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">mobile</span> <span class="o">=</span> <span class="n">mobile</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resId</span> <span class="o">=</span> <span class="n">resId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMobile</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">mobile</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMobile</span><span class="o">(</span><span class="nc">String</span> <span class="n">mobile</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">mobile</span> <span class="o">=</span> <span class="n">mobile</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getResId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">resId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setResId</span><span class="o">(</span><span class="kt">int</span> <span class="n">resId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resId</span> <span class="o">=</span> <span class="n">resId</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="3-어댑터-클래스-정의">3. 어댑터 클래스 정의</h3>
+
+<p>리스트뷰와 같은 선택위젯은 데이터를 어댑터에 설정하고 뷰도 어댑터에서 구성하여 뿌려준다고 했다. <strong>BaseAdapter</strong> 클래스는 어댑터를 만들 때 상속받는 가장 일반적인 클래스이다. 이 클래스는 MainActivity 클래스의 내부 클래스로 정의해야한다. 그래야 Context를 가져올 수 있기 때문이다.</p>
+
+<p><br /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* BaseAdapter 클래스 상속받아 SingerAdapter 클래스 정의 */</span>
+<span class="kd">class</span> <span class="nc">PersonAdapter</span> <span class="kd">extends</span> <span class="nc">BaseAdapter</span><span class="o">{</span>
+    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">PersonItem</span><span class="o">&gt;</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span> <span class="c1">//SingerItem 객체를 저장할 ArrayList 객체 생성</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//데이터의 갯수 리턴</span>
+        <span class="k">return</span> <span class="n">items</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addItem</span><span class="o">(</span><span class="nc">PersonItem</span> <span class="n">item</span><span class="o">){</span> <span class="c1">//ArrayList에 새로운 SingerItem 객체 추가하는 메소드</span>
+        <span class="n">items</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">getItem</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">){</span> <span class="c1">// index를 통해 ArrayList의 SingerItem 객체 반환</span>
+        <span class="k">return</span> <span class="n">items</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">position</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getItemId</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">position</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/* getView() 메소드는 어댑터에 데이터를 설정하고 뷰를 구성하여 리턴해주는 메소드이다. */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">View</span> <span class="nf">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="nc">View</span> <span class="n">convertView</span><span class="o">,</span> <span class="nc">ViewGroup</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">PersonItemView</span> <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PersonItemView</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span> <span class="c1">//뷰 객체 생성</span>
+        <span class="nc">PersonItem</span> <span class="n">item</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">position</span><span class="o">);</span> <span class="c1">//뷰에 적용할 데이터 가져오기</span>
+
+        <span class="cm">/* 뷰에 데이터 설정 */</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">setMobile</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getMobile</span><span class="o">());</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getResId</span><span class="o">());</span>
+
+        <span class="k">return</span> <span class="n">view</span><span class="o">;</span> <span class="c1">//뷰를 리턴</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>여기서 중요한 건 <code class="highlighter-rouge">getCount()</code> 메소드와 <code class="highlighter-rouge">getView()</code> 메소드이다. <code class="highlighter-rouge">getCount()</code> 메소드는 어댑터에 설정된 데이터의 갯수를 관리한다. <code class="highlighter-rouge">getView()</code> 메소드는 리스트뷰의 각 아이템의 뷰를 구성해주므로 이 메소드가 잘못되면 화면이 의도하지 않은대로 보일 수 있다. 그리고 어댑터에 아이템을 추가하기 위한 <code class="highlighter-rouge">addItem()</code>와 아이템을 가져오기 위해서 <code class="highlighter-rouge">getItem()</code> 메소드도 정의하였다.</p>
+
+<p><br />
+<br />
+이제 리스트뷰를 위한 뷰와 데이터클래스, 그리고 어댑터를 다 만들었으므로 실제로 리스트뷰에 데이터를 나타내기 위해서 MainActivity 클래스에서 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">ListView</span> <span class="n">listView</span><span class="o">;</span>
+    <span class="nc">PersonAdapter</span> <span class="n">adapter</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PersonAdapter</span><span class="o">();</span> <span class="c1">//어댑터 객체 생성</span>
+        <span class="cm">/* 어댑터에 데이터 추가 */</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="k">new</span> <span class="nc">PersonItem</span><span class="o">(</span><span class="s">"김판호"</span><span class="o">,</span> <span class="s">"123-1234-1234"</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">panho</span><span class="o">));</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="k">new</span> <span class="nc">PersonItem</span><span class="o">(</span><span class="s">"최형배"</span><span class="o">,</span> <span class="s">"321-3211-3211"</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">hangebae</span><span class="o">));</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="k">new</span> <span class="nc">PersonItem</span><span class="o">(</span><span class="s">"최익현"</span><span class="o">,</span> <span class="s">"567-5675-5676"</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">ikhyeon</span><span class="o">));</span>
+
+        <span class="n">listView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">listView</span><span class="o">);</span>
+        <span class="n">listView</span><span class="o">.</span><span class="na">setAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span> <span class="c1">//리스트뷰에 어댑터 적용</span>
+
+        <span class="cm">/* 리스트의 아이템 클릭 이벤트 리스너 객체 설정 */</span>
+        <span class="n">listView</span><span class="o">.</span><span class="na">setOnItemClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">AdapterView</span><span class="o">.</span><span class="na">OnItemClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onItemClick</span><span class="o">(</span><span class="nc">AdapterView</span><span class="o">&lt;?&gt;</span> <span class="n">parent</span><span class="o">,</span> <span class="nc">View</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">PersonItem</span> <span class="n">item</span> <span class="o">=</span> <span class="o">(</span><span class="nc">PersonItem</span><span class="o">)</span> <span class="n">adapter</span><span class="o">.</span><span class="na">getItem</span><span class="o">(</span><span class="n">position</span><span class="o">);</span>
+                <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">item</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>어댑터 객체를 생성하고 아이템을 추가한다. 그리고 아이템이 선택되었을 때 원하는 효과를 구현하기 위해 <code class="highlighter-rouge">setOnItemClickListener()</code> 메소드를 통해서 리스너 객체를 달아주었다. 아이템을 선택하면 토스트 메시지로 아이템의 이름이 뜨도록 만들었다.</p>
+
+<p><br />
+앱을 실행하면 다음과 같은 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/37/3.jpg" alt="3" width="30%" height="30%" /></p>
+:ET

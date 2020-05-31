@@ -1,0 +1,119 @@
+I")*<h1 id="1-자동-형-변환">1. 자동 형 변환</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">byte</span> <span class="n">bNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="n">bNum</span><span class="o">;</span> <span class="c1">//bNum이 int형으로 자동 형 변한되어 iNum에 저장</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iNum</span><span class="o">);</span> <span class="c1">//10 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>크기가 작은 자료형에서 큰 자료형으로는 형 변환이 자동으로 일어납니다.</strong></p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">byte</span> <span class="n">bNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">float</span> <span class="n">fNum</span> <span class="o">=</span> <span class="n">bNum</span><span class="o">;</span> <span class="c1">//bNum이 float형으로 자동 형 변한되어 iNum에 저장</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">fNum</span><span class="o">);</span> <span class="c1">//10.0 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>더욱 정밀한 자료형으로의 형 변환은 자동으로 일어납니다.</strong></p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">float</span> <span class="n">fNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// int -&gt; float</span>
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+
+        <span class="kt">double</span> <span class="n">dNum</span> <span class="o">=</span> <span class="n">fNum</span> <span class="o">+</span> <span class="n">iNum</span><span class="o">;</span> <span class="c1">//iNum이 float으로 변환되어 fNum과 연산되고 그 결과가 double로 변환되어 dNum에 저장</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dNum</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-강제-형-변환">2. 강제 형 변환</h1>
+
+<hr />
+
+<p>강제 형 변환은 명시적으로 형 변환을 시키는 경우입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">byte</span> <span class="n">bNum</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">iNum</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bNum</span><span class="o">);</span> <span class="c1">//10 출력</span>
+
+        <span class="kt">int</span> <span class="n">iNum2</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+        <span class="kt">byte</span> <span class="n">bNum2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">iNum2</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bNum2</span><span class="o">);</span><span class="c1">// -24출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>2번째에서 왜 -24가 출력되는지 알아봅시다.</p>
+
+<p>int자료형에 1000을 저장하면 총 4byte=32bit에 0000 0000 0000 0000 0000 0011 1110 1000이 저장됩니다.</p>
+
+<p>이것을 byte로 형 변환을 하면 1byte=8bit만 남기고 상위의 비트들이 다 날아가고 1110 1000만 남습니다. 이는 10진수로 -24입니다.</p>
+
+<p>결론 : <strong>크기가 큰 자료형이 작은 자료형으로 형 변환을 할 때에는 상위 바이트를 날려버린다.</strong></p>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">double</span> <span class="n">dNum</span> <span class="o">=</span> <span class="mf">10.123456</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">dNum</span><span class="o">;</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iNum</span><span class="o">);</span> <span class="c1">//10 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>더 정밀한 자료형을 덜 정밀한 자료형으로 바꿀 경우 소수점 부분이 날아간다.</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">hello</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloJava</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">double</span> <span class="n">dNum</span> <span class="o">=</span> <span class="mf">1.2</span><span class="o">;</span>
+        <span class="kt">float</span> <span class="n">fNum</span> <span class="o">=</span> <span class="mf">0.9f</span><span class="o">;</span>
+        
+        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">dNum</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">fNum</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">iNum2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">dNum</span> <span class="o">+</span> <span class="n">fNum</span><span class="o">);</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iNum</span><span class="o">);</span> <span class="c1">// 1 출력</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iNum2</span><span class="o">);</span> <span class="c1">// 2 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>iNum이 연산 될 때는 dNum과 fNum이 각각 int형인 1, 0으로 형 변환되어 더해져서 iNum에 1로 저장됩니다.</p>
+
+<p>iNum2에는 dNum과 fNum 더해져 2.1이 됩니다. 이 때 fNum이 double로 형 변환되어 더해집니다. 아무튼 이 2.1이 int형으로 형 변환되어 2로 변하고 iNum2에 저장되므로 2가 출력되는 것입니다.</p>
+:ET

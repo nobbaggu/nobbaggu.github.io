@@ -1,0 +1,118 @@
+I"x$<p><img src="/images/android/2/a.png" alt="a" width="70%" height="70%" /></p>
+
+<p>처음 프로젝트를 만들면 액티비티가 하나 존재한다. 참고로 <strong>액티비티</strong>는 하나의 화면이라고 생각하면 된다. MainActivity.java와 activity_main.xml 두 개의 파일이 있는데, 하나의 액티비티는 보통 하나의 java 코드와 하나의 xml 파일로 구성되어있다.</p>
+
+<p>먼저 activity_main.xml 파일은 안드로이드의 화면에 보여질 화면을 구성하는 파일이다.</p>
+
+<p><img src="/images/android/2/b.png" alt="b" width="70%" height="70%" /></p>
+
+<p>Design/Text 두 개의 탭이 있는데, Design 탭에서는 조금 더 편리하게 아이콘을 끌어다가 버튼 등을 만듦으로써 화면을 구성할 수 있다. Text 탭을 누르면 화면을 구성하는 XML 코드들이 보인다.</p>
+
+<p><img src="/images/android/2/c.png" alt="c" width="70%" height="70%" /></p>
+
+<p>일단 먼저, android:text의 내용을 바꾸어보자.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:text="Hello Android!"
+</code></pre></div></div>
+
+<p>그리고 다시 Design 탭을 가서 확인해보면 텍스트가 바뀐 것을 알 수 있다.</p>
+
+<p>즉, android:text 코드는 화면에 글자를 표시하게 해준다는 것을 알 수 있다.</p>
+
+<p>이제 <TextView> 태그의 TextView를 Button으로 바꾸어보자.</TextView></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Button</span>
+<span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+<span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+<span class="na">android:text=</span><span class="s">"Hello World!"</span>
+<span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+<span class="na">app:layout_constraintLeft_toLeftOf=</span><span class="s">"parent"</span>
+<span class="na">app:layout_constraintRight_toRightOf=</span><span class="s">"parent"</span>
+<span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Design 탭을 가보면 단순한 글자가 아닌 버튼이 생겼고, 글자가 그 버튼 안에 표시되는 걸 볼 수 있다.</p>
+
+<p><img src="/images/android/2/d.png" alt="d" width="70%" height="70%" /></p>
+
+<p>지금은 이유는 그냥 무시하고 넘어간다.</p>
+
+<p> </p>
+<h3 id="1-toast-메시지-띄우기">1. Toast 메시지 띄우기</h3>
+
+<p>이제 버튼을 클릭했을 때 메세지를 띄우는 기능을 한 번 넣어보자.</p>
+
+<p>먼저, Button 태그의 속성에 아래의 문장을 추가해준다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:onClick="buttonClicked"
+</code></pre></div></div>
+
+<p>그리고 MainActivity.java에 buttonClicked 라는 이름의 메소드를 하나 추가해준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonClicked</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">){</span>
+	<span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"버튼이 눌렸습니다."</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">);</span>
+    <span class="c1">//안드로이드 화면에 Toast 메세지를 띄우는 코드</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Shift+F10을 눌러 앱이 휴대폰에 설치되고 실행될 때 까지 기다린다. 실행이 되고 버튼을 터치하면 아래처럼 토스트 메세지가 뜬다.</p>
+
+<p><img src="/images/android/2/toast_message.jpg" alt="toast_message" width="30%" height="30%" /></p>
+
+<p> </p>
+<h3 id="2-intent-사용해보기">2. Intent 사용해보기</h3>
+
+<p>buttonClicked 메소드를 아래와 같이 변경해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonClicked</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">){</span>
+    <span class="nc">Intent</span> <span class="n">intent1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="nc">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="nc">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"https://www.google.com"</span><span class="o">));</span>
+    <span class="n">startActivity</span><span class="o">(</span><span class="n">intent1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>실행을 시켜서 버튼을 누르면 웹 브라우저가 자동으로 실행되고 구글 홈페이지를 띄워준다.</p>
+
+<p><strong>인텐트</strong>는 간단히 생각해 데이터나 요청, 명령 등을 전달하는 객체라고 생각하면 된다. 인텐트를 사용하면 단 몇 줄의 코드만으로 우리가 원하는 기능을 실행해준다.</p>
+
+<p> </p>
+<h3 id="3-화면-추가하고-띄워보기">3. 화면 추가하고 띄워보기</h3>
+
+<p>File - New - Activity - Empty Activity 순서로 따라가서 새로운 액티비티를 하나 만든다. 액티비티 이름은 MenuActivity로 한다.
+그러면 MenuActivity.java와 activity_menu.xml 두 개의 파일이 만들어졌을 것이다.</p>
+
+<p>먼저 MenuActivity.java에 다음의 메소드를 하나 추가한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">backButtonClicked</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">){</span>
+    <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"돌아가기"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">finish</span><span class="o">();</span> <span class="c1">//액티비티 종료</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>activity_menu.xml에는 버튼을 하나 추가하고 onClick 속성을 다음과 같이 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public void backButtonClicked(View v){
+    Toast.makeText(getApplicationContext(), "돌아가기", Toast.LENGTH_LONG).show();
+    finish(); //액티비티 종료
+}
+</code></pre></div></div>
+
+<p>이렇게 하면 버튼이 눌렸을 때 backButtonClicked 메소드가 호출이 된다.</p>
+
+<p>그리고 MainActivity의 buttonClicked 메소드의 내용을 아래와 같이 수정한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonClicked</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">){</span>
+    <span class="nc">Intent</span> <span class="n">intent1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="nc">MenuActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span><span class="c1">//새로 만든 액티비티를 인텐트로 만들기</span>
+    <span class="n">startActivity</span><span class="o">(</span><span class="n">intent1</span><span class="o">);</span><span class="c1">//인텐트 전달</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제 실행을 해보면 아래와 같이 된다.</p>
+
+<p><img src="/images/android/2/aa.jpg" alt="d" width="30%" height="30%" />
+<img src="/images/android/2/bb.jpg" alt="d" width="30%" height="30%" />
+<img src="/images/android/2/cc.jpg" alt="d" width="30%" height="30%" /></p>
+
+<p>첫 번째 화면에서 버튼을 누르면 두 번째 액티비티 화면으로 넘어간다. 다시 두 번째 화면에서 버튼을 누르면 finish()가 호출되면서 액티비티가 종료되고 Toast 메세지가 하나 뜨면서 이전의 액티비티로 돌아온다.</p>
+
+<p>오늘은 안드로이드 앱의 기본 구조, 액티비티, 인텐트, 토스트 메시지 띄우기 등을 해보면서 안드로이드 앱 개발이 어떻게 시작되는지에 대한 감을 잡을 수 있었다. 여기에 이제부터 살을 붙여가며 실력을 늘릴 것이다.</p>
+:ET

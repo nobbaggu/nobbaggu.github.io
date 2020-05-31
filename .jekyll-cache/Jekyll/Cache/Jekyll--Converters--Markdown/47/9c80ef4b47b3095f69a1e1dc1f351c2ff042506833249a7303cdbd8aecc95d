@@ -1,0 +1,170 @@
+I"�G<p><a href="https://github.com/swnomad/rssfeeder" target="_blank">SQLite3 사용법</a></p>
+
+<p>이 포스팅은 위 링크에서 설명한 SQLite 데이터베이스의 기본 사용법을 알고나서 더욱 편리하게 데이터베이스 열기 및 수정을 위한 SQLiteOpenHelper 클래스의 사용 목적과 방법에 대한 글이다.</p>
+
+<p><br /></p>
+<h2 id="sqliteopenhelper-클래스를-사용하는-이유">SQLiteOpenHelper 클래스를 사용하는 이유</h2>
+<hr />
+
+<p>구글 플레이스토어에 올린 앱이 SQLite를 사용할 경우 DB의 구조가 변경될 경우가 있다. 예를들면 사람들의 정보를 저장하기위해 ‘이름’, ‘나이’ column만 사용했었는데 이후에 ‘휴대폰 번호’ column을 추가해야 하는 경우이다. 이 때 앱을 버전 업그레이드하면서 새로 배포할 때, 기존의 테이블을 drop하고 새로 만들도록하면 기존 사용자의 데이터가 모두 날아가버리는 불상사가 생겨버린다. 따라서 신규 사용자의 경우는 단순히 새로운 구조의 테이블을 생성하면 되지만, 기존 사용자의 경우 기존 데이터를 유지하면서 업그레이드 해주어야한다.</p>
+
+<p>이러한 경우 사용할 수 있는것이 SQLiteOpenHelper이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">SQLiteOpenHelper</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">SQLiteDatabase</span><span class="o">.</span><span class="na">CursorFactory</span> <span class="n">factory</span><span class="o">,</span> <span class="kt">int</span> <span class="n">version</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>SQLiteOpenHelper 객체를 만들 때 생성자의 파라미터로는 4개의 변수가 전달되는데, name은 데이터베이스의 이름이다. 그리고 마지막 파라미터인 정수 version으로 전달되는 버전정보를 기존의 버전정보와 다르게 지정하여 DB의 구조를 업그레이드 할 수 있다.</p>
+
+<p>SQLiteOpenHelper 클래스의 주 사용 목적은 데이터베이스의 생성 및 업그레이드가 필요할 시에 자동으로 콜백 메소드가 호출된다는 점에서 온다. 이 콜백 메소드를 재정의함으로서 DB의 생성, 업그레이드 등의 상태에 맞게 알맞은 처리가 가능하다.</p>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">onOpen</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">opUpgrade</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldVersion</span><span class="o">,</span> <span class="kt">int</span> <span class="n">newVersion</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>생성자의 파라미터로 전달된 DB의 이름이 없다면 <code class="highlighter-rouge">onCreate()</code> 메소드가 호출되고 이미 사용중인 DB라면 <code class="highlighter-rouge">onUpgrade()</code> 메소드가 호출된다.</p>
+
+<p><br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;EditText</span>
+            <span class="na">android:id=</span><span class="s">"@+id/dbNameInput"</span>
+            <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:hint=</span><span class="s">"데이터베이스 이름"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:layout_weight=</span><span class="s">"3"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;Button</span>
+            <span class="na">android:id=</span><span class="s">"@+id/createDbBtn"</span>
+            <span class="na">android:layout_width=</span><span class="s">"120dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:textSize=</span><span class="s">"16dp"</span>
+            <span class="na">android:text=</span><span class="s">"DB 생성"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"5dp"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nc">SQLiteDatabase</span> <span class="n">database</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">DB_VERSION</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// 데이터베이스 버전</span>
+
+    <span class="kd">private</span> <span class="nc">DatabaseOpenHelper</span> <span class="n">helper</span><span class="o">;</span>
+
+    <span class="nc">EditText</span> <span class="n">dbNameInput</span><span class="o">;</span>
+    <span class="nc">EditText</span> <span class="n">tableNameInput</span><span class="o">;</span>
+
+    <span class="nc">String</span> <span class="n">dbName</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">tableName</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="cm">/* ********** XML에 정의된 UI객체 참조 ************ */</span>
+        <span class="n">dbNameInput</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dbNameInput</span><span class="o">);</span>
+        <span class="nc">Button</span> <span class="n">createDbBtn</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">createDbBtn</span><span class="o">);</span>
+        <span class="cm">/* ************************************************* */</span>
+
+        <span class="cm">/* 데이터베이스 생성 버튼 클릭 이벤트 */</span>
+        <span class="n">createDbBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="cm">/* 데이터베이스 생성 */</span>
+                    <span class="n">dbName</span> <span class="o">=</span> <span class="n">dbNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                    <span class="n">helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DatabaseOpenHelper</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">dbName</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="no">DB_VERSION</span><span class="o">);</span>
+					
+					<span class="c1">// helper 객체를 통해 db 불러오기</span>
+                    <span class="cm">/* 1. dbName과 같은 이름의 DB가 없으면 helper 클래스의 onCreate() 호출
+                     * 2. dbName과 같은 이름의 DB가 있으면 version 전달되면서 helper 클래스의 onUprgrade() 호출 */</span>
+                    <span class="n">database</span> <span class="o">=</span> <span class="n">helper</span><span class="o">.</span><span class="na">getWritableDatabase</span><span class="o">();</span>
+
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">class</span> <span class="nc">DatabaseOpenHelper</span> <span class="kd">extends</span> <span class="nc">SQLiteOpenHelper</span> <span class="o">{</span>
+
+        <span class="kd">public</span> <span class="nf">DatabaseOpenHelper</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">SQLiteDatabase</span><span class="o">.</span><span class="na">CursorFactory</span> <span class="n">factory</span><span class="o">,</span> <span class="kt">int</span> <span class="n">version</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">factory</span><span class="o">,</span> <span class="n">version</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"Helper클래스 onCreate() 호출됨"</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+
+            <span class="cm">/* DB가 처음 만들어졌으므로 테이블 생성 */</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">db</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="k">try</span><span class="o">{</span>
+                    <span class="n">tableName</span> <span class="o">=</span> <span class="n">tableNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                    <span class="cm">/* 테이블 생성을 위한 SQL문 작성 */</span>
+                    <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"create table if not exists "</span> <span class="o">+</span> <span class="n">tableName</span> <span class="o">+</span> <span class="s">"(_id integer PRIMARY KEY autoincrement, name text, age integer);"</span><span class="o">;</span>
+                    <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span> <span class="c1">//sql문 실행</span>
+                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onUpgrade</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldVersion</span><span class="o">,</span> <span class="kt">int</span> <span class="n">newVersion</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="nc">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">"Helper클래스 onUpgrade() 호출됨: "</span>
+                    <span class="o">+</span> <span class="n">oldVersion</span> <span class="o">+</span><span class="s">" -&gt; "</span> <span class="o">+</span> <span class="n">newVersion</span><span class="o">,</span> <span class="nc">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onOpen</span><span class="o">(</span><span class="nc">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">//Toast.makeText(MainActivity.this, "Helper클래스 onOpen() 호출됨", Toast.LENGTH_SHORT).show();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>콜백 메소드를 확인하기 위해 토스트 메시지를 만들었다. 위 앱을 실행하면 아래와 같은 화면이 나타난다.</p>
+
+<p><img src="/images/android/54/1.jpg" alt="1" width="30%" height="30%" /></p>
+
+<p><br /></p>
+
+<p>위 코드에서 버전을 아래와 같이 2로 바꾸고 다시 실행해보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">DB_VERSION</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">// 데이터베이스 버전</span>
+</code></pre></div></div>
+
+<p>그럼 아래와 같은 화면을 볼 수 있다.</p>
+
+<p><img src="/images/android/54/2.jpg" alt="2" width="30%" height="30%" /></p>
+
+<p><br /></p>
+
+<p>사실 위 2가지 서로 다른 상태 메소드 이후에 곧바로 onOpen() 메소드가 호출된다. 여기에서는 DB 조회와 같이 사용 코드를 작성할 수 있다.</p>
+
+<p>이렇게 버전 정보를 넣어줌으로써 다른 메소드가 호출된다. 상황에 따라 각 메소드를 재정의 함으로써 신규 사용자와 기존 사용자 사이의 유연한 코드 처리가 가능하다. 이 부분이 SQLiteOpenHelper를 사용하는 주 목적이다. 나머지 데이터 조작에 관한 부분은 일반적인 SQLite3 사용법과 동일하다. <code class="highlighter-rouge">execSQL()</code> 메소드나 <code class="highlighter-rouge">rawQuery()</code> 메소드를 통해 데이터 추가/삭제 및 조회를 할 수 있다.</p>
+:ET

@@ -1,0 +1,333 @@
+I".�<p>스트림(stream)은 배열, 컬렉션 같은 여러 자료를 처리하는 일을 더 효율적으로 할 수 있도록 도와주는 라이브러리이다. <strong>처리해야 하는 자료에 상관없이 동일한 방법으로 처리(메소드를 사용)할 수 있도록 기능이 구현</strong>되어있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IntArrayTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+      <span class="kt">int</span> <span class="n">arr</span><span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
+      
+      <span class="c1">//배열의 모든 요소 출력 1</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="o">}</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+      
+      <span class="c1">//배열의 모든 요소 출력 2 : stream 사용</span>
+      <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">forEach</span><span class="o">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>기본적으로 for문을 사용하여 배열의 모든 요소를 출력할 수 있는데, 스트림을 이용해서 같은 기능을 수행하는 코드를 예시로 보았다. 뭔가 더 간결해보인다.</p>
+
+<p>위에서 예시로 든 것과 같이 스트림은 자료를 효율적으로 처리하도록 도와준다. 자료형의 관계에 상관없이 말이다.</p>
+
+<p> </p>
+
+<h1 id="1-스트림-연산">1. 스트림 연산</h1>
+
+<hr />
+
+<p>스트림 연산에는 중간연산과 최종연산이 있다. 중간연산은 자료를 변경하여 내부적으로 새로운 자료를 생성한다. 최종 연산은 생성된 내부자료에 대해 연산을 수행하여 연산결과를 만들어내며, 마지막에 단 한 번만 호출된다.</p>
+
+<p>모든 중간연산, 최종연산 메소드를 알 필요는 없다. 자주 쓰이는 메소드 위주로 보면서 사용법을 익히면 충분하다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IntArrayTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">myStrings</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"java"</span><span class="o">);</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"digimon"</span><span class="o">);</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"ha"</span><span class="o">);</span>
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"say"</span><span class="o">);</span>
+      
+      <span class="c1">//        (스트림생성) (길이가 4 인 문자열만 추출)         (추출된 각각의 문자열을 출력)</span>
+	  
+      <span class="n">myStrings</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;=</span><span class="mi">4</span><span class="o">).</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">));</span>
+      
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 예제에서 filter() 중간연산으로 길이가 4이상인 문자열만 추출하여 새로운 자료를 내부적으로 생성하였다. 그리고 마지막에는 forEach() 최종연산으로 중간연산으로 생성된 자료를 하나하나 훑으며 출력하는 최종 연산을 수행한다.</p>
+
+<p>하나의 예시를 더 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">17</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">22</span><span class="o">,</span> <span class="s">"Park"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">15</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">));</span>
+      
+      <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">forEach</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IntArrayTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">arr</span><span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
+      
+      <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">sum</span><span class="o">();</span>
+      <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">count</span><span class="o">();</span> <span class="c1">//count()의 반환값은 long형 정수이므로 int로 형변환</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"sum = "</span><span class="o">+</span><span class="n">sum</span><span class="o">+</span><span class="s">", count = "</span><span class="o">+</span><span class="n">count</span><span class="o">);</span>
+      
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-스트림-사용">2. 스트림 사용</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="c1">//ArrayList 생성하여 4명의 학생 객체 추가</span>
+      <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="s">"Lee"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">17</span><span class="o">,</span> <span class="s">"Kim"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">22</span><span class="o">,</span> <span class="s">"Park"</span><span class="o">));</span>
+      <span class="n">stus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="mi">15</span><span class="o">,</span> <span class="s">"Choi"</span><span class="o">));</span>
+      
+      
+      <span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">stus</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span> <span class="c1">//스트림 생성</span>
+      <span class="n">stream</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getAge</span><span class="o">()).</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">));</span> <span class="c1">//스트림 소모</span>
+      
+      <span class="c1">// stream.map(s -&gt; s.getName()).forEach(s -&gt; System.out.println(s)); // 오류 발생</span>
+      
+      <span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stream2</span> <span class="o">=</span> <span class="n">stus</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span> <span class="c1">//스트림 재생성</span>
+      <span class="n">stream2</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">));</span> <span class="c1">//스트림 소모</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위에서 처음으로 스트림을 생성하고 나이만 추출한 후 출력을 하였다. 이후에는 스트림으로 이름만 추출하여 출력하려하는데 오류가 발생한다. 오류발생 이유는 스트림이 소모되었기 때문이다. 스트림은 최종 출력결과를 내는 최종연산 메소드를 호출하여 최종결과를 내면서 스트림을 소모한다. 따라서 스트림을 사용하려면 다시 스트림을 생성해 주어야한다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-스트림의-성질">3. 스트림의 성질</h1>
+
+<hr />
+
+<h3 id="1-자료형에-상관없이-동일한-방법-적용">1) 자료형에 상관없이 동일한 방법 적용</h3>
+
+<p>자료형에 관계없이 같은 방법으로 메소드를 호출해서 사용하면 된다. 이는 아주 편리한 특징이다. 이는 스트림이 자료구조에 의존하지 않는 일관성있는 메소드를 제공하기 때문이다.</p>
+
+<p> </p>
+
+<h3 id="2-스트림은-소모된다">2) 스트림은 소모된다</h3>
+
+<p>한 번 생성된 스트림으로 일단 연산을 하면 스트림이 소모된다. 스트림으로 또 다른 작업을 하기 위해서는 새로 생성해주어야한다.</p>
+
+<p> </p>
+
+<h3 id="3-스트림은-별도의-메모리-공간을-사용한다">3) 스트림은 별도의 메모리 공간을 사용한다</h3>
+
+<p>스트림을 호출하여 리스트, 집합 등의 자료를 가지고 여러가지 연산을 하여도 대상이 되는 자료는 아무런 영향을 받지 않는다. 이는 스트림이 연산을 할 때 사용하는 별도의 메모리공간이 존재하기 때문이다.</p>
+
+<p> </p>
+
+<h3 id="4-중간-연산은-여러번-가능하다">4) 중간 연산은 여러번 가능하다</h3>
+
+<p>예를들어 학생 객체를 요소로 가지는 ArrayList가 있다고 하자. 이 때 15세 이상의 학생만 추출하기 위해 중간연산 메소드인 filter()를 한 번 호출하고, 이를 오름차순으로 정렬하기위해 sorted()메소드를 한 번 호출할 수 있다.</p>
+
+<p>하지만 마지막으로 최종연산 메소드를 호출하여야만 결과가 만들어진다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="4-프로그래머가-정의하는-연산기능--reduce">4. 프로그래머가 정의하는 연산기능 : reduce()</h1>
+
+<hr />
+
+<p>reduce()는 스트림의 자료를 하나하나 소모해가며 프로그래머가 직접 정의한 함수 기능을 수행한다.</p>
+
+<p>reduce() 메소드는 다음의 형태로 정의되어있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">T</span> <span class="nf">reduce</span><span class="o">(</span><span class="no">T</span> <span class="n">identify</span><span class="o">,</span> <span class="nc">BinaryOperator</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">accumulator</span><span class="o">)</span>
+<span class="c1">//T reduce(초기값, 함수 기능)</span>
+</code></pre></div></div>
+
+<p>identify는 초기값을 의미하고 BinaryOperator는 인터페이스로, 람다식을 써주어도 되고 인터페이스를 구현한 클래스를 만들어 추상메소드를 재정의할 수도 있다.</p>
+
+<p>BinaryOperator는 apply() 추상메소드를 가지고 있으며 우리가 람다식으로 구현한 기능, 혹은 클래스를 통해 구현한 기능이 apply()메소드의 기능으로 재정의 되는 원리이다. apply() 메소드는 매개변수 2개, 반환값 1개를 가지며 세 가지의 자료형은 동일하다.</p>
+
+<p>겉보기에 복잡해 보이지만 사용방법은 엄청 단순하다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.function.BinaryOperator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CompareString</span> <span class="kd">implements</span> <span class="nc">BinaryOperator</span><span class="o">{</span>  
+   
+   <span class="nd">@Override</span> <span class="c1">//apply() 메소드는 두 개씩 비교하며 큰 것을 추려내도록 재정의</span>
+   <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">apply</span><span class="o">(</span><span class="nc">Object</span> <span class="n">s1</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">s2</span><span class="o">)</span> <span class="o">{</span>
+      
+      <span class="k">if</span><span class="o">(((</span><span class="nc">String</span><span class="o">)</span> <span class="n">s1</span><span class="o">).</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span> <span class="o">&gt;=</span> <span class="o">((</span><span class="nc">String</span><span class="o">)</span> <span class="n">s2</span><span class="o">).</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">return</span> <span class="n">s1</span><span class="o">;</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="o">{</span>
+         <span class="k">return</span> <span class="n">s2</span><span class="o">;</span>
+      <span class="o">}</span>
+      
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">String</span><span class="o">[]</span> <span class="n">says</span> <span class="o">=</span> <span class="o">{</span><span class="s">"hello man~!"</span><span class="o">,</span> <span class="s">"yo man hallo~ Yeah!"</span><span class="o">,</span> <span class="s">"halo~"</span><span class="o">};</span>
+      
+      <span class="c1">//1. 인터페이스를 구현한 클래스 객체를 전달하여 사용하는 방법</span>
+      <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">says</span><span class="o">).</span><span class="na">reduce</span><span class="o">(</span><span class="k">new</span> <span class="nc">CompareString</span><span class="o">()).</span><span class="na">get</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+      
+      <span class="c1">//2.  초기값과 람다식을 직접 전달하여 사용하는 방법</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
+         <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">says</span><span class="o">).</span><span class="na">reduce</span><span class="o">(</span><span class="s">""</span><span class="o">,</span> <span class="o">(</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+         <span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span> <span class="o">&gt;=</span> <span class="n">s2</span><span class="o">.</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span><span class="k">return</span> <span class="n">s1</span><span class="o">;}</span>
+         <span class="k">else</span> <span class="o">{</span><span class="k">return</span> <span class="n">s2</span><span class="o">;}</span>
+         <span class="o">})</span>
+      <span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+
+
+</code></pre></div></div>
+
+<p>인터페이스를 구현한 클래스로 객체를 만들어 reduce() 메소드의 매개변수로 전달하면 클래스에 재정의된 apply()메소드가 자동으로 호출된다. 마지막에 남은 최종 결과를 get()메소드를 이용하여 얻어서 str에 저장하고 출력해보면 가장 긴 문자열이 출력된다.</p>
+
+<p>초기값과 람다식을 직접 전달한 경우도 같다. 사실 이 경우도 익명클래스 객체가 생성되는 경우이므로 내부적인 구조와 로직이 인터페이스를 구현한 클래스로 호출하는 경우와 동일하다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="5-예제">5. 예제</h1>
+
+<hr />
+
+<p>여행사의 고객 리스트 클래스를 정의한다. 멤버변수로는 이름, 나이, 가격이 있는데 20세 이상 고객은 100원, 밑으로는 50원의 가격을 적용한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TravelCustomer</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">price</span><span class="o">;</span>
+   
+   <span class="kd">public</span> <span class="nf">TravelCustomer</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
+   
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="s">"name: "</span><span class="o">+</span><span class="n">name</span> <span class="o">+</span><span class="s">" age: "</span><span class="o">+</span><span class="n">age</span><span class="o">+</span> <span class="s">" price: "</span><span class="o">+</span><span class="n">price</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">stream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TravelTest</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">List</span><span class="o">&lt;</span><span class="nc">TravelCustomer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TravelCustomer</span><span class="o">(</span><span class="s">"Lee"</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TravelCustomer</span><span class="o">(</span><span class="s">"Kim"</span><span class="o">,</span> <span class="mi">45</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TravelCustomer</span><span class="o">(</span><span class="s">"Park"</span><span class="o">,</span> <span class="mi">14</span><span class="o">,</span> <span class="mi">50</span><span class="o">));</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"======show all customers======="</span><span class="o">);</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=======total cost=========="</span><span class="o">);</span>
+      <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getPrice</span><span class="o">()).</span><span class="na">sum</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">total</span><span class="o">);</span>
+      
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"========all adult customer========"</span><span class="o">);</span> <span class="c1">//20세 이상 고객만 출력</span>
+      <span class="c1">//filter()를 사용하여 20세 이상만 추출 -&gt; map 메소드를 사용하여 이름만 추출 -&gt; 오름차순 정렬 -&gt; 각각의 요소를 출력</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()&gt;=</span><span class="mi">20</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">sorted</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+      
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>성인 이상의 고객 명단만 출력할 때에는 중간 연산 메소드를 총 3개 사용하였다. 다시 한 번 말하지만 중간연산은 몇번이 되어도 상관없으며 항상 최종연산을 하여야 결과를 얻을 수 있다.</p>
+:ET

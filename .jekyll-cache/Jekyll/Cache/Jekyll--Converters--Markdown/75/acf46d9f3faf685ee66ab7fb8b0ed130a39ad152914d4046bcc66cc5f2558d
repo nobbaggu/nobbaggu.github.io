@@ -1,0 +1,138 @@
+I"�)<p>생성자 는 클래스형의 인스턴스를 만들 때 필요한 요소이다. 생성자는 멤버 인스턴스가 만들어 질 때 멤버변수의 초기화에 관여하고 정보은닉과 관계되는 Java의 핵심 내용중 하나이다.</p>
+
+<h1 id="1-생성자">1. 생성자</h1>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위와 같이 정의된 클래스로 인스턴스를 만들 때 다음과 같이 했다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">Person</span> <span class="n">per</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>저기서 Person()을 생성자(Constructor)라고 한다.</p>
+
+<p>Person 클래스를 정의한 코드는 컴파일되면서 자동으로 다음과 같이 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">Person</span><span class="o">()</span> <span class="o">{}</span> <span class="c1">//default 생성자</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>클래스를 정의할 때 생성자가 포함되어있지 않으면 디폴트로 생성자를 넣어준다.</p>
+
+<p>디폴트 생성자는 아무런 매개변수도 없고 코드도 없다. 단지 인스턴스를 만들기 위한 용도만 가지고 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="2-생성자-만들기">2. 생성자 만들기</h1>
+
+<hr />
+
+<p>생성자를 프로그래머가 직접 만들 수 있다. 보통 이런 경우는 인스턴스가 만들어지면서 곧바로 멤버 변수들을 초기화 시킬때이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   <span class="nc">String</span> <span class="n">addr</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="n">str</span><span class="o">;</span>
+   <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서는 생성자가 매개변수를 가지고 있다. 매개변수를 받아 멤버변수 name에 값을 저장한다.</p>
+
+<p>위와 같이 만들어진 클래스로 인스턴스를 만드는 방법은 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Person</span> <span class="n">per</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Kim"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per</span><span class="o">.</span><span class="na">name</span><span class="o">);</span> <span class="c1">// "Kim"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>인스턴스를 만들면서 바로 String 타입의 문자열을 전달해야 한다. 이 때 전달받은 문자열이 name에 저장된다. 출력해보면 “Kim”이 나온다.</p>
+
+<p><strong>생성자를 프로그래머가 직접 만든 경우에는 default 생성자가 자동으로 만들어지지 않는다.</strong> 따라서 위에서 만든 생성자뿐이므로 인스턴스를 만들 때 매개변수를 넣어주어야 하고 그렇지 않으면 컴파일 오류가 난다.</p>
+
+<p>디폴트 생성자도 추가해주면 인스턴스는 두 가지 생성자 중에서 하나를 이용해서 만들 수 있다.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h1 id="3-생성자-오버로드">3. 생성자 오버로드</h1>
+
+<hr />
+
+<p>위에서 매개변수가 있는 생성자나 디폴트생성자 모두 사용할 수 있다고 했다. 이 때에는 디폴트 생성자도 프로그래머가 직접 추가해야한다.</p>
+
+<p>그리고 매개변수가 있는 생성자도 여러개 만들 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">addr</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">pname</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">pname</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">pname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">page</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">pname</span><span class="o">;</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">page</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위에서는 매개변수가 1개인 생성자와 2개인 생성자가 있다. 이같은 경우를 생성자 <strong>오버로드(OverLoad)</strong>라고 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">classpart</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Person</span> <span class="n">per1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Kim"</span><span class="o">);</span>
+        <span class="nc">Person</span> <span class="n">per2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Kelly"</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
+    
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per1</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per2</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per2</span><span class="o">.</span><span class="na">age</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이렇게 두 생성자중 아무거나 사용하여 인스턴스를 생성할 수 있다.</p>
+
+<p>매개변수가 프로그램 사용자에게 노출되면 안되는 경우 매개변수에 직접 접근하는 것을 제한시키고 인스턴스를 만들 때 정보를 입력받아 초기화 해야하는 경우 등에 매개변수가 있는 생성자를 사용한다.</p>
+
+<p>또한 홈페이지등에 회원가입을 할 때 필수 입력사항같은 항목도 미리 생성자의 매개변수로 지정해두면 편리하다.</p>
+:ET
