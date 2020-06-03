@@ -1,6 +1,6 @@
 ---
 title: (디자인패턴) 1 - 스트래티지 패턴(Strategy Pattern)
-date: 2020-05-31T12:37:19+09:00
+date: 2020-06-03T12:37:19+09:00
 author: nobbaggu
 layout: post
 categories: 디자인패턴
