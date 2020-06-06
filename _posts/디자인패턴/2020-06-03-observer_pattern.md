@@ -26,9 +26,9 @@ tags:
 	+ 상태란 객체가 가지고 있는 데이터 값이다.
 	+ 일대다(one-to-many)의존성을 가진다.
 
-![observer_pattern](https://nobbaggu.github.io/images/designpattern/observer_pattern/observer_pattern.png){: width="50%" height="50%"}
+![observer_pattern](https://nobbaggu.github.io/images/designpattern/observerpattern/observer_pattern.png){: width="50%" height="50%"}
 
-![observer_pattern_class_diagram](https://nobbaggu.github.io/images/designpattern/observer_pattern/observer_pattern_class_diagram.png){: width="50%" height="50%"}
+![observer_pattern_class_diagram](https://nobbaggu.github.io/images/designpattern/observerpattern/observer_pattern_class_diagram.png){: width="50%" height="50%"}
 
 <br>
 
