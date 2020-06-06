@@ -1,5 +1,5 @@
 ---
-title: (디자인패턴) 1 - 스트래티지 패턴(Strategy Pattern)
+title: (디자인패턴) 2 - 옵저버 패턴(Observer Pattern)
 date: 2020-06-03T12:37:19+09:00
 author: nobbaggu
 layout: post
@@ -16,6 +16,7 @@ tags:
 ---
 
 <br>
+
 ## 1. 옵저버 패턴이란? ##
 ----
 
@@ -30,6 +31,7 @@ tags:
 ![observer_pattern_class_diagram](https://nobbaggu.github.io/images/designpattern/observer_pattern/observer_pattern_class_diagram.png){: width="50%" height="50%"}
 
 <br>
+
 + 신문사와 정기구독자 비유
 	+ 신문사는 주제
 	+ 구독자는 옵저버
@@ -43,6 +45,7 @@ tags:
 		+ 주제 객체에서 구독 객체의 `update(Data data)` 실행
 	
 <br>
+
 ## 2. 옵저버 패턴의 특징 ##
 ----
 
@@ -52,6 +55,7 @@ tags:
 		+ 주제는 옵저버를 전혀 신경쓸 필요 없이 `update()`만 해주면 된다.
 
 <br>
+
 ## 3. 예제 ##
 ----
 
@@ -71,6 +75,7 @@ public interface NewsCompany {
 ~~~
 
 <br>
+
 //구독자 인터페이스
 ~~~ java
 import java.util.List;
@@ -81,6 +86,7 @@ public interface Subscriber {
 ~~~
 
 <br>
+
 //조선일보 클래스
 ~~~ java
 public class Chosun implements NewsCompany {
@@ -119,6 +125,7 @@ public class Chosun implements NewsCompany {
 ~~~
 
 <br>
+
 //John 클래스
 ~~~ java
 public class John implements Subscriber {
@@ -135,6 +142,7 @@ public class John implements Subscriber {
 ~~~
 
 <br>
+
 //Andy 클래스
 ~~~ java
 public class Andy implements Subscriber {
@@ -150,6 +158,7 @@ public class Andy implements Subscriber {
 ~~~
 
 <br>
+
 //Main
 ~~~ java
 public class Main {
@@ -169,6 +178,7 @@ public class Main {
 ~~~
 
 <br>
+
 + 주제는 신문사이며 모든 신문사는 `NewsCompany` 인터페이스를 구현해야한다.
 
 + 모든 구독자는 `Subscriber` 인터페이스를 구현해야한다.
@@ -197,6 +207,7 @@ Process finished with exit code 0
 ~~~
 
 <br>
+
 ## 4. 데이터 획득 방식 ##
 ----
 
@@ -240,6 +251,7 @@ public class Chosun extends Observable {
 ~~~
 
 <br>
+
 ~~~ java
 public class John implements Observer {
     @Override
@@ -250,6 +262,7 @@ public class John implements Observer {
 ~~~
 
 <br>
+
 ~~~ java
 public class Main {
     public static void main(String[] args) {
@@ -266,9 +279,11 @@ public class Main {
 ~~~
 
 <br>
+
 ## 5. 정리 및 생각##
 ----
 
 옵저버 패턴은 객체 사이에 데이터를 1:다 형태로 전달하기 위한 디자인 패턴이다. 내가 코딩 한달 했을때 이러한 기능을 만든다면 명시적으로 주기를 설정하고 한 번씩 주제 객체의 데이터를 `get()`해서 같으면 버리고 다르면 업데이트 하는 방식을 생각해볼 수 있을 것이다. 그에 반해 옵저버 패턴은 성공한 디자인패턴답게 효율적이다. 이벤트가 발생했을때만 구독자들에게 그것을 알려주기 때문이다. 그리고 안드로이드와 같은 UI 버튼과 리스너도 옵저버 패턴을 사용한다는 것을 처음 알았다. 그러나 안드로이드에서는 클릭 리스너를 1개만 등록할 수 있는걸로 아는데 이것은 1:1 옵저버 패턴이라 할 수 있을까?
 
-옵저버 패턴에서 중요한 디자인 원칙은 **상호작용하는 객체 사이의 결합도는 가능한 '느슨하게' 해야한다는 것이다.**
++ 옵저버 패턴에서 중요한 디자인 원칙은 
+	+ **상호작용하는 객체 사이의 결합도는 가능한 '느슨하게' 해야한다**
