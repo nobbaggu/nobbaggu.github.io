@@ -66,7 +66,7 @@ dvd.play(movie); //영화를 재생한다.
 + 퍼사드 패턴은 서브시스템의 일련의 인터페이스들의 통합 인터페이스를 제공해준다.
 	+ 클라이언트 측에서 단순화된 인터페이스를 사용할 수 있어 문제가 간단해진다.
 
-![home_theater_facade_pattern_class_diagram](https://nobbaggu.github.io/images/designpattern/home_theater_facade_pattern_class_diagram.jpg){: width="50%" height="50%"}
+![home_theater_facade_pattern_class_diagram](https://nobbaggu.github.io/images/designpattern/facadepattern/home_theater_facade_pattern_class_diagram.jpg){: width="50%" height="50%"}
 	
 <br>
 
