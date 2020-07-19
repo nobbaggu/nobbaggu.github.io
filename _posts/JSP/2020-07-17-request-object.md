@@ -220,7 +220,7 @@ getParameterMap() 메소드
 서울시 강남구
 dog
 cat
-~~~ text
+~~~
 
 <br>
 
