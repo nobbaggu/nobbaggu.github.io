@@ -115,8 +115,8 @@ if(num1 > 10) {
 + 자원 접근
 	+ `String getRealPath(String path)`
 		+ 웹 애플리케이션 내에 있는 자원의 시스템 상에서의 절대 경로 리턴
-	+ `java.net.URL getResource(String Path)`
+	+ `URL getResource(String Path)`
 		+ 웹 애플리케이션 내에 있는 자원에 접근할 수 있는 URL 객체 리턴
 		+ `URL`의 `openStream()` 메소드를 사용해 스트림 생성해서 자원을 읽을 수 있다.
-	+ `java.io.InputStream getResourceAsStream(String realPath)`
+	+ `InputStream getResourceAsStream(String realPath)`
 		+ 전달받은 절대 경로의 자원을 스트림으로 변환해서 리턴

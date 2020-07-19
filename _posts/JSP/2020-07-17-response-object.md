@@ -1,5 +1,5 @@
 ---
-title: (JSP) 4 - request 기본 객체
+title: (JSP) 4 - response 기본 객체
 date: 2020-07-17T20:37:19+09:00
 author: nobbaggu
 layout: post
