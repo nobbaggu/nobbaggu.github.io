@@ -1,6 +1,6 @@
 ---
-title: (JSP) 13(1) - EL(Expression Language) 기본
-date: 2020-07-19T16:00:00+09:00
+title: (JSP) 13 - EL 기본
+date: 2020-07-20T19:00:00+09:00
 author: nobbaggu
 layout: post
 categories: JSP
@@ -142,3 +142,42 @@ null
 <br>
 
 + EL은 값이 없으면 null을 출력하는 표현식과 다르게 아무것도 출력하지 않는다.
+
+<br>
+
+## 4. 객체 탐색 ##
+----
+
++ 중요
+
++ EL에서 객체명 없이 속성을 사용할 때
+	+ pageScope, requestScope, sessionScope, applicationScope를 차례대로 탐색
+	
+~~~ jsp
+<%@ page contentType="text/html; charset=utf-8" %>
+<%@ page import="thermometer.Thermometer" %>
+
+<%
+	Thermometer thermometer = new Thermometer();
+	Thermometer thermometer2 = new Thermometer();
+	request.setAttribute("t", thermometer);
+	session.setAttribute("a", thermometer2);
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>온도계 변화</title>
+</head>
+<body>
+	<p>${t.setCelsius("서울", 27.3)}</p>
+	<p>${t.getCelsius("서울")}도 / ${t.getFahrenheit("서울")}화</p>
+	<p>${a.setCelsius("서울", 21.1)}</p>
+	<p>${a.getCelsius("서울")}도 / ${a.getFahrenheit("서울")}화</p>
+</body>
+</html>
+~~~
+
++ t와 a는 각각 request객체와 session 기본객체에 저장되어있는 속성이며 속성값으로 각자가 `Thermometer` 객체를 가진다.
+
++ 기본객체를 명시하지 않고 속성을 사용할 경우 네 개의 영역을 차례대로 탐색하므로 't', 'a'와 같이 이름만 사용할 수가 있다.

@@ -1,6 +1,6 @@
 ---
-title: (JSP) 13(2) - EL 연산자
-date: 2020-07-19T16:00:00+09:00
+title: (JSP) 14 - EL 연산자
+date: 2020-07-20T21:00:00+09:00
 author: nobbaggu
 layout: post
 categories: JSP
@@ -91,15 +91,15 @@ str.compareTo("2004")==0
 
 + List
 	+ ${\[1,2,5,10\]}
-	+ <c:set var="myList" values="${\[1,2,5,10\]}" />
-	+ ${muList\[2\]} -> 5
+	+ \<c:set var="myList" values="${\[1,2,5,10\]}" /\>
+	+ ${myList\[2\]} -> 5
 + Map
 	+ ${{"name":"홍길동", "age":20}}
-	+ <c:set var="myMap" values="${{"name":"홍길동", "age":20}}" />
+	+ \<c:set var="myMap" values="${{"name":"홍길동", "age":20}}" /\>
 	+ ${mem.name} -> 홍길동
 	+ ${mem.age} -> 20
 + Set
-	+ <c:set var="mySet" values="${{"가", "나", "다"}}" />
+	+ \<c:set var="mySet" values="${{"가", "나", "다"}}" /\>
 	+ ${mySet}
 		
 <br>
