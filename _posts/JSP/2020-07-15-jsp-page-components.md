@@ -61,8 +61,8 @@ tags:
 ----
 
 + page 디렉티브 작성 예시
-	+ `<%@ page contentType="text/html; charset=utf-8" %>
-	+ `<%@ page import="java.util.Date" %>
+	+ `<%@ page contentType="text/html; charset=utf-8" %>`
+	+ `<%@ page import="java.util.Date" %>`
 	
 + page 디렉티브의 주요 속성들
 	+ contentType
@@ -73,7 +73,7 @@ tags:
 		+ session 사용여부 지정
 	+ buffer
 		+ 출력버퍼 크기 지정
-	+ autoFlash
+	+ autoFlush
 		+ 버퍼가 다 찼을 경우 자동으로 출력 스트림으로 보낼지 여부 지정
 	+ info
 		+ JSP 페이지에 대한 설명
@@ -105,7 +105,7 @@ tags:
 		+ import로 클래스를 불러두면 모든 경로를 입력할 필요 없이 클래스 명만 명시해서 사용할 수 있다.
 		+ `<%@ import="java.util.Date" %>`
 		+ `<%@ import="java.util.Date, java.util.Date" %>`
-		+ `<%@ import="java.util.*" %>
+		+ `<%@ import="java.util.*" %>`
 		
 	+ **trimDirectiveWhitespaces** 속성
 		+ 불필요하게 생성되는 공백문자 제거

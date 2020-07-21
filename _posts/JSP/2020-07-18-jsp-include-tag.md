@@ -1,5 +1,5 @@
 ---
-title: (JSP) 7 - \<jsp:include\>
+title: (JSP) 7 - <jsp:include> 태그
 date: 2020-07-18T15:00:00+09:00
 author: nobbaggu
 layout: post
@@ -141,7 +141,7 @@ main.jsp 출력결과
 ~~~ text
 내용1
 
-이름: John
+이름: 김삿갓
 나이: 30
 
 내용2
