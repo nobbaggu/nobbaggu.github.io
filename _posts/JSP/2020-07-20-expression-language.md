@@ -50,7 +50,9 @@ ${member.address.zipcode}
 	+ 문자열 : 작은따옴표('') 혹은 큰따옴표("")로 감싼다.
 	+ 널 : null
 	
-+ ex) ${10}, ${"hello"}, ${3.1e10}, {null}, {true}
+~~~ jsp
+${10}, ${"hello"}, ${3.1e10}, {null}, {true}
+~~~
 
 <br>
 
